@@ -1,0 +1,7 @@
+.idea
+.env
+dist
+coverage
+node_modules
+
+docker-compose.ci.yml

@@ -1,0 +1,26 @@
+---
+
+stages:
+    - test
+    - mirror
+    - cleanup
+
+before_script:
+    - export REPO_ROOT=$(pwd)
+    - eval $(ssh-agent)
+    - ssh-add ~/.ssh/bob_the_builder_hanaboso
+
+test:
+    stage: test
+    script:
+        - export COMPOSE_PROJECT_NAME="${CI_PIPELINE_ID}-pipes-nodejs-connectors"
+        - export COMPOSE_FILE="docker-compose.ci.yml"
+        - make docker-compose.ci.yml test
+
+cleanup:
+    stage: cleanup
+    when: always
+    script:
+        - export COMPOSE_PROJECT_NAME="${CI_PIPELINE_ID}-pipes-nodejs-connectors"
+        - export COMPOSE_FILE="docker-compose.ci.yml"
+        - make docker-compose.ci.yml docker-down-clean

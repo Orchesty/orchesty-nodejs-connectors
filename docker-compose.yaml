@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+
+    connectors:
+        image: connectors:tag
+        build: ./docker
+        user: ${DEV_UID}:${DEV_GID}
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        ports:
+            - ${DEV_IP}:8080:8080
+        environment:
+            # Envs for tests are load from .jest/testEnvs.js
+            JEST_DOCKER: 1
+            APP_ENV: 'debug'
+        command: sleep infinity
