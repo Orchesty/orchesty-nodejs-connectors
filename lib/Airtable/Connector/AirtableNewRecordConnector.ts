@@ -17,7 +17,7 @@ export default class AirtableNewRecordConnector extends AConnector {
     const applicationInstall = await this._getApplicationInstall(user[0]);
     const app = this._application as AirtableApplication;
     if (!app.getValue(applicationInstall, BASE_ID)
-    || !app.getValue(applicationInstall, TABLE_NAME)) {
+      || !app.getValue(applicationInstall, TABLE_NAME)) {
       dto.setStopProcess(ResultCode.STOP_AND_FAILED);
 
       return dto;
@@ -30,7 +30,6 @@ export default class AirtableNewRecordConnector extends AConnector {
     `;
     const requestDto = await app.getRequestDto(dto, applicationInstall, HttpMethods.POST, url);
     dto.jsonData = await this._sender.send(requestDto, [200, 404]);
-
     return dto;
   }
 }
