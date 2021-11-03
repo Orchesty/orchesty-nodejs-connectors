@@ -8,14 +8,11 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { TOKEN } from 'pipes-nodejs-sdk/lib/Authorization/Type/Basic/ABasicApplication';
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const BASE_URL = 'https://api.airtable.com/v0';
 export const BASE_ID = 'base_id';
 export const TABLE_NAME = 'table_name';
-
-const CONTENT_TYPE = 'Content-Type';
-const ACCEPT = 'Accept';
-const AUTHORIZATION = 'Authorization';
 
 export default class AirtableApplication extends ABasicApplication {
   public getDescription = (): string => 'Airtable v1';
@@ -41,9 +38,9 @@ export default class AirtableApplication extends ABasicApplication {
     data?: string,
   ): RequestDto | Promise<RequestDto> {
     const headers = {
-      [CONTENT_TYPE]: 'application/json',
-      [ACCEPT]: 'application/json',
-      [AUTHORIZATION]: `Bearer ${this._getAccessToken(applicationInstall)}`,
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${this._getAccessToken(applicationInstall)}`,
     };
     return new RequestDto(url ?? '', parseHttpMethod(method), data, headers);
   }
@@ -61,8 +58,6 @@ export default class AirtableApplication extends ABasicApplication {
       return applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][TOKEN];
     }
 
-    throw new Error(
-      'There is no access token',
-    );
+    throw new Error('There is no access token');
   };
 }

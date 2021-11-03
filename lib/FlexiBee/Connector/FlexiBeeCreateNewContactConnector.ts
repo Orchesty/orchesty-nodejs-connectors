@@ -29,7 +29,7 @@ export default class FlexiBeeCreateNewContactConnector extends AConnector {
     let name;
     let country: undefined | string;
     let orgType;
-    const dtoDataArray = dto.jsonData as Record<string, any>;
+    const dtoDataArray = dto.jsonData as Record<string, string>;
     const { length } = Object.keys(dtoDataArray);
 
     Object.entries(dtoDataArray)

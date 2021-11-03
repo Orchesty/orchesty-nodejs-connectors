@@ -10,6 +10,7 @@ import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import ResponseDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 const API_KEY = 'api_key';
 const WISEPOOPS_URL = 'https://app.wisepops.com/api1/hooks';
@@ -32,10 +33,9 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     const request = new RequestDto(this.getUri(url)
       .toString(), parseHttpMethod(method));
     request.headers = {
-      'Content-Type': 'application/json',
-      /* eslint-disable @typescript-eslint/naming-convention */
-      Accept: 'application/json',
-      Authorization:
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.AUTHORIZATION]:
       /* eslint-enable @typescript-eslint/naming-convention */
         `WISEPOPS-API key="${applicationInstall.getSettings()[FORM][API_KEY]}"`,
     };

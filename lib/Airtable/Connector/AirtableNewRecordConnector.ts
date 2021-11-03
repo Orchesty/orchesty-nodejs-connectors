@@ -6,7 +6,7 @@ import { get, USER } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import AirtableApplication, { BASE_ID, BASE_URL, TABLE_NAME } from '../AirtableApplication';
 
 export default class AirtableNewRecordConnector extends AConnector {
-  public getName = (): string => 'airtable_new_record';
+  public getName = (): string => 'airtable-new-record';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
@@ -29,8 +29,8 @@ export default class AirtableNewRecordConnector extends AConnector {
       ${app.getValue(applicationInstall, TABLE_NAME)}
     `;
     const requestDto = await app.getRequestDto(dto, applicationInstall, HttpMethods.POST, url);
-    const res = await this._sender.send(requestDto, [200, 404]);
-    dto.jsonData = res;
+    dto.jsonData = await this._sender.send(requestDto, [200, 404]);
+
     return dto;
   }
 }

@@ -8,11 +8,10 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-
-const AUTH_URL = 'https://accounts.zoho.eu/oauth/v2/auth';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export default class ZohoApplication extends AOAuth2Application {
-  public getAuthUrl = (): string => AUTH_URL;
+  public getAuthUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/auth';
 
   public getDescription = (): string => 'Zoho is a provider of a Customer Relationship Management (CRM) solution';
 
@@ -30,11 +29,9 @@ export default class ZohoApplication extends AOAuth2Application {
     const request = new RequestDto(this.getUri(url)
       .toString(), parseHttpMethod(method));
     request.headers = {
-      'Content-Type': 'application/json',
-      /* eslint-disable @typescript-eslint/naming-convention */
-      Accept: 'application/json',
-      Authorization: `Bearer ${this.getAccessToken(applicationInstall)}`,
-      /* eslint-enable @typescript-eslint/naming-convention */
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     };
 
     if (data) {

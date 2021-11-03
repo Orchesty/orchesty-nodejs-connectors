@@ -16,6 +16,7 @@ import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { Headers } from 'node-fetch';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
 export const TOKEN_NOT_SUCCESS = 'Token is not succeed returned';
@@ -32,9 +33,6 @@ const AUTH = 'auth';
 const AUTH_JSON = 'json';
 const AUTH_HTTP = 'http';
 
-const CONTENT_TYPE = 'Content-Type';
-const ACCEPT = 'Accept';
-const AUTHORIZATION = 'Authorization';
 const X_AUTH_SESSION_ID = 'X-authSessionId';
 
 const TOKEN_MAX_LIFE = 60 * 30; // 30 min
@@ -70,15 +68,15 @@ export default class FlexiBeeApplication extends ABasicApplication {
     let headers = new Headers();
     if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_JSON) {
       headers = new Headers({
-        [CONTENT_TYPE]: 'application/json',
-        [ACCEPT]: 'application/json',
+        [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+        [CommonHeaders.ACCEPT]: JSON_TYPE,
         [X_AUTH_SESSION_ID]: await this._getApiToken(applicationInstall),
       });
     } else if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_HTTP) {
       headers = new Headers({
-        [CONTENT_TYPE]: 'application/json',
-        [ACCEPT]: 'application/json',
-        [AUTHORIZATION]: `Basic 
+        [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+        [CommonHeaders.ACCEPT]: JSON_TYPE,
+        [CommonHeaders.AUTHORIZATION]: `Basic 
         ${encode(`${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:
         ${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`)}`,
       });
@@ -166,8 +164,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
     const password = setting[AUTHORIZATION_SETTINGS][PASSWORD];
 
     const headers = {
-      [CONTENT_TYPE]: 'application/json',
-      [ACCEPT]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
     };
 
     return new RequestDto(
