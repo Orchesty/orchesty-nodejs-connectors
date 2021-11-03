@@ -34,11 +34,10 @@ export const REGIONS = [
   { 'us-gov-west-1': 'AWS GovCloud (US-West) - us-gov-west-1' },
 ];
 
-export default abstract class AAwsApplication extends ABasicApplication {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected _LATEST = 'latest';
+export const LATEST = 'latest';
 
-  getRequestDto = (
+export default abstract class AAwsApplication extends ABasicApplication {
+  public getRequestDto = (
     /* eslint-disable @typescript-eslint/no-unused-vars */
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,

@@ -6,7 +6,7 @@ import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { S3Client } from '@aws-sdk/client-s3';
 import AAwsApplication, {
   CREDENTIALS,
-  ENDPOINT, KEY, REGION, REGIONS, SECRET, VERSION,
+  ENDPOINT, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
 } from '../AAwsApplication';
 
 export const BUCKET = 'Bucket';
@@ -39,7 +39,7 @@ export default class S3Application extends AAwsApplication {
             SECRET: settings[SECRET],
           },
           [REGION]: settings[REGION],
-          [VERSION]: this._LATEST,
+          [VERSION]: LATEST,
           [ENDPOINT]: endpoint ? settings[ENDPOINT] : [],
         },
         /* eslint-enable @typescript-eslint/naming-convention */

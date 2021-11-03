@@ -6,7 +6,7 @@ import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { RedshiftClient } from '@aws-sdk/client-redshift';
 import { Client } from 'pg';
 import AAwsApplication, {
-  CREDENTIALS, KEY, REGION, REGIONS, SECRET, VERSION,
+  CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
 } from '../AAwsApplication';
 
 const ENDPOINT = 'Endpoint';
@@ -20,13 +20,13 @@ const MASTER_USER = 'MasterUsername';
 const CLUSTER_IDENTIFIER = 'ClusterIdentifier';
 
 export default class RedshiftApplication extends AAwsApplication {
-  getDescription = (): string => 'Amazon Redshift is a fast, simple, cost-effective data warehousing service.';
+  public getDescription = (): string => 'Amazon Redshift is a fast, simple, cost-effective data warehousing service.';
 
-  getName = (): string => 'redshift';
+  public getName = (): string => 'redshift';
 
-  getPublicName = (): string => 'Amazon Redshift';
+  public getPublicName = (): string => 'Amazon Redshift';
 
-  getSettingsForm = (): Form => {
+  public getSettingsForm = (): Form => {
     const form = new Form();
     form
       .addField(new Field(FieldType.TEXT, KEY, 'Key', undefined, true))
@@ -54,20 +54,21 @@ export default class RedshiftApplication extends AAwsApplication {
       },
       {
         [VERSION]:
-        this._LATEST,
+        LATEST,
       },
     ]);
   }
 
   public getConnection = async (applicationInstall: ApplicationInstall): Promise<Client> => {
     const settings = applicationInstall.getSettings();
-    const host = settings[HOST];
-    const port = settings[PORT];
-    const dbname = settings[DBNAME];
-    const user = settings[MASTER_USER];
-    const password = settings[DB_PASSWORD];
 
-    const client = new Client(`host=${host} port=${port} dbname=${dbname} user=${user} password=${password}`);
+    const client = new Client({
+      user: settings[MASTER_USER],
+      host: settings[HOST],
+      database: settings[DBNAME],
+      password: settings[DB_PASSWORD],
+      port: settings[PORT],
+    });
     try {
       await client.connect();
     } catch (e) {
