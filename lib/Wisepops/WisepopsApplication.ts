@@ -17,11 +17,11 @@ const EMAIL_EVENT = 'email';
 
 export default class WisepopsApplication extends ABasicApplication implements IWebhookApplication {
   public getDescription = (): string => 'Build website popups.';
-  
+
   public getName = (): string => 'wisepops';
-  
+
   public getPublicName = (): string => 'Wisepops';
-  
+
   public getRequestDto = (
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
@@ -30,7 +30,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     data?: string,
   ): RequestDto => {
     const request = new RequestDto(this.getUri(url)
-    .toString(), parseHttpMethod(method));
+      .toString(), parseHttpMethod(method));
     request.headers = {
       'Content-Type': 'application/json',
       /* eslint-disable @typescript-eslint/naming-convention */
@@ -39,17 +39,17 @@ export default class WisepopsApplication extends ABasicApplication implements IW
       /* eslint-enable @typescript-eslint/naming-convention */
         `WISEPOPS-API key="${applicationInstall.getSettings()[FORM][API_KEY]}"`,
     };
-    
+
     if (data) {
       request.body = data;
     }
-    
+
     return request;
   };
-  
+
   public getSettingsForm = (): Form => new Form()
-  .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
-  
+    .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
+
   public getWebhookSubscribeRequestDto = (
     applicationInstall: ApplicationInstall,
     subscription: WebhookSubscription,
@@ -63,11 +63,11 @@ export default class WisepopsApplication extends ABasicApplication implements IW
         event: subscription.getParameters().name,
       }));
   };
-  
+
   public getWebhookSubscriptions = (): WebhookSubscription[] => [
     new WebhookSubscription('Collected Emails', 'Webhook', '', { name: EMAIL_EVENT }),
   ];
-  
+
   public getWebhookUnsubscribeRequestDto = (applicationInstall: ApplicationInstall, id: string): RequestDto => {
     const request = new ProcessDto();
     return this.getRequestDto(
@@ -77,12 +77,12 @@ export default class WisepopsApplication extends ABasicApplication implements IW
       `${WISEPOOPS_URL}?hook_id=${id}`,
     );
   };
-  
+
   public processWebhookSubscribeResponse = (
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
   ): string => JSON.parse(dto.body).id;
-  
+
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 }

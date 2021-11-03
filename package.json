@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/lib/index.js",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles --forceExit",
+    "test": "jest --coverage --detectOpenHandles --forceExit --passWithNoTests",
     "lint": "eslint lib/**/*.ts --fix",
     "lint-ci": "eslint lib/**/*.ts",
     "start": "nodemon test/index.ts",
@@ -15,26 +15,26 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@types/bson": "^4.2.0",
-    "@types/luxon": "^2.0.2",
+    "@types/luxon": "^2.0.5",
     "@types/node-fetch": "^2.5.12",
     "luxon": "^2.0.2",
     "mongodb-typescript": "^2.2.1",
     "node-fetch": "^2.6.1",
-    "pipes-nodejs-sdk": "^1.1.5"
+    "pipes-nodejs-sdk": "^1.1.11"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
-    "eslint": "^7.32.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.24.1",
-    "jest": "^27.0.6",
-    "nodemon": "^2.0.12",
-    "ts-jest": "^27.0.5",
-    "ts-node": "^10.2.1"
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0"
   }
 }
