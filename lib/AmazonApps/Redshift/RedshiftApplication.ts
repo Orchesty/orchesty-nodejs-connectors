@@ -3,21 +3,21 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { RedshiftClient } from '@aws-sdk/client-redshift';
+import {
+  DescribeClustersCommand, DescribeClustersCommandInput, DescribeClustersCommandOutput,
+  RedshiftClient,
+} from '@aws-sdk/client-redshift';
 import { Client } from 'pg';
 import AAwsApplication, {
   CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
 } from '../AAwsApplication';
 
-const ENDPOINT = 'Endpoint';
 const DB_PASSWORD = 'DbPassword';
 
 const HOST = 'host';
 const PORT = 'Port';
 const DBNAME = 'DBName';
-const ADDRESS = 'Address';
 const MASTER_USER = 'MasterUsername';
-const CLUSTER_IDENTIFIER = 'ClusterIdentifier';
 
 export default class RedshiftApplication extends AAwsApplication {
   public getDescription = (): string => 'Amazon Redshift is a fast, simple, cost-effective data warehousing service.';
@@ -57,6 +57,35 @@ export default class RedshiftApplication extends AAwsApplication {
         LATEST,
       },
     ]);
+  }
+
+  public async setApplicationSettings(
+    _applicationInstall: ApplicationInstall,
+    settings: [],
+  ): Promise<ApplicationInstall> {
+    const applicationInstall = await super.setApplicationSettings(_applicationInstall, settings);
+
+    const input: DescribeClustersCommandInput = {};
+    const command = new DescribeClustersCommand(input);
+    const response = await this.getRedshiftClient(applicationInstall)
+      .send(command) as DescribeClustersCommandOutput;
+
+    if (!response.Clusters) {
+      throw new Error('Login into application was unsuccessful.');
+    }
+
+    const cluster = response.Clusters[0];
+
+    return applicationInstall.setSettings(
+      {
+        CLUSTER_IDENTIFIER: cluster.ClusterIdentifier,
+        MASTER_USER: cluster.MasterUsername,
+        DB_PASSWORD: applicationInstall.getSettings()[FORM][DB_PASSWORD],
+        DBNAME: cluster.DBName,
+        HOST: cluster.Endpoint?.Address,
+        PORT: cluster.Endpoint?.Port,
+      },
+    );
   }
 
   public getConnection = async (applicationInstall: ApplicationInstall): Promise<Client> => {

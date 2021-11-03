@@ -10,7 +10,6 @@ export default class S3GetObjectConnector extends AS3ObjectConnector {
   protected _getCustomId = (): string => 'get-object';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dto = _dto;
     const content = dto.jsonData as { name: string };
     this._checkParameters([NAME], content);

@@ -4826,9 +4826,9 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
 
 pipes-nodejs-sdk@^1.1.11:
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/pipes-nodejs-sdk/-/pipes-nodejs-sdk-1.1.12.tgz#d6f03e3480e062a96058fc9be2b7805ba7acd225"
-  integrity sha512-k7/OaFlXl7f0Msw3Kg0Ya9mIYAzbcZO7vgkXG3MITKHEmPJGPq/rA7fIQ13dA+Uj1c8TRih/xAtEHWIB/YMAdw==
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/pipes-nodejs-sdk/-/pipes-nodejs-sdk-1.1.13.tgz#7f9b17c2a61ba4c3ccc25ed5516aa48d655642c0"
+  integrity sha512-nKuRQh0o1Vb6fiClfobH01mW28zF0aUh14aNzSPqIp3p0305yk5+nB5q1gAShcvB/Lq5DH6VpUVbGmD2sdKhfQ==
   dependencies:
     "@types/bson" "^4.2.0"
     "@types/express" "^4.17.13"
