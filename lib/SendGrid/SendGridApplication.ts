@@ -7,50 +7,48 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const BASE_URL = 'https://api.sendgrid.com/v3';
-export const API_KEY = 'api_key';
+
+const API_KEY = 'api_key';
 
 export default class SendGridApplication extends ABasicApplication {
   public getDescription = (): string => 'Send Email With Confidence.';
-  
+
   public getName = (): string => 'send-grid';
-  
-  public getPublicName = (): string => 'SendGrid Application';
-  
+
+  public getPublicName = (): string => 'SendGrid';
+
   public getRequestDto(
     _dto: ProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,
-    data?: string
+    data?: string,
   ): RequestDto | Promise<RequestDto> {
-    
     if (!this.isAuthorized(applicationInstall)) {
       throw new Error('Application SendGrid is not authorized!');
     }
-    
+
     const settings = applicationInstall.getSettings();
     const token = settings[AUTHORIZATION_SETTINGS][API_KEY];
     const dto = new RequestDto(
-        new URL(url ?? BASE_URL).toString(),
-        parseHttpMethod(method),
-        JSON.stringify({
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }),
-      )
-    ;
-    
+      new URL(url ?? BASE_URL).toString(),
+      parseHttpMethod(method),
+      JSON.stringify({
+        [CommonHeaders.CONTENT_TYPE]: 'application/json',
+        [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
+      }),
+    );
     if (data) {
       dto.body = data;
     }
-    
+
     return dto;
   }
-  
+
   public getSettingsForm(): Form {
     return new Form().addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
   }
-  
 }
