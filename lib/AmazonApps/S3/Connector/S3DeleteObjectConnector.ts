@@ -11,7 +11,7 @@ export default class S3DeleteObjectConnector extends AS3ObjectConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const content = dto.jsonData as any;
+    const content = dto.jsonData as {[NAME]: string };
     this._checkParameters([NAME], content);
 
     const applicationInstall = await this._getApplicationInstallFromHeaders(dto);

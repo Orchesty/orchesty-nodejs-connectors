@@ -3,7 +3,7 @@ import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { TOKEN } from 'pipes-nodejs-sdk/lib/Authorization/Type/Basic/ABasicApplication';
@@ -33,7 +33,7 @@ export default class AirtableApplication extends ABasicApplication {
   public getRequestDto(
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto | Promise<RequestDto> {
@@ -42,7 +42,7 @@ export default class AirtableApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this._getAccessToken(applicationInstall)}`,
     };
-    return new RequestDto(url ?? '', parseHttpMethod(method), data, headers);
+    return new RequestDto(url ?? '', method, data, headers);
   }
 
   public getValue = (applicationInstall: ApplicationInstall, value: string): string | undefined => {

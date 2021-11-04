@@ -5,7 +5,7 @@ import {
 } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
@@ -61,7 +61,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
   public async getRequestDto(
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): Promise<RequestDto> {
@@ -82,7 +82,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
       });
     }
 
-    return new RequestDto(<string>url, parseHttpMethod(method), data, headers);
+    return new RequestDto(url ?? '', method, data, headers);
   }
 
   public getSettingsForm = (): Form => {

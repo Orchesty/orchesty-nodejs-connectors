@@ -1,6 +1,6 @@
 import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -23,7 +23,7 @@ export default class SendGridApplication extends ABasicApplication {
   public getRequestDto(
     _dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto | Promise<RequestDto> {
@@ -35,7 +35,7 @@ export default class SendGridApplication extends ABasicApplication {
     const token = settings[AUTHORIZATION_SETTINGS][API_KEY];
     const dto = new RequestDto(
       new URL(url ?? BASE_URL).toString(),
-      parseHttpMethod(method),
+      method,
       JSON.stringify({
         [CommonHeaders.CONTENT_TYPE]: 'application/json',
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,

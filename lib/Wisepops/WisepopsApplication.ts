@@ -3,7 +3,7 @@ import { IWebhookApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import WebhookSubscription from 'pipes-nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
@@ -26,12 +26,11 @@ export default class WisepopsApplication extends ABasicApplication implements IW
   public getRequestDto = (
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto => {
-    const request = new RequestDto(this.getUri(url)
-      .toString(), parseHttpMethod(method));
+    const request = new RequestDto(this.getUri(url).toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

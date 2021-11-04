@@ -2,7 +2,7 @@ import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from 'pipes-nodejs-sdk/dist/lib/Utils/ResultCode';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { ACCOUNT, BASE_ACCOUNTS, BASE_URL } from '../FakturoidApplication';
 
 export default abstract class AFakturoidConnector extends AConnector {
@@ -10,7 +10,7 @@ export default abstract class AFakturoidConnector extends AConnector {
 
   protected _endpoint = '';
 
-  protected _method = '';
+  protected _method: HttpMethods = HttpMethods.GET;
 
   public getName(): string {
     return this._name;
@@ -32,7 +32,7 @@ export default abstract class AFakturoidConnector extends AConnector {
       body = dto.data;
     }
 
-    const requestDto = await app.getRequestDto(dto, applicationInstall, parseHttpMethod(this._method), url, body);
+    const requestDto = await app.getRequestDto(dto, applicationInstall, this._method, url, body);
     const response = await this._sender.send(requestDto);
     this.evaluateStatusCode(response, dto);
     dto.data = response.body;

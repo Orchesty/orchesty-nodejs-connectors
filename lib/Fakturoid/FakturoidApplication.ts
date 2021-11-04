@@ -10,10 +10,10 @@ import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { Headers } from 'node-fetch';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const BASE_URL = 'https://app.fakturoid.cz/api/v2';
 export const BASE_ACCOUNTS = 'accounts';
@@ -29,7 +29,7 @@ export default class FakturoidApplication extends ABasicApplication {
   public getRequestDto = (
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto | Promise<RequestDto> => {
@@ -41,7 +41,7 @@ export default class FakturoidApplication extends ABasicApplication {
       [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userName}:${password}`)}`,
     });
 
-    return new RequestDto(url ?? BASE_URL, parseHttpMethod(method), data, headers);
+    return new RequestDto(url ?? BASE_URL, method, data, headers);
   };
 
   public getSettingsForm = (): Form => new Form()

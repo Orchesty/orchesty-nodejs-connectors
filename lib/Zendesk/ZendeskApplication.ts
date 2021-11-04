@@ -4,7 +4,7 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -24,12 +24,11 @@ export default class ZendeskApplication extends AOAuth2Application {
   public getRequestDto = (
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto | Promise<RequestDto> => {
-    const request = new RequestDto(this.getUri(url)
-      .toString(), parseHttpMethod(method));
+    const request = new RequestDto(this.getUri(url).toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: 'application/json',
       [CommonHeaders.ACCEPT]: 'application/json',

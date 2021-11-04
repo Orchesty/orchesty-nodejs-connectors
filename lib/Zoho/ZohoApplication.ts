@@ -7,7 +7,7 @@ import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorizatio
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export default class ZohoApplication extends AOAuth2Application {
@@ -22,12 +22,11 @@ export default class ZohoApplication extends AOAuth2Application {
   public getRequestDto(
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
-    method: string | HttpMethods,
+    method: HttpMethods,
     url?: string,
     data?: string,
   ): RequestDto | Promise<RequestDto> {
-    const request = new RequestDto(this.getUri(url)
-      .toString(), parseHttpMethod(method));
+    const request = new RequestDto(this.getUri(url).toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

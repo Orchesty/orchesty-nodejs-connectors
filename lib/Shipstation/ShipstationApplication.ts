@@ -6,7 +6,7 @@ import {
 } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import WebhookSubscription from 'pipes-nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
@@ -22,11 +22,11 @@ export const ORDER_NOTIFY = 'ORDER_NOTIFY';
 
 export default class ShipstationApplication extends ABasicApplication implements IWebhookApplication {
   public getDescription = (): string => 'Shipstation v1';
-  
+
   public getName = (): string => 'shipstation';
-  
+
   public getPublicName = (): string => 'Shipstation';
-  
+
   public getRequestDto(
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
@@ -35,7 +35,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     data?: string,
   ): RequestDto {
     const request = new RequestDto(this.getUri(url)
-    .toString(), method);
+      .toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -44,14 +44,14 @@ export default class ShipstationApplication extends ABasicApplication implements
     if (data) {
       request.body = data;
     }
-    
+
     return request;
   }
-  
+
   public getSettingsForm = (): Form => new Form()
-  .addField(new Field(FieldType.TEXT, USER, 'API Key', undefined, true))
-  .addField(new Field(FieldType.TEXT, PASSWORD, 'API Secret', undefined, true));
-  
+    .addField(new Field(FieldType.TEXT, USER, 'API Key', undefined, true))
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'API Secret', undefined, true));
+
   public getWebhookSubscribeRequestDto(
     applicationInstall: ApplicationInstall,
     subscription: WebhookSubscription,
@@ -68,11 +68,11 @@ export default class ShipstationApplication extends ABasicApplication implements
         /* eslint-enable @typescript-eslint/naming-convention */
       }));
   }
-  
+
   public getWebhookSubscriptions = (): WebhookSubscription[] => [
     new WebhookSubscription('New order', 'Webhook', '', { name: ORDER_NOTIFY }),
   ];
-  
+
   public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
     const request = new ProcessDto();
     return this.getRequestDto(
@@ -82,15 +82,15 @@ export default class ShipstationApplication extends ABasicApplication implements
       `${SHIPSTATION_URL}/webhooks/${id}`,
     );
   }
-  
+
   public processWebhookSubscribeResponse = (
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
   ): string => JSON.parse(dto.body).id;
-  
+
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
-  
+
   private _getToken = (applicationInstall: ApplicationInstall): string => encode(
     `${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:
       ${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`,
