@@ -3,7 +3,7 @@ import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { Headers } from 'node-fetch';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -27,8 +27,8 @@ export default class IDokladApplication extends AOAuth2Application {
     data?: string,
   ): RequestDto | Promise<RequestDto> {
     const headers = new Headers({
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
-      [CommonHeaders.ACCEPT]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     });
 

@@ -8,7 +8,7 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export default class BigcommerceApplication extends AOAuth2Application {
   public getName = (): string => 'bigcommerce';
@@ -29,8 +29,8 @@ export default class BigcommerceApplication extends AOAuth2Application {
     data?: string,
   ): RequestDto | Promise<RequestDto> {
     const headers = new Headers({
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
-      [CommonHeaders.ACCEPT]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `OAuth ${this.getAccessToken(applicationInstall)}`,
     });
     if (url) {
