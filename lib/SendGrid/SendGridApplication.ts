@@ -48,7 +48,6 @@ export default class SendGridApplication extends ABasicApplication {
     return dto;
   }
 
-  public getSettingsForm(): Form {
-    return new Form().addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
-  }
+  public getSettingsForm = (): Form => new Form()
+    .addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
 }
