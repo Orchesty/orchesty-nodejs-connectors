@@ -19,19 +19,13 @@ const VERSION = 'v3';
 const BASE_URL = 'https://quickbooks.api.intuit.com';
 
 export default class QuickbooksApplication extends AOAuth2Application {
-  getDescription(): string {
-    return 'Quickbooks v1';
-  }
-  
-  getName(): string {
-    return 'quickbooks';
-  }
-  
-  getPublicName(): string {
-    return 'Quickbooks';
-  }
-  
-  getRequestDto(
+  public getDescription = (): string => 'Quickbooks v1';
+
+  public getName = (): string => 'quickbooks';
+
+  public getPublicName = (): string => 'Quickbooks';
+
+  public getRequestDto(
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
@@ -40,43 +34,35 @@ export default class QuickbooksApplication extends AOAuth2Application {
   ): RequestDto | Promise<RequestDto> {
     const request = new RequestDto(
       this.getUri(`${this._getBaseUrl(applicationInstall)}${url}`)
-      .toString(),
+        .toString(),
       method,
     );
-    
+
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     };
-    
+
     if (data) {
       request.body = data;
     }
-    
+
     return request;
   }
-  
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  getScopes(applicationInstall: ApplicationInstall): string[] {
-    return SCOPES;
-  }
-  
-  getSettingsForm(): Form {
-    return (new Form())
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => SCOPES;
+
+  public getSettingsForm = (): Form => (new Form())
     .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
     .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
     .addField(new Field(FieldType.TEXT, APP_ID, 'Realm Id', undefined, true));
-  }
-  
-  getAuthUrl(): string {
-    return QUICKBOOKS_URL;
-  }
-  
-  getTokenUrl(): string {
-    return TOKEN_URL;
-  }
-  
+
+  public getAuthUrl = (): string => QUICKBOOKS_URL;
+
+  public getTokenUrl = (): string => TOKEN_URL;
+
   private _getBaseUrl = (
     applicationInstall: ApplicationInstall,
   ): string => `${BASE_URL}/${VERSION}/company/${applicationInstall.getSettings()[FORM][APP_ID]}`;

@@ -25,8 +25,8 @@
             "ignoreUrls": true,
             "ignoreComments": false
         }],
-        "class-methods-use-this": "off",
         "import/no-extraneous-dependencies": ["error", {"optionalDependencies": true, "peerDependencies": false}],
+        "class-methods-use-this": ["error", { "enforceForClassFields": false }],
         "lines-between-class-members": "off",
         "no-useless-constructor": "off",
         "@typescript-eslint/lines-between-class-members": ["error", "always"],
