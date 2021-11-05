@@ -19,7 +19,7 @@
         "skipLibCheck": true
     },
     "include": [
-        "lib"
+        "lib",
     ],
     "exclude": [
         "node_modules"
