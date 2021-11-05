@@ -17,6 +17,7 @@
         "@types/bson": "^4.2.0",
         "@types/luxon": "^2.0.5",
         "@types/node-fetch": "^2.5.12",
+        "form-data": "^4.0.0",
         "luxon": "^2.0.2",
         "mongodb-typescript": "^2.2.1",
         "node-fetch": "^2.6.1",
