@@ -12,7 +12,7 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { Headers } from 'node-fetch';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const BASE_URL = 'https://app.fakturoid.cz/api/v2';
@@ -37,7 +37,7 @@ export default class FakturoidApplication extends ABasicApplication {
     const password = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD];
 
     const headers = new Headers({
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userName}:${password}`)}`,
     });
 

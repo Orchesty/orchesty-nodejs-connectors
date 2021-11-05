@@ -7,7 +7,7 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const BASE_URL = 'https://api.sendgrid.com/v3';
 
@@ -37,7 +37,7 @@ export default class SendGridApplication extends ABasicApplication {
       new URL(url ?? BASE_URL).toString(),
       method,
       JSON.stringify({
-        [CommonHeaders.CONTENT_TYPE]: 'application/json',
+        [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
       }),
     );
