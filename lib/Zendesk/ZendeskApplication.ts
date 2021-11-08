@@ -9,7 +9,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 const SUBDOMAIN = 'subdomain';
 
@@ -30,8 +30,8 @@ export default class ZendeskApplication extends AOAuth2Application {
   ): RequestDto | Promise<RequestDto> => {
     const request = new RequestDto(this.getUri(url).toString(), method);
     request.headers = {
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
-      [CommonHeaders.ACCEPT]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     };
 
