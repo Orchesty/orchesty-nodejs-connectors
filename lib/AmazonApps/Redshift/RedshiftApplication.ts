@@ -37,7 +37,7 @@ export default class RedshiftApplication extends AAwsApplication {
     return form;
   };
 
-  public getRedshiftClient(applicationInstall: ApplicationInstall): RedshiftClient {
+  public getRedshiftClient = (applicationInstall: ApplicationInstall): RedshiftClient => {
     const settings = applicationInstall.getSettings()[FORM];
 
     return new RedshiftClient([
@@ -57,7 +57,7 @@ export default class RedshiftApplication extends AAwsApplication {
         LATEST,
       },
     ]);
-  }
+  };
 
   public async setApplicationSettings(
     _applicationInstall: ApplicationInstall,

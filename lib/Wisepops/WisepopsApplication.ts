@@ -81,7 +81,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string => JSON.parse(dto.body).id;
+  ): string => (dto.jsonBody as {id: string}).id;
 
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 }

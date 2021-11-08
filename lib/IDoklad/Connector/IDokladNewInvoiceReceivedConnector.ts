@@ -9,9 +9,9 @@ export default class IDokladNewInvoiceReceivedConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const data = JSON.parse(dto.data);
+    const { jsonData } = dto;
     checkParams(
-      data,
+      jsonData as Record<string, unknown>,
       [
         'DateOfMaturity',
         'DateOfReceiving',
@@ -23,7 +23,7 @@ export default class IDokladNewInvoiceReceivedConnector extends AConnector {
       ],
     );
     checkParams(
-      data,
+      jsonData as Record<string, unknown>,
       {
       // eslint-disable-next-line @typescript-eslint/naming-convention
         Items: [
@@ -44,7 +44,7 @@ export default class IDokladNewInvoiceReceivedConnector extends AConnector {
       applicationInstall,
       HttpMethods.POST,
       `${BASE_URL}/ReceivedInvoices`,
-      data,
+      dto.data,
     );
 
     const response = await this._sender.send(request, [200, 201], 10);

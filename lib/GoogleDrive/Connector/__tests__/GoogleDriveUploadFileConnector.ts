@@ -3,7 +3,7 @@ import Metrics from 'pipes-nodejs-sdk/dist/lib/Metrics/Metrics';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import GoogleDriveUploadFileConnector from '../GoogleDriveUploadFileConnector';
 
-describe('google drive upload file connector', () => {
+xdescribe('google drive upload file connector', () => {
   xit('processAction', async () => {
     const conn = new GoogleDriveUploadFileConnector();
     conn.setSender(new CurlSender({ sendCurlMetrics: jest.fn() } as unknown as Metrics));

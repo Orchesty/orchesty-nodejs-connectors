@@ -97,7 +97,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string => JSON.parse(dto.body).data.id;
+  ): string => (dto.jsonBody as {data: {id: string}}).data.id;
 
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 
