@@ -44,10 +44,8 @@ export default class PipedriveApplication extends ABasicApplication implements I
     return request;
   }
 
-  public getSettingsForm(): Form {
-    return new Form()
-      .addField(new Field(FieldType.TEXT, USER, 'API token', undefined, true));
-  }
+  public getSettingsForm = (): Form => new Form()
+    .addField(new Field(FieldType.TEXT, USER, 'API token', undefined, true));
 
   public getWebhookSubscribeRequestDto(
     applicationInstall: ApplicationInstall,
