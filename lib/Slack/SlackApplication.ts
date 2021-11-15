@@ -51,7 +51,11 @@ export default class SlackApplication extends AOAuth2Application {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['app_mentions:read'];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => [
+    'app_mentions:read',
+    'chat:write',
+    'chat:write.public',
+  ];
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
