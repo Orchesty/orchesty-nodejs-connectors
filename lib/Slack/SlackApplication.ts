@@ -10,7 +10,8 @@ import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorizatio
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import { TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { BASE_URL } from '../SendGrid/SendGridApplication';
+
+const BASE_URL = 'https://slack.com/api/';
 
 export default class SlackApplication extends AOAuth2Application {
   public getAuthUrl = (): string => 'https://slack.com/oauth/v2/authorize';
@@ -51,7 +52,13 @@ export default class SlackApplication extends AOAuth2Application {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['app_mentions:read'];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => [
+    'app_mentions:read',
+    'chat:write',
+    'chat:write.public',
+    'chat:write:user',
+    'chat:write:bot',
+  ];
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
