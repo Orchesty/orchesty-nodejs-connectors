@@ -56,6 +56,8 @@ export default class SlackApplication extends AOAuth2Application {
     'app_mentions:read',
     'chat:write',
     'chat:write.public',
+    'chat:write:user',
+    'chat:write:bot',
   ];
 
   public getSettingsForm = (): Form => new Form()
