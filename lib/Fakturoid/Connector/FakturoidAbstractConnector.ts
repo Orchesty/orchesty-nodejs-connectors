@@ -22,7 +22,7 @@ export default abstract class AFakturoidConnector extends AConnector {
     const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
     const app = await this._application;
     if (!app.isAuthorized(applicationInstall)) {
-      dto.setStopProcess(ResultCode.STOP_AND_FAILED);
+      dto.setStopProcess(ResultCode.STOP_AND_FAILED, `AppInstall [${applicationInstall.getName()}] is not authorized!`);
       return dto;
     }
 

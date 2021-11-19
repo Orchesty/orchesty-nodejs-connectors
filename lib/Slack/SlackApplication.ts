@@ -51,13 +51,46 @@ export default class SlackApplication extends AOAuth2Application {
     return dto;
   };
 
+  public authorize(applicationInstall: ApplicationInstall): string {
+    return this._provider.authorize(
+      this.createDto(applicationInstall),
+      this.getScopes(applicationInstall),
+      this._getScopesSeparator(),
+      {
+        http: {
+          'headers.authorization': 'headers.Accept = application/x-www-form-urlencoded',
+        },
+        options: {
+          authorizationMethod: 'body',
+        },
+      },
+    );
+  }
+
+  public async setAuthorizationToken(
+    applicationInstall: ApplicationInstall,
+    token: { [p: string]: string },
+  ): Promise<void> {
+    const tokenFromProvider = await this._provider.getAccessToken(this.createDto(applicationInstall), token.code, {
+      http: {
+        'headers.authorization': 'headers.Accept = application/x-www-form-urlencoded',
+      },
+      options: {
+        authorizationMethod: 'body',
+      },
+    });
+
+    const settings = applicationInstall.getSettings();
+    this._createAuthSettings(applicationInstall);
+    settings[AUTHORIZATION_SETTINGS][TOKEN] = tokenFromProvider;
+    applicationInstall.setSettings(settings);
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => [
     'app_mentions:read',
     'chat:write',
     'chat:write.public',
-    'chat:write:user',
-    'chat:write:bot',
   ];
 
   public getSettingsForm = (): Form => new Form()
