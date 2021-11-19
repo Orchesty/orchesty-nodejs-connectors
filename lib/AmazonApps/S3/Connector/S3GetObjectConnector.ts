@@ -30,7 +30,7 @@ export default class S3GetObjectConnector extends AS3ObjectConnector {
         [CONTENT]: response.Body,
       };
     } catch (e) {
-      throw new OnRepeatException(60, 10, e);
+      throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
     }
 
     return dto;

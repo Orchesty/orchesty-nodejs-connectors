@@ -18,7 +18,10 @@ export default class AirtableNewRecordConnector extends AConnector {
     const app = this._application as AirtableApplication;
     if (!app.getValue(applicationInstall, BASE_ID)
       || !app.getValue(applicationInstall, TABLE_NAME)) {
-      dto.setStopProcess(ResultCode.STOP_AND_FAILED);
+      dto.setStopProcess(
+        ResultCode.STOP_AND_FAILED,
+        `AppInstall base id [${BASE_ID}] or table name [${TABLE_NAME}] not set.`,
+      );
 
       return dto;
     }
