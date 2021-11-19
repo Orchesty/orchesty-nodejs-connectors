@@ -30,7 +30,7 @@ export default class S3CreateObjectConnector extends AS3ObjectConnector {
     try {
       await client.send(command);
     } catch (e) {
-      throw new OnRepeatException(60, 10, e);
+      throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
     }
 
     return dto;

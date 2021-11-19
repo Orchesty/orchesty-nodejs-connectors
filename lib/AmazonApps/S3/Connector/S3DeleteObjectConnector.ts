@@ -11,7 +11,7 @@ export default class S3DeleteObjectConnector extends AS3ObjectConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const content = dto.jsonData as {[NAME]: string };
+    const content = dto.jsonData as { [NAME]: string };
     this._checkParameters([NAME], content);
 
     const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
@@ -26,7 +26,7 @@ export default class S3DeleteObjectConnector extends AS3ObjectConnector {
     try {
       await client.send(command);
     } catch (e) {
-      throw new OnRepeatException(60, 10, e);
+      throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
     }
     dto.jsonData = { [NAME]: content[NAME] };
 
