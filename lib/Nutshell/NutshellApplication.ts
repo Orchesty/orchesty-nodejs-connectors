@@ -47,8 +47,7 @@ export default class NutshellApplication extends ABasicApplication {
     .addField(new Field(FieldType.TEXT, PASSWORD, 'API Key', undefined, true));
 
   private _getToken = (applicationInstall: ApplicationInstall): string => encode(
-    `${applicationInstall.getSettings(
-    )[AUTHORIZATION_SETTINGS][USER]}:${applicationInstall.getSettings(
-    )[AUTHORIZATION_SETTINGS][PASSWORD]}`,
+    // eslint-disable-next-line max-len
+    `${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`,
   );
 }

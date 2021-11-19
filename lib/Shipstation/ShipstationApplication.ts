@@ -58,7 +58,11 @@ export default class ShipstationApplication extends ABasicApplication implements
     url: string,
   ): RequestDto {
     const request = new ProcessDto();
-    return this.getRequestDto(request, applicationInstall, HttpMethods.POST, `${SHIPSTATION_URL}/webhooks/subscribe`,
+    return this.getRequestDto(
+      request,
+      applicationInstall,
+      HttpMethods.POST,
+      `${SHIPSTATION_URL}/webhooks/subscribe`,
       JSON.stringify({
         name: subscription.getParameters().name,
         event: ORDER_NOTIFY,
@@ -66,7 +70,8 @@ export default class ShipstationApplication extends ABasicApplication implements
         target_url: url,
         store_id: undefined,
         /* eslint-enable @typescript-eslint/naming-convention */
-      }));
+      }),
+    );
   }
 
   public getWebhookSubscriptions = (): WebhookSubscription[] => [

@@ -124,7 +124,8 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         new ProcessDto(),
         applicationInstall,
         HttpMethods.GET,
-        '%s/oauth2/metadata', MAILCHIMP_DATACENTER_URL,
+        '%s/oauth2/metadata',
+        MAILCHIMP_DATACENTER_URL,
       ),
     );
 

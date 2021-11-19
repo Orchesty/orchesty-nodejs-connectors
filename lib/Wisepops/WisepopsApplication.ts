@@ -55,12 +55,17 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     url: string,
   ): RequestDto => {
     const request = new ProcessDto();
-    return this.getRequestDto(request, applicationInstall, HttpMethods.POST, WISEPOOPS_URL,
+    return this.getRequestDto(
+      request,
+      applicationInstall,
+      HttpMethods.POST,
+      WISEPOOPS_URL,
       JSON.stringify({
         // eslint-disable-next-line @typescript-eslint/naming-convention
         target_url: url,
         event: subscription.getParameters().name,
-      }));
+      }),
+    );
   };
 
   public getWebhookSubscriptions = (): WebhookSubscription[] => [
