@@ -14,7 +14,7 @@ export default class ShipstationNewOrderConnector extends AConnector {
     const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
     const url = data.resource_url ?? undefined;
     if (!url) {
-      dto.setStopProcess(ResultCode.STOP_AND_FAILED);
+      dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Url is not set.');
       return dto;
     }
 
