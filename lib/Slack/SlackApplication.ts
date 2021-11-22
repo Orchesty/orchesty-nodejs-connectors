@@ -10,6 +10,7 @@ import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorizatio
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import { TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ACCESS_TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 
 const BASE_URL = 'https://slack.com/api/';
 
@@ -35,18 +36,16 @@ export default class SlackApplication extends AOAuth2Application {
       throw new Error(`Application ${this.getPublicName()} is not authorized!`);
     }
 
-    const token = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][TOKEN];
+    const token = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][TOKEN][ACCESS_TOKEN];
     const dto = new RequestDto(
       new URL(url ?? BASE_URL).toString(),
       method,
-      JSON.stringify({
+      data,
+      {
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
-      }),
+      },
     );
-    if (data) {
-      dto.body = data;
-    }
 
     return dto;
   };
