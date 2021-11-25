@@ -10,7 +10,7 @@ import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { Headers } from 'node-fetch';
+import { BodyInit, Headers } from 'node-fetch';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -31,7 +31,7 @@ export default class FakturoidApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
     const userName = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER];
     const password = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD];

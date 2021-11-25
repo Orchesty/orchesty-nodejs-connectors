@@ -9,6 +9,7 @@ import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorizatio
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { BodyInit } from 'node-fetch';
 
 export const QUICKBOOKS_URL = 'https://appcenter.intuit.com/connect/oauth2';
 export const TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
@@ -30,7 +31,7 @@ export default class QuickbooksApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     const request = new RequestDto(
       this.getUri(`${this._getBaseUrl(applicationInstall)}${url}`)

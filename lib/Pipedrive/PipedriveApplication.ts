@@ -11,6 +11,7 @@ import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldTyp
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
@@ -28,7 +29,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     _url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto {
     const join = _url?.indexOf('?') ? '&' : '?';
     const url = this.getUri(`${_url}${join}api_token=${this._getToken(applicationInstall)}`);
@@ -97,7 +98,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string => (dto.jsonBody as {data: {id: string}}).data.id;
+  ): string => (dto.jsonBody as { data: { id: string } }).data.id;
 
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 

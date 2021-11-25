@@ -8,6 +8,7 @@ import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Header
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import { BodyInit } from 'node-fetch';
 
 export const INSTANCE_NAME = 'instance_name';
 
@@ -26,7 +27,7 @@ export default class SalesForceApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
     const request = new RequestDto(url ?? '', parseHttpMethod(method));
     request.headers = {

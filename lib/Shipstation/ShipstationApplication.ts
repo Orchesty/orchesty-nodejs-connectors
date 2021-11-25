@@ -16,6 +16,7 @@ import ResponseDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
@@ -32,7 +33,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto {
     const request = new RequestDto(this.getUri(url)
       .toString(), method);
@@ -92,7 +93,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string => (dto.jsonBody as {id: string}).id;
+  ): string => (dto.jsonBody as { id: string }).id;
 
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 

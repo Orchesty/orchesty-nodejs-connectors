@@ -9,6 +9,7 @@ import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export default class ZohoApplication extends AOAuth2Application {
   public getAuthUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/auth';
@@ -24,9 +25,10 @@ export default class ZohoApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
-    const request = new RequestDto(this.getUri(url).toString(), method);
+    const request = new RequestDto(this.getUri(url)
+      .toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
