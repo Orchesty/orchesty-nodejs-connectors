@@ -1,12 +1,12 @@
 {
     "name": "pipes-nodejs-connectors",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
         "test": "jest --coverage --detectOpenHandles --forceExit --passWithNoTests",
-        "lint": "eslint lib/**/*.ts --fix",
-        "lint-ci": "eslint lib/**/*.ts",
+        "lint": "eslint lib --ext .ts --fix",
+        "lint-ci": "eslint lib --ext .ts",
         "start": "nodemon test/index.ts",
         "build": "rm -rf dist && tsc -d -p tsconfig.prod.json"
     },
