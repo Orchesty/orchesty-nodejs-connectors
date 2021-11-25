@@ -15,7 +15,7 @@ import DateTimeUtils from 'pipes-nodejs-sdk/dist/lib/Utils/DateTimeUtils';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import { Headers } from 'node-fetch';
+import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
@@ -63,7 +63,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): Promise<RequestDto> {
     let headers = new Headers();
     if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_JSON) {

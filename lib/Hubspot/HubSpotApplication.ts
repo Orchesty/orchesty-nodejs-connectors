@@ -8,7 +8,7 @@ import ApplicationTypeEnum from 'pipes-nodejs-sdk/dist/lib/Application/Base/Appl
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { Headers } from 'node-fetch';
+import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import { IWebhookApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import WebhookSubscription from 'pipes-nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
@@ -37,7 +37,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto {
     const headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -87,7 +87,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public processWebhookSubscribeResponse = (dto: ResponseDto, applicationInstall: ApplicationInstall): string => {
-    const jsonBody = dto.jsonBody as {id: string};
+    const jsonBody = dto.jsonBody as { id: string };
 
     return jsonBody.id ?? '';
   };

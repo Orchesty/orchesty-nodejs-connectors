@@ -3,7 +3,7 @@ import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { Headers } from 'node-fetch';
+import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -28,7 +28,7 @@ export default class GoogleDriveApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     const headers = new Headers({
       [CommonHeaders.ACCEPT]: JSON_TYPE,

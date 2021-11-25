@@ -9,6 +9,7 @@ import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldTyp
 import { TOKEN } from 'pipes-nodejs-sdk/lib/Authorization/Type/Basic/ABasicApplication';
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const BASE_URL = 'https://api.airtable.com/v0';
 export const BASE_ID = 'base_id';
@@ -35,7 +36,7 @@ export default class AirtableApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     const headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

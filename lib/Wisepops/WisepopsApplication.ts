@@ -11,6 +11,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import ResponseDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 const API_KEY = 'api_key';
 const WISEPOOPS_URL = 'https://app.wisepops.com/api1/hooks';
@@ -28,9 +29,10 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto => {
-    const request = new RequestDto(this.getUri(url).toString(), method);
+    const request = new RequestDto(this.getUri(url)
+      .toString(), method);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -86,7 +88,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     dto: ResponseDto,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string => (dto.jsonBody as {id: string}).id;
+  ): string => (dto.jsonBody as { id: string }).id;
 
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 }

@@ -2,6 +2,7 @@ import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import { BodyInit } from 'node-fetch';
 
 export const KEY = 'Key';
 export const SECRET = 'secret';
@@ -43,7 +44,7 @@ export default abstract class AAwsApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: string,
     url?: string,
-    data?: string,
+    data?: BodyInit,
     /* eslint-enable @typescript-eslint/no-unused-vars */
   ): RequestDto | Promise<RequestDto> => {
     throw new Error(`Method [${this.getRequestDto.name}] is not supported! Use getConnection method instead!`);

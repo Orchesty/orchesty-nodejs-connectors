@@ -21,7 +21,7 @@
         "luxon": "^2.0.2",
         "mongodb-typescript": "^2.2.1",
         "node-fetch": "^2.6.1",
-        "pipes-nodejs-sdk": "^1.1.11"
+        "pipes-nodejs-sdk": "^1.1.20"
     },
     "optionalDependencies": {
         "@aws-sdk/client-redshift": "^3.41.0",
