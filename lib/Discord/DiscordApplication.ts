@@ -1,3 +1,4 @@
+import { BodyInit } from 'node-fetch';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
@@ -24,7 +25,7 @@ export default class DiscordApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
     const token = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[TOKEN];
     if (!token) {

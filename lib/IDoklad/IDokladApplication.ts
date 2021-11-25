@@ -2,7 +2,7 @@ import AOAuth2Application from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAu
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { Headers } from 'node-fetch';
+import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -24,7 +24,7 @@ export default class IDokladApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     const headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

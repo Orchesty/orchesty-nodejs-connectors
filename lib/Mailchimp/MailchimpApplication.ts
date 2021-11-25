@@ -14,6 +14,7 @@ import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import { OAuth2Provider } from 'pipes-nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const MAILCHIMP_URL = 'https://login.mailchimp.com/oauth2/authorize';
 export const MAILCHIMP_DATACENTER_URL = 'https://login.mailchimp.com';
@@ -38,7 +39,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto {
     const request = new RequestDto(this.getUri(url)
       .toString(), method);

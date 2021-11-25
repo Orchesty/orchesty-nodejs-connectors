@@ -8,6 +8,7 @@ import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldTyp
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const BASE_URL = 'https://api.sendgrid.com/v3';
 
@@ -23,7 +24,7 @@ export default class SendGridApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     if (!this.isAuthorized(applicationInstall)) {
       throw new Error('Application SendGrid is not authorized!');

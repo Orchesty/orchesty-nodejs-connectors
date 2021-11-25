@@ -13,6 +13,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { BodyInit } from 'node-fetch';
 
 export default class NutshellApplication extends ABasicApplication {
   public getDescription = (): string => 'Nutshell v1';
@@ -26,7 +27,7 @@ export default class NutshellApplication extends ABasicApplication {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
-    data?: string,
+    data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
     const request = new RequestDto(this.getUri(url)
       .toString(), method);
