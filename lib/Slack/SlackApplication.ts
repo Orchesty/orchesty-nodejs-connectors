@@ -34,12 +34,12 @@ export default class SlackApplication extends AOAuth2Application {
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
     if (!this.isAuthorized(applicationInstall)) {
-      throw new Error(`Application ${this.getPublicName()} is not authorized!`);
+      throw new Error(`Application [${this.getPublicName()}] is not authorized!`);
     }
 
     const token = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][TOKEN][ACCESS_TOKEN];
-    const dto = new RequestDto(
-      new URL(url ?? BASE_URL).toString(),
+    return new RequestDto(
+      new URL(url ?? BASE_URL, BASE_URL).toString(),
       method,
       data,
       {
@@ -47,8 +47,6 @@ export default class SlackApplication extends AOAuth2Application {
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
       },
     );
-
-    return dto;
   };
 
   public authorize(applicationInstall: ApplicationInstall): string {
@@ -57,10 +55,8 @@ export default class SlackApplication extends AOAuth2Application {
       this.getScopes(applicationInstall),
       this._getScopesSeparator(),
       {
-        http: {
-          'headers.authorization': 'headers.Accept = application/x-www-form-urlencoded',
-        },
         options: {
+          bodyFormat: 'form',
           authorizationMethod: 'body',
         },
       },
@@ -72,10 +68,8 @@ export default class SlackApplication extends AOAuth2Application {
     token: { [p: string]: string },
   ): Promise<void> {
     const tokenFromProvider = await this._provider.getAccessToken(this.createDto(applicationInstall), token.code, {
-      http: {
-        'headers.authorization': 'headers.Accept = application/x-www-form-urlencoded',
-      },
       options: {
+        bodyFormat: 'form',
         authorizationMethod: 'body',
       },
     });
