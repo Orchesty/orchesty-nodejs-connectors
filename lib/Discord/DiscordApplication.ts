@@ -4,14 +4,14 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ABasicApplication, TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
-const BASE_URL = 'https://discord.com/api';
+const BASE_URL = 'https://discord.com/api/';
 
 export default class DiscordApplication extends ABasicApplication {
   public getName = (): string => 'discord';
@@ -27,12 +27,12 @@ export default class DiscordApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const token = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[TOKEN];
+    const token = applicationInstall.getSettings()?.[FORM]?.[TOKEN];
     if (!token) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have token!`);
     }
     return new RequestDto(
-      new URL(url ?? BASE_URL).toString(),
+      new URL(url ?? BASE_URL, BASE_URL).toString(),
       method,
       data,
       {
