@@ -11,7 +11,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
-const BASE_URL = 'https://discord.com/api/';
+const BASE_URL = 'https://discord.com/';
 
 export default class DiscordApplication extends ABasicApplication {
   public getName = (): string => 'discord';
