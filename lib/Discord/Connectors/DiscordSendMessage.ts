@@ -4,7 +4,7 @@ import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
 import DiscordApplication from '../DiscordApplication';
 
-const DISCORD_SEND_MESSAGE_ENDPOINT = '/channels/channel.id/messages';
+const DISCORD_SEND_MESSAGE_ENDPOINT = '/api/channels/channel.id/messages';
 
 interface IDiscordMessage {
   title: string,
