@@ -1,6 +1,6 @@
 {
     "name": "pipes-nodejs-connectors",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
@@ -21,7 +21,7 @@
         "luxon": "^2.0.2",
         "mongodb-typescript": "^2.2.1",
         "node-fetch": "^2.6.1",
-        "pipes-nodejs-sdk": "^1.1.20"
+        "pipes-nodejs-sdk": "^1.1.22"
     },
     "optionalDependencies": {
         "@aws-sdk/client-redshift": "^3.41.0",

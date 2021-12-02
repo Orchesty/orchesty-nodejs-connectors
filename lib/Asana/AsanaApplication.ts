@@ -11,7 +11,6 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import AOAuth2Application from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
-import { EXPIRES } from 'pipes-nodejs-sdk/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 
 const BASE_URL = 'https://app.asana.com';
 
@@ -48,43 +47,6 @@ export default class AsanaApplication extends AOAuth2Application {
       },
     );
   };
-
-  public authorize(applicationInstall: ApplicationInstall): string {
-    return this._provider.authorize(
-      this.createDto(applicationInstall),
-      this.getScopes(applicationInstall),
-      this._getScopesSeparator(),
-      {
-        options: {
-          authorizationMethod: 'body',
-        },
-      },
-    );
-  }
-
-  public async setAuthorizationToken(
-    applicationInstall: ApplicationInstall,
-    token: { [p: string]: string },
-  ): Promise<void> {
-    const tokenFromProvider = await this._provider.getAccessToken(this.createDto(applicationInstall), token.code, {
-      options: {
-        authorizationMethod: 'body',
-      },
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    applicationInstall.setExpires((tokenFromProvider as any)[EXPIRES] ?? undefined);
-
-    if (Object.prototype.hasOwnProperty.call(tokenFromProvider, EXPIRES)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (tokenFromProvider as any)[EXPIRES] = (tokenFromProvider as any)[EXPIRES].toString();
-    }
-
-    const settings = applicationInstall.getSettings();
-    this._createAuthSettings(applicationInstall);
-    settings[AUTHORIZATION_SETTINGS][TOKEN] = tokenFromProvider;
-    applicationInstall.setSettings(settings);
-  }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => ['default'];
