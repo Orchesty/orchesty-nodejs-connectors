@@ -18,7 +18,8 @@ export const ADDED = 'added';
 export const ACTIVITY = 'activity';
 
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
-  public getDescription = (): string => 'Pipedrive v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Sales pipeline and CRM software for deal makers. Get super-organized. Close deals in less time.';
 
   public getName = (): string => 'pipedrive';
 

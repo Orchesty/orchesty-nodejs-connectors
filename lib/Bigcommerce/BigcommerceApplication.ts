@@ -15,7 +15,8 @@ export default class BigcommerceApplication extends AOAuth2Application {
 
   public getPublicName = (): string => 'Bigcommerce';
 
-  public getDescription = (): string => 'Bigcommerce v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'BigCommerce is an e-commerce platform that provides an all-encompassing solution for a business online store. If you\'re trying to sell physical goods online, you\'ll want to check out Bigcommerce.';
 
   public getAuthUrl = (): string => 'https://login.bigcommerce.com/oauth2/authorize';
 

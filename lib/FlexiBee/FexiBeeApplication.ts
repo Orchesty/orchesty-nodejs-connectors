@@ -54,7 +54,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
 
   public getName = (): string => 'flexibee';
 
-  public getDescription = (): string => 'FlexiBee Application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'FlexiBee is a modern economic system designed for small companies. It covers tax records, homebanking, pricing, accounts receivable/payable and has many other other options.';
 
   public getPublicName = (): string => 'FlexiBee';
 

@@ -22,7 +22,8 @@ export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
 
 export default class ShipstationApplication extends ABasicApplication implements IWebhookApplication {
-  public getDescription = (): string => 'Shipstation v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'ShipStation helps eCommerce retailers organize, process, and fulfill their orders from all the most popular marketplaces and shopping carts using the top shipping carriers.';
 
   public getName = (): string => 'shipstation';
 

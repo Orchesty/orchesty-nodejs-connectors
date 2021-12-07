@@ -28,7 +28,8 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     super(_inputProvider);
   }
 
-  public getDescription = (): string => 'Mailchimp v3';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'MailChimp is an email marketing automation service that lets you send out professional-looking newsletters to promote your brand.';
 
   public getName = (): string => 'mailchimp';
 
