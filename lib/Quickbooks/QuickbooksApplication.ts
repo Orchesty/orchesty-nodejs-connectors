@@ -20,7 +20,8 @@ const VERSION = 'v3';
 const BASE_URL = 'https://quickbooks.api.intuit.com';
 
 export default class QuickbooksApplication extends AOAuth2Application {
-  public getDescription = (): string => 'Quickbooks v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Popular business accounting software that can be accessed at any time from a web browser.';
 
   public getName = (): string => 'quickbooks';
 

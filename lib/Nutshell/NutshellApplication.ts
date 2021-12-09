@@ -16,7 +16,8 @@ import { AUTHORIZATION_SETTINGS } from 'pipes-nodejs-sdk/dist/lib/Application/Ba
 import { BodyInit } from 'node-fetch';
 
 export default class NutshellApplication extends ABasicApplication {
-  public getDescription = (): string => 'Nutshell v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Affordable, easy-to-use CRM that helps small-business sales teams win more deals.';
 
   public getName = (): string => 'nutshell';
 
