@@ -33,7 +33,7 @@ export default class TrelloApplication extends ABasicApplication {
   ): RequestDto | Promise<RequestDto> => {
     const token = applicationInstall.getSettings()?.[FORM]?.[TOKEN];
     const apiKey = applicationInstall.getSettings()?.[FORM]?.[API_KEY];
-    if (!token && !apiKey) {
+    if (!token || !apiKey) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have token, apiKey or both!`);
     }
 
