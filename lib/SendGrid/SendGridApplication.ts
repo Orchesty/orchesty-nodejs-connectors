@@ -13,7 +13,8 @@ import { BodyInit } from 'node-fetch';
 export const BASE_URL = 'https://api.sendgrid.com/v3';
 
 export default class SendGridApplication extends ABasicApplication {
-  public getDescription = (): string => 'Send Email With Confidence.';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Cloud-based email infrastructure relieves businesses of the cost and complexity of maintaining custom email systems';
 
   public getName = (): string => 'send-grid';
 

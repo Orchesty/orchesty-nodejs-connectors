@@ -16,7 +16,8 @@ export const BASE_ID = 'base_id';
 export const TABLE_NAME = 'table_name';
 
 export default class AirtableApplication extends ABasicApplication {
-  public getDescription = (): string => 'Airtable v1';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Airtable is an online platform for creating and sharing relational databases. Fast & flexible way to create tables to keep track of anything, from sales leads to vacation planning to inventory management. ';
 
   public getName = (): string => 'airtable';
 

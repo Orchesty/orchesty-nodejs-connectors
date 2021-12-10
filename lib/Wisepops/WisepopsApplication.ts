@@ -18,7 +18,8 @@ const WISEPOOPS_URL = 'https://app.wisepops.com/api1/hooks';
 const EMAIL_EVENT = 'email';
 
 export default class WisepopsApplication extends ABasicApplication implements IWebhookApplication {
-  public getDescription = (): string => 'Build website popups.';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'On-site marketing platform used to grow your email list and boost sales. It allows you to display a message to any segment of your visitors using popups, sign-up bars, exit-intent popups, and on-site messaging without any dev needed.';
 
   public getName = (): string => 'wisepops';
 
