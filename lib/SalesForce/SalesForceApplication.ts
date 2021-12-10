@@ -16,7 +16,8 @@ const SALES_URL = 'https://login.salesforce.com/services/oauth2/authorize';
 const TOKEN_URL = 'https://login.salesforce.com/services/oauth2/token';
 
 export default class SalesForceApplication extends AOAuth2Application {
-  public getDescription = (): string => 'Salesforce is one of the largest CRM platform.';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Salesforce is a leading enterprise customer relationship manager (CRM) application.';
 
   public getName = (): string => 'salesforce';
 

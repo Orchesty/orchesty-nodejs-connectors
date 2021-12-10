@@ -17,7 +17,8 @@ export default class GoogleDriveApplication extends AOAuth2Application {
 
   public getPublicName = (): string => 'GoogleDrive';
 
-  public getDescription = (): string => 'GoogleDrive Application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Google\'s cloud storage where you can store and access your photos, videos or documents from anywhere.';
 
   public getAuthUrl = (): string => 'https://accounts.google.com/o/oauth2/auth';
 
