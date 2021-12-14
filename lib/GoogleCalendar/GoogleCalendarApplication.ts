@@ -12,7 +12,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 
 export const BASE_URL = 'https://www.googleapis.com';
 
-export default class GoogleDriveApplication extends AOAuth2Application {
+export default class GoogleCalendarApplication extends AOAuth2Application {
   public getName = (): string => 'google-Calendar';
 
   public getPublicName = (): string => 'GoogleCalendar';
