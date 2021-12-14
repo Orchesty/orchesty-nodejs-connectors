@@ -2,7 +2,7 @@ import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import DiscordApplication from '../../Discord/DiscordApplication';
+import GoogleCalendarApplication from '../GoogleCalendarApplication';
 
 const GOOGLE_CALENDAR_ADD_EVENT = '/calendar/v3/calendars/calendar.id/events';
 
@@ -34,7 +34,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
       userName,
     } = dto.jsonData as IGoogleCalendarEvent;
 
-    const application = this._application as DiscordApplication;
+    const application = this._application as GoogleCalendarApplication;
     const applicationInstall = await this._getApplicationInstall(userName);
 
     const data = {
