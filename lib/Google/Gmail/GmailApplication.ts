@@ -11,7 +11,7 @@ export default class GmailApplication extends AGoogle {
 
   public getName = (): string => 'google-gmail';
 
-  public getPublicName = (): string => 'GoogleGmail';
+  public getPublicName = (): string => 'Gmail';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => ['https://www.googleapis.com/auth/gmail.compose'];
