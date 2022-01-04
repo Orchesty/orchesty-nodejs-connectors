@@ -14,7 +14,7 @@ interface IAsanaTask {
   workspace: string,
 }
 
-export default class AsanaCreateTask extends AConnector {
+export default class AsanaCreateTaskConnector extends AConnector {
   public getName = (): string => 'asana-create-task';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {

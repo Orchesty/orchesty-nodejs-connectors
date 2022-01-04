@@ -13,7 +13,7 @@ interface ITrelloCard {
   desc: string,
 }
 
-export default class TrelloCreateCard extends AConnector {
+export default class TrelloCreateCardConnector extends AConnector {
   public getName = (): string => 'trello-create-card';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {

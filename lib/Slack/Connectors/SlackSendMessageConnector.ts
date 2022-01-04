@@ -5,7 +5,7 @@ import SlackApplication from '../SlackApplication';
 
 const SLACK_SEND_MESSAGE_ENDPOINT = 'chat.postMessage';
 
-export default class SlackSendMessage extends AConnector {
+export default class SlackSendMessageConnector extends AConnector {
   public getName = (): string => 'slack-send-message';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {

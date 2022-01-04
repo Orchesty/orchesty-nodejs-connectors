@@ -15,7 +15,7 @@ interface IDiscordMessage {
   userName: string,
 }
 
-export default class DiscordSendMessage extends AConnector {
+export default class DiscordSendMessageConnector extends AConnector {
   public getName = (): string => 'discord-send-message';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
