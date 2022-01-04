@@ -1,6 +1,5 @@
 version: '3.5'
 services:
-
     connectors:
         image: connectors:tag
         build: ./docker
