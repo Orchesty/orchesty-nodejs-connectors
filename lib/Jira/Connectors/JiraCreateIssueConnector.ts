@@ -14,7 +14,7 @@ interface IJiraIssue {
     userName: string,
 }
 
-export default class JiraCreateIssue extends AConnector {
+export default class JiraCreateIssueConnector extends AConnector {
   public getName = (): string => 'jira-create-issue';
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
