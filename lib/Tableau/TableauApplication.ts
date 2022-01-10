@@ -7,8 +7,7 @@ import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Header
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { TOKEN } from 'pipes-nodejs-sdk/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication, TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
