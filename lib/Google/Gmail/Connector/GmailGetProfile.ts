@@ -2,7 +2,7 @@ import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import GoogleCalendarApplication from '../../GoogleCalendar/GoogleCalendarApplication';
+import GmailApplication from '../GmailApplication';
 
 export const NAME = 'gmail-get-profile';
 const GET_PROFILE_ENDPOINT = 'gmail/v1/users/{userId}/profile';
@@ -19,7 +19,7 @@ export default class GmailGetProfile extends AConnector {
 
     const { userId, userName } = dto.jsonData as { userId: string, userName: string };
 
-    const application = this._application as GoogleCalendarApplication;
+    const application = this._application as GmailApplication;
     const applicationInstall = await this._getApplicationInstall(userName);
 
     const request = await application.getRequestDto(
