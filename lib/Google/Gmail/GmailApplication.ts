@@ -2,6 +2,7 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import AGoogle from '../AGoogle';
 
 export const BASE_URL = 'https://gmail.googleapis.com';
+export const NAME = 'google-gmail';
 
 export default class GmailApplication extends AGoogle {
   public getBaseUrl = (): string => BASE_URL;
@@ -9,7 +10,7 @@ export default class GmailApplication extends AGoogle {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'The Gmail application lets you view and manage Gmail mailbox data like threads, messages, and labels.';
 
-  public getName = (): string => 'google-gmail';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Gmail';
 
