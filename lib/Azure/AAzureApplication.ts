@@ -6,6 +6,7 @@ import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { PowerBIEmbeddedManagementClient } from '@azure/arm-powerbiembedded';
 
 const TENANT_ID = 'tenantId';
 const CLIENT_ID = 'clientId';
@@ -22,6 +23,9 @@ export default abstract class AAzureApplication extends ABasicApplication {
   public getClient = (applicationInstall: ApplicationInstall): SecretClient => {
     const settings = applicationInstall.getSettings()[FORM];
     const credentials = new ClientSecretCredential(settings[TENANT_ID], settings[CLIENT_ID], settings[SECRET]);
+
+    const powerBiClient = new PowerBIEmbeddedManagementClient(credentials);
+
     return new SecretClient(this.getAuthUrl(), credentials);
   };
 }

@@ -945,6 +945,19 @@
   dependencies:
     tslib "^2.0.0"
 
+"@azure/arm-powerbiembedded@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@azure/arm-powerbiembedded/-/arm-powerbiembedded-2.0.0.tgz#b1d3326977ce03a4778725294006abb2fa5ed247"
+  integrity sha512-sn4dpG65cv6s2DsIxJYWJv0U21HbUcVFXyjMve24DOgVEbxGTn/YBMD6AcTVzOK4xyjOE2FC4aWVH7wXxfCZ9A==
+  dependencies:
+    "@azure/abort-controller" "^1.0.0"
+    "@azure/core-auth" "^1.3.0"
+    "@azure/core-client" "^1.0.0"
+    "@azure/core-lro" "^2.2.0"
+    "@azure/core-paging" "^1.2.0"
+    "@azure/core-rest-pipeline" "^1.1.0"
+    tslib "^2.2.0"
+
 "@azure/core-asynciterator-polyfill@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@azure/core-asynciterator-polyfill/-/core-asynciterator-polyfill-1.0.0.tgz#dcccebb88406e5c76e0e1d52e8cc4c43a68b3ee7"
@@ -992,7 +1005,7 @@
     uuid "^8.3.0"
     xml2js "^0.4.19"
 
-"@azure/core-lro@^2.0.0":
+"@azure/core-lro@^2.0.0", "@azure/core-lro@^2.2.0":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@azure/core-lro/-/core-lro-2.2.3.tgz#3e245d37ede00f6410c1ea1fb76679dbdec627eb"
   integrity sha512-UMdlR9NsqDCLTba3EUbRjfMF4gDmWvld196JmUjbz9WWhJ2XT00OR5MXeWiR+vmGT+ETiO4hHFCi2/eGO5YVtg==
@@ -1002,7 +1015,7 @@
     "@azure/logger" "^1.0.0"
     tslib "^2.2.0"
 
-"@azure/core-paging@^1.1.1":
+"@azure/core-paging@^1.1.1", "@azure/core-paging@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@azure/core-paging/-/core-paging-1.2.1.tgz#1b884f563b6e49971e9a922da3c7a20931867b54"
   integrity sha512-UtH5iMlYsvg+nQYIl4UHlvvSrsBjOlRF4fs0j7mxd3rWdAStrKYrh2durOpHs5C9yZbVhsVDaisoyaf/lL1EVA==
