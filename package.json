@@ -28,8 +28,9 @@
         "@aws-sdk/client-rds": "^3.45.0",
         "@aws-sdk/client-redshift": "^3.45.0",
         "@aws-sdk/client-s3": "^3.45.0",
-        "@azure/identity": "^2.0.1",
         "@azure/arm-powerbiembedded": "^2.0.0",
+        "@azure/core-rest-pipeline" : "^1.4.0",
+        "@azure/identity": "^2.0.1",
         "@azure/keyvault-secrets": "^4.3.0",
         "@types/pg": "^8.6.3",
         "pg": "^8.7.1"
