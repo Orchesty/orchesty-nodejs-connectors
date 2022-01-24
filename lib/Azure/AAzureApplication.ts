@@ -1,4 +1,3 @@
-import { SecretClient } from '@azure/keyvault-secrets';
 import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ClientSecretCredential } from '@azure/identity';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -11,6 +10,7 @@ import { PowerBIEmbeddedManagementClient } from '@azure/arm-powerbiembedded';
 const TENANT_ID = 'tenantId';
 const CLIENT_ID = 'clientId';
 const SECRET = 'secret';
+const SUBSCRIPTION_ID = 'subscriptionId';
 
 export default abstract class AAzureApplication extends ABasicApplication {
   public getAuthUrl = (): string => 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
@@ -18,14 +18,13 @@ export default abstract class AAzureApplication extends ABasicApplication {
   public getSettingsForm = (): Form => new Form()
     .addField((new Field(FieldType.TEXT, TENANT_ID, 'Tenant key', undefined, true)))
     .addField((new Field(FieldType.TEXT, CLIENT_ID, 'Client key', undefined, true)))
-    .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)));
+    .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)))
+    .addField((new Field(FieldType.TEXT, SUBSCRIPTION_ID, 'Subscription id', undefined, true)));
 
-  public getClient = (applicationInstall: ApplicationInstall): SecretClient => {
+  public getClient = (applicationInstall: ApplicationInstall): PowerBIEmbeddedManagementClient => {
     const settings = applicationInstall.getSettings()[FORM];
     const credentials = new ClientSecretCredential(settings[TENANT_ID], settings[CLIENT_ID], settings[SECRET]);
 
-    const powerBiClient = new PowerBIEmbeddedManagementClient(credentials);
-
-    return new SecretClient(this.getAuthUrl(), credentials);
+    return new PowerBIEmbeddedManagementClient(credentials, settings[SUBSCRIPTION_ID]);
   };
 }

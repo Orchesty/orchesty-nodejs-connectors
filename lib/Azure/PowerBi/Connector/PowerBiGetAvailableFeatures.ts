@@ -15,6 +15,7 @@ export default class PowerBiGetAvailableFeatures extends APowerBiObjectConnector
     const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
     const application = this._application as S3Application;
     const client = application.getS3Client(applicationInstall);
+
     const input: GetObjectCommandInput = {
       [BUCKET]: this.getBucket(applicationInstall),
       [KEY]: content[NAME],
