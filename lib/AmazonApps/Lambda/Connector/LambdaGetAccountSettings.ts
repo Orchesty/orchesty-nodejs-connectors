@@ -2,7 +2,7 @@ import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { GetAccountSettingsCommand, GetAccountSettingsCommandInput } from '@aws-sdk/client-lambda';
 import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ALambdaObjectConnector from './ALambdaObjectConnector';
-import LambdaApplication from '../LambdaApplication';
+import PowerBiApplication from '../../../Azure/PowerBi/PowerBiApplication';
 
 export default class LambdaGetAccountSettings extends ALambdaObjectConnector {
   protected _getCustomId = (): string => 'get-account-settings';
@@ -10,9 +10,9 @@ export default class LambdaGetAccountSettings extends ALambdaObjectConnector {
   processAction = async (_dto: ProcessDto): Promise<ProcessDto> => {
     const dto = _dto;
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
-    const application = this._application as LambdaApplication;
-    const client = application.getLambdaClient(applicationInstall);
+    const applicationInstall = await this._getApplicationInstall();
+    const application = this._application as PowerBiApplication;
+    const client = application.getClient(applicationInstall);
 
     const input: GetAccountSettingsCommandInput = {};
 
