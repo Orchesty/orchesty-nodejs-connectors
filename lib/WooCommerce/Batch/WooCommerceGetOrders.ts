@@ -11,9 +11,9 @@ export default class WooCommerceGetOrders extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const pageNumber = dto.getBatchCursor('1');
-    const { eshopKey } = dto.jsonData as { eshopKey: string };
+    const { userName } = dto.jsonData as { userName: string };
     const app = this._application as WooCommerceApplication;
-    const appInstall = await this._getApplicationInstall(eshopKey);
+    const appInstall = await this._getApplicationInstall(userName);
 
     const requestDto = await app.getRequestDto(
       dto,

@@ -14,12 +14,9 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
-
-const AUTHORIZATION_HEADER = 'Authorization';
-const ACCEPT_HEADER = 'Accept';
-const CONTENT_TYPE = 'Content-Type';
 
 export const NAME = 'WOOCOMMERCE';
 
@@ -46,9 +43,9 @@ export default class WooCommerceApplication extends ABasicApplication {
       `${settings[AUTHORIZATION_SETTINGS][USER]}:${settings[AUTHORIZATION_SETTINGS][PASSWORD]}`,
     );
     const headers = {
-      [AUTHORIZATION_HEADER]: `Basic ${base64}`,
-      [ACCEPT_HEADER]: 'application/json',
-      [CONTENT_TYPE]: 'application/json',
+      [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
+      [CommonHeaders.ACCEPT]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: 'application/json',
     };
 
     let urlx = url || '';
@@ -65,8 +62,8 @@ export default class WooCommerceApplication extends ABasicApplication {
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password key', undefined, true))
-    .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Api key', undefined, true));
+    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', undefined, true))
+    .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Url', undefined, true));
 
   public getLogo = (): string => 'data:image/png;base64,'
     // eslint-disable-next-line max-len
