@@ -2,7 +2,6 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods, parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
 import {
   ABasicApplication,
@@ -12,7 +11,6 @@ import {
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import TopologyRunner from 'pipes-nodejs-sdk/dist/lib/Topology/TopologyRunner';
 import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -26,7 +24,7 @@ const SHOP_INFO_URL = 'admin/api/2022-01/shop.json';
 export const NAME = 'SHOPIFY';
 
 export default class ShopifyApplication extends ABasicApplication implements ILimitedApplication {
-  constructor(private _mongoDb: MongoDbClient, private _runner: TopologyRunner, private _curlSender: CurlSender) {
+  constructor(private _curlSender: CurlSender) {
     super();
   }
 
@@ -106,7 +104,9 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
       [CommonHeaders.ACCEPT]: 'application/json',
       [CommonHeaders.CONTENT_TYPE]: 'application/json',
     };
-    const requestDto = new RequestDto(url, parseHttpMethod(HttpMethods.GET), undefined, headers);
+    const dto = new ProcessDto();
+    dto.headers = headers;
+    const requestDto = this.getRequestDto(dto, applicationInstall, HttpMethods.GET, url);
 
     const res = await this._curlSender.send(requestDto, [200, 404]);
 
