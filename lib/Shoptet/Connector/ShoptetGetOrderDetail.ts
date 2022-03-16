@@ -25,7 +25,6 @@ export default class ShoptetGetOrderDetail extends AConnector {
       ...order.data,
       userName,
     };
-    dto.removeLimiter();
 
     return dto;
   }
