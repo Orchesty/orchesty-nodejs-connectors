@@ -44,7 +44,7 @@ yarn-outdated:
 	$(DCS) yarn outdated
 
 lint:
-	$(DCS) yarn lint-ci --fix
+	$(DCS) yarn lint-ci
 
 unit:
 	$(DCS) yarn test

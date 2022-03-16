@@ -12,7 +12,10 @@ export default class ShopifyGetOrderList extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const app = this._application as ShopifyApplication;
-    const { userName, from } = dto.jsonData as IInputJson;
+    const {
+      userName,
+      from,
+    } = dto.jsonData as IInputJson;
     let url = dto.getBatchCursor(LIST_PAGE_ENDPOINT);
     if (from) {
       const separatorChar = url.includes('?') ? '&' : '?';
@@ -29,7 +32,11 @@ export default class ShopifyGetOrderList extends AConnector {
     const splitOrders: IOutputJson[] = [];
 
     orders.forEach((order) => {
-      splitOrders.push({ userName, id: order.id, url: GET_DETAIL_ENDPOINT.replace('{orderId}', order.id) });
+      splitOrders.push({
+        userName,
+        id: order.id,
+        url: GET_DETAIL_ENDPOINT.replace('{orderId}', order.id),
+      });
       lastId = order.id;
     });
 
@@ -51,7 +58,7 @@ interface IInputJson {
 interface IResponseJson {
   orders: [{
     id: string,
-  }]
+  }];
 }
 
 export interface IOutputJson {

@@ -10,12 +10,17 @@ export default class ShopifyGetOrderDetail extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const app = this._application as ShopifyApplication;
-    const { userName, url } = dto.jsonData as IInputJson;
+    const {
+      userName,
+      url,
+    } = dto.jsonData as IInputJson;
 
     const order: IResponseJson = await this._doRequest(app, userName, url, dto);
 
-    dto.jsonData = { ...order, userName };
-    dto.removeLimiter();
+    dto.jsonData = {
+      ...order,
+      userName,
+    };
 
     return dto;
   }
