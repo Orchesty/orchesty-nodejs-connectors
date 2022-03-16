@@ -13,12 +13,12 @@ import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const ID = 'id';
 export const NAME = 'SHOPTET';
 export const SHOPTET_API_HOST = 'https://api.myshoptet.com';
 
-const CONTENT_TYPE = 'Content-Type';
 const SHOPTET_API_TOKEN = 'shoptetApiToken';
 
 const AUTHORIZATION_HEADER = 'Shoptet-Private-API-Token';
@@ -65,7 +65,7 @@ export default class ShoptetPremiumApplication
   ): RequestDto => {
     const headers = {
       [AUTHORIZATION_HEADER]: applicationInstall.getSettings()?.[FORM]?.[SHOPTET_API_TOKEN],
-      [CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
+      [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
     };
 
     const requestDto = new RequestDto(
