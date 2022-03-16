@@ -46,14 +46,8 @@ export default class ShoptetGetOrderDetail extends AConnector {
       HttpMethods.GET,
       url,
     );
-    const res = await this._sender.send(requestDto);
+    const res = await this._sender.send(requestDto, [200, 404]);
 
-    if (res.responseCode < 400) {
-      return res.jsonBody as IResponseJson;
-    }
-    if (res.responseCode < 500) {
-      throw Error(res.body);
-    }
     throw new OnRepeatException(60, 10, res.body);
   }
 }

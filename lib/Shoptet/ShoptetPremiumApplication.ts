@@ -5,10 +5,7 @@ import HttpMethods, {
 } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import TopologyRunner from 'pipes-nodejs-sdk/dist/lib/Topology/TopologyRunner';
 import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -23,17 +20,7 @@ const SHOPTET_API_TOKEN = 'shoptetApiToken';
 
 const AUTHORIZATION_HEADER = 'Shoptet-Private-API-Token';
 
-export default class ShoptetPremiumApplication
-  extends ABasicApplication
-  implements ILimitedApplication {
-  constructor(
-    private _mongoDBClient: MongoDbClient,
-    private _curlSender: CurlSender,
-    private _runner: TopologyRunner,
-  ) {
-    super();
-  }
-
+export default class ShoptetPremiumApplication extends ABasicApplication implements ILimitedApplication {
   public injectLimit = (
     _dto: ProcessDto,
     appInstall: ApplicationInstall,
