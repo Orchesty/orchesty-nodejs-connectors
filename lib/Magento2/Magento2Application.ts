@@ -27,11 +27,11 @@ export default class Magento2Application extends ABasicApplication {
     super();
   }
 
-  public getDescription = (): string => 'Magento application';
+  public getDescription = (): string => 'Magento2 application';
 
   public getName = (): string => NAME;
 
-  public getPublicName = (): string => 'Magento';
+  public getPublicName = (): string => 'Magento2';
 
   public async getRequestDto(
     dto: ProcessDto,
