@@ -14,7 +14,7 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
 
@@ -44,8 +44,8 @@ export default class WooCommerceApplication extends ABasicApplication {
     );
     const headers = {
       [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
-      [CommonHeaders.ACCEPT]: 'application/json',
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
     let urlx = url || '';

@@ -11,7 +11,7 @@ import {
 import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { IApplicationSettings } from 'pipes-nodejs-sdk/lib/Application/Database/ApplicationInstall';
@@ -62,8 +62,8 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     );
     const headers = {
       [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
-      [CommonHeaders.ACCEPT]: 'application/json',
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
     let urlx = url || '';
