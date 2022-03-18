@@ -8,7 +8,7 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import HttpMethods, { parseHttpMethod } from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
@@ -42,7 +42,7 @@ export default class Magento2Application extends ABasicApplication {
   ): Promise<RequestDto> {
     const headers = {
       [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall),
-      [CommonHeaders.CONTENT_TYPE]: 'application/json',
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
     const requestDto = new RequestDto(
