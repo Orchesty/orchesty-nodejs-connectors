@@ -1,6 +1,6 @@
 {
     "name": "pipes-nodejs-connectors",
-    "version": "1.0.19",
+    "version": "1.0.21",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
@@ -41,7 +41,7 @@
         "@typescript-eslint/parser": "^5.15.0",
         "eslint": "^8.11.0",
         "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-import-resolver-typescript": "^2.5.0",
+        "eslint-import-resolver-typescript": "^2.7.0",
         "eslint-plugin-import": "^2.25.4",
         "jest": "^27.5.1",
         "nodemon": "^2.0.15",

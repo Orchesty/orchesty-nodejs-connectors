@@ -15,7 +15,7 @@ import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Applicat
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 
-export const NAME = 'UPGATES';
+export const NAME = 'upgates';
 
 const UPGATES_URL = 'upgatesUrl';
 
