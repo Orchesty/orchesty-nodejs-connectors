@@ -15,6 +15,8 @@ import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Applicat
 import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
 import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 
+export const NAME = 'UPGATES';
+
 const UPGATES_URL = 'upgatesUrl';
 
 export default class UpgatesApplication extends ABasicApplication implements ILimitedApplication {
@@ -28,11 +30,11 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
     return dto;
   };
 
-  public getDescription = (): string => '';
+  public getDescription = (): string => 'Upgates Application';
 
-  public getName = (): string => '';
+  public getName = (): string => NAME;
 
-  public getPublicName = (): string => '';
+  public getPublicName = (): string => 'Upgates';
 
   public getRequestDto = (
     dto: ProcessDto,
