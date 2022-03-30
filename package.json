@@ -34,7 +34,8 @@
         "sequelize": "^6.17.0",
         "tedious": "^14.4.0",
         "mysql2": "^2.3.3",
-        "pg-hstore": "^2.3.4"
+        "pg-hstore": "^2.3.4",
+        "mariadb": "^3.0.0"
     },
     "devDependencies": {
         "@aws-sdk/client-redshift": "^3.54.0",
@@ -57,6 +58,7 @@
         "sequelize": "^6.17.0",
         "tedious": "^14.4.0",
         "mysql2": "^2.3.3",
-        "pg-hstore": "^2.3.4"
+        "pg-hstore": "^2.3.4",
+        "mariadb": "^3.0.0"
     }
 }
