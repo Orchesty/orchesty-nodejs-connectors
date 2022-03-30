@@ -30,12 +30,14 @@
         "@aws-sdk/client-s3": "^3.54.0",
         "@types/pg": "^8.6.5",
         "@types/tedious": "^4.0.7",
+        "@types/sqlite3": "^3.1.8",
         "pg": "^8.7.3",
         "sequelize": "^6.17.0",
         "tedious": "^14.4.0",
         "mysql2": "^2.3.3",
         "pg-hstore": "^2.3.4",
-        "mariadb": "^3.0.0"
+        "mariadb": "^3.0.0",
+        "sqlite3": "^5.0.2"
     },
     "devDependencies": {
         "@aws-sdk/client-redshift": "^3.54.0",
@@ -46,6 +48,7 @@
         "@typescript-eslint/eslint-plugin": "^5.15.0",
         "@typescript-eslint/parser": "^5.15.0",
         "@types/tedious": "^4.0.7",
+        "@types/sqlite3": "^3.1.8",
         "eslint": "^8.11.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-import-resolver-typescript": "^2.7.0",
@@ -59,6 +62,7 @@
         "tedious": "^14.4.0",
         "mysql2": "^2.3.3",
         "pg-hstore": "^2.3.4",
-        "mariadb": "^3.0.0"
+        "mariadb": "^3.0.0",
+        "sqlite3": "^5.0.2"
     }
 }
