@@ -1,6 +1,6 @@
 import ASqlApplication, { IDialect } from './Common/ASqlApplication';
 
-export default class MariaDbSqlApplication extends ASqlApplication {
+export default class MariaDbApplication extends ASqlApplication {
   constructor() {
     super(IDialect.mariadb);
   }
