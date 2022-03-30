@@ -18,6 +18,16 @@ const HOST = 'host';
 const PORT = 'port';
 const DATABASE = 'database';
 
+export enum IDialect {
+  /* eslint-disable @typescript-eslint/naming-convention */
+  mysql = 'mysql',
+  postgres = 'postgres',
+  sqlite = 'sqlite',
+  mariadb = 'mariadb',
+  mssql = 'mssql',
+  /* eslint-enable @typescript-eslint/naming-convention */
+}
+
 export default class ASqlApplication extends ABasicApplication {
   private _connection: Sequelize | undefined = undefined;
 
@@ -62,6 +72,16 @@ export default class ASqlApplication extends ABasicApplication {
 
   private _getConfig = (appInstall: ApplicationInstall): Options => {
     const formSettings = appInstall.getSettings()[FORM];
+    if (this._dialect === IDialect.sqlite) {
+      return {
+        storage: formSettings[HOST],
+        database: formSettings[DATABASE],
+        port: formSettings[PORT],
+        username: formSettings[USER],
+        password: formSettings[PASSWORD],
+        dialect: this._dialect,
+      };
+    }
     return {
       host: formSettings[HOST],
       database: formSettings[DATABASE],
@@ -74,16 +94,4 @@ export default class ASqlApplication extends ABasicApplication {
 
   private _capitalizeFirstLetterOfDialect = (dialect: IDialect) => dialect.charAt(0)
     .toUpperCase() + dialect.slice(1);
-}
-
-export enum IDialect {
-  /* eslint-disable @typescript-eslint/naming-convention */
-  mysql = 'mysql',
-  postgres = 'postgres',
-  sqlite = 'sqlite',
-  mariadb = 'mariadb',
-  mssql = 'mssql',
-  db2 = 'db2',
-  snowflake = 'snowflake',
-  /* eslint-enable @typescript-eslint/naming-convention */
 }
