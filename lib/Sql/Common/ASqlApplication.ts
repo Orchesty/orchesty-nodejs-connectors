@@ -34,7 +34,7 @@ export default class ASqlApplication extends ABasicApplication {
 
   public constructor(private _dialect: IDialect) {
     super();
-    this._cache = new NodeCache();
+    this._cache = new NodeCache({ stdTTL: 300 });
   }
 
   public getDescription = (): string => `${this._capitalizeFirstLetterOfDialect(this._dialect)} application`;
@@ -68,7 +68,7 @@ export default class ASqlApplication extends ABasicApplication {
 
     if (sequelize === undefined) {
       sequelize = new Sequelize(this._getConfig(appInstall));
-      this._cache.set(appId, sequelize, 300);
+      this._cache.set(appId, sequelize);
     }
 
     return sequelize;

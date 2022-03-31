@@ -12,7 +12,7 @@ export const NAME = 'sql-connector';
 export default abstract class ASqlConnector extends ACommonNode {
   protected abstract _name: string;
 
-  protected abstract _processResult(dto: ProcessDto): Promise<ProcessDto> | ProcessDto;
+  protected abstract _processResult(res: unknown, dto: ProcessDto): Promise<ProcessDto> | ProcessDto;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
@@ -21,10 +21,10 @@ export default abstract class ASqlConnector extends ACommonNode {
     const appInstall = await this._getApplicationInstall(userName);
     const app = this._application as ASqlApplication;
     try {
-      dto.jsonData = app.getConnection(appInstall).query(query);
+      return this._processResult(app.getConnection(appInstall).query(query), dto);
     } catch (e) {
       if (e instanceof ConnectionError) {
-        logger.info(e.message, { data: query });
+        logger.error(e.message, { data: query });
         switch (e.message) {
           case SqlErrorEnum.TOO_MANY_CONNECTIONS:
             throw new OnRepeatException(60, 10, e.message);
@@ -33,14 +33,12 @@ export default abstract class ASqlConnector extends ACommonNode {
             break;
         }
       } else if (e instanceof Error) {
-        logger.info(e.message, { data: query });
+        logger.error(e.message, { data: query });
         dto.setStopProcess(ResultCode.STOP_AND_FAILED, e.message);
       }
 
       return dto;
     }
-
-    return this._processResult(dto);
   }
 
   protected abstract _getQuery(processDto: ProcessDto): string;
