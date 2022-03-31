@@ -21,7 +21,8 @@
         "luxon": "^2.3.1",
         "mongodb-typescript": "^2.2.1",
         "node-fetch": "^2.6.7",
-        "pipes-nodejs-sdk": "^1.1.37"
+        "pipes-nodejs-sdk": "^1.1.37",
+        "node-cache": "^5.1.2"
     },
     "optionalDependencies": {
         "@aws-sdk/client-lambda": "^3.54.0",

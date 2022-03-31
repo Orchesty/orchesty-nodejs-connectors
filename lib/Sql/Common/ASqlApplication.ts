@@ -13,6 +13,7 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import NodeCache from 'node-cache';
 
 const HOST = 'host';
 const PORT = 'port';
@@ -29,10 +30,11 @@ export enum IDialect {
 }
 
 export default class ASqlApplication extends ABasicApplication {
-  private _connection: Sequelize | undefined = undefined;
+  private _cache: NodeCache;
 
   public constructor(private _dialect: IDialect) {
     super();
+    this._cache = new NodeCache();
   }
 
   public getDescription = (): string => `${this._capitalizeFirstLetterOfDialect(this._dialect)} application`;
@@ -61,12 +63,14 @@ export default class ASqlApplication extends ABasicApplication {
     .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
 
   public getConnection(appInstall: ApplicationInstall): Sequelize {
-    if (this._connection) {
-      return this._connection;
+    const appId = appInstall.getId();
+    let sequelize = this._cache.get(appId) as Sequelize;
+
+    if (sequelize === undefined) {
+      sequelize = new Sequelize(this._getConfig(appInstall));
+      this._cache.set(appId, sequelize, 300);
     }
 
-    const sequelize = new Sequelize(this._getConfig(appInstall));
-    this._connection = sequelize;
     return sequelize;
   }
 
