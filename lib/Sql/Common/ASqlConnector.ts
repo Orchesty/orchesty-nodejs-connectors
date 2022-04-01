@@ -14,6 +14,8 @@ export default abstract class ASqlConnector extends ACommonNode {
 
   protected abstract _processResult(res: unknown, dto: ProcessDto): Promise<ProcessDto> | ProcessDto;
 
+  protected abstract _getQuery(processDto: ProcessDto): string;
+
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const query = this._getQuery(dto);
@@ -40,8 +42,6 @@ export default abstract class ASqlConnector extends ACommonNode {
       return dto;
     }
   }
-
-  protected abstract _getQuery(processDto: ProcessDto): string;
 
   public getName(): string {
     return `${this._name}-${NAME}`;
