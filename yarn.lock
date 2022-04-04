@@ -5973,9 +5973,9 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.1:
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 pipes-nodejs-sdk@^1.1.37:
-  version "1.1.37"
-  resolved "https://registry.yarnpkg.com/pipes-nodejs-sdk/-/pipes-nodejs-sdk-1.1.37.tgz#ea54419890f484893e12c1b92c2699beff5299f3"
-  integrity sha512-CFcCJaON9LFrZB4ysCXIv9g7sdTP99d23Vb/xBmVU3keh4t23R1BJ/XVyXO1WweiXQFHwqbjm6AszBIzCe0tBw==
+  version "1.1.38"
+  resolved "https://registry.yarnpkg.com/pipes-nodejs-sdk/-/pipes-nodejs-sdk-1.1.38.tgz#5378ee48a7ceea7d78e5140d70912681f117b680"
+  integrity sha512-HAIv/bkb14Ok3EGAHvCcNnDbbASRpsWPCCg/wTizDWvtLyWkTkzjZ2eMBlgs4laZNlFOjTDEwaGMjg6BqtLT8w==
   dependencies:
     "@types/bson" "^4.2.0"
     "@types/express" "^4.17.13"
