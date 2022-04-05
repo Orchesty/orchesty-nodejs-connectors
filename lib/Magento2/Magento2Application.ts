@@ -27,7 +27,8 @@ export default class Magento2Application extends ABasicApplication {
     super();
   }
 
-  public getDescription = (): string => 'Magento2 application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Magento is the leading e-commerce platform used for online stores. It is a high-performant, scalable solution with powerful out of the box functionality and a large community built around it that continues to add new features.';
 
   public getName = (): string => NAME;
 

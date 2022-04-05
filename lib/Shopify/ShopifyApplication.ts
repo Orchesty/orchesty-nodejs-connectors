@@ -43,7 +43,8 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     return dto;
   };
 
-  public getDescription = (): string => 'Shopify Application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Shopify is a subscription-based software that allows anyone to set up an online store and sell their products.  It is a complete commerce platform that lets you start, grow, and manage a business.';
 
   public getName = (): string => NAME;
 

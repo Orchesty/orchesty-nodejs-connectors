@@ -19,7 +19,8 @@ export const WOOCOMMERCE_URL = 'woocommerceUrl';
 export const NAME = 'WOOCOMMERCE';
 
 export default class WooCommerceApplication extends ABasicApplication {
-  public getDescription = (): string => 'WooCommerce Application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'WooCommerce is an open-source e-commerce plugin for WordPress. It is designed for small to large-sized online merchants using WordPress.';
 
   public getName = (): string => NAME;
 

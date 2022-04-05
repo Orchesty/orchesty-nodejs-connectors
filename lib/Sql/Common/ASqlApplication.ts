@@ -29,7 +29,7 @@ export enum IDialect {
   /* eslint-enable @typescript-eslint/naming-convention */
 }
 
-export default class ASqlApplication extends ABasicApplication {
+export default abstract class ASqlApplication extends ABasicApplication {
   private _cache: NodeCache;
 
   public constructor(private _dialect: IDialect) {
@@ -37,11 +37,7 @@ export default class ASqlApplication extends ABasicApplication {
     this._cache = new NodeCache({ stdTTL: 300 });
   }
 
-  public getDescription = (): string => `${this._capitalizeFirstLetterOfDialect(this._dialect)} application`;
-
   public getName = (): string => this._dialect.toString();
-
-  public getPublicName = (): string => this._capitalizeFirstLetterOfDialect(this._dialect);
 
   public getRequestDto = (
     /* eslint-disable @typescript-eslint/no-unused-vars */

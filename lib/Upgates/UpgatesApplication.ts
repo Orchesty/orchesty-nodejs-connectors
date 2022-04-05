@@ -30,7 +30,8 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
     return dto;
   };
 
-  public getDescription = (): string => 'Upgates Application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'UPgates is customizable e-shop solution that you can tailor to your needs and ideas. You are not limited by the graphic templates offered, as you can customize the look of your store yourself.';
 
   public getName = (): string => NAME;
 

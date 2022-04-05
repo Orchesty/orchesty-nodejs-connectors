@@ -26,7 +26,8 @@ export default class MoneyS5Application extends ABasicApplication {
     super();
   }
 
-  public getDescription = (): string => 'MoneyS5 application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'The Money S5 enterprise information ERP system is designed for companies that need a robust, powerful and secure solution with data stored in SQL Server, a high level of customizability and solutions to individual requirements for functionality and business process management.';
 
   public getName = (): string => NAME;
 

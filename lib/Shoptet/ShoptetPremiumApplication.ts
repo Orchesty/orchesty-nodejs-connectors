@@ -37,7 +37,8 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     return dto;
   };
 
-  public getDescription = (): string => 'Shoptet Premium application';
+  // eslint-disable-next-line max-len
+  public getDescription = (): string => 'Shoptet Premium allows you to leverage Shoptet’s core and infrastructure while building a customized frontend solution and customizing add-ons, services and integrations.';
 
   public getName = (): string => NAME;
 

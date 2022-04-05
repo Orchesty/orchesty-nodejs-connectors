@@ -17,7 +17,7 @@ export default class S3Application extends AAwsApplication {
 
   public getName = (): string => 's3';
 
-  public getPublicName = (): string => 'Amazon Simple Storage Service';
+  public getPublicName = (): string => 'Amazon S3';
 
   public getSettingsForm = (): Form => new Form()
     .addField((new Field(FieldType.TEXT, KEY, 'Key', undefined, true)))

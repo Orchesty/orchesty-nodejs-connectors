@@ -1,7 +1,7 @@
 import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import MoneyS5Application from './MoneyS5Application';
+import MoneyS5Application from '../MoneyS5Application';
 
 const MONEYS5_CREATE_ORDER_ENDPOINT = 'v2.0/ReceivedOrder';
 
