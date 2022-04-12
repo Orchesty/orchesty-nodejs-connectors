@@ -5,7 +5,7 @@ export default class PostgreSqlApplication extends ASqlApplication {
     super(IDialect.postgres);
   }
 
-  public getPublicName = (): string => 'PostgesSQL';
+  public getPublicName = (): string => 'PostgreSQL';
 
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.';
