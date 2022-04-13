@@ -54,6 +54,7 @@ export default class JiraApplication extends ABasicApplication {
     return new RequestDto(
       new URL(url ?? '', this.getBaseUrl(applicationInstall)).toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

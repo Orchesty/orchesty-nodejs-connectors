@@ -43,13 +43,13 @@ export default class TableauApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): Promise<RequestDto> {
-    const token = await this._getOrRefreshToken(applicationInstall);
+    const token = await this._getOrRefreshToken(applicationInstall, dto);
 
     const headers = new Headers({
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [X_TABLEAU_AUTH]: token,
     });
-    return new RequestDto(url ?? BASE_URL, method, data, headers);
+    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
   public getSettingsForm = (): Form => new Form()
@@ -72,19 +72,19 @@ export default class TableauApplication extends ABasicApplication {
     throw new Error('Missing site prefix');
   };
 
-  private async _getOrRefreshToken(_applicationInstall: ApplicationInstall): Promise<string> {
+  private async _getOrRefreshToken(_applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<string> {
     let applicationInstall = _applicationInstall;
     const expires = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[EXPIRES];
     if (!expires || expires > new Date()) {
-      applicationInstall = await this._setToken(applicationInstall);
+      applicationInstall = await this._setToken(applicationInstall, dto);
       await (await this._dbClient.getApplicationRepository()).insert(applicationInstall);
     }
 
     return applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[TOKEN];
   }
 
-  private async _setToken(applicationInstall: ApplicationInstall): Promise<ApplicationInstall> {
-    const token = await this._getToken(applicationInstall);
+  private async _setToken(applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<ApplicationInstall> {
+    const token = await this._getToken(applicationInstall, dto);
     const date = new Date();
     date.setDate(date.getDate() + MAX_EXPIRE);
     applicationInstall.setExpires(date);
@@ -93,7 +93,7 @@ export default class TableauApplication extends ABasicApplication {
     return applicationInstall;
   }
 
-  private async _getToken(applicationInstall: ApplicationInstall): Promise<string> {
+  private async _getToken(applicationInstall: ApplicationInstall, processDto: ProcessDto): Promise<string> {
     const headers = new Headers({
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -113,6 +113,7 @@ export default class TableauApplication extends ABasicApplication {
     const request = new RequestDto(
       `${this._getUrl(applicationInstall)}auth/signin`,
       HttpMethods.POST,
+      processDto,
       JSON.stringify(data),
       headers,
     );

@@ -42,6 +42,7 @@ export default class DropboxApplication extends AOAuth2Application {
     return new RequestDto(
       new URL(url ?? '').toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token.accessToken}`,

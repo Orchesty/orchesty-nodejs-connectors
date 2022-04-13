@@ -33,8 +33,7 @@ export default class NutshellApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const request = new RequestDto(this.getUri(url)
-      .toString(), method);
+    const request = new RequestDto(this.getUri(url).toString(), method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

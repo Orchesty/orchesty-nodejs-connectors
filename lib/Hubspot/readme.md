@@ -12,7 +12,7 @@ User_id: 89*****
 
 Cesta k ID Client, ID Secret a Application ID: Po přihlášení vyberu dev Account → Manage Apps → Vyberu Applikaci → Auth 
 
-Cesta k HAPI Key a User Id: Po přihlášení vyberu dev Account → Manage Apps → get Hubspot API key → Show Key →  User Id
+Cesta k HAPI Key an User Id: Po přihlášení vyberu dev Account → Manage Apps → get Hubspot API key → Show Key →  User Id
 
 Při autorizaci je nutné vybrat hlavní účet (nyní HB, ne ty developerské)
 

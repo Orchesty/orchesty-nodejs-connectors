@@ -41,7 +41,7 @@ export default class TwilioApplication extends ABasicApplication {
       [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userName}:${password}`)}`,
     });
 
-    return new RequestDto(url ?? BASE_URL, method, data, headers);
+    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   };
 
   public getSettingsForm = (): Form => new Form()

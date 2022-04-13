@@ -37,6 +37,7 @@ export default class DiscordApplication extends ABasicApplication {
     return new RequestDto(
       new URL(url ?? BASE_URL, BASE_URL).toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

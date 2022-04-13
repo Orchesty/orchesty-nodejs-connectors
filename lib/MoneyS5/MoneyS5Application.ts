@@ -41,7 +41,7 @@ export default class MoneyS5Application extends ABasicApplication {
     data?: string,
   ): Promise<RequestDto> {
     const headers = {
-      [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall),
+      [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall, dto),
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
@@ -53,6 +53,7 @@ export default class MoneyS5Application extends ABasicApplication {
     const requestDto = new RequestDto(
       urlx,
       parseHttpMethod(method),
+      dto,
       data,
       headers,
     );
@@ -62,6 +63,7 @@ export default class MoneyS5Application extends ABasicApplication {
 
   public getApiToken = async (
     applicationInstall: ApplicationInstall,
+    processDto: ProcessDto,
   ): Promise<string> => {
     try {
       const cacheKey = `${
@@ -74,6 +76,7 @@ export default class MoneyS5Application extends ABasicApplication {
       const requestDto = new RequestDto(
         `${BASE_URL}${AUTH_TOKEN_URL}`,
         HttpMethods.GET,
+        processDto,
         undefined,
         headers,
       );

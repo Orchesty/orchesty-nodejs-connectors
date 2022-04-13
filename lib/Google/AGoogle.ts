@@ -28,7 +28,7 @@ export default abstract class AGoogle extends AOAuth2Application {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     });
-    return new RequestDto(url ?? this.getBaseUrl(), method, data, headers);
+    return new RequestDto(url ?? this.getBaseUrl(), method, dto, data, headers);
   }
 
   public getSettingsForm = (): Form => new Form()

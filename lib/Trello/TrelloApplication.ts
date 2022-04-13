@@ -46,6 +46,7 @@ export default class TrelloApplication extends ABasicApplication {
     return new RequestDto(
       requestUrl.toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

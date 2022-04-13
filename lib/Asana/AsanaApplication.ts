@@ -44,6 +44,7 @@ export default class AsanaApplication extends AOAuth2Application {
     return new RequestDto(
       new URL(url ?? '', BASE_URL).toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

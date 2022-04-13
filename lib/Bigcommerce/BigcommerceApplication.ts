@@ -38,7 +38,7 @@ export default class BigcommerceApplication extends AOAuth2Application {
       [CommonHeaders.AUTHORIZATION]: `OAuth ${this.getAccessToken(applicationInstall)}`,
     });
     if (url) {
-      return new RequestDto(url, method, data, headers);
+      return new RequestDto(url, method, dto, data, headers);
     }
     throw Error('Url is empty');
   }

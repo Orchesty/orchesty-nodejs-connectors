@@ -35,7 +35,7 @@ export default class IDokladApplication extends AOAuth2Application {
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     });
 
-    return new RequestDto(url ?? BASE_URL, method, data, headers);
+    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
   public getSettingsForm = (): Form => new Form()

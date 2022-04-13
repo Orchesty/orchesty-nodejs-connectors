@@ -59,6 +59,7 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     const requestDto = new RequestDto(
       url ?? '',
       parseHttpMethod(method),
+      dto,
       data,
       headers,
     );

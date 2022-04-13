@@ -33,7 +33,7 @@ export default class SalesForceApplication extends AOAuth2Application {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const request = new RequestDto(url ?? '', parseHttpMethod(method));
+    const request = new RequestDto(url ?? '', parseHttpMethod(method), dto);
     request.headers = {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

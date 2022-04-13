@@ -39,6 +39,7 @@ export default class SendGridApplication extends ABasicApplication {
     const dto = new RequestDto(
       new URL(url ?? BASE_URL).toString(),
       method,
+      _dto,
       JSON.stringify({
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,

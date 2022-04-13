@@ -37,7 +37,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
   ): RequestDto {
     const join = _url?.indexOf('?') ? '&' : '?';
     const url = this.getUri(`${_url}${join}api_token=${this._getToken(applicationInstall)}`);
-    const request = new RequestDto(url.toString(), method);
+    const request = new RequestDto(url.toString(), method, dto);
     request.headers = {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

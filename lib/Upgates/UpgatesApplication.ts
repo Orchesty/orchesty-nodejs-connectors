@@ -59,7 +59,7 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
       urlx = `${this.getDecoratedUrl(applicationInstall)}/${urlx}`;
     }
 
-    const requestDto = new RequestDto(urlx, parseHttpMethod(method), data, headers);
+    const requestDto = new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
     requestDto.debugInfo = dto;
     return requestDto;
   };

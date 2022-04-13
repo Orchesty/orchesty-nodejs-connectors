@@ -40,6 +40,7 @@ export default class StripeApplication extends ABasicApplication {
     return new RequestDto(
       new URL(url ?? BASE_URL, BASE_URL).toString(),
       method,
+      _dto,
       data,
       {
         [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',

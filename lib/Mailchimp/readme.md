@@ -10,7 +10,7 @@ Segment ID: 181***
 
 API Key: ccd385820843**********d49b0bb8e0-us20
 
-Cesta k ID Client a ID Secret: (ikonka účtu) Account → Extras → Registered Apps → Edit
+Cesta k ID Client an ID Secret: (ikonka účtu) Account → Extras → Registered Apps → Edit
 
 Cesta k Audience ID: (horní menu) Audience → Manage Audience dropdown → Settings → Audience Id je úplně dole, popř.
 kliknout na Audience name and defaults

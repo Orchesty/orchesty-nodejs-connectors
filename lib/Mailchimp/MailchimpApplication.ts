@@ -45,8 +45,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     url?: string,
     data?: BodyInit,
   ): RequestDto {
-    const request = new RequestDto(this.getUri(url)
-      .toString(), method);
+    const request = new RequestDto(this.getUri(url).toString(), method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

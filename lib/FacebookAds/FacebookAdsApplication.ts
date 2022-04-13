@@ -38,7 +38,7 @@ export default class FacebookAdsApplication extends AOAuth2Application {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     });
-    return new RequestDto(url ?? BASE_URL, method, data, headers);
+    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

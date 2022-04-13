@@ -32,7 +32,7 @@ export enum IDialect {
 export default abstract class ASqlApplication extends ABasicApplication {
   private _cache: NodeCache;
 
-  public constructor(private _dialect: IDialect) {
+  protected constructor(private _dialect: IDialect) {
     super();
     this._cache = new NodeCache({ stdTTL: 300 });
   }

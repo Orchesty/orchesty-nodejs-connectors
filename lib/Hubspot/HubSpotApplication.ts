@@ -48,7 +48,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     });
 
-    return new RequestDto(url ?? BASE_URL, method, data, headers);
+    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
   public getSettingsForm = (): Form => new Form()

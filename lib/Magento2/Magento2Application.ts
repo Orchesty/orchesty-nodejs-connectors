@@ -42,13 +42,14 @@ export default class Magento2Application extends ABasicApplication {
     data?: string,
   ): Promise<RequestDto> {
     const headers = {
-      [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall),
+      [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall, dto),
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
     const requestDto = new RequestDto(
       url ?? '',
       parseHttpMethod(method),
+      dto,
       data,
       headers,
     );
@@ -58,6 +59,7 @@ export default class Magento2Application extends ABasicApplication {
 
   public getApiToken = async (
     applicationInstall: ApplicationInstall,
+    processDto: ProcessDto,
   ): Promise<string> => {
     try {
       const cacheKey = `${
@@ -71,6 +73,7 @@ export default class Magento2Application extends ABasicApplication {
       const requestDto = new RequestDto(
         AUTH_TOKEN_URL,
         HttpMethods.GET,
+        processDto,
         undefined,
         headers,
       );

@@ -46,7 +46,7 @@ export default class AirtableApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this._getAccessToken(applicationInstall)}`,
     };
-    return new RequestDto(url ?? '', method, data, headers);
+    return new RequestDto(url ?? '', method, dto, data, headers);
   }
 
   public getValue = (applicationInstall: ApplicationInstall, value: string): string | undefined => {

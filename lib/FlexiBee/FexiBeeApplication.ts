@@ -74,7 +74,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
       headers = new Headers({
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.ACCEPT]: JSON_TYPE,
-        [X_AUTH_SESSION_ID]: await this._getApiToken(applicationInstall),
+        [X_AUTH_SESSION_ID]: await this._getApiToken(applicationInstall, dto),
       });
     } else if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_HTTP) {
       headers = new Headers({
@@ -86,7 +86,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
       });
     }
 
-    return new RequestDto(url ?? '', method, data, headers);
+    return new RequestDto(url ?? '', method, dto, data, headers);
   }
 
   public getSettingsForm = (): Form => {
@@ -109,11 +109,11 @@ export default class FlexiBeeApplication extends ABasicApplication {
     return `${host}/${this.getUri(url)}`;
   }
 
-  private async _getApiToken(applicationInstall: ApplicationInstall): Promise<string> {
+  private async _getApiToken(applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<string> {
     let token = await this._getApiTokenFromSettings(applicationInstall);
 
     if (!token) {
-      const res = await this._sender.send(this._getApiTokenDto(applicationInstall), [200]);
+      const res = await this._sender.send(this._getApiTokenDto(applicationInstall, dto), [200]);
 
       try {
         token = res.jsonBody as IToken;
@@ -158,7 +158,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     return null;
   }
 
-  private _getApiTokenDto(applicationInstall: ApplicationInstall): RequestDto {
+  private _getApiTokenDto(applicationInstall: ApplicationInstall, dto: ProcessDto): RequestDto {
     const setting = applicationInstall.getSettings();
     if (!this.isAuthorized(applicationInstall)) {
       throw new Error('User is not authenticated');
@@ -176,6 +176,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
       this.getUrl(applicationInstall, ENDPOINT_LOGIN)
         .toString(),
       HttpMethods.POST,
+      dto,
       JSON.stringify({
         [USER]: user,
         [PASSWORD]: password,
