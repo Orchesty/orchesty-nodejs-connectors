@@ -1,6 +1,6 @@
 {
     "name": "pipes-nodejs-connectors",
-    "version": "1.0.29",
+    "version": "1.0.30",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
