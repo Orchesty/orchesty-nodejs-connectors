@@ -99,8 +99,9 @@ export default abstract class ASqlApplication extends ABasicApplication {
         };
       case IDialect.oracledb:
         return {
-          // eslint-disable-next-line max-len
-          connectionString: `Data Source=${formSettings[DATABASE]};User Id=${formSettings[USER]};Password=${formSettings[PASSWORD]};Integrated Security=no;`,
+          user: formSettings[USER],
+          password: formSettings[PASSWORD],
+          connectString: `${formSettings[HOST]}:${formSettings[PORT]}/${formSettings[DATABASE]}`,
         };
       default: throw new Error(`Dialect [${this._dialect}] is not compatible!`);
     }
