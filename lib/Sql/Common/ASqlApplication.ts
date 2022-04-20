@@ -8,12 +8,13 @@ import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Databa
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { BodyInit } from 'node-fetch';
 import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { Options, Sequelize } from 'sequelize';
+import { Dialect, Options, Sequelize } from 'sequelize';
 import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
 import NodeCache from 'node-cache';
+import OracleDB, { ConnectionAttributes } from 'oracledb';
 
 const HOST = 'host';
 const PORT = 'port';
@@ -26,11 +27,12 @@ export enum IDialect {
   sqlite = 'sqlite',
   mariadb = 'mariadb',
   mssql = 'mssql',
+  oracledb = 'oracledb',
   /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export default abstract class ASqlApplication extends ABasicApplication {
-  private _cache: NodeCache;
+  protected _cache: NodeCache;
 
   protected constructor(private _dialect: IDialect) {
     super();
@@ -58,7 +60,8 @@ export default abstract class ASqlApplication extends ABasicApplication {
     .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
     .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
 
-  public getConnection(appInstall: ApplicationInstall): Sequelize {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  public async getConnection(appInstall: ApplicationInstall): Promise<Sequelize | OracleDB.Connection> {
     const appId = appInstall.getId();
     let sequelize = this._cache.get(appId) as Sequelize;
 
@@ -70,28 +73,40 @@ export default abstract class ASqlApplication extends ABasicApplication {
     return sequelize;
   }
 
-  private _getConfig = (appInstall: ApplicationInstall): Options => {
+  protected _getConfig = (appInstall: ApplicationInstall): Options | ConnectionAttributes => {
     const formSettings = appInstall.getSettings()[FORM];
-    if (this._dialect === IDialect.sqlite) {
-      return {
-        storage: formSettings[HOST],
-        database: formSettings[DATABASE],
-        port: formSettings[PORT],
-        username: formSettings[USER],
-        password: formSettings[PASSWORD],
-        dialect: this._dialect,
-      };
+    switch (this._dialect) {
+      case IDialect.sqlite:
+        return {
+          storage: formSettings[HOST],
+          database: formSettings[DATABASE],
+          port: formSettings[PORT],
+          username: formSettings[USER],
+          password: formSettings[PASSWORD],
+          dialect: this._dialect,
+        };
+      case IDialect.mariadb:
+      case IDialect.mssql:
+      case IDialect.mysql:
+      case IDialect.postgres:
+        return {
+          host: formSettings[HOST],
+          database: formSettings[DATABASE],
+          port: formSettings[PORT],
+          username: formSettings[USER],
+          password: formSettings[PASSWORD],
+          dialect: this._dialect,
+        };
+      case IDialect.oracledb:
+        return {
+          user: formSettings[USER],
+          password: formSettings[PASSWORD],
+          connectString: `${formSettings[HOST]}:${formSettings[PORT]}/${formSettings[DATABASE]}`,
+        };
+      default: throw new Error(`Dialect [${this._dialect}] is not compatible!`);
     }
-    return {
-      host: formSettings[HOST],
-      database: formSettings[DATABASE],
-      port: formSettings[PORT],
-      username: formSettings[USER],
-      password: formSettings[PASSWORD],
-      dialect: this._dialect,
-    };
   };
 
-  private _capitalizeFirstLetterOfDialect = (dialect: IDialect) => dialect.charAt(0)
+  private _capitalizeFirstLetterOfDialect = (dialect: Dialect) => dialect.charAt(0)
     .toUpperCase() + dialect.slice(1);
 }
