@@ -95,7 +95,7 @@ export default class MoneyS5Application extends ABasicApplication {
       );
     } catch (e) {
       if (e instanceof Error) {
-        logger.error(e.message || 'Unknown error in Money S5 application.');
+        logger.error(e.message || 'Unknown error in Money S5 application.', processDto);
       }
       throw e;
     }

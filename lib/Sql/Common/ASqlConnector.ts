@@ -1,6 +1,6 @@
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ACommonNode from 'pipes-nodejs-sdk/dist/lib/Commons/ACommonNode';
-import { ConnectionError } from 'sequelize';
+import { ConnectionError, Sequelize } from 'sequelize';
 import logger from 'pipes-nodejs-sdk/dist/lib/Logger/Logger';
 import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ResultCode from 'pipes-nodejs-sdk/dist/lib/Utils/ResultCode';
@@ -23,7 +23,12 @@ export default abstract class ASqlConnector extends ACommonNode {
     const appInstall = await this._getApplicationInstall(userName);
     const app = this._application as ASqlApplication;
     try {
-      return this._processResult(app.getConnection(appInstall).query(query), dto);
+      const conn = await (app.getConnection(appInstall));
+      if (conn instanceof Sequelize) {
+        return this._processResult(conn.query(query), dto);
+      }
+
+      return this._processResult(conn.execute(query), dto);
     } catch (e) {
       if (e instanceof ConnectionError) {
         logger.error(e.message, { data: query });

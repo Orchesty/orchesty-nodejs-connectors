@@ -27,7 +27,7 @@ export default class HubSpotCreateContactConnector extends AConnector {
 
     if (response.responseCode === 409) {
       const parsed = response.jsonBody as { identityProfile: { identity: [{ value: string }] } };
-      logger.error(`Contact "${parsed.identityProfile.identity[0].value ?? ''}" already exist.`);
+      logger.error(`Contact "${parsed.identityProfile.identity[0].value ?? ''}" already exist.`, dto);
     }
 
     dto.data = response.body;

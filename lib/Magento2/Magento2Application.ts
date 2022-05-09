@@ -92,7 +92,7 @@ export default class Magento2Application extends ABasicApplication {
       );
     } catch (e) {
       if (e instanceof Error) {
-        logger.error(e.message || 'Unknown error in Magento application.');
+        logger.error(e.message || 'Unknown error in Magento application.', processDto);
       }
       throw e;
     }
