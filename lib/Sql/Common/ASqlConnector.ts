@@ -4,6 +4,7 @@ import { ConnectionError, Sequelize } from 'sequelize';
 import logger from 'pipes-nodejs-sdk/dist/lib/Logger/Logger';
 import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ResultCode from 'pipes-nodejs-sdk/dist/lib/Utils/ResultCode';
+import OracleDB, { ExecuteOptions } from 'oracledb';
 import SqlErrorEnum from '../Enums/SqlErrorEnum';
 import ASqlApplication from './ASqlApplication';
 
@@ -15,6 +16,8 @@ export default abstract class ASqlConnector extends ACommonNode {
   protected abstract _processResult(res: unknown, dto: ProcessDto): Promise<ProcessDto> | ProcessDto;
 
   protected abstract _getQuery(processDto: ProcessDto): string;
+
+  protected _getExecuteOptions = (): ExecuteOptions => ({ outFormat: OracleDB.OUT_FORMAT_OBJECT });
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
@@ -28,7 +31,7 @@ export default abstract class ASqlConnector extends ACommonNode {
         return this._processResult(conn.query(query), dto);
       }
 
-      return this._processResult(conn.execute(query), dto);
+      return this._processResult(conn.execute(query, [], this._getExecuteOptions), dto);
     } catch (e) {
       if (e instanceof ConnectionError) {
         logger.error(e.message, { data: query });

@@ -14,11 +14,11 @@ Linux:
 		-e "s/{DEV_GID}/$(shell if [ "$(shell uname)" = "Linux" ]; then echo $(shell id -g); else echo '1001'; fi)/g" \
 		.env.dist > .env; \
 
-init: docker-up-force yarn-install
+init: docker-up-force install
 
 publish:
-	npx yarn build || true
-	npx npm publish
+	pnpm run build
+	pnpm publish
 
 docker-compose.ci.yml:
 	# Comment out any port forwarding
@@ -31,28 +31,25 @@ docker-up-force: .env .lo0-up
 docker-down-clean: .env .lo0-down
 	docker-compose down -v
 
-start:
-	$(DCS) yarn start
+install:
+	$(DCS) pnpm install
 
-yarn-install:
-	$(DCS) yarn install
+update:
+	$(DCS) pnpm update
 
-yarn-update:
-	$(DCS) yarn upgrade
-
-yarn-outdated:
-	$(DCS) yarn outdated
+outdated:
+	$(DCS) pnpm outdated
 
 lint:
-	$(DCS) yarn lint-ci
+	$(DCS) pnpm run lint-ci
 
 unit:
-	$(DCS) yarn test
+	$(DCS) pnpm run test
 
 fasttest: lint unit
 
 localtest:
-	npx yarn lint
-	npx yarn test
+	pnpm run lint
+	pnpm run test
 
-test: docker-up-force yarn-install fasttest docker-down-clean
+test: docker-up-force install fasttest docker-down-clean
