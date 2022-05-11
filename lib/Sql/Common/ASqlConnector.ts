@@ -31,7 +31,7 @@ export default abstract class ASqlConnector extends ACommonNode {
         return this._processResult(conn.query(query), dto);
       }
 
-      return this._processResult(conn.execute(query, [], this._getExecuteOptions), dto);
+      return this._processResult(conn.execute(query, [], this._getExecuteOptions()), dto);
     } catch (e) {
       if (e instanceof ConnectionError) {
         logger.error(e.message, { data: query });
