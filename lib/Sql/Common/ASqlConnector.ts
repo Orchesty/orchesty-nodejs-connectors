@@ -15,13 +15,13 @@ export default abstract class ASqlConnector extends ACommonNode {
 
   protected abstract _processResult(res: unknown, dto: ProcessDto): Promise<ProcessDto> | ProcessDto;
 
-  protected abstract _getQuery(processDto: ProcessDto): string;
+  protected abstract _getQuery(processDto: ProcessDto): Promise<string> | string;
 
   protected _getExecuteOptions = (): ExecuteOptions => ({ outFormat: OracleDB.OUT_FORMAT_OBJECT });
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const query = this._getQuery(dto);
+    const query = await this._getQuery(dto);
     const { userName } = dto.jsonData as { userName: string };
     const appInstall = await this._getApplicationInstall(userName);
     const app = this._application as ASqlApplication;
