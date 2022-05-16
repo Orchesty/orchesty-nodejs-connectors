@@ -25,8 +25,9 @@ export default abstract class ASqlConnector extends ACommonNode {
     const { userName } = dto.jsonData as { userName: string };
     const appInstall = await this._getApplicationInstall(userName);
     const app = this._application as ASqlApplication;
+    let conn: Sequelize | OracleDB.Connection | undefined;
     try {
-      const conn = await (app.getConnection(appInstall));
+      conn = await (app.getConnection(appInstall));
       if (conn instanceof Sequelize) {
         return this._processResult(conn.query(query), dto);
       }
@@ -48,6 +49,16 @@ export default abstract class ASqlConnector extends ACommonNode {
       }
 
       return dto;
+    } finally {
+      if (conn && !(conn instanceof Sequelize)) {
+        try {
+          await conn.close();
+        } catch (e) {
+          if (e instanceof Error) {
+            logger.error(e.message, dto);
+          }
+        }
+      }
     }
   }
 
