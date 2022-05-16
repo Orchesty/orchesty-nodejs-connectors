@@ -55,7 +55,7 @@ export default abstract class ASqlApplication extends ABasicApplication {
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
-    .addField(new Field(FieldType.NUMBER, PORT, 'Port', undefined, true))
+    .addField(new Field(FieldType.TEXT, PORT, 'Port', undefined, true))
     .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
     .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
     .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
