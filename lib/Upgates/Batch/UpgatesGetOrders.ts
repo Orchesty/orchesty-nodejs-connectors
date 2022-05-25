@@ -1,7 +1,7 @@
 import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import ShopifyApplication from '../../Shopify/ShopifyApplication';
+import UpgatesApplication from '../UpgatesApplication';
 
 const LIST_PAGE_ENDPOINT = 'api/v2/orders';
 
@@ -10,7 +10,7 @@ export default class UpgatesGetOrders extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const app = this._application as ShopifyApplication;
+    const app = this._application as UpgatesApplication;
     const {
       userName,
       from,
@@ -25,11 +25,15 @@ export default class UpgatesGetOrders extends AConnector {
       url = `${url}&creation_time_to=${to}`;
     }
     const appInstall = await this._getApplicationInstall(userName);
-    const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
+    const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const { number_of_pages, orders } = res.jsonBody as IResponseJson;
+
+    const {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      number_of_pages,
+      orders,
+    } = res.jsonBody as IResponseJson;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     if (Number(pageNumber) < number_of_pages) {
@@ -48,7 +52,7 @@ interface IInputJson {
   to: string
 }
 
-interface IResponseJson extends IOrderJson{
+interface IResponseJson extends IOrderJson {
   /* eslint-disable @typescript-eslint/naming-convention */
   number_of_pages: number,
 }
@@ -184,5 +188,5 @@ interface IOrderJson {
         }
       }
     }]
-  }]
+  }];
 }
