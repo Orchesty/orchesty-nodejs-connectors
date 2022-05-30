@@ -33,9 +33,10 @@ export default abstract class ASqlConnector extends ACommonNode {
       }
 
       return this._processResult(conn.execute(query, [], this._getExecuteOptions()), dto);
-    } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
       if (e instanceof ConnectionError) {
-        logger.error(e.message, { data: query });
+        logger.error(e.message, dto);
         switch (e.message) {
           case SqlErrorEnum.TOO_MANY_CONNECTIONS:
             throw new OnRepeatException(60, 10, e.message);
@@ -43,8 +44,8 @@ export default abstract class ASqlConnector extends ACommonNode {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, e.message);
             break;
         }
-      } else if (e instanceof Error) {
-        logger.error(e.message, { data: query });
+      } else {
+        logger.error(e?.message, dto);
         dto.setStopProcess(ResultCode.STOP_AND_FAILED, e.message);
       }
 

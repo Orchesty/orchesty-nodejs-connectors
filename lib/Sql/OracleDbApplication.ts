@@ -9,14 +9,14 @@ export default class OracleDbApplication extends ASqlApplication {
 
   public async getConnection(appInstall: ApplicationInstall): Promise<OracleDB.Connection> {
     const appId = appInstall.getId();
-    let oracleDb = this._cache.get(appId) as OracleDB.Connection;
+    let oracleDb = this._cache[appId] as OracleDB.Pool;
 
     if (oracleDb === undefined) {
-      oracleDb = await OracleDB.getConnection(this._getConfig(appInstall));
-      this._cache.set(appId, oracleDb);
+      oracleDb = await OracleDB.createPool(this._getConfig(appInstall));
+      this._cache[appId] = oracleDb;
     }
 
-    return oracleDb;
+    return oracleDb.getConnection();
   }
 
   public getPublicName = (): string => 'OracleDB';

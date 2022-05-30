@@ -27,7 +27,6 @@ specifiers:
   mongodb: ^4.6.0
   mongodb-typescript: github:hanaboso/mongodb-typescript#mongodb-update
   mysql2: ^2.3.3
-  node-cache: ^5.1.2
   node-fetch: ^2.6.7
   nodemon: ^2.0.16
   oracledb: ^5.3.0
@@ -48,7 +47,6 @@ dependencies:
   form-data: 4.0.0
   luxon: 2.4.0
   mongodb-typescript: github.com/hanaboso/mongodb-typescript/c4ad5d183cdb6cb5fe7fed2a86d3cfc3d293cac2_vqp6lbhz2ey7lfiyhdszh2tuve
-  node-cache: 5.1.2
   node-fetch: 2.6.7
 
 optionalDependencies:
@@ -3160,6 +3158,7 @@ packages:
   /clone/2.1.2:
     resolution: {integrity: sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=}
     engines: {node: '>=0.8'}
+    dev: true
 
   /co/4.6.0:
     resolution: {integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=}
@@ -5734,6 +5733,7 @@ packages:
     engines: {node: '>= 8.0.0'}
     dependencies:
       clone: 2.1.2
+    dev: true
 
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}

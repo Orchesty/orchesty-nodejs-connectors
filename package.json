@@ -1,6 +1,6 @@
 {
     "name": "pipes-nodejs-connectors",
-    "version": "1.0.38",
+    "version": "1.0.41",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
@@ -19,7 +19,6 @@
         "form-data": "^4.0.0",
         "luxon": "^2.4.0",
         "mongodb-typescript": "github:hanaboso/mongodb-typescript#mongodb-update",
-        "node-cache": "^5.1.2",
         "node-fetch": "^2.6.7"
     },
     "optionalDependencies": {

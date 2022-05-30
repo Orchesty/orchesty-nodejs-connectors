@@ -13,7 +13,6 @@ import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import NodeCache from 'node-cache';
 import OracleDB, { ConnectionAttributes } from 'oracledb';
 
 const HOST = 'host';
@@ -32,11 +31,10 @@ export enum IDialect {
 }
 
 export default abstract class ASqlApplication extends ABasicApplication {
-  protected _cache: NodeCache;
+  protected _cache: Record<string, Sequelize | OracleDB.Pool> = {};
 
   protected constructor(private _dialect: IDialect) {
     super();
-    this._cache = new NodeCache({ stdTTL: 300 });
   }
 
   public getName = (): string => this._dialect.toString();
@@ -63,11 +61,11 @@ export default abstract class ASqlApplication extends ABasicApplication {
   // eslint-disable-next-line @typescript-eslint/require-await
   public async getConnection(appInstall: ApplicationInstall): Promise<Sequelize | OracleDB.Connection> {
     const appId = appInstall.getId();
-    let sequelize = this._cache.get(appId) as Sequelize;
+    let sequelize = this._cache[appId] as Sequelize;
 
     if (sequelize === undefined) {
       sequelize = new Sequelize(this._getConfig(appInstall));
-      this._cache.set(appId, sequelize);
+      this._cache[appId] = sequelize;
     }
 
     return sequelize;
