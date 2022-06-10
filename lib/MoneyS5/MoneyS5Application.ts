@@ -50,15 +50,13 @@ export default class MoneyS5Application extends ABasicApplication {
       urlx = `${this.getDecoratedUrl(applicationInstall)}/${urlx}`;
     }
 
-    const requestDto = new RequestDto(
+    return new RequestDto(
       urlx,
       parseHttpMethod(method),
       dto,
       data,
       headers,
     );
-    requestDto.debugInfo = dto;
-    return requestDto;
   }
 
   public getApiToken = async (

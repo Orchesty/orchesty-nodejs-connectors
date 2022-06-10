@@ -49,8 +49,6 @@ export default class SendGridSendEmailConnector extends AConnector {
     const request = await (this._application as SendGridApplication)
       .getRequestDto(dto, applicationInstall, HttpMethods.POST, url, JSON.stringify(body));
 
-    request.debugInfo = dto;
-
     const response = await this._sender.send(request);
     if (!this.evaluateStatusCode(response, dto)) {
       return dto;

@@ -53,7 +53,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-    .addField(new Field(FieldType.PASSWORD, CLIENT_SECRET, 'Client Secret', true))
+    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', true))
     .addField(new Field(FieldType.TEXT, APP_ID, 'Application Id', null, true));
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

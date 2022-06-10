@@ -85,7 +85,6 @@ export default class FlexiBeeCreateNewContactConnector extends AConnector {
       HttpMethods.PUT,
       application.getUrl(applicationInstall, `admin/zalozeni-firmy?${url}`),
     );
-    request.debugInfo = dto;
     const response = await this._sender.send(request);
     this.evaluateStatusCode(response, dto);
     dto.data = response.body;

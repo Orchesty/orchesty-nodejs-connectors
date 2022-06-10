@@ -94,7 +94,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     authTypeField.setChoices([AUTH_HTTP, AUTH_JSON]);
 
     return new Form().addField(new Field(FieldType.TEXT, USER, 'User', null, true))
-      .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', null, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', null, true))
       .addField(new Field(FieldType.URL, FLEXIBEE_URL, 'Flexibee URL', null, true))
       .addField(authTypeField);
   };

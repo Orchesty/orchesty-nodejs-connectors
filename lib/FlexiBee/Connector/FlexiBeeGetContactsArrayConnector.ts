@@ -17,7 +17,6 @@ export default class FlexiBeeGetContactsArrayConnector extends AConnector {
       HttpMethods.GET,
       application.getUrl(applicationInstall, 'kontakt.json'),
     );
-    request.debugInfo = dto;
     const response = await this._sender.send(request);
     this.evaluateStatusCode(response, dto);
     dto.data = response.body;

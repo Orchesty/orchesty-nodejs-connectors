@@ -59,16 +59,14 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
       urlx = `${this.getDecoratedUrl(applicationInstall)}/${urlx}`;
     }
 
-    const requestDto = new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
-    requestDto.debugInfo = dto;
-    return requestDto;
+    return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
   };
 
   public getDecoratedUrl = (app: ApplicationInstall): string => app.getSettings()?.[FORM]?.[UPGATES_URL] ?? '';
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', undefined, true))
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
     .addField(new Field(FieldType.URL, UPGATES_URL, 'Url', undefined, true));
 
   public getLogo = (): string => 'data:image/png;base64,'

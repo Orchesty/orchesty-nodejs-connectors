@@ -66,5 +66,5 @@ export default class JiraApplication extends ABasicApplication {
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, PREFIX_URL, 'Attlasian prefix url', undefined, true))
     .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Token', undefined, true));
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
 }

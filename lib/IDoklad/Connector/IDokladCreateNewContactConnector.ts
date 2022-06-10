@@ -20,7 +20,6 @@ export default class IDokladCreateNewContactConnector extends AConnector {
       `${BASE_URL}/Contacts`,
       dto.data,
     );
-    request.debugInfo = dto;
 
     const response = await this._sender.send(request, [200, 201], 10);
     this.evaluateStatusCode(response, dto);

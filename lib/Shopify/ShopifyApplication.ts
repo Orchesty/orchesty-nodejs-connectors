@@ -71,9 +71,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     if (!urlx.startsWith('http')) {
       urlx = `${this.getDecoratedUrl(applicationInstall)}/${urlx}`;
     }
-    const requestDto = new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
-    requestDto.debugInfo = dto;
-    return requestDto;
+    return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
   };
 
   public async setApplicationSettings(applicationInstall: ApplicationInstall, settings: IApplicationSettings):
@@ -87,7 +85,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', undefined, true))
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
     .addField(new Field(FieldType.URL, SHOPIFY_URL, 'Url', undefined, true));
 
   public getLogo = (): string | null => 'data:image/svg+xml;base64,'

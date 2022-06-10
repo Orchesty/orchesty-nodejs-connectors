@@ -29,7 +29,6 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
       `${BASE_URL}/upload/drive/v3/files?uploadType=multipart`,
       form,
     );
-    request.debugInfo = dto;
     request.body = form;
 
     const response = await this._sender.send(request, [200, 201]);

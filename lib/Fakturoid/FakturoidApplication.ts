@@ -51,5 +51,5 @@ export default class FakturoidApplication extends ABasicApplication {
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, ACCOUNT, 'Account', null, true))
     .addField(new Field(FieldType.TEXT, USER, 'Username', null, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'API key', true));
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', true));
 }

@@ -46,15 +46,13 @@ export default class Magento2Application extends ABasicApplication {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
 
-    const requestDto = new RequestDto(
+    return new RequestDto(
       url ?? '',
       parseHttpMethod(method),
       dto,
       data,
       headers,
     );
-    requestDto.debugInfo = dto;
-    return requestDto;
   }
 
   public getApiToken = async (
@@ -100,7 +98,7 @@ export default class Magento2Application extends ABasicApplication {
 
   public getSettingsForm = (): Form => new Form()
     .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
-    .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', undefined, true))
+    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
     .addField(new Field(FieldType.TEXT, MAGENTO_URL, 'Url', undefined, true));
 
   public getLogo = (): string => 'data:image/png;base64,'

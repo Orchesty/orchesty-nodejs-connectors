@@ -31,7 +31,7 @@ export default class RedshiftApplication extends AAwsApplication {
     form
       .addField(new Field(FieldType.TEXT, KEY, 'Key', undefined, true))
       .addField(new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true))
-      .addField(new Field(FieldType.PASSWORD, DB_PASSWORD, 'Database Password', undefined, true))
+      .addField(new Field(FieldType.TEXT, DB_PASSWORD, 'Database Password', undefined, true))
       .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', '', true)).setChoices(REGIONS));
 
     return form;

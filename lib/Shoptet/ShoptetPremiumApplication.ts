@@ -56,15 +56,13 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
       [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
     };
 
-    const requestDto = new RequestDto(
+    return new RequestDto(
       url ?? '',
       parseHttpMethod(method),
       dto,
       data,
       headers,
     );
-    requestDto.debugInfo = dto;
-    return requestDto;
   };
 
   public getSettingsForm = (): Form => new Form()

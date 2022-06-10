@@ -15,27 +15,18 @@ export default class HubSpotCreateContactConnector extends AConnector {
       dto,
       applicationInstall,
       HttpMethods.POST,
-      `${BASE_URL}/contacts/v1/contact/`,
+      `${BASE_URL}/crm/v3/objects/contacts`,
       dto.data,
     );
-    request.debugInfo = dto;
 
-    const response = await this._sender.send(request);
-
-    const message = response.jsonBody as { validationResults: [{ message: string }] };
-    this.evaluateStatusCode(response, dto, message.validationResults[0].message);
+    const response = await this._sender.send(request, [201, 409]);
 
     if (response.responseCode === 409) {
-      const parsed = response.jsonBody as { identityProfile: { identity: [{ value: string }] } };
-      logger.error(`Contact "${parsed.identityProfile.identity[0].value ?? ''}" already exist.`, dto);
+      const email = dto.jsonData as {properties: {email: string} };
+      logger.error(`Contact "${email}" already exist.`, dto);
     }
 
     dto.data = response.body;
     return dto;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public processEvent = (dto: ProcessDto): ProcessDto => {
-    throw Error('ProcessEvent is not implemented');
-  };
 }
