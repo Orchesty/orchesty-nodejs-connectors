@@ -13,7 +13,7 @@ import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldTyp
 
 export const SERVER = 'https://services.server.cz';
 export const API = '/rest/api/v1';
-export const BASE_URL = `${SERVER}/${API}`;
+export const BASE_URL = `${SERVER}${API}`;
 
 export default class AlzaApplication extends ABasicApplication {
   public getName = (): string => 'alza';
