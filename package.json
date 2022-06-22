@@ -1,5 +1,5 @@
 {
-    "name": "pipes-nodejs-connectors",
+    "name": "@orchesty/nodejs-connectors",
     "version": "1.0.44",
     "description": "",
     "main": "dist/lib/index.js",
