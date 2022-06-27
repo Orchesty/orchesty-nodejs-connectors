@@ -29,7 +29,8 @@ export default abstract class ASqlConnector extends ACommonNode {
     try {
       conn = await (app.getConnection(appInstall));
       if (conn instanceof Sequelize) {
-        return this._processResult(conn.query(query), dto);
+        const result = await conn.query(query);
+        return this._processResult({ rows: result[0] }, dto);
       }
 
       return this._processResult(conn.execute(query, [], this._getExecuteOptions()), dto);
