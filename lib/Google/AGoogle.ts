@@ -9,6 +9,8 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export default abstract class AGoogle extends AOAuth2Application {
   public abstract getBaseUrl(): string;
@@ -31,7 +33,11 @@ export default abstract class AGoogle extends AOAuth2Application {
     return new RequestDto(url ?? this.getBaseUrl(), method, dto, data, headers);
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+
+    return new FormStack().addForm(form);
+  };
 }

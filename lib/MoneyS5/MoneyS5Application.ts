@@ -12,7 +12,8 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const NAME = 'MONEYS5';
 const BASE_URL = 'https://{host}/';
@@ -99,12 +100,17 @@ export default class MoneyS5Application extends ABasicApplication {
     }
   };
 
-  public getDecoratedUrl = (app: ApplicationInstall): string => app.getSettings()?.[FORM]?.[MONEYS5_URL] ?? '';
+  public getDecoratedUrl = (app: ApplicationInstall): string => app
+    .getSettings()?.[AUTHORIZATION_FORM]?.[MONEYS5_URL] ?? '';
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client ID', undefined, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secter', undefined, true))
-    .addField(new Field(FieldType.TEXT, MONEYS5_URL, 'Url', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client ID', undefined, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secter', undefined, true))
+      .addField(new Field(FieldType.TEXT, MONEYS5_URL, 'Url', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getLogo = (): string => 'data:image/png;base64,'
     // eslint-disable-next-line max-len

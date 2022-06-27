@@ -5,12 +5,13 @@ import HttpMethods, {
 } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const ID = 'id';
 export const NAME = 'SHOPTET';
@@ -52,7 +53,7 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     data?: string,
   ): RequestDto => {
     const headers = {
-      [AUTHORIZATION_HEADER]: applicationInstall.getSettings()?.[FORM]?.[SHOPTET_API_TOKEN],
+      [AUTHORIZATION_HEADER]: applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[SHOPTET_API_TOKEN],
       [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
     };
 
@@ -65,8 +66,12 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     );
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, SHOPTET_API_TOKEN, 'Shoptet private API token', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, SHOPTET_API_TOKEN, 'Shoptet private API token', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getLogo = (): string | null => 'data:image/png;base64,'
     // eslint-disable-next-line max-len

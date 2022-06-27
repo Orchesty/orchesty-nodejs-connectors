@@ -2,9 +2,9 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import FormData from 'form-data';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { BASE_URL } from '../TwilioApplication';
 
 const TWILIO_SEND_MESSAGE_ENDPOINT = 'Accounts/{AccountSid}/Messages';
@@ -50,7 +50,7 @@ export default class TwilioSendMessage extends AConnector {
       HttpMethods.POST,
       `${BASE_URL}/${TWILIO_SEND_MESSAGE_ENDPOINT.replace(
         '{AccountSid}',
-        applicationInstall.getSettings()[FORM][USER],
+        applicationInstall.getSettings()[AUTHORIZATION_FORM][USER],
       )}`,
       form,
     );

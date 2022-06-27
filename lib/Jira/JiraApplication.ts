@@ -4,7 +4,6 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import {
   ABasicApplication,
   PASSWORD,
@@ -14,6 +13,8 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const PREFIX_URL = 'prefix_url';
 
@@ -28,7 +29,7 @@ export default class JiraApplication extends ABasicApplication {
   public getBaseUrl = (
     applicationInstall: ApplicationInstall,
   ): string => {
-    const prefix = applicationInstall.getSettings()?.[FORM]?.[PREFIX_URL];
+    const prefix = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[PREFIX_URL];
     if (!prefix) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have url prefix!`);
     }
@@ -45,8 +46,8 @@ export default class JiraApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const password = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[PASSWORD];
-    const user = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[USER];
+    const password = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[PASSWORD];
+    const user = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[USER];
 
     if (!password || !user) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
@@ -63,8 +64,12 @@ export default class JiraApplication extends ABasicApplication {
     );
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, PREFIX_URL, 'Attlasian prefix url', undefined, true))
-    .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, PREFIX_URL, 'Attlasian prefix url', undefined, true))
+      .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 }

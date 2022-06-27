@@ -8,7 +8,6 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
@@ -17,6 +16,8 @@ import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender'
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
 export const TOKEN_NOT_SUCCESS = 'Token is not succeed returned';
@@ -70,37 +71,39 @@ export default class FlexiBeeApplication extends ABasicApplication {
     data?: BodyInit,
   ): Promise<RequestDto> {
     let headers = new Headers();
-    if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_JSON) {
+    if (applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH] === AUTH_JSON) {
       headers = new Headers({
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.ACCEPT]: JSON_TYPE,
         [X_AUTH_SESSION_ID]: await this._getApiToken(applicationInstall, dto),
       });
-    } else if (applicationInstall.getSettings()[FORM][AUTH] === AUTH_HTTP) {
+    } else if (applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH] === AUTH_HTTP) {
       headers = new Headers({
         [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         [CommonHeaders.ACCEPT]: JSON_TYPE,
         [CommonHeaders.AUTHORIZATION]: `Basic 
-        ${encode(`${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:
-        ${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`)}`,
+        ${encode(`${applicationInstall.getSettings()[AUTHORIZATION_FORM][USER]}:
+        ${applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD]}`)}`,
       });
     }
 
     return new RequestDto(url ?? '', method, dto, data, headers);
   }
 
-  public getSettingsForm = (): Form => {
+  public getFormStack = (): FormStack => {
     const authTypeField = new Field(FieldType.SELECT_BOX, AUTH, 'Authorize type', null, true);
     authTypeField.setChoices([AUTH_HTTP, AUTH_JSON]);
 
-    return new Form().addField(new Field(FieldType.TEXT, USER, 'User', null, true))
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', null, true))
       .addField(new Field(FieldType.URL, FLEXIBEE_URL, 'Flexibee URL', null, true))
       .addField(authTypeField);
+
+    return new FormStack().addForm(form);
   };
 
   public getUrl(applicationInstall: ApplicationInstall, url?: string): string {
-    const host = applicationInstall.getSettings()[FORM][FLEXIBEE_URL] ?? '';
+    const host = applicationInstall.getSettings()[AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
 
     if (host) {
       throw Error('There is no flexibee url');
@@ -164,8 +167,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
       throw new Error('User is not authenticated');
     }
 
-    const user = setting[AUTHORIZATION_SETTINGS][USER];
-    const password = setting[AUTHORIZATION_SETTINGS][PASSWORD];
+    const user = setting[AUTHORIZATION_FORM][USER];
+    const password = setting[AUTHORIZATION_FORM][PASSWORD];
 
     const headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

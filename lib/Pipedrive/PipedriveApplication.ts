@@ -9,9 +9,10 @@ import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { AUTHORIZATION_SETTINGS } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
@@ -49,8 +50,12 @@ export default class PipedriveApplication extends ABasicApplication implements I
     return request;
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, USER, 'API token', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'API token', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getWebhookSubscribeRequestDto(
     applicationInstall: ApplicationInstall,
@@ -108,5 +113,5 @@ export default class PipedriveApplication extends ABasicApplication implements I
 
   private _getToken = (
     applicationInstall: ApplicationInstall,
-  ): string => applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER];
+  ): string => applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
 }

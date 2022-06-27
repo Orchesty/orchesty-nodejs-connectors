@@ -2,8 +2,9 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { S3Client } from '@aws-sdk/client-s3';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AAwsApplication, {
   CREDENTIALS,
   ENDPOINT, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
@@ -19,15 +20,19 @@ export default class S3Application extends AAwsApplication {
 
   public getPublicName = (): string => 'Amazon S3';
 
-  public getSettingsForm = (): Form => new Form()
-    .addField((new Field(FieldType.TEXT, KEY, 'Key', undefined, true)))
-    .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)))
-    .addField((new Field(FieldType.TEXT, BUCKET, 'Bucket', undefined, true)))
-    .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', undefined, true)).setChoices(REGIONS))
-    .addField((new Field(FieldType.TEXT, ENDPOINT, 'Custom Endpoint')));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField((new Field(FieldType.TEXT, KEY, 'Key', undefined, true)))
+      .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)))
+      .addField((new Field(FieldType.TEXT, BUCKET, 'Bucket', undefined, true)))
+      .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', undefined, true)).setChoices(REGIONS))
+      .addField((new Field(FieldType.TEXT, ENDPOINT, 'Custom Endpoint')));
+
+    return new FormStack().addForm(form);
+  };
 
   public getS3Client = (applicationInstall: ApplicationInstall): S3Client => {
-    const settings = applicationInstall.getSettings()[FORM];
+    const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
     const endpoint = settings[ENDPOINT];
 
     return new S3Client(

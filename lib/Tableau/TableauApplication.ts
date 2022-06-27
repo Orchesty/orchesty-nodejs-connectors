@@ -10,9 +10,10 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { EXPIRES } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
 const PREFIX_SITE = 'prefix_site';
@@ -52,20 +53,24 @@ export default class TableauApplication extends ABasicApplication {
     return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, SITE, 'Site', null, true))
-    .addField(new Field(
-      FieldType.TEXT,
-      PREFIX_SITE,
-      'Prefix site (https://[this value].online.tableau.com/)',
-      null,
-      true,
-    ))
-    .addField(new Field(FieldType.TEXT, TOKEN, 'Token', null, true))
-    .addField(new Field(FieldType.TEXT, TOKEN_NAME, 'Token name', null, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, SITE, 'Site', null, true))
+      .addField(new Field(
+        FieldType.TEXT,
+        PREFIX_SITE,
+        'Prefix site (https://[this value].online.tableau.com/)',
+        null,
+        true,
+      ))
+      .addField(new Field(FieldType.TEXT, TOKEN, 'Token', null, true))
+      .addField(new Field(FieldType.TEXT, TOKEN_NAME, 'Token name', null, true));
+
+    return new FormStack().addForm(form);
+  };
 
   private _getUrl = (applicationInstall: ApplicationInstall): string => {
-    const prefix = applicationInstall.getSettings()[FORM][PREFIX_SITE];
+    const prefix = applicationInstall.getSettings()[AUTHORIZATION_FORM][PREFIX_SITE];
     if (prefix) {
       return BASE_URL.replace('replace_me', prefix);
     }
@@ -74,13 +79,13 @@ export default class TableauApplication extends ABasicApplication {
 
   private async _getOrRefreshToken(_applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<string> {
     let applicationInstall = _applicationInstall;
-    const expires = applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[EXPIRES];
+    const expires = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[EXPIRES];
     if (!expires || expires > new Date()) {
       applicationInstall = await this._setToken(applicationInstall, dto);
       await (await this._dbClient.getApplicationRepository()).insert(applicationInstall);
     }
 
-    return applicationInstall.getSettings()?.[AUTHORIZATION_SETTINGS]?.[TOKEN];
+    return applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
   }
 
   private async _setToken(applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<ApplicationInstall> {
@@ -88,7 +93,7 @@ export default class TableauApplication extends ABasicApplication {
     const date = new Date();
     date.setDate(date.getDate() + MAX_EXPIRE);
     applicationInstall.setExpires(date);
-    applicationInstall.addSettings({ [AUTHORIZATION_SETTINGS]: { [TOKEN]: token } });
+    applicationInstall.addSettings({ [AUTHORIZATION_FORM]: { [TOKEN]: token } });
 
     return applicationInstall;
   }
@@ -98,7 +103,7 @@ export default class TableauApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     });
-    const form = applicationInstall.getSettings()?.[FORM];
+    const form = applicationInstall.getSettings()?.[AUTHORIZATION_FORM];
     checkParams(form, [TOKEN_NAME, TOKEN, SITE]);
     const data = {
       credentials: {

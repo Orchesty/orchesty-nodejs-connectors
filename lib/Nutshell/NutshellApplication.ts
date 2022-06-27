@@ -12,8 +12,9 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
-import { AUTHORIZATION_SETTINGS } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export default class NutshellApplication extends ABasicApplication {
   // eslint-disable-next-line max-len
@@ -46,12 +47,16 @@ export default class NutshellApplication extends ABasicApplication {
     return request;
   };
 
-  public getSettingsForm = (): Form => (new Form())
-    .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'API Key', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'API Key', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   private _getToken = (applicationInstall: ApplicationInstall): string => encode(
     // eslint-disable-next-line max-len
-    `${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`,
+    `${applicationInstall.getSettings()[AUTHORIZATION_FORM][USER]}:${applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD]}`,
   );
 }

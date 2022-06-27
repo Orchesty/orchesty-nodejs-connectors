@@ -9,6 +9,8 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export const BASE_URL = 'https://api.idoklad.cz/v3';
 
@@ -38,9 +40,13 @@ export default class IDokladApplication extends AOAuth2Application {
     return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getAuthUrl = (): string => 'https://identity.idoklad.cz/server/connect/authorize';
 

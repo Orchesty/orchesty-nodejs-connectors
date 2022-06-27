@@ -10,6 +10,8 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export default class ZohoApplication extends AOAuth2Application {
   public getAuthUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/auth';
@@ -49,9 +51,13 @@ export default class ZohoApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
   ): string[] => ['ZohoCRM.modules.ALL', 'ZohoCRM.settings.ALL'];
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getTokenUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/token';
 

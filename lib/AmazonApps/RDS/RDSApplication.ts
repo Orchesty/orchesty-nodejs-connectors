@@ -2,8 +2,9 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { RDSClient } from '@aws-sdk/client-rds';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AAwsApplication, {
   CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET,
 } from '../AAwsApplication';
@@ -16,13 +17,17 @@ export default class RDSApplication extends AAwsApplication {
 
   public getPublicName = (): string => 'Amazon RDS';
 
-  public getSettingsForm = (): Form => new Form()
-    .addField((new Field(FieldType.TEXT, KEY, 'Key', undefined, true)))
-    .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)))
-    .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', undefined, true)).setChoices(REGIONS));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField((new Field(FieldType.TEXT, KEY, 'Key', undefined, true)))
+      .addField((new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true)))
+      .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', undefined, true)).setChoices(REGIONS));
+
+    return new FormStack().addForm(form);
+  };
 
   public getRDSClient = (applicationInstall: ApplicationInstall): RDSClient => {
-    const settings = applicationInstall.getSettings()[FORM];
+    const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
 
     return new RDSClient({
       [CREDENTIALS]: {

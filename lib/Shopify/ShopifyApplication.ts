@@ -8,7 +8,6 @@ import {
   PASSWORD,
   USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
@@ -16,6 +15,8 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { IApplicationSettings } from '@orchesty/nodejs-sdk/lib/Application/Database/ApplicationInstall';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
@@ -59,7 +60,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
   ): RequestDto => {
     const settings = applicationInstall.getSettings();
     const base64 = encode(
-      `${settings[AUTHORIZATION_SETTINGS][USER]}:${settings[AUTHORIZATION_SETTINGS][PASSWORD]}`,
+      `${settings[AUTHORIZATION_FORM][USER]}:${settings[AUTHORIZATION_FORM][PASSWORD]}`,
     );
     const headers = {
       [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
@@ -74,19 +75,24 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
   };
 
-  public async setApplicationSettings(applicationInstall: ApplicationInstall, settings: IApplicationSettings):
+  public async saveApplicationForms(applicationInstall: ApplicationInstall, settings: IApplicationSettings):
     Promise<ApplicationInstall> {
-    const appInstall = await super.setApplicationSettings(applicationInstall, settings);
+    const appInstall = await super.saveApplicationForms(applicationInstall, settings);
     await this._checkShopPlan(applicationInstall);
     return appInstall;
   }
 
-  public getDecoratedUrl = (app: ApplicationInstall): string => app.getSettings()?.[FORM]?.[SHOPIFY_URL] ?? '';
+  public getDecoratedUrl = (app: ApplicationInstall): string => app
+    .getSettings()?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL] ?? '';
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-    .addField(new Field(FieldType.URL, SHOPIFY_URL, 'Url', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+      .addField(new Field(FieldType.URL, SHOPIFY_URL, 'Url', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getLogo = (): string | null => 'data:image/svg+xml;base64,'
     // eslint-disable-next-line max-len

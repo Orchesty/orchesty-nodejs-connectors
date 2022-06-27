@@ -11,9 +11,10 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const MAGENTO_URL = 'magentoUrl';
 
@@ -63,7 +64,7 @@ export default class Magento2Application extends ABasicApplication {
       const cacheKey = `${
         NAME
       }ApiKey_${applicationInstall.getUser()}`;
-      const credentials = applicationInstall.getSettings()[FORM] ?? {};
+      const credentials = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
       const headers = {
         username: credentials[USER],
         password: credentials[PASSWORD],
@@ -96,10 +97,14 @@ export default class Magento2Application extends ABasicApplication {
     }
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-    .addField(new Field(FieldType.TEXT, MAGENTO_URL, 'Url', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+      .addField(new Field(FieldType.TEXT, MAGENTO_URL, 'Url', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getLogo = (): string => 'data:image/png;base64,'
     // eslint-disable-next-line max-len

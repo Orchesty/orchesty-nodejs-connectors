@@ -8,9 +8,10 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 const SUBDOMAIN = 'subdomain';
 
@@ -49,18 +50,22 @@ export default class ZendeskApplication extends AOAuth2Application {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => ['read', 'write'];
 
-  public getSettingsForm = (): Form => (new Form())
-    .addField((new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true)))
-    .addField((new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true)))
-    .addField((new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true)));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField((new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true)))
+      .addField((new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true)))
+      .addField((new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true)));
 
-  public getAuthUrlWithSubdomain = (applicationInstall: ApplicationInstall): string => `https://${applicationInstall.getSettings()[FORM][SUBDOMAIN]}.zendesk.com/oauth/authorizations/new`;
+    return new FormStack().addForm(form);
+  };
+
+  public getAuthUrlWithSubdomain = (applicationInstall: ApplicationInstall): string => `https://${applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/authorizations/new`;
 
   public getAuthUrl(): string {
     throw new Error(`Dont use [${this.getAuthUrl.name}] use [${this.getAuthUrlWithSubdomain.name}] instead.`);
   }
 
-  public getTokenUrlWithSubdomain = (applicationInstall: ApplicationInstall): string => `https://${applicationInstall.getSettings()[FORM][SUBDOMAIN]}.zendesk.com/oauth/tokens`;
+  public getTokenUrlWithSubdomain = (applicationInstall: ApplicationInstall): string => `https://${applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/tokens`;
 
   public getTokenUrl(): string {
     throw new Error(`Dont use [${this.getAuthUrl.name}] use [${this.getTokenUrlWithSubdomain.name}] instead.`);

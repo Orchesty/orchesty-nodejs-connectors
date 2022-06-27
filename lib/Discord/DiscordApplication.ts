@@ -4,12 +4,13 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const BASE_URL = 'https://discord.com/';
 
@@ -30,7 +31,7 @@ export default class DiscordApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const token = applicationInstall.getSettings()?.[FORM]?.[TOKEN];
+    const token = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
     if (!token) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have token!`);
     }
@@ -46,23 +47,29 @@ export default class DiscordApplication extends ABasicApplication {
     );
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, TOKEN, 'Bot token', undefined, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client id', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, TOKEN, 'Bot token', undefined, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client id', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected _customFormReplace = (form: Form, applicationInstall: ApplicationInstall): void => {
-    form.fields.forEach((field) => {
-      if (field.key === CLIENT_ID && field.value) {
-        form.addField(
-          new Field(
-            FieldType.TEXT,
-            'URL',
-            'Url to add bot to your server',
-            `https://discord.com/api/oauth2/authorize?client_id=${field.value}&permissions=67584&scope=bot`,
-          ).setReadOnly(true),
-        );
-      }
+  protected _customFormReplace = (forms: FormStack, applicationInstall: ApplicationInstall): void => {
+    forms.getForms().forEach((form) => {
+      form.fields.forEach((field) => {
+        if (field.key === CLIENT_ID && field.value) {
+          form.addField(
+            new Field(
+              FieldType.TEXT,
+              'URL',
+              'Url to add bot to your server',
+              `https://discord.com/api/oauth2/authorize?client_id=${field.value}&permissions=67584&scope=bot`,
+            ).setReadOnly(true),
+          );
+        }
+      });
     });
   };
 }

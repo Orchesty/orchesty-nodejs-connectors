@@ -12,8 +12,9 @@ import { Dialect, Options, Sequelize } from 'sequelize';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import OracleDB, { ConnectionAttributes } from 'oracledb';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 const HOST = 'host';
 const PORT = 'port';
@@ -51,12 +52,16 @@ export default abstract class ASqlApplication extends ABasicApplication {
     throw new Error('Unsupported use GetConnection method instead');
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
-    .addField(new Field(FieldType.TEXT, PORT, 'Port', undefined, true))
-    .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-    .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
+      .addField(new Field(FieldType.TEXT, PORT, 'Port', undefined, true))
+      .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+      .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   // eslint-disable-next-line @typescript-eslint/require-await
   public async getConnection(appInstall: ApplicationInstall): Promise<Sequelize | OracleDB.Connection> {
@@ -72,7 +77,7 @@ export default abstract class ASqlApplication extends ABasicApplication {
   }
 
   protected _getConfig = (appInstall: ApplicationInstall): Options | ConnectionAttributes => {
-    const formSettings = appInstall.getSettings()[FORM];
+    const formSettings = appInstall.getSettings()[AUTHORIZATION_FORM];
     switch (this._dialect) {
       case IDialect.sqlite:
         return {

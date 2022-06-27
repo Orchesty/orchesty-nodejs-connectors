@@ -4,11 +4,12 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const BASE_URL = 'https://api.trello.com';
 const API_KEY = 'apiKey';
@@ -31,8 +32,8 @@ export default class TrelloApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const token = applicationInstall.getSettings()?.[FORM]?.[TOKEN];
-    const apiKey = applicationInstall.getSettings()?.[FORM]?.[API_KEY];
+    const token = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
+    const apiKey = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[API_KEY];
     if (!token || !apiKey) {
       throw new Error(`Application [${this.getPublicName()}] doesn't have token, apiKey or both!`);
     }
@@ -54,7 +55,11 @@ export default class TrelloApplication extends ABasicApplication {
     );
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, TOKEN, 'Bot token', undefined, true))
-    .addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, TOKEN, 'Bot token', undefined, true))
+      .addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 }

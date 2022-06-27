@@ -12,9 +12,10 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export const MAILCHIMP_URL = 'https://login.mailchimp.com/oauth2/authorize';
 export const MAILCHIMP_DATACENTER_URL = 'https://login.mailchimp.com';
@@ -62,10 +63,14 @@ export default class MailchimpApplication extends AOAuth2Application implements 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
-    .addField(new Field(FieldType.TEXT, AUDIENCE_ID, 'Audience Id', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
+      .addField(new Field(FieldType.TEXT, AUDIENCE_ID, 'Audience Id', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getAuthUrl = (): string => MAILCHIMP_URL;
 
@@ -86,7 +91,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     applicationInstall,
     HttpMethods.POST,
     `${applicationInstall.getSettings()[API_KEYPOINT]}
-    /3.0/lists/${applicationInstall.getSettings()[FORM][AUDIENCE_ID]}/webhooks`,
+    /3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/webhooks`,
     JSON.stringify(
       {
         url,
@@ -111,7 +116,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     applicationInstall,
     HttpMethods.DELETE,
     // eslint-disable-next-line max-len
-    `${applicationInstall.getSettings()[API_KEYPOINT]}/3.0/lists/${applicationInstall.getSettings()[FORM][AUDIENCE_ID]}/webhooks/${id}`,
+    `${applicationInstall.getSettings()[API_KEYPOINT]}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/webhooks/${id}`,
   );
 
   public processWebhookSubscribeResponse = (

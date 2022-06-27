@@ -9,6 +9,8 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 const BASE_URL = 'https://graph.facebook.com/';
 
@@ -44,7 +46,11 @@ export default class FacebookAdsApplication extends AOAuth2Application {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => ['email', 'ads_management', 'ads_read'];
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+
+    return new FormStack().addForm(form);
+  };
 }

@@ -14,9 +14,10 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
-import { AUTHORIZATION_SETTINGS } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
@@ -52,9 +53,13 @@ export default class ShipstationApplication extends ABasicApplication implements
     return request;
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, USER, 'API Key', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'API Secret', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'API Key', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'API Secret', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getWebhookSubscribeRequestDto(
     applicationInstall: ApplicationInstall,
@@ -101,7 +106,7 @@ export default class ShipstationApplication extends ABasicApplication implements
   public processWebhookUnsubscribeResponse = (dto: ResponseDto): boolean => dto.responseCode === 200;
 
   private _getToken = (applicationInstall: ApplicationInstall): string => encode(
-    `${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER]}:
-      ${applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD]}`,
+    `${applicationInstall.getSettings()[AUTHORIZATION_FORM][USER]}:
+      ${applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD]}`,
   );
 }

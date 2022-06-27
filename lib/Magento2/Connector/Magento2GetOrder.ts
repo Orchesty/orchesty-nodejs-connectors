@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Magento2Application, { MAGENTO_URL } from '../Magento2Application';
 
 export const GET_ORDERS_ENDPOINT = 'index.php/rest/default/V1/orders/';
@@ -17,7 +17,7 @@ export default class Magento2GetOrder extends AConnector {
       orderNumber,
     } = dto.jsonData as { userName: string, orderNumber: string };
     const appInstall = await this._getApplicationInstall(userName);
-    const host = appInstall.getSettings()[FORM][MAGENTO_URL];
+    const host = appInstall.getSettings()[AUTHORIZATION_FORM][MAGENTO_URL];
     const url = `${host}/${GET_ORDERS_ENDPOINT}${orderNumber}`;
 
     const requestDto = await app.getRequestDto(

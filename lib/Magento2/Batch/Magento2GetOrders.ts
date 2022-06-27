@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Magento2Application, { MAGENTO_URL } from '../Magento2Application';
 import { IOrderJson } from '../Connector/Magento2GetOrder';
 
@@ -19,7 +19,7 @@ export default class Magento2GetOrders extends AConnector {
     const currentPage = Number(dto.getBatchCursor('1'));
     const { userName } = dto.jsonData as { userName: string };
     const appInstall = await this._getApplicationInstall(userName);
-    const host = appInstall.getSettings()[FORM][MAGENTO_URL];
+    const host = appInstall.getSettings()[AUTHORIZATION_FORM][MAGENTO_URL];
     const url = `${host}/${GET_ORDERS_ENDPOINT}`
       .replace('{items_per_page}', ITEMS_PER_PAGE.toString())
       .replace('{current_page}', currentPage.toString());

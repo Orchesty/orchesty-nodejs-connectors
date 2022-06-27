@@ -7,12 +7,13 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
 
@@ -35,7 +36,7 @@ export default class WooCommerceApplication extends ABasicApplication {
   ): RequestDto => {
     const settings = applicationInstall.getSettings();
     const base64 = encode(
-      `${settings[AUTHORIZATION_SETTINGS][USER]}:${settings[AUTHORIZATION_SETTINGS][PASSWORD]}`,
+      `${settings[AUTHORIZATION_FORM][USER]}:${settings[AUTHORIZATION_FORM][PASSWORD]}`,
     );
     const headers = {
       [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
@@ -51,12 +52,17 @@ export default class WooCommerceApplication extends ABasicApplication {
     return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
   };
 
-  public getDecoratedUrl = (app: ApplicationInstall): string => app.getSettings()?.[FORM]?.[WOOCOMMERCE_URL] ?? '';
+  public getDecoratedUrl = (app: ApplicationInstall): string => app
+    .getSettings()?.[AUTHORIZATION_FORM]?.[WOOCOMMERCE_URL] ?? '';
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-    .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Url', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+      .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Url', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getLogo = (): string => 'data:image/png;base64,'
     // eslint-disable-next-line max-len

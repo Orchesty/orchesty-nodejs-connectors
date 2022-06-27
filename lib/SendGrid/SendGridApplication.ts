@@ -6,9 +6,10 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { AUTHORIZATION_SETTINGS } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const BASE_URL = 'https://api.sendgrid.com/v3';
 
@@ -35,7 +36,7 @@ export default class SendGridApplication extends ABasicApplication {
     }
 
     const settings = applicationInstall.getSettings();
-    const token = settings[AUTHORIZATION_SETTINGS][TOKEN];
+    const token = settings[AUTHORIZATION_FORM][TOKEN];
     const dto = new RequestDto(
       new URL(url ?? BASE_URL).toString(),
       method,
@@ -52,6 +53,10 @@ export default class SendGridApplication extends ABasicApplication {
     return dto;
   }
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, TOKEN, 'Api key', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, TOKEN, 'Api key', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 }

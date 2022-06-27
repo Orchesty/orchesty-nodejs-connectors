@@ -2,12 +2,15 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import {
-  DescribeClustersCommand, DescribeClustersCommandInput, DescribeClustersCommandOutput,
+  DescribeClustersCommand,
+  DescribeClustersCommandInput,
+  DescribeClustersCommandOutput,
   RedshiftClient,
 } from '@aws-sdk/client-redshift';
 import { Client } from 'pg';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import AAwsApplication, {
   CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
 } from '../AAwsApplication';
@@ -26,19 +29,18 @@ export default class RedshiftApplication extends AAwsApplication {
 
   public getPublicName = (): string => 'Amazon Redshift';
 
-  public getSettingsForm = (): Form => {
-    const form = new Form();
-    form
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, KEY, 'Key', undefined, true))
       .addField(new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true))
       .addField(new Field(FieldType.TEXT, DB_PASSWORD, 'Database Password', undefined, true))
       .addField((new Field(FieldType.SELECT_BOX, REGION, 'Region', '', true)).setChoices(REGIONS));
 
-    return form;
+    return new FormStack().addForm(form);
   };
 
   public getRedshiftClient = (applicationInstall: ApplicationInstall): RedshiftClient => {
-    const settings = applicationInstall.getSettings()[FORM];
+    const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
 
     return new RedshiftClient([
       /* eslint-disable @typescript-eslint/naming-convention */
@@ -59,11 +61,11 @@ export default class RedshiftApplication extends AAwsApplication {
     ]);
   };
 
-  public async setApplicationSettings(
+  public async saveApplicationForms(
     _applicationInstall: ApplicationInstall,
     settings: [],
   ): Promise<ApplicationInstall> {
-    const applicationInstall = await super.setApplicationSettings(_applicationInstall, settings);
+    const applicationInstall = await super.saveApplicationForms(_applicationInstall, settings);
 
     const input: DescribeClustersCommandInput = {};
     const command = new DescribeClustersCommand(input);
@@ -80,7 +82,7 @@ export default class RedshiftApplication extends AAwsApplication {
       {
         CLUSTER_IDENTIFIER: cluster.ClusterIdentifier,
         MASTER_USER: cluster.MasterUsername,
-        DB_PASSWORD: applicationInstall.getSettings()[FORM][DB_PASSWORD],
+        DB_PASSWORD: applicationInstall.getSettings()[AUTHORIZATION_FORM][DB_PASSWORD],
         DBNAME: cluster.DBName,
         HOST: cluster.Endpoint?.Address,
         PORT: cluster.Endpoint?.Port,

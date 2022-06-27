@@ -9,11 +9,12 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { AUTHORIZATION_SETTINGS } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { BodyInit, Headers } from 'node-fetch';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 export const BASE_URL = 'https://app.fakturoid.cz/api/v2';
 export const BASE_ACCOUNTS = 'accounts';
@@ -37,8 +38,8 @@ export default class FakturoidApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const userName = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][USER];
-    const password = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][PASSWORD];
+    const userName = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
+    const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
 
     const headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -48,8 +49,12 @@ export default class FakturoidApplication extends ABasicApplication {
     return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, ACCOUNT, 'Account', null, true))
-    .addField(new Field(FieldType.TEXT, USER, 'Username', null, true))
-    .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, ACCOUNT, 'Account', null, true))
+      .addField(new Field(FieldType.TEXT, USER, 'Username', null, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', true));
+
+    return new FormStack().addForm(form);
+  };
 }

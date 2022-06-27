@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { API_KEYPOINT, AUDIENCE_ID } from '../MailchimpApplication';
 
 export default class MailchimpCreateContactConnector extends AConnector {
@@ -17,7 +17,7 @@ export default class MailchimpCreateContactConnector extends AConnector {
         dto,
         applicationInstall,
         HttpMethods.POST,
-        `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[FORM][AUDIENCE_ID]}/members/`,
+        `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/members/`,
         dto.data,
       ),
     );

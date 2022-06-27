@@ -6,12 +6,13 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const API_KEY = 'api_key';
 const WISEPOOPS_URL = 'https://app.wisepops.com/api1/hooks';
@@ -41,7 +42,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]:
       /* eslint-enable @typescript-eslint/naming-convention */
-        `WISEPOPS-API key="${applicationInstall.getSettings()[FORM][API_KEY]}"`,
+        `WISEPOPS-API key="${applicationInstall.getSettings()[AUTHORIZATION_FORM][API_KEY]}"`,
     };
 
     if (data) {
@@ -51,8 +52,12 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     return request;
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getWebhookSubscribeRequestDto = (
     applicationInstall: ApplicationInstall,

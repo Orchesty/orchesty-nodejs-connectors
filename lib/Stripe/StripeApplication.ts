@@ -5,11 +5,12 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { BodyInit } from 'node-fetch';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 
 const BASE_URL = 'https://api.stripe.com';
 const API_KEY = 'api_key';
@@ -36,7 +37,7 @@ export default class StripeApplication extends ABasicApplication {
       throw new Error(`Application [${this.getPublicName()}] is not authorized!`);
     }
 
-    const apiKey = applicationInstall.getSettings()[AUTHORIZATION_SETTINGS][FORM][ACCESS_TOKEN];
+    const apiKey = applicationInstall.getSettings()[AUTHORIZATION_FORM][ACCESS_TOKEN];
     return new RequestDto(
       new URL(url ?? BASE_URL, BASE_URL).toString(),
       method,
@@ -49,6 +50,10 @@ export default class StripeApplication extends ABasicApplication {
     );
   };
 
-  public getSettingsForm = (): Form => new Form()
-    .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 }

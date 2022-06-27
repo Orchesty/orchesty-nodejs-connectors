@@ -8,8 +8,9 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { BodyInit } from 'node-fetch';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 
 export const QUICKBOOKS_URL = 'https://appcenter.intuit.com/connect/oauth2';
 export const TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
@@ -59,10 +60,14 @@ export default class QuickbooksApplication extends AOAuth2Application {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => SCOPES;
 
-  public getSettingsForm = (): Form => (new Form())
-    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
-    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
-    .addField(new Field(FieldType.TEXT, APP_ID, 'Realm Id', undefined, true));
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
+      .addField(new Field(FieldType.TEXT, APP_ID, 'Realm Id', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
 
   public getAuthUrl = (): string => QUICKBOOKS_URL;
 
@@ -70,5 +75,5 @@ export default class QuickbooksApplication extends AOAuth2Application {
 
   private _getBaseUrl = (
     applicationInstall: ApplicationInstall,
-  ): string => `${BASE_URL}/${VERSION}/company/${applicationInstall.getSettings()[FORM][APP_ID]}`;
+  ): string => `${BASE_URL}/${VERSION}/company/${applicationInstall.getSettings()[AUTHORIZATION_FORM][APP_ID]}`;
 }
