@@ -1,7 +1,7 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import Magento2Application, { MAGENTO_URL } from '../Magento2Application';
 import { IOrderJson } from '../Connector/Magento2GetOrder';
 

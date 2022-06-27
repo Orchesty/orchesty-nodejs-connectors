@@ -1,7 +1,7 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import GoogleSheetApplication from '../GoogleSheetApplication';
 
 const GOOGLE_SHEET_CREATE_SPREADSHEET = '/v4/spreadsheets';

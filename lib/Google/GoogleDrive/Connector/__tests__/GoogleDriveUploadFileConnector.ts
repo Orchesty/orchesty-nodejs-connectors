@@ -1,6 +1,6 @@
-import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
-import Metrics from 'pipes-nodejs-sdk/dist/lib/Metrics/Metrics';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
+import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import GoogleDriveUploadFileConnector from '../GoogleDriveUploadFileConnector';
 
 xdescribe('google drive upload file connector', () => {

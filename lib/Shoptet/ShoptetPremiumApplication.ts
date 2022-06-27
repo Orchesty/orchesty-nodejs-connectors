@@ -1,16 +1,16 @@
-import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods, {
   parseHttpMethod,
-} from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ILimitedApplication } from 'pipes-nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+} from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const ID = 'id';
 export const NAME = 'SHOPTET';

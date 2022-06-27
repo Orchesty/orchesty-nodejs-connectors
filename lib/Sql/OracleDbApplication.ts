@@ -1,4 +1,4 @@
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import OracleDB from 'oracledb';
 import ASqlApplication, { IDialect } from './Common/ASqlApplication';
 

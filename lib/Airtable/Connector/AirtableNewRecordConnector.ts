@@ -1,8 +1,8 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ResultCode from 'pipes-nodejs-sdk/dist/lib/Utils/ResultCode';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { get, USER } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { get, USER } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import AirtableApplication, { BASE_ID, BASE_URL, TABLE_NAME } from '../AirtableApplication';
 
 export default class AirtableNewRecordConnector extends AConnector {

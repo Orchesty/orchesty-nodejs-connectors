@@ -1,14 +1,14 @@
-import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
-import { ABasicApplication } from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { ACCESS_TOKEN } from 'pipes-nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { BodyInit } from 'node-fetch';
 
 const BASE_URL = 'https://api.stripe.com';

@@ -1,4 +1,4 @@
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import AGoogle from '../AGoogle';
 
 export const BASE_URL = 'https://bigquery.googleapis.com';

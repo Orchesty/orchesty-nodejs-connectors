@@ -2,21 +2,21 @@ import {
   ABasicApplication,
   PASSWORD,
   USER,
-} from 'pipes-nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import RequestDto from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { AUTHORIZATION_SETTINGS, FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import DateTimeUtils from 'pipes-nodejs-sdk/dist/lib/Utils/DateTimeUtils';
-import { encode } from 'pipes-nodejs-sdk/dist/lib/Utils/Base64';
-import CurlSender from 'pipes-nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
-import MongoDbClient from 'pipes-nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import { AUTHORIZATION_SETTINGS, FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
+import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
+import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { BodyInit, Headers } from 'node-fetch';
-import { CommonHeaders, JSON_TYPE } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
 export const TOKEN_NOT_SUCCESS = 'Token is not succeed returned';

@@ -1,4 +1,4 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 
 export const QUERY = 'query';
 

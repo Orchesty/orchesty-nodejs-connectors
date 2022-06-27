@@ -1,8 +1,8 @@
-import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import {
   DescribeClustersCommand, DescribeClustersCommandInput, DescribeClustersCommandOutput,
   RedshiftClient,

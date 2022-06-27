@@ -1,4 +1,4 @@
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AFakturoidConnector from './FakturoidAbstractConnector';
 
 export default class FakturoidCreateNewSubjectConnector extends AFakturoidConnector {

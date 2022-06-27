@@ -1,7 +1,7 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import AsanaApplication from '../AsanaApplication';
 
 const ASANA_CREATE_TASK_ENDPOINT = '/api/1.0/tasks';

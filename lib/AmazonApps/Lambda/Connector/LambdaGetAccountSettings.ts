@@ -1,6 +1,6 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { GetAccountSettingsCommand, GetAccountSettingsCommandInput } from '@aws-sdk/client-lambda';
-import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ALambdaObjectConnector from './ALambdaObjectConnector';
 import LambdaApplication from '../LambdaApplication';
 

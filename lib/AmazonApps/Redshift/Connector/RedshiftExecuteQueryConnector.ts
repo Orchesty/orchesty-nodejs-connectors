@@ -1,4 +1,4 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ARedshiftObjectConnector from './ARedshiftObjectConnector';
 import RedshiftApplication from '../RedshiftApplication';
 import { QUERY } from '../../AAwsObjectConnector';

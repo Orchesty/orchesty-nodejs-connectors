@@ -1,6 +1,6 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ShopifyApplication from '../ShopifyApplication';
 
 const LIST_PAGE_ENDPOINT = 'admin/api/2021-07/orders.json?status=any&fulfillment_status=unfulfilled&fields=id';

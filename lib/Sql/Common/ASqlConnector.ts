@@ -1,9 +1,9 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ACommonNode from 'pipes-nodejs-sdk/dist/lib/Commons/ACommonNode';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ACommonNode from '@orchesty/nodejs-sdk/dist/lib/Commons/ACommonNode';
 import { ConnectionError, Sequelize } from 'sequelize';
-import logger from 'pipes-nodejs-sdk/dist/lib/Logger/Logger';
-import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import ResultCode from 'pipes-nodejs-sdk/dist/lib/Utils/ResultCode';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import OracleDB, { ExecuteOptions } from 'oracledb';
 import SqlErrorEnum from '../Enums/SqlErrorEnum';
 import ASqlApplication from './ASqlApplication';

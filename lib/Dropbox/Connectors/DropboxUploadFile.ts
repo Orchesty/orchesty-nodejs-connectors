@@ -1,8 +1,8 @@
-import AConnector from 'pipes-nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { checkParams } from 'pipes-nodejs-sdk/dist/lib/Utils/Validations';
-import HttpMethods from 'pipes-nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { CommonHeaders } from 'pipes-nodejs-sdk/dist/lib/Utils/Headers';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import DropboxApplication from '../DropboxApplication';
 
 const DROPBOX_UPLOAD_FILE_ENDPOINT = 'https://content.dropboxapi.com/2/files/upload';

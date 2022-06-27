@@ -1,9 +1,9 @@
-import Form from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { LambdaClient } from '@aws-sdk/client-lambda';
-import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
-import Field from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import FieldType from 'pipes-nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import AAwsApplication, {
   CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET,
 } from '../AAwsApplication';

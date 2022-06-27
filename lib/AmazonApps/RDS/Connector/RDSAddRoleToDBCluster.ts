@@ -1,6 +1,6 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { AddRoleToDBClusterCommand, AddRoleToDBClusterCommandInput } from '@aws-sdk/client-rds';
-import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ARDSObjectConnector from './ARDSObjectConnector';
 import RDSApplication from '../RDSApplication';
 

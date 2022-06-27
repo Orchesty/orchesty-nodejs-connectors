@@ -1,6 +1,6 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { DeleteObjectCommand, DeleteObjectCommandInput } from '@aws-sdk/client-s3';
-import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import AS3ObjectConnector from './AS3ObjectConnector';
 import S3Application, { BUCKET } from '../S3Application';
 import { KEY } from '../../AAwsApplication';

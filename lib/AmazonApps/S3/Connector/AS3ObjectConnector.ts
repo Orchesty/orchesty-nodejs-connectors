@@ -1,5 +1,5 @@
-import { ApplicationInstall } from 'pipes-nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { FORM } from 'pipes-nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AAwsObjectConnector from '../../AAwsObjectConnector';
 import { BUCKET } from '../S3Application';
 
