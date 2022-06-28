@@ -33,7 +33,7 @@ export default abstract class ASqlConnector extends ACommonNode {
         return this._processResult({ rows: result[0] }, dto);
       }
 
-      return this._processResult(conn.execute(query, [], this._getExecuteOptions()), dto);
+      return this._processResult(await conn.execute(query, [], this._getExecuteOptions()), dto);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       if (e instanceof ConnectionError) {
