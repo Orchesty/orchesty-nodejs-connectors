@@ -1,13 +1,13 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { IOutputJson as IInputJson } from './ShoptetGetOrderPages';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
 
-export default class ShoptetGetOrderList extends AConnector {
+export default class ShoptetGetOrderList extends ABatchNode {
   public getName = (): string => 'shoptet-get-order-list';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as ShoptetPremiumApplication;
     const {

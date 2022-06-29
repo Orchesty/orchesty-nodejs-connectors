@@ -1,14 +1,14 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import UpgatesApplication from '../UpgatesApplication';
 
 const LIST_PAGE_ENDPOINT = 'api/v2/orders';
 
-export default class UpgatesGetOrders extends AConnector {
+export default class UpgatesGetOrders extends ABatchNode {
   public getName = (): string => 'upgates-get-orders';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as UpgatesApplication;
     const {

@@ -1,16 +1,16 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ShopifyApplication from '../../Shopify/ShopifyApplication';
 
 const LIST_PAGE_ENDPOINT = 'api/v2/products';
 
 export const NAME = 'upgates-get-products';
 
-export default class UpgatesGetProducts extends AConnector {
+export default class UpgatesGetProducts extends ABatchNode {
   public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as ShopifyApplication;
     const { userName } = dto.jsonData as IInputJson;

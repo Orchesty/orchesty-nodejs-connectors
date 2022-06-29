@@ -1,7 +1,7 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import Magento2Application, { MAGENTO_URL } from '../Magento2Application';
 import { IOrderJson } from '../Connector/Magento2GetOrder';
 
@@ -10,10 +10,10 @@ export const GET_ORDERS_ENDPOINT = 'index.php/rest/default/V1/orders?searchCrite
 
 const ITEMS_PER_PAGE = 100;
 
-export default class Magento2GetOrders extends AConnector {
+export default class Magento2GetOrders extends ABatchNode {
   public getName = (): string => 'shoptet-get-order-pages';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as Magento2Application;
     const currentPage = Number(dto.getBatchCursor('1'));

@@ -5,7 +5,7 @@ specifiers:
   '@aws-sdk/client-rds': ^3.118.0
   '@aws-sdk/client-redshift': ^3.118.0
   '@aws-sdk/client-s3': ^3.118.0
-  '@orchesty/nodejs-sdk': ^2.0.0
+  '@orchesty/nodejs-sdk': ^2.0.2
   '@types/debug': ^4.1.7
   '@types/jest': ^28.1.3
   '@types/luxon': ^2.3.2
@@ -68,7 +68,7 @@ optionalDependencies:
   tedious: 14.6.1
 
 devDependencies:
-  '@orchesty/nodejs-sdk': 2.0.0
+  '@orchesty/nodejs-sdk': 2.0.2
   '@types/debug': 4.1.7
   '@types/jest': 28.1.3
   '@types/node': 18.0.0
@@ -2166,8 +2166,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk/2.0.0:
-    resolution: {integrity: sha512-0GO3nPMcDDYm0TweV0a8CoafYMrKzsBhyyAW9W9nqFSOIQwpx0VHXxVLSuufyBvOEs2wNGn1rvD/VAvG6AR+pw==}
+  /@orchesty/nodejs-sdk/2.0.2:
+    resolution: {integrity: sha512-M0QxsPI7nV2aZjbVYJ5QxO000zEB7T4QmJLfD209GW6ld24tt4A1RXFwoUIWQYvbn9XRedp3bU2fuA2FEW1rpg==}
     dependencies:
       '@types/express': 4.17.13
       '@types/express-prometheus-middleware': 1.2.1

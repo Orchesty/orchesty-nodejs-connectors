@@ -1,15 +1,15 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ShoptetPremiumApplication, { SHOPTET_API_HOST } from '../ShoptetPremiumApplication';
 
 export const GET_ORDER_PAGES_ENDPOINT = 'api/orders';
 const LAST_RUN = 'lastRunOrder';
 
-export default class ShoptetGetOrderPages extends AConnector {
+export default class ShoptetGetOrderPages extends ABatchNode {
   public getName = (): string => 'shoptet-get-order-pages';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as ShoptetPremiumApplication;
     const {
