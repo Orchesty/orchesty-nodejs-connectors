@@ -19,7 +19,7 @@ export default abstract class AFakturoidConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     let body;
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const app = await this._application;
     if (!app.isAuthorized(applicationInstall)) {
       dto.setStopProcess(ResultCode.STOP_AND_FAILED, `AppInstall [${applicationInstall.getName()}] is not authorized!`);
