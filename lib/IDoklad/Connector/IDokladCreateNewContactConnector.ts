@@ -11,7 +11,7 @@ export default class IDokladCreateNewContactConnector extends AConnector {
     const dto = _dto;
     checkParams(dto.jsonData as Record<string, unknown>, ['CompanyName', 'CountryId', 'Name']);
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await this._application.getRequestDto(
       dto,

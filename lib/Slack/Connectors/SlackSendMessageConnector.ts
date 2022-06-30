@@ -11,11 +11,10 @@ export default class SlackSendMessageConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const {
-      userName,
       channel,
-    } = dto.jsonData as { userName: string, channel: string };
+    } = dto.jsonData as { channel: string };
     const application = this._application as SlackApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
     const data = {
       channel: `${channel}`,
       blocks: [
@@ -23,7 +22,7 @@ export default class SlackSendMessageConnector extends AConnector {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `Hello, *${userName}*`,
+            text: `Hello, *${dto.user}*`,
           },
         },
       ],

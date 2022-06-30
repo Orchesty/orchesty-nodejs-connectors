@@ -13,7 +13,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const form = new FormData();
     form.append('metadata', JSON.stringify({

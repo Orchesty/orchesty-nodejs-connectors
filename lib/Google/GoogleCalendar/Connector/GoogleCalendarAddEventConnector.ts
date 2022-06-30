@@ -12,7 +12,6 @@ interface IGoogleCalendarEvent {
   timeZone: string,
   summary: string,
   calenderId: string,
-  userName: string,
 }
 
 export default class GoogleDriveUploadFileConnector extends AConnector {
@@ -22,7 +21,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
     const dto = _dto;
     checkParams(
         dto.jsonData as Record<string, unknown>,
-        ['start', 'end', 'timeZone', 'summary', 'userName', 'calenderId'],
+        ['start', 'end', 'timeZone', 'summary', 'calenderId'],
     );
 
     const {
@@ -31,11 +30,10 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
       timeZone,
       summary,
       calenderId,
-      userName,
     } = dto.jsonData as IGoogleCalendarEvent;
 
     const application = this._application as GoogleCalendarApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const data = {
       start: {

@@ -14,13 +14,13 @@ export default class GmailGetProfile extends AConnector {
     const dto = _dto;
     checkParams(
           dto.jsonData as Record<string, unknown>,
-          ['userId', 'userName'],
+          ['userId'],
     );
 
-    const { userId, userName } = dto.jsonData as { userId: string, userName: string };
+    const { userId } = dto.jsonData as { userId: string };
 
     const application = this._application as GmailApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,

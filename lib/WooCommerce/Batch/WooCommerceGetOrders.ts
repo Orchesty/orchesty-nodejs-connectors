@@ -1,19 +1,18 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import WooCommerceApplication, { NAME } from '../WooCommerceApplication';
 
 const WOOCOMMERCE_GET_ORDERS_ENDPOINT = 'wp-json/wc/v3/orders?per_page=100&page=';
 
-export default class WooCommerceGetOrders extends AConnector {
+export default class WooCommerceGetOrders extends ABatchNode {
   public getName = (): string => `${NAME.toLowerCase()}-get-orders`;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const pageNumber = dto.getBatchCursor('1');
-    const { userName } = dto.jsonData as { userName: string };
     const app = this._application as WooCommerceApplication;
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
 
     const requestDto = await app.getRequestDto(
       dto,
@@ -29,7 +28,7 @@ export default class WooCommerceGetOrders extends AConnector {
     } else {
       dto.removeBatchCursor();
     }
-    dto.jsonData = res.jsonBody as IResponseJson[];
+    dto.setItemList(res.jsonBody as IResponseJson[]);
     return dto;
   }
 }

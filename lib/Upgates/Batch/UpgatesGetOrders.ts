@@ -1,18 +1,17 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import UpgatesApplication from '../UpgatesApplication';
 
 const LIST_PAGE_ENDPOINT = 'api/v2/orders';
 
-export default class UpgatesGetOrders extends AConnector {
+export default class UpgatesGetOrders extends ABatchNode {
   public getName = (): string => 'upgates-get-orders';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const app = this._application as UpgatesApplication;
     const {
-      userName,
       from,
       to,
     } = dto.jsonData as IInputJson;
@@ -24,7 +23,7 @@ export default class UpgatesGetOrders extends AConnector {
     if (to) {
       url = `${url}&creation_time_to=${to}`;
     }
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
     const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);
@@ -39,15 +38,13 @@ export default class UpgatesGetOrders extends AConnector {
     if (Number(pageNumber) < number_of_pages) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     }
-
-    dto.jsonData = orders;
+    dto.setItemList(orders);
 
     return dto;
   }
 }
 
 interface IInputJson {
-  userName: string,
   from: string,
   to: string
 }

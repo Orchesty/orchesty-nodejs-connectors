@@ -9,7 +9,7 @@ export default class MailchimpTagContactConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const apiEndpoint = applicationInstall.getSettings()[API_KEYPOINT];
 
     const output = await this._sender.send(

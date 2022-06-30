@@ -11,7 +11,7 @@ export default class ShipstationNewOrderConnector extends AConnector {
     const dto = _dto;
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const data = dto.jsonData as { resource_url: string };
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const url = data.resource_url ?? undefined;
     if (!url) {
       dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Url is not set.');

@@ -15,6 +15,7 @@ import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 const APP_ID = 'app_id';
 export const BASE_URL = 'https://api.hubapi.com';
@@ -37,7 +38,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
   public getDescription = (): string => 'HubSpot offers a full stack of software for marketing, sales, and customer service, with a completely free CRM at its core. They’re powerful alone — but even better when used together.';
 
   public getRequestDto(
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,

@@ -1,7 +1,6 @@
 import {
   ABasicApplication,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
@@ -14,6 +13,7 @@ import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 const NAME = 'MONEYS5';
 const BASE_URL = 'https://{host}/';
@@ -35,7 +35,7 @@ export default class MoneyS5Application extends ABasicApplication {
   public getPublicName = (): string => 'MoneyS5';
 
   public async getRequestDto(
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,
@@ -62,7 +62,7 @@ export default class MoneyS5Application extends ABasicApplication {
 
   public getApiToken = async (
     applicationInstall: ApplicationInstall,
-    processDto: ProcessDto,
+    processDto: AProcessDto,
   ): Promise<string> => {
     try {
       const cacheKey = `${

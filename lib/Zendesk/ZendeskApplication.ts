@@ -2,7 +2,6 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -12,6 +11,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { BodyInit } from 'node-fetch';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 const SUBDOMAIN = 'subdomain';
 
@@ -27,7 +27,7 @@ export default class ZendeskApplication extends AOAuth2Application {
   public getLogo = (): string => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBBZG9iZSBJbGx1c3RyYXRvciAyNC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIxNTBweCIgaGVpZ2h0PSIxNTBweCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE1MCAxNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBvbHlnb24gZmlsbD0iIzAzMzYzRCIgcG9pbnRzPSI2OS4yOTQsNDguMTc3IDAuMDE1LDEzMS44MzIgNjkuMjk0LDEzMS44MzIgIi8+DQo8cGF0aCBmaWxsPSIjMDMzNjNEIiBkPSJNMzQuNjkyLDUyLjc3MWMxOS4xMTcsMCwzNC42MDMtMTUuNDg2LDM0LjYwMy0zNC42MDNIMC4wMTVDMC4wMTUsMzcuMjg1LDE1LjU3NSw1Mi43NzEsMzQuNjkyLDUyLjc3MXoiLz4NCjxwb2x5Z29uIGZpbGw9IiMwMzM2M0QiIHBvaW50cz0iODAuNzA1LDE4LjE2OCA4MC43MDUsMTAxLjgyMyAxNDkuOTg1LDE4LjE2OCAiLz4NCjxwYXRoIGZpbGw9IiMwMzM2M0QiIGQ9Ik0xMTUuMzA4LDk3LjIyOWMtMTkuMTE3LDAtMzQuNjAzLDE1LjQ4Ni0zNC42MDMsMzQuNjAzaDY5LjIwNg0KCUMxNDkuOTExLDExMi43MTUsMTM0LjQyNSw5Ny4yMjksMTE1LjMwOCw5Ny4yMjl6Ii8+DQo8L3N2Zz4NCg==';
 
   public getRequestDto = (
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,

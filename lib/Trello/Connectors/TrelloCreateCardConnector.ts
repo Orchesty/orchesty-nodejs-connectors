@@ -7,7 +7,6 @@ import TrelloApplication from '../TrelloApplication';
 const TRELLO_CREATE_CARD_ENDPOINT = '/1/cards';
 
 interface ITrelloCard {
-  userName: string,
   idList: string,
   name: string,
   desc: string,
@@ -20,11 +19,10 @@ export default class TrelloCreateCardConnector extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['idList', 'userName', 'desc', 'name'],
+      ['idList', 'desc', 'name'],
     );
 
     const {
-      userName,
       idList,
       desc,
       name,
@@ -32,7 +30,7 @@ export default class TrelloCreateCardConnector extends AConnector {
     const query = new URLSearchParams({ idList, desc, name });
 
     const application = this._application as TrelloApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,

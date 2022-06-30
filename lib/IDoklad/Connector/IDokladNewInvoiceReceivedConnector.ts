@@ -37,7 +37,7 @@ export default class IDokladNewInvoiceReceivedConnector extends AConnector {
       },
     );
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await this._application.getRequestDto(
       dto,

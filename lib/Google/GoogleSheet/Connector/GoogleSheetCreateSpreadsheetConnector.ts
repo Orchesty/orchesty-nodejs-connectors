@@ -9,7 +9,6 @@ const GOOGLE_SHEET_CREATE_SPREADSHEET = '/v4/spreadsheets';
 interface IGoogleSheetSpreadsheet {
   name: string,
   dataGrid: string,
-  userName: string,
 }
 
 interface ISheet {
@@ -35,17 +34,16 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['name', 'dataGrid', 'userName'],
+      ['name', 'dataGrid'],
     );
 
     const {
       name,
       dataGrid,
-      userName,
     } = dto.jsonData as IGoogleSheetSpreadsheet;
 
     const application = this._application as GoogleSheetApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const data = {
       properties: {

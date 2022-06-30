@@ -15,15 +15,13 @@ export default class ShoptetGetOrderDetail extends AConnector {
     const dto = _dto;
     const app = this._application as ShoptetPremiumApplication;
     const {
-      userName,
       code,
-    } = dto.jsonData as { userName: string, code: string };
+    } = dto.jsonData as { code: string };
 
-    const order: IResponseJson = await this._doRequest(app, userName, code, dto);
+    const order: IResponseJson = await this._doRequest(app, code, dto, dto.user);
 
     dto.jsonData = {
       ...order.data,
-      userName,
     };
 
     return dto;
@@ -31,15 +29,15 @@ export default class ShoptetGetOrderDetail extends AConnector {
 
   private async _doRequest(
     app: ShoptetPremiumApplication,
-    userName: string,
     code: string,
     dto: ProcessDto,
+    user?: string,
   ): Promise<IResponseJson> {
     const url = `${SHOPTET_API_HOST}/${GET_ORDER_DETAIL_ENDPOINT.replace(
       '{code}',
       code,
     )}`;
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(user);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,
@@ -129,8 +127,4 @@ export interface IOrderJson {
 
 interface IResponseJson {
   data: IOrderJson;
-}
-
-export interface IOutputJson extends IOrderJson {
-  userName: string;
 }
