@@ -40,7 +40,7 @@ export default class Magento2GetOrders extends ABatchNode {
     if (currentPage < total_count) {
       dto.setBatchCursor((currentPage + 1).toString());
     }
-    dto.jsonData = items as IOutputJson;
+    dto.setItemList(items);
 
     return dto;
   }
@@ -51,5 +51,3 @@ interface IResponseJson {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   total_count: number
 }
-
-type IOutputJson = IOrderJson[];
