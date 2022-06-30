@@ -11,9 +11,8 @@ export default class WooCommerceGetOrders extends ABatchNode {
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const pageNumber = dto.getBatchCursor('1');
-    const { userName } = dto.jsonData as { userName: string };
     const app = this._application as WooCommerceApplication;
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
 
     const requestDto = await app.getRequestDto(
       dto,
@@ -29,7 +28,7 @@ export default class WooCommerceGetOrders extends ABatchNode {
     } else {
       dto.removeBatchCursor();
     }
-    dto.jsonData = res.jsonBody as IResponseJson[];
+    dto.setItemList(res.jsonBody as IResponseJson[]);
     return dto;
   }
 }

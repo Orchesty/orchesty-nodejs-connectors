@@ -13,10 +13,9 @@ export default class ShoptetGetOrderPages extends ABatchNode {
     const dto = _dto;
     const app = this._application as ShoptetPremiumApplication;
     const {
-      userName,
       from,
-    } = dto.jsonData as { userName: string, from: string };
-    const appInstall = await this._getApplicationInstall(userName);
+    } = dto.jsonData as { from: string };
+    const appInstall = await this._getApplicationInstall(dto.user);
 
     let url = `${SHOPTET_API_HOST}/${GET_ORDER_PAGES_ENDPOINT}`;
 
@@ -45,11 +44,10 @@ export default class ShoptetGetOrderPages extends ABatchNode {
     for (let i = 1; i <= pageCount; i += 1) {
       pages.push({
         url: `${url}${creationTimeFrom ? '&' : '?'}page=${i}`,
-        userName,
       });
     }
 
-    dto.jsonData = pages;
+    dto.setItemList(pages);
     return dto;
   }
 }
@@ -64,5 +62,4 @@ interface IResponseJson {
 
 export interface IOutputJson {
   url: string;
-  userName: string;
 }

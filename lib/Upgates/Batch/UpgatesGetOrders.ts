@@ -12,7 +12,6 @@ export default class UpgatesGetOrders extends ABatchNode {
     const dto = _dto;
     const app = this._application as UpgatesApplication;
     const {
-      userName,
       from,
       to,
     } = dto.jsonData as IInputJson;
@@ -24,7 +23,7 @@ export default class UpgatesGetOrders extends ABatchNode {
     if (to) {
       url = `${url}&creation_time_to=${to}`;
     }
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
     const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);
@@ -39,15 +38,13 @@ export default class UpgatesGetOrders extends ABatchNode {
     if (Number(pageNumber) < number_of_pages) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     }
-
-    dto.jsonData = orders;
+    dto.setItemList(orders);
 
     return dto;
   }
 }
 
 interface IInputJson {
-  userName: string,
   from: string,
   to: string
 }

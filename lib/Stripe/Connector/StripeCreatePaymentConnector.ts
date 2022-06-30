@@ -11,7 +11,6 @@ interface IStripePayment {
   currency: string,
   source: string,
   description: string,
-  userName: string
 }
 
 export default class StripeCreatePaymentConnector extends AConnector {
@@ -22,11 +21,10 @@ export default class StripeCreatePaymentConnector extends AConnector {
 
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['amount', 'currency', 'source', 'description', 'userName'],
+      ['amount', 'currency', 'source', 'description'],
     );
 
     const {
-      userName,
       amount,
       currency,
       source,
@@ -37,7 +35,7 @@ export default class StripeCreatePaymentConnector extends AConnector {
     });
 
     const application = this._application as StripeApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,

@@ -17,8 +17,7 @@ export default class Magento2GetOrders extends ABatchNode {
     const dto = _dto;
     const app = this._application as Magento2Application;
     const currentPage = Number(dto.getBatchCursor('1'));
-    const { userName } = dto.jsonData as { userName: string };
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
     const host = appInstall.getSettings()[AUTHORIZATION_FORM][MAGENTO_URL];
     const url = `${host}/${GET_ORDERS_ENDPOINT}`
       .replace('{items_per_page}', ITEMS_PER_PAGE.toString())

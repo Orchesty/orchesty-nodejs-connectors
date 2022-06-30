@@ -11,11 +11,10 @@ export default class ShoptetGetOrderList extends ABatchNode {
     const dto = _dto;
     const app = this._application as ShoptetPremiumApplication;
     const {
-      userName,
       url,
     } = dto.jsonData as IInputJson;
 
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,
@@ -24,10 +23,9 @@ export default class ShoptetGetOrderList extends ABatchNode {
     );
     const res = await this._sender.send(requestDto, [200, 404]);
     const { orders } = (res.jsonBody as IResponseJson).data;
-    dto.jsonData = orders.map((item) => ({
+    dto.setItemList(orders.map((item) => ({
       code: item.code,
-      userName,
-    })) as IOutputJson[];
+    })) as IOutputJson[]);
 
     return dto;
   }
@@ -45,5 +43,4 @@ interface IResponseJson {
 
 export interface IOutputJson {
   code: string;
-  userName: string;
 }

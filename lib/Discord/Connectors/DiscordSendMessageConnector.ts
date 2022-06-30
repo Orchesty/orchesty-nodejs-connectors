@@ -12,7 +12,6 @@ interface IDiscordMessage {
   color: number,
   url: string,
   channelId: string,
-  userName: string,
 }
 
 export default class DiscordSendMessageConnector extends AConnector {
@@ -22,7 +21,7 @@ export default class DiscordSendMessageConnector extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['title', 'description', 'color', 'url', 'channelId', 'userName'],
+      ['title', 'description', 'color', 'url', 'channelId'],
     );
 
     const {
@@ -31,11 +30,10 @@ export default class DiscordSendMessageConnector extends AConnector {
       color,
       url,
       channelId,
-      userName,
     } = dto.jsonData as IDiscordMessage;
 
     const application = this._application as DiscordApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
     const data = {
       tts: false,
       embeds: [

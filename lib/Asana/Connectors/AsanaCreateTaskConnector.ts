@@ -7,7 +7,6 @@ import AsanaApplication from '../AsanaApplication';
 const ASANA_CREATE_TASK_ENDPOINT = '/api/1.0/tasks';
 
 interface IAsanaTask {
-  userName: string,
   notes: string,
   name: string,
   projects: string,
@@ -21,11 +20,10 @@ export default class AsanaCreateTaskConnector extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['userName', 'notes', 'name', 'projects', 'workspace'],
+      ['notes', 'name', 'projects', 'workspace'],
     );
 
     const {
-      userName,
       notes,
       name,
       projects,
@@ -40,7 +38,7 @@ export default class AsanaCreateTaskConnector extends AConnector {
       },
     };
     const application = this._application as AsanaApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,
