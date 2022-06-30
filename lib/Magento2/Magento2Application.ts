@@ -3,7 +3,6 @@ import {
   PASSWORD,
   USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
@@ -15,6 +14,7 @@ import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const MAGENTO_URL = 'magentoUrl';
 
@@ -36,7 +36,7 @@ export default class Magento2Application extends ABasicApplication {
   public getPublicName = (): string => 'Magento2';
 
   public async getRequestDto(
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,
@@ -58,7 +58,7 @@ export default class Magento2Application extends ABasicApplication {
 
   public getApiToken = async (
     applicationInstall: ApplicationInstall,
-    processDto: ProcessDto,
+    processDto: AProcessDto,
   ): Promise<string> => {
     try {
       const cacheKey = `${

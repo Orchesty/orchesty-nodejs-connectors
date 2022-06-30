@@ -10,7 +10,6 @@ import { BASE_URL } from '../TwilioApplication';
 const TWILIO_SEND_MESSAGE_ENDPOINT = 'Accounts/{AccountSid}/Messages';
 
 interface ITwilioMessage {
-  userName: string,
   body: string,
   from: string,
   statusCallback: string,
@@ -27,17 +26,16 @@ export default class TwilioSendMessage extends AConnector {
     const dto = _dto;
     checkParams(
         dto.jsonData as Record<string, unknown>,
-        ['body', 'from', 'to', 'userName'],
+        ['body', 'from', 'to'],
     );
 
     const {
-      userName,
       body,
       from,
       to,
     } = dto.jsonData as ITwilioMessage;
 
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const form = new FormData();
     form.append('From', from);

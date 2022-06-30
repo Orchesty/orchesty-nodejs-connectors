@@ -11,7 +11,6 @@ interface IJiraIssue {
     summary: string,
     projectKey: string,
     issueType: string,
-    userName: string,
 }
 
 export default class JiraCreateIssueConnector extends AConnector {
@@ -21,19 +20,18 @@ export default class JiraCreateIssueConnector extends AConnector {
     const dto = _dto;
     checkParams(
             dto.jsonData as Record<string, unknown>,
-            ['description', 'summary', 'projectKey', 'userName', 'issueType'],
+            ['description', 'summary', 'projectKey', 'issueType'],
     );
 
     const {
       description,
       summary,
       projectKey,
-      userName,
       issueType,
     } = dto.jsonData as IJiraIssue;
 
     const application = this._application as JiraApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
     const data = {
       fields: {
         project: {

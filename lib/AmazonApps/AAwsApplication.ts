@@ -1,8 +1,8 @@
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { BodyInit } from 'node-fetch';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const KEY = 'Key';
 export const SECRET = 'secret';
@@ -40,7 +40,7 @@ export const LATEST = 'latest';
 export default abstract class AAwsApplication extends ABasicApplication {
   public getRequestDto = (
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string,
     url?: string,

@@ -8,12 +8,12 @@ import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Tran
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
 
@@ -28,7 +28,7 @@ export default class WooCommerceApplication extends ABasicApplication {
   public getPublicName = (): string => 'WooCommerce';
 
   public getRequestDto = (
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,

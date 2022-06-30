@@ -8,7 +8,7 @@ export default class FlexiBeeGetContactsArrayConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const application = this._application as FlexiBeeApplication;
     const request = await application.getRequestDto(

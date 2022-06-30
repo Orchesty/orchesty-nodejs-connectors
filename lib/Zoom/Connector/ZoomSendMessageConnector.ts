@@ -7,7 +7,6 @@ import ZoomApplication from '../ZoomApplication';
 const ZOOM_SEND_MESSAGE_ENDPOINT = '/v2/chat/users/replace_me/messages';
 
 interface IZoomMessage {
-  userName: string,
   toChannel: string,
   message: string,
   userId: string
@@ -21,11 +20,10 @@ export default class ZoomSendMessageConnector extends AConnector {
     const { jsonData } = dto;
     checkParams(
       jsonData as Record<string, unknown>,
-      ['userName', 'toChannel', 'message', 'userId'],
+      ['toChannel', 'message', 'userId'],
     );
 
     const {
-      userName,
       toChannel,
       message,
       userId,
@@ -38,7 +36,7 @@ export default class ZoomSendMessageConnector extends AConnector {
     };
 
     const application = this._application as ZoomApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,

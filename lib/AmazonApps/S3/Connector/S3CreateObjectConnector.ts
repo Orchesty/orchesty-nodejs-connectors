@@ -16,7 +16,7 @@ export default class S3CreateObjectConnector extends AS3ObjectConnector {
     const content = dto.jsonData as { name: string, content: string };
     this._checkParameters([NAME], content);
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const application = this._application as S3Application;
     const client = application.getS3Client(applicationInstall);
     const input: PutObjectCommandInput = {

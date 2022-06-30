@@ -7,7 +7,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
@@ -15,13 +14,14 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const NAME = 'upgates';
 
 const UPGATES_URL = 'upgatesUrl';
 
 export default class UpgatesApplication extends ABasicApplication implements ILimitedApplication {
-  public injectLimit = (_dto: ProcessDto, appInstall: ApplicationInstall): ProcessDto => {
+  public injectLimit = (_dto: AProcessDto, appInstall: ApplicationInstall): AProcessDto => {
     const dto = _dto;
     dto.setLimiter(
       appInstall.getName(),
@@ -39,7 +39,7 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
   public getPublicName = (): string => 'Upgates';
 
   public getRequestDto = (
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,

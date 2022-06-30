@@ -14,11 +14,10 @@ export default class UpgatesUpdateStock extends AConnector {
     const dto = _dto;
     const app = this._application as UpgatesApplication;
     const {
-      userName,
       data,
     } = dto.jsonData as IInputJson;
 
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(dto.user);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,
@@ -37,7 +36,6 @@ export default class UpgatesUpdateStock extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IInputJson {
-  userName: string;
   data: IUpdateStock;
 }
 

@@ -14,7 +14,7 @@ export default class RDSAddRoleToDBCluster extends ARDSObjectConnector {
     const content = dto.jsonData as { RoleArn: string, DBClusterIdentifier: string, FeatureName: string | undefined};
     this._checkParameters(['DBClusterIdentifier', 'RoleArn'], content);
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const application = this._application as RDSApplication;
     const client = application.getRDSClient(applicationInstall);
 

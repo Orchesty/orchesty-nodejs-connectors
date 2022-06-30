@@ -7,7 +7,6 @@ import WebflowApplication from '../WebflowApplication';
 const WEBFLOW_CREATE_PRODUCT_ENDPOINT = '/sites/replace_me/products';
 
 interface IWebflowProduct {
-  userName: string,
   name: string,
   description: string,
   slug: string,
@@ -26,7 +25,7 @@ export default class WebflowAddProductConnector extends AConnector {
     const { jsonData } = dto;
     checkParams(
       jsonData as Record<string, unknown>,
-      ['name', 'description', 'slug', 'price', 'userName', 'draft', 'archived', 'currency', 'siteId'],
+      ['name', 'description', 'slug', 'price', 'draft', 'archived', 'currency', 'siteId'],
     );
 
     const {
@@ -34,7 +33,6 @@ export default class WebflowAddProductConnector extends AConnector {
       description,
       slug,
       price,
-      userName,
       draft,
       archived,
       currency,
@@ -42,7 +40,7 @@ export default class WebflowAddProductConnector extends AConnector {
     } = jsonData as IWebflowProduct;
 
     const application = this._application as WebflowApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const data = {
       product: {

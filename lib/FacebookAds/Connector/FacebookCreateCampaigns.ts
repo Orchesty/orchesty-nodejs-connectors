@@ -12,7 +12,6 @@ interface IFacebookCampaigns {
   status: number,
   specialAdCategories: string[],
   accountId: string,
-  userName: string,
 }
 
 export default class FacebookCreateCampaigns extends AConnector {
@@ -22,7 +21,7 @@ export default class FacebookCreateCampaigns extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['name', 'objective', 'status', 'specialAdCategories', 'accountId', 'userName'],
+      ['name', 'objective', 'status', 'specialAdCategories', 'accountId'],
     );
 
     const {
@@ -31,11 +30,10 @@ export default class FacebookCreateCampaigns extends AConnector {
       status,
       specialAdCategories,
       accountId,
-      userName,
     } = dto.jsonData as IFacebookCampaigns;
 
     const application = this._application as FacebookAdsApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
     const data = {
       name,
       objective,

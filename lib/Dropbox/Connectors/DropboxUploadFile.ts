@@ -10,7 +10,6 @@ const DROPBOX_API_ARG = 'Dropbox-API-Arg';
 const APPLICATION_STREAM = 'application/octet-stream';
 
 interface IDropboxFile {
-  userName: string,
   data: string,
   destinationPath: string,
 }
@@ -22,17 +21,16 @@ export default class DropboxUploadFile extends AConnector {
     const dto = _dto;
     checkParams(
       dto.jsonData as Record<string, unknown>,
-      ['userName', 'data', 'destinationPath'],
+      ['data', 'destinationPath'],
     );
 
     const {
-      userName,
       data,
       destinationPath,
     } = dto.jsonData as IDropboxFile;
 
     const application = this._application as DropboxApplication;
-    const applicationInstall = await this._getApplicationInstall(userName);
+    const applicationInstall = await this._getApplicationInstall(dto.user);
 
     const request = await application.getRequestDto(
       dto,

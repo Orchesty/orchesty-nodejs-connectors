@@ -6,12 +6,12 @@ import HttpMethods, {
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const ID = 'id';
 export const NAME = 'SHOPTET';
@@ -23,9 +23,9 @@ const AUTHORIZATION_HEADER = 'Shoptet-Private-API-Token';
 
 export default class ShoptetPremiumApplication extends ABasicApplication implements ILimitedApplication {
   public injectLimit = (
-    _dto: ProcessDto,
+    _dto: AProcessDto,
     appInstall: ApplicationInstall,
-  ): ProcessDto => {
+  ): AProcessDto => {
     const dto = _dto;
     dto.setLimiterWithGroup(
       `${appInstall.getUser()}|${appInstall.getName()}`,
@@ -46,7 +46,7 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
   public getPublicName = (): string => 'Shoptet Premium';
 
   public getRequestDto = (
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,
