@@ -3,7 +3,6 @@ import {
   PASSWORD,
   USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { BodyInit } from 'node-fetch';
@@ -15,6 +14,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import OracleDB, { ConnectionAttributes } from 'oracledb';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 const HOST = 'host';
 const PORT = 'port';
@@ -42,7 +42,7 @@ export default abstract class ASqlApplication extends ABasicApplication {
 
   public getRequestDto = (
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,

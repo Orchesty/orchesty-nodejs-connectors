@@ -12,7 +12,6 @@ export default class MoneyS5CreateOrder extends AConnector {
     const dto = _dto;
     const app = this._application as MoneyS5Application;
     const {
-      userName,
       order,
     } = dto.jsonData as IInputJson;
 
@@ -20,25 +19,24 @@ export default class MoneyS5CreateOrder extends AConnector {
       order,
     };
 
-    await this._doRequest(app, userName, MONEYS5_CREATE_ORDER_ENDPOINT, dto);
+    await this._doRequest(app, MONEYS5_CREATE_ORDER_ENDPOINT, dto, dto.user);
 
     return dto;
   }
 
   private async _doRequest(
     app: MoneyS5Application,
-    userName: string,
     url: string,
     dto: ProcessDto,
+    user?: string,
   ): Promise<void> {
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(user);
     const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     await this._sender.send(requestDto, [200, 404]);
   }
 }
 
 interface IInputJson {
-  userName: string;
   order: [{
     /* eslint-disable @typescript-eslint/naming-convention */
     'requestPropertiesList': [

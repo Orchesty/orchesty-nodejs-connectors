@@ -10,7 +10,7 @@ export default class LambdaGetAccountSettings extends ALambdaObjectConnector {
   processAction = async (_dto: ProcessDto): Promise<ProcessDto> => {
     const dto = _dto;
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const application = this._application as LambdaApplication;
     const client = application.getLambdaClient(applicationInstall);
 

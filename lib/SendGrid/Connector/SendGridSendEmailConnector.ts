@@ -14,7 +14,7 @@ export default class SendGridSendEmailConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const data = dto.jsonData as IInputJson;
     if (!(data.email && data.name && data.subject)) {
       throw new Error('Some data is missing. Keys [email, name, subject] is required.');

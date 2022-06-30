@@ -11,15 +11,13 @@ export default class ShopifyGetOrderDetail extends AConnector {
     const dto = _dto;
     const app = this._application as ShopifyApplication;
     const {
-      userName,
       url,
     } = dto.jsonData as IInputJson;
 
-    const order: IResponseJson = await this._doRequest(app, userName, url, dto);
+    const order: IResponseJson = await this._doRequest(app, url, dto, dto.user);
 
     dto.jsonData = {
       ...order,
-      userName,
     };
 
     return dto;
@@ -27,11 +25,11 @@ export default class ShopifyGetOrderDetail extends AConnector {
 
   private async _doRequest(
     app: ShopifyApplication,
-    userName: string,
     url: string,
     dto: ProcessDto,
+    user?: string,
   ): Promise<IResponseJson> {
-    const appInstall = await this._getApplicationInstall(userName);
+    const appInstall = await this._getApplicationInstall(user);
     const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     const res = await this._sender.send(requestDto, [200, 404]);
 
@@ -158,7 +156,3 @@ interface IOrderJson {
 }
 
 type IResponseJson = IOrderJson;
-
-export interface IOutputJson extends IOrderJson {
-  userName: string;
-}
