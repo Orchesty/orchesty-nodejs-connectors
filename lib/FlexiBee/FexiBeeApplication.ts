@@ -3,7 +3,6 @@ import {
   PASSWORD,
   USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
@@ -18,6 +17,7 @@ import { BodyInit, Headers } from 'node-fetch';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
 export const TOKEN_NOT_SUCCESS = 'Token is not succeed returned';
@@ -64,7 +64,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
   public getLogo = (): string => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBBZG9iZSBJbGx1c3RyYXRvciAyNC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iVnJzdHZhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDI1LjE5N3B4IiBoZWlnaHQ9IjQyNS4xOTdweCIgdmlld0JveD0iMCAwIDQyNS4xOTcgNDI1LjE5NyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDI1LjE5NyA0MjUuMTk3Ig0KCSB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwb2x5Z29uIGZpbGw9IiNGREI5MzQiIHBvaW50cz0iMjc1Ljk2NCwzMzEuMjExIDM0My41OTgsMjE0LjExNSA0MTEuMTk3LDMzMS4yMTEgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiNEOTk1MjgiIHBvaW50cz0iMjc1Ljk2NCwzMzEuMjExIDIwOC4zNDUsMjE0LjExNSAzNDMuNTk4LDIxNC4xMTUgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiNBMTZGMkEiIHBvaW50cz0iMjA4LjM0NSwyMTQuMTE1IDI3NS45NjQsOTYuOTg2IDM0My41OTgsMjE0LjExNSAJIi8+DQoJPHBvbHlnb24gZmlsbD0iIzg3ODc4NyIgcG9pbnRzPSIyNzUuOTY0LDk2Ljk4NiAxNDAuNzQxLDk2Ljk4NiA1LjQ3MywzMzEuMjExIDE0MC43NDEsMzMxLjIxMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==';
 
   public async getRequestDto(
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     url?: string,
@@ -112,7 +112,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     return `${host}/${this.getUri(url)}`;
   }
 
-  private async _getApiToken(applicationInstall: ApplicationInstall, dto: ProcessDto): Promise<string> {
+  private async _getApiToken(applicationInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
     let token = await this._getApiTokenFromSettings(applicationInstall);
 
     if (!token) {
@@ -161,7 +161,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     return null;
   }
 
-  private _getApiTokenDto(applicationInstall: ApplicationInstall, dto: ProcessDto): RequestDto {
+  private _getApiTokenDto(applicationInstall: ApplicationInstall, dto: AProcessDto): RequestDto {
     const setting = applicationInstall.getSettings();
     if (!this.isAuthorized(applicationInstall)) {
       throw new Error('User is not authenticated');

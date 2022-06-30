@@ -9,7 +9,6 @@ import {
   USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -17,6 +16,8 @@ import { IApplicationSettings } from '@orchesty/nodejs-sdk/lib/Application/Datab
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
@@ -29,7 +30,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     super();
   }
 
-  public injectLimit = (_dto: ProcessDto, appInstall: ApplicationInstall): ProcessDto => {
+  public injectLimit = (_dto: AProcessDto, appInstall: ApplicationInstall): AProcessDto => {
     const dto = _dto;
     const premium = appInstall.getSettings()[PREMIUM_PLAN];
     let amount = 2;
@@ -52,7 +53,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
   public getPublicName = (): string => 'Shopify';
 
   public getRequestDto = (
-    dto: ProcessDto,
+    dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: string | HttpMethods,
     url?: string,
