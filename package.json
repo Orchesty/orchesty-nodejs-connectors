@@ -1,6 +1,6 @@
 {
     "name": "@orchesty/nodejs-connectors",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
@@ -23,7 +23,7 @@
     },
     "optionalDependencies": {
         "@aws-sdk/client-lambda": "^3.121.0",
-        "@aws-sdk/client-rds": "^3.121.0",
+        "@aws-sdk/client-rds": "^3.122.0",
         "@aws-sdk/client-redshift": "^3.121.0",
         "@aws-sdk/client-s3": "^3.121.0",
         "@types/oracledb": "^5.2.3",
@@ -41,19 +41,19 @@
     },
     "devDependencies": {
         "@aws-sdk/client-redshift": "^3.118.0",
-        "@orchesty/nodejs-sdk": "^2.0.4",
+        "@orchesty/nodejs-sdk": "^2.0.6",
         "@types/debug": "^4.1.7",
         "@types/jest": "^28.1.4",
-        "@types/node": "^18.0.0",
+        "@types/node": "^18.0.1",
         "@types/oracledb": "^5.2.3",
         "@types/pg": "^8.6.5",
         "@types/sqlite3": "^3.1.8",
         "@types/tedious": "^4.0.7",
-        "@typescript-eslint/eslint-plugin": "^5.30.0",
-        "@typescript-eslint/parser": "^5.30.0",
-        "eslint": "^8.18.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.4",
+        "@typescript-eslint/parser": "^5.30.4",
+        "eslint": "^8.19.0",
         "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-import-resolver-typescript": "^3.1.2",
+        "eslint-import-resolver-typescript": "^3.2.1",
         "eslint-plugin-import": "^2.26.0",
         "jest": "^28.1.2",
         "mariadb": "^3.0.0",
@@ -68,7 +68,7 @@
         "sqlite3": "^5.0.8",
         "tedious": "^14.6.1",
         "ts-jest": "^28.0.5",
-        "ts-node": "^10.8.1",
+        "ts-node": "^10.8.2",
         "typescript": "^4.7.4"
     },
     "pnpm": {
