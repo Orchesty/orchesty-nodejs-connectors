@@ -13,4 +13,19 @@ services:
             # Envs for tests are load from .jest/testEnvs.js
             JEST_DOCKER: 1
             APP_ENV: 'debug'
+            CRYPT_SECRET: 'ThisIsNotSoSecret'
+            BACKEND_URL: 'http://127.0.0.40:8080'
+            UDP_LOGGER_DSN: 'logstash:5005'
+            METRICS_DSN: 'mongodb://mongo:27017/metrics'
+            MONGO_DSN: 'mongodb://mongo:27017/node-sdk'
         command: sleep infinity
+
+    mongo:
+        image: mongo:latest
+        ports:
+            - ${DEV_IP}:27017:27017
+
+    logstash:
+        image: mendhak/udp-listener
+        ports:
+            - ${DEV_IP}:5005:5005
