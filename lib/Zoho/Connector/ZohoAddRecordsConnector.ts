@@ -14,7 +14,7 @@ export default class ZohoAddRecordsConnector extends AConnector {
     const dto = _dto;
     const body = JSON.stringify({ data: dto.jsonData });
 
-    const appInstall = await this._getApplicationInstall();
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const accountOwnerName = appInstall.getSettings()[CREATOR_FORM][ACCOUNT_OWNER_NAME];
     const appLink = appInstall.getSettings()[CREATOR_FORM][APP_LINK_NAME];
     const formLink = appInstall.getSettings()[CREATOR_FORM][FORM_LINK_NAME];
