@@ -19,12 +19,12 @@ export default class BigCommerceCreateOrderConnector extends AConnector {
 
     const resp = await this._sender.send(req, [200]);
 
-    dto.jsonData = resp.jsonBody as IRecordResp;
+    dto.jsonData = resp.jsonBody as IOrderResp;
     return dto;
   }
 }
 
-export interface IRecordResp {
+export interface IOrderResp {
     /* eslint-disable @typescript-eslint/naming-convention */
     billing_address: {
         first_name: string,

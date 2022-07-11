@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { NAME as BIG_COMMERCE_CREATING_AN_ORDER } from '../BigCommerceCreateOrderConnector';
+import { NAME as BIG_COMMERCE_CREATE_ORDER } from '../BigCommerceCreateOrderConnector';
 import { bigcommerceApp } from '../../../../test/DataProvider';
 import { container } from '../../../../test/TestAbstract';
 
@@ -12,6 +12,6 @@ describe('Tests for BigCommerceCreateOrderConnector', () => {
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(BIG_COMMERCE_CREATING_AN_ORDER);
+    await tester.testConnector(BIG_COMMERCE_CREATE_ORDER);
   });
 });
