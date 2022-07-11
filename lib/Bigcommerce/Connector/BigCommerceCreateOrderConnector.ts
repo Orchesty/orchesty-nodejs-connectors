@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { BASE_URL, STORE_HASH } from '../BigcommerceApplication';
 
 export const NAME = 'big-commerce-create-order';
@@ -13,7 +14,7 @@ export default class BigCommerceCreateOrderConnector extends AConnector {
     const body = JSON.stringify({ data: dto.jsonData });
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const storeHash = appInstall.getSettings()[STORE_HASH][STORE_HASH];
+    const storeHash = appInstall.getSettings()[AUTHORIZATION_FORM][STORE_HASH];
     const url = `${BASE_URL}/${storeHash}/v2/orders`;
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
 

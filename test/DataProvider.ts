@@ -10,7 +10,7 @@ import { db } from './TestAbstract';
 import {
   ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP,
 } from '../lib/Zoho/ZohoApplication';
-import { HASH_FORM, NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
+import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 
 const USER = 'TestUser';
 
@@ -55,8 +55,6 @@ export async function bigcommerceApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: 'TOKEN',
       },
-    },
-    [HASH_FORM]: {
       [STORE_HASH]: 'testHash',
     },
   });
