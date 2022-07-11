@@ -18,12 +18,11 @@ export default class ZohoGetRecordsConnector extends AConnector {
       throw new Error('Record ID is missing');
     }
 
-    const appInstall = await this._getApplicationInstall();
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const accountOwnerName = appInstall.getSettings()[CREATOR_FORM][ACCOUNT_OWNER_NAME];
     const appLink = appInstall.getSettings()[CREATOR_FORM][APP_LINK_NAME];
     const reportLink = appInstall.getSettings()[CREATOR_FORM][REPORT_LINK_NAME];
     const url = `${BASE_URL}/${accountOwnerName}/${appLink}/report/${reportLink}/${recordId}`;
-    // <base_url>/api/v2/<account_owner_name>/<app_link_name>/report/<report_link_name>/<record_ID>
 
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     const resp = await this._sender.send(req, [200]);

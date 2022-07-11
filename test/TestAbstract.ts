@@ -27,6 +27,25 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
+  initBigCommerce();
+  initZoho();
+}
+
+export async function closeConnection(): Promise<void> {
+  await db.down();
+  await (container.get(CoreServices.METRICS) as Metrics).close();
+}
+
+export async function dropCollection(collection: string) {
+  const database = await db.db();
+  try {
+    await database.dropCollection(collection);
+  } catch {
+    // ...
+  }
+}
+
+function initZoho(): void {
   const zohoApp = new ZohoApplication(oauth2Provider);
   const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
   const zohoGetRecordsConnector = new ZohoGetRecordsConnector();
@@ -42,22 +61,6 @@ export async function prepare(): Promise<void> {
     .setDb(db)
     .setApplication(zohoApp);
   container.setConnector(zohoGetRecordsConnector);
-
-  initBigCommerce();
-}
-
-export async function closeConnection(): Promise<void> {
-  await db.down();
-  await (container.get(CoreServices.METRICS) as Metrics).close();
-}
-
-export async function dropCollection(collection: string) {
-  const database = await db.db();
-  try {
-    await database.dropCollection(collection);
-  } catch {
-    // ...
-  }
 }
 
 function initBigCommerce(): void {
