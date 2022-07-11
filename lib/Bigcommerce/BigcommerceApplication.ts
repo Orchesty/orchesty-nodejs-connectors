@@ -13,7 +13,6 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const BASE_URL = 'https://api.bigcommerce.com/stores';
-export const HASH_FORM = 'hash_form';
 export const STORE_HASH = 'store_hash';
 export const NAME = 'bigcommerce';
 
@@ -53,14 +52,11 @@ export default class BigcommerceApplication extends AOAuth2Application {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
-
-    const hashForm = new Form(HASH_FORM, 'Store Hash')
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
       .addField(new Field(FieldType.TEXT, STORE_HASH, 'Store hash', null, true));
 
     return new FormStack()
-      .addForm(form)
-      .addForm(hashForm);
+      .addForm(form);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
