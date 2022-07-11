@@ -1,5 +1,7 @@
 {
-  "headers": {},
+  "headers": {
+    "user": "TestUser"
+  },
   "data": [
     {
       "code": 3000,

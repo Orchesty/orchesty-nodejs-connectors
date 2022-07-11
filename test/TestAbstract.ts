@@ -6,6 +6,7 @@ import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
+import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
@@ -28,11 +29,19 @@ export async function prepare(): Promise<void> {
 
   const zohoApp = new ZohoApplication(oauth2Provider);
   const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
+  const zohoGetRecordsConnector = new ZohoGetRecordsConnector();
+
   zohoAddRecordsConnector
     .setSender(sender)
     .setDb(db)
     .setApplication(zohoApp);
   container.setConnector(zohoAddRecordsConnector);
+
+  zohoGetRecordsConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(zohoApp);
+  container.setConnector(zohoGetRecordsConnector);
 
   initBigCommerce();
 }

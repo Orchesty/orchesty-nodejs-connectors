@@ -1,4 +1,6 @@
 {
-    "headers": {},
+    "headers": {
+        "user": "TestUser"
+    },
     "data": {}
 }
