@@ -8,12 +8,17 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { db } from './TestAbstract';
 import {
-  ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME,
+  ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP,
 } from '../lib/Zoho/ZohoApplication';
+import { HASH_FORM, NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 
 const USER = 'TestUser';
 
-export async function appInstall(name: string, user: string, settings: IApplicationSettings): Promise<ApplicationInstall> {
+export async function appInstall(
+  name: string,
+  user: string,
+  settings: IApplicationSettings,
+): Promise<ApplicationInstall> {
   const repo = await db.getApplicationRepository();
   const app = new ApplicationInstall();
   app
@@ -26,7 +31,7 @@ export async function appInstall(name: string, user: string, settings: IApplicat
 }
 
 export async function zohoApp() {
-  return appInstall(NAME, USER, {
+  return appInstall(ZOHO_APP, USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: 'testClient',
       [CLIENT_SECRET]: 'secret',
@@ -38,6 +43,21 @@ export async function zohoApp() {
       [ACCOUNT_OWNER_NAME]: 'karel',
       [APP_LINK_NAME]: 'karel_app',
       [FORM_LINK_NAME]: 'link',
+    },
+  });
+}
+
+export async function bigcommerceApp() {
+  return appInstall(BIGCOMMERCE_APP, USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: 'testClient',
+      [CLIENT_SECRET]: 'secret',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: 'TOKEN',
+      },
+    },
+    [HASH_FORM]: {
+      [STORE_HASH]: 'testHash',
     },
   });
 }
