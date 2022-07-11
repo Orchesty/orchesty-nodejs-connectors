@@ -8,13 +8,11 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-const SUBDOMAIN = 'subdomain';
-
+export const SUBDOMAIN = 'subdomain';
 export default class ZendeskApplication extends AOAuth2Application {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Zendesk is a customer support software. It helps companies and organisations manage customer queries and problems through a ticketing system.';
@@ -30,9 +28,12 @@ export default class ZendeskApplication extends AOAuth2Application {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
-    data?: BodyInit,
+    _url?: string,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> => {
+    const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
+    const url = `https://${subdomain}.zendesk.com/api/v2${_url}`;
+
     const request = new RequestDto(this.getUri(url).toString(), method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -41,7 +42,7 @@ export default class ZendeskApplication extends AOAuth2Application {
     };
 
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;
