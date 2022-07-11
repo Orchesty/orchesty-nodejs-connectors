@@ -13,12 +13,19 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
+export const NAME = 'zoho';
+export const BASE_URL = 'https://creator.zoho.com/api/v2';
+export const CREATOR_FORM = 'creator_form';
+export const ACCOUNT_OWNER_NAME = 'account_owner_name';
+export const APP_LINK_NAME = 'app_link_name';
+export const FORM_LINK_NAME = 'form_link_name';
+
 export default class ZohoApplication extends AOAuth2Application {
   public getAuthUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/auth';
 
   public getDescription = (): string => 'Zoho is a provider of a Customer Relationship Management (CRM) solution';
 
-  public getName = (): string => 'zoho';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Zoho';
 
@@ -56,7 +63,14 @@ export default class ZohoApplication extends AOAuth2Application {
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
       .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true));
 
-    return new FormStack().addForm(form);
+    const creatorForm = new Form(CREATOR_FORM, 'Creator settings')
+      .addField(new Field(FieldType.TEXT, ACCOUNT_OWNER_NAME, 'Account owner name', undefined, true))
+      .addField(new Field(FieldType.TEXT, APP_LINK_NAME, 'App link name', undefined, true))
+      .addField(new Field(FieldType.TEXT, FORM_LINK_NAME, 'Form link name', undefined, true));
+
+    return new FormStack()
+      .addForm(form)
+      .addForm(creatorForm);
   };
 
   public getTokenUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/token';
