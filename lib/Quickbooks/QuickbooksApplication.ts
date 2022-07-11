@@ -12,10 +12,10 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
+export const NAME = 'quickbooks';
 export const QUICKBOOKS_URL = 'https://appcenter.intuit.com/connect/oauth2';
 export const TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
-export const APP_ID = 'app_id';
-
+export const REALM_ID = 'app_id';
 const SCOPES = ['com.intuit.quickbooks.accounting'];
 const VERSION = 'v3';
 const BASE_URL = 'https://quickbooks.api.intuit.com';
@@ -24,7 +24,7 @@ export default class QuickbooksApplication extends AOAuth2Application {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Popular business accounting software that can be accessed at any time from a web browser.';
 
-  public getName = (): string => 'quickbooks';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Quickbooks';
 
@@ -64,7 +64,7 @@ export default class QuickbooksApplication extends AOAuth2Application {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
       .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
-      .addField(new Field(FieldType.TEXT, APP_ID, 'Realm Id', undefined, true));
+      .addField(new Field(FieldType.TEXT, REALM_ID, 'Realm Id', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -75,5 +75,5 @@ export default class QuickbooksApplication extends AOAuth2Application {
 
   private _getBaseUrl = (
     applicationInstall: ApplicationInstall,
-  ): string => `${BASE_URL}/${VERSION}/company/${applicationInstall.getSettings()[AUTHORIZATION_FORM][APP_ID]}`;
+  ): string => `${BASE_URL}/${VERSION}/company/${applicationInstall.getSettings()[AUTHORIZATION_FORM][REALM_ID]}`;
 }

@@ -11,6 +11,7 @@ import {
   ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP, REPORT_LINK_NAME,
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
+import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 
 const USER = 'TestUser';
 
@@ -57,6 +58,20 @@ export async function bigcommerceApp() {
         [ACCESS_TOKEN]: 'TOKEN',
       },
       [STORE_HASH]: 'testHash',
+    },
+  });
+}
+
+export async function quickBooksApp() {
+  return appInstall(QUICKBOOKS_APP, USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: 'Karel',
+      [CLIENT_SECRET]: 'secret',
+      [REALM_ID]: 'Kaja',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: 'TOKEN',
+      },
+
     },
   });
 }
