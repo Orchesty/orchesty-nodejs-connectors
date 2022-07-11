@@ -19,6 +19,7 @@ export const CREATOR_FORM = 'creator_form';
 export const ACCOUNT_OWNER_NAME = 'account_owner_name';
 export const APP_LINK_NAME = 'app_link_name';
 export const FORM_LINK_NAME = 'form_link_name';
+export const REPORT_LINK_NAME = 'REPORT_LINK_NAME';
 
 export default class ZohoApplication extends AOAuth2Application {
   public getAuthUrl = (): string => 'https://accounts.zoho.eu/oauth/v2/auth';
@@ -66,7 +67,8 @@ export default class ZohoApplication extends AOAuth2Application {
     const creatorForm = new Form(CREATOR_FORM, 'Creator settings')
       .addField(new Field(FieldType.TEXT, ACCOUNT_OWNER_NAME, 'Account owner name', undefined, true))
       .addField(new Field(FieldType.TEXT, APP_LINK_NAME, 'App link name', undefined, true))
-      .addField(new Field(FieldType.TEXT, FORM_LINK_NAME, 'Form link name', undefined, true));
+      .addField(new Field(FieldType.TEXT, FORM_LINK_NAME, 'Form link name', undefined, true))
+      .addField(new Field(FieldType.TEXT, REPORT_LINK_NAME, 'report_link_name', undefined, true));
 
     return new FormStack()
       .addForm(form)
