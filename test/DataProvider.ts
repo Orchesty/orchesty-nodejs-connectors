@@ -8,7 +8,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { db } from './TestAbstract';
 import {
-  ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP,
+  ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP, REPORT_LINK_NAME,
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 
@@ -40,9 +40,10 @@ export async function zohoApp() {
       },
     },
     [CREATOR_FORM]: {
-      [ACCOUNT_OWNER_NAME]: 'karel',
-      [APP_LINK_NAME]: 'karel_app',
-      [FORM_LINK_NAME]: 'link',
+      [ACCOUNT_OWNER_NAME]: 'name',
+      [APP_LINK_NAME]: 'name_app',
+      [FORM_LINK_NAME]: 'form_link',
+      [REPORT_LINK_NAME]: 'report_link',
     },
   });
 }

@@ -6,6 +6,7 @@ import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
+import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
@@ -26,15 +27,8 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  const zohoApp = new ZohoApplication(oauth2Provider);
-  const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
-  zohoAddRecordsConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(zohoApp);
-  container.setConnector(zohoAddRecordsConnector);
-
   initBigCommerce();
+  initZoho();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -49,6 +43,24 @@ export async function dropCollection(collection: string) {
   } catch {
     // ...
   }
+}
+
+function initZoho(): void {
+  const zohoApp = new ZohoApplication(oauth2Provider);
+  const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
+  const zohoGetRecordsConnector = new ZohoGetRecordsConnector();
+
+  zohoAddRecordsConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(zohoApp);
+  container.setConnector(zohoAddRecordsConnector);
+
+  zohoGetRecordsConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(zohoApp);
+  container.setConnector(zohoGetRecordsConnector);
 }
 
 function initBigCommerce(): void {
