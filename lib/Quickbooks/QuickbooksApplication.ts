@@ -18,7 +18,7 @@ export const TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bea
 export const REALM_ID = 'app_id';
 const SCOPES = ['com.intuit.quickbooks.accounting'];
 const VERSION = 'v3';
-const BASE_URL = 'https://quickbooks.api.intuit.com';
+const BASE_URL = 'https://quickbooks.api.intuit.com/v3/company';
 
 export default class QuickbooksApplication extends AOAuth2Application {
   // eslint-disable-next-line max-len
