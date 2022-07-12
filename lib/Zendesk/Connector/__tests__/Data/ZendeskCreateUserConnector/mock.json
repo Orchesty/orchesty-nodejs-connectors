@@ -1,5 +1,5 @@
 {
-  "http": "POST https://${subdomain}.zendesk.com/api/v2${_url}",
+  "http": "POST https://test_subdomain.zendesk.com/api/v2/users.json",
   "code": 201,
   "body": {
     "user": {

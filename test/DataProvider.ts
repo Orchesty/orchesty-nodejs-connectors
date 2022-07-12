@@ -69,6 +69,9 @@ export async function ZendeskApp() {
       [SUBDOMAIN]: 'Test_subdomain',
       [CLIENT_ID]: 'Test_client',
       [CLIENT_SECRET]: 'Test_secret',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: 'TOKEN',
+      },
     },
   });
 }
