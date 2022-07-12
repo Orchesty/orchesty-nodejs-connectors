@@ -9,6 +9,8 @@ import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnect
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
+import QuickBooksCreateItemConnector from '../lib/Quickbooks/QuickBooksCreateItemConnector';
+import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
 import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateOrderConnector';
 import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
@@ -45,6 +47,7 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initNutshell();
   initSalesForce();
+  initQuickBooks();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -184,4 +187,18 @@ function initSalesForce(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(updateRecord);
+}
+
+function initQuickBooks(): void {
+  const quickApp = new QuickbooksApplication(oauth2Provider);
+  const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
+
+  container.setApplication(quickApp);
+
+  quickBookCreateItemConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(quickApp);
+
+  container.setConnector(quickBookCreateItemConnector);
 }
