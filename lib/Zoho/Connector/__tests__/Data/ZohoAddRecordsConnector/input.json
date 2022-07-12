@@ -2,5 +2,23 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "data": [
+        {
+            "Email": "jason@zylker.com",
+            "Phone_Number": "+16103948336"
+        },
+        {
+            "Email": "p.boyle@zylker.com",
+            "Phone_Number": "+12096173907"
+        }
+    ],
+        "result": {
+            "fields": [
+                "Phone_Number",
+                "Email"
+            ],
+            "message": true,
+            "tasks": true
+        }}
 }
