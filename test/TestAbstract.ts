@@ -12,6 +12,7 @@ import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
 import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
+import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -82,10 +83,17 @@ function initZendesk(): void {
   const app = new ZendeskApplication(oauth2Provider);
   container.setApplication(app);
   const createUser = new ZendeskCreateUserConnector();
+  const createTicket = new ZendeskCreateTicketConnector();
 
   createUser
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createUser);
+
+  createTicket
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createTicket);
 }
