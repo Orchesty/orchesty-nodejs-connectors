@@ -63,7 +63,7 @@ export async function bigcommerceApp() {
   });
 }
 
-export async function ZendeskApp() {
+export async function zendeskApp() {
   return appInstall(ZENDESK_APP, USER, {
     [AUTHORIZATION_FORM]: {
       [SUBDOMAIN]: 'Test_subdomain',
