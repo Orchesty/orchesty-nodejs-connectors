@@ -10,7 +10,7 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
-import QuickBooksCreateAnItemConnector from '../lib/Quickbooks/QuickBooksCreateAnItemConnector';
+import QuickBooksCreateAnItemConnector from '../lib/Quickbooks/__tests__/Data/QuickBooksCreateItemConnector/QuickBooksCreateAnItemConnector';
 import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
