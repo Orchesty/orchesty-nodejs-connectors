@@ -1,8 +1,8 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { container } from '../../../test/TestAbstract';
+import { container } from '../../../../test/TestAbstract';
 import { NAME as QUICK_BOOKS_CREATE_ITEM_CONNECTOR } from
-  './Data/QuickBooksCreateItemConnector/QuickBooksCreateAnItemConnector';
-import { quickBooksApp } from '../../../test/DataProvider';
+  '../QuickBooksCreateAnItemConnector';
+import { quickBooksApp } from '../../../../test/DataProvider';
 
 let tester: NodeTester;
 

@@ -16,12 +16,12 @@ export default class QuickBooksUpdateItemConnetcor extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, '/item', body);
     const resp = await this._sender.send(req, [200]);
 
-    dto.jsonData = resp.jsonBody as IRecordResp;
+    dto.jsonData = resp.jsonBody as IInput;
 
     return dto;
   }
 }
 
-export interface IRecordResp {
+export interface IInput {
   name: string,
 }
