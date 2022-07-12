@@ -2,7 +2,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import {
-  ACCOUNT_OWNER_NAME, APP_LINK_NAME, BASE_URL, CREATOR_FORM, REPORT_LINK_NAME,
+  ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, REPORT_LINK_NAME,
 } from '../ZohoApplication';
 
 export const NAME = 'zoho-get-records-connector';
@@ -12,7 +12,7 @@ export default class ZohoGetRecordsConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const { recordId } = dto.jsonData as { recordId: string };
+    const { recordId } = dto.jsonData as IInput;
 
     if (!recordId) {
       throw new Error('Record ID is missing');
@@ -22,12 +22,12 @@ export default class ZohoGetRecordsConnector extends AConnector {
     const accountOwnerName = appInstall.getSettings()[CREATOR_FORM][ACCOUNT_OWNER_NAME];
     const appLink = appInstall.getSettings()[CREATOR_FORM][APP_LINK_NAME];
     const reportLink = appInstall.getSettings()[CREATOR_FORM][REPORT_LINK_NAME];
-    const url = `${BASE_URL}/${accountOwnerName}/${appLink}/report/${reportLink}/${recordId}`;
+    const url = `/${accountOwnerName}/${appLink}/report/${reportLink}/${recordId}`;
 
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     const resp = await this._sender.send(req, [200]);
 
-    const records = resp.jsonBody as IResponse;
+    const records = resp.jsonBody as IOutput;
 
     if (records.code !== 3000) {
       throw new Error('The request failed');
@@ -39,8 +39,12 @@ export default class ZohoGetRecordsConnector extends AConnector {
   }
 }
 
-export interface IResponse {
-  /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IInput {
+  recordId: string
+}
+
+export interface IOutput {
   code: number,
   data: {
     Multi_Line: string,

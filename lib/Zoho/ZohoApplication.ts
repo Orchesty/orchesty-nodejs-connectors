@@ -8,13 +8,15 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+
+const API_PATH = '/api/v2';
 
 export const NAME = 'zoho';
-export const BASE_URL = 'https://creator.zoho.com/api/v2';
+export const API_DOMAIN = 'api_domain';
 export const CREATOR_FORM = 'creator_form';
 export const ACCOUNT_OWNER_NAME = 'account_owner_name';
 export const APP_LINK_NAME = 'app_link_name';
@@ -37,9 +39,12 @@ export default class ZohoApplication extends AOAuth2Application {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
-    data?: BodyInit,
+    _url?: string,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> {
+    const domain = applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN][API_DOMAIN];
+    const url = `${domain}${API_PATH}${_url}`;
+
     const request = new RequestDto(this.getUri(url).toString(), method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -48,7 +53,7 @@ export default class ZohoApplication extends AOAuth2Application {
     };
 
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;
