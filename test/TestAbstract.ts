@@ -10,6 +10,8 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
+import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
+import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -29,6 +31,7 @@ export async function prepare(): Promise<void> {
 
   initBigCommerce();
   initZoho();
+  initZendesk();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -49,6 +52,7 @@ function initZoho(): void {
   const zohoApp = new ZohoApplication(oauth2Provider);
   const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
   const zohoGetRecordsConnector = new ZohoGetRecordsConnector();
+  container.setApplication(zohoApp);
 
   zohoAddRecordsConnector
     .setSender(sender)
@@ -72,4 +76,16 @@ function initBigCommerce(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+}
+
+function initZendesk(): void {
+  const app = new ZendeskApplication(oauth2Provider);
+  container.setApplication(app);
+  const createUser = new ZendeskCreateUserConnector();
+
+  createUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createUser);
 }

@@ -13,11 +13,12 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const SUBDOMAIN = 'subdomain';
+export const NAME = 'zendesk';
 export default class ZendeskApplication extends AOAuth2Application {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Zendesk is a customer support software. It helps companies and organisations manage customer queries and problems through a ticketing system.';
 
-  public getName = (): string => 'zendesk';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Zendesk';
 

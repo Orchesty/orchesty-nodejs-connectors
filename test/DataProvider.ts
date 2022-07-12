@@ -11,6 +11,7 @@ import {
   ACCOUNT_OWNER_NAME, API_DOMAIN, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP, REPORT_LINK_NAME,
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
+import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 
 const USER = 'TestUser';
 
@@ -58,6 +59,16 @@ export async function bigcommerceApp() {
         [ACCESS_TOKEN]: 'TOKEN',
       },
       [STORE_HASH]: 'testHash',
+    },
+  });
+}
+
+export async function ZendeskApp() {
+  return appInstall(ZENDESK_APP, USER, {
+    [AUTHORIZATION_FORM]: {
+      [SUBDOMAIN]: 'Test_subdomain',
+      [CLIENT_ID]: 'Test_client',
+      [CLIENT_SECRET]: 'Test_secret',
     },
   });
 }

@@ -1,5 +1,7 @@
 {
-    "headers": {},
+    "headers": {
+        "user": "TestUser"
+    },
     "data": {
         "user": {
         "custom_role_id": 123456,
