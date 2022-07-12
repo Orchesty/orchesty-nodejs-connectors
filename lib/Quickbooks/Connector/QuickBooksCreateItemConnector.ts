@@ -2,9 +2,9 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
-export const NAME = 'quick-books-create-an-item-connector';
+export const NAME = 'quick-books-create-item-connector';
 
-export default class QuickBooksCreateAnItemConnector extends AConnector {
+export default class QuickBooksCreateItemConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {

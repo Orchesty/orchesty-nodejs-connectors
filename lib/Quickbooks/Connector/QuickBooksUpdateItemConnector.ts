@@ -6,7 +6,7 @@ import { REALM_ID } from '../QuickbooksApplication';
 
 export const NAME = 'quick-books-update-item-connetcor';
 
-export default class QuickBooksUpdateItemConnetcor extends AConnector {
+export default class QuickBooksUpdateItemConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {

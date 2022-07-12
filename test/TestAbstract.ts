@@ -10,8 +10,9 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
-import QuickBooksCreateAnItemConnector from '../lib/Quickbooks/Connector/QuickBooksCreateAnItemConnector';
+import QuickBooksCreateItemConnector from '../lib/Quickbooks/Connector/QuickBooksCreateItemConnector';
 import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
+import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -79,7 +80,8 @@ function initBigCommerce(): void {
 
 function initQuickBooks(): void {
   const quickApp = new QuickbooksApplication(oauth2Provider);
-  const quickBookCreateItemConnector = new QuickBooksCreateAnItemConnector();
+  const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
+  const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
 
   container.setApplication(quickApp);
 
@@ -87,6 +89,11 @@ function initQuickBooks(): void {
     .setSender(sender)
     .setDb(db)
     .setApplication(quickApp);
-
   container.setConnector(quickBookCreateItemConnector);
+
+  quickBookUpdateItemConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(quickApp);
+  container.setConnector(quickBookUpdateItemConnector);
 }

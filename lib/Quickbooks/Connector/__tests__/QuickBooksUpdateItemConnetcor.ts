@@ -1,6 +1,6 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../../test/TestAbstract';
-import { NAME as QUICK_BOOKS_UPDATE_ITEM_CONNETCOR } from '../QuickBooksUpdateItemConnetcor';
+import { NAME as QUICK_BOOKS_UPDATE_ITEM_CONNETCOR } from '../QuickBooksUpdateItemConnector';
 
 let tester: NodeTester;
 
