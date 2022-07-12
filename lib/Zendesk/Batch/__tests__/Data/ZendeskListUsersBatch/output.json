@@ -1,0 +1,29 @@
+{
+    "headers": {
+        "cursor": "100",
+        "result-code": "1010",
+        "result-message": "Message will be used as a iterator with cursor [100]. Data will be send to follower(s).",
+        "user": "TestUser"
+    },
+    "data": {
+        "users": [
+            {
+                "id": 223443,
+                "name": "Johnny Agent"
+            },
+            {
+                "id": 8678530,
+                "name": "James A. Rosen"
+            }
+        ],
+        "meta": {
+            "has_more": true,
+            "after_cursor": "xxx",
+            "before_cursor": "yyy"
+        },
+        "links": {
+            "next": "https://example.zendesk.com/api/v2/tickets.json?page[size]=100&page[after]=xxx",
+            "prev": "https://example.zendesk.com/api/v2/tickets.json?page[size]=100&page[before]=yyy"
+        }
+    }
+}
