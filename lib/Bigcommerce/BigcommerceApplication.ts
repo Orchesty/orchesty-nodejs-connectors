@@ -2,7 +2,7 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { BodyInit, Headers } from 'node-fetch';
+import { Headers } from 'node-fetch';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -12,7 +12,7 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-export const BASE_URL = 'https://api.bigcommerce.com/stores';
+const BASE_URL = 'https://api.bigcommerce.com/stores';
 export const STORE_HASH = 'store_hash';
 export const NAME = 'bigcommerce';
 
@@ -35,18 +35,21 @@ export default class BigcommerceApplication extends AOAuth2Application {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
-    data?: BodyInit,
+    _url?: string,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> {
-    const headers = new Headers({
+    const url = `${BASE_URL}/${_url}`;
+    const req = new RequestDto(url, method, dto);
+    req.headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `OAuth ${this.getAccessToken(applicationInstall)}`,
     });
-    if (url) {
-      return new RequestDto(url, method, dto, data, headers);
+
+    if (data) {
+      req.setJsonBody(data);
     }
-    throw Error('Url is empty');
+    return req;
   }
 
   public getFormStack = (): FormStack => {

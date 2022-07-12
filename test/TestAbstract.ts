@@ -9,7 +9,7 @@ import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnect
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
-import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCommerceCreateOrderConnector';
+import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateOrderConnector';
 import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
 import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
@@ -71,7 +71,7 @@ function initZoho(): void {
 function initBigCommerce(): void {
   const app = new BigcommerceApplication(oauth2Provider);
   container.setApplication(app);
-  const createOrder = new BigCommerceCreateOrderConnector();
+  const createOrder = new BigcommerceCreateOrderConnector();
   createOrder
     .setSender(sender)
     .setDb(db)
