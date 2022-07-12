@@ -25,7 +25,7 @@ export default class QuickBooksCreateItemConnector extends AConnector {
 export interface IRecordResp {
   /* eslint-disable @typescript-eslint/naming-convention */
   TrackQtyOnHand: true,
-  Name: string,
+  Name: number,
   QtyOnHand: string,
   IncomeAccountRef: {
     name: string,
