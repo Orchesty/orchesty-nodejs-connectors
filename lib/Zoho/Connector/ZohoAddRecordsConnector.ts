@@ -12,15 +12,19 @@ export default class ZohoAddRecordsConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const body = JSON.stringify({ data: dto.jsonData });
-
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const accountOwnerName = appInstall.getSettings()[CREATOR_FORM][ACCOUNT_OWNER_NAME];
     const appLink = appInstall.getSettings()[CREATOR_FORM][APP_LINK_NAME];
     const formLink = appInstall.getSettings()[CREATOR_FORM][FORM_LINK_NAME];
     const url = `/${accountOwnerName}/${appLink}/form/${formLink}`;
 
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+    const req = await this._application.getRequestDto(
+      dto,
+      appInstall,
+      HttpMethods.POST,
+      url,
+      { data: dto.jsonData as IInput },
+    );
     const resp = await this._sender.send(req, [200]);
 
     const records = resp.jsonBody as IOutput;
@@ -37,38 +41,37 @@ export default class ZohoAddRecordsConnector extends AConnector {
   }
 }
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IRecordResult {
-  code: number,
-  data: {
-    Email: string,
-    Phone_Number: string,
-    ID: string,
-  },
-  message: string,
-  tasks: {
-    openurl: {
-      type: string,
-      url: string,
-    }
-  }
-}
-
 export interface IOutput {
-  result: IRecordResult[],
+  result: [
+    {
+      code: number,
+      data: {
+        Email: string,
+        Phone_Number: string,
+        ID: string,
+      },
+      message: string,
+      tasks: {
+        openurl: {
+          type: string,
+          url: string,
+        }
+      }
+    }
+  ],
 }
 
-export interface IRecordData{
-  Email: string,
-  Phone_Number: string
-}
-
-export interface IInput{
-  data: IRecordData[]
+export interface IInput {
+  data: [
+    {
+      Email: string,
+      Phone_Number: string
+    }
+  ]
   result: {
     fields: string[],
     message: boolean,
     tasks: boolean
   }
-
 }
 /* eslint-enable @typescript-eslint/naming-convention */

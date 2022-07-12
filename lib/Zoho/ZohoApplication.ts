@@ -8,7 +8,6 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
@@ -41,10 +40,8 @@ export default class ZohoApplication extends AOAuth2Application {
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     _url?: string,
-    data?: BodyInit,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> {
-    // <API_DOMAIN><API_PATH><_url>
-
     const domain = applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN][API_DOMAIN];
     const url = `${domain}${API_PATH}${_url}`;
 
@@ -56,7 +53,7 @@ export default class ZohoApplication extends AOAuth2Application {
     };
 
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;

@@ -12,7 +12,7 @@ export default class ZohoGetRecordsConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const { recordId } = dto.jsonData as { recordId: string };
+    const { recordId } = dto.jsonData as IInput;
 
     if (!recordId) {
       throw new Error('Record ID is missing');
@@ -39,8 +39,12 @@ export default class ZohoGetRecordsConnector extends AConnector {
   }
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IInput {
+  recordId: string
+}
+
 export interface IOutput {
-  /* eslint-disable @typescript-eslint/naming-convention */
   code: number,
   data: {
     Multi_Line: string,
