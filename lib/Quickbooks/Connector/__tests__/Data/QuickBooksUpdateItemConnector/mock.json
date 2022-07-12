@@ -1,9 +1,7 @@
 {
   "http": "POST https://quickbooks.api.intuit.com/v3/company/Kaja/item",
-
   "code": 200,
   "body": {
-
     "Item": {
       "FullyQualifiedName": "Garden Supplies",
       "domain": "QBO",
@@ -37,6 +35,5 @@
       }
     },
     "time": "2015-12-09T11:12:39.748-08:00"
-
   }
 }

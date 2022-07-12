@@ -7,7 +7,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { BodyInit } from 'node-fetch';
+import { Headers } from 'node-fetch';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
@@ -35,26 +35,21 @@ export default class QuickbooksApplication extends AOAuth2Application {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
-    data?: BodyInit,
+    _url?: string,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> {
-    const request = new RequestDto(
-      this.getUri(`${this._getBaseUrl(applicationInstall)}${url}`).toString(),
-      method,
-      dto,
-    );
-
-    request.headers = {
+    const url = `${BASE_URL}/${_url}`;
+    const req = new RequestDto(url, method, dto);
+    req.headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
-    };
+      [CommonHeaders.AUTHORIZATION]: `OAuth ${this.getAccessToken(applicationInstall)}`,
+    });
 
     if (data) {
-      request.body = data;
+      req.setJsonBody(data);
     }
-
-    return request;
+    return req;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
