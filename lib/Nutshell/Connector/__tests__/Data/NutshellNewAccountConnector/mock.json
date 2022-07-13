@@ -1,0 +1,147 @@
+{
+  "http": "POST https//app.nutshell.com/api/v1/json",
+  "code": 200,
+  "body": {
+    "result":{
+      "id":95,
+      "entityType":"Accounts",
+      "rev":"1",
+      "modifiedTime":"2022-07-13T14:00:30+0000",
+      "createdTime":"2022-07-13T14:00:30+0000",
+      "name":"New Account Name",
+      "htmlUrl":"https:\/\/app.nutshell.com\/company\/95-new-account-name",
+      "htmlUrlPath":"\/company\/95-new-account-name",
+      "avatarUrl":"https:\/\/app.nutshell.com\/avatar\/accounts\/95\/39\/TqVG5w6YPwWvYg7qugGtn4GfMdkRygZiueSqLguFJCA.2\/1657720830",
+      "accountType":{
+        "id":1,
+        "name":"Standard Account"
+      },
+      "industry":{
+        "stub":true,
+        "id":3,
+        "rev":"0",
+        "entityType":"Industries",
+        "name":"Food & Beverage"
+      },
+      "creator":{
+        "stub":true,
+        "id":1,
+        "rev":"2",
+        "entityType":"Users",
+        "modifiedTime":"2022-07-12T19:28:01+0000",
+        "createdTime":"2010-01-01T09:00:00+0000",
+        "name":"Charles Berry",
+        "emails":[
+          "charles.berry@arrowgrid.com",
+          "jim@demo.nutshell.com"],
+        "isEnabled":true,
+        "isAdministrator":true
+      },
+      "owner":{
+        "stub":true,
+        "id":1,
+        "rev":"2",
+        "entityType":"Users",
+        "modifiedTime":"2022-07-12T19:28:01+0000",
+        "createdTime":"2010-01-01T09:00:00+0000",
+        "name":"Charles Berry",
+        "emails":[
+          "charles.berry@arrowgrid.com",
+          "jim@demo.nutshell.com"],
+        "isEnabled":true,
+        "isAdministrator":true
+      },
+      "tags":[
+      ],
+      "lastContactedDate":"2022-07-11T13:27:00+0000",
+      "contacts":[
+        {
+          "stub":true,
+          "id":1,
+          "rev":"4",
+          "entityType":"Contacts",
+          "modifiedTime":"2022-07-12T19:28:20+0000",
+          "createdTime":"2022-07-12T19:28:19+0000",
+          "name":"Virginia Sprague",
+          "jobTitle":"Acme Corp",
+          "relationship":"First contact"
+        }],
+      "description":null,
+      "legacyId":null,
+      "phone":{
+        "0":{
+          "countryCode":"1",
+          "number":"7175550480",
+          "extension":null,
+          "numberFormatted":"717-555-0480",
+          "E164":"+17175550480",
+          "countryCodeAndNumber":"+1 717-555-0480"
+        },
+        "1":{
+          "countryCode":"1",
+          "number":"7175550055",
+          "extension":null,
+          "numberFormatted":"717-555-0055",
+          "E164":"+17175550055",
+          "countryCodeAndNumber":"+1 717-555-0055"
+        },
+        "2":{
+          "countryCode":"1",
+          "number":"8775559988",
+          "extension":null,
+          "numberFormatted":"877-555-9988",
+          "E164":"+18775559988",
+          "countryCodeAndNumber":"+1 877-555-9988"
+        },
+        "--primary":{
+          "countryCode":"1",
+          "number":"7175550480",
+          "extension":null,
+          "numberFormatted":"717-555-0480",
+          "E164":"+17175550480",
+          "countryCodeAndNumber":"+1 717-555-0480"
+        }
+      },
+      "url":{
+        "0":"http:\/\/www.andyfowler.com\/",
+        "1":"http:\/\/facebook.com\/andy",
+        "--primary":"http:\/\/www.andyfowler.com\/"
+      },
+      "address":{
+        "0":{
+          "name":null,
+          "location":null,
+          "locationAccuracy":null,
+          "address_1":"100 Second St.",
+          "address_2":"Apt. 4",
+          "address_3":"c\/o Barclay Fowler",
+          "city":"Ann Arbor",
+          "state":"MI",
+          "postalCode":"48103",
+          "country":"US",
+          "timezone":null
+        },
+        "--primary":{
+          "name":null,
+          "location":null,
+          "locationAccuracy":null,
+          "address_1":"100 Second St.",
+          "address_2":"Apt. 4",
+          "address_3":"c\/o Barclay Fowler",
+          "city":"Ann Arbor",
+          "state":"MI",
+          "postalCode":"48103",
+          "country":"US",
+          "timezone":null
+        }
+      },
+      "notes":[
+      ],
+      "leads":[
+      ]
+    },
+    "id":"apeye",
+    "jsonrpc":"2.0"
+  }
+}
+
