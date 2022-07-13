@@ -5,7 +5,6 @@ import { NAME as NUTSHELL_NEW_LEAD_CONNECTOR } from '../NutshellNewLeadConnector
 let tester: NodeTester;
 
 describe('Tests for NutshellNewLeadConnector', () => {
-
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
   });
