@@ -18,6 +18,7 @@ const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
 const DEFAULT_CLIENT_SECRET = 'ClientSecret';
 const DEFAULT_ACCESS_TOKEN = 'AccessToken';
+const DEFAULT_PASSWORD = 'Password';
 
 export async function appInstall(
   name: string,
@@ -83,9 +84,9 @@ export async function zendeskApp() {
 export async function nutshellApp() {
   return appInstall(NAME, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [USER]: 'Gerald',
-      [PASSWORD]: 'gerald123',
-      [ID]: '216143',
+      [USER]: DEFAULT_USER,
+      [PASSWORD]: DEFAULT_PASSWORD,
+      [ID]: DEFAULT_CLIENT_ID,
     },
 
   });

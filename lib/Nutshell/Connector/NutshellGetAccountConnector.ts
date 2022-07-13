@@ -13,13 +13,11 @@ export default class NutshellGetAccountConnector extends AConnector {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    const formId = appInstall.getSettings()[AUTHORIZATION_FORM][ID];
-
     const data = {
       jsonrpc: '2.0',
       method: 'getAccount',
       params: dto.jsonData as IInput,
-      id: formId,
+      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
     };
     const req = await this._application.getRequestDto(
       dto,

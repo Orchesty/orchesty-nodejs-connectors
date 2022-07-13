@@ -17,7 +17,7 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const NAME = 'nutshell';
-export const ID = 'apeye';
+export const ID = 'id';
 
 export default class NutshellApplication extends ABasicApplication {
   // eslint-disable-next-line max-len
