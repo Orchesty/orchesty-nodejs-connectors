@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "cursor": "100",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [100]. Data will be send to follower(s).",
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":223443,\"name\":\"Johnny Agent\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":8678530,\"name\":\"James A. Rosen\"}",
+      "headers": null
+    }
+  ]
+}
