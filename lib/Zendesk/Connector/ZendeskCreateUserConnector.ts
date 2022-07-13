@@ -51,6 +51,5 @@ export interface IInput {
     },
     role?: string
   }
-  /* eslint-enable @typescript-eslint/naming-convention */
-
 }
+/* eslint-enable @typescript-eslint/naming-convention */

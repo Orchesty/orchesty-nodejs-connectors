@@ -25,7 +25,7 @@ export default class IDokladNewInvoiceReceivedConnector extends AConnector {
     checkParams(
       jsonData as Record<string, unknown>,
       {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         Items: [
           [
             'Name',

@@ -7,7 +7,13 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AAwsApplication, {
   CREDENTIALS,
-  ENDPOINT, KEY, LATEST, REGION, REGIONS, SECRET, VERSION,
+  ENDPOINT,
+  KEY,
+  LATEST,
+  REGION,
+  REGIONS,
+  SECRET,
+  VERSION,
 } from '../AAwsApplication';
 
 export const BUCKET = 'Bucket';

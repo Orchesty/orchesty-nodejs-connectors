@@ -34,7 +34,7 @@ export default class UpgatesGetProducts extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponseJson extends IProductJson{
+interface IResponseJson extends IProductJson {
   number_of_pages: number,
   number_of_items: number,
 }

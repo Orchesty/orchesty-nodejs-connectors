@@ -97,7 +97,7 @@ export interface IOutput {
     Percent: string,
     Prediction: string,
     Dropdown: string,
-    Inline_SubForm: {display_value: string, ID: string},
+    Inline_SubForm: { display_value: string, ID: string },
     Radio: string,
     Auto_Number: string,
     users: string,

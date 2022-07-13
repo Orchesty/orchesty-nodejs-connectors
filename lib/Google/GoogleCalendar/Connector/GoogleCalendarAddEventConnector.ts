@@ -20,8 +20,8 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     checkParams(
-        dto.jsonData as Record<string, unknown>,
-        ['start', 'end', 'timeZone', 'summary', 'calenderId'],
+      dto.jsonData as Record<string, unknown>,
+      ['start', 'end', 'timeZone', 'summary', 'calenderId'],
     );
 
     const {

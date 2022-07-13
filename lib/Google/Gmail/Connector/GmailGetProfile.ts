@@ -13,8 +13,8 @@ export default class GmailGetProfile extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     checkParams(
-          dto.jsonData as Record<string, unknown>,
-          ['userId'],
+      dto.jsonData as Record<string, unknown>,
+      ['userId'],
     );
 
     const { userId } = dto.jsonData as { userId: string };

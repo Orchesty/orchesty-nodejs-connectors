@@ -4,15 +4,15 @@
     },
     "data": {
         "data": [
-        {
-            "Email": "jason@zylker.com",
-            "Phone_Number": "+16103948336"
-        },
-        {
-            "Email": "p.boyle@zylker.com",
-            "Phone_Number": "+12096173907"
-        }
-    ],
+            {
+                "Email": "jason@zylker.com",
+                "Phone_Number": "+16103948336"
+            },
+            {
+                "Email": "p.boyle@zylker.com",
+                "Phone_Number": "+12096173907"
+            }
+        ],
         "result": {
             "fields": [
                 "Phone_Number",
@@ -20,5 +20,6 @@
             ],
             "message": true,
             "tasks": true
-        }}
+        }
+    }
 }

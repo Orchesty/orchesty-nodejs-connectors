@@ -1,12 +1,16 @@
 # [Zoom](https://marketplace.zoom.us/docs/api-reference/zoom-api/)
+
 ## OAuth 2.0
-- Client id 
+
+- Client id
 - Client secret
 
-### How to get 
+### How to get
+
 - Go to [https://marketplace.zoom.us/user/build](https://marketplace.zoom.us/user/build)
 
 ### Data example for [ZoomSendMessageConnector](Connector/ZoomSendMessageConnector.ts)
+
 - `userName` from MongoDb
 - `userId` Zoom user id
 - `toChannel` Zoom channel id

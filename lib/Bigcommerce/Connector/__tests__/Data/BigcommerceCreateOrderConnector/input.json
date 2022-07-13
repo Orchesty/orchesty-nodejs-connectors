@@ -1,26 +1,26 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "billing_address": {
-      "first_name": "Jane",
-      "last_name": "Doe",
-      "street_1": "123 Main Street",
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78751",
-      "country": "United States",
-      "country_iso2": "US",
-      "email": "janedoe@email.com"
+    "headers": {
+        "user": "TestUser"
     },
-    "products": [
-      {
-        "name": "BigCommerce Coffee Mug",
-        "quantity": 1,
-        "price_inc_tax": 50,
-        "price_ex_tax": 45
-      }
-    ]
-  }
+    "data": {
+        "billing_address": {
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "street_1": "123 Main Street",
+            "city": "Austin",
+            "state": "Texas",
+            "zip": "78751",
+            "country": "United States",
+            "country_iso2": "US",
+            "email": "janedoe@email.com"
+        },
+        "products": [
+            {
+                "name": "BigCommerce Coffee Mug",
+                "quantity": 1,
+                "price_inc_tax": 50,
+                "price_ex_tax": 45
+            }
+        ]
+    }
 }

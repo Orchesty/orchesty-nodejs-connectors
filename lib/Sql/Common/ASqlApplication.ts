@@ -106,7 +106,8 @@ export default abstract class ASqlApplication extends ABasicApplication {
           password: formSettings[PASSWORD],
           connectString: `${formSettings[HOST]}:${formSettings[PORT]}/${formSettings[DATABASE]}`,
         };
-      default: throw new Error(`Dialect [${this._dialect}] is not compatible!`);
+      default:
+        throw new Error(`Dialect [${this._dialect}] is not compatible!`);
     }
   };
 

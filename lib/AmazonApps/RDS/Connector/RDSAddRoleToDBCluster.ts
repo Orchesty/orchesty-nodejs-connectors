@@ -11,7 +11,7 @@ export default class RDSAddRoleToDBCluster extends ARDSObjectConnector {
     const dto = _dto;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const content = dto.jsonData as { RoleArn: string, DBClusterIdentifier: string, FeatureName: string | undefined};
+    const content = dto.jsonData as { RoleArn: string, DBClusterIdentifier: string, FeatureName: string | undefined };
     this._checkParameters(['DBClusterIdentifier', 'RoleArn'], content);
 
     const applicationInstall = await this._getApplicationInstallFromProcess(dto);

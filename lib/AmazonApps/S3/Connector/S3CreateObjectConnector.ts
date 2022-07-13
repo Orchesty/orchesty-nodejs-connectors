@@ -1,7 +1,5 @@
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import {
-  PutObjectCommand, PutObjectCommandInput,
-} from '@aws-sdk/client-s3';
+import { PutObjectCommand, PutObjectCommandInput } from '@aws-sdk/client-s3';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { KEY } from '../../AAwsApplication';
 import S3Application, { BUCKET } from '../S3Application';

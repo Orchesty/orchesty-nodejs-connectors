@@ -49,8 +49,8 @@ interface IInputJson {
   to: string
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 interface IResponseJson extends IOrderJson {
-  /* eslint-disable @typescript-eslint/naming-convention */
   number_of_pages: number,
 }
 
@@ -181,9 +181,10 @@ interface IOrderJson {
         cs: {
           language: string
           value: string
-          /* eslint-enable @typescript-eslint/naming-convention */
         }
       }
     }]
   }];
 }
+
+/* eslint-enable @typescript-eslint/naming-convention */

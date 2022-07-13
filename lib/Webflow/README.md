@@ -1,19 +1,24 @@
 # [Webflow](https://developers.webflow.com)
+
 ## Auth
+
 - API key
 
-### How to get 
-- To generate an API key for a site, open the site in the dashboard and navigate to the “Settings” pane. There is a section titled “API Access”, where you can generate a new API key.
+### How to get
+
+- To generate an API key for a site, open the site in the dashboard and navigate to the “Settings” pane. There is a
+  section titled “API Access”, where you can generate a new API key.
 
 ### Data example for [WebflowAddProductConnector](Connector/WebflowAddProductConnector.ts)
+
 - `userName` from MongoDb
 - `name` product name
 - `description` description of product
 - `slug` slug for url (hint: https://example/products/SLUG)
 - `price` product price
-- `draft` 
-- `archived` 
-- `currency` e.g. czk, usd 
+- `draft`
+- `archived`
+- `currency` e.g. czk, usd
 - `siteId` Webflow ehop id
 
 ```json

@@ -1,26 +1,26 @@
 {
-  "http": "GET https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=0",
-  "code": 200,
-  "body": {
-    "users": [
-      {
-        "id": 223443,
-        "name": "Johnny Agent"
-      },
-      {
-        "id": 8678530,
-        "name": "James A. Rosen"
-      }
-    ],
-    "meta": {
-      "has_more": true,
-      "after_cursor": "100",
-      "before_cursor": "0"
-    },
-    "links": {
-      "next": "https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=100",
-      "prev": "https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=0"
+    "http": "GET https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=0",
+    "code": 200,
+    "body": {
+        "users": [
+            {
+                "id": 223443,
+                "name": "Johnny Agent"
+            },
+            {
+                "id": 8678530,
+                "name": "James A. Rosen"
+            }
+        ],
+        "meta": {
+            "has_more": true,
+            "after_cursor": "100",
+            "before_cursor": "0"
+        },
+        "links": {
+            "next": "https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=100",
+            "prev": "https://test_subdomain.zendesk.com/api/v2/users.json?page[size]=100&page[after]=0"
+        }
     }
-  }
 }
 

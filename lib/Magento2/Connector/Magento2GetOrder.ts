@@ -39,8 +39,8 @@ type IResponseJson = IOrderJson;
 
 type IOutputJson = IOrderJson;
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface IOrderJson {
-  /* eslint-disable @typescript-eslint/naming-convention */
   base_currency_code: string
   base_discount_amount: number
   base_grand_total: number
@@ -287,5 +287,6 @@ export interface IOrderJson {
     applied_taxes: []
     item_applied_taxes: []
   }
-  /* eslint-enable @typescript-eslint/naming-convention */
 }
+
+/* eslint-enable @typescript-eslint/naming-convention */

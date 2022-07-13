@@ -25,8 +25,8 @@ export default class TwilioSendMessage extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     checkParams(
-        dto.jsonData as Record<string, unknown>,
-        ['body', 'from', 'to'],
+      dto.jsonData as Record<string, unknown>,
+      ['body', 'from', 'to'],
     );
 
     const {

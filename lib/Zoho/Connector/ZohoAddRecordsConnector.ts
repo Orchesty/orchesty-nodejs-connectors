@@ -40,6 +40,7 @@ export default class ZohoAddRecordsConnector extends AConnector {
     return dto;
   }
 }
+
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IOutput {
   result: [

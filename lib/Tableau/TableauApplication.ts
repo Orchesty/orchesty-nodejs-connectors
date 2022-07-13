@@ -124,7 +124,7 @@ export default class TableauApplication extends ABasicApplication {
     );
 
     const resp = await this._sender.send(request, [200]);
-    const token = (resp.jsonBody as { credentials: { token: string }})?.credentials?.token;
+    const token = (resp.jsonBody as { credentials: { token: string } })?.credentials?.token;
     if (!token) {
       throw new Error(`Token was not received. Response body: [${resp.jsonBody}]`);
     }

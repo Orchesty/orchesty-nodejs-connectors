@@ -22,7 +22,7 @@ export default class HubSpotCreateContactConnector extends AConnector {
     const response = await this._sender.send(request, [201, 409]);
 
     if (response.responseCode === 409) {
-      const email = dto.jsonData as {properties: {email: string} };
+      const email = dto.jsonData as { properties: { email: string } };
       logger.error(`Contact "${email}" already exist.`, dto);
     }
 

@@ -14,10 +14,10 @@ export default class BigQueryListAllDatasets extends AConnector {
     const dto = _dto;
 
     checkParams(
-          dto.jsonData as Record<string, unknown>,
-          ['projectId'],
+      dto.jsonData as Record<string, unknown>,
+      ['projectId'],
     );
-    const { projectId } = dto.jsonData as { projectId: string};
+    const { projectId } = dto.jsonData as { projectId: string };
 
     const application = this._application as BigQueryApplication;
     const applicationInstall = await this._getApplicationInstallFromProcess(dto);

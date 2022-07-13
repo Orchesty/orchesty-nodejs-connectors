@@ -7,10 +7,10 @@ import JiraApplication from '../JiraApplication';
 const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/latest/issue';
 
 interface IJiraIssue {
-    description: string,
-    summary: string,
-    projectKey: string,
-    issueType: string,
+  description: string,
+  summary: string,
+  projectKey: string,
+  issueType: string,
 }
 
 export default class JiraCreateIssueConnector extends AConnector {
@@ -19,8 +19,8 @@ export default class JiraCreateIssueConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     checkParams(
-            dto.jsonData as Record<string, unknown>,
-            ['description', 'summary', 'projectKey', 'issueType'],
+      dto.jsonData as Record<string, unknown>,
+      ['description', 'summary', 'projectKey', 'issueType'],
     );
 
     const {

@@ -30,20 +30,21 @@ export default class ZendeskListUsersBatch extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IOutput{
-    users: [
-        {
-            id: number,
-            name: string
-        }],
-    meta: {
-        has_more: boolean,
-        after_cursor: string | null
-        before_cursor: string | null
-    },
-    links: {
-        next: string,
-        prev: string
+export interface IOutput {
+  users: [
+    {
+      id: number,
+      name: string
     }
-    /* eslint-enable @typescript-eslint/naming-convention */
+  ],
+  meta: {
+    has_more: boolean,
+    after_cursor: string | null
+    before_cursor: string | null
+  },
+  links: {
+    next: string,
+    prev: string
+  }
 }
+/* eslint-enable @typescript-eslint/naming-convention */

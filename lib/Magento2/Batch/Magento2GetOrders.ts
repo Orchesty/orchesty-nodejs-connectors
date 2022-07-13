@@ -46,8 +46,10 @@ export default class Magento2GetOrders extends ABatchNode {
   }
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 interface IResponseJson {
   items: IOrderJson[],
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   total_count: number
 }
+
+/* eslint-enable @typescript-eslint/naming-convention */

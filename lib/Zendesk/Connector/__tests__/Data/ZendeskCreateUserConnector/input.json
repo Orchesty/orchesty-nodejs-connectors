@@ -4,22 +4,23 @@
     },
     "data": {
         "user": {
-        "custom_role_id": 123456,
-        "email": "roge@example.org",
-        "identities": [
-            {
-                "type": "email",
-                "value": "test@user.com"
+            "custom_role_id": 123456,
+            "email": "roge@example.org",
+            "identities": [
+                {
+                    "type": "email",
+                    "value": "test@user.com"
+                },
+                {
+                    "type": "twitter",
+                    "value": "tester84"
+                }
+            ],
+            "name": "Roger Wilco",
+            "organization": {
+                "name": "VIP Customers"
             },
-            {
-                "type": "twitter",
-                "value": "tester84"
-            }
-        ],
-        "name": "Roger Wilco",
-        "organization": {
-            "name": "VIP Customers"
-        },
-        "role": "agent"
-    }}
+            "role": "agent"
+        }
+    }
 }
