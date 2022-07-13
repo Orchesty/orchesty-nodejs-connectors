@@ -31,7 +31,7 @@ export default class JiraCreateIssueConnector extends AConnector {
     } = dto.jsonData as IJiraIssue;
 
     const application = this._application as JiraApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const data = {
       fields: {
         project: {

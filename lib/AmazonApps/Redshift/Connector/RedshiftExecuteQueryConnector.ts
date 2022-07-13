@@ -11,7 +11,7 @@ export default class RedshiftExecuteQueryConnector extends ARedshiftObjectConnec
     const content = dto.jsonData as { query: string };
     this._checkParameters([QUERY], content);
 
-    const applicationInstall = await this._getApplicationInstall();
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const application = this._application as RedshiftApplication;
     const connection = await application.getConnection(applicationInstall);
     dto.jsonData = connection.query(content[QUERY]);

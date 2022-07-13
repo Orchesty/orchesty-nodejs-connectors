@@ -14,7 +14,7 @@ export default class AlzaCreateShipmentConnector extends AConnector {
     const app = this._application as AlzaApplication;
     const requestDto = app.getRequestDto(
       dto,
-      await this._getApplicationInstall(),
+      await this._getApplicationInstallFromProcess(dto),
       HttpMethods.POST,
       `${BASE_URL}/${CREATE_SHIPMENT_URL}`,
       dto.data,

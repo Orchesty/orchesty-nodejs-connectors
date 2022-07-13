@@ -33,7 +33,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
     } = dto.jsonData as IGoogleCalendarEvent;
 
     const application = this._application as GoogleCalendarApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const data = {
       start: {

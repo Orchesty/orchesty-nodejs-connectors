@@ -15,7 +15,7 @@ export default class Magento2GetOrder extends AConnector {
     const {
       orderNumber,
     } = dto.jsonData as { orderNumber: string };
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const host = appInstall.getSettings()[AUTHORIZATION_FORM][MAGENTO_URL];
     const url = `${host}/${GET_ORDERS_ENDPOINT}${orderNumber}`;
 

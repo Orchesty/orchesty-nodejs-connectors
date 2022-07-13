@@ -30,7 +30,7 @@ export default class TrelloCreateCardConnector extends AConnector {
     const query = new URLSearchParams({ idList, desc, name });
 
     const application = this._application as TrelloApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await application.getRequestDto(
       dto,

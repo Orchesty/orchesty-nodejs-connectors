@@ -14,7 +14,7 @@ export default class SlackSendMessageConnector extends AConnector {
       channel,
     } = dto.jsonData as { channel: string };
     const application = this._application as SlackApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const data = {
       channel: `${channel}`,
       blocks: [

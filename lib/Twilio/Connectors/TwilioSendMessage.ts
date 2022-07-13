@@ -35,7 +35,7 @@ export default class TwilioSendMessage extends AConnector {
       to,
     } = dto.jsonData as ITwilioMessage;
 
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const form = new FormData();
     form.append('From', from);

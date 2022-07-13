@@ -14,7 +14,7 @@ export default class ShopifyGetOrderDetail extends AConnector {
       url,
     } = dto.jsonData as IInputJson;
 
-    const order: IResponseJson = await this._doRequest(app, url, dto, dto.user);
+    const order: IResponseJson = await this._doRequest(app, url, dto);
 
     dto.jsonData = {
       ...order,
@@ -27,9 +27,8 @@ export default class ShopifyGetOrderDetail extends AConnector {
     app: ShopifyApplication,
     url: string,
     dto: ProcessDto,
-    user?: string,
   ): Promise<IResponseJson> {
-    const appInstall = await this._getApplicationInstall(user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     const res = await this._sender.send(requestDto, [200, 404]);
 

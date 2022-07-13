@@ -19,7 +19,7 @@ export default class MoneyS5CreateOrder extends AConnector {
       order,
     };
 
-    await this._doRequest(app, MONEYS5_CREATE_ORDER_ENDPOINT, dto, dto.user);
+    await this._doRequest(app, MONEYS5_CREATE_ORDER_ENDPOINT, dto);
 
     return dto;
   }
@@ -28,9 +28,8 @@ export default class MoneyS5CreateOrder extends AConnector {
     app: MoneyS5Application,
     url: string,
     dto: ProcessDto,
-    user?: string,
   ): Promise<void> {
-    const appInstall = await this._getApplicationInstall(user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     await this._sender.send(requestDto, [200, 404]);
   }

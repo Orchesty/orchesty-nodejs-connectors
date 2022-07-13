@@ -6,8 +6,7 @@ export default class RefreshOAuth2TokenNode extends AConnector {
   public getName = (): string => 'refresh-oauth2-token';
 
   public async processAction(dto: ProcessDto): Promise<ProcessDto> {
-    const { applicationId } = dto.jsonData as { applicationId: string };
-    const applicationInstall = await this._getApplicationInstall(applicationId);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     if (applicationInstall) {
       const application = this._application as AOAuth2Application;

@@ -20,7 +20,7 @@ export default class BigQueryListAllDatasets extends AConnector {
     const { projectId } = dto.jsonData as { projectId: string};
 
     const application = this._application as BigQueryApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await application.getRequestDto(
       dto,

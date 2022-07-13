@@ -40,7 +40,7 @@ export default class WebflowAddProductConnector extends AConnector {
     } = jsonData as IWebflowProduct;
 
     const application = this._application as WebflowApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const data = {
       product: {

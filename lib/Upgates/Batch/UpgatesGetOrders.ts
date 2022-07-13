@@ -23,7 +23,7 @@ export default class UpgatesGetOrders extends ABatchNode {
     if (to) {
       url = `${url}&creation_time_to=${to}`;
     }
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);

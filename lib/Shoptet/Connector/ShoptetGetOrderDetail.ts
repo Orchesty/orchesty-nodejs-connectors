@@ -18,7 +18,7 @@ export default class ShoptetGetOrderDetail extends AConnector {
       code,
     } = dto.jsonData as { code: string };
 
-    const order: IResponseJson = await this._doRequest(app, code, dto, dto.user);
+    const order: IResponseJson = await this._doRequest(app, code, dto);
 
     dto.jsonData = {
       ...order.data,
@@ -31,13 +31,12 @@ export default class ShoptetGetOrderDetail extends AConnector {
     app: ShoptetPremiumApplication,
     code: string,
     dto: ProcessDto,
-    user?: string,
   ): Promise<IResponseJson> {
     const url = `${SHOPTET_API_HOST}/${GET_ORDER_DETAIL_ENDPOINT.replace(
       '{code}',
       code,
     )}`;
-    const appInstall = await this._getApplicationInstall(user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,

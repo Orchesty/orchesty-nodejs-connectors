@@ -30,7 +30,7 @@ export default class DropboxUploadFile extends AConnector {
     } = dto.jsonData as IDropboxFile;
 
     const application = this._application as DropboxApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await application.getRequestDto(
       dto,

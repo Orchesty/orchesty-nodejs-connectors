@@ -33,7 +33,7 @@ export default class FacebookCreateCampaigns extends AConnector {
     } = dto.jsonData as IFacebookCampaigns;
 
     const application = this._application as FacebookAdsApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const data = {
       name,
       objective,

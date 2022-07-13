@@ -15,7 +15,7 @@ export default class UpgatesGetProducts extends ABatchNode {
     const app = this._application as ShopifyApplication;
     const pageNumber = dto.getBatchCursor('0');
     const url = `${LIST_PAGE_ENDPOINT}?page${pageNumber}`;
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);

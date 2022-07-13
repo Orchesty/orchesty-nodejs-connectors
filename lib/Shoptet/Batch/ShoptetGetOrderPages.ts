@@ -15,7 +15,7 @@ export default class ShoptetGetOrderPages extends ABatchNode {
     const {
       from,
     } = dto.jsonData as { from: string };
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
 
     let url = `${SHOPTET_API_HOST}/${GET_ORDER_PAGES_ENDPOINT}`;
 

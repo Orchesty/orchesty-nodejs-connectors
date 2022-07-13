@@ -33,7 +33,7 @@ export default class DiscordSendMessageConnector extends AConnector {
     } = dto.jsonData as IDiscordMessage;
 
     const application = this._application as DiscordApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const data = {
       tts: false,
       embeds: [

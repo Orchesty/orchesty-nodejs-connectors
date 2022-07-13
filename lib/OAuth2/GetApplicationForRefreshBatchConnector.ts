@@ -1,13 +1,13 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
 export const APPLICATION_ID = 'get-application-for-refresh';
 
-export default class GetApplicationForRefreshBatchConnector extends AConnector {
+export default class GetApplicationForRefreshBatchConnector extends ABatchNode {
   public getName = (): string => APPLICATION_ID;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
 
     const date = DateTimeUtils.utcDate;
@@ -15,11 +15,10 @@ export default class GetApplicationForRefreshBatchConnector extends AConnector {
 
     const repository = await this._dbClient.getApplicationRepository();
 
-    const applications = repository.find({ expires: { $in: [{ $lte: time }, { $ne: null }] } });
-
-    dto.jsonData = applications.map((app) => ({
-      applicationId: app.getId(),
-    }));
+    const applications = await repository.find({ expires: { $in: [{ $lte: time }, { $ne: null }] } });
+    await applications.forEach((app) => {
+      dto.addItem({}, app.getUser());
+    });
 
     return dto;
   }

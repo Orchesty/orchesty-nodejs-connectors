@@ -36,7 +36,7 @@ export default class ZoomSendMessageConnector extends AConnector {
     };
 
     const application = this._application as ZoomApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await application.getRequestDto(
       dto,

@@ -2,7 +2,6 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { get, USER } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import AirtableApplication, { BASE_ID, BASE_URL, TABLE_NAME } from '../AirtableApplication';
 
 export default class AirtableNewRecordConnector extends AConnector {
@@ -10,11 +9,7 @@ export default class AirtableNewRecordConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const user = get(USER, dto.headers);
-    if (!user) {
-      throw Error('User not defined');
-    }
-    const applicationInstall = await this._getApplicationInstall(user[0]);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
     const app = this._application as AirtableApplication;
     if (!app.getValue(applicationInstall, BASE_ID)
       || !app.getValue(applicationInstall, TABLE_NAME)) {

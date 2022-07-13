@@ -12,7 +12,7 @@ export default class WooCommerceGetOrders extends ABatchNode {
     const dto = _dto;
     const pageNumber = dto.getBatchCursor('1');
     const app = this._application as WooCommerceApplication;
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
 
     const requestDto = await app.getRequestDto(
       dto,

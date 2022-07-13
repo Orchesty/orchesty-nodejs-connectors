@@ -17,7 +17,7 @@ export default class UpgatesUpdateOrder extends AConnector {
       data,
     } = dto.jsonData as IInputJson;
 
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,

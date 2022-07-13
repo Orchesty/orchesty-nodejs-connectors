@@ -20,7 +20,7 @@ export default class ShopifyGetOrderList extends ABatchNode {
       const separatorChar = url.includes('?') ? '&' : '?';
       url = `${url}${separatorChar}created_at_min=${from}`;
     }
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
     const res = await this._sender.send(requestDto);

@@ -43,7 +43,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
     } = dto.jsonData as IGoogleSheetSpreadsheet;
 
     const application = this._application as GoogleSheetApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const data = {
       properties: {

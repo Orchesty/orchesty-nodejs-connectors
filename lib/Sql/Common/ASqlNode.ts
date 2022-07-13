@@ -20,7 +20,7 @@ export default abstract class ASqlNode extends ACommonNode {
   protected async _processAction(_dto: AProcessDto): Promise<AProcessDto> {
     const dto = _dto;
     const query = await this._getQuery(dto);
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const app = this._application as ASqlApplication;
     let conn: Sequelize | OracleDB.Connection | undefined;
     try {

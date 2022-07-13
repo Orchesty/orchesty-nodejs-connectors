@@ -20,7 +20,7 @@ export default class GmailGetProfile extends AConnector {
     const { userId } = dto.jsonData as { userId: string };
 
     const application = this._application as GmailApplication;
-    const applicationInstall = await this._getApplicationInstall(dto.user);
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
 
     const request = await application.getRequestDto(
       dto,

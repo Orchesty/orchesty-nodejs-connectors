@@ -14,7 +14,7 @@ export default class ShoptetGetOrderList extends ABatchNode {
       url,
     } = dto.jsonData as IInputJson;
 
-    const appInstall = await this._getApplicationInstall(dto.user);
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(
       dto,
       appInstall,
