@@ -4,7 +4,7 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { db } from './TestAbstract';
 import {
@@ -12,6 +12,7 @@ import {
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
+import { ID, NAME } from '../lib/Nutshell/NutshellApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -76,5 +77,16 @@ export async function zendeskApp() {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
+  });
+}
+
+export async function nutshellApp() {
+  return appInstall(NAME, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USER]: 'Gerald',
+      [PASSWORD]: 'gerald123',
+      [ID]: '216143',
+    },
+
   });
 }
