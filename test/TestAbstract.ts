@@ -17,6 +17,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
 import NutshellApplication from '../lib/Nutshell/NutshellApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
+import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -123,10 +124,17 @@ function initNutshell(): void {
   container.setApplication(app);
 
   const getAccount = new NutshellGetAccountConnector();
+  const newAccount = new NutshellNewAccountConnector();
 
   getAccount
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getAccount);
+
+  newAccount
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(newAccount);
 }
