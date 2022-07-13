@@ -1,6 +1,8 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { ID } from '../NutshellApplication';
 
 export const NAME = 'nutshell-new-account-connector';
 
@@ -11,7 +13,12 @@ export default class NutshellNewAccountConnector extends AConnector {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    const data = dto.jsonData as IInput;
+    const data = {
+      jsonrpc: '2.0',
+      method: 'newAccount',
+      params: dto.jsonData as IInput,
+      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
+    };
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -32,7 +39,7 @@ export default class NutshellNewAccountConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 interface IResponse{
-  result: IInput,
+  result: IOutput,
   id: string,
   jsonrpc: string
 
@@ -79,7 +86,6 @@ export interface IInput {
   }
 }
 export interface IOutput{
-  result: {
     id: number,
     entityType: string,
     rev: string,
@@ -212,7 +218,6 @@ export interface IOutput{
     ],
     leads: [
     ]
-  }
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
