@@ -16,11 +16,14 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
+export const NAME = 'nutshell';
+export const ID = 'id';
+
 export default class NutshellApplication extends ABasicApplication {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Affordable, easy-to-use CRM that helps small-business sales teams win more deals.';
 
-  public getName = (): string => 'nutshell';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Nutshell';
 
@@ -34,7 +37,7 @@ export default class NutshellApplication extends ABasicApplication {
     url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
-    const request = new RequestDto(url ?? '', method, dto);
+    const request = new RequestDto('https//app.nutshell.com/api/v1/json', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -50,7 +53,8 @@ export default class NutshellApplication extends ABasicApplication {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, USER, 'Username', undefined, true))
-      .addField(new Field(FieldType.TEXT, PASSWORD, 'API Key', undefined, true));
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'API Key', undefined, true))
+      .addField(new Field(FieldType.TEXT, ID, 'Id', undefined, true));
 
     return new FormStack().addForm(form);
   };

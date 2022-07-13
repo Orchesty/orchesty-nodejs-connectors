@@ -15,6 +15,8 @@ import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUs
 import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
 import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
+import NutshellApplication from '../lib/Nutshell/NutshellApplication';
+import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -35,6 +37,7 @@ export async function prepare(): Promise<void> {
   initBigCommerce();
   initZoho();
   initZendesk();
+  initNutshell();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -113,4 +116,17 @@ function initZendesk(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listTicket);
+}
+
+function initNutshell(): void {
+  const app = new NutshellApplication();
+  container.setApplication(app);
+
+  const getAccount = new NutshellGetAccountConnector();
+
+  getAccount
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getAccount);
 }
