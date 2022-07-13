@@ -30,8 +30,7 @@ export default class NutshellGetAccountConnector extends AConnector {
     );
 
     const resp = await this._sender.send(req, [200]);
-
-    const response = resp.jsonBody as IOutput;
+    const response = resp.jsonBody as IResponse;
 
     dto.jsonData = response.result;
 
@@ -40,13 +39,17 @@ export default class NutshellGetAccountConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IInput{
-  accountId: number
+interface IResponse {
+    result: IOutput,
+    id: string,
+    jsonrpc: string
 }
 
-export interface IOutput{
+export interface IInput {
+    accountId: number
+}
 
-  result: {
+export interface IOutput {
     id: number,
     entityType: string,
     rev: string,
@@ -57,95 +60,91 @@ export interface IOutput{
     htmlUrlPath: string,
     avatarUrl: string,
     accountType: {
-      id: number,
-      name: string
+        id: number,
+        name: string
     },
     industry: {
-      stub: boolean,
-      id: number,
-      rev: string,
-      entityType: string,
-      name: string
-    },
-    tags: [],
-    lastContactedDate: string,
-    contacts: [
-      {
-        stub: true,
-        id: number,
-        rev: string,
-        entityType: string,
-        modifiedTime: string,
-        createdTime: string,
-        name: string,
-        jobTitle: string,
-        relationship: null
-      }
-    ],
-    description: null,
-    legacyId: null,
-    address: {
-      main: {
-        name: null,
-        location: {
-          longitude: number,
-          latitude: number
-        },
-        locationAccuracy: string,
-        address_1: string,
-        address_2: null,
-        address_3: null,
-        city: string,
-        state: string,
-        postalCode: string,
-        country: string,
-        timezone: null
-      },
-      primary: {
-        name: null,
-        location: {
-          longitude: number,
-          latitude: number
-        },
-        locationAccuracy: string,
-        address_1: string,
-        address_2: null,
-        address_3: null,
-        city: string,
-        state: string,
-        postalCode: string,
-        country: string,
-        timezone: null
-      }
-    },
-    notes: [],
-    leads: [
-      {
         stub: boolean,
         id: number,
         rev: string,
         entityType: string,
-        modifiedTime: string,
-        createdTime: string,
-        name: string,
-        description: string,
-        status: number,
-        completion: number,
-        value: {
-          currency: string,
-          amount: number
+        name: string
+    },
+    tags: [],
+    lastContactedDate: string,
+    contacts: [
+        {
+            stub: true,
+            id: number,
+            rev: string,
+            entityType: string,
+            modifiedTime: string,
+            createdTime: string,
+            name: string,
+            jobTitle: string,
+            relationship: null
+        }
+    ],
+    description: null,
+    legacyId: null,
+    address: {
+        main: {
+            name: null,
+            location: {
+                longitude: number,
+                latitude: number
+            },
+            locationAccuracy: string,
+            address_1: string,
+            address_2: null,
+            address_3: null,
+            city: string,
+            state: string,
+            postalCode: string,
+            country: string,
+            timezone: null
         },
-        primaryAccountName: string,
-        primaryContactName: string,
-        isOverdue: false,
-        lastContactedDate: string,
-        dueTime: string,
-        closedTime: string
-      },
+        primary: {
+            name: null,
+            location: {
+                longitude: number,
+                latitude: number
+            },
+            locationAccuracy: string,
+            address_1: string,
+            address_2: null,
+            address_3: null,
+            city: string,
+            state: string,
+            postalCode: string,
+            country: string,
+            timezone: null
+        }
+    },
+    notes: [],
+    leads: [
+        {
+            stub: boolean,
+            id: number,
+            rev: string,
+            entityType: string,
+            modifiedTime: string,
+            createdTime: string,
+            name: string,
+            description: string,
+            status: number,
+            completion: number,
+            value: {
+                currency: string,
+                amount: number
+            },
+            primaryAccountName: string,
+            primaryContactName: string,
+            isOverdue: false,
+            lastContactedDate: string,
+            dueTime: string,
+            closedTime: string
+        },
     ]
-  },
-  id: string,
-  jsonrpc: string
-
-  /* eslint-enable @typescript-eslint/naming-convention */
 }
+/* eslint-enable @typescript-eslint/naming-convention */
