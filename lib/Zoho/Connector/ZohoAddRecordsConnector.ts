@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import {
   ACCOUNT_OWNER_NAME, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME,
 } from '../ZohoApplication';
@@ -27,7 +27,7 @@ export default class ZohoAddRecordsConnector extends AConnector {
     );
     const resp = await this._sender.send(req, [200]);
 
-    const records = resp.jsonBody as IOutput;
+    const records = resp.jsonBody as IResponse;
 
     records.result.forEach((value) => {
       if (value.code !== 3000) {
@@ -42,24 +42,8 @@ export default class ZohoAddRecordsConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IOutput {
-  result: [
-    {
-      code: number,
-      data: {
-        Email: string,
-        Phone_Number: string,
-        ID: string,
-      },
-      message: string,
-      tasks: {
-        openurl: {
-          type: string,
-          url: string,
-        }
-      }
-    }
-  ],
+interface IResponse {
+  result: IOutput[],
 }
 
 export interface IInput {
@@ -73,6 +57,22 @@ export interface IInput {
     fields: string[],
     message: boolean,
     tasks: boolean
+  }
+}
+
+export interface IOutput {
+  code: number,
+  data: {
+    Email: string,
+    Phone_Number: string,
+    ID: string,
+  },
+  message: string,
+  tasks: {
+    openurl: {
+      type: string,
+      url: string,
+    }
   }
 }
 /* eslint-enable @typescript-eslint/naming-convention */

@@ -27,7 +27,7 @@ export default class ZohoGetRecordsConnector extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.GET, url);
     const resp = await this._sender.send(req, [200]);
 
-    const records = resp.jsonBody as IOutput;
+    const records = resp.jsonBody as IResponse;
 
     if (records.code !== 3000) {
       throw new Error('The request failed');
@@ -40,74 +40,76 @@ export default class ZohoGetRecordsConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+  code: number,
+  data: IOutput
+}
+
 export interface IInput {
   recordId: string
 }
 
 export interface IOutput {
-  code: number,
-  data: {
-    Multi_Line: string,
-    Email: string,
-    Address: {
-      display_value: string,
-      country: string,
-      district_city: string,
-      latitude: string,
-      address_line_1: string,
-      state_province: string,
-      address_line_2: string,
-      postal_code: string,
-      longitude: string
-    },
-    Phone_Number: string,
-    Time: string,
-    Image: string,
-    Url: {
-      value: string,
-      url: string
-    },
-    Name: {
-      display_value: string,
-      prefix: string,
-      last_name: string,
-      suffix: string,
-      first_name: string
-    },
-    Formula: string,
-    Single_Line: string,
-    Number: string,
-    Decimal: string,
-    Decision_box: string,
-    File_upload: string,
-    Checkbox: string,
-    Currency: string,
-    Rich_Text: string,
-    Lookup: {
-      display_value: string,
-      ID: string
-    },
-    ID: string,
-    Integration: {
-      display_value: string,
-      ID: string
-    },
-    Multi_Select: string[],
-    Keyword: string,
-    Percent: string,
-    Prediction: string,
-    Dropdown: string,
-    Inline_SubForm: { display_value: string, ID: string },
-    Radio: string,
-    Auto_Number: string,
-    users: string,
-    Audio: string,
-    Video: string,
-    Signature: string,
-    Sentiment: string,
-    Date_Time: string,
-    Date_field: string,
-    Object_Detection: string
-  }
+  Multi_Line: string,
+  Email: string,
+  Address: {
+    display_value: string,
+    country: string,
+    district_city: string,
+    latitude: string,
+    address_line_1: string,
+    state_province: string,
+    address_line_2: string,
+    postal_code: string,
+    longitude: string
+  },
+  Phone_Number: string,
+  Time: string,
+  Image: string,
+  Url: {
+    value: string,
+    url: string
+  },
+  Name: {
+    display_value: string,
+    prefix: string,
+    last_name: string,
+    suffix: string,
+    first_name: string
+  },
+  Formula: string,
+  Single_Line: string,
+  Number: string,
+  Decimal: string,
+  Decision_box: string,
+  File_upload: string,
+  Checkbox: string,
+  Currency: string,
+  Rich_Text: string,
+  Lookup: {
+    display_value: string,
+    ID: string
+  },
+  ID: string,
+  Integration: {
+    display_value: string,
+    ID: string
+  },
+  Multi_Select: string[],
+  Keyword: string,
+  Percent: string,
+  Prediction: string,
+  Dropdown: string,
+  Inline_SubForm: { display_value: string, ID: string },
+  Radio: string,
+  Auto_Number: string,
+  users: string,
+  Audio: string,
+  Video: string,
+  Signature: string,
+  Sentiment: string,
+  Date_Time: string,
+  Date_field: string,
+  Object_Detection: string
 }
 /* eslint-enable @typescript-eslint/naming-convention */

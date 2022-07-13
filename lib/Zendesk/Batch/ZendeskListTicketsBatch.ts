@@ -1,6 +1,6 @@
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 
 export const NAME = 'zendesk-list-tickets-batch';
 
@@ -19,7 +19,7 @@ export default class ZendeskListTicketsBatch extends ABatchNode {
       `/tickets.json?page[size]=100&page[after]=${offset}`,
     );
     const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IOutput;
+    const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.tickets ?? []);
     if (response.meta.after_cursor) {
@@ -31,57 +31,56 @@ export default class ZendeskListTicketsBatch extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+  tickets: IOutput[],
+  meta: {
+    has_more: boolean,
+    after_cursor: string | null
+    before_cursor: string | null
+  },
+  links: {
+    next: string,
+    prev: string
+  }
+}
 
-export interface IOutput{
-    tickets: [
-        {
-            assignee_id: number,
-            collaborator_ids: number[],
-            created_at: string,
-            custom_fields: [
-                {
-                    id: number,
-                    value: string
-                }
-            ],
-            description: string,
-            external_id: string,
-            follower_ids: number[],
-            group_id: number,
-            has_incidents: boolean,
-            id: number,
-            organization_id: number,
-            priority: string,
-            problem_id: number,
-            raw_subject: string,
-            recipient: string,
-            requester_id: number,
-            satisfaction_rating: {
-                comment: string,
-                id: number,
-                score: string
-            },
-            sharing_agreement_ids: number[],
-            status: string,
-            subject: string,
-            submitter_id: number,
-            tags: string[],
-            type: string,
-            updated_at: string,
-            url: string,
-            via: {
-                channel: string
-            }
-        }
-    ],
-    meta: {
-        has_more: boolean,
-        after_cursor: string | null
-        before_cursor: string | null
-    },
-    links: {
-        next: string,
-        prev: string
+export interface IOutput {
+  assignee_id: number,
+  collaborator_ids: number[],
+  created_at: string,
+  custom_fields: [
+    {
+      id: number,
+      value: string
     }
-    /* eslint-enable @typescript-eslint/naming-convention */
+  ],
+  description: string,
+  external_id: string,
+  follower_ids: number[],
+  group_id: number,
+  has_incidents: boolean,
+  id: number,
+  organization_id: number,
+  priority: string,
+  problem_id: number,
+  raw_subject: string,
+  recipient: string,
+  requester_id: number,
+  satisfaction_rating: {
+    comment: string,
+    id: number,
+    score: string
+  },
+  sharing_agreement_ids: number[],
+  status: string,
+  subject: string,
+  submitter_id: number,
+  tags: string[],
+  type: string,
+  updated_at: string,
+  url: string,
+  via: {
+    channel: string
+  }
+  /* eslint-enable @typescript-eslint/naming-convention */
 }
