@@ -14,6 +14,7 @@ import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
 import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
 import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
+import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -83,9 +84,11 @@ function initBigCommerce(): void {
 function initZendesk(): void {
   const app = new ZendeskApplication(oauth2Provider);
   container.setApplication(app);
+
   const createUser = new ZendeskCreateUserConnector();
   const createTicket = new ZendeskCreateTicketConnector();
   const listUser = new ZendeskListUsersBatch();
+  const listTicket = new ZendeskListTicketsBatch();
 
   createUser
     .setSender(sender)
@@ -104,4 +107,10 @@ function initZendesk(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listUser);
+
+  listTicket
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listTicket);
 }
