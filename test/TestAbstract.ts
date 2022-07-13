@@ -13,6 +13,7 @@ import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/Bigcom
 import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
 import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
+import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -84,6 +85,7 @@ function initZendesk(): void {
   container.setApplication(app);
   const createUser = new ZendeskCreateUserConnector();
   const createTicket = new ZendeskCreateTicketConnector();
+  const listUser = new ZendeskListUsersBatch();
 
   createUser
     .setSender(sender)
@@ -96,4 +98,10 @@ function initZendesk(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createTicket);
+
+  listUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listUser);
 }

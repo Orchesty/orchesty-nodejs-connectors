@@ -20,6 +20,7 @@ export default class ZendeskCreateTicketConnector extends AConnector {
     return dto;
   }
 }
+
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput{
     ticket: {
@@ -72,5 +73,5 @@ export interface IOutput{
             channel: string
         }
     }
+    /* eslint-enable @typescript-eslint/naming-convention */
 }
-/* eslint-enable @typescript-eslint/naming-convention */
