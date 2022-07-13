@@ -20,7 +20,7 @@ export default class ZendeskListUsersBatch extends ABatchNode {
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IOutput;
 
-    dto.setItemList(response.users);
+    dto.setItemList(response.users ?? []);
     if (response.meta.after_cursor) {
       dto.setBatchCursor(response.meta.after_cursor);
     }
