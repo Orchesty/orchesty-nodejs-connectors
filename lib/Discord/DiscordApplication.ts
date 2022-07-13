@@ -36,7 +36,7 @@ export default class DiscordApplication extends ABasicApplication {
       throw new Error(`Application [${this.getPublicName()}] doesn't have token!`);
     }
     return new RequestDto(
-      new URL(url ?? BASE_URL, BASE_URL).toString(),
+      `${BASE_URL}${url}`,
       method,
       _dto,
       data,

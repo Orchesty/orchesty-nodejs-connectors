@@ -43,7 +43,7 @@ export default class ZoomApplication extends AOAuth2Application {
 
     const token = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
     return new RequestDto(
-      new URL(url ?? '', BASE_URL).toString(),
+      `${BASE_URL}${url}`,
       method,
       _dto,
       data,

@@ -14,7 +14,7 @@ export default abstract class ASqlBatchConnector extends ASqlNode {
   protected _getExecuteOptions = (): ExecuteOptions => ({ outFormat: OracleDB.OUT_FORMAT_OBJECT });
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    return super._processAction(_dto) as Promise<BatchProcessDto>;
+    return await super._processAction(_dto) as BatchProcessDto;
   }
 
   public getName(): string {

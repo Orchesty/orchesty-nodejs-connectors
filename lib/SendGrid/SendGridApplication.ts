@@ -38,7 +38,7 @@ export default class SendGridApplication extends ABasicApplication {
     const settings = applicationInstall.getSettings();
     const token = settings[AUTHORIZATION_FORM][TOKEN];
     const dto = new RequestDto(
-      new URL(url ?? BASE_URL).toString(),
+      `${BASE_URL}${url}`,
       method,
       _dto,
       JSON.stringify({

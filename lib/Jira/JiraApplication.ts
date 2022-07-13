@@ -53,7 +53,7 @@ export default class JiraApplication extends ABasicApplication {
       throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
     }
     return new RequestDto(
-      new URL(url ?? '', this.getBaseUrl(applicationInstall)).toString(),
+      `${this.getBaseUrl(applicationInstall)}${url}`,
       method,
       _dto,
       data,

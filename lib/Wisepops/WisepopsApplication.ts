@@ -37,7 +37,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     url?: string,
     data?: BodyInit,
   ): RequestDto => {
-    const request = new RequestDto(this.getUri(url).toString(), method, dto);
+    const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

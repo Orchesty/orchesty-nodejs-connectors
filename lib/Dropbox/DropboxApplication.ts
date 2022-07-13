@@ -41,7 +41,7 @@ export default class DropboxApplication extends AOAuth2Application {
 
     const token = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
     return new RequestDto(
-      new URL(url ?? '').toString(),
+      url ?? '',
       method,
       _dto,
       data,

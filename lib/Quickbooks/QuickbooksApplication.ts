@@ -39,7 +39,7 @@ export default class QuickbooksApplication extends AOAuth2Application {
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> {
     const request = new RequestDto(
-      this.getUri(`${this._getBaseUrl(applicationInstall)}${url}`).toString(),
+      `${this._getBaseUrl(applicationInstall)}${url}`,
       method,
       dto,
     );

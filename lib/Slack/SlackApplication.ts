@@ -44,7 +44,7 @@ export default class SlackApplication extends AOAuth2Application {
 
     const token = applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN][ACCESS_TOKEN];
     return new RequestDto(
-      new URL(url ?? BASE_URL, BASE_URL).toString(),
+      `${BASE_URL}${url}`,
       method,
       _dto,
       data,

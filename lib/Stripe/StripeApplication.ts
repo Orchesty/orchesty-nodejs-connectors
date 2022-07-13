@@ -39,7 +39,7 @@ export default class StripeApplication extends ABasicApplication {
 
     const apiKey = applicationInstall.getSettings()[AUTHORIZATION_FORM][ACCESS_TOKEN];
     return new RequestDto(
-      new URL(url ?? BASE_URL, BASE_URL).toString(),
+      `${BASE_URL}${url}`,
       method,
       _dto,
       data,

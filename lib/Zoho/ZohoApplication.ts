@@ -45,7 +45,7 @@ export default class ZohoApplication extends AOAuth2Application {
     const domain = applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN][API_DOMAIN];
     const url = `${domain}${API_PATH}${_url}`;
 
-    const request = new RequestDto(this.getUri(url).toString(), method, dto);
+    const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

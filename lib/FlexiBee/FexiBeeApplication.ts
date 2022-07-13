@@ -102,15 +102,15 @@ export default class FlexiBeeApplication extends ABasicApplication {
     return new FormStack().addForm(form);
   };
 
-  public getUrl(applicationInstall: ApplicationInstall, url?: string): string {
+  public getUrl = (applicationInstall: ApplicationInstall, url?: string): string => {
     const host = applicationInstall.getSettings()[AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
 
     if (host) {
       throw Error('There is no flexibee url');
     }
 
-    return `${host}/${this.getUri(url)}`;
-  }
+    return `${host}/${url}`;
+  };
 
   private async _getApiToken(applicationInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
     let token = await this._getApiTokenFromSettings(applicationInstall);

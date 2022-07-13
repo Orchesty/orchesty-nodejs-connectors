@@ -13,7 +13,10 @@ import {
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 
-const USER = 'TestUser';
+const DEFAULT_USER = 'TestUser';
+const DEFAULT_CLIENT_ID = 'ClientId';
+const DEFAULT_CLIENT_SECRET = 'ClientSecret';
+const DEFAULT_ACCESS_TOKEN = 'AccessToken';
 
 export async function appInstall(
   name: string,
@@ -32,12 +35,12 @@ export async function appInstall(
 }
 
 export async function zohoApp() {
-  return appInstall(ZOHO_APP, USER, {
+  return appInstall(ZOHO_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: 'testClient',
-      [CLIENT_SECRET]: 'secret',
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'TOKEN',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
         [API_DOMAIN]: 'https://creator.zoho.com',
       },
     },
@@ -51,12 +54,12 @@ export async function zohoApp() {
 }
 
 export async function bigcommerceApp() {
-  return appInstall(BIGCOMMERCE_APP, USER, {
+  return appInstall(BIGCOMMERCE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: 'testClient',
-      [CLIENT_SECRET]: 'secret',
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'TOKEN',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
       [STORE_HASH]: 'testHash',
     },
@@ -64,13 +67,13 @@ export async function bigcommerceApp() {
 }
 
 export async function zendeskApp() {
-  return appInstall(ZENDESK_APP, USER, {
+  return appInstall(ZENDESK_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [SUBDOMAIN]: 'Test_subdomain',
-      [CLIENT_ID]: 'Test_client',
-      [CLIENT_SECRET]: 'Test_secret',
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [SUBDOMAIN]: 'test_subdomain',
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'TOKEN',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
   });

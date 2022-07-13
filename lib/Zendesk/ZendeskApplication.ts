@@ -35,7 +35,7 @@ export default class ZendeskApplication extends AOAuth2Application {
     const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
     const url = `https://${subdomain}.zendesk.com/api/v2${_url}`;
 
-    const request = new RequestDto(this.getUri(url).toString(), method, dto);
+    const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
