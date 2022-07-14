@@ -14,6 +14,8 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const INSTANCE_NAME = 'instance_name';
 
+export const NAME = 'salesforce';
+
 const SALES_URL = 'https://login.salesforce.com/services/oauth2/authorize';
 const TOKEN_URL = 'https://login.salesforce.com/services/oauth2/token';
 
@@ -21,7 +23,7 @@ export default class SalesForceApplication extends AOAuth2Application {
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Salesforce is a leading enterprise customer relationship manager (CRM) application.';
 
-  public getName = (): string => 'salesforce';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Salesforce';
 
@@ -32,9 +34,13 @@ export default class SalesForceApplication extends AOAuth2Application {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: BodyInit,
   ): RequestDto | Promise<RequestDto> => {
+    const domain = applicationInstall.getSettings()[AUTHORIZATION_FORM][INSTANCE_NAME];
+
+    const url = `https://${domain}.my.salesforce.com/services/data/v55.0/sobjects${_url}`;
+
     const request = new RequestDto(url ?? '', parseHttpMethod(method), dto);
     request.headers = {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
