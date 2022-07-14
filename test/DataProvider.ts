@@ -12,7 +12,8 @@ import {
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
-import { ID, NAME } from '../lib/Nutshell/NutshellApplication';
+import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
+import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -81,8 +82,21 @@ export async function zendeskApp() {
   });
 }
 
+export async function salesforceAPP() {
+  return appInstall(SALESFORCE_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [INSTANCE_NAME]: 'Domain',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
+    },
+  });
+}
+
 export async function nutshellApp() {
-  return appInstall(NAME, DEFAULT_USER, {
+  return appInstall(NUTSHELL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [USER]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,

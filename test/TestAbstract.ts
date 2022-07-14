@@ -20,6 +20,8 @@ import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAc
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
 import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskConnector';
+import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
+import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -41,6 +43,7 @@ export async function prepare(): Promise<void> {
   initZoho();
   initZendesk();
   initNutshell();
+  initSalesForce();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -153,4 +156,17 @@ function initNutshell(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(newTask);
+}
+
+function initSalesForce(): void {
+  const app = new SalesForceApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const createRecord = new SalesForceCreateRecordConnector();
+
+  createRecord
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createRecord);
 }

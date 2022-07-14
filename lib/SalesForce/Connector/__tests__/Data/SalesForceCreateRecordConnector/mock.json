@@ -1,0 +1,10 @@
+{
+    "http": "POST https://Domain.my.salesforce.com/services/data/v55.0/sobjects/Account/",
+    "code": 201,
+    "body": {
+        "id" : "001D000000IqhSLIAZ",
+        "errors" : [ ],
+        "success" : true
+      }
+    
+}
