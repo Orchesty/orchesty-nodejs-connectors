@@ -4,7 +4,7 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'salesforce-create-record-connector';
 
-export default class ZendeskCreateTicketConnector extends AConnector {
+export default class SalesForceConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
