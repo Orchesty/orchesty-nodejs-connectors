@@ -41,7 +41,6 @@ export interface IInput {
   products: [{ name: string, quantity: number, price_inc_tax: number, price_ex_tax: number }]
 
 }
-
 export interface IOutput {
   id: number,
   customer_id: number,
