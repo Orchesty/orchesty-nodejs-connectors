@@ -1,4 +1,64 @@
 {
-    "headers": {},
-    "data": {}
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "lead": {
+        "primaryAccount": {"id": "1234"},
+        "dueTime": "2010-11-13T15:23:19-05:00",
+        "market": {"id": "1"},
+        "tags": ["some tag name", "some other tag"],
+        "description": "A great new lead",
+        "accounts": [
+            {
+                "id": 111
+            }
+        ],
+        "contacts": [
+            {
+                "id": 12
+            }
+        ],
+        "products": [
+            {
+                "relationship": "Potentially interested",
+                "quantity": 2,
+                "price": {
+                    "currency_shortname": "USD",
+                    "amount": "5000"
+                },
+                "id": 5
+            } 
+        ],
+        "competitors": [
+            {
+                "status": 2,
+                "relationship": "Might be cheaper than us",
+                "id": 12
+            }
+        ],
+        "sources": [
+            { "id": 12 } 
+        ],
+        "confidence": 50,
+        "assignee": {
+            "entityType": "Users",
+            "id": 12
+        },
+        "customFields": {
+            "Tracking #": "32ab",
+            "Discount": {
+                "currency_shortname": "USD",
+                "amount": "5000"
+            }
+        },
+        "note": [
+             "New lead note #1",
+             "New lead note #2"
+        ],
+        "priority": 0
+    }
+
+    }
 }
+    
