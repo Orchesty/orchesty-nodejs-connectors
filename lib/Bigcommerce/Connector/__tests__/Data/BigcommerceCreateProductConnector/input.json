@@ -1,0 +1,123 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "name": "Smith Journal 13",
+    "type": "physical",
+    "sku": "SM-13",
+    "description": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel metus ac est egestas porta sed quis erat. Integer id nulla massa. Proin vitae enim nisi. Praesent non dignissim nulla. Nulla mattis id massa ac pharetra. Mauris et nisi in dolor aliquam sodales. Aliquam dui nisl, dictum quis leo sit amet, rutrum volutpat metus. Curabitur libero nunc, interdum ac libero non, tristique porttitor metus. Ut non dignissim lorem, in vestibulum leo. Vivamus sodales quis turpis eget.</span></p>",
+    "weight": 0,
+    "width": 0,
+    "depth": 0,
+    "height": 0,
+    "price": 0,
+    "cost_price": 0,
+    "retail_price": 0,
+    "sale_price": 0,
+    "map_price": 0,
+    "tax_class_id": 0,
+    "product_tax_code": "string",
+    "categories": [
+      0
+    ],
+    "brand_id": 0,
+    "inventory_level": 0,
+    "inventory_warning_level": 0,
+    "inventory_tracking": "none",
+    "fixed_cost_shipping_price": 0,
+    "is_free_shipping": true,
+    "is_visible": true,
+    "is_featured": true,
+    "related_products": [
+      0
+    ],
+    "warranty": "string",
+    "bin_picking_number": "string",
+    "layout_file": "string",
+    "upc": "string",
+    "search_keywords": "string",
+    "availability": "available",
+    "availability_description": "string",
+    "gift_wrapping_options_type": "any",
+    "gift_wrapping_options_list": [
+      0
+    ],
+    "sort_order": -2147483648,
+    "condition": "New",
+    "is_condition_shown": true,
+    "order_quantity_minimum": 0,
+    "order_quantity_maximum": 0,
+    "page_title": "string",
+    "meta_keywords": [
+      "string"
+    ],
+    "meta_description": "string",
+    "view_count": 0,
+    "preorder_release_date": "2019-08-24T14:15:22Z",
+    "preorder_message": "string",
+    "is_preorder_only": true,
+    "is_price_hidden": true,
+    "price_hidden_label": "string",
+    "custom_url": {
+      "url": "string",
+      "is_customized": true
+    },
+    "open_graph_type": "product",
+    "open_graph_title": "string",
+    "open_graph_description": "string",
+    "open_graph_use_meta_description": true,
+    "open_graph_use_product_name": true,
+    "open_graph_use_image": true,
+    "brand_name or brand_id": "Common Good",
+    "gtin": "string",
+    "mpn": "string",
+    "reviews_rating_sum": 3.2,
+    "reviews_count": 4,
+    "total_sold": 80,
+    "custom_fields": [
+      {
+        "id": 6,
+        "name": "ISBN",
+        "value": "1234567890123"
+      }
+    ],
+    "bulk_pricing_rules": [
+      {
+        "id": 0,
+        "quantity_min": 10,
+        "quantity_max": 50,
+        "type": "price",
+        "amount": 10
+      }
+    ],
+    "images": [
+      {
+        "image_file": "string",
+        "is_thumbnail": true,
+        "sort_order": -2147483648,
+        "description": "string",
+        "image_url": "string",
+        "id": 0,
+        "product_id": 0,
+        "url_zoom": "string",
+        "url_standard": "string",
+        "url_thumbnail": "string",
+        "url_tiny": "string",
+        "date_modified": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Writing Great Documentation",
+        "description": "A video about documenation",
+        "sort_order": 1,
+        "type": "youtube",
+        "video_id": "z3fRu9pkuXE",
+        "id": 0,
+        "product_id": 0,
+        "length": "string"
+      }
+    ]
+  }
+}

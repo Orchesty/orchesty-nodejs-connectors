@@ -18,6 +18,7 @@ import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatc
 import NutshellApplication from '../lib/Nutshell/NutshellApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
+import BigcommerceCreateProductConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateProductConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
 import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskConnector';
 
@@ -37,7 +38,7 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initBigCommerce();
+  initBigcommerce();
   initZoho();
   initZendesk();
   initNutshell();
@@ -76,15 +77,22 @@ function initZoho(): void {
   container.setConnector(zohoGetRecordsConnector);
 }
 
-function initBigCommerce(): void {
+function initBigcommerce(): void {
   const app = new BigcommerceApplication(oauth2Provider);
-  container.setApplication(app);
   const createOrder = new BigcommerceCreateOrderConnector();
+  const createProduct = new BigcommerceCreateProductConnector();
+  container.setApplication(app);
+
   createOrder
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+  createProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createProduct);
 }
 
 function initZendesk(): void {
