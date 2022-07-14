@@ -23,7 +23,7 @@ import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadC
 import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskConnector';
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
-
+import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -171,10 +171,17 @@ function initSalesForce(): void {
   container.setApplication(app);
 
   const createRecord = new SalesForceCreateRecordConnector();
+  const updateRecord = new SalesForceUpdateRecordConnector();
 
   createRecord
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createRecord);
+
+  updateRecord
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(updateRecord);
 }

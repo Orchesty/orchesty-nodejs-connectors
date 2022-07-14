@@ -1,0 +1,6 @@
+{
+    "http": "POST https://Domain.my.salesforce.com/services/data/v55.0/sobjects/Account/0001120012",
+    "code": 204,
+    "body": {}
+    
+}

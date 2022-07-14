@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "recordId": "0001120012",
+        "BillingCity" : "San Francisco"
+    }
+}
