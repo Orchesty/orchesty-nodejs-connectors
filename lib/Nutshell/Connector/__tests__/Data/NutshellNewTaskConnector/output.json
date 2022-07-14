@@ -1,0 +1,54 @@
+{
+    "headers": {
+      "user": "TestUser"
+    },
+    "data": {
+         "title":"Send product sheet",
+         "id":3,
+         "entityType":"Tasks",
+         "rev":"0",
+         "createdTime":"2022-07-14T09:34:10+0000",
+         "description":"Notes for this task",
+         "dueTime":"2013-01-11T20:23:19+0000",
+         "completedTime":null,
+         "completedUser":null,
+         "assignee":{
+            "stub":true,
+            "id":12,
+            "rev":"2",
+            "entityType":"Users",
+            "modifiedTime":"2022-07-13T19:28:01+0000",
+            "createdTime":"2010-01-01T09:00:00+0000",
+            "name":"Shawn May",
+            "emails":[
+               "shawn.may@arrowgrid.com"],
+            "isEnabled":true,
+            "isAdministrator":true
+         },
+         "entity":{
+            "stub":true,
+            "id":1,
+            "rev":"0",
+            "entityType":"Accounts",
+            "modifiedTime":"2022-07-13T19:28:20+0000",
+            "createdTime":"2022-07-13T19:28:20+0000",
+            "name":"Acme Corp",
+            "regions":[
+               "Richfield, Minnesota"]
+         },
+         "creator":{
+            "stub":true,
+            "id":1,
+            "rev":"2",
+            "entityType":"Users",
+            "modifiedTime":"2022-07-13T19:28:01+0000",
+            "createdTime":"2010-01-01T09:00:00+0000",
+            "name":"Charles Berry",
+            "emails":[
+               "charles.berry@arrowgrid.com",
+               "jim@demo.nutshell.com"],
+            "isEnabled":true,
+            "isAdministrator":true
+         }
+      }
+}
