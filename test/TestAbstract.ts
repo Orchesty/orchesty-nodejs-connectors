@@ -26,6 +26,7 @@ import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskC
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
+import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -192,6 +193,7 @@ function initSalesForce(): void {
 function initQuickBooks(): void {
   const quickApp = new QuickbooksApplication(oauth2Provider);
   const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
+  const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
 
   container.setApplication(quickApp);
 
@@ -201,4 +203,10 @@ function initQuickBooks(): void {
     .setApplication(quickApp);
 
   container.setConnector(quickBookCreateItemConnector);
+
+  quickBookUpdateItemConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(quickApp);
+  container.setConnector(quickBookUpdateItemConnector);
 }

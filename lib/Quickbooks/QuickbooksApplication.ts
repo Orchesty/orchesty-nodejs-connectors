@@ -51,7 +51,7 @@ export default class QuickbooksApplication extends AOAuth2Application {
     };
 
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;
