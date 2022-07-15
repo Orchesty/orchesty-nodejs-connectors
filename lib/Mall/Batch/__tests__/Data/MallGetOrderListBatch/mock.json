@@ -1,0 +1,42 @@
+{
+  "http": "GET https://mpapi.mallgroup.com/v1/orders?page=1&page_size=1000&client_id=ClientId",
+  "code": 200,
+  "body":{
+    "result": {
+      "code": 200,
+      "status": "OK"
+    },
+    "paging": {
+      "pages": 2,
+      "size": 100,
+      "page": 1
+    },
+    "data": [
+      {
+        "id": 89591350,
+        "purchase_id": 89591351,
+        "cod": 25,
+        "ship_date": "2017-01-14",
+        "delivered_at": "2018-01-14 08:13:00",
+        "status": "open",
+        "confirmed": true,
+        "test": false,
+        "mdp": false,
+        "mdp_classic": false,
+        "mdp_spectrum": false,
+        "shipped": "2019-07-02 10:19:14",
+        "shipping": "2019-07-02 10:19:14",
+        "open": "2019-07-02 10:19:14",
+        "blocked": "2019-07-02 10:19:14",
+        "lost": "2019-07-02 10:19:14",
+        "returned": "2019-07-02 10:19:14",
+        "cancelled": "2019-07-02 10:19:14",
+        "delivered": "2019-07-02 10:19:14",
+        "customer_id": 1111111111,
+        "customer": "John Doe"
+      }
+    ]
+  }
+
+}
+
