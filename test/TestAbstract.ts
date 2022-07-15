@@ -26,6 +26,8 @@ import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskC
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
+import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
+import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -45,6 +47,7 @@ export async function prepare(): Promise<void> {
 
   initBigcommerce();
   initZoho();
+  initPipedrive();
   initZendesk();
   initNutshell();
   initSalesForce();
@@ -82,6 +85,17 @@ function initZoho(): void {
     .setDb(db)
     .setApplication(zohoApp);
   container.setConnector(zohoGetRecordsConnector);
+}
+function initPipedrive(): void {
+  const app = new PipedriveApplication();
+  const getAllLeads = new PipedriveGetAllLeadsBatch();
+  container.setApplication(app);
+
+  getAllLeads
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getAllLeads);
 }
 
 function initBigcommerce(): void {
