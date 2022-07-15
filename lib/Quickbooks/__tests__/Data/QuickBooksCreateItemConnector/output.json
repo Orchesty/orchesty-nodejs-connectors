@@ -3,7 +3,6 @@
         "user": "TestUser"
     },
     "data": {
-        "Item": {
             "FullyQualifiedName": "Garden Supplies",
             "domain": "QBO",
             "Id": "19",
@@ -34,8 +33,6 @@
                 "CreateTime": "2015-12-09T11:12:39-08:00",
                 "LastUpdatedTime": "2015-12-09T11:12:41-08:00"
             }
-        },
-        "time": "2015-12-09T11:12:39.748-08:00"
 
     }
 
