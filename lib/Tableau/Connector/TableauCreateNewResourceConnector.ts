@@ -16,7 +16,7 @@ export default class TableauCreateNewResourceConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      '/item',
+      '/sites',
         dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
