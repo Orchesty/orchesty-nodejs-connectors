@@ -14,6 +14,7 @@ import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/Bigcomme
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
+import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 
@@ -126,6 +127,14 @@ export async function quickBooksApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function mallApp() {
+  return appInstall(MALL_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
     },
   });
 }
