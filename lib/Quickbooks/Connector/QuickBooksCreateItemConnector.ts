@@ -20,7 +20,7 @@ export default class QuickBooksCreateItemConnector extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
     const resp = await this._sender.send(req, [200]);
 
-    dto.jsonData = resp.jsonBody;
+    dto.jsonData = resp.jsonBody as IOutput;
 
     return dto;
   }
@@ -46,4 +46,41 @@ export interface IInput {
     value: string
     /* eslint-enable @typescript-eslint/naming-convention */
   }
+}
+export interface IOutput{
+  /* eslint-disable @typescript-eslint/naming-convention */
+  Item: {
+    FullyQualifiedName: string,
+    domain: string,
+    Id: string,
+    Name: string,
+    TrackQtyOnHand: boolean,
+    UnitPrice: number,
+    PurchaseCost: number,
+    QtyOnHand: number,
+    IncomeAccountRef: {
+      name: string,
+      value: string
+    },
+    AssetAccountRef: {
+      name: string,
+      value: string
+    },
+    Taxable: boolean,
+    sparse: boolean,
+    Active: boolean,
+    SyncToken: string,
+    InvStartDate: string,
+    Type: string,
+    ExpenseAccountRef: {
+      name: string,
+      value: string
+    },
+    MetaData: {
+      CreateTime: string,
+      LastUpdatedTime: string
+    }
+  },
+  time: string
+  /* eslint-enable @typescript-eslint/naming-convention */
 }
