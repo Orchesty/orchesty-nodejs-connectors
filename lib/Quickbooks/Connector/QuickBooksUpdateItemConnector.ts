@@ -11,18 +11,28 @@ export default class QuickBooksUpdateItemConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const body = dto.jsonData as IInput;
-
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const realmId = appInstall.getSettings()[AUTHORIZATION_FORM][REALM_ID];
     const url = `${realmId}/item`;
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+    const req = await this._application.getRequestDto(
+      dto,
+      appInstall,
+      HttpMethods.POST,
+      url,
+        dto.jsonData as IInput,
+    );
     const resp = await this._sender.send(req, [200]);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = (resp.jsonBody as IResponse).Item;
 
     return dto;
   }
+}
+
+/* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+  Item: IOutput,
+  time: string
 }
 
 export interface IInput {
@@ -63,7 +73,6 @@ export interface IInput {
 }
 export interface IOutput{
   /* eslint-disable @typescript-eslint/naming-convention */
-  Item: {
     FullyQualifiedName: string,
     domain: string,
     Id: string,
@@ -96,7 +105,5 @@ export interface IOutput{
     },
     PurchaseDesc: string,
     Description: string
-  },
-  time: string
-  /* eslint-enable @typescript-eslint/naming-convention */
 }
+/* eslint-enable @typescript-eslint/naming-convention */
