@@ -12,7 +12,7 @@ import {
 } from '../lib/Zoho/ZohoApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
-import {NAME} from "../lib/Tableau/TableauApplication";
+import { NAME as TABLEAU_APP } from '../lib/Tableau/TableauApplication';
 
 const USER = 'TestUser';
 
@@ -77,8 +77,14 @@ export async function quickBooksApp() {
   });
 }
 
-export async function Tableau(){
-  return appInstall(NAME, USER, [AUTHORIZATION_FORM]:{
-    [CLIENT_ID]:
-  })
+export async function tableauApp() {
+  return appInstall(TABLEAU_APP, USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: 'Martin',
+      [CLIENT_SECRET]: 'secret',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: 'token',
+      },
+    },
+  });
 }

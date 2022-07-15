@@ -13,6 +13,9 @@ import BigCommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigCom
 import QuickBooksCreateItemConnector from '../lib/Quickbooks/Connector/QuickBooksCreateItemConnector';
 import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
+import TableauApplication from '../lib/Tableau/TableauApplication';
+import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauCreateNewResourceConnector';
+import { quickBooksApp } from './DataProvider';
 
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -33,6 +36,7 @@ export async function prepare(): Promise<void> {
   initBigCommerce();
   initZoho();
   initQuickBooks();
+  initTableau();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -96,4 +100,17 @@ function initQuickBooks(): void {
     .setDb(db)
     .setApplication(quickApp);
   container.setConnector(quickBookUpdateItemConnector);
+}
+
+function initTableau(): void {
+  const tableauApp = new TableauApplication(sender, db);
+  const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
+
+  container.setApplication(tableauApp);
+
+  tableauCreateNewResourceConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(tableauApp);
+  container.setConnector(tableauCreateNewResourceConnector);
 }
