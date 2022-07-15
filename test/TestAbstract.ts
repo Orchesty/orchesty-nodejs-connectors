@@ -26,6 +26,8 @@ import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskC
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
+import MallApplication from '../lib/Mall/MallApplication';
+import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
 import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
@@ -52,6 +54,7 @@ export async function prepare(): Promise<void> {
   initNutshell();
   initSalesForce();
   initQuickBooks();
+  initMall();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -223,4 +226,17 @@ function initQuickBooks(): void {
     .setDb(db)
     .setApplication(quickApp);
   container.setConnector(quickBookUpdateItemConnector);
+}
+
+function initMall(): void {
+  const app = new MallApplication();
+  container.setApplication(app);
+
+  const getProductList = new MallGetProductListBatch();
+
+  getProductList
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getProductList);
 }
