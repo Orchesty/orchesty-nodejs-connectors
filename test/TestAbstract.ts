@@ -48,9 +48,9 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initBigcommerce();
   initZoho();
   initPipedrive();
+  initBigcommerce();
   initZendesk();
   initNutshell();
   initSalesForce();
