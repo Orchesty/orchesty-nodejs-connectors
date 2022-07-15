@@ -9,21 +9,30 @@ export default class QuickBooksCreateItemConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const body = JSON.stringify({ data: dto.jsonData });
-
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, '/item', body);
+    const req = await this._application.getRequestDto(
+      dto,
+      appInstall,
+      HttpMethods.POST,
+      '/item',
+        dto.jsonData as IInput,
+    );
     const resp = await this._sender.send(req, [200]);
 
-    dto.jsonData = resp.jsonBody as IRecordResp;
+    dto.jsonData = (resp.jsonBody as IResponse).Item;
 
     return dto;
   }
 }
 
-export interface IRecordResp {
-  /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+  Item: IOutput,
+  time: string
+}
+
+export interface IInput {
   TrackQtyOnHand: true,
   Name: number,
   QtyOnHand: string,
@@ -40,6 +49,40 @@ export interface IRecordResp {
   ExpenseAccountRef: {
     name: string,
     value: string
-    /* eslint-enable @typescript-eslint/naming-convention */
   }
 }
+
+export interface IOutput
+{
+  FullyQualifiedName: string,
+  domain: string,
+  Id: string,
+  Name: string,
+  TrackQtyOnHand: boolean,
+  UnitPrice: number,
+  PurchaseCost: number,
+  QtyOnHand: number,
+  IncomeAccountRef: {
+    name: string,
+    value: string
+  },
+  AssetAccountRef: {
+    name: string,
+    value: string
+  },
+  Taxable: boolean,
+  sparse: boolean,
+  Active: boolean,
+  SyncToken: string,
+  InvStartDate: string,
+  Type: string,
+  ExpenseAccountRef: {
+    name: string,
+    value: string
+  },
+  MetaData: {
+    CreateTime: string,
+    LastUpdatedTime: string
+  }
+}
+/* eslint-enable @typescript-eslint/naming-convention */
