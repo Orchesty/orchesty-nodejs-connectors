@@ -1,4 +1,4 @@
-import { ABasicApplication, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
@@ -18,6 +18,8 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
 export const ACTIVITY = 'activity';
+export const SUBDOMAIN = 'subdomain';
+export const NAME = 'pipedrive';
 
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
   // eslint-disable-next-line max-len
@@ -30,6 +32,11 @@ export default class PipedriveApplication extends ABasicApplication implements I
   // eslint-disable-next-line max-len
   public getLogo = (): string => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBBZG9iZSBJbGx1c3RyYXRvciAyNC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIxNTBweCIgaGVpZ2h0PSIxNTBweCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE1MCAxNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGlkPSJwYXRoLTEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjRkZGRkZGIiBkPSJNNTkuNjU3LDU5LjA0OWMwLDEyLjMzNiw2LjI1OCwyNS42NDMsMjAuMDI5LDI1LjY0Mw0KCQkJYzEwLjIxMywwLDIwLjUzOS03Ljk3MywyMC41MzktMjUuODI0YzAtMTUuNjUxLTguMTE3LTI2LjE1OC0yMC4xOTktMjYuMTU4QzcwLjE4MSwzMi43MSw1OS42NTcsMzkuNjI2LDU5LjY1Nyw1OS4wNDl6DQoJCQkgTTg0Ljg3OCw5Ljg1OGMyNC42OTIsMCw0MS4yOTUsMTkuNTU2LDQxLjI5NSw0OC42NjdjMCwyOC42NTQtMTcuNDksNDguNjU4LTQyLjQ5NCw0OC42NThjLTExLjkyMSwwLTE5LjU1Ny01LjEwNi0yMy41NS04LjgwMg0KCQkJYzAuMDI4LDAuODc2LDAuMDQ3LDEuODU4LDAuMDQ3LDIuOTA1djM4Ljg1NkgzNC41OTdWMzYuNjE2YzAtMS41MDUtMC40ODEtMS45ODEtMS45NzMtMS45ODFoLTguNzk3VjExLjk2M2gyMS40NjQNCgkJCWM5Ljg4MiwwLDEyLjQxMiw1LjAzLDEyLjg5Myw4LjkwN0M2Mi4xOTYsMTYuMzc0LDcwLjUxMiw5Ljg1OCw4NC44NzgsOS44NTh6Ii8+DQoJPC9nPg0KCTxnIGlkPSJQaXBlZHJpdmVfbGV0dGVyX2xvZ29fbGlnaHQiPg0KCQk8ZyBpZD0iUGlwZWRyaXZlX21vbm9ncmFtX2xvZ29fbGlnaHQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY3LjAwMDAwMCwgNDQuMDAwMDAwKSI+DQoJCQk8ZyBpZD0iQ2xpcC01Ij4NCgkJCQk8cGF0aCBpZD0icGF0aC0xXzFfIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzI2MjkyQyIgZD0iTS03LjM0MywxNS4wNDkNCgkJCQkJYzAsMTIuMzM2LDYuMjU4LDI1LjY0MywyMC4wMjksMjUuNjQzYzEwLjIxMywwLDIwLjUzOS03Ljk3MywyMC41MzktMjUuODI0YzAtMTUuNjUxLTguMTE3LTI2LjE1OC0yMC4xOTktMjYuMTU4DQoJCQkJCUMzLjE4MS0xMS4yOS03LjM0My00LjM3NC03LjM0MywxNS4wNDl6IE0xNy44NzgtMzQuMTQyYzI0LjY5MiwwLDQxLjI5NSwxOS41NTYsNDEuMjk1LDQ4LjY2Nw0KCQkJCQljMCwyOC42NTQtMTcuNDksNDguNjU4LTQyLjQ5NCw0OC42NThjLTExLjkyMSwwLTE5LjU1Ny01LjEwNi0yMy41NS04LjgwMmMwLjAyOCwwLjg3NiwwLjA0NywxLjg1OCwwLjA0NywyLjkwNXYzOC44NTZoLTI1LjU3OQ0KCQkJCQlWLTcuMzg0YzAtMS41MDUtMC40ODEtMS45ODEtMS45NzMtMS45ODFoLTguNzk3di0yMi42NzFoMjEuNDY0YzkuODgyLDAsMTIuNDEyLDUuMDMsMTIuODkzLDguOTA3DQoJCQkJCUMtNC44MDQtMjcuNjI2LDMuNTEyLTM0LjE0MiwxNy44NzgtMzQuMTQyeiIvPg0KCQkJPC9nPg0KCQk8L2c+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=';
 
+  public isAuthorized = (applicationInstall: ApplicationInstall): boolean => {
+    const appInstall = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+    return !!appInstall?.[TOKEN] && !!appInstall?.[SUBDOMAIN];
+  };
+
   public getRequestDto(
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
@@ -37,8 +44,10 @@ export default class PipedriveApplication extends ABasicApplication implements I
     _url?: string,
     data?: BodyInit,
   ): RequestDto {
+    const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
+    let url = `https://${subdomain}.pipedrive.com/api/v1`;
     const join = _url?.indexOf('?') ? '&' : '?';
-    const url = `${_url}${join}api_token=${this._getToken(applicationInstall)}`;
+    url += `${_url}${join}api_token=${this._getToken(applicationInstall)}`;
     const request = new RequestDto(url.toString(), method, dto);
     request.headers = {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -53,7 +62,8 @@ export default class PipedriveApplication extends ABasicApplication implements I
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, USER, 'API token', undefined, true));
+      .addField(new Field(FieldType.TEXT, TOKEN, 'API token', undefined, true))
+      .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -114,5 +124,5 @@ export default class PipedriveApplication extends ABasicApplication implements I
 
   private _getToken = (
     applicationInstall: ApplicationInstall,
-  ): string => applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
+  ): string => applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN];
 }
