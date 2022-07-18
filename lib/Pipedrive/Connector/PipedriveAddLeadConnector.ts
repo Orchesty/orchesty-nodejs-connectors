@@ -16,7 +16,7 @@ export default class PipedriveAddLeadConnector extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
     const resp = await this._sender.send(req, [201]);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = (resp.jsonBody as IResponse).data;
     return dto;
   }
 }
@@ -26,28 +26,30 @@ export interface IInput {
     title: string;
 }
 
-export interface IOutput {
+interface IResponse {
     success: boolean;
-    data: {
-        id: string;
-        title: string;
-        owner_id: number;
-        creator_id: number;
-        label_ids: string[];
-        person_id: number;
-        source_name: string;
-        is_archived: boolean;
-        was_seen: boolean;
-        value: {
-            amount: number;
-            currency: string;
-        };
-        next_activity_id: number;
-        add_time: Date;
-        update_time: Date;
-        visible_to: string;
-        cc_email: string;
+    data: IOutput;
+}
+
+export interface IOutput {
+    id: string;
+    title: string;
+    owner_id: number;
+    creator_id: number;
+    label_ids: string[];
+    person_id: number;
+    source_name: string;
+    is_archived: boolean;
+    was_seen: boolean;
+    value: {
+        amount: number;
+        currency: string;
     };
+    next_activity_id: number;
+    add_time: Date;
+    update_time: Date;
+    visible_to: string;
+    cc_email: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
