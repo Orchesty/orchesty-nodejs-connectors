@@ -51,7 +51,7 @@ export default class TableauApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [X_TABLEAU_AUTH]: token,
     });
-    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
+    return new RequestDto(this._getUrl(applicationInstall), method, dto, data, headers);
   }
 
   public getFormStack = (): FormStack => {
@@ -83,7 +83,7 @@ export default class TableauApplication extends ABasicApplication {
     const expires = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[EXPIRES];
     if (!expires || expires > new Date()) {
       applicationInstall = await this._setToken(applicationInstall, dto);
-      await (await this._dbClient.getApplicationRepository()).insert(applicationInstall);
+      await (await this._dbClient.getApplicationRepository()).upsert(applicationInstall);
     }
 
     return applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
@@ -124,10 +124,10 @@ export default class TableauApplication extends ABasicApplication {
       headers,
     );
 
-    const resp = await this._sender.send(request, [200]);
+    const resp = await this._sender.send(request);
     const token = (resp.jsonBody as { credentials: { token: string } })?.credentials?.token;
     if (!token) {
-      throw new Error(`Token was not received. Response body: [${resp.jsonBody}]`);
+      throw new Error(`Token was not received. Response body: [${resp.body}]`);
     }
     return token;
   }
