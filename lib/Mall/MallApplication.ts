@@ -12,7 +12,6 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
 export const NAME = 'mall';
-export const PRODUCT_ID = 'productId';
 
 export default class MallApplication extends ABasicApplication {
   public getName = (): string => NAME;
