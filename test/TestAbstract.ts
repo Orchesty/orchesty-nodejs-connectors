@@ -42,6 +42,7 @@ import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductD
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
+import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -263,6 +264,7 @@ function initMall(): void {
   const getProductDetail = new MallGetProductDetailConnector();
   const getOrderDetail = new MallGetOrderDetailConnector();
   const putProduct = new MallPutProductConnector();
+  const putOrder = new MallPutOrdersConnector();
 
   getProductList
     .setSender(sender)
@@ -299,6 +301,12 @@ function initMall(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(putProduct);
+
+  putOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(putOrder);
 }
 
 function initTableau(): void {
