@@ -1,5 +1,5 @@
 {
-  "http": "GET https://mpapi.mallgroup.com/v1/products/productId?client_id=ClientId",
+  "http": "GET https://mpapi.mallgroup.com/v1/products/product_ID?client_id=ClientId",
   "code": 200,
   "body": {
     "result": {

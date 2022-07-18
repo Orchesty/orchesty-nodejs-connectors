@@ -1,8 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { PRODUCT_ID } from '../MallApplication';
 
 export const NAME = 'mall-get-product-detail-connector';
 
@@ -11,9 +9,9 @@ export default class MallGetProductDetailConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
+    const { productId } = dto.jsonData as IInput;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const productId = appInstall.getSettings()[AUTHORIZATION_FORM][PRODUCT_ID];
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -35,6 +33,12 @@ interface IResponse{
     status: string
   },
   data: IOutput
+}
+
+export interface IInput{
+
+  productId: string
+
 }
 
 export interface IOutput {

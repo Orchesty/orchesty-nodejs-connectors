@@ -135,7 +135,6 @@ export async function mallApp() {
   return appInstall(MALL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [PRODUCT_ID]: 'productId',
     },
   });
 }
