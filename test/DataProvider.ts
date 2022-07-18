@@ -20,6 +20,7 @@ import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
+import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -148,6 +149,18 @@ export async function tableauApp() {
       [SITE]: 'site',
       [PREFIX_SITE]: 'prefix',
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
+    },
+  });
+}
+
+export async function wixApp() {
+  return appInstall(WIX_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
