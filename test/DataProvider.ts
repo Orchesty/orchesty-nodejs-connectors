@@ -76,7 +76,6 @@ export async function pipedriveApp() {
   return appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [SUBDOMAIN]: 'companydomain',
-
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },
   });
