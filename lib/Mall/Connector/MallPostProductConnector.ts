@@ -29,124 +29,124 @@ export default class MallPostProductConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 interface IResponse{
-  'result': {
-    'code': 200,
-    'status': 'OK'
+  result: {
+    code: number,
+    status: string
   },
-  'data': IInput
+  data: IInput
 
 }
 
 export interface IInput {
-  'id': string,
-  'title': string,
-  'shortdesc': string,
-  'longdesc': string,
-  'priority': number,
-  'barcode': number,
-  'price': number,
-  'rrp': number,
-  'media': [
+  id: string,
+  title: string,
+  shortdesc: string,
+  longdesc: string,
+  priority: number,
+  barcode: number,
+  price: number,
+  rrp: number,
+  media: [
     {
-      'url': string,
-      'main': boolean,
-      'switch': string,
-      'energy_label': boolean,
-      'information_list': boolean
+      url: string,
+      main: boolean,
+      switch: string,
+      energy_label: boolean,
+      information_list: boolean
     }
   ],
-  'promotions': [
+  promotions: [
     {
-      'price': number,
-      'from': string,
-      'to': string
+      price: number,
+      from: string,
+      to: string
     }
   ],
-  'labels': [
+  labels: [
     {
-      'label': string,
-      'from': string,
-      'to': string
+      label: string,
+      from: string,
+      to: string
     }
   ],
-  'parameters': {
-    'COLOR': string,
-    'SIZE': string
+  parameters: {
+    COLOR: string,
+    SIZE: string
   },
-  'dimensions': {
-    'weight': number,
-    'width': number,
-    'length': number,
-    'height': number
+  dimensions: {
+    weight: number,
+    width: number,
+    length: number,
+    height: number
   },
-  'availability': {
-    'status': string,
-    'in_stock': number
+  availability: {
+    status: string,
+    in_stock: number
   },
-  'recommended': string[],
-  'delivery_delay': number,
-  'free_delivery': boolean,
-  'package_size': string,
-  'mallbox_allowed': boolean,
-  'category_id': string,
-  'vat': number,
-  'variants': [
+  recommended: string[],
+  delivery_delay: number,
+  free_delivery: boolean,
+  package_size: string,
+  mallbox_allowed: boolean,
+  category_id: string,
+  vat: number,
+  variants: [
     {
-      'id': string,
-      'title': string,
-      'shortdesc': string,
-      'longdesc': string,
-      'priority': number,
-      'barcode': number,
-      'price': number,
-      'rrp': number,
-      'media': [
+      id: string,
+      title: string,
+      shortdesc: string,
+      longdesc: string,
+      priority: number,
+      barcode: number,
+      price: number,
+      rrp: number,
+      media: [
         {
-          'url': string,
-          'main': boolean,
-          'switch': string,
-          'energy_label': boolean,
-          'information_list': boolean
+          url: string,
+          main: boolean,
+          switch: string,
+          energy_label: boolean,
+          information_list: boolean
         }
       ],
-      'promotions': [
+      promotions: [
         {
-          'price': number,
-          'from': string,
-          'to': string
+          price: number,
+          from: string,
+          to: string
         }
       ],
-      'labels': [
+      labels: [
         {
-          'label': string,
-          'from': string,
-          'to': string
+          label: string,
+          from: string,
+          to: string
         }
       ],
-      'parameters': {
-        'COLOR': string,
-        'SIZE': string
+      parameters: {
+        COLOR: string,
+        SIZE: string
       },
-      'dimensions': {
-        'weight': number,
-        'width': number,
-        'length': number,
-        'height': number
+      dimensions: {
+        weight: number,
+        width: number,
+        length: number,
+        height: number
       },
-      'availability': {
-        'status': string,
-        'in_stock': number
+      availability: {
+        status: string,
+        in_stock: number
       },
-      'recommended': string[],
-      'delivery_delay': number,
-      'free_delivery': boolean,
-      'package_size': string,
-      'mallbox_allowed': boolean
+      recommended: string[],
+      delivery_delay: number,
+      free_delivery: boolean,
+      package_size: string,
+      mallbox_allowed: boolean
     }
   ],
-  'variable_parameters': string[],
-  'partner_title': string,
-  'brand_id': string,
-  'weee_fee': number
+  variable_parameters: string[],
+  partner_title: string,
+  brand_id: string,
+  weee_fee: number
 }
 /* eslint-enable @typescript-eslint/naming-convention */
