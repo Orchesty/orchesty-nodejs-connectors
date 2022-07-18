@@ -1,0 +1,10 @@
+{
+  "http": "POST https://prefix.online.tableau.com/api/3.14/auth/signin",
+  "code": 200,
+  "body": {
+    "user": {
+      "name": "NewUser1",
+      "siteRole": "Publisher"
+    }
+  }
+}
