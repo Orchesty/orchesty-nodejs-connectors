@@ -36,6 +36,7 @@ import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBook
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
+import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -100,6 +101,7 @@ function initPipedrive(): void {
   const app = new PipedriveApplication();
   const getAllLeads = new PipedriveGetAllLeadsBatch();
   const addLead = new PipedriveAddLeadConnector();
+  const updateLead = new PipedriveUpdateLeadConnector();
   container.setApplication(app);
 
   getAllLeads
@@ -112,6 +114,11 @@ function initPipedrive(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(addLead);
+  updateLead
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(updateLead);
 }
 
 function initBigcommerce(): void {
