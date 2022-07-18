@@ -42,7 +42,7 @@ export default class TableauApplication extends ABasicApplication {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: BodyInit,
   ): Promise<RequestDto> {
     const token = await this._getOrRefreshToken(applicationInstall, dto);
@@ -51,7 +51,8 @@ export default class TableauApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [X_TABLEAU_AUTH]: token,
     });
-    return new RequestDto(this._getUrl(applicationInstall), method, dto, data, headers);
+    const url = `${this._getUrl(applicationInstall)}${_url}`;
+    return new RequestDto(url, method, dto, data, headers);
   }
 
   public getFormStack = (): FormStack => {

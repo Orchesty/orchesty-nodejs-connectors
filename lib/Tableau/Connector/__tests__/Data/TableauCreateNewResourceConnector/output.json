@@ -1,4 +1,11 @@
 {
-    "headers": {},
-    "data": {}
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "user": {
+            "name": "NewUser1",
+            "siteRole":  "Publisher"
+        }
+    }
 }
