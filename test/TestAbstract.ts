@@ -35,6 +35,9 @@ import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLe
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
+import TableauApplication from '../lib/Tableau/TableauApplication';
+import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauCreateNewResourceConnector';
+
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
@@ -63,6 +66,7 @@ export async function prepare(): Promise<void> {
   initSalesForce();
   initQuickBooks();
   initMall();
+  initTableau();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -97,6 +101,7 @@ function initZoho(): void {
     .setApplication(zohoApp);
   container.setConnector(zohoGetRecordsConnector);
 }
+
 function initPipedrive(): void {
   const app = new PipedriveApplication();
   const getAllLeads = new PipedriveGetAllLeadsBatch();
@@ -294,4 +299,17 @@ function initMall(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(putProduct);
+}
+
+function initTableau(): void {
+  const tableauApp = new TableauApplication(sender, db);
+  const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
+
+  container.setApplication(tableauApp);
+
+  tableauCreateNewResourceConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(tableauApp);
+  container.setConnector(tableauCreateNewResourceConnector);
 }
