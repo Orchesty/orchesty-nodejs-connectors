@@ -1,0 +1,9 @@
+{
+    "headers": {},
+    "data": {
+        "user": {
+            "name": "NewUser1",
+            "siteRole":  "Publisher"
+        }
+    }
+}

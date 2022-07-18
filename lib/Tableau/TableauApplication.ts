@@ -15,19 +15,20 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
-const PREFIX_SITE = 'prefix_site';
-const TOKEN_NAME = 'token_name';
-const SITE = 'site';
-const MAX_EXPIRE = 14;
-const X_TABLEAU_AUTH = 'X-Tableau-Auth';
+export const NAME = 'tableau';
+export const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
+export const PREFIX_SITE = 'prefix_site';
+export const TOKEN_NAME = 'token_name';
+export const SITE = 'site';
+export const MAX_EXPIRE = 14;
+export const X_TABLEAU_AUTH = 'X-Tableau-Auth';
 
 export default class TableauApplication extends ABasicApplication {
   constructor(private _sender: CurlSender, private _dbClient: MongoDbClient) {
     super();
   }
 
-  public getName = (): string => 'tableau';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Tableau';
 

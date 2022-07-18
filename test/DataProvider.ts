@@ -17,6 +17,7 @@ import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesFo
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
+import { NAME as TABLEAU_APP } from '../lib/Tableau/TableauApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -135,6 +136,18 @@ export async function mallApp() {
   return appInstall(MALL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
+    },
+  });
+}
+
+export async function tableauApp() {
+  return appInstall(TABLEAU_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
