@@ -1,9 +1,10 @@
 {
-  "http": "POST https://prefix.online.tableau.com/api/3.14/auth/signin",
+  "http": "POST https://prefix.online.tableau.com/api/3.14/sites",
   "code": 200,
   "body": {
-    "credentials": {
-      "token": "123"
+    "user": {
+      "fullName": "NewUser2",
+      "siteRole": "ViewerWithPublish"
     }
   }
 }

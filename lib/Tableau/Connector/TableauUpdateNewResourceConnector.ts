@@ -18,13 +18,10 @@ export default class TableauUpdateNewResource extends AConnector {
             dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = (resp.jsonBody as IResponse).item;
+    dto.jsonData = resp.jsonBody as IOutput;
 
     return dto;
   }
-}
-interface IResponse {
-    item: IOutput,
 }
 
 export interface IInput {
@@ -33,6 +30,7 @@ export interface IInput {
         siteRole: string
     }
 }
+
 export interface IOutput {
     name: string
 }
