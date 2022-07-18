@@ -29,7 +29,7 @@ export default class MallGetProductListBatch extends ABatchNode {
   }
 }
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IResponse{
+interface IResponse{
   result: {
     code: number,
     status: string
