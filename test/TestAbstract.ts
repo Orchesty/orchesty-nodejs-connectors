@@ -33,6 +33,7 @@ import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLea
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
+import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -237,6 +238,7 @@ function initMall(): void {
   const getProductList = new MallGetProductListBatch();
   const getOrdersList = new MallGetOrderListBatch();
   const postProduct = new MallPostProductConnector();
+  const getProductDetail = new MallGetProductDetailConnector();
 
   getProductList
     .setSender(sender)
@@ -255,4 +257,10 @@ function initMall(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(postProduct);
+
+  getProductDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getProductDetail);
 }

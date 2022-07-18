@@ -12,6 +12,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
 export const NAME = 'mall';
+export const PRODUCT_ID = 'productId';
 
 export default class MallApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -46,7 +47,8 @@ export default class MallApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField((new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true)));
+      .addField((new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true)))
+      .addField((new Field(FieldType.TEXT, PRODUCT_ID, 'Client Id', undefined, true)));
 
     return new FormStack().addForm(form);
   };
