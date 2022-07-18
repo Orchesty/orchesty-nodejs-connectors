@@ -77,7 +77,6 @@ export async function pipedriveApp() {
     [AUTHORIZATION_FORM]: {
       [SUBDOMAIN]: 'companydomain',
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
-      [PIPEDRIVE_ID]: 'test_id',
     },
   });
 }

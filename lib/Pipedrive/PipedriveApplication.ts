@@ -19,7 +19,6 @@ export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
 export const ACTIVITY = 'activity';
 export const SUBDOMAIN = 'subdomain';
-export const ID = 'id';
 export const NAME = 'pipedrive';
 
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
