@@ -30,6 +30,8 @@ import MallApplication from '../lib/Mall/MallApplication';
 import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
 import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
+import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLeadConnector';
+
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
@@ -49,9 +51,9 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initBigcommerce();
   initZoho();
   initPipedrive();
+  initBigcommerce();
   initZendesk();
   initNutshell();
   initSalesForce();
@@ -94,6 +96,7 @@ function initZoho(): void {
 function initPipedrive(): void {
   const app = new PipedriveApplication();
   const getAllLeads = new PipedriveGetAllLeadsBatch();
+  const addLead = new PipedriveAddLeadConnector();
   container.setApplication(app);
 
   getAllLeads
@@ -101,6 +104,11 @@ function initPipedrive(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getAllLeads);
+  addLead
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(addLead);
 }
 
 function initBigcommerce(): void {
