@@ -13,6 +13,8 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
 export const NAME = 'allegro';
+export const TOKEN_URL = 'https://allegro.pl/auth/oauth/token';
+export const ENVIRONMENT = 'Environment';
 
 export default class AllegroApplication extends AOAuth2Application {
   public getName = (): string => NAME;
@@ -23,7 +25,7 @@ export default class AllegroApplication extends AOAuth2Application {
 
   public getAuthUrl = (): string => 'https://allegro.pl/auth/oauth/authorize';
 
-  public getTokenUrl = (): string => 'https://allegro.pl/auth/oauth/token';
+  public getTokenUrl = (): string => TOKEN_URL;
 
   public getRequestDto(
     dto: AProcessDto,
@@ -32,7 +34,8 @@ export default class AllegroApplication extends AOAuth2Application {
     _url?: string,
     data?: unknown,
   ): RequestDto | Promise<RequestDto> {
-    const url = `/${_url}`;
+    const environment = applicationInstall.getSettings()[AUTHORIZATION_FORM][ENVIRONMENT];
+    const url = `https://api.${environment}/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = new Headers({
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -50,7 +53,8 @@ export default class AllegroApplication extends AOAuth2Application {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
+      .addField(new Field(FieldType.TEXT, ENVIRONMENT, 'Environment', null, true));
 
     return new FormStack()
       .addForm(form);
