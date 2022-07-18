@@ -16,7 +16,7 @@ import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplicatio
 import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
-import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
+import { NAME as PIPEDRIVE_APP, ID as PIPEDRIVE_ID } from '../lib/Pipedrive/PipedriveApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -76,8 +76,8 @@ export async function pipedriveApp() {
   return appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [SUBDOMAIN]: 'companydomain',
-
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
+      [PIPEDRIVE_ID]: 'test_id',
     },
   });
 }

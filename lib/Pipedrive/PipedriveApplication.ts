@@ -19,6 +19,7 @@ export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
 export const ACTIVITY = 'activity';
 export const SUBDOMAIN = 'subdomain';
+export const ID = 'id';
 export const NAME = 'pipedrive';
 
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
@@ -63,7 +64,8 @@ export default class PipedriveApplication extends ABasicApplication implements I
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, TOKEN, 'API token', undefined, true))
-      .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true));
+      .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true))
+      .addField(new Field(FieldType.TEXT, ID, 'ID', undefined, true));
 
     return new FormStack().addForm(form);
   };
