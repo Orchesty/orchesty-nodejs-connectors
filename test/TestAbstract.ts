@@ -37,6 +37,7 @@ import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
+import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -249,6 +250,7 @@ function initMall(): void {
   const postProduct = new MallPostProductConnector();
   const getProductDetail = new MallGetProductDetailConnector();
   const getOrderDetail = new MallGetOrderDetailConnector();
+  const putProduct = new MallPutProductConnector();
 
   getProductList
     .setSender(sender)
@@ -279,4 +281,10 @@ function initMall(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getOrderDetail);
+
+  putProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(putProduct);
 }
