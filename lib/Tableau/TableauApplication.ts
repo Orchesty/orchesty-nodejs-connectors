@@ -15,19 +15,20 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
-const PREFIX_SITE = 'prefix_site';
-const TOKEN_NAME = 'token_name';
-const SITE = 'site';
-const MAX_EXPIRE = 14;
-const X_TABLEAU_AUTH = 'X-Tableau-Auth';
+export const NAME = 'tableau';
+export const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
+export const PREFIX_SITE = 'prefix_site';
+export const TOKEN_NAME = 'token_name';
+export const SITE = 'site';
+export const MAX_EXPIRE = 14;
+export const X_TABLEAU_AUTH = 'X-Tableau-Auth';
 
 export default class TableauApplication extends ABasicApplication {
   constructor(private _sender: CurlSender, private _dbClient: MongoDbClient) {
     super();
   }
 
-  public getName = (): string => 'tableau';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Tableau';
 
@@ -41,7 +42,7 @@ export default class TableauApplication extends ABasicApplication {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: BodyInit,
   ): Promise<RequestDto> {
     const token = await this._getOrRefreshToken(applicationInstall, dto);
@@ -50,7 +51,8 @@ export default class TableauApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [X_TABLEAU_AUTH]: token,
     });
-    return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
+    const url = `${this._getUrl(applicationInstall)}${_url}`;
+    return new RequestDto(url, method, dto, data, headers);
   }
 
   public getFormStack = (): FormStack => {
@@ -82,7 +84,7 @@ export default class TableauApplication extends ABasicApplication {
     const expires = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[EXPIRES];
     if (!expires || expires > new Date()) {
       applicationInstall = await this._setToken(applicationInstall, dto);
-      await (await this._dbClient.getApplicationRepository()).insert(applicationInstall);
+      await (await this._dbClient.getApplicationRepository()).upsert(applicationInstall);
     }
 
     return applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
@@ -123,10 +125,10 @@ export default class TableauApplication extends ABasicApplication {
       headers,
     );
 
-    const resp = await this._sender.send(request, [200]);
+    const resp = await this._sender.send(request);
     const token = (resp.jsonBody as { credentials: { token: string } })?.credentials?.token;
     if (!token) {
-      throw new Error(`Token was not received. Response body: [${resp.jsonBody}]`);
+      throw new Error(`Token was not received. Response body: [${resp.body}]`);
     }
     return token;
   }

@@ -9,7 +9,6 @@ export default class QuickBooksCreateItemConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
     const req = await this._application.getRequestDto(
