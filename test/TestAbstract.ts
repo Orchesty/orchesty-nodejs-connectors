@@ -55,6 +55,7 @@ import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnect
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import AllegroApplication from '../lib/Allegro/AllegroApplication';
+import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */

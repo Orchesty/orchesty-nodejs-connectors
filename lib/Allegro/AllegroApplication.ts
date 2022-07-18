@@ -27,11 +27,11 @@ export default class AllegroApplication extends AOAuth2Application {
   public getTokenUrl = (): string => 'https://allegro.pl/auth/oauth/token';
 
   public getRequestDto(
-      dto: AProcessDto,
-      applicationInstall: ApplicationInstall,
-      method: HttpMethods,
-      _url?: string,
-      data?: unknown,
+    dto: AProcessDto,
+    applicationInstall: ApplicationInstall,
+    method: HttpMethods,
+    _url?: string,
+    data?: unknown,
   ): RequestDto | Promise<RequestDto> {
     const environment = applicationInstall.getSettings()[AUTHORIZATION_FORM][ENVIRONMENT];
     const url = `https://api.${environment}/${_url}`;
@@ -51,14 +51,14 @@ export default class AllegroApplication extends AOAuth2Application {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-        .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-        .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
-        .addField(new Field(FieldType.TEXT, ENVIRONMENT, 'Environment', null, true));
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
+      .addField(new Field(FieldType.TEXT, ENVIRONMENT, 'Environment', null, true));
 
     return new FormStack()
-        .addForm(form);
+      .addForm(form);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['allegro:api:sale:offers:read'];
 }
