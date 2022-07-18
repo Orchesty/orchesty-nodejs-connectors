@@ -1,8 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ID } from '../PipedriveApplication';
 
 export const NAME = 'pipedrive-update-lead-connector';
 
@@ -11,12 +9,11 @@ export default class PipedriveUpdateLeadConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const body = dto.jsonData as IInput;
+    const { id } = dto.jsonData as IInput;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const id = appInstall.getSettings()[AUTHORIZATION_FORM][ID];
 
     const url = `/leads/${id}`;
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.PATCH, url, body);
+    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.PATCH, url, id);
     const resp = await this._sender.send(req, [200]);
     dto.jsonData = (resp.jsonBody as IResponse).data;
     return dto;
