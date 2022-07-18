@@ -1,0 +1,163 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": "A3984",
+        "title": "Title of product",
+        "shortdesc": "Short description of the product",
+        "longdesc": "Long description of <strong>the product</strong>",
+        "priority": 1,
+        "barcode": 9788025612019,
+        "price": 1933,
+        "rrp": 2133,
+        "media": [
+            {
+                "url": "https://img.domain.tld/15880228.jpg",
+                "main": true,
+                "switch": "COLOR",
+                "energy_label": false,
+                "information_list": false
+            }
+        ],
+        "promotions": [
+            {
+                "price": 1700,
+                "from": "2015-07-19 00:00:00",
+                "to": "2015-11-14 23:59:59"
+            }
+        ],
+        "labels": [
+            {
+                "label": "SALE",
+                "from": "2015-07-19 00:00:00",
+                "to": "2015-11-14 23:59:59"
+            }
+        ],
+        "parameters": {
+            "COLOR": "red",
+            "SIZE": "M"
+        },
+        "dimensions": {
+            "weight": 10.5,
+            "width": 10,
+            "length": 10,
+            "height": 10
+        },
+        "availability": {
+            "status": "A",
+            "in_stock": 23
+        },
+        "recommended": [
+            "M191128",
+            "M191129"
+        ],
+        "delivery_delay": 2,
+        "free_delivery": true,
+        "package_size": "smallbox",
+        "mallbox_allowed": false,
+        "article_id": 100000249018,
+        "url": "https://www.mall.cz/id/100000249018",
+        "overrides": {
+            "label": [
+                {
+                    "value": "BFLV",
+                    "valid_from": "2022-01-02 00:00:00",
+                    "valid_to": "2022-02-06 23:59:59"
+                }
+            ],
+            "priority": [
+                {
+                    "value": 195,
+                    "valid_from": "2022-01-02 00:00:00",
+                    "valid_to": "2022-02-06 23:59:59"
+                }
+            ]
+        },
+        "category_id": "MP001",
+        "vat": 21,
+        "variants": [
+            {
+                "article_id": 100000249018,
+                "url": "https://www.mall.cz/id/100000249018",
+                "overrides": {
+                    "label": [
+                        {
+                            "value": "BFLV",
+                            "valid_from": "2022-01-02 00:00:00",
+                            "valid_to": "2022-02-06 23:59:59"
+                        }
+                    ],
+                    "priority": [
+                        {
+                            "value": 195,
+                            "valid_from": "2022-01-02 00:00:00",
+                            "valid_to": "2022-02-06 23:59:59"
+                        }
+                    ]
+                },
+                "id": "A3984",
+                "title": "Title of product",
+                "shortdesc": "Short description of the product",
+                "longdesc": "Long description of <strong>the product</strong>",
+                "priority": 1,
+                "barcode": 9788025612019,
+                "price": 1933,
+                "rrp": 2133,
+                "media": [
+                    {
+                        "url": "https://img.domain.tld/15880228.jpg",
+                        "main": true,
+                        "switch": "COLOR",
+                        "energy_label": false,
+                        "information_list": false
+                    }
+                ],
+                "promotions": [
+                    {
+                        "price": 1700,
+                        "from": "2015-07-19 00:00:00",
+                        "to": "2015-11-14 23:59:59"
+                    }
+                ],
+                "labels": [
+                    {
+                        "label": "SALE",
+                        "from": "2015-07-19 00:00:00",
+                        "to": "2015-11-14 23:59:59"
+                    }
+                ],
+                "parameters": {
+                    "COLOR": "red",
+                    "SIZE": "M"
+                },
+                "dimensions": {
+                    "weight": 10.5,
+                    "width": 10,
+                    "length": 10,
+                    "height": 10
+                },
+                "availability": {
+                    "status": "A",
+                    "in_stock": 23
+                },
+                "recommended": [
+                    "M191128",
+                    "M191129"
+                ],
+                "delivery_delay": 2,
+                "free_delivery": true,
+                "package_size": "smallbox",
+                "mallbox_allowed": false
+            }
+        ],
+        "variable_parameters": [
+            "COLOR",
+            "SIZE"
+        ],
+        "partner_title": "My company name",
+        "brand_id": "PRODUCT-BRAND-NAME",
+        "weee_fee": 10,
+        "stage": "live"
+    }
+}
