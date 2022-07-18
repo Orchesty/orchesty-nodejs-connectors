@@ -1,7 +1,0 @@
-{
-  "http": "POST https://api.bigcommerce.com/stores/testHash/v2/orders",
-  "code": 200,
-  "body": {
-
-  }
-}
