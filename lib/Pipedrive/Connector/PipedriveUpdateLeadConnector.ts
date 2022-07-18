@@ -24,7 +24,7 @@ export interface IInput {
     id: string;
 }
 
-export interface IResponse {
+interface IResponse {
     success: boolean;
     data: IOutput;
 }
