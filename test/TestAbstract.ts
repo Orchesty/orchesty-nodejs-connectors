@@ -36,6 +36,7 @@ import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBook
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
+import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -247,6 +248,7 @@ function initMall(): void {
   const getOrdersList = new MallGetOrderListBatch();
   const postProduct = new MallPostProductConnector();
   const getProductDetail = new MallGetProductDetailConnector();
+  const getOrderDetail = new MallGetOrderDetailConnector();
 
   getProductList
     .setSender(sender)
@@ -271,4 +273,10 @@ function initMall(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getProductDetail);
+
+  getOrderDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getOrderDetail);
 }

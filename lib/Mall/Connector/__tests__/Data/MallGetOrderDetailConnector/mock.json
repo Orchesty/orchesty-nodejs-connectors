@@ -1,0 +1,92 @@
+{
+  "http": "GET https://mpapi.mallgroup.com/v1/orders/order_ID?client_id=ClientId",
+  "code": 200,
+  "body": {
+    "result": {
+    "code": 200,
+    "status": "OK"
+  },
+    "data": [
+      {
+        "id": 89591350,
+        "purchase_id": 89591351,
+        "cod": 25,
+        "ship_date": "2017-01-14",
+        "delivered_at": "2018-01-14 08:13:00",
+        "status": "open",
+        "confirmed": true,
+        "test": false,
+        "mdp": false,
+        "mdp_classic": false,
+        "mdp_spectrum": false,
+        "shipped": "2019-07-02 10:19:14",
+        "shipping": "2019-07-02 10:19:14",
+        "open": "2019-07-02 10:19:14",
+        "blocked": "2019-07-02 10:19:14",
+        "lost": "2019-07-02 10:19:14",
+        "returned": "2019-07-02 10:19:14",
+        "cancelled": "2019-07-02 10:19:14",
+        "delivered": "2019-07-02 10:19:14",
+        "external_order_id": 75,
+        "currency": "CZK",
+        "delivery_price": 29,
+        "cod_price": 0,
+        "discount": 185,
+        "delivery_method": "pplCz",
+        "delivery_method_id": 21,
+        "branch_id": 21,
+        "branches": {
+          "branch_id": 29,
+          "secondary_branch_id": 21,
+          "overridden": true,
+          "last_change": "2017-01-27 00:00:00"
+        },
+        "tracking_number": "abc123",
+        "ready_to_return": false,
+        "address": {
+          "name": "string",
+          "company": "Company J. D.",
+          "phone": 420296245025,
+          "email": "john@doe.tld",
+          "street": "U Garáží 1611/1",
+          "city": "Praha 7",
+          "zip": 17000,
+          "country": "CZ",
+          "customer_id": 1111111111
+        },
+        "items": [
+          {
+            "id": "F192621",
+            "article_id": 100000249018,
+            "title": "Partner article title",
+            "quantity": 2,
+            "price": 350,
+            "purchase_price": 300,
+            "vat": 21,
+            "commission": 16,
+            "serial_numbers": [
+              "DR0289710229X",
+              "DR1388350346A"
+            ]
+          }
+        ],
+        "ulozenka_status_history": [
+          {
+            "id": 4,
+            "name": "připraveno k výdeji",
+            "date": "28.05.2020 13:54:50"
+          }
+        ],
+        "consignment_status_history": [
+          {
+            "code": "CREATED",
+            "date": "28.05.2020 13:54:50",
+            "flags": [
+              "damaged"
+            ],
+            "tracking_number": "00013832"
+          }
+        ]
+      }
+    ]}
+}
