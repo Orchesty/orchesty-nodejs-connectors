@@ -48,6 +48,8 @@ import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
 import WixGetOrderConnector from '../lib/Wix/Connector/WixGetOrderConnector';
 import WixUpdateProductConnector from '../lib/Wix/Connector/WixUpdateProductConnector';
+import BulkGateApplicationApplication from '../lib/BulkGate/BulkGateApplicationApplication';
+import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetPromotionalSMSConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -73,6 +75,7 @@ export async function prepare(): Promise<void> {
   initQuickBooks();
   initMall();
   initTableau();
+  initBulkGate();
   initWix();
 }
 
@@ -326,6 +329,18 @@ function initTableau(): void {
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauCreateNewResourceConnector);
+}
+
+function initBulkGate(): void {
+  const bulkGateApp = new BulkGateApplicationApplication();
+  const bulkGateGetPromotionalSMSConnector = new BulkGateGetPromotionalSMSConnector();
+  container.setApplication(bulkGateApp);
+
+  bulkGateGetPromotionalSMSConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(bulkGateApp);
+  container.setConnector(bulkGateGetPromotionalSMSConnector);
 }
 
 function initWix(): void {
