@@ -34,7 +34,7 @@ export default class WixApplication extends AOAuth2Application {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const request = new RequestDto(`https://www.wixapis.com/stores/v2/${_url}`, method, dto);
+    const request = new RequestDto(`https://www.wixapis.com/stores/${_url}`, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

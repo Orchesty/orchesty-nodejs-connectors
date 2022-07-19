@@ -15,7 +15,7 @@ export default class WixCreateOrderConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      'orders',
+      'v2/orders',
       { data: dto.jsonData as IInput },
     );
     const resp = await this._sender.send(req, [200]);
