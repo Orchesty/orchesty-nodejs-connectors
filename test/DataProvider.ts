@@ -20,6 +20,11 @@ import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
+import {
+  NAME as BULKGATE_APP,
+  APPLICATION_TOKEN,
+  APPLICATION_ID,
+} from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 
 const DEFAULT_USER = 'TestUser';
@@ -161,6 +166,15 @@ export async function wixApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function bulkGateApp() {
+  return appInstall(BULKGATE_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [APPLICATION_TOKEN]: 'application token',
+      [APPLICATION_ID]: 'application id',
     },
   });
 }
