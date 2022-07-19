@@ -12,7 +12,6 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 
 export const NAME = 'wix';
-export const CODE = 'code';
 
 export default class WixApplication extends AOAuth2Application {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -35,8 +34,7 @@ export default class WixApplication extends AOAuth2Application {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const url = this.getUri(`https://www.wixapis.com/stores/v2/${_url}`);
-    const request = new RequestDto(url.toString(), method, dto);
+    const request = new RequestDto(`https://www.wixapis.com/stores/v2/${_url}`, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
