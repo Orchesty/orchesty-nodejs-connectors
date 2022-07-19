@@ -1,0 +1,36 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "productId": "productID",
+        "product": {
+            "name": "T-shirt",
+            "productType": "physical",
+            "priceData": {
+                "price": 12.5
+            },
+            "description": "nice summer t-shirt",
+            "sku": "123df",
+            "visible": false,
+            "weight": 0.2,
+            "ribbon": "Sold Out",
+            "brand": "Nice",
+            "discount": {
+                "type": "AMOUNT",
+                "value": 2
+            },
+            "productOptions": [
+                {
+                    "name": "Size",
+                    "choices": [
+                        {
+                            "value": "S",
+                            "description": "Small"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
