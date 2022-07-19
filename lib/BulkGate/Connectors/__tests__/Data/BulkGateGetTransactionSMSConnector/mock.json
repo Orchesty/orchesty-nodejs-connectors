@@ -1,0 +1,13 @@
+{
+  "http": "POST https://portal.bulkgate.com/api/1.0/simple/transactional",
+  "code": 200,
+  "body": {
+    "data": {
+      "status": "accepted",
+      "sms_id": "tmpde1bcd4b1d1",
+      "price": 0.02,
+      "credit": 215.81380,
+      "number": "447700900000"
+    }
+  }
+}
