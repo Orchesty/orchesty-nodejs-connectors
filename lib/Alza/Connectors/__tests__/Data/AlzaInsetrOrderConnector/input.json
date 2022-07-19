@@ -1,0 +1,44 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "timestamp": "2020-07-01T19:33:43.511",
+        "customerId": 1,
+        "supplierId": 100,
+        "supplierBranchId": 123,
+        "regNo": "5445454",
+        "vatNo": "CZ123456",
+        "itemsPriceCurrency": "CZK",
+        "itemsPriceCountry": "CZ",
+        "orderItems": [
+            {
+                "orderItemId": 480907779,
+                "code": "AXO001",
+                "quantity": 2,
+                "purchasePriceWithoutFees": 142.5000,
+                "fees": {
+                    "copyright": 0.5900,
+                    "recycling": 1.0000
+                },
+                "alzaBarCodes": [
+                    "BCX4809077791",
+                    "BCX4809077792"
+                ]
+            },
+            {
+                "orderItemId": 480907780,
+                "code": "AXO002",
+                "quantity": 1,
+                "purchasePriceWithoutFees": 190.5,
+                "fees": {
+                    "copyright": 0.5900,
+                    "recycling": 2.0000
+                },
+                "alzaBarCodes": [
+                    "BCX4809077801"
+                ]
+            }
+        ]
+    }
+}

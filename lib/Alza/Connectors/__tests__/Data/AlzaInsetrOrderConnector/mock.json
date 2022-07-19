@@ -1,0 +1,15 @@
+{
+  "http": "POST https://server.cz/api_path/order/undefined?token=123456789",
+  "httpReplacement": {
+    "query": {
+      "token": "123456789"
+    }
+  },
+  "code": 201,
+  "body": {
+    "errorCode": 0,
+    "errorMessage": "",
+    "supplierOrder": "A56789123456",
+    "validUntil": "2020-01-30T23:59:59.000"
+  }
+}

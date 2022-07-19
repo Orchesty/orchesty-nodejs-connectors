@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import AlzaApplication, { BASE_URL } from '../AlzaApplication';
+import AlzaApplication from '../AlzaApplication';
 
 export const NAME = 'alza-create-shipment-connector';
 export const CREATE_SHIPMENT_URL = 'shipment';
@@ -16,7 +16,7 @@ export default class AlzaCreateShipmentConnector extends AConnector {
       dto,
       await this._getApplicationInstallFromProcess(dto),
       HttpMethods.POST,
-      `${BASE_URL}/${CREATE_SHIPMENT_URL}`,
+      `/${CREATE_SHIPMENT_URL}`,
       dto.data,
     );
     const response = await this._sender.send(requestDto, [200, 404]);
