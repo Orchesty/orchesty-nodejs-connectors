@@ -46,6 +46,7 @@ import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnecto
 import WixApplication from '../lib/Wix/WixApplication';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
+import WixUpdateProductConnector from '../lib/Wix/Connector/WixUpdateProductConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -332,6 +333,7 @@ function initWix(): void {
 
   const createOrder = new WixCreateOrderConnector();
   const createProduct = new WixCreateProductConnector();
+  const updateProduct = new WixUpdateProductConnector();
 
   createOrder
     .setSender(sender)
@@ -344,4 +346,10 @@ function initWix(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createProduct);
+
+  updateProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(updateProduct);
 }
