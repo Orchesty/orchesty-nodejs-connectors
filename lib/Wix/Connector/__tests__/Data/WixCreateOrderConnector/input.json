@@ -1,0 +1,75 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+
+        "order": {
+            "totals": {
+                "subtotal": "10",
+                "shipping": "3",
+                "tax": "3",
+                "discount": "1",
+                "total": "15"
+            },
+            "billingInfo": {
+                "paymentMethod": "PayPal",
+                "paymentProviderTransactionId": "tx_1806",
+                "address": {
+                    "fullName": {
+                        "firstName": "John",
+                        "lastName": "Smith"
+                    },
+                    "country": "US",
+                    "city": "New York",
+                    "zipCode": "92544",
+                    "phone": "+972 555234555",
+                    "email": "Ivanushka@example.com"
+                }
+            },
+            "shippingInfo": {
+                "deliveryOption": "Express",
+                "estimatedDeliveryTime": "Today",
+                "shippingRegion": "Domestic",
+                "shipmentDetails": {
+                    "address": {
+                        "fullName": {
+                            "firstName": "John",
+                            "lastName": "Smith"
+                        },
+                        "country": "US",
+                        "city": "New York",
+                        "zipCode": "92544",
+                        "phone": "+972 555234555",
+                        "email": "Ivanushka@example.com"
+                    },
+                    "tax": "1",
+                    "priceData": {
+                        "taxIncludedInPrice": false,
+                        "price": "3"
+                    }
+                }
+            },
+            "paymentStatus": "PAID",
+            "lineItems": [
+                {
+                    "quantity": 2,
+                    "discount": "1",
+                    "tax": "1",
+                    "name": "my product",
+                    "productId": "a1f9d337-f831-4529-31e6-67db8fd4e1aa",
+                    "lineItemType": "PHYSICAL",
+                    "weight": "15",
+                    "sku": "12345678",
+                    "priceData": {
+                        "taxIncludedInPrice": false,
+                        "price": "5"
+                    }
+                }
+            ],
+            "channelInfo": {
+                "type": "WEB"
+            }
+        }
+    }
+}

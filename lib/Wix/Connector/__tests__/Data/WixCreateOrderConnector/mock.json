@@ -1,0 +1,103 @@
+{
+  "http": "POST https://www.wixapis.com/stores/v2/orders",
+  "code": 200,
+  "body": {
+    "order": {
+      "id": "fedb19f5-bd4c-4bfc-b2d1-212538319611",
+      "number": 10096,
+      "dateCreated": "2020-03-18T16:47:59.222Z",
+      "currency": "USD",
+      "weightUnit": "LB",
+      "totals":   {
+        "subtotal": "10",
+        "shipping": "3",
+        "tax": "3",
+        "discount": "1",
+        "total": "15",
+        "weight": "30",
+        "quantity": 2
+      },
+      "billingInfo":   {
+        "paymentMethod": "PayPal",
+        "externalTransactionId": "tx_1806",
+        "paymentProviderTransactionId": "tx_1806",
+        "address":     {
+          "fullName":       {
+            "firstName": "John",
+            "lastName": "Smith"
+          },
+          "country": "US",
+          "city": "New York",
+          "zipCode": "92544",
+          "phone": "+972 555234555",
+          "email": "Ivanushka@example.com"
+        },
+        "paidDate": "2020-03-18T16:47:59.244Z"
+      },
+      "shippingInfo":   {
+        "deliveryOption": "Express",
+        "estimatedDeliveryTime": "Today",
+        "shipmentDetails":     {
+          "address":       {
+            "fullName":         {
+              "firstName": "John",
+              "lastName": "Smith"
+            },
+            "country": "US",
+            "city": "New York",
+            "zipCode": "92544",
+            "phone": "+972 555234555",
+            "email": "Ivanushka@example.com"
+          },
+          "discount": "0",
+          "tax": "1",
+          "priceData":       {
+            "taxIncludedInPrice": false,
+            "price": "3"
+          }
+        }
+      },
+      "read": false,
+      "archived": false,
+      "paymentStatus": "PAID",
+      "fulfillmentStatus": "NOT_FULFILLED",
+      "lineItems": [  {
+        "index": 1,
+        "quantity": 2,
+        "name": "my product",
+        "productId": "a1f9d337-f831-4529-31e6-67db8fd4e1aa",
+        "lineItemType": "PHYSICAL",
+        "options": [],
+        "customTextFields": [],
+        "weight": "15",
+        "sku": "12345678",
+        "discount": "1",
+        "tax": "1",
+        "priceData":     {
+          "taxIncludedInPrice": false,
+          "price": "5",
+          "totalPrice": "10"
+        }
+      }],
+      "activities":   [
+        {
+          "type": "ORDER_PLACED",
+          "timestamp": "2020-03-18T16:47:59.222Z"
+        },
+        {
+          "type": "ORDER_PAID",
+          "timestamp": "2020-03-18T16:47:59.244Z"
+        }
+      ],
+      "fulfillments": [],
+      "discount": {"value": "1"},
+      "buyerLanguage": "en",
+      "channelInfo": {"type": "WEB"},
+      "enteredBy":   {
+        "id": "e85274cf-047a-4989-baff-dac5e0c3971d",
+        "identityType": "USER"
+      },
+      "lastUpdated": "2020-03-18T16:47:59.244Z"
+    }
+  }
+}

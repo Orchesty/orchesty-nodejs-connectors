@@ -42,6 +42,8 @@ import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductD
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
+import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
+import WixApplication from '../lib/Wix/WixApplication';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -68,6 +70,7 @@ export async function prepare(): Promise<void> {
   initQuickBooks();
   initMall();
   initTableau();
+  initWix();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -320,4 +323,17 @@ function initTableau(): void {
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauCreateNewResourceConnector);
+}
+
+function initWix(): void {
+  const app = new WixApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const createOrder = new WixCreateOrderConnector();
+
+  createOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createOrder);
 }
