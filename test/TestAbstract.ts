@@ -58,6 +58,7 @@ import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipme
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
 import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
 import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
+import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -427,6 +428,7 @@ function initAllegro(): void {
 
   const getProductDetail = new AllegroGetProductDetailConnector();
   const proposeProduct = new AllegroProposeProductConnector();
+  const getOrderDetail = new AllegroGetOrderDetailConnector();
 
   getProductDetail
     .setSender(sender)
@@ -438,4 +440,9 @@ function initAllegro(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(proposeProduct);
+  getOrderDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getOrderDetail);
 }
