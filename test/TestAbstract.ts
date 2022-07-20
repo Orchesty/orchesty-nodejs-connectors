@@ -353,6 +353,7 @@ function initBulkGate(): void {
     .setSender(sender)
     .setDb(db)
     .setApplication(bulkGateApp);
+  container.setConnector(bulkGateGetTransactionSMSConnector);
 }
 
 function initWix(): void {
