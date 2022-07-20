@@ -16,7 +16,7 @@ export default class AlzaConfirmOrderConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      `order/${order}`,
+      `order/${order}/confirm`,
       body,
     );
     const resp = await this._sender.send(req, [200]);
