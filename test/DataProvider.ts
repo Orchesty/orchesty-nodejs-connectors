@@ -18,9 +18,6 @@ import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import {
-  ENVIRONMENT, NAME as ALLEGRO_APP,
-} from '../lib/Allegro/AllegroApplication';
-import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
 import {
@@ -30,6 +27,7 @@ import {
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
+import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
