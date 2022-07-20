@@ -17,6 +17,7 @@ import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesFo
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
+import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
@@ -144,6 +145,19 @@ export async function mallApp() {
   return appInstall(MALL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
+    },
+  });
+}
+
+export async function allegroApp() {
+  return appInstall(ALLEGRO_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [ENVIRONMENT]: 'test_environment',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
