@@ -14,18 +14,45 @@ export default class BulkGateGetTransactionSMSConnector extends AConnector {
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
-      HttpMethods.POST,
+      HttpMethods.GET,
       'transactional',
         dto.jsonData as IInput,
     );
 
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = (resp.jsonBody as IResponse).data;
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+    data: IOutput,
+    response: [
+        {
+            status: string,
+            sms_id: string,
+            price: number,
+            credit: number,
+            number: string
+        },
+        {
+            status: string,
+            sms_id: string,
+            price: number,
+            credit: number,
+            number: string
+        },
+        {
+            status: string,
+            code: number,
+            error: string,
+            number: string
+        }
+    ]
+
+}
+
 export interface IInput {
     number: string,
     text: string,
@@ -45,28 +72,7 @@ export interface IOutput {
                 error: number
             }
         },
-        response: [
-            {
-                status: string,
-                sms_id: string,
-                price: number,
-                credit: number,
-                number: string
-            },
-            {
-                status: string,
-                sms_id: string,
-                price: number,
-                credit: number,
-                number: string
-            },
-            {
-                status: string,
-                code: number,
-                error: string,
-                number: string
-            }
-        ]
+
     }
 }
 /* eslint-enable @typescript-eslint/naming-convention */
