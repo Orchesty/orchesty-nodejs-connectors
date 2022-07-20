@@ -54,6 +54,7 @@ import AlzaApplication from '../lib/Alza/AlzaApplication';
 import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
 import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
+import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -388,6 +389,7 @@ function initAlza(): void {
 
   const createShipment = new AlzaCreateShipmentConnector();
   const insertOrder = new AlzaInsetrOrderConnector();
+  const cancelOrder = new AlzaCancelOrderConnector();
   const confirmOrder = new AlzaConfirmOrderConnector();
 
   createShipment
@@ -401,6 +403,12 @@ function initAlza(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(insertOrder);
+
+  cancelOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(cancelOrder);
 
   confirmOrder
     .setSender(sender)
