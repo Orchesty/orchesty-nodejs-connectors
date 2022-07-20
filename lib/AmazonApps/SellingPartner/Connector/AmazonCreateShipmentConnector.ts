@@ -95,30 +95,30 @@ export interface IInput{
 }
 
 export interface IOutput{
-  'shipmentId': string,
-  'eligibleRates': [
+  shipmentId: string,
+  eligibleRates: [
     {
-      'billedWeight': {
-        'value': number,
-        'unit': string
+      billedWeight: {
+        value: number,
+        unit: string
       },
-      'totalCharge': {
-        'value': number,
-        'unit': string
+      totalCharge: {
+        value: number,
+        unit: string
       },
-      'serviceType': string,
-      'promise': {
-        'deliveryWindow': {
-          'start': string,
-          'end': string
+      serviceType: string,
+      promise: {
+        deliveryWindow: {
+          start: string,
+          end: string
         },
-        'receiveWindow': {
-          'start': string,
-          'end': string
+        receiveWindow: {
+          start: string,
+          end: string
         }
       },
-      'rateId': string,
-      'expirationTime': string
+      rateId: string,
+      expirationTime: string
     }
   ]
 }
