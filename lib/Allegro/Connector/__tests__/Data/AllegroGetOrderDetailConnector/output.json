@@ -1,0 +1,174 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": "29738e61-7f6a-11e8-ac45-09db60ede9d6",
+        "messageToSeller": "Please send me an item in red color",
+        "buyer": {
+            "id": "23123123",
+            "email": "user-email@allegro.pl",
+            "login": "User_Login",
+            "firstName": "Jan",
+            "lastName": "Kowalski",
+            "companyName": null,
+            "guest": false,
+            "personalIdentity": "67062589524",
+            "phoneNumber": null,
+            "address": {
+                "street": "Solna",
+                "city": "Poznań",
+                "postCode": "60-166",
+                "countryCode": "PL"
+            }
+        },
+        "payment": {
+            "id": "0f8f1d13-7e9e-11e8-9b00-c5b0dfb78ea6",
+            "type": "CASH_ON_DELIVERY",
+            "provider": "P24",
+            "finishedAt": "2018-10-12T10:12:32.321Z",
+            "paidAmount": {
+                "amount": "123.45",
+                "currency": "PLN"
+            },
+            "reconciliation": {
+                "amount": "123.45",
+                "currency": "PLN"
+            }
+        },
+        "status": "READY_FOR_PROCESSING",
+        "fulfillment": {
+            "status": "SENT",
+            "shipmentSummary": {
+                "lineItemsSent": "SOME"
+            }
+        },
+        "delivery": {
+            "address": {
+                "firstName": "Jan",
+                "lastName": "Kowalski",
+                "street": "Grunwaldzka 182",
+                "city": "Poznań",
+                "zipCode": "60-166",
+                "countryCode": "PL",
+                "companyName": null,
+                "phoneNumber": null,
+                "modifiedAt": null
+            },
+            "method": {
+                "id": "1fa56f79-4b6a-4821-a6f2-ca9c16d5c925",
+                "name": "Allegro Paczkomaty InPost"
+            },
+            "pickupPoint": {
+                "id": "POZ08A",
+                "name": "Paczkomat POZ08A",
+                "description": "Stacja paliw BP",
+                "address": {
+                    "street": "Grunwaldzka 108",
+                    "zipCode": "60-166",
+                    "city": "Poznań"
+                }
+            },
+            "cost": {
+                "amount": "123.45",
+                "currency": "PLN"
+            },
+            "time": {
+                "guaranteed": {
+                    "from": "2018-01-01T16:00:00Z",
+                    "to": "2018-01-01T18:00:00Z"
+                }
+            },
+            "smart": true,
+            "calculatedNumberOfPackages": 1
+        },
+        "invoice": {
+            "required": true,
+            "address": {
+                "street": "Grunwaldzka 182",
+                "city": "Poznań",
+                "zipCode": "60-166",
+                "countryCode": "PL",
+                "company": {
+                    "name": "Udix Sp. z o.o.",
+                    "taxId": null
+                },
+                "naturalPerson": {
+                    "firstName": "Jan",
+                    "lastName": "Kowalski"
+                }
+            },
+            "dueDate": "2021-12-01"
+        },
+        "lineItems": [
+            {
+                "id": "62ae358b-8f65-4fc4-9c77-bedf604a2e2b",
+                "offer": {
+                    "id": "3213213",
+                    "name": "Name of purchased offer",
+                    "external": {
+                        "id": "AH-129834"
+                    }
+                },
+                "quantity": 1,
+                "originalPrice": {
+                    "amount": "123.45",
+                    "currency": "PLN"
+                },
+                "price": {
+                    "amount": "123.45",
+                    "currency": "PLN"
+                },
+                "reconciliation": {
+                    "value": {
+                        "amount": "123.45",
+                        "currency": "PLN"
+                    },
+                    "type": "BILLING",
+                    "quantity": 1
+                },
+                "selectedAdditionalServices": [
+                    {
+                        "definitionId": "CARRY_IN",
+                        "name": "Wniesienie",
+                        "price": {
+                            "amount": "123.45",
+                            "currency": "PLN"
+                        },
+                        "quantity": 1
+                    }
+                ],
+                "boughtAt": "2018-01-01T10:23:43.123Z"
+            }
+        ],
+        "surcharges": [
+            {
+                "id": "0f8f1d13-7e9e-11e8-9b00-c5b0dfb78ea6",
+                "type": "CASH_ON_DELIVERY",
+                "provider": "P24",
+                "finishedAt": "2018-10-12T10:12:32.321Z",
+                "paidAmount": {
+                    "amount": "123.45",
+                    "currency": "PLN"
+                },
+                "reconciliation": {
+                    "amount": "123.45",
+                    "currency": "PLN"
+                }
+            }
+        ],
+        "discounts": [
+            {
+                "type": "COUPON"
+            }
+        ],
+        "summary": {
+            "totalToPay": {
+                "amount": "123.45",
+                "currency": "PLN"
+            }
+        },
+        "updatedAt": "2011-12-03T10:15:30.133Z",
+        "revision": "819b5836"
+    }
+}
