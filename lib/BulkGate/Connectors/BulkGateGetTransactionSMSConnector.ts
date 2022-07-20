@@ -16,7 +16,6 @@ export default class BulkGateGetTransactionSMSConnector extends AConnector {
       appInstall,
       HttpMethods.GET,
       'transactional',
-        dto.jsonData as IInput,
     );
 
     const resp = await this._sender.send(req, [200]);
@@ -28,51 +27,12 @@ export default class BulkGateGetTransactionSMSConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IResponse {
     data: IOutput,
-    response: [
-        {
-            status: string,
-            sms_id: string,
-            price: number,
-            credit: number,
-            number: string
-        },
-        {
-            status: string,
-            sms_id: string,
-            price: number,
-            credit: number,
-            number: string
-        },
-        {
-            status: string,
-            code: number,
-            error: string,
-            number: string
-        }
-    ]
-
-}
-
-export interface IInput {
-    number: string,
-    text: string,
-    unicode: boolean,
-    sender_id: string,
-    sender_id_value: string,
-    country: string
 }
 export interface IOutput {
-    data: {
-        total: {
-            price: number,
-            status: {
-                sent: number,
-                accepted: number,
-                scheduled: number,
-                error: number
-            }
-        },
-
-    }
+    status: string,
+    sms_id: string,
+    price: number,
+    credit: number,
+    number: string
 }
 /* eslint-enable @typescript-eslint/naming-convention */
