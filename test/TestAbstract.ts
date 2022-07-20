@@ -15,6 +15,8 @@ import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderCo
 import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
 import AlzaTrackAndTraceConnector from '../lib/Alza/Connectors/AlzaTrackAndTraceConnector';
+import AmazonApplication from '../lib/AmazonApps/SellingPartner/AmazonApplication';
+import AmazonCreateShipmentConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonCreateShipmentConnector';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateOrderConnector';
 import BigcommerceCreateProductConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateProductConnector';
@@ -75,6 +77,7 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
+  initAmazon();
   initAllegro();
   initAlza();
   initBigcommerce();
@@ -459,4 +462,17 @@ function initAllegro(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getOrderDetail);
+}
+
+function initAmazon(): void {
+  const app = new AmazonApplication(sender);
+  container.setApplication(app);
+
+  const createShipment = new AmazonCreateShipmentConnector();
+
+  createShipment
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createShipment);
 }
