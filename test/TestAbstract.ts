@@ -53,6 +53,7 @@ import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkG
 import AlzaApplication from '../lib/Alza/AlzaApplication';
 import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
+import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -385,18 +386,25 @@ function initAlza(): void {
   const app = new AlzaApplication();
   container.setApplication(app);
 
-  const createshipment = new AlzaCreateShipmentConnector();
+  const createShipment = new AlzaCreateShipmentConnector();
   const insertOrder = new AlzaInsetrOrderConnector();
+  const confirmOrder = new AlzaConfirmOrderConnector();
 
-  createshipment
+  createShipment
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
-  container.setConnector(createshipment);
+  container.setConnector(createShipment);
 
   insertOrder
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(insertOrder);
+
+  confirmOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(confirmOrder);
 }

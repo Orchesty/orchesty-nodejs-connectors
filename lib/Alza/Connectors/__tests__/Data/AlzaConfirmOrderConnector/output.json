@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "errorCode": 0,
+        "errorMessage": ""
+    }
+}
