@@ -3,6 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-        "orderId": "order123"
+        "errorCode": 0,
+        "errorMessage": ""
     }
 }

@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "supplierId": 123456,
+        "timestamp": "2020-01-23T19:33:43.511",
+        "order": "123445679",
+        "package": "135487AA785BBCCEE",
+        "fullPackageNumber": "135487AA785BBCCEEZZZ11133355",
+        "status": "Depot",
+        "statusTimestamp": "2020-01-23T07:11:12.005"
+    }
+}
