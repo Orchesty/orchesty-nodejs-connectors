@@ -3,7 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-        "order": "order123",
+        "orderId": "order123",
         "timestamp": "2020-01-23T19:33:43.511",
         "customerId": 1,
         "supplierId": 100,
