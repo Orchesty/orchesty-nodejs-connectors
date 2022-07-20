@@ -465,7 +465,7 @@ function initAllegro(): void {
 }
 
 function initAmazon(): void {
-  const app = new AmazonApplication();
+  const app = new AmazonApplication(sender);
   container.setApplication(app);
 
   const createShipment = new AmazonCreateShipmentConnector();
