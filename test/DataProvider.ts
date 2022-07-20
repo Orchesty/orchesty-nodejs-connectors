@@ -17,7 +17,9 @@ import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesFo
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
-import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
+import {
+  ENVIRONMENT, NAME as ALLEGRO_APP,
+} from '../lib/Allegro/AllegroApplication';
 import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
