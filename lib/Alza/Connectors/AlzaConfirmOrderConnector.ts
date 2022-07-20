@@ -9,14 +9,14 @@ export default class AlzaConfirmOrderConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const { order, ...body } = dto.jsonData as IInput;
+    const { orderId, ...body } = dto.jsonData as IInput;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.POST,
-      `order/${order}/confirm`,
+      `order/${orderId}/confirm`,
       body,
     );
     const resp = await this._sender.send(req, [200]);
@@ -27,7 +27,7 @@ export default class AlzaConfirmOrderConnector extends AConnector {
 }
 
 export interface IInput{
-  order: string,
+  orderId: string,
   timestamp: string,
   customerId: number,
   supplierId: number,

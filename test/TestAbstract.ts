@@ -1,63 +1,64 @@
-import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
-import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import DIContainer from '@orchesty/nodejs-sdk/dist/lib/DIContainer/Container';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
+import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import DIContainer from '@orchesty/nodejs-sdk/dist/lib/DIContainer/Container';
 import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
+import AllegroApplication from '../lib/Allegro/AllegroApplication';
+import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
+import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
+import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
 import AlzaApplication from '../lib/Alza/AlzaApplication';
 import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
 import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
 import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
+import AlzaTrackAndTraceConnector from '../lib/Alza/Connectors/AlzaTrackAndTraceConnector';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateOrderConnector';
 import BigcommerceCreateProductConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateProductConnector';
 import BulkGateApplicationApplication from '../lib/BulkGate/BulkGateApplicationApplication';
 import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetPromotionalSMSConnector';
 import BulkGateGetTransactionSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetTransactionSMSConnector';
-import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
-import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
+import MallApplication from '../lib/Mall/MallApplication';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
+import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
+import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
-import MallApplication from '../lib/Mall/MallApplication';
+import NutshellApplication from '../lib/Nutshell/NutshellApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
 import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskConnector';
-import NutshellApplication from '../lib/Nutshell/NutshellApplication';
-import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLeadConnector';
-import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
+import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
+import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
+import QuickBooksCreateItemConnector from '../lib/Quickbooks/QuickBooksCreateItemConnector';
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
 import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
-import QuickBooksCreateItemConnector from '../lib/Quickbooks/QuickBooksCreateItemConnector';
+import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
-import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
-import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauCreateNewResourceConnector';
 import TableauApplication from '../lib/Tableau/TableauApplication';
+import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauCreateNewResourceConnector';
+import WixApplication from '../lib/Wix/WixApplication';
 import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
 import WixGetOrderConnector from '../lib/Wix/Connector/WixGetOrderConnector';
 import WixUpdateProductConnector from '../lib/Wix/Connector/WixUpdateProductConnector';
-import WixApplication from '../lib/Wix/WixApplication';
-import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
-import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
+import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
-import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
+import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
+import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
-import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
-import AllegroApplication from '../lib/Allegro/AllegroApplication';
-import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
-import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
-import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
+import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -402,6 +403,7 @@ function initAlza(): void {
   const insertOrder = new AlzaInsetrOrderConnector();
   const cancelOrder = new AlzaCancelOrderConnector();
   const confirmOrder = new AlzaConfirmOrderConnector();
+  const trackAndTrace = new AlzaTrackAndTraceConnector();
 
   createShipment
     .setSender(sender)
@@ -426,6 +428,12 @@ function initAlza(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(confirmOrder);
+
+  trackAndTrace
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(trackAndTrace);
 }
 
 function initAllegro(): void {
