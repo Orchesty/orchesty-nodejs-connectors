@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "errorCode": 0,
+        "errorMessage": "",
+        "supplierOrder": "A56789123456",
+        "validUntil": "2020-01-30T23:59:59.000"
+    }
+}

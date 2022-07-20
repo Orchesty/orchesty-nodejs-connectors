@@ -50,6 +50,9 @@ import WixGetOrderConnector from '../lib/Wix/Connector/WixGetOrderConnector';
 import WixUpdateProductConnector from '../lib/Wix/Connector/WixUpdateProductConnector';
 import BulkGateApplicationApplication from '../lib/BulkGate/BulkGateApplicationApplication';
 import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetPromotionalSMSConnector';
+import AlzaApplication from '../lib/Alza/AlzaApplication';
+import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
+import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -77,6 +80,7 @@ export async function prepare(): Promise<void> {
   initTableau();
   initBulkGate();
   initWix();
+  initAlza();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -375,4 +379,24 @@ function initWix(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(updateProduct);
+}
+
+function initAlza(): void {
+  const app = new AlzaApplication();
+  container.setApplication(app);
+
+  const createshipment = new AlzaCreateShipmentConnector();
+  const insertOrder = new AlzaInsetrOrderConnector();
+
+  createshipment
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createshipment);
+
+  insertOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(insertOrder);
 }

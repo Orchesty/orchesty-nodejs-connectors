@@ -12,12 +12,12 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-export const SERVER = 'https://services.server.cz';
-export const API = '/rest/api/v1';
-export const BASE_URL = `${SERVER}${API}`;
+export const SERVER = 'server';
+export const API = 'api_path';
+export const NAME = 'alza';
 
 export default class AlzaApplication extends ABasicApplication {
-  public getName = (): string => 'alza';
+  public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Alza';
 
@@ -29,7 +29,9 @@ export default class AlzaApplication extends ABasicApplication {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, USER, 'Client', null, true))
-      .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Secret', null, true));
+      .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Secret', null, true))
+      .addField(new Field(FieldType.TEXT, SERVER, 'Server', null, true))
+      .addField(new Field(FieldType.TEXT, API, 'Api path', '/rest/api/v1', true));
 
     return new FormStack().addForm(form);
   };
@@ -38,7 +40,7 @@ export default class AlzaApplication extends ABasicApplication {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: BodyInit,
   ): RequestDto {
     const headers = {
@@ -46,15 +48,23 @@ export default class AlzaApplication extends ABasicApplication {
       [CommonHeaders.ACCEPT]: JSON_TYPE,
     };
 
-    if (!url) {
+    if (!_url) {
       throw new Error('Url must be set.');
     }
+    const url = `${this._getBaseUrl(applicationInstall)}/${_url}`;
     const token = this._getToken(method, url, applicationInstall);
 
     const newUrl = `${url}${url.includes('?') ? '&' : '?'}token=${token}`;
 
     return new RequestDto(newUrl, method, dto, data, headers);
   }
+
+  private _getBaseUrl = (applicationInstall: ApplicationInstall) => {
+    const server = applicationInstall.getSettings()[AUTHORIZATION_FORM][SERVER];
+    const apiPath = applicationInstall.getSettings()[AUTHORIZATION_FORM][API];
+
+    return `${server}/${apiPath}`;
+  };
 
   private _getToken = (
     method: HttpMethods,
@@ -72,9 +82,9 @@ export default class AlzaApplication extends ABasicApplication {
     }
 
     const date = new Date();
-
+    const baseUrl = this._getBaseUrl(applicationInstall);
     return createHmac('sha1', secret, { encoding: 'base64' })
-      .update(`${client}+${method}+${API}${url.replace(BASE_URL, '')}+${date.toISOString()}`)
+      .update(`${client}+${method}+${API}${url.replace(baseUrl, '')}+${date.toISOString()}`)
       .digest('base64');
   };
 }
