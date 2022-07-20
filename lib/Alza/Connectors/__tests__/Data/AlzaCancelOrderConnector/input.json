@@ -3,12 +3,6 @@
         "user": "TestUser"
     },
     "data": {
-        "cancelOrder": "order123",
-        "timestamp": "2020-01-23T19:33:43.511",
-        "customerId": 1,
-        "supplierId": 100,
-        "supplierBranchId": 123,
-        "regNo": "5445454",
-        "vatNo": "CZ123456"
+        "cancelOrder": "order123"
     }
 }
