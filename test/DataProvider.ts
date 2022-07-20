@@ -27,6 +27,7 @@ import {
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
+import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -187,6 +188,19 @@ export async function alzaApp() {
       [PASSWORD]: DEFAULT_PASSWORD,
       [SERVER]: 'https://server.cz',
       [API]: 'api_path',
+    },
+  });
+}
+
+export async function allegroApp() {
+  return appInstall(ALLEGRO_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [ENVIRONMENT]: 'test_environment',
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }

@@ -41,7 +41,10 @@ import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauC
 import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
+import AllegroApplication from '../lib/Allegro/AllegroApplication';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
+import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
+import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
 import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
 import WixApplication from '../lib/Wix/WixApplication';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
@@ -83,6 +86,7 @@ export async function prepare(): Promise<void> {
   initBulkGate();
   initWix();
   initAlza();
+  initAllegro();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -415,4 +419,23 @@ function initAlza(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(confirmOrder);
+}
+
+function initAllegro(): void {
+  const app = new AllegroApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const getProductDetail = new AllegroGetProductDetailConnector();
+  const proposeProduct = new AllegroProposeProductConnector();
+
+  getProductDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getProductDetail);
+  proposeProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(proposeProduct);
 }
