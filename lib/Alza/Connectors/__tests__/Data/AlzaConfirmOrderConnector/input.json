@@ -1,0 +1,40 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "order": "order123",
+        "timestamp": "2020-01-23T19:33:43.511",
+        "customerId": 1,
+        "supplierId": 100,
+        "supplierBranchId": 123,
+        "regNo": "5445454",
+        "vatNo": "CZ123456",
+        "shippingCarrier": {
+            "shippingCarrierCode": "GEISPARCEL",
+            "shippingCarrierDeliveryType": "GEISPOINT"
+        },
+        "parcelShop": {
+            "parcelShopIdentification": "GEISPOINT",
+            "parcelShopBranchCode": "123"
+        },
+        "shipmentDeliveryType": "ParcelShop",
+        "shipmentShippingMode": "Supplier",
+        "demandedExpeditionDate": "2020-01-24",
+        "shipmentDepartureTime": "2020-01-24T08:00:00.000",
+        "cashOnDeliveryValue": 450.0,
+        "cashOnDeliveryValueCurrency": "CZK",
+        "paymentVS": "123456781",
+        "deliveryAddress": {
+            "companyName": "",
+            "addressName": "Franta Veverka",
+            "streetWithNumber": "Horní 147/4",
+            "city": "Praha 4",
+            "country": "CZ",
+            "zip": "14000",
+            "phone": "+420777666555",
+            "email": "franta@veverka.cz",
+            "note": "Pozor na Barbara (kocour), kouše"
+        }
+    }
+}
