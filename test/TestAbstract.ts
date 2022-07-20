@@ -54,6 +54,8 @@ import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
+import AllegroApplication from '../lib/Allegro/AllegroApplication';
+import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -70,6 +72,7 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
+  initAllegro();
   initAlza();
   initBigcommerce();
   initBulkGate();
@@ -421,4 +424,17 @@ function initAlza(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(confirmOrder);
+}
+
+function initAllegro(): void {
+  const app = new AllegroApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const getProductDetail = new AllegroGetProductDetailConnector();
+
+  getProductDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getProductDetail);
 }
