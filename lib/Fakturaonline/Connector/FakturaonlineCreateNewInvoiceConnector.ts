@@ -14,7 +14,7 @@ export default class FakturaonlineCreateNewInvoiceConnector extends AConnector {
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
-      HttpMethods.GET,
+      HttpMethods.POST,
       'invoices',
         dto.jsonData as IInput,
     );
