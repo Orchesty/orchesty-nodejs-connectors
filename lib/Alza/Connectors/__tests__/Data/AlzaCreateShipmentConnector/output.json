@@ -1,0 +1,60 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+
+
+        "supplierId": 12345,
+        "supplierBranchId": 212,
+        "timestamp": "2020-01-23T19:33:43.511",
+        "shippingCarrier": {
+            "shippingCarrierCode": "GEISPARCEL",
+            "shippingCarrierDeliveryType": "GEISPOINT"
+        },
+        "parcelShop": {
+            "parcelShopIdentification": "GEISPOINT",
+            "parcelShopBranchCode": "123"
+        },
+        "expectedDeliveryDate": "2020-01-27",
+        "cashOnDeliveryValue": 250.0,
+        "cashOnDeliveryValueCurrency": "CZK",
+        "shipmentValue": 199.0,
+        "shipmentValueCurrency": "CZK",
+        "shipmentWeight": 0.9,
+        "shipmentVolume": 750,
+        "packages": [
+            {
+                "packageId": 1,
+                "weight": 0.4,
+                "volume": 200
+            },
+            {
+                "packageId": 2,
+                "weight": 0.5,
+                "volume": 550
+            }
+        ],
+        "items": [
+            {
+                "order": "123445679",
+                "orderItemId": 54879848461,
+                "quantity": 1,
+                "packageId": 1
+            },
+            {
+                "order": "123445679",
+                "orderItemId": 54879848462,
+                "quantity": 3,
+                "packageId": 2
+            },
+            {
+                "order": "123445679",
+                "orderItemId": 54879848453,
+                "quantity": 2,
+                "packageId": 3
+            }
+        ]
+
+    }
+}

@@ -26,6 +26,7 @@ import {
   APPLICATION_ID,
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
+import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -175,6 +176,17 @@ export async function bulkGateApp() {
     [AUTHORIZATION_FORM]: {
       [APPLICATION_TOKEN]: 'application token',
       [APPLICATION_ID]: 'application id',
+    },
+  });
+}
+
+export async function alzaApp() {
+  return appInstall(ALZA_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USER]: DEFAULT_USER,
+      [PASSWORD]: DEFAULT_PASSWORD,
+      [SERVER]: 'https://server.cz',
+      [API]: 'api_path',
     },
   });
 }
