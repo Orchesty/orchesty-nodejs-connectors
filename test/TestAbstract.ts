@@ -56,6 +56,7 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import AllegroApplication from '../lib/Allegro/AllegroApplication';
 import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
+import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -431,10 +432,16 @@ function initAllegro(): void {
   container.setApplication(app);
 
   const getProductDetail = new AllegroGetProductDetailConnector();
+  const proposeProduct = new AllegroProposeProductConnector();
 
   getProductDetail
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getProductDetail);
+  proposeProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(proposeProduct);
 }

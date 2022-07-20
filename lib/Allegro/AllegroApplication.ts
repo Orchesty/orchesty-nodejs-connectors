@@ -60,5 +60,8 @@ export default class AllegroApplication extends AOAuth2Application {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['allegro:api:sale:offers:read'];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => [
+    'allegro:api:sale:offers:read',
+    'allegro:api:sale:offers:write',
+  ];
 }
