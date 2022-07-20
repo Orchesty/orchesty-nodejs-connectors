@@ -55,6 +55,7 @@ import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipme
 import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
 import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
 import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
+import BulkGateGetTransactionSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetTransactionSMSConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -82,7 +83,6 @@ export async function prepare(): Promise<void> {
   initTableau();
   initBulkGate();
   initWix();
-  initAlza();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -340,6 +340,7 @@ function initTableau(): void {
 function initBulkGate(): void {
   const bulkGateApp = new BulkGateApplicationApplication();
   const bulkGateGetPromotionalSMSConnector = new BulkGateGetPromotionalSMSConnector();
+  const bulkGateGetTransactionSMSConnector = new BulkGateGetTransactionSMSConnector();
   container.setApplication(bulkGateApp);
 
   bulkGateGetPromotionalSMSConnector
@@ -347,6 +348,12 @@ function initBulkGate(): void {
     .setDb(db)
     .setApplication(bulkGateApp);
   container.setConnector(bulkGateGetPromotionalSMSConnector);
+
+  bulkGateGetTransactionSMSConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(bulkGateApp);
+  container.setConnector(bulkGateGetTransactionSMSConnector);
 }
 
 function initWix(): void {
