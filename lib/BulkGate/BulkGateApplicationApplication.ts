@@ -11,7 +11,6 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 
 export const NAME = 'bulk-gate';
-export const CREATE_FORM = 'create_form';
 export const APPLICATION_ID = 'application_id';
 export const APPLICATION_TOKEN = 'application_token';
 
