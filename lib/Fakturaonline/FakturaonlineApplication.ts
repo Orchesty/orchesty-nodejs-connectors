@@ -11,7 +11,6 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import {
   ABasicApplication,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
 export const NAME = 'fakturaonline';
 export const API_KEY = 'api_key';
@@ -40,11 +39,10 @@ export default class FakturaonlineApplication extends ABasicApplication {
     const url = `https://api.fakturaonline.cz/v0/${_url}`;
     const request = new RequestDto(url, method, dto);
     const settings = applicationInstall.getSettings();
-    const apiKey = encode(`${settings[AUTHORIZATION_FORM][API_KEY]}`);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `${apiKey}`,
+      [CommonHeaders.AUTHORIZATION]: settings[AUTHORIZATION_FORM][API_KEY],
     };
 
     if (data) {
