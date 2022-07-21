@@ -61,7 +61,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
-import AmazonGetOrdersConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetOrdersConnector';
+import AmazonGetOrdersBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonGetOrdersBatch';
 import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
@@ -493,9 +493,9 @@ function initAmazon(): void {
   container.setApplication(app);
 
   const createShipment = new AmazonCreateShipmentConnector();
-  const getOrders = new AmazonGetOrdersConnector();
   const putListingsItem = new AmazonPutListingsItemConnector();
   const getListingsItem = new AmazonGetListingsItemConnector();
+  const getOrders = new AmazonGetOrdersBatch();
 
   createShipment
     .setSender(sender)
@@ -507,6 +507,7 @@ function initAmazon(): void {
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
+  container.setBatch(getOrders);
   container.setConnector(getOrders);
 
   putListingsItem

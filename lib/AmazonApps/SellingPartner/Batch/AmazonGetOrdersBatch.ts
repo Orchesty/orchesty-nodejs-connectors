@@ -1,36 +1,41 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
-export const NAME = 'amazon-get-orders-connector';
+export const NAME = 'amazon-get-orders-batch';
 
-export default class AmazonGetOrdersConnector extends AConnector {
+export default class AmazonGetOrdersBatch extends ABatchNode {
   public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const { marketplaceIds } = dto.jsonData as IInput;
 
+    const token = dto.getBatchCursor('');
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.GET,
-      `orders/v0/orders?marketplaceIds=${marketplaceIds.join(',')}`,
-
+      `orders/v0/orders?MarketplaceIds=${marketplaceIds.join(',')}${token}`,
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    const response = resp.jsonBody as IOutput;
 
+    dto.setItemList(response.payload.Orders ?? []);
+    if (response.payload.NextToken) {
+      const nextToken = `&NextToken=${response.payload.NextToken}`;
+      dto.setBatchCursor(nextToken);
+    }
     return dto;
   }
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput{
   marketplaceIds: string[]
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface IOutput{
   payload: {
     NextToken: string,
