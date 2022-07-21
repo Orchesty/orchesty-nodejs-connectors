@@ -65,6 +65,7 @@ import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Con
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
+import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -452,6 +453,7 @@ function initAllegro(): void {
   const getOrderDetail = new AllegroGetOrderDetailConnector();
   const getUsersOrderList = new AllegroGetUsersOrderListBatch();
   const getAvailableProducts = new AllegroGetAvailableProductsBatch();
+  const createDraftOffer = new AllegroCreateDraftOfferConnector();
 
   getProductDetail
     .setSender(sender)
@@ -478,6 +480,11 @@ function initAllegro(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getAvailableProducts);
+  createDraftOffer
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createDraftOffer);
 }
 
 function initAmazon(): void {
