@@ -1,0 +1,16 @@
+{
+  "http": "GET https://sellingpartnerapi-na.amazon.com/authorization/v1/authorizationCode?sellingPartnerId=selling_partner_id&developerId=developer_id&mwsAuthToken=mws_auth_token",
+  "code": 200,
+  "body": {
+    "payload": {
+      "authorizationCode": "string"
+    },
+    "errors": [
+      {
+        "code": "string",
+        "message": "string",
+        "details": "string"
+      }
+    ]
+  }
+}
