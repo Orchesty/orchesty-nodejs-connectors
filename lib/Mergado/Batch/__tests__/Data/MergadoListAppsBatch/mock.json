@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.mergado.com/apps/?limit=10&offset=0",
+  "http": "GET https://api.mergado.com/apps/?limit=99&offset=0",
   "code": 200,
   "body": {
     "data": [
