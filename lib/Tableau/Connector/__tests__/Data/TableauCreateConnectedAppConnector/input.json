@@ -1,5 +1,7 @@
 {
-    "headers": {},
+    "headers": {
+        "user": "TestUser"
+    },
     "data": {
         "name": "name",
         "enabled": "enabled",

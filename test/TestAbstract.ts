@@ -73,6 +73,7 @@ import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCr
 import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
+import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -349,6 +350,7 @@ function initMall(): void {
 function initTableau(): void {
   const tableauApp = new TableauApplication(sender, db);
   const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
+  const tableauCreateConnectedAppConnector = new TableauCreateConnectedAppConnector();
 
   container.setApplication(tableauApp);
 
@@ -357,6 +359,12 @@ function initTableau(): void {
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauCreateNewResourceConnector);
+
+  tableauCreateConnectedAppConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(tableauApp);
+  container.setConnector(tableauCreateConnectedAppConnector);
 }
 
 function initBulkGate(): void {
