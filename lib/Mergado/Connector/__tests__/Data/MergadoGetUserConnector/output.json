@@ -1,0 +1,28 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "6",
+    "first_name": "Lorem",
+    "last_name": "Ipsum",
+    "name": "Lorem Ipsum",
+    "username": "loremipsum",
+    "email": "lorem.ipsum@example.com",
+    "city": "Brno",
+    "company": "Mergado",
+    "country": "cz",
+    "dic": "00000000",
+    "ico": "00000000",
+    "fakturoid_id": null,
+    "invoice_months": 1,
+    "last_access": "2016-03-21T16:32:32+00:00",
+    "locale": "cs_CZ",
+    "postcode": "61200",
+    "registered_at": "2015-11-03T16:08:17+00:00",
+    "street": "Palackého 123/456",
+    "timezone": "Europe/Prague",
+    "timezone_offset": null,
+    "send_summary": false
+  }
+}
