@@ -1,0 +1,19 @@
+{
+  "http": "GET https://api.test_environment/fulfillment/available-products?offset=0&limit=99",
+  "code": 200,
+  "body": {
+    "products": [
+      {
+        "id": "712fa46c-7d4a-4ba0-b094-b5d1d4f6155d",
+        "name": "iPhone 5s",
+        "gtins": [
+          "2746650558857",
+          "1859832948337"
+        ],
+        "image": "https://5.allegroimg.com/original/003358/a4f5dbb14d24971aff2ca5afb5d5"
+      }
+    ],
+    "count": 1,
+    "totalCount": 1
+  }
+}

@@ -64,6 +64,7 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
+import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -450,6 +451,7 @@ function initAllegro(): void {
   const proposeProduct = new AllegroProposeProductConnector();
   const getOrderDetail = new AllegroGetOrderDetailConnector();
   const getUsersOrderList = new AllegroGetUsersOrderListBatch();
+  const getAvailableProducts = new AllegroGetAvailableProductsBatch();
 
   getProductDetail
     .setSender(sender)
@@ -471,6 +473,11 @@ function initAllegro(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getUsersOrderList);
+  getAvailableProducts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getAvailableProducts);
 }
 
 function initAmazon(): void {
