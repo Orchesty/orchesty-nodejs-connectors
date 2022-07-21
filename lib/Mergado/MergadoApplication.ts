@@ -56,5 +56,10 @@ export default class MergadoApplication extends AOAuth2Application {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => [
+    'shop.read',
+    'user.read',
+    'project.read',
+    'projects.write',
+  ];
 }
