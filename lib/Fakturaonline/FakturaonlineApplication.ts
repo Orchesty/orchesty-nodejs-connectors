@@ -8,7 +8,12 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import {
+  ABasicApplication,
+  PASSWORD,
+  USER,
+} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
 export const NAME = 'fakturaonline';
 export const API_KEY = 'api_key';
@@ -36,10 +41,12 @@ export default class FakturaonlineApplication extends ABasicApplication {
   ): RequestDto => {
     const url = `https://api.fakturaonline.cz/v0/${_url}`;
     const request = new RequestDto(url, method, dto);
+    const settings = applicationInstall.getSettings();
+    const apiKey = encode(`${settings[AUTHORIZATION_FORM][API_KEY]}`);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Basic ${API_KEY}`,
+      [CommonHeaders.AUTHORIZATION]: `${apiKey}`,
     };
 
     if (data) {
