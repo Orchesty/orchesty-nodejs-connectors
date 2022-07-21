@@ -69,6 +69,7 @@ import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAva
 import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
 import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
+import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -530,10 +531,16 @@ function initMergado(): void {
   container.setApplication(app);
 
   const listApps = new MergadoListAppsBatch();
+  const getUser = new MergadoGetUserConnector();
 
   listApps
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listApps);
+  getUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getUser);
 }
