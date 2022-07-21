@@ -67,6 +67,7 @@ import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Con
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
 import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
+import AmazonListCatalogItemsBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonListCatalogItemsBatch';
 import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
@@ -497,6 +498,7 @@ function initAmazon(): void {
   container.setApplication(app);
 
   const createShipment = new AmazonCreateShipmentConnector();
+  const listCatalogItem = new AmazonListCatalogItemsBatch();
   const putListingsItem = new AmazonPutListingsItemConnector();
   const getListingsItem = new AmazonGetListingsItemConnector();
   const getOrders = new AmazonGetOrdersBatch();
@@ -506,6 +508,12 @@ function initAmazon(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createShipment);
+
+  listCatalogItem
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listCatalogItem);
 
   getOrders
     .setSender(sender)
