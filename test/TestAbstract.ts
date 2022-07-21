@@ -61,6 +61,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -446,6 +447,7 @@ function initAllegro(): void {
   const getProductDetail = new AllegroGetProductDetailConnector();
   const proposeProduct = new AllegroProposeProductConnector();
   const getOrderDetail = new AllegroGetOrderDetailConnector();
+  const getUsersOrderList = new AllegroGetUsersOrderListBatch();
 
   getProductDetail
     .setSender(sender)
@@ -462,6 +464,11 @@ function initAllegro(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getOrderDetail);
+  getUsersOrderList
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getUsersOrderList);
 }
 
 function initAmazon(): void {
