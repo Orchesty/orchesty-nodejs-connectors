@@ -27,6 +27,9 @@ import {
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
+import {
+  DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
+} from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 
 const DEFAULT_USER = 'TestUser';
@@ -202,5 +205,16 @@ export async function alzaApp() {
       [SERVER]: 'https://server.cz',
       [API]: 'api_path',
     },
+  });
+}
+
+export async function amazonApp() {
+  return appInstall(AMAZON_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [SELLINGPARTNERID]: 'selling_partner_id',
+      [DEVELOPERID]: 'developer_id',
+      [MWSAUTHTOKEN]: 'mws_auth_token',
+    },
+
   });
 }
