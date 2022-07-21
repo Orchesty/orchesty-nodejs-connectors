@@ -39,12 +39,10 @@ interface IResponse {
 }
 
 export interface IOutput {
-    products: [{
-        id: string;
-        name: string;
-        gtins: string[];
-        image: string;
-    }];
+    id: string;
+    name: string;
+    gtins: string[];
+    image: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
