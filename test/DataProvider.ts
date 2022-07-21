@@ -31,6 +31,7 @@ import {
   DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
+import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -216,5 +217,17 @@ export async function amazonApp() {
       [MWSAUTHTOKEN]: 'mws_auth_token',
     },
 
+  });
+}
+
+export async function mergadoApp() {
+  return appInstall(MERGADO_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
+    },
   });
 }
