@@ -3,7 +3,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'mergado-list-apps-batch';
-const LIMIT = 10;
+const LIMIT = 99;
 
 export default class MergadoListAppsBatch extends ABatchNode {
   public getName = (): string => NAME;

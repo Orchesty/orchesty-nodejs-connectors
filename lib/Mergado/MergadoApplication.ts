@@ -60,6 +60,6 @@ export default class MergadoApplication extends AOAuth2Application {
     'shop.read',
     'user.read',
     'project.read',
-    'projects.write',
+    'project.elements.write',
   ];
 }
