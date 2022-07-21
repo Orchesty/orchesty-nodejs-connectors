@@ -66,6 +66,8 @@ import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Con
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
 import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
+import MergadoApplication from '../lib/Mergado/MergadoApplication';
+import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -82,12 +84,13 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initAmazon();
   initAllegro();
   initAlza();
+  initAmazon();
   initBigcommerce();
   initBulkGate();
   initMall();
+  initMergado();
   initNutshell();
   initPipedrive();
   initQuickBooks();
@@ -512,4 +515,17 @@ function initAmazon(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getListingsItem);
+}
+
+function initMergado(): void {
+  const app = new MergadoApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const listApps = new MergadoListAppsBatch();
+
+  listApps
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listApps);
 }
