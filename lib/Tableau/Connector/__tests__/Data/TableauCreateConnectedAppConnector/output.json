@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "name": "name",
+        "enabled": "enabled",
+        "projectId": "project",
+        "domainSafelist": "domainSafelist",
+        "unrestrictedEmbedding": "unrestrictedEmbedding"
+    }
+}

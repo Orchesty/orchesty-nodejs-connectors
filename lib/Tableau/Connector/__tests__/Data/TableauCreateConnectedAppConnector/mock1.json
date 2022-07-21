@@ -1,0 +1,12 @@
+{
+  "http": "POST https://prefix.online.tableau.com/api/3.14/sites/site-id/connected-applications",
+  "code": 200,
+  "body": {
+    "name": "name",
+    "enabled": "enabled",
+    "projectId": "project",
+    "domainSafelist": "domainSafelist",
+    "unrestrictedEmbedding": "unrestrictedEmbedding"
+  }
+}
+
