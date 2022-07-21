@@ -61,6 +61,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -476,10 +477,17 @@ function initAmazon(): void {
   container.setApplication(app);
 
   const createShipment = new AmazonCreateShipmentConnector();
+  const getListingsItem = new AmazonGetListingsItemConnector();
 
   createShipment
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createShipment);
+
+  getListingsItem
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getListingsItem);
 }
