@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "sellerId": "sellerId",
+        "sku": "sku",
+        "marketplaceIds": ["Alza","Mall"]
+    }
+}
