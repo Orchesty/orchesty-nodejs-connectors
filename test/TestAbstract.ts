@@ -508,7 +508,6 @@ function initAmazon(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getOrders);
-  container.setConnector(getOrders);
 
   putListingsItem
     .setSender(sender)
