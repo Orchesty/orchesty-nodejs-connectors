@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "sellerId": "sellerId",
+        "sku": "sku",
+        "marketplaceIds": ["Alza,Mall"],
+        "productType": "string",
+        "requirements": "LISTING",
+        "attributes": {
+            "additionalProp1": {}
+        }
+    }
+}
