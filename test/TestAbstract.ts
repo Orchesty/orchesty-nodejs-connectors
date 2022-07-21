@@ -61,6 +61,9 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import FakturaonlineApplication from '../lib/Fakturaonline/FakturaonlineApplication';
+import FakturaonlineCreateNewInvoiceConnector
+  from '../lib/Fakturaonline/Connector/FakturaonlineCreateNewInvoiceConnector';
 import AmazonGetOrdersBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonGetOrdersBatch';
 import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
@@ -86,9 +89,9 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
+  initAmazon();
   initAllegro();
   initAlza();
-  initAmazon();
   initBigcommerce();
   initBulkGate();
   initMall();
@@ -99,6 +102,7 @@ export async function prepare(): Promise<void> {
   initSalesForce();
   initTableau();
   initWix();
+  initFakturaonline();
   initZendesk();
   initZoho();
 }
@@ -524,6 +528,18 @@ function initAmazon(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getListingsItem);
+}
+
+function initFakturaonline(): void {
+  const app = new FakturaonlineApplication();
+  const createNewInvoice = new FakturaonlineCreateNewInvoiceConnector();
+  container.setApplication(app);
+
+  createNewInvoice
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createNewInvoice);
 }
 
 function initMergado(): void {

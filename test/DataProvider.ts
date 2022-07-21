@@ -27,6 +27,7 @@ import {
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
+import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
 import {
   DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
@@ -205,6 +206,14 @@ export async function alzaApp() {
       [PASSWORD]: DEFAULT_PASSWORD,
       [SERVER]: 'https://server.cz',
       [API]: 'api_path',
+    },
+  });
+}
+
+export async function fakturaonlineApp() {
+  return appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [API_KEY]: 'api_key',
     },
   });
 }
