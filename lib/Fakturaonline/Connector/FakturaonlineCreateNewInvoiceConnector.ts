@@ -161,13 +161,13 @@ export interface IOutput {
                 vat_rate: string
             },
             {
-                'description': string,
-                'id': number,
-                'invoice_id': number,
-                'price': string,
-                'quantity': string,
-                'unit_type': null,
-                'vat_rate': string
+                description: string,
+                id: number,
+                invoice_id: number,
+                price: string,
+                quantity: string,
+                unit_type: null,
+                vat_rate: string
             }
         ],
         locked?: boolean,
@@ -178,7 +178,7 @@ export interface IOutput {
                 thumb: null,
                 url: null
             },
-            'url': null
+            url: null
         },
         logo_id: null,
         means_of_payment: string,
