@@ -36,7 +36,7 @@ export default class AmazonApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): Promise<RequestDto> => {
-    const url = `${BASE_URL}/shipping/v1/${_url}`;
+    const url = `${BASE_URL}/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
