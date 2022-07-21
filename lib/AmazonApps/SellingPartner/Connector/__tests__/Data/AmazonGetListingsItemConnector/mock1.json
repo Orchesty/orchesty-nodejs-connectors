@@ -1,5 +1,5 @@
 {
-  "http": "GET https://sellingpartnerapi-na.amazon.com//listings/2021-08-01/items/sellerId/sku?marketplaceIds=Alza,Mall",
+  "http": "GET https://sellingpartnerapi-na.amazon.com/listings/2021-08-01/items/sellerId/sku?marketplaceIds=Alza,Mall",
   "code": 200,
   "body": {
     "sku": "GM-ZDPI-9B4E",

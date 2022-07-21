@@ -16,7 +16,7 @@ export default class AmazonGetListingsItemConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.GET,
-      `/listings/2021-08-01/items/${sellerId}/${sku}?marketplaceIds=${marketplaceIds.join(',')}`,
+      `listings/2021-08-01/items/${sellerId}/${sku}?marketplaceIds=${marketplaceIds.join(',')}`,
 
     );
     const resp = await this._sender.send(req, [200]);

@@ -16,7 +16,7 @@ export default class AmazonCreateShipmentConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      '/shipping/v1/shipments',
+      'shipping/v1/shipments',
       body,
     );
     const resp = await this._sender.send(req, [200]);
