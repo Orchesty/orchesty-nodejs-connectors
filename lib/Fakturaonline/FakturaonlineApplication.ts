@@ -10,8 +10,6 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import {
   ABasicApplication,
-  PASSWORD,
-  USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
