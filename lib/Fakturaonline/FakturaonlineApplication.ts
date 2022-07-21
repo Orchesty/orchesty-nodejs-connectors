@@ -3,22 +3,30 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 
 export const NAME = 'fakturaonline';
 export const API_KEY = 'api_key';
+export const FAKTURAONLINE_URL = 'https://api.fakturaonline.cz';
+const SCOPES = [''];
+const TOKEN_URL = ' ';
 
-export default class FakturaonlineApplication extends ABasicApplication {
+export default class FakturaonlineApplication extends AOAuth2Application {
   public getName = (): string => NAME;
 
   public getPublicName = (): string => 'Fakturaonline';
 
   public getDescription = (): string => 'Fakturaonline description';
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => SCOPES;
+
+  public getTokenUrl = (): string => TOKEN_URL;
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
@@ -39,7 +47,7 @@ export default class FakturaonlineApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      // [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
     };
 
     if (data) {
@@ -48,4 +56,6 @@ export default class FakturaonlineApplication extends ABasicApplication {
 
     return request;
   };
+
+  public getAuthUrl = (): string => FAKTURAONLINE_URL;
 }
