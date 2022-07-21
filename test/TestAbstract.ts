@@ -531,7 +531,7 @@ function initAmazon(): void {
 }
 
 function initFakturaonline(): void {
-  const app = new FakturaonlineApplication(oauth2Provider);
+  const app = new FakturaonlineApplication();
   const createNewInvoice = new FakturaonlineCreateNewInvoiceConnector();
   container.setApplication(app);
 
