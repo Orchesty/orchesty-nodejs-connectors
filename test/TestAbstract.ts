@@ -76,6 +76,7 @@ import AmazonListCatalogItemsBatch from '../lib/AmazonApps/SellingPartner/Batch/
 import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
+import MergadoGetProjectConnector from '../lib/Mergado/Connector/MergadoGetProjectConnector';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import GitHubApplication from '../lib/GitHub/GitHubApplication';
 import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
@@ -574,7 +575,7 @@ function initMergado(): void {
 
   const listApps = new MergadoListAppsBatch();
   const getUser = new MergadoGetUserConnector();
-
+  const getProject = new MergadoGetProjectConnector();
   listApps
     .setSender(sender)
     .setDb(db)
@@ -585,6 +586,11 @@ function initMergado(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+  getProject
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getProject);
 }
 function iniVyfakturuj(): void {
   const app = new VyfakturujApplication();
