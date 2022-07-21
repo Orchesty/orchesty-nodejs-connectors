@@ -12,7 +12,7 @@ export default class AllegroGetUsersOrderListBatch extends ABatchNode {
     const dto = _dto;
     const offset = Number(dto.getBatchCursor('0'));
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = `order/checkout-forms?offset=${(offset * LIMIT) + offset ? 1 : 0}&limit=${LIMIT}`;
+    const url = `order/checkout-forms?offset=${offset}&limit=${LIMIT}`;
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -24,7 +24,7 @@ export default class AllegroGetUsersOrderListBatch extends ABatchNode {
 
     dto.setItemList(response.checkoutForms ?? []);
     if (response.count === LIMIT + 1) {
-      dto.setBatchCursor((offset + 1).toString());
+      dto.setBatchCursor((offset + LIMIT).toString());
     }
     return dto;
   }
