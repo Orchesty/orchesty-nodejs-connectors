@@ -32,6 +32,7 @@ import {
   DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
+import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 
@@ -225,6 +226,17 @@ export async function amazonApp() {
       [SELLINGPARTNERID]: 'selling_partner_id',
       [DEVELOPERID]: 'developer_id',
       [MWSAUTHTOKEN]: 'mws_auth_token',
+    },
+
+  });
+}
+
+export async function wedoApp() {
+  return appInstall(WEDO_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USER]: DEFAULT_USER,
+      [PASSWORD]: DEFAULT_PASSWORD,
+
     },
 
   });
