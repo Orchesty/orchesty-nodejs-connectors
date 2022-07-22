@@ -77,6 +77,7 @@ import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConn
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
+import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -584,10 +585,17 @@ function iniVyfakturuj(): void {
   container.setApplication(app);
 
   const createInvoice = new VyfakturujCreateInvoiceConnector();
+  const createContact = new VyfakturujCreateContactConnector();
 
   createInvoice
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createInvoice);
+
+  createContact
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createContact);
 }
