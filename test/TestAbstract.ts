@@ -70,6 +70,8 @@ import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Con
 import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
 import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
+import WedoApplication from '../lib/Wedo/WedoApplication';
+import WedoGetPackageBatch from '../lib/Wedo/Batch/WedoGetPackageBatch';
 import AmazonListCatalogItemsBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonListCatalogItemsBatch';
 import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
@@ -110,6 +112,7 @@ export async function prepare(): Promise<void> {
   initFakturaonline();
   initZendesk();
   initZoho();
+  initWedo();
   iniVyfakturuj();
 }
 
@@ -598,4 +601,17 @@ function iniVyfakturuj(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createContact);
+}
+
+function initWedo(): void {
+  const app = new WedoApplication();
+  container.setApplication(app);
+
+  const getPackage = new WedoGetPackageBatch();
+
+  getPackage
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getPackage);
 }
