@@ -1,14 +1,13 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { IInput, IOutput } from '../../AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 
-export const NAME = 'wedo-get-package-connector';
+export const NAME = 'wedo-get-package-batch';
 
-export default class WedoGetPackageConnector extends AConnector {
+export default class WedoGetPackageConnector extends ABatchNode {
   public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
@@ -20,7 +19,9 @@ export default class WedoGetPackageConnector extends AConnector {
 
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    const response = resp.jsonBody as IOutput[];
+
+    dto.setItemList(response);
 
     return dto;
   }

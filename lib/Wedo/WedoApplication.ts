@@ -9,10 +9,10 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { encode } from "@orchesty/nodejs-sdk/dist/lib/Utils/Base64";
+import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
-export const USER = 'userName';
-export const PASSWORD = 'password';
+export const PASSWORD = 'userName';
+export const USER = 'password';
 export const NAME = 'wedo';
 
 export default class WedoApplication extends ABasicApplication {
@@ -33,7 +33,7 @@ export default class WedoApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${}:${}`)
+      [CommonHeaders.AUTHORIZATION]: encode(`${PASSWORD}:${USER}`),
     };
 
     if (data) {
