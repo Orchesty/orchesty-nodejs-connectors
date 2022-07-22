@@ -1,0 +1,33 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "type": 1,
+        "id_payment_method": 33662,
+        "customer_IC": "123456789",
+        "customer_DIC": "CZ123456789",
+        "customer_name": "Ukázková Firma",
+        "customer_street": "Pouliční 79/C",
+        "customer_city": "Praha",
+        "customer_zip": "10300",
+        "customer_country_code": "CZ",
+        "items": [
+            {
+                "text": "Stěrač na ponorku",
+                "unit_price": 990.25,
+                "vat_rate": 15
+            },
+            {
+                "text": "Kapalina do ostřikovačů 250 ml",
+                "unit_price": 59,
+                "vat_rate": 15
+            },
+            {
+                "text": "Doprava",
+                "unit_price": 0,
+                "vat_rate": 0
+            }
+        ]
+    }
+}
