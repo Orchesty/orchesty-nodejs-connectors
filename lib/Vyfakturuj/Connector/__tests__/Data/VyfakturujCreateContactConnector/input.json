@@ -1,0 +1,16 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "IC": "123456789",
+        "name": "#API - Ukázkový kontakt",
+        "note": "Kontakt vytvořený přes API",
+        "company": "Ukázkový kontakt",
+        "street": "Pouliční 79/C",
+        "city": "Praha",
+        "zip": "10300",
+        "country_code": "CZ",
+        "mail_to": "info@examle.com"
+    }
+}
