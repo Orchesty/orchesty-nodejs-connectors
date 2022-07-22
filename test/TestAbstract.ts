@@ -75,6 +75,8 @@ import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
+import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
+import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -107,6 +109,7 @@ export async function prepare(): Promise<void> {
   initFakturaonline();
   initZendesk();
   initZoho();
+  iniVyfakturuj();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -575,4 +578,16 @@ function initMergado(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+}
+function iniVyfakturuj(): void {
+  const app = new VyfakturujApplication();
+  container.setApplication(app);
+
+  const createInvoice = new VyfakturujCreateInvoiceConnector();
+
+  createInvoice
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createInvoice);
 }

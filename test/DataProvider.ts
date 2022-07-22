@@ -33,6 +33,7 @@ import {
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
+import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -237,6 +238,15 @@ export async function mergadoApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function vyfakturujApp() {
+  return appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USER_EMAIL]: 'email@.com',
+      [API_KEY]: 'Api key',
     },
   });
 }
