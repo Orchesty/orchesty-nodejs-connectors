@@ -77,6 +77,8 @@ import MergadoApplication from '../lib/Mergado/MergadoApplication';
 import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
+import GitHubApplication from '../lib/GitHub/GitHubApplication';
+import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
@@ -112,6 +114,7 @@ export async function prepare(): Promise<void> {
   initFakturaonline();
   initZendesk();
   initZoho();
+  initGitHub();
   initWedo();
   iniVyfakturuj();
 }
@@ -614,4 +617,17 @@ function initWedo(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getPackage);
+}
+
+function initGitHub(): void {
+  const app = new GitHubApplication();
+  container.setApplication(app);
+
+  const getApp = new GitHubGetAppConnector();
+
+  getApp
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getApp);
 }
