@@ -245,7 +245,7 @@ export async function mergadoApp() {
 export async function vyfakturujApp() {
   return appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [USER_EMAIL]: DEFAULT_CLIENT_ID,
+      [USER_EMAIL]: 'email@.com',
       [API_KEY]: 'Api key',
     },
   });
