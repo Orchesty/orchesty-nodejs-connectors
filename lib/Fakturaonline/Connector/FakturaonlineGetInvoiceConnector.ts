@@ -25,6 +25,9 @@ export default class FakturaonlineGetInvoiceConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+export interface IOutput {
+    id: string
+}
 export interface IResponce {
     buyer: {
         company_number: string,
