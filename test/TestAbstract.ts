@@ -83,6 +83,7 @@ import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
+import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
 import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewResourceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -584,6 +585,7 @@ function initMergado(): void {
   const listApps = new MergadoListAppsBatch();
   const getUser = new MergadoGetUserConnector();
   const getProject = new MergadoGetProjectConnector();
+  const createElement = new MergadoCreateElementConnector();
   listApps
     .setSender(sender)
     .setDb(db)
@@ -599,6 +601,11 @@ function initMergado(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getProject);
+  createElement
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createElement);
 }
 function iniVyfakturuj(): void {
   const app = new VyfakturujApplication();
