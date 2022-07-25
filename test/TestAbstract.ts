@@ -87,6 +87,7 @@ import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreat
 import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewResourceConnector';
 import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
+import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -661,10 +662,16 @@ function initPaypal(): void {
   container.setApplication(app);
 
   const createProduct = new PaypalCreateProductConnector();
+  const createOrder = new PaypalCreateOrderConnector();
 
   createProduct
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createProduct);
+  createOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createOrder);
 }
