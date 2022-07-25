@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "batch_header": {
+      "sender_batch_header": {
+        "sender_batch_id": "Payouts_2018_100008",
+        "email_subject": "You have a payout!",
+        "email_message": "You have received a payout! Thanks for using our service!"
+      },
+      "payout_batch_id": "5UXD2E8A7EBQJ",
+      "batch_status": "PENDING"
+    }
+  }
+}
