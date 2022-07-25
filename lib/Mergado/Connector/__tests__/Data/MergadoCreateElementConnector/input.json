@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "123",
+    "name": "SHIPPING",
+    "hidden": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "123",
+    "project_id": "1",
+    "name": "SHIPPING",
+    "type": "output",
+    "hidden": false
+  }
+}
