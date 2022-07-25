@@ -25,7 +25,6 @@ export default class PaypalCreatePayoutConnector extends AConnector {
 
 export interface IInput {
     sender_batch_header: {
-        sender_batch_id: string;
         email_subject: string;
         email_message: string;
     };
@@ -38,13 +37,6 @@ export interface IInput {
         note: string;
         sender_item_id: string;
         receiver: string;
-        alternate_notification_method: {
-            phone: {
-                country_code: string;
-                national_number: string;
-            };
-        };
-        notification_language: string;
     }];
 }
 
