@@ -1,11 +1,11 @@
 {
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": {
-        "user": {
-            "fullName": "NewUser2",
-            "siteRole":  "ViewerWithPublish"
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "user": {
+      "fullName": "NewUser2",
+      "siteRole": "ViewerWithPublish"
     }
-}
+  }
 }
