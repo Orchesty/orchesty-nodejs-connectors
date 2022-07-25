@@ -1,0 +1,11 @@
+{
+  "http": "POST https://api.mergado.com/projects/123/elements",
+  "code": 201,
+  "body": {
+    "id": "123",
+    "project_id": "1",
+    "name": "SHIPPING",
+    "type": "output",
+    "hidden": false
+  }
+}
