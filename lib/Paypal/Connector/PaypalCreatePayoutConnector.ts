@@ -43,7 +43,6 @@ export interface IInput {
 export interface IOutput {
     batch_header: {
         sender_batch_header: {
-            sender_batch_id: string;
             email_subject: string;
             email_message: string;
         };

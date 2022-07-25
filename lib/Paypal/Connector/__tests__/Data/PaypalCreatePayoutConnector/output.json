@@ -5,7 +5,6 @@
   "data": {
     "batch_header": {
       "sender_batch_header": {
-        "sender_batch_id": "Payouts_2018_100008",
         "email_subject": "You have a payout!",
         "email_message": "You have received a payout! Thanks for using our service!"
       },
