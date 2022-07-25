@@ -83,6 +83,7 @@ import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
+import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewResourceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -362,6 +363,7 @@ function initMall(): void {
 function initTableau(): void {
   const tableauApp = new TableauApplication(sender, db);
   const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
+  const tableauUpdateNewResourceConnector = new TableauUpdateNewResource();
   const tableauCreateConnectedAppConnector = new TableauCreateConnectedAppConnector();
 
   container.setApplication(tableauApp);
@@ -371,6 +373,12 @@ function initTableau(): void {
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauCreateNewResourceConnector);
+
+  tableauUpdateNewResourceConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(tableauApp);
+  container.setConnector(tableauUpdateNewResourceConnector);
 
   tableauCreateConnectedAppConnector
     .setSender(sender)
