@@ -8,12 +8,11 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import {
-  ABasicApplication,
-} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 
 export const NAME = 'fakturaonline';
 export const API_KEY = 'api_key';
+export const ID = 'id';
 
 export default class FakturaonlineApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -24,7 +23,8 @@ export default class FakturaonlineApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true));
+      .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true))
+      .addField(new Field(FieldType.TEXT, ID, 'id', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -43,6 +43,7 @@ export default class FakturaonlineApplication extends ABasicApplication {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: settings[AUTHORIZATION_FORM][API_KEY],
+      [CommonHeaders.AUTHORIZATION]: settings[AUTHORIZATION_FORM][ID],
     };
 
     if (data) {

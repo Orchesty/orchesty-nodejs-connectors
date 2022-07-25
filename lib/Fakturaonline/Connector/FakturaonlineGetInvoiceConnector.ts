@@ -1,6 +1,8 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { ID } from '../FakturaonlineApplication';
 
 export const NAME = 'fakturaonline-get-invoice-connector';
 
@@ -10,11 +12,12 @@ export default class FakturaonlineGetInvoiceConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
+    const id = appInstall.getSettings()[AUTHORIZATION_FORM][ID];
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.GET,
-      'invoices/{id}',
+      `invoices/${id}`,
       dto.jsonData,
     );
     const resp = await this._sender.send(req, [200]);
@@ -26,7 +29,7 @@ export default class FakturaonlineGetInvoiceConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IOutput {
-    id: string
+    id: IResponce
 }
 export interface IResponce {
     buyer: {
