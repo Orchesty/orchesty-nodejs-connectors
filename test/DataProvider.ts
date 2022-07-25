@@ -15,7 +15,7 @@ import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksAp
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
-import { NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
+import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import {
   NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
@@ -27,7 +27,7 @@ import {
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
-import { ID, API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
+import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
 import {
   DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
@@ -218,7 +218,6 @@ export async function fakturaonlineApp() {
   return appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_KEY]: 'api_key',
-      [ID]: 'id',
     },
   });
 }

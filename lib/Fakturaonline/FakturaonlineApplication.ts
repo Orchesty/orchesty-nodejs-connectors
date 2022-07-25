@@ -23,8 +23,7 @@ export default class FakturaonlineApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true))
-      .addField(new Field(FieldType.TEXT, ID, 'id', undefined, true));
+      .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -43,7 +42,6 @@ export default class FakturaonlineApplication extends ABasicApplication {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: settings[AUTHORIZATION_FORM][API_KEY],
-      [CommonHeaders.AUTHORIZATION]: settings[AUTHORIZATION_FORM][ID],
     };
 
     if (data) {

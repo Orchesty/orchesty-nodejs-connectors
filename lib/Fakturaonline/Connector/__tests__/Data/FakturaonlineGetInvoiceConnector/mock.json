@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.fakturaonline.cz/v0/invoices/id",
+  "http": "GET https://api.fakturaonline.cz/v0/invoices/1",
   "code": 200,
   "body": {
     "id": {

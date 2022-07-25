@@ -1,8 +1,8 @@
 {
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": {
-
-    }
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "1"
+  }
 }
