@@ -9,13 +9,14 @@ export default class TableauGetConnectedAppConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
+    const { siteId, clientId } = dto.jsonData as IInput;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.GET,
-      'sites/site-id/connected-applications/client-id',
+      `sites/${siteId}/connected-applications/${clientId}`,
       dto.jsonData,
     );
     const resp = await this._sender.send(req, [200]);
@@ -25,20 +26,25 @@ export default class TableauGetConnectedAppConnector extends AConnector {
   }
 }
 
-export interface IResponse{
+export interface IInput {
+    siteId: string,
+    clientId: string
+}
+
+export interface IResponse {
     connectedApplication: IOutput,
-        secret: {
-            id: string,
-            createdAt: string
-        }
+    secret: {
+        id: string,
+        createdAt: string
+    }
 
 }
 
 export interface IOutput {
-        name: string,
-        enabled: true,
-        clientId: string,
-        projectId: string,
-        createdAt: string,
-        unrestrictedEmbedding: false
+    name: string,
+    enabled: true,
+    clientId: string,
+    projectId: string,
+    createdAt: string,
+    unrestrictedEmbedding: false
 }

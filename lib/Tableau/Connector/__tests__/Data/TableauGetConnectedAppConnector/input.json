@@ -3,6 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-
+        "siteId": "string",
+        "clientId": "string"
     }
 }

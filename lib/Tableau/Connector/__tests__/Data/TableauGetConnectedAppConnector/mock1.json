@@ -1,5 +1,5 @@
 {
-  "http": "GET https://prefix.online.tableau.com/api/3.14/sites/site-id/connected-applications/client-id",
+  "http": "GET https://prefix.online.tableau.com/api/3.14/sites/string/connected-applications/string",
   "code": 200,
   "body": {
     "connectedApplication": {
