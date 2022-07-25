@@ -85,6 +85,8 @@ import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/Vyfakt
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
 import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
 import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewResourceConnector';
+import PaypalApplication from '../lib/Paypal/PaypalApplication';
+import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -113,6 +115,7 @@ export async function prepare(): Promise<void> {
   initQuickBooks();
   initSalesForce();
   initTableau();
+  initPaypal();
   initWix();
   initFakturaonline();
   initZendesk();
@@ -651,4 +654,17 @@ function initGitHub(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getApp);
+}
+
+function initPaypal(): void {
+  const app = new PaypalApplication(sender);
+  container.setApplication(app);
+
+  const createProduct = new PaypalCreateProductConnector();
+
+  createProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createProduct);
 }
