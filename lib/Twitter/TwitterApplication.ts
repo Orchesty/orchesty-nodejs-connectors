@@ -11,6 +11,8 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 
+// TODO recreate to PKCE application
+
 export const NAME = 'twitter';
 export default class TwitterApplication extends AOAuth2Application {
   public getName = (): string => NAME;
