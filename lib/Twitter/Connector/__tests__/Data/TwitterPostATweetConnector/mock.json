@@ -1,0 +1,8 @@
+{
+  "http": "POST https://api.twitter.com/oauth2/token?grant_type=client_credentials",
+  "code": 200,
+  "body": {
+    "token_type": "bearer",
+    "access_token": "AAAA%2FAAA%3DAAAAAAAAxxxxxx"
+  }
+}
