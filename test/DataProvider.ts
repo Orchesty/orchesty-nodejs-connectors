@@ -38,6 +38,7 @@ import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
+import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -291,6 +292,15 @@ export async function twitterApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function gobalikApp() {
+  return appInstall(GOBALIK_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USER]: DEFAULT_USER,
+      [PASSWORD]: DEFAULT_PASSWORD,
     },
   });
 }
