@@ -19,7 +19,6 @@ export const NAME = 'tableau';
 export const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
 export const PREFIX_SITE = 'prefix_site';
 export const TOKEN_NAME = 'token_name';
-export const SITE = 'site';
 export const MAX_EXPIRE = 14;
 export const X_TABLEAU_AUTH = 'X-Tableau-Auth';
 
@@ -60,7 +59,6 @@ export default class TableauApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, SITE, 'Site', null, true))
       .addField(new Field(
         FieldType.TEXT,
         PREFIX_SITE,
@@ -109,13 +107,13 @@ export default class TableauApplication extends ABasicApplication {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     });
     const form = applicationInstall.getSettings()?.[AUTHORIZATION_FORM];
-    checkParams(form, [TOKEN_NAME, TOKEN, SITE]);
+    checkParams(form, [TOKEN_NAME, TOKEN, PREFIX_SITE]);
     const data = {
       credentials: {
         personalAccessTokenName: form[TOKEN_NAME],
         personalAccessTokenSecret: form[TOKEN],
         site: {
-          contentUrl: form[SITE],
+          contentUrl: form[PREFIX_SITE],
         },
       },
     };

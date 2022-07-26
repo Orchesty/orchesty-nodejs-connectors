@@ -18,7 +18,7 @@ import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import {
-  NAME as TABLEAU_APP, PREFIX_SITE, SITE, TOKEN_NAME,
+  NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME,
 } from '../lib/Tableau/TableauApplication';
 import {
   NAME as BULKGATE_APP,
@@ -175,7 +175,6 @@ export async function tableauApp() {
   return appInstall(TABLEAU_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [TOKEN_NAME]: 'token name',
-      [SITE]: 'site',
       [PREFIX_SITE]: 'prefix',
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },

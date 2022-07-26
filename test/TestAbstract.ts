@@ -47,7 +47,6 @@ import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
 import TableauApplication from '../lib/Tableau/TableauApplication';
-import TableauCreateNewResourceConnector from '../lib/Tableau/Connector/TableauCreateNewResourceConnector';
 import WixApplication from '../lib/Wix/WixApplication';
 import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
@@ -84,7 +83,6 @@ import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
 import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
-import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewResourceConnector';
 import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
@@ -369,30 +367,16 @@ function initMall(): void {
 
 function initTableau(): void {
   const tableauApp = new TableauApplication(sender, db);
-  const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
   const tableauGetConnectedAppConnector = new TableauGetConnectedAppConnector();
-  const tableauUpdateNewResourceConnector = new TableauUpdateNewResource();
   const tableauCreateConnectedAppConnector = new TableauCreateConnectedAppConnector();
 
   container.setApplication(tableauApp);
-
-  tableauCreateNewResourceConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(tableauApp);
-  container.setConnector(tableauCreateNewResourceConnector);
 
   tableauGetConnectedAppConnector
     .setSender(sender)
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauGetConnectedAppConnector);
-
-  tableauUpdateNewResourceConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(tableauApp);
-  container.setConnector(tableauUpdateNewResourceConnector);
 
   tableauCreateConnectedAppConnector
     .setSender(sender)

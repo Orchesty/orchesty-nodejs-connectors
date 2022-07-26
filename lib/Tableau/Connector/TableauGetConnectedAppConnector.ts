@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'tableau-get-connected-app-connector';
 
@@ -28,25 +28,24 @@ export default class TableauGetConnectedAppConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    siteId: string,
-    clientId: string
+  siteId: string,
+  clientId: string
 }
 
-export interface IResponse {
-    secret: {
-        id: string,
-        createdAt: string
-    }
-    connectedApplication: IOutput
-
+interface IResponse {
+  secret: {
+    id: string,
+    createdAt: string
+  }
+  connectedApplication: IOutput
 }
 
 export interface IOutput {
-    name: string,
-    enabled: true,
-    clientId: string,
-    projectId: string,
-    createdAt: string,
-    unrestrictedEmbedding: false
+  name: string,
+  enabled: true,
+  clientId: string,
+  projectId: string,
+  createdAt: string,
+  unrestrictedEmbedding: false
 }
 /* eslint-enable @typescript-eslint/naming-convention */

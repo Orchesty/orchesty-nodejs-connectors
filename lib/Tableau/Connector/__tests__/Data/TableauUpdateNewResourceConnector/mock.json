@@ -1,9 +1,0 @@
-{
-  "http": "POST https://prefix.online.tableau.com/api/3.14/auth/signin",
-  "code": 200,
-  "body": {
-    "credentials": {
-      "token": "123"
-    }
-  }
-}

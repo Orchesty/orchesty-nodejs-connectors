@@ -16,7 +16,7 @@ export default class TableauCreateConnectedAppConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       'sites/site-id/connected-applications',
-            dto.jsonData as IInput,
+      dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
 
@@ -37,8 +37,8 @@ export interface IInput {
 export interface IOutput {
     name: string,
     enable: boolean,
-    cientId: string
+    clientId: string
     projectId: string,
     createdAt: string,
-    unreastrictedEmbedding: boolean
+    unrestrictedEmbedding: boolean
 }
