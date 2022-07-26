@@ -3,6 +3,7 @@
         "user": "TestUser"
     },
     "data": {
+        "id": "id",
         "invoice": {
             "credit_noted_invoice_id": 0,
             "kind": "vat_invoice",
