@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "text": "Tweeting a DM deep link!",
+    "direct_message_deep_link": "https://twitter.com/messages/compose?recipient_id=2244994945"
+  }
+}

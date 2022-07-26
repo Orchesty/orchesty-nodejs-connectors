@@ -88,6 +88,8 @@ import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreatePr
 import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
 import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
+import TwitterApplication from '../lib/Twitter/TwitterApplication';
+import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -116,6 +118,7 @@ export async function prepare(): Promise<void> {
   initQuickBooks();
   initSalesForce();
   initTableau();
+  initTwitter();
   initPaypal();
   initWix();
   initFakturaonline();
@@ -673,4 +676,17 @@ function initPaypal(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createPayout);
+}
+
+function initTwitter(): void {
+  const app = new TwitterApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const postATweet = new TwitterPostATweetConnector();
+
+  postATweet
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(postATweet);
 }
