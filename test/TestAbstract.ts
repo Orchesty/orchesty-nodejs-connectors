@@ -89,6 +89,7 @@ import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
 import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
+import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -369,6 +370,7 @@ function initMall(): void {
 function initTableau(): void {
   const tableauApp = new TableauApplication(sender, db);
   const tableauCreateNewResourceConnector = new TableauCreateNewResourceConnector();
+  const tableauGetConnectedAppConnector = new TableauGetConnectedAppConnector();
   const tableauUpdateNewResourceConnector = new TableauUpdateNewResource();
   const tableauCreateConnectedAppConnector = new TableauCreateConnectedAppConnector();
 
@@ -379,6 +381,12 @@ function initTableau(): void {
     .setDb(db)
     .setApplication(tableauApp);
   container.setConnector(tableauCreateNewResourceConnector);
+
+  tableauGetConnectedAppConnector
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(tableauApp);
+  container.setConnector(tableauGetConnectedAppConnector);
 
   tableauUpdateNewResourceConnector
     .setSender(sender)
