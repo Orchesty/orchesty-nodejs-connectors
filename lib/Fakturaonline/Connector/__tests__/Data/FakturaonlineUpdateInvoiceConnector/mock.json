@@ -1,5 +1,82 @@
 {
-  "http": "POST http://url.com",
+  "http": "PUT https://api.fakturaonline.cz/v0/invoices/id",
   "code": 200,
-  "body": {}
+  "body": {
+    "public_url": "/vystavene-faktury/1.pdf",
+    "invoice": {
+      "buyer": {
+        "company_number": "54321",
+        "country_code": "CZ",
+        "id": 2,
+        "show_iban": false
+      },
+      "created_at": "2022-06-08T08:30:22+02:00",
+      "currency": "EUR",
+      "design": "1",
+      "due_in_api": "14",
+      "due_on": "2022-06-22",
+      "eet": {
+        "locked?": false
+      },
+      "eet_invoice": false,
+      "eet_state": "not_subject",
+      "id": 1,
+      "is_accessible": true,
+      "issued_on": "2022-06-08",
+      "kind": "invoice",
+      "language": "cs",
+      "lines": [
+        {
+          "description": "Invoice line 22",
+          "id": 1,
+          "invoice_id": 1,
+          "price": "199,90 €",
+          "quantity": "1,00",
+          "vat_rate": "20%"
+        },
+        {
+          "description": "Invoice line 23",
+          "id": 2,
+          "invoice_id": 1,
+          "price": "312,00 €",
+          "quantity": "1,00",
+          "vat_rate": "10,5%"
+        },
+        {
+          "description": "Invoice line 24",
+          "id": 3,
+          "invoice_id": 1,
+          "price": "199,90 €",
+          "quantity": "10,00",
+          "vat_rate": "15%"
+        }
+      ],
+      "locked?": false,
+      "means_of_payment": "cash",
+      "number": "INVOICE-0014",
+      "paid": false,
+      "payment_symbol": "0014",
+      "rounding_type": "none",
+      "seller": {
+        "company_number": "12345",
+        "country_code": "CZ",
+        "id": 1,
+        "name": "Ohai",
+        "show_iban": false
+      },
+      "seller_company_id": "12345",
+      "show_qr_code": true,
+      "site": "cz",
+      "state": "proposal",
+      "stateful_invoice": false,
+      "subscription_id": 1,
+      "tax_point_on": "2022-06-08",
+      "total_float": 2883.49,
+      "updated_at": "2022-06-08T08:30:22+02:00",
+      "vat_calculation": "vat_exclusive",
+      "vat_totals_currency": "EUR",
+      "vat_totals_currency_conversion": false
+    },
+    "invoice_id": 1
+  }
 }

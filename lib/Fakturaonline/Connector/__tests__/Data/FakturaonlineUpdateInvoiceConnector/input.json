@@ -1,4 +1,71 @@
 {
-    "headers": {},
-    "data": {}
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "invoice": {
+            "credit_noted_invoice_id": 0,
+            "kind": "vat_invoice",
+            "already_paid_note": "string",
+            "constant_symbol": "string",
+            "number": "string",
+            "due_in_api": "string",
+            "registration_number": "string",
+            "issued_on_localized": "2019-08-24",
+            "tax_point_on_localized": "2019-08-24",
+            "issued_on": "2019-08-24",
+            "tax_point_on": "2019-08-24",
+            "due_in": 0,
+            "means_of_payment": "cash",
+            "payment_symbol": "string",
+            "issued_by": "string",
+            "vat_calculation": "vat_inclusive",
+            "currency": "string",
+            "vat_totals_currency": "string",
+            "vat_totals_currency_conversion": true,
+            "rounding_type": "none",
+            "language": "cs",
+            "desing": "1",
+            "show_qr_code": true,
+            "note": "string",
+            "foot_note": "string",
+            "seller_attributes": {
+                "company_number": "string",
+                "name": "string",
+                "tax_number": "string",
+                "address_attributes": {
+                    "street": "string",
+                    "city": "string",
+                    "postcode": "string",
+                    "country_code": "string"
+                },
+                "bank_account_attributes": {
+                    "number": "string",
+                    "show_iban": true,
+                    "iban": "string",
+                    "swift": "string"
+                }
+            },
+            "buyer_attributes": {
+                "company_number": "string",
+                "name": "string",
+                "tax_number": "string",
+                "address_attributes": {
+                    "street": "string",
+                    "city": "string",
+                    "postcode": "string",
+                    "country_code": "string"
+                }
+            },
+            "lines_attributes": [
+                {
+                    "description": "string",
+                    "price": "string",
+                    "quantity": "string",
+                    "unit_type": "string",
+                    "vat_rate": "string"
+                }
+            ]
+        }
+    }
 }
