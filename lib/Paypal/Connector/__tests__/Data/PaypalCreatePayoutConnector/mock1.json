@@ -1,0 +1,14 @@
+{
+  "http": "POST https://api-m.paypal.com/v1/payments/payouts",
+  "code": 201,
+  "body": {
+    "batch_header": {
+      "sender_batch_header": {
+        "email_subject": "You have a payout!",
+        "email_message": "You have received a payout! Thanks for using our service!"
+      },
+      "payout_batch_id": "5UXD2E8A7EBQJ",
+      "batch_status": "PENDING"
+    }
+  }
+}
