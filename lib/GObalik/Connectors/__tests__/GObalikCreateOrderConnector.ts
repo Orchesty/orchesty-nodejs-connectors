@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for GObalikCreateOrderConnector', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
-    await gobalikApp;
+    await gobalikApp();
   });
 
   it('process - ok', async () => {

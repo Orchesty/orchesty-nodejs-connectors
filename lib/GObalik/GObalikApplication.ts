@@ -8,6 +8,8 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 
 export const NAME = 'g-obalik';
 export const USER = 'user';
@@ -21,7 +23,9 @@ export default class GObalikApplication extends ABasicApplication {
   public getDescription = (): string => 'G Obalik description';
 
   public getFormStack = (): FormStack => {
-    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings');
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, USER, 'user', undefined, true))
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'password', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -33,7 +37,7 @@ export default class GObalikApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const url = `https://go-balik.cz/api/v1/order/${_url}`;
+    const url = `https://go-balik.cz/api/v1/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
