@@ -20,23 +20,24 @@ export default class TableauGetConnectedAppConnector extends AConnector {
       dto.jsonData,
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = (resp.jsonBody as IResponse).connectedApplication;
 
     return dto;
   }
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
     siteId: string,
     clientId: string
 }
 
 export interface IResponse {
-    connectedApplication: IOutput,
     secret: {
         id: string,
         createdAt: string
     }
+    connectedApplication: IOutput
 
 }
 
@@ -48,3 +49,4 @@ export interface IOutput {
     createdAt: string,
     unrestrictedEmbedding: false
 }
+/* eslint-enable @typescript-eslint/naming-convention */
