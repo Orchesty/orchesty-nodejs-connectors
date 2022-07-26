@@ -1,8 +1,8 @@
 {
-  "http": "POST https://api.twitter.com/oauth2/token?grant_type=client_credentials",
+  "http": "POST https://api.twitter.com/2/tweets",
   "code": 200,
   "body": {
-    "token_type": "bearer",
-    "access_token": "AAAA%2FAAA%3DAAAAAAAAxxxxxx"
+    "id": "1445880548472328192",
+    "text": "Are you excited for the weekend?"
   }
 }
