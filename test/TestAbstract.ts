@@ -92,6 +92,7 @@ import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGet
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
+import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -572,6 +573,7 @@ function initFakturaonline(): void {
   const app = new FakturaonlineApplication();
   const createNewInvoice = new FakturaonlineCreateNewInvoiceConnector();
   const createGetInvoice = new FakturaonlineGetInvoiceConnector();
+  const updateInvoice = new FakturaonlineUpdateInvoiceConnector();
   container.setApplication(app);
 
   createNewInvoice
@@ -585,6 +587,12 @@ function initFakturaonline(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createGetInvoice);
+
+  updateInvoice
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(updateInvoice);
 }
 
 function initMergado(): void {

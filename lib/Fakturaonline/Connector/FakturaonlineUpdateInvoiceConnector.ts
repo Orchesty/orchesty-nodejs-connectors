@@ -18,7 +18,7 @@ export default class FakturaonlineUpdateInvoiceConnector extends AConnector {
             dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = (resp.jsonBody as IResponce).Invoice;
 
     return dto;
   }
@@ -26,91 +26,83 @@ export default class FakturaonlineUpdateInvoiceConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IResponce{
-    invoice: IOutput,
-    public_url: '/vystavene-faktury/1.pdf',
-    invoice: {
+    Invoice: IOutput,
+    public_url: string,
+     invoice: {
         buyer: {
-            company_number': '54321',
-            country_code': 'CZ',
-            id': 2,
-            show_iban': false,
+            company_number: string,
+            country_code: string,
+            id: number,
+            show_iban: boolean,
         },
-        'created_at': '2022-06-08T08:30:22+02:00',
-        'currency': 'EUR',
-        'design': '1',
-        'due_in_api': '14',
-        'due_on': '2022-06-22',
-        'eet': {
-            'locked?': false,
+        created_at: string,
+        currency: string,
+        design: string,
+        due_in_api: string,
+        due_on: string,
+        eet: {
+            locked?: boolean,
         },
-        'eet_invoice': false,
-        'eet_state': 'not_subject',
-        'id': 1,
-        'is_accessible': true,
-        'issued_on': '2022-06-08',
-        'kind': 'invoice',
-        'language': 'cs',
-        'lines': [
+        eet_invoice: boolean,
+        eet_state: string,
+        id: number,
+        is_accessible: boolean,
+        issued_on: string,
+        kind: string,
+        language: string,
+        lines: [
             {
-                'description': 'Invoice line 22',
-                'id': 1,
-                'invoice_id': 1,
-                'price': '199,90 €',
-                'quantity': '1,00',
-                'vat_rate': '20%'
+                description: string,
+                id: number,
+                invoice_id: number,
+                price: string,
+                quantity: string,
+                vat_rate: string
             },
             {
-                'description': 'Invoice line 23',
-                'id': 2,
-                'invoice_id': 1,
-                'price': '312,00 €',
-                'quantity': '1,00',
-                'vat_rate': '10,5%'
+                description: string,
+                id: number,
+                invoice_id: number,
+                price: string,
+                quantity: string,
+                vat_rate: string
             },
             {
-                'description': 'Invoice line 24',
-                'id': 3,
-                'invoice_id': 1,
-                'price': '199,90 €',
-                'quantity': '10,00',
-                'vat_rate': '15%'
+                description: string,
+                id: number,
+                invoice_id: number,
+                price: string,
+                quantity: string,
+                vat_rate: string
             }
         ],
-        'locked?': false,
-        'logo': {
-            'thumb': {
-            },
+        locked?: boolean,
+        means_of_payment: string,
+        number: string,
+        paid: boolean,
+        payment_symbol: string,
+        rounding_type: string,
+        seller: {
+            company_number: string,
+            country_code: string,
+            id: number,
+            name: string,
+            show_iban: boolean,
         },
-        'means_of_payment': 'cash',
-        'number': 'INVOICE-0014',
-        'paid': false,
-        'payment_symbol': '0014',
-        'rounding_type': 'none',
-        'seller': {
-            'company_number': '12345',
-            'country_code': 'CZ',
-            'id': 1,
-            'name': 'Ohai',
-            'show_iban': false,
-        },
-        'seller_company_id': '12345',
-        'show_qr_code': true,
-        'site': 'cz',
-        'stamp': {
-            'thumb': {
-            },
-        },
-        'state': 'proposal',
-        'stateful_invoice': false,
-        'subscription_id': 1,
-        'tax_point_on': '2022-06-08',
-        'total_float': 2883.49,
-        'updated_at': '2022-06-08T08:30:22+02:00',
-        'vat_calculation': 'vat_exclusive',
-        'vat_totals_currency': 'EUR',
-        'vat_totals_currency_conversion': false
+        seller_company_id: string,
+        show_qr_code: boolean,
+        site: string,
+        state: string,
+        stateful_invoice: boolean,
+        subscription_id: number,
+        tax_point_on: string,
+        total_float: number,
+        updated_at: string,
+        vat_calculation: string,
+        vat_totals_currency: string,
+        vat_totals_currency_conversion: boolean
     },
-    'invoice_id': 1
+    invoice_id: number
 }
 export interface IInput {
     id: string
