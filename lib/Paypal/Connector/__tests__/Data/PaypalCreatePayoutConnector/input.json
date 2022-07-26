@@ -16,7 +16,7 @@
         },
         "note": "Thanks for your patronage!",
         "sender_item_id": "201403140001",
-        "receiver": "receiver@example.com",
+        "receiver": "receiver@example.com"
       },
       {
         "recipient_type": "PHONE",
