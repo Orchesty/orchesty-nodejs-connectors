@@ -679,7 +679,7 @@ function initPaypal(): void {
 }
 
 function initTwitter(): void {
-  const app = new TwitterApplication(sender);
+  const app = new TwitterApplication(oauth2Provider);
   container.setApplication(app);
 
   const postATweet = new TwitterPostATweetConnector();
