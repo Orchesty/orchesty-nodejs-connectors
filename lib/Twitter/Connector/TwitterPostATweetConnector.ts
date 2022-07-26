@@ -24,24 +24,24 @@ export default class TwitterPostATweetConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
-    direct_message_deep_link: string;
-    for_super_followers_only: boolean;
-    geo: {
+    direct_message_deep_link?: string;
+    for_super_followers_only?: boolean;
+    geo?: {
         place_id: string;
     };
-    media: {
+    media?: {
         media_ids: [];
         tagged_user_ids: [];
     }
-    poll: {
+    poll?: {
         duration_minutes: number;
         options: [];
     }
-    quote_tweet_id: string;
-    reply: {
+    quote_tweet_id?: string;
+    reply?: {
         in_reply_to_tweet_id: string;
     }
-    reply_settings: string;
+    reply_settings?: string;
     text: string;
 }
 
