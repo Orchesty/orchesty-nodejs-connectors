@@ -88,6 +88,7 @@ import TableauUpdateNewResource from '../lib/Tableau/Connector/TableauUpdateNewR
 import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
+import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -663,6 +664,7 @@ function initPaypal(): void {
 
   const createProduct = new PaypalCreateProductConnector();
   const createOrder = new PaypalCreateOrderConnector();
+  const createPayout = new PaypalCreatePayoutConnector();
 
   createProduct
     .setSender(sender)
@@ -674,4 +676,9 @@ function initPaypal(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+  createPayout
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createPayout);
 }
