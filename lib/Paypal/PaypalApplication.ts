@@ -13,6 +13,7 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 
+// TODO recreate to PKCE application
 export const BASE_URL = 'https://api-m.paypal.com';
 
 export const NAME = 'paypal';
