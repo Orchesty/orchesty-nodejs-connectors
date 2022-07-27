@@ -732,12 +732,18 @@ function initProductboard(): void {
   container.setApplication(app);
 
   const listAllFeatures = new ProductboardListAllFeaturesBatch();
+  const listAllProducts = new ProductboardListAllProductsBatch();
 
   listAllFeatures
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listAllFeatures);
+  listAllProducts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listAllProducts);
 }
 
 function initGObalik(): void {
