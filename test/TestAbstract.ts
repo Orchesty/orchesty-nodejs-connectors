@@ -82,6 +82,7 @@ import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
+import FakturaonlineGetInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineGetInvoiceConnector';
 import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
 import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
@@ -569,6 +570,7 @@ function initAmazon(): void {
 function initFakturaonline(): void {
   const app = new FakturaonlineApplication();
   const createNewInvoice = new FakturaonlineCreateNewInvoiceConnector();
+  const createGetInvoice = new FakturaonlineGetInvoiceConnector();
   container.setApplication(app);
 
   createNewInvoice
@@ -576,6 +578,12 @@ function initFakturaonline(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createNewInvoice);
+
+  createGetInvoice
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createGetInvoice);
 }
 
 function initMergado(): void {
