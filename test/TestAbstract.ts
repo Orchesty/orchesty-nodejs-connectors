@@ -745,6 +745,11 @@ function initProductboard(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listAllProducts);
+  listAllProducts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listAllProducts);
 }
 
 function initGObalik(): void {
