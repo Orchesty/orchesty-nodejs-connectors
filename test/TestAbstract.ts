@@ -104,6 +104,7 @@ import ProductboardApplication from '../lib/Productboard/ProductboardApplication
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
+import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -765,6 +766,7 @@ function initGObalik(): void {
   const app = new GObalikApplication();
   container.setApplication(app);
   const createOrder = new GObalikCreateOrderConnector();
+  const orderList = new GObalikOrderListConnector();
   const orderDetail = new GObalikOrderDetailConnector();
 
   createOrder
@@ -772,6 +774,12 @@ function initGObalik(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+
+  orderList
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(orderList);
 
   orderDetail
     .setSender(sender)
