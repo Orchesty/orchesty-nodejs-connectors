@@ -91,6 +91,7 @@ import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePay
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
+import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -691,10 +692,16 @@ function initTwitter(): void {
   container.setApplication(app);
 
   const postATweet = new TwitterPostATweetConnector();
+  const deleteTweet = new TwitterDeleteTweetConnector();
 
   postATweet
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(postATweet);
+  deleteTweet
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(deleteTweet);
 }
