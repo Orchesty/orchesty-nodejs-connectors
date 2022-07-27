@@ -9,13 +9,14 @@ export default class FakturaonlineUpdateInvoiceConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const { id } = dto.jsonData as IInput;
+    const { id, ...body } = dto.jsonData as IInput;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.PUT,
       `invoices/${id}`,
+      body,
     );
     const resp = await this._sender.send(req, [200]);
     dto.jsonData = resp.jsonBody as IOutput;
