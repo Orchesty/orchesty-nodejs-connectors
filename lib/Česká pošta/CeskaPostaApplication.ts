@@ -39,7 +39,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const url = 'http://napostu.ceskaposta.cz/vystupy/';
+    const url = `http://napostu.ceskaposta.cz/vystupy/balikovny/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

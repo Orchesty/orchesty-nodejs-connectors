@@ -1,5 +1,23 @@
 {
-  "http": "POST http://url.com",
+  "http": "POST http://napostu.ceskaposta.cz/vystupy/balikovny/parcelStatus",
   "code": 200,
-  "body": {}
+  "body": {
+    "idParcel": "ID (čárový kód) zásilky",
+    "parcelType": "Typ zásilky(prefix)",
+    "weight": "Hmotnost",
+    "amount": "Dobirka",
+    "currency": "ISO kód měny dobírky",
+    "parcelsQuantity": "Množství",
+    "depositTo": "Datum uložení do",
+    "timeDeposit": "Úložní doba",
+    "countryOfOrigin": "Země původu",
+    "countryOfDestination": "Země určení",
+    "parcelStatuses": {
+      "id": "ID stavu",
+      "date": "Datum načtení stavu",
+      "text": "Text stavu",
+      "postCode": "PSČ kde stav nastal",
+      "name": "Název provozovny kde stav nastal"
+    }
+  }
 }

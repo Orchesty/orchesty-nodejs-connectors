@@ -15,7 +15,7 @@ export default class CeskaPostaParcelStatusConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      '/parcelStatus',
+      'parcelStatus',
             dto.jsonData as IInput,
     );
 

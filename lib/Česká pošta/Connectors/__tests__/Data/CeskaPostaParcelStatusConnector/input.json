@@ -1,4 +1,9 @@
 {
-    "headers": {},
-    "data": {}
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "parcelIds": "ID (čárový kód) zásilky Je možno zadat až deset zásilek",
+        "language": "Jazyk zobrazovaných událostí"
+    }
 }
