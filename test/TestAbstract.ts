@@ -96,9 +96,10 @@ import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATwe
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
-import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
+import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
+import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -734,6 +735,7 @@ function initProductboard(): void {
 
   const listAllFeatures = new ProductboardListAllFeaturesBatch();
   const listAllProducts = new ProductboardListAllProductsBatch();
+  const createNewFeature = new ProductboardCreateNewFeatureConnector();
 
   listAllFeatures
     .setSender(sender)
@@ -745,11 +747,11 @@ function initProductboard(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listAllProducts);
-  listAllProducts
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listAllProducts);
+  createNewFeature
+      .setSender(sender)
+      .setDb(db)
+      .setApplication(app);
+  container.setConnector(createNewFeature);
 }
 
 function initGObalik(): void {
