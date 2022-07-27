@@ -11,16 +11,16 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 
-export const NAME = 'g-obalik';
+export const NAME = 'go-balik';
 export const USER = 'user';
 export const PASSWORD = 'password';
 
 export default class GObalikApplication extends ABasicApplication {
   public getName = (): string => NAME;
 
-  public getPublicName = (): string => 'G Obalik';
+  public getPublicName = (): string => 'GO balik';
 
-  public getDescription = (): string => 'G Obalik description';
+  public getDescription = (): string => 'GO balik description';
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
