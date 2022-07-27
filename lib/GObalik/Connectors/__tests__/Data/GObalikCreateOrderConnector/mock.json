@@ -1,0 +1,50 @@
+{
+  "http": "POST https://go-balik.cz/api/v1/order/",
+  "code": 200,
+  "body": {
+    "sender": [
+      {
+        "first_name": "XZY",
+        "last_name": "XZY",
+        "company": "XZY",
+        "street": "XZY",
+        "city": "XZY",
+        "zip": "XZY",
+        "state": "XZY",
+        "email": "XZY",
+        "phone": "XZY"
+      }
+    ],
+    "recipient": [
+      {
+        "first_name": "XZY",
+        "last_name": "XZY",
+        "company": "XZY",
+        "street": "XZY",
+        "city": "XZY",
+        "zip": "XZY",
+        "state": "XZY",
+        "email": "XZY",
+        "phone": "XZY"
+      }
+    ],
+    "pick_up_date": "XZY",
+    "deliver_id": 3,
+    "reference_number": "XZY",
+    "postponed": false,
+    "note": "XZY",
+    "cod": 1000,
+    "cod_bank_account": "111222666",
+    "cod_bank_code": "0800",
+    "cod_bank_account_eur": "111222777",
+    "cod_bank_code_eur": "0100",
+    "cod_bank_vs": "XZY",
+    "insurance": 0,
+    "dispensing_point": "XYZ",
+    "delivery_point": "XYZ",
+    "weight": 5,
+    "width": 20,
+    "height": 20,
+    "length": 10
+  }
+}

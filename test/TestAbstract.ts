@@ -87,6 +87,8 @@ import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreat
 import PaypalApplication from '../lib/Paypal/PaypalApplication';
 import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
+import GObalikApplication from '../lib/GObalik/GObalikApplication';
+import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
 import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
@@ -130,6 +132,7 @@ export async function prepare(): Promise<void> {
   initGitHub();
   initWedo();
   iniVyfakturuj();
+  initGObalik();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -712,4 +715,16 @@ function initTwitter(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(deleteTweet);
+}
+
+function initGObalik(): void {
+  const app = new GObalikApplication();
+  container.setApplication(app);
+  const createOrder = new GObalikCreateOrderConnector();
+
+  createOrder
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createOrder);
 }
