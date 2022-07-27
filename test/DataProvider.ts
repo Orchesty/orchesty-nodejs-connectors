@@ -39,6 +39,7 @@ import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/Vyfakturuj
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
+import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 
 const DEFAULT_USER = 'TestUser';
