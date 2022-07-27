@@ -95,6 +95,7 @@ import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
+import GObalikOrdeDeatilConnector from '../lib/GObalik/Connectors/GObalikOrdeDeatilConnector';
 import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
 import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
@@ -764,12 +765,19 @@ function initGObalik(): void {
   const app = new GObalikApplication();
   container.setApplication(app);
   const createOrder = new GObalikCreateOrderConnector();
+  const orderDetail = new GObalikOrdeDeatilConnector();
 
   createOrder
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+
+  orderDetail
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(orderDetail);
 }
 
 function initCalendly(): void {
