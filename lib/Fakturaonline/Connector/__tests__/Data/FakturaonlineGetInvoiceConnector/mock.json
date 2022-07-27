@@ -2,7 +2,6 @@
   "http": "GET https://api.fakturaonline.cz/v0/invoices/1",
   "code": 200,
   "body": {
-    "id": {
       "buyer": {
         "company_number": "54321",
         "country_code": "CZ",
@@ -76,5 +75,4 @@
       "vat_totals_currency": "EUR",
       "vat_totals_currency_conversion": false
     }
-  }
 }

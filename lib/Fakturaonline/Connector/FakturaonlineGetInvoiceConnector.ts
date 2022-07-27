@@ -18,7 +18,7 @@ export default class FakturaonlineGetInvoiceConnector extends AConnector {
       `invoices/${id}`,
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IResponce;
+    dto.jsonData = resp.jsonBody as IOutput;
 
     return dto;
   }
@@ -30,10 +30,6 @@ export interface IInput {
 }
 
 export interface IOutput {
-    id: IResponce
-}
-
-export interface IResponce {
     buyer: {
         company_number: string,
         country_code: string,
