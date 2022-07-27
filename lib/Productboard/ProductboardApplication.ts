@@ -20,13 +20,13 @@ export default class ProductboardApplication extends ABasicApplication {
 
   public getDescription = (): string => 'Productboard description';
 
-  public getRequestDto(
+  public getRequestDto = (
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
     _url?: string,
     data?: unknown,
-  ): RequestDto {
+  ): RequestDto => {
     const url = `${BASE_URL}/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
@@ -40,7 +40,7 @@ export default class ProductboardApplication extends ABasicApplication {
     }
 
     return request;
-  }
+  };
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
