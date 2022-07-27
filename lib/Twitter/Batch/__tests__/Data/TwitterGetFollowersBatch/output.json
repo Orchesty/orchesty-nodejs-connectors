@@ -1,0 +1,47 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":\"6253282\",\"name\":\"Twitter API\",\"username\":\"TwitterAPI\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"2244994945\",\"name\":\"Twitter Dev\",\"username\":\"TwitterDev\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"783214\",\"name\":\"Twitter\",\"username\":\"Twitter\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"95731075\",\"name\":\"Twitter Safety\",\"username\":\"TwitterSafety\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"3260518932\",\"name\":\"Twitter Moments\",\"username\":\"TwitterMoments\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"373471064\",\"name\":\"Twitter Music\",\"username\":\"TwitterMusic\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"791978718\",\"name\":\"Twitter Official Partner\",\"username\":\"OfficialPartner\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"17874544\",\"name\":\"Twitter Support\",\"username\":\"TwitterSupport\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"234489024\",\"name\":\"Twitter Comms\",\"username\":\"TwitterComms\"}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":\"1526228120\",\"name\":\"Twitter Data\",\"username\":\"TwitterData\"}",
+      "headers": null
+    }
+  ]
+}
