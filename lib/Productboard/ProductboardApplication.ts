@@ -12,6 +12,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 
 export const NAME = 'productboard';
 export const TOKEN = 'token';
+export const BASE_URL = 'https://api.productboard.com';
 export default class ProductboardApplication extends ABasicApplication {
   public getName = (): string => NAME;
 
@@ -26,7 +27,7 @@ export default class ProductboardApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto {
-    const url = `https://api.productboard.com/${_url}`;
+    const url = `${BASE_URL}/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
