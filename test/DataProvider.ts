@@ -37,6 +37,7 @@ import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
 import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
+import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -278,6 +279,18 @@ export async function vyfakturujApp() {
     [AUTHORIZATION_FORM]: {
       [USER_EMAIL]: 'info@examle.com',
       [API_KEY]: 'Api key',
+    },
+  });
+}
+
+export async function twitterApp() {
+  return appInstall(TWITTER_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
