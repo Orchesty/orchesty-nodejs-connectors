@@ -10,11 +10,13 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
+import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
 
 export const NAME = 'ceska-posta';
 export const API_TOKEN = 'api_token';
 export const CONTENT_SHA256 = 'content_sha256';
 export const HMAC_SHA256_AUTH = 'HMAC_SHA256_Auth';
+const AUTHORIZATION_TIMESTAMP = 'authorization_timestamp';
 
 export default class CeskaPostaApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -48,7 +50,11 @@ export default class CeskaPostaApplication extends ABasicApplication {
     if (data) {
       request.setJsonBody(data);
     }
-
+    applicationInstall.addSettings(
+      {
+        [AUTHORIZATION_TIMESTAMP]: DateTimeUtils.getTimestamp(DateTimeUtils.utcDate),
+      },
+    );
     return request;
   };
 }
