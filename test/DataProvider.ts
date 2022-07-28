@@ -42,7 +42,7 @@ import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplic
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import {
-  API_TOKEN, CONTENT_SHA256, NAME as CESKAPOSTA_APP, TIMESTAMP,
+  API_TOKEN, CONTENT_SHA256, NAME as CESKAPOSTA_APP,
 } from '../lib/Česká pošta/CeskaPostaApplication';
 
 const DEFAULT_USER = 'TestUser';
@@ -322,7 +322,6 @@ export async function ceskaPostaApp() {
   return appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      [TIMESTAMP]: 'timestamp',
       [CONTENT_SHA256]: 'content_sha256',
     },
   });

@@ -27,27 +27,34 @@ export default class CeskaPostaParcelStatusConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    parcelIds: string,
+    parcelIds: string [],
     language: string
 }
 
 export interface IOutput {
-    idParcel: string,
-    parcelType: string,
-    weight: string,
-    amount: string,
-    currency: string,
-    parcelsQuantity: string,
-    depositTo: string,
-    timeDeposit: string,
-    countryOfOrigin: string,
-    countryOfDestination: string,
-    parcelStatuses: {
-        id: string,
-        date: string,
-        text: string,
-        postCode: string,
-        name: string
-    }
+    detail: [
+        {
+            idParcel: string,
+            parcelType: string,
+            weight: string,
+            amount: string,
+            currency: string,
+            parcelsQuantity: string,
+            depositTo: string,
+            timeDeposit: string,
+            countryOfOrigin: string,
+            countryOfDestination: string,
+            parcelStatuses: [
+                {
+                    id: string,
+                    date: string,
+                    text: string,
+                    postCode: string,
+                    name: string
+                }
+            ]
+        }
+    ]
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */

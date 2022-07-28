@@ -13,8 +13,8 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
 export const NAME = 'ceska-posta';
 export const API_TOKEN = 'api_token';
-export const TIMESTAMP = 'timestamp';
 export const CONTENT_SHA256 = 'content_sha256';
+export const HMAC_SHA256_AUTH = 'HMAC_SHA256_Auth';
 
 export default class CeskaPostaApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -25,9 +25,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true))
-      .addField(new Field(FieldType.TEXT, TIMESTAMP, 'timestamp', undefined, true))
-      .addField(new Field(FieldType.TEXT, CONTENT_SHA256, 'content_sha256', undefined, true));
+      .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true));
 
     return new FormStack().addForm(form);
   };
@@ -39,12 +37,12 @@ export default class CeskaPostaApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const url = `http://napostu.ceskaposta.cz/vystupy/balikovny/${_url}`;
+    const url = `http://localhost:8080/restservices/ZSKService/v1/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${API_TOKEN}:${TIMESTAMP}:${CONTENT_SHA256}`),
+      [CommonHeaders.AUTHORIZATION]: encode(`${API_TOKEN}:${HMAC_SHA256_AUTH}:${CONTENT_SHA256}`),
     };
 
     if (data) {

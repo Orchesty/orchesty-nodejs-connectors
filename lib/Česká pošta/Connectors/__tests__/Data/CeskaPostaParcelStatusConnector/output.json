@@ -3,22 +3,28 @@
         "user": "TestUser"
     },
     "data": {
-        "idParcel": "ID (čárový kód) zásilky",
-        "parcelType": "Typ zásilky(prefix)",
-        "weight": "Hmotnost",
-        "amount": "Dobirka",
-        "currency": "ISO kód měny dobírky",
-        "parcelsQuantity": "Množství",
-        "depositTo": "Datum uložení do",
-        "timeDeposit": "Úložní doba",
-        "countryOfOrigin": "Země původu",
-        "countryOfDestination": "Země určení",
-        "parcelStatuses": {
-            "id": "ID stavu",
-            "date": "Datum načtení stavu",
-            "text": "Text stavu",
-            "postCode": "PSČ kde stav nastal",
-            "name": "Název provozovny kde stav nastal"
-        }
+        "detail": [
+            {
+                "idParcel": "BA1234567890A",
+                "parcelType": "BA",
+                "weight": "100.20",
+                "amount": 105,
+                "currency": "CZK",
+                "parcelsQuantity": 1,
+                "depositTo": "2019-08-24",
+                "timeDeposit": 0,
+                "countryOfOrigin": "string",
+                "countryOfDestination": "string",
+                "parcelStatuses": [
+                    {
+                        "id": "string",
+                        "date": "2019-08-24",
+                        "text": "string",
+                        "postCode": "string",
+                        "name": "string"
+                    }
+                ]
+            }
+        ]
     }
 }
