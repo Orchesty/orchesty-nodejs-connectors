@@ -31,9 +31,15 @@ export interface IInput {
             name: string;
         };
         parent: {
-            feature: {
+            feature?: {
                 id: string;
             };
+            product?: {
+                id: string;
+            };
+            component?: {
+                id: string;
+            }
         };
         archived: boolean;
         timeframe: {
@@ -41,7 +47,7 @@ export interface IInput {
             endDate: string;
             granularity: string;
         };
-        owner: {
+        owner?: {
             email: string;
         };
     };
@@ -59,12 +65,24 @@ export interface IOutput {
             name: string;
         };
         parent: {
-            feature: {
+            feature?: {
                 id: string;
                 links: {
                     self: string;
                 };
             };
+            product?: {
+                id: string;
+                links: {
+                    self: string;
+                };
+            };
+            component?: {
+                id: string;
+                links: {
+                    self: string;
+                };
+            }
         };
         links: {
             self: string;
@@ -75,7 +93,7 @@ export interface IOutput {
             endDate: string;
             granularity: string;
         };
-        owner: {
+        owner?: {
             email: string;
         };
     };
