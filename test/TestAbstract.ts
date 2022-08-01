@@ -94,6 +94,8 @@ import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGet
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
+import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
+import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -111,27 +113,28 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initAmazon();
+  iniVyfakturuj();
   initAllegro();
   initAlza();
+  initAmazon();
   initBigcommerce();
   initBulkGate();
+  initFakturaonline();
+  initGitHub();
   initMall();
   initMergado();
   initNutshell();
+  initPaypal();
   initPipedrive();
+  initProductboard();
   initQuickBooks();
   initSalesForce();
   initTableau();
   initTwitter();
-  initPaypal();
+  initWedo();
   initWix();
-  initFakturaonline();
   initZendesk();
   initZoho();
-  initGitHub();
-  initWedo();
-  iniVyfakturuj();
   initGObalik();
 }
 
@@ -715,6 +718,19 @@ function initTwitter(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(deleteTweet);
+}
+
+function initProductboard(): void {
+  const app = new ProductboardApplication();
+  container.setApplication(app);
+
+  const listAllFeatures = new ProductboardListAllFeaturesBatch();
+
+  listAllFeatures
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listAllFeatures);
 }
 
 function initGObalik(): void {
