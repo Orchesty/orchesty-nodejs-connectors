@@ -2,7 +2,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import ShoptetPremiumApplication, { SHOPTET_API_HOST } from '../ShoptetPremiumApplication';
+import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
 
 export const NAME = 'shoptet-get-order-detail';
 
@@ -32,10 +32,10 @@ export default class ShoptetGetOrderDetail extends AConnector {
     code: string,
     dto: ProcessDto,
   ): Promise<IResponseJson> {
-    const url = `${SHOPTET_API_HOST}/${GET_ORDER_DETAIL_ENDPOINT.replace(
+    const url = GET_ORDER_DETAIL_ENDPOINT.replace(
       '{code}',
       code,
-    )}`;
+    );
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const requestDto = await app.getRequestDto(
       dto,
