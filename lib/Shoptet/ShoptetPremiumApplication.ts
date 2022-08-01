@@ -1,40 +1,20 @@
-import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
-import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import ABaseShoptet, { BASE_URL } from './ABaseShoptet';
 
-export const ID = 'id';
-export const NAME = 'SHOPTET';
-export const SHOPTET_API_HOST = 'https://api.myshoptet.com';
+export const NAME = 'shoptet-premium';
 
-const SHOPTET_API_TOKEN = 'shoptetApiToken';
-
-const AUTHORIZATION_HEADER = 'Shoptet-Private-API-Token';
-
-export default class ShoptetPremiumApplication extends ABasicApplication implements ILimitedApplication {
-  public injectLimit = (
-    _dto: AProcessDto,
-    appInstall: ApplicationInstall,
-  ): AProcessDto => {
-    const dto = _dto;
-    dto.setLimiterWithGroup(
-      `${appInstall.getUser()}|${appInstall.getName()}`,
-      1,
-      3,
-      appInstall.getName(),
-      1,
-      50,
-    );
-    return dto;
-  };
+export default class ShoptetPremiumApplication extends ABaseShoptet {
+  protected _authorizationHeader = 'Shoptet-Private-API-Token';
 
   // eslint-disable-next-line max-len
   public getDescription = (): string => 'Shoptet Premium allows you to leverage Shoptet’s core and infrastructure while building a customized frontend solution and customizing add-ons, services and integrations.';
@@ -47,6 +27,13 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     // eslint-disable-next-line max-len
     + 'iVBORw0KGgoAAAANSUhEUgAAAHIAAABxCAYAAAAJSffTAAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AAAAtdEVYdENyZWF0aW9uIFRpbWUAV2VkIDE2IE1hciAyMDIyIDA5OjQwOjUxIEFNIENFVNcuY5YAAAFVSURBVHic7d1BCoMwAEVBI73/ldMTFCQV1OfMXhCf2Qgfx5xzbjzefvUNcA4hI4SMEDJCyAghI4SMEDJCyAghI4SM+Fx9A7/MObd9f+d7tvL5+51PKkjICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMuK2a6wxxtIq6UxXLMLGGEvXOZERQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFkxJgH1qSr48t/XT10fRInMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIw49Lc6Y5r7cyIjhIwQMkLICCEjhIwQMkLIiC943hriZDYXygAAAABJRU5ErkJggg==';
 
+  public getFormStack = (): FormStack => {
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, TOKEN, 'Shoptet private API token', undefined, true));
+
+    return new FormStack().addForm(form);
+  };
+
   public getRequestDto = (
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
@@ -55,35 +42,16 @@ export default class ShoptetPremiumApplication extends ABasicApplication impleme
     data?: string,
   ): RequestDto => {
     const headers = {
-      [AUTHORIZATION_HEADER]: applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[SHOPTET_API_TOKEN],
+      [this._authorizationHeader]: applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN],
       [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
     };
 
     return new RequestDto(
-      url ?? '',
+      `${BASE_URL}/${url}`,
       parseHttpMethod(method),
       dto,
       data,
       headers,
     );
   };
-
-  public getFormStack = (): FormStack => {
-    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, SHOPTET_API_TOKEN, 'Shoptet private API token', undefined, true));
-
-    return new FormStack().addForm(form);
-  };
-
-  public static shoptetDateISO(date: string): string {
-    if (!date) {
-      return '';
-    }
-    try {
-      return `${new Date(date).toISOString()
-        .split('.')[0]}Z`;
-    } catch (e) {
-      throw new Error(`${date} is not in the correct format`);
-    }
-  }
 }
