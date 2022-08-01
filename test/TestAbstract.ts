@@ -105,6 +105,8 @@ import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/Productb
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
+import CeskaPostaApplication from '../lib/Česká pošta/CeskaPostaApplication';
+import CeskaPostaParcelStatusConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelStatusConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -145,6 +147,7 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
+  initCeskaPosta();
   initGObalik();
 }
 
@@ -804,4 +807,17 @@ function initCalendly(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listEvents);
+}
+
+function initCeskaPosta(): void {
+  const app = new CeskaPostaApplication();
+  container.setApplication(app);
+
+  const parcelStatus = new CeskaPostaParcelStatusConnector();
+
+  parcelStatus
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(parcelStatus);
 }
