@@ -82,15 +82,14 @@ export interface IInput {
                 country_code: string
             }
         },
-        lines_attributes: [
-            {
-                description: string,
-                price: string,
-                quantity: string,
-                unit_type: string,
-                vat_rate: string
-            }
-        ]
+        lines_attributes: {
+            description: string,
+            id: number,
+            invoice_id: number,
+            price: string,
+            quantity: string,
+            vat_rate: string
+        }[]
     }
 }
 
@@ -118,32 +117,14 @@ export interface IOutput {
         issued_on: string,
         kind: string,
         language: string,
-        lines: [
-            {
-                description: string,
-                id: number,
-                invoice_id: number,
-                price: string,
-                quantity: string,
-                vat_rate: string
-            },
-            {
-                description: string,
-                id: number,
-                invoice_id: number,
-                price: string,
-                quantity: string,
-                vat_rate: string
-            },
-            {
-                description: string,
-                id: number,
-                invoice_id: number,
-                price: string,
-                quantity: string,
-                vat_rate: string
-            }
-        ],
+        lines: {
+            description: string,
+            id: number,
+            invoice_id: number,
+            price: string,
+            quantity: string,
+            vat_rate: string
+        }[],
         locked?: boolean,
         means_of_payment: string,
         number: string,
