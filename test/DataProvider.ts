@@ -41,6 +41,9 @@ import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
+import {
+  API_TOKEN, CONTENT_SHA256, NAME as CESKAPOSTA_APP, SECRET_KEY, TIMESTAMP,
+} from '../lib/Česká pošta/CeskaPostaApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -311,6 +314,15 @@ export async function gobalikApp() {
     [AUTHORIZATION_FORM]: {
       [USER]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,
+    },
+  });
+}
+
+export async function ceskaPostaApp() {
+  return appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      [SECRET_KEY]: 'secret key',
     },
   });
 }
