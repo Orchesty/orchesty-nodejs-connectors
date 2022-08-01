@@ -1,0 +1,51 @@
+{
+  "http": "GET https://go-balik.cz/api/v1/order/hash",
+  "code": 200,
+  "body": {
+    "hash": "XZY",
+    "id": "GB1111",
+    "pack_number": "123465789",
+    "price": 99,
+    "pick_up_date": "2020",
+    "sender": [
+      {
+        "first_name": "XZY",
+        "last_name": "XZY",
+        "company": "XZY",
+        "street": "XZY",
+        "city": "XZY",
+        "zip": "XZY",
+        "state": "XZY",
+        "email": "XZY",
+        "phone": "XZY"
+      }
+    ],
+    "recipient": [
+      {
+        "first_name": "XZY",
+        "last_name": "XZY",
+        "company": "XZY",
+        "street": "XZY",
+        "city": "XZY",
+        "zip": "XZY",
+        "state": "XZY",
+        "email": "XZY",
+        "phone": "XZY"
+      }
+    ],
+    "COD": 999,
+    "additional_insurance": 9999,
+    "carrier_name": "XYZ",
+    "reference_number": "1234",
+    "note": "Poznámka",
+    "packet": [
+      {
+        "weight": 8,
+        "width": 20,
+        "height": 20,
+        "length": 10
+      }
+    ],
+    "tracker_url": "www.example.cz/123456789"
+  }
+}
