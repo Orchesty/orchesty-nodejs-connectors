@@ -4,7 +4,7 @@ import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunne
 import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
-export const SHOPTET_API_HOST = 'https://api.myshoptet.com';
+export const BASE_URL = 'https://api.myshoptet.com';
 
 export default abstract class ABaseShoptet extends ABasicApplication implements ILimitedApplication {
   protected abstract _authorizationHeader: string;

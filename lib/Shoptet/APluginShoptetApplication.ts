@@ -8,7 +8,7 @@ import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
-import ABaseShoptet from './ABaseShoptet';
+import ABaseShoptet, { BASE_URL } from './ABaseShoptet';
 
 export const NAME = 'shoptet';
 
@@ -45,7 +45,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
     };
 
     return new RequestDto(
-      url ?? '',
+      `${BASE_URL}/${url}`,
       parseHttpMethod(method),
       dto,
       data,

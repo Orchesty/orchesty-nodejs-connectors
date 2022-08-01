@@ -2,7 +2,6 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
-import { SHOPTET_API_HOST } from '../ABaseShoptet';
 
 export const GET_ORDER_PAGES_ENDPOINT = 'api/orders';
 const LAST_RUN = 'lastRunOrder';
@@ -18,14 +17,14 @@ export default class ShoptetGetOrderPages extends ABatchNode {
     } = dto.jsonData as { from: string };
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    let url = `${SHOPTET_API_HOST}/${GET_ORDER_PAGES_ENDPOINT}`;
+    let url = '';
 
     const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
       appInstall.getNonEncryptedSettings()[LAST_RUN],
     );
 
     if (creationTimeFrom) {
-      url = `${url}?creationTimeFrom=${creationTimeFrom}`;
+      url = `${GET_ORDER_PAGES_ENDPOINT}?creationTimeFrom=${creationTimeFrom}`;
     }
 
     const requestDto = await app.getRequestDto(

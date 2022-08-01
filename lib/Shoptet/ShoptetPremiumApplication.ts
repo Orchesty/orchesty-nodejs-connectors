@@ -9,7 +9,7 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import HttpMethods, { parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import ABaseShoptet from './ABaseShoptet';
+import ABaseShoptet, { BASE_URL } from './ABaseShoptet';
 
 export const NAME = 'shoptet-premium';
 
@@ -47,7 +47,7 @@ export default class ShoptetPremiumApplication extends ABaseShoptet {
     };
 
     return new RequestDto(
-      url ?? '',
+      `${BASE_URL}/${url}`,
       parseHttpMethod(method),
       dto,
       data,
