@@ -1,0 +1,37 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "name": "Zlack Messaging App",
+    "description": "<p>Custom <s>branding</s> for the agent and user portals.</p>",
+    "type": "feature",
+    "archived": false,
+    "status": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "In Progress"
+    },
+    "parent": {
+      "feature": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "links": {
+          "self": "https://api.productboard.com/features/00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.productboard.com/features/00000000-0000-0000-0000-000000000000",
+      "html": "https://space.productboard.com/feature-board/planning/features/00000000-0000-0000-0000-000000000000"
+    },
+    "timeframe": {
+      "startDate": "2021-01-01",
+      "endDate": "2021-03-31",
+      "granularity": "quarter"
+    },
+    "owner": {
+      "email": "email@example.com"
+    }
+  }
+}
+
