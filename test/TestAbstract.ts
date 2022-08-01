@@ -110,7 +110,6 @@ export let container: DIContainer;
 export let db: MongoDbClient;
 export let sender: CurlSender;
 export let oauth2Provider: OAuth2Provider;
-
 /* eslint-enable import/no-mutable-exports */
 
 export async function prepare(): Promise<void> {
