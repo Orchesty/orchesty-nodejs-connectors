@@ -3,7 +3,6 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'twitter-get-followers-batch';
-const LIMIT = 99;
 
 export default class TwitterGetFollowersBatch extends ABatchNode {
   public getName = (): string => NAME;
@@ -18,7 +17,7 @@ export default class TwitterGetFollowersBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `2/users/${id}/followers/?max_results=${LIMIT}${token}`,
+      `2/users/${id}/followers/?max_results=100${token}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
