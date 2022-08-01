@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "hash": "XZY",
+        "id": "GB1111",
+        "pack_number": "123465789",
+        "price": 99,
+        "pick_up_date": "2020",
+        "carrier_name": "XYZ",
+        "reference_number": "1234"
+    }
+}
