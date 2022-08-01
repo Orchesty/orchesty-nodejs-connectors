@@ -124,6 +124,7 @@ export async function prepare(): Promise<void> {
   initAmazon();
   initBigcommerce();
   initBulkGate();
+  initCalendly();
   initFakturaonline();
   initGitHub();
   initCalendly();
