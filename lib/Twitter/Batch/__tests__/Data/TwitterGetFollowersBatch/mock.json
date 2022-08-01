@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.twitter.com/2/users/Elon/followers/?max_results=99",
+  "http": "GET https://api.twitter.com/2/users/Elon/followers/?max_results=100",
   "code": 200,
   "body": {
     "data": [
