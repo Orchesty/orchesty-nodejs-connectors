@@ -748,9 +748,9 @@ function initProductboard(): void {
     .setApplication(app);
   container.setBatch(listAllProducts);
   createNewFeature
-      .setSender(sender)
-      .setDb(db)
-      .setApplication(app);
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
   container.setConnector(createNewFeature);
 }
 
