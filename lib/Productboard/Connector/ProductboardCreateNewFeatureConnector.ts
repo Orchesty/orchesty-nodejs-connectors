@@ -25,7 +25,7 @@ export interface IInput {
     data: {
         name: string;
         description: string;
-        type: string;
+        type: 'feature' | 'subfeature';
         status: {
             id: string;
             name: string;
