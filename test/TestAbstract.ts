@@ -95,6 +95,8 @@ import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
+import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
+import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
 import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
@@ -124,6 +126,7 @@ export async function prepare(): Promise<void> {
   initBulkGate();
   initFakturaonline();
   initGitHub();
+  initCalendly();
   initMall();
   initMergado();
   initNutshell();
@@ -764,4 +767,16 @@ function initGObalik(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createOrder);
+}
+
+function initCalendly(): void {
+  const app = new CalendlyApplication(oauth2Provider);
+  container.setApplication(app);
+  const getUser = new CalendlyGetUserConnector();
+
+  getUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getUser);
 }

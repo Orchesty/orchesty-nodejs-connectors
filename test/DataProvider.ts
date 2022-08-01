@@ -40,6 +40,7 @@ import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
+import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -310,6 +311,18 @@ export async function gobalikApp() {
     [AUTHORIZATION_FORM]: {
       [USER]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,
+    },
+  });
+}
+
+export async function calendlyApp() {
+  return appInstall(CALENDLY_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
