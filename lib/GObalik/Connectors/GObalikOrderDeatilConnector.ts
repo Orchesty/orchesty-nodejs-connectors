@@ -2,9 +2,9 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
-export const NAME = 'go-balik-orde-deatil-connector';
+export const NAME = 'go-balik-order-deatil-connector';
 
-export default class GObalikOrdeDeatilConnector extends AConnector {
+export default class GObalikOrderDeatilConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
