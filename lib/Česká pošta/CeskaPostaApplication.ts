@@ -9,7 +9,6 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
 import { createHash, createHmac, randomUUID } from 'crypto';
 
