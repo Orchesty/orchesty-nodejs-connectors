@@ -1,0 +1,30 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "detail": [
+            {
+                "idParcel": "BA1234567890A",
+                "parcelType": "BA",
+                "weight": "100.20",
+                "amount": 105,
+                "currency": "CZK",
+                "parcelsQuantity": 1,
+                "depositTo": "2019-08-24",
+                "timeDeposit": 0,
+                "countryOfOrigin": "string",
+                "countryOfDestination": "string",
+                "parcelStatuses": [
+                    {
+                        "id": "string",
+                        "date": "2019-08-24",
+                        "text": "string",
+                        "postCode": "string",
+                        "name": "string"
+                    }
+                ]
+            }
+        ]
+    }
+}
