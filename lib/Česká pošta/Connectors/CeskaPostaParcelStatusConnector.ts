@@ -32,29 +32,25 @@ export interface IInput {
 }
 
 export interface IOutput {
-    detail: [
-        {
-            idParcel: string,
-            parcelType: string,
-            weight: string,
-            amount: string,
-            currency: string,
-            parcelsQuantity: string,
-            depositTo: string,
-            timeDeposit: string,
-            countryOfOrigin: string,
-            countryOfDestination: string,
-            parcelStatuses: [
-                {
-                    id: string,
-                    date: string,
-                    text: string,
-                    postCode: string,
-                    name: string
-                }
-            ]
-        }
-    ]
+    detail: {
+        idParcel: string,
+        parcelType: string,
+        weight: string,
+        amount: string,
+        currency: string,
+        parcelsQuantity: string,
+        depositTo: string,
+        timeDeposit: string,
+        countryOfOrigin: string,
+        countryOfDestination: string,
+        parcelStatuses: {
+            id: string,
+            date: string,
+            text: string,
+            postCode: string,
+            name: string
+        }[]
+    } []
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
