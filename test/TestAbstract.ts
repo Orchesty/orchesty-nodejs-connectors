@@ -97,6 +97,7 @@ import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteT
 import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
+import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -707,6 +708,7 @@ function initTwitter(): void {
 
   const postATweet = new TwitterPostATweetConnector();
   const deleteTweet = new TwitterDeleteTweetConnector();
+  const getFollowers = new TwitterGetFollowersBatch();
 
   postATweet
     .setSender(sender)
@@ -718,6 +720,11 @@ function initTwitter(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(deleteTweet);
+  getFollowers
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getFollowers);
 }
 
 function initProductboard(): void {
