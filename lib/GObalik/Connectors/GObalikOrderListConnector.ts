@@ -15,12 +15,10 @@ export default class GObalikOrderListConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.GET,
-      `order?${from}=&${to}=&${id}=`,
+      `order?from=${from}&to=${to}&id=${id}=`,
     );
     const resp = await this._sender.send(req, [200]);
     dto.jsonData = resp.jsonBody as IOutput;
-
-    return dto;
 
     return dto;
   }
