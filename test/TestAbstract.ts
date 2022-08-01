@@ -129,7 +129,6 @@ export async function prepare(): Promise<void> {
   initCalendly();
   initFakturaonline();
   initGitHub();
-  initCalendly();
   initMall();
   initMergado();
   initNutshell();
