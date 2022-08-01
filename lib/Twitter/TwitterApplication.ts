@@ -61,5 +61,6 @@ export default class TwitterApplication extends AOAuth2Application {
     'tweet.read',
     'tweet.write',
     'users.read',
+    'follows.read',
   ];
 }
