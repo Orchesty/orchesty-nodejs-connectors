@@ -1,7 +1,8 @@
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
-import ShoptetPremiumApplication, { SHOPTET_API_HOST } from '../ShoptetPremiumApplication';
+import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
+import { SHOPTET_API_HOST } from '../ABaseShoptet';
 
 export const GET_ORDER_PAGES_ENDPOINT = 'api/orders';
 const LAST_RUN = 'lastRunOrder';
