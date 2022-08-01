@@ -95,8 +95,7 @@ import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
-<<<<<<< HEAD
-import GObalikOrdeDeatilConnector from '../lib/GObalik/Connectors/GObalikOrdeDeatilConnector';
+import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
 import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
 import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
@@ -105,9 +104,6 @@ import ProductboardApplication from '../lib/Productboard/ProductboardApplication
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
-=======
-import GObalikOrderDeatilConnector from '../lib/GObalik/Connectors/GObalikOrderDeatilConnector';
->>>>>>> fixed names
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -769,7 +765,7 @@ function initGObalik(): void {
   const app = new GObalikApplication();
   container.setApplication(app);
   const createOrder = new GObalikCreateOrderConnector();
-  const orderDetail = new GObalikOrderDeatilConnector();
+  const orderDetail = new GObalikOrderDetailConnector();
 
   createOrder
     .setSender(sender)

@@ -4,7 +4,7 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'go-balik-order-deatil-connector';
 
-export default class GObalikOrderDeatilConnector extends AConnector {
+export default class GObalikOrderDetailConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
@@ -35,45 +35,39 @@ export interface IOutput {
   pack_number: string,
   price: number,
   pick_up_date: string,
-  sender: [
-    {
-      first_name: string,
-      last_name: string,
-      company: string,
-      street: string,
-      city: string,
-      zip: string,
-      state: string,
-      email: string,
-      phone: string
-    }
-  ],
-  recipient: [
-    {
-      first_name: string,
-      last_name: string,
-      company: string,
-      street: string,
-      city: string,
-      zip: string,
-      state: string,
-      email: string,
-      phone: string
-    }
-  ],
+  sender: {
+    first_name: string,
+    last_name: string,
+    company: string,
+    street: string,
+    city: string,
+    zip: string,
+    state: string,
+    email: string,
+    phone: string
+  }[],
+  recipient: {
+    first_name: string,
+    last_name: string,
+    company: string,
+    street: string,
+    city: string,
+    zip: string,
+    state: string,
+    email: string,
+    phone: string
+  }[],
   COD: number,
   additional_insurance: number,
   carrier_name: string,
   reference_number: string,
   note: string,
-  packet: [
-    {
-      weight: number,
-      width: number,
-      height: number,
-      length: number
-    }
-  ],
+  packet: {
+    weight: number,
+    width: number,
+    height: number,
+    length: number
+  }[],
   tracker_url: string
 }
 /* eslint-enable @typescript-eslint/naming-convention */
