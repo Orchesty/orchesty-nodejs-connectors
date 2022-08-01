@@ -98,6 +98,7 @@ import ProductboardApplication from '../lib/Productboard/ProductboardApplication
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
+import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
