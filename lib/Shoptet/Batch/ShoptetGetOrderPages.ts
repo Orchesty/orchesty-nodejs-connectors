@@ -17,14 +17,14 @@ export default class ShoptetGetOrderPages extends ABatchNode {
     } = dto.jsonData as { from: string };
     const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    let url = '';
+    let url = GET_ORDER_PAGES_ENDPOINT;
 
     const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
       appInstall.getNonEncryptedSettings()[LAST_RUN],
     );
 
     if (creationTimeFrom) {
-      url = `${GET_ORDER_PAGES_ENDPOINT}?creationTimeFrom=${creationTimeFrom}`;
+      url = `${url}?creationTimeFrom=${creationTimeFrom}`;
     }
 
     const requestDto = await app.getRequestDto(
