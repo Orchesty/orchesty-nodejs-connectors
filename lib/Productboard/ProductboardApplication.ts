@@ -32,7 +32,7 @@ export default class ProductboardApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Bearer ${TOKEN}`,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN]}`,
     };
 
     if (data) {

@@ -4,14 +4,13 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { BASE_URL } from '../ProductboardApplication';
 
 export const NAME = 'productboard-list-all-features-batch';
-const LIMIT = 100;
 export default class ProductboardListAllFeaturesBatch extends ABatchNode {
   public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = _dto.getBatchCursor('') || `features?pageLimit=${LIMIT}&pageOffset=0`;
+    const url = _dto.getBatchCursor('') || 'features?pageLimit=100&pageOffset=0';
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
