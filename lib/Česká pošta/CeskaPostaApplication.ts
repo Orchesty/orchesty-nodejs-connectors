@@ -41,13 +41,13 @@ export default class CeskaPostaApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
+    const uuidv4 = randomUUID();
+    const authorizatioForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
     const timestamp = DateTimeUtils.getTimestamp(DateTimeUtils.utcDate) / 1000;
     const sha256Hash = createHash('sha256').update(JSON.stringify(data)).digest('hex');
-    const uuidv4 = randomUUID();
-    const signiture = `${sha256Hash};${timestamp};${uuidv4};`;
-    const authorazatioForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
-    const hmac256hash = createHmac('sha256', authorazatioForm[SECRET_KEY]).update(signiture).digest('base64');
-    const url = `http://localhost:8080/restservices/ZSKService/v1/${_url}`;
+    const signature = `${sha256Hash};${timestamp};${uuidv4}`;
+    const hmac256hash = createHmac('sha256', authorizatioForm[SECRET_KEY]).update(signature).digest('base64');
+    const url = `https://b2b.postaonline.cz:444/restservices/ZSKService/v1/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -55,7 +55,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
       [TIMESTAMP]: timestamp.toString(),
       [CONTENT_SHA256]: sha256Hash,
       [HMAC256_HASH]: `CP-HMAC-SHA256 nonce="${uuidv4}" signature="${hmac256hash}"`,
-      [CommonHeaders.AUTHORIZATION]: authorazatioForm[API_TOKEN],
+      [CommonHeaders.AUTHORIZATION]: authorizatioForm[API_TOKEN],
     };
 
     if (data) {

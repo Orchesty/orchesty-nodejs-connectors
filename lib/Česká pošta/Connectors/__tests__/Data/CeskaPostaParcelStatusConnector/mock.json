@@ -1,5 +1,5 @@
 {
-  "http": "POST http://localhost:8080/restservices/ZSKService/v1/parcelStatus",
+  "http": "POST https://b2b.postaonline.cz:444/restservices/ZSKService/v1/parcelStatus",
   "code": 200,
   "body": {
     "detail": [
