@@ -18,14 +18,14 @@ export default class TwitterGetFollowersBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `2/users/${id}/followers/?max_results=${LIMIT}&pagination_token=${token}`,
+      `2/users/${id}/followers/?max_results=${LIMIT}${token}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.data ?? []);
     if (response.next_token) {
-      const nextToken = `&next_token=${response.next_token}`;
+      const nextToken = `&pagination_token=${response.next_token}`;
       dto.setBatchCursor(nextToken);
     }
     return dto;
