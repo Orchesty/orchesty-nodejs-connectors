@@ -97,6 +97,7 @@ import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteT
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
 import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
+import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
 import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
@@ -109,6 +110,7 @@ export let container: DIContainer;
 export let db: MongoDbClient;
 export let sender: CurlSender;
 export let oauth2Provider: OAuth2Provider;
+
 /* eslint-enable import/no-mutable-exports */
 
 export async function prepare(): Promise<void> {
@@ -637,6 +639,7 @@ function initMergado(): void {
     .setApplication(app);
   container.setConnector(createElement);
 }
+
 function iniVyfakturuj(): void {
   const app = new VyfakturujApplication();
   container.setApplication(app);
@@ -774,10 +777,16 @@ function initCalendly(): void {
   const app = new CalendlyApplication(oauth2Provider);
   container.setApplication(app);
   const getUser = new CalendlyGetUserConnector();
+  const listEvents = new CalendlyListEventsBatch();
 
   getUser
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+  listEvents
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listEvents);
 }
