@@ -108,6 +108,7 @@ import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderLis
 import CeskaPostaApplication from '../lib/Česká pošta/CeskaPostaApplication';
 import CeskaPostaParcelStatusConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelStatusConnector';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
+import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -797,6 +798,7 @@ function initCalendly(): void {
   container.setApplication(app);
   const getUser = new CalendlyGetUserConnector();
   const listEvents = new CalendlyListEventsBatch();
+  const inviteUser = new CalendlyInviteUserConnector();
 
   getUser
     .setSender(sender)
@@ -808,6 +810,11 @@ function initCalendly(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listEvents);
+  inviteUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(inviteUser);
 }
 
 function initCeskaPosta(): void {
