@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "uuid": "123",
+    "email": "alice@example.com"
+  }
+}
