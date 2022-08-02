@@ -28,14 +28,14 @@ export interface IOutput {
     name: string;
     category: {
         id: string;
-        similar: [{
+        similar: {
             id: string;
-        }];
+        }[];
     };
-    images: [{
+    images: {
         url: string;
-    }];
-    parameters: [{
+    }[];
+    parameters: {
         id: string;
         name: string;
         rangeValue: {
@@ -49,10 +49,10 @@ export interface IOutput {
         options: {
             identifiesProduct: boolean;
         };
-    }];
+    }[];
     offerRequirements: {
         id: string;
-        parameters: [{
+        parameters: {
             id: string;
             rangeValue: {
                 from: string;
@@ -65,28 +65,27 @@ export interface IOutput {
             options: {
                 identifiesProduct: boolean;
             };
-        }];
+        }[];
     };
     compatibilityList: {
         id: string;
         type: string;
-        items: [{
+        items: {
             text: string;
-        }
-        ];
+        }[];
     };
     tecdocSpecification: {
         id: string;
-        items: [{
+        items: {
             name: string;
             values: string[];
-        }];
+        }[];
     };
     description: {
-        sections: [{
-            items: [{
+        sections: {
+            items: {
                 type: string;
-            }];
-        }];
+            }[];
+        }[];
     };
 }

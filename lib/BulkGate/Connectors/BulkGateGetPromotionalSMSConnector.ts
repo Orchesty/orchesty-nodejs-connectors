@@ -16,7 +16,7 @@ export default class BulkGateGetPromotionalSMSConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       'promotional',
-        dto.jsonData as IInput,
+            dto.jsonData as IInput,
     );
 
     const resp = await this._sender.send(req, [200]);
@@ -27,47 +27,35 @@ export default class BulkGateGetPromotionalSMSConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-  number: string,
-  text: string,
-  unicode: boolean,
-  sender_id: string,
-  sender_id_value: string,
-  country: string,
-  schedule: string
+    number: string,
+    text: string,
+    unicode: boolean,
+    sender_id: string,
+    sender_id_value: string,
+    country: string,
+    schedule: string
 }
+
 export interface IOutput {
-  data: {
-    total: {
-      price: number,
-      status: {
-        sent: number,
-        accepted: number,
-        scheduled: number,
-        error: number
-      }
-    },
-    response: [
-      {
-        status: string,
-        sms_id: string,
-        price: number,
-        credit: number,
-        number: string
-      },
-      {
-        status: string,
-        sms_id: string,
-        price: number,
-        credit: number,
-        number: string
-      },
-      {
-        status: string,
-        code: number,
-        error: string,
-        number: string
-      }
-    ]
-  }
+    data: {
+        total: {
+            price: number,
+            status: {
+                sent: number,
+                accepted: number,
+                scheduled: number,
+                error: number
+            }
+        },
+        response:
+            {
+                status: string,
+                sms_id: string,
+                price: number,
+                credit: number,
+                number: string
+            }[],
+    }
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */

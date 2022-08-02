@@ -26,34 +26,32 @@ export default class AlzaInsetrOrderConnector extends AConnector {
   }
 }
 
-export interface IOutput{
-  errorCode: number,
-  errorMessage: string,
-  supplierOrder: string,
-  validUntil: string
+export interface IOutput {
+    errorCode: number,
+    errorMessage: string,
+    supplierOrder: string,
+    validUntil: string
 }
 
-export interface IInput{
-  orderId: string,
-  timestamp: string,
-  customerId: number,
-  supplierId: number,
-  supplierBranchId: number,
-  regNo: string,
-  vatNo: string,
-  itemsPriceCurrency: string,
-  itemsPriceCountry: string,
-  orderItems: [
-    {
-      orderItemId: number,
-      code: string,
-      quantity: number,
-      purchasePriceWithoutFees: string,
-      fees: {
-        copyright: string,
-        recycling: string,
-      },
-      alzaBarCodes: string[]
-    }
-  ]
+export interface IInput {
+    orderId: string,
+    timestamp: string,
+    customerId: number,
+    supplierId: number,
+    supplierBranchId: number,
+    regNo: string,
+    vatNo: string,
+    itemsPriceCurrency: string,
+    itemsPriceCountry: string,
+    orderItems: {
+        orderItemId: number,
+        code: string,
+        quantity: number,
+        purchasePriceWithoutFees: string,
+        fees: {
+            copyright: string,
+            recycling: string,
+        },
+        alzaBarCodes: string[]
+    }[]
 }
