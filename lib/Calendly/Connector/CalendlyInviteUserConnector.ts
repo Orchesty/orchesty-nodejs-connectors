@@ -25,6 +25,7 @@ export default class CalendlyInviteUserConnector extends AConnector {
 
 export interface IInput {
     uuid: string;
+    email: string;
 }
 
 export interface IOutput {
@@ -33,7 +34,7 @@ export interface IOutput {
         email: string;
         last_sent_at: Date;
         organization: string;
-        status: string;
+        status: 'pending'|'accepted'|'declined';
         updated_at: Date;
         uri: string;
     }
