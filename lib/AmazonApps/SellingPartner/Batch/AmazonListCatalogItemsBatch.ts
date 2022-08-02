@@ -69,8 +69,7 @@ export interface IOutput {
                 {
                     value: string,
                     Role: string
-                }
-            [],
+                }[],
             Department: string,
             Director: string[],
             DisplaySize: {
@@ -128,8 +127,7 @@ export interface IOutput {
                     Name: string,
                     Type: string,
                     AudioFormat: string
-                }
-            [],
+                }[],
             LegalDisclaimer: string,
             ListPrice: {
                 Amount: number,
