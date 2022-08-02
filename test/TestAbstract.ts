@@ -107,6 +107,7 @@ import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector
 import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
 import CeskaPostaApplication from '../lib/Česká pošta/CeskaPostaApplication';
 import CeskaPostaParcelStatusConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelStatusConnector';
+import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -814,10 +815,17 @@ function initCeskaPosta(): void {
   container.setApplication(app);
 
   const parcelStatus = new CeskaPostaParcelStatusConnector();
+  const parcelPrinting = new CeskaPostaParcelPrintingConnector();
 
   parcelStatus
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(parcelStatus);
+
+  parcelPrinting
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(parcelPrinting);
 }

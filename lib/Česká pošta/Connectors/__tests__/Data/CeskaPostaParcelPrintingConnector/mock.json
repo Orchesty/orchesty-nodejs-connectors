@@ -1,0 +1,21 @@
+{
+  "http": "POST https://b2b.postaonline.cz:444/restservices/ZSKService/v1/parcelPrinting",
+  "code": 200,
+  "body": {
+    "printingHeaderResult": {
+      "printingHeader": {
+        "customerID": "U219",
+        "contractNumber": "1112223334",
+        "idForm": 20,
+        "shiftHorizontal": 0,
+        "shiftVertical": 0,
+        "position": 0
+      },
+      "printingStatusResponse": {
+        "responseCode": 0,
+        "responseText": "string"
+      }
+    },
+    "printingDataResult": "string"
+  }
+}

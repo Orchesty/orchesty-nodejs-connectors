@@ -1,0 +1,18 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "printingHeader": {
+            "customerID": "U219",
+            "contractNumber": "1112223334",
+            "idForm": 20,
+            "shiftHorizontal": 0,
+            "shiftVertical": 0,
+            "position": 0
+        },
+        "printingData": [
+            "BA1234567890A"
+        ]
+    }
+}
