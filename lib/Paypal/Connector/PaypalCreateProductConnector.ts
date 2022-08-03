@@ -42,11 +42,11 @@ export interface IOutput {
     home_url: string;
     create_time: Date;
     update_time: Date;
-    links: [{
+    links: {
         href: string;
         rel: string;
         method: string;
-    }];
+    }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

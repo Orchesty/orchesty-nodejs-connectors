@@ -53,9 +53,9 @@ interface IInputJson {
 }
 
 interface IResponseJson {
-  orders: [{
+  orders: {
     id: string,
-  }];
+  }[];
 }
 
 export interface IOutputJson {

@@ -117,7 +117,7 @@ export interface IOutput{
       maxValue: number
     },
     additionalInfoSections: [],
-    ribbons: [{text: string}],
+    ribbons: {text: string}[],
     media: {items: []},
     customTextFields: [],
     manageVariants: boolean,

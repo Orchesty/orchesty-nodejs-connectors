@@ -100,7 +100,7 @@ export interface IOutput{
       }
     },
     additionalInfoSections: [],
-    ribbons: [{text: string}],
+    ribbons: {text: string}[],
     media: {items: []},
     customTextFields: [],
     manageVariants: boolean,

@@ -36,7 +36,7 @@ interface IResponse {
 }
 
 export interface IOutput {
-    data: [{
+    data: {
         id: string;
         name: string;
         description: string;
@@ -47,7 +47,7 @@ export interface IOutput {
             self: string;
             html: string;
         };
-    }];
+    }[];
     links: {
         next: string;
     };
