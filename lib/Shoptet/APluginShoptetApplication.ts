@@ -10,10 +10,8 @@ import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cach
 import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
 import ABaseShoptet, { BASE_URL } from './ABaseShoptet';
 
-export const NAME = 'shoptet';
-
 export default abstract class APluginShoptetApplication extends ABaseShoptet {
-  protected constructor(private _cache: CacheService, runner: TopologyRunner) {
+  constructor(private _cache: CacheService, runner: TopologyRunner) {
     super(runner);
   }
 
@@ -24,8 +22,6 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
   protected abstract _pluginHost: string;
 
   getDescription = (): string => 'Shoptet application';
-
-  getName = (): string => NAME;
 
   getPublicName = (): string => 'Shoptet';
 
@@ -96,7 +92,6 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
           };
         },
         [200],
-        20,
       );
     } catch (e) {
       if (e instanceof Error) logger.error(e.message || 'Unknown error in ShoptetApplication.', processDto);

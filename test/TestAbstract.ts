@@ -5,6 +5,8 @@ import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
+import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
+import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import AllegroApplication from '../lib/Allegro/AllegroApplication';
 import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
 import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
@@ -114,6 +116,9 @@ import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/Cesk
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
 import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
+import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetApplication';
+import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
+import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -121,7 +126,6 @@ export let container: DIContainer;
 export let db: MongoDbClient;
 export let sender: CurlSender;
 export let oauth2Provider: OAuth2Provider;
-
 /* eslint-enable import/no-mutable-exports */
 
 export async function prepare(): Promise<void> {
@@ -138,8 +142,11 @@ export async function prepare(): Promise<void> {
   initBigcommerce();
   initBulkGate();
   initCalendly();
+  initCeskaPosta();
   initFakturaonline();
+  initGObalik();
   initGitHub();
+  initKatanaApp();
   initMall();
   initMergado();
   initNutshell();
@@ -148,20 +155,19 @@ export async function prepare(): Promise<void> {
   initProductboard();
   initQuickBooks();
   initSalesForce();
+  initShoptet();
   initTableau();
   initTwitter();
   initWedo();
   initWix();
   initZendesk();
   initZoho();
-  initCeskaPosta();
-  initGObalik();
-  initKatanaApp();
 }
 
 export async function closeConnection(): Promise<void> {
   await db.down();
   await (container.get(CoreServices.METRICS) as Metrics).close();
+  await (container.get(CoreServices.REDIS) as Redis).close();
 }
 
 export async function dropCollection(collection: string) {
@@ -874,4 +880,27 @@ function initKatanaApp(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createCustomer);
+}
+
+function initShoptet(): void {
+  const redis = new Redis(process.env.REDIS_DSN ?? '');
+  container.set(CoreServices.REDIS, redis);
+
+  const cacheService = new CacheService(redis, sender);
+  const implPluginShoptetApplication = new ImplPluginShoptetApplication(
+    cacheService,
+    container.get(CoreServices.TOPOLOGY_RUNNER),
+  );
+
+  const shoptetGetAllOrders = new ShoptetGetAllOrders()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetAllOrders);
+
+  const shoptetGetAllProducts = new ShoptetGetAllProducts()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetAllProducts);
 }
