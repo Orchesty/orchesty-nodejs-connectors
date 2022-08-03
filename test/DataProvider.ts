@@ -1,6 +1,5 @@
 import {
-  ApplicationInstall,
-  IApplicationSettings,
+  ApplicationInstall, IApplicationSettings,
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
@@ -17,13 +16,9 @@ import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesFo
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
+import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
 import {
-  NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME,
-} from '../lib/Tableau/TableauApplication';
-import {
-  NAME as BULKGATE_APP,
-  APPLICATION_TOKEN,
-  APPLICATION_ID,
+  NAME as BULKGATE_APP, APPLICATION_TOKEN, APPLICATION_ID,
 } from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
@@ -43,9 +38,7 @@ import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as KATANA_APP } from '../lib/Katana/KatanaApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplication';
-import {
-  API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY,
-} from '../lib/CeskaPosta/CeskaPostaApplication';
+import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -57,13 +50,15 @@ export async function appInstall(
   name: string,
   user: string,
   settings: IApplicationSettings,
+  nonEncryptedSettings: IApplicationSettings = {},
 ): Promise<ApplicationInstall> {
   const repo = await db.getApplicationRepository();
   const app = new ApplicationInstall();
   app
     .setName(name)
     .setUser(user)
-    .setSettings(settings);
+    .setSettings(settings)
+    .setNonEncryptedSettings(nonEncryptedSettings);
   await repo.insert(app);
 
   return app;
@@ -350,9 +345,16 @@ export async function katanaApp() {
 }
 
 export async function shoptetApp() {
-  return appInstall(SHOPTET_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [TOKEN]: DEFAULT_ACCESS_TOKEN,
+  return appInstall(
+    SHOPTET_APP,
+    DEFAULT_USER,
+    {
+      [AUTHORIZATION_FORM]: {
+        [TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
-  });
+    {
+      eshopId: '222651',
+    },
+  );
 }
