@@ -1,0 +1,16 @@
+{
+    "http": "GET https://api.myshoptet.com/api/products/snapshot",
+    "code": 200,
+    "body": {
+        "data": {
+            "jobId": "ad24xod"
+        },
+        "errors": [
+            {
+                "errorCode": "",
+                "message": "",
+                "instance": ""
+            }
+        ]
+    }
+}

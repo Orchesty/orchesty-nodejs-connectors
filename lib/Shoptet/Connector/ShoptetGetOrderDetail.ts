@@ -1,56 +1,34 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
+import { IOutputJson as IInput } from '../Batch/ShoptetGetOrdersList';
+import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-order-detail';
 
 const GET_ORDER_DETAIL_ENDPOINT = 'api/orders/{code}?include=shippingDetails';
 
-export default class ShoptetGetOrderDetail extends AConnector {
+export default class ShoptetGetOrderDetail extends AShoptetConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const app = this._application as ShoptetPremiumApplication;
-    const {
-      code,
-    } = dto.jsonData as { code: string };
+    const { code } = dto.jsonData as IInput;
 
-    const order: IResponseJson = await this._doRequest(app, code, dto);
+    const url = GET_ORDER_DETAIL_ENDPOINT.replace('{code}', code);
+    const response = await this._doRequest(url, dto) as IResponse;
 
-    dto.jsonData = {
-      ...order.data,
-    };
+    dto.jsonData = response.data.order;
 
     return dto;
   }
+}
 
-  private async _doRequest(
-    app: ShoptetPremiumApplication,
-    code: string,
-    dto: ProcessDto,
-  ): Promise<IResponseJson> {
-    const url = GET_ORDER_DETAIL_ENDPOINT.replace(
-      '{code}',
-      code,
-    );
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const requestDto = await app.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      url,
-    );
-    const res = await this._sender.send(requestDto, [200, 404]);
-
-    throw new OnRepeatException(60, 10, res.body);
+interface IResponse {
+  data: {
+    order: IOutput
   }
 }
 
-export interface IOrderJson {
-  order: {
+export interface IOutput {
     code: string;
     creationTime: Date;
     email: string;
@@ -120,10 +98,5 @@ export interface IOrderJson {
     status: {
       id: number;
       name: string;
-    };
-  };
-}
-
-interface IResponseJson {
-  data: IOrderJson;
+    }
 }
