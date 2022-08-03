@@ -122,6 +122,8 @@ import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetAppl
 import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
 import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
 import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
+import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
+import ClickupApplication from '../lib/Clickup/ClickupApplication';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -166,6 +168,7 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
+  initClickup();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -926,4 +929,17 @@ function initTypeform(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createForm);
+}
+
+function initClickup(): void {
+  const app = new ClickupApplication();
+  container.setApplication(app);
+
+  const getUser = new ClickupGetUserConnector();
+
+  getUser
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getUser);
 }
