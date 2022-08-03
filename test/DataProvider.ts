@@ -42,8 +42,8 @@ import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplic
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import {
-  API_TOKEN, CONTENT_SHA256, NAME as CESKAPOSTA_APP, SECRET_KEY, TIMESTAMP,
-} from '../lib/Česká pošta/CeskaPostaApplication';
+  API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY,
+} from '../lib/CeskaPosta/CeskaPostaApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
