@@ -4,7 +4,7 @@
     "description": "",
     "main": "dist/lib/index.js",
     "scripts": {
-        "test": "jest --coverage --detectOpenHandles --forceExit --passWithNoTests",
+        "test": "NODE_OPTIONS=--max-old-space-size=4096 jest --coverage --detectOpenHandles --forceExit --passWithNoTests",
         "lint": "eslint lib --ext .ts --fix",
         "lint-ci": "eslint lib --ext .ts",
         "start": "nodemon test/index.ts",
