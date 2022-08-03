@@ -40,7 +40,7 @@ interface IResponseJson extends IProductJson {
 }
 
 interface IProductJson {
-  products: [{
+  products: {
     code: string,
     code_supplier: string,
     ean: string,
@@ -73,7 +73,7 @@ interface IProductJson {
     sets: string[],
     metas: IProductVariantMeta[],
     admin_url: string
-  }]
+  }[]
 }
 
 interface IProductDescription {

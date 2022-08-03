@@ -40,15 +40,15 @@ interface IInputJson {
 }
 
 interface IUpdateStock {
-  products: [{
+  products: {
     code: string,
     stock: number
-  }];
+  }[];
 }
 
 interface IResponseJson {
-  products: [{
+  products: {
     code: string,
     updated_yn: boolean
-  }];
+  }[];
 }

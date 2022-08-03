@@ -98,7 +98,7 @@ export interface IOrderJson {
   total_qty_ordered: number
   updated_at: string
   weight: number
-  items: [{
+  items: {
     amount_refunded: number
     base_amount_refunded: number
     base_discount_amount: number
@@ -145,7 +145,7 @@ export interface IOrderJson {
     tax_invoiced: number
     tax_percent: number
     updated_at: string
-  }]
+  }[]
   billing_address: {
     address_type: string
     city: string
@@ -182,7 +182,7 @@ export interface IOrderJson {
     parent_id: number
     shipping_amount: number
   }
-  status_histories: [{
+  status_histories: {
     comment: string
     created_at: string
     entity_id: number
@@ -191,9 +191,9 @@ export interface IOrderJson {
     is_visible_on_front: number
     parent_id: number
     status: string
-  }]
+  }[]
   extension_attributes: {
-    shipping_assignments: [{
+    shipping_assignments: {
       shipping: {
         address: {
           address_type: string
@@ -231,7 +231,7 @@ export interface IOrderJson {
           shipping_tax_amount: number
         }
       }
-      items: [{
+      items: {
         amount_refunded: number
         base_amount_refunded: number
         base_discount_amount: number
@@ -278,12 +278,12 @@ export interface IOrderJson {
         tax_invoiced: number
         tax_percent: number
         updated_at: string
-      }]
-    }]
-    payment_additional_info: [{
+      }[]
+    }[]
+    payment_additional_info: {
       key: string
       value: string
-    }]
+    }[]
     applied_taxes: []
     item_applied_taxes: []
   }
