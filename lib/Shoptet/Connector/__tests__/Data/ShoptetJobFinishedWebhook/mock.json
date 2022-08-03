@@ -1,0 +1,19 @@
+{
+    "http": "GET https://api.myshoptet.com/api/system/jobs/3ax1844",
+    "code": 200,
+    "body": {
+        "data": {
+            "job": {
+                "jobId": "3ax1844",
+                "endpoint": "/api/products/images",
+                "creationTime": "2019-13-04T11:22:02+0200",
+                "duration": "20.123",
+                "completionTime": "2019-13-04T11:23:02+0200",
+                "status": "pending",
+                "resultUrl": "https://eshop.domain.com/api-results/3ax1844-lrmsrf0.json",
+                "validUntil": "2019-13-04T11:22:02+0200",
+                "log": "Some really long text"
+            }
+        }
+    }
+}

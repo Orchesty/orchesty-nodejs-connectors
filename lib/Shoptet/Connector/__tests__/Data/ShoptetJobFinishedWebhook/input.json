@@ -1,0 +1,9 @@
+{
+    "headers": {},
+    "data": {
+        "eshopId": 222651,
+        "event": "job:finished",
+        "eventCreated": "2019-01-08T15:13:39+0100",
+        "eventInstance": "3ax1844"
+    }
+}
