@@ -38,7 +38,7 @@ export interface IInput {
     country_iso2: string,
     email: string,
   }
-  products: [{ name: string, quantity: number, price_inc_tax: number, price_ex_tax: number }]
+  products: { name: string, quantity: number, price_inc_tax: number, price_ex_tax: number }[]
 
 }
 export interface IOutput {

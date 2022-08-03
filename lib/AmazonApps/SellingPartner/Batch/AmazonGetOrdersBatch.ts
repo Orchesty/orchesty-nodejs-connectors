@@ -32,54 +32,53 @@ export default class AmazonGetOrdersBatch extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IInput{
-  marketplaceIds: string[]
+export interface IInput {
+    marketplaceIds: string[]
 }
 
-export interface IOutput{
-  payload: {
-    NextToken: string,
-    Orders: [
-      {
-        AmazonOrderId: string,
-        PurchaseDate: string,
-        LastUpdateDate: string,
-        OrderStatus: string,
-        FulfillmentChannel: string,
-        NumberOfItemsShipped: number,
-        NumberOfItemsUnshipped: number,
-        PaymentMethod: string,
-        PaymentMethodDetails: string[],
-        MarketplaceId: string,
-        ShipmentServiceLevelCategory: string,
-        OrderType: string,
-        EarliestShipDate: string,
-        LatestShipDate: string,
-        IsBusinessOrder: boolean,
-        IsPrime: boolean,
-        IsAccessPointOrder: boolean,
-        IsGlobalExpressEnabled: boolean,
-        IsPremiumOrder: boolean,
-        IsSoldByAB: boolean,
-        IsIBA: boolean,
-        ShippingAddress: {
-          Name: string,
-          AddressLine1: string,
-          City: string,
-          StateOrRegion: string,
-          PostalCode: string,
-          CountryCode: string
-        },
-        BuyerInfo: {
-          BuyerEmail: string,
-          BuyerName: string,
-          BuyerTaxInfo: {
-            CompanyLegalName: string
-          },
-          PurchaseOrderNumber: string
-        }
-      }
-    ]
-  }
+export interface IOutput {
+    payload: {
+        NextToken: string,
+        Orders: {
+            AmazonOrderId: string,
+            PurchaseDate: string,
+            LastUpdateDate: string,
+            OrderStatus: string,
+            FulfillmentChannel: string,
+            NumberOfItemsShipped: number,
+            NumberOfItemsUnshipped: number,
+            PaymentMethod: string,
+            PaymentMethodDetails: string[],
+            MarketplaceId: string,
+            ShipmentServiceLevelCategory: string,
+            OrderType: string,
+            EarliestShipDate: string,
+            LatestShipDate: string,
+            IsBusinessOrder: boolean,
+            IsPrime: boolean,
+            IsAccessPointOrder: boolean,
+            IsGlobalExpressEnabled: boolean,
+            IsPremiumOrder: boolean,
+            IsSoldByAB: boolean,
+            IsIBA: boolean,
+            ShippingAddress: {
+                Name: string,
+                AddressLine1: string,
+                City: string,
+                StateOrRegion: string,
+                PostalCode: string,
+                CountryCode: string
+            },
+            BuyerInfo: {
+                BuyerEmail: string,
+                BuyerName: string,
+                BuyerTaxInfo: {
+                    CompanyLegalName: string
+                },
+                PurchaseOrderNumber: string
+            }
+        }[]
+    }
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */

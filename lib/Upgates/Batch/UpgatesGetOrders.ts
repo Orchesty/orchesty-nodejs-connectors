@@ -55,7 +55,7 @@ interface IResponseJson extends IOrderJson {
 }
 
 interface IOrderJson {
-  orders: [{
+  orders: {
     order_number: string
     external_order_number: string
     language_id: string
@@ -100,13 +100,13 @@ interface IOrderJson {
       dic: string
       vat_payer_yn: string
       customer_note: string
-      agreements: [{
+      agreements: {
         name: string
         valid_to: string
         status: string
-      }]
+      }[]
     }
-    products: [{
+    products: {
       product_id: string
       option_set_id: string
       code: string
@@ -123,43 +123,43 @@ interface IOrderJson {
       buy_price: string
       weight: string
       invoice_info: string
-      parameters: [{
+      parameters: {
         name: string
         value: string
-      }]
-      configurations: [{
+      }[]
+      configurations: {
         name: string
-        values: [{
+        values: {
           value: string
           operation: string
           price: string
-        }]
-      }]
-    }]
+        }[]
+      }[]
+    }[]
     discount_voucher: {
       code: string
       type: string
       amount: string
-      discounts: [{
+      discounts: {
         vat: string
         price: string
-      }]
+      }[]
     }
     quantity_discount: {
       type: string
       amount: string
-      discounts: [{
+      discounts: {
         vat: string
         price: string
-      }]
+      }[]
     }
     loyalty_points: {
       one_point_for: string
       amount: string
-      discounts: [{
+      discounts: {
         vat: string
         price: string
-      }]
+      }[]
     }
     shipment: {
       name: string
@@ -173,7 +173,7 @@ interface IOrderJson {
       vat: string
       eet_yn: string
     }
-    metas: [{
+    metas: {
       key: string
       type: string
       value: string
@@ -183,8 +183,8 @@ interface IOrderJson {
           value: string
         }
       }
-    }]
-  }];
+    }[]
+  }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

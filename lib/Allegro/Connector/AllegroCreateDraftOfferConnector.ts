@@ -34,9 +34,9 @@ export interface IInput {
             id: string;
         };
     };
-    attachments: [{
+    attachments: {
         id: string;
-    }];
+    }[];
     category: {
         id: string;
     };
@@ -47,11 +47,10 @@ export interface IInput {
         id: string;
     };
     createdAt: Date;
-    customParameters: [{
+    customParameters: {
         name: string;
         values: string[];
-    }
-    ];
+    }[];
     delivery: {
         additionalInfo: string;
         handlingTime: string;
@@ -61,12 +60,11 @@ export interface IInput {
         shipmentDate: Date;
     };
     description: {
-        sections: [{
-            items: [{
+        sections: {
+            items: {
                 type: string;
-            }];
-        }
-        ];
+            }[];
+        }[];
     };
     discounts: {
         wholesalePriceList: {
@@ -80,9 +78,9 @@ export interface IInput {
         id: string;
     };
     id: string;
-    images: [{
+    images: {
         url: string;
-    }];
+    }[];
     location: {
         city: string;
         countryCode: string;
@@ -90,7 +88,7 @@ export interface IInput {
         province: string;
     };
     name: string;
-    parameters: [{
+    parameters: {
         id: string;
         rangeValue: {
             from: string;
@@ -98,7 +96,7 @@ export interface IInput {
         };
         values: string[];
         valuesIds: string[];
-    }];
+    }[];
     payments: {
         invoice: string;
     };
@@ -155,10 +153,10 @@ export interface IInput {
     };
     tecdocSpecification: {
         id: string;
-        items: [{
+        items: {
             name: string;
             values: string[];
-        }];
+        }[];
     };
     b2b: {
         buyableOnlyByBusiness: boolean;
@@ -168,21 +166,20 @@ export interface IInput {
     };
     updatedAt: Date;
     validation: {
-        errors: [{
+        errors: {
             code: string;
             details: string;
             message: string;
             path: string;
             userMessage: string;
-        }
-        ];
-        warnings: [{
+        }[];
+        warnings: {
             code: string;
             details: string;
             message: string;
             path: string;
             userMessage: string;
-        }];
+        }[];
         validatedAt: Date;
     };
     language: string;
@@ -203,9 +200,9 @@ export interface IOutput {
             id: string;
         };
     };
-    attachments: [{
+    attachments: {
         id: string;
-    }];
+    }[];
     category: {
         id: string;
     };
@@ -216,11 +213,10 @@ export interface IOutput {
         id: string;
     };
     createdAt: Date;
-    customParameters: [{
+    customParameters: {
         name: string;
         values: string[];
-    }
-    ];
+    }[];
     delivery: {
         additionalInfo: string;
         handlingTime: string;
@@ -230,12 +226,11 @@ export interface IOutput {
         shipmentDate: Date;
     };
     description: {
-        sections: [{
-            items: [{
+        sections: {
+            items: {
                 type: string;
-            }];
-        }
-        ];
+            }[];
+        }[];
     };
     discounts: {
         wholesalePriceList: {
@@ -249,9 +244,9 @@ export interface IOutput {
         id: string;
     };
     id: string;
-    images: [{
+    images: {
         url: string;
-    }];
+    }[];
     location: {
         city: string;
         countryCode: string;
@@ -259,7 +254,7 @@ export interface IOutput {
         province: string;
     };
     name: string;
-    parameters: [{
+    parameters: {
         id: string;
         rangeValue: {
             from: string;
@@ -267,7 +262,7 @@ export interface IOutput {
         };
         values: string[];
         valuesIds: string[];
-    }];
+    }[];
     payments: {
         invoice: string;
     };
@@ -324,10 +319,10 @@ export interface IOutput {
     };
     tecdocSpecification: {
         id: string;
-        items: [{
+        items: {
             name: string;
             values: string[];
-        }];
+        }[];
     };
     b2b: {
         buyableOnlyByBusiness: boolean;
@@ -337,21 +332,20 @@ export interface IOutput {
     };
     updatedAt: Date;
     validation: {
-        errors: [{
+        errors: {
             code: string;
             details: string;
             message: string;
             path: string;
             userMessage: string;
-        }
-        ];
-        warnings: [{
+        }[];
+        warnings: {
             code: string;
             details: string;
             message: string;
             path: string;
             userMessage: string;
-        }];
+        }[];
         validatedAt: Date;
     };
     language: string;
