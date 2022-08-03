@@ -1,0 +1,59 @@
+{
+  "http": "GET https://api.katanamrp.com/v1/products?offset=1&limit=50",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Standard-hilt lightsaber",
+        "uom": "pcs",
+        "category_name": "lightsaber",
+        "is_producible": true,
+        "default_supplier_id": 1,
+        "is_purchasable": true,
+        "type": "product",
+        "purchase_uom": "pcs",
+        "purchase_uom_conversion_rate": 1,
+        "batch_tracked": false,
+        "variants": [
+          {
+            "id": 1,
+            "sku": "EM",
+            "sales_price": 40,
+            "product_id": 1,
+            "purchase_price": 0,
+            "type": "product",
+            "created_at": "2020-10-23T10:37:05.085Z",
+            "updated_at": "2020-10-23T10:37:05.085Z",
+            "config_attributes": [
+              {
+                "config_name": "Type",
+                "config_value": "Standard"
+              }
+            ],
+            "internal_barcode": "internalcode",
+            "registered_barcode": "registeredcode",
+            "supplier_item_codes": [
+              "code"
+            ]
+          }
+        ],
+        "configs": [
+          {
+            "id": 1,
+            "name": "Type",
+            "values": [
+              "Standard",
+              "Double-bladed"
+            ],
+            "product_id": 1
+          }
+        ],
+        "additional_info": "additional info",
+        "created_at": "2020-10-23T10:37:05.085Z",
+        "updated_at": "2020-10-23T10:37:05.085Z"
+      }
+    ],
+    "total_records": 1
+}
+}
