@@ -30,32 +30,28 @@ export interface IInput {
 }
 
 export interface IOutput {
-    sender: [
-        {
-            first_name: string,
-            last_name: string,
-            company: string,
-            street: string,
-            city: string,
-            zip: string,
-            state: string,
-            email: string,
-            phone: string
-        }
-    ],
-    recipient: [
-        {
-            first_name: string,
-            last_name: string,
-            company: string,
-            street: string,
-            city: string,
-            zip: string,
-            state: string,
-            email: string,
-            phone: string
-        }
-    ],
+    sender: {
+        first_name: string,
+        last_name: string,
+        company: string,
+        street: string,
+        city: string,
+        zip: string,
+        state: string,
+        email: string,
+        phone: string
+    }[],
+    recipient: {
+        first_name: string,
+        last_name: string,
+        company: string,
+        street: string,
+        city: string,
+        zip: string,
+        state: string,
+        email: string,
+        phone: string
+    }[],
     pick_up_date: string,
     deliver_id: number,
     reference_number: string,
@@ -75,4 +71,5 @@ export interface IOutput {
     height: number,
     length: number
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */

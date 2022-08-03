@@ -60,14 +60,14 @@ interface IOutput {
     };
     created_at: Date;
     updated_at: Date;
-    event_memberships: [{
+    event_memberships: {
         user: string;
-    }];
-    event_guests: [{
+    }[];
+    event_guests: {
         email: string;
         created_at: Date;
         updated_at: Date;
-    }];
+    }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

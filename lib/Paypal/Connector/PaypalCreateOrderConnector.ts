@@ -25,22 +25,22 @@ export default class PaypalCreateOrderConnector extends AConnector {
 
 export interface IInput {
     intent: string;
-    purchase_units: [{
+    purchase_units: {
         amount: {
             currency_code: string;
             value: string;
         }
-    }];
+    }[];
 }
 
 export interface IOutput {
     id: string;
     status: string;
-    links: [{
+    links: {
         href: string;
         rel: string;
         method: string;
-    }];
+    }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

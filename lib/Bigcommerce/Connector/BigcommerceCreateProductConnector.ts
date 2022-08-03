@@ -92,19 +92,19 @@ export interface IInput {
     reviews_rating_sum: number;
     reviews_count: number;
     total_sold: number;
-    custom_fields: [{
+    custom_fields: {
         id: number;
         name: string;
         value: string;
-    }];
-    bulk_pricing_rules: [{
+    }[];
+    bulk_pricing_rules: {
         id: number;
         quantity_min: number;
         quantity_max: number;
         type: string;
         amount: number;
-    }];
-    images: [{
+    }[];
+    images: {
         image_file: string;
         is_thumbnail: boolean;
         sort_order: number;
@@ -117,8 +117,8 @@ export interface IInput {
         url_thumbnail: string;
         url_tiny: string;
         date_modified: Date;
-    }];
-    videos: [{
+    }[];
+    videos: {
         title: string;
         description: string;
         sort_order: number;
@@ -127,7 +127,7 @@ export interface IInput {
         id: number;
         product_id: number;
         length: string;
-    }]
+    }[]
 }
 
 export interface IOutput {
@@ -227,19 +227,19 @@ export interface ProductFull {
     reviews_rating_sum: number;
     reviews_count: number;
     total_sold: number;
-    custom_fields: [{
+    custom_fields: {
         id: number;
         name: string;
         value: string;
-    }];
-    bulk_pricing_rules: [{
+    }[];
+    bulk_pricing_rules: {
         id: number;
         quantity_min: number;
         quantity_max: number;
         type: string;
         amount: number;
-    }];
-    images: [{
+    }[];
+    images: {
         image_file: string;
         is_thumbnail: boolean;
         sort_order: number;
@@ -252,8 +252,8 @@ export interface ProductFull {
         url_thumbnail: string;
         url_tiny: string;
         date_modified: Date;
-    }];
-    videos: [{
+    }[];
+    videos: {
         title: string;
         description: string;
         sort_order: number;
@@ -262,13 +262,13 @@ export interface ProductFull {
         id: number;
         product_id: number;
         length: string;
-    }];
+    }[];
     date_created: Date;
     date_modified: Date;
     id: number;
     base_variant_id: number;
     calculated_price: number;
-    options: [{
+    options: {
         id: number;
         product_id: number;
         display_name: string;
@@ -281,8 +281,8 @@ export interface ProductFull {
             sort_order: number;
             value_data: unknown;
             id: number;
-        };}];
-    modifiers: [{
+        };}[];
+    modifiers: {
         type: string;
         required: boolean;
         sort_order: number;
@@ -291,7 +291,7 @@ export interface ProductFull {
         id: number;
         product_id: number;
         name: string;
-        option_values: [{
+        option_values: {
             is_default: boolean;
             label: string;
             sort_order: number;
@@ -313,11 +313,11 @@ export interface ProductFull {
             };
             id: number;
             option_id: number;
-        }];
-    }];
+        }[];
+    }[];
     option_set_id: number;
     option_set_display: string;
-    variants: [{
+    variants: {
         cost_price: number;
         price: number;
         sale_price: number;
@@ -340,15 +340,15 @@ export interface ProductFull {
         product_id: number;
         sku: string;
         sku_id: number;
-        option_values: [{
+        option_values: {
             option_display_name: string;
             label: string;
             id: number;
             option_id: number;
-        }];
+        }[];
         calculated_price: number;
         calculated_weight: number;
-    }];
+    }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

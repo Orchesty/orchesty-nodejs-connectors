@@ -93,12 +93,12 @@ interface IOrdersJson {
   date_completed: string;
   date_completed_gmt: string;
   cart_hash: string;
-  meta_data: [{
+  meta_data: {
     id: number,
     key: string,
     value: string
-  }];
-  line_items: [{
+  }[];
+  line_items: {
     id: number;
     name: string;
     product_id: number;
@@ -109,16 +109,16 @@ interface IOrdersJson {
     subtotal_tax: string;
     total: string;
     total_tax: string;
-    taxes: [{
+    taxes: {
       id: number,
       total: string,
       subtotal: string
-    }];
+    }[];
     meta_data: [];
     sku: string;
     price: number;
-  }];
-  tax_lines: [{
+  }[];
+  tax_lines: {
     id: number;
     rate_code: string;
     rate_id: number;
@@ -127,8 +127,8 @@ interface IOrdersJson {
     tax_total: string;
     shipping_tax_total: string;
     meta_data: [];
-  }];
-  shipping_lines: [{
+  }[];
+  shipping_lines: {
     id: number;
     method_title: string;
     method_id: string;
@@ -136,17 +136,17 @@ interface IOrdersJson {
     total_tax: string;
     taxes: [];
     meta_data: [];
-  }];
+  }[];
   fee_lines: [];
   coupon_lines: [];
   refunds: [];
   _links: {
-    self: [{
+    self: {
       href: string
-    }],
-    collection: [{
+    }[],
+    collection: {
       href: string
-    }]
+    }[]
   };
 }
 

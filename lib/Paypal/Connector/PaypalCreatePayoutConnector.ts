@@ -28,7 +28,7 @@ export interface IInput {
         email_subject: string;
         email_message: string;
     };
-    items: [{
+    items: {
         recipient_type: string;
         amount: {
             value: string;
@@ -37,7 +37,7 @@ export interface IInput {
         note: string;
         sender_item_id: string;
         receiver: string;
-    }];
+    }[];
 }
 
 export interface IOutput {

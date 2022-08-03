@@ -130,7 +130,7 @@ export interface IOutput {
         };
         dueDate: string;
     };
-    lineItems: [{
+    lineItems: {
         id: string;
         offer: {
             id: string;
@@ -156,7 +156,7 @@ export interface IOutput {
             type: string;
             quantity: number;
         };
-        selectedAdditionalServices: [{
+        selectedAdditionalServices: {
             definitionId: string;
             name: string;
             price: {
@@ -164,10 +164,10 @@ export interface IOutput {
                 currency: string;
             };
             quantity: number;
-        }];
+        }[];
         boughtAt: Date;
-    }];
-    surcharges: [{
+    }[];
+    surcharges: {
         id: string;
         type: string;
         provider: string;
@@ -180,10 +180,10 @@ export interface IOutput {
             amount: string;
             currency: string;
         };
-    }];
-    discounts: [{
+    }[];
+    discounts: {
         type: string;
-    }];
+    }[];
     summary: {
         totalToPay: {
             amount: string;
