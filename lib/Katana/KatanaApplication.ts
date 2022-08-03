@@ -9,7 +9,6 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
 export const NAME = 'katana';
 export const API_KEY = 'api_key';
