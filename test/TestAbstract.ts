@@ -146,6 +146,7 @@ export async function prepare(): Promise<void> {
   initFakturaonline();
   initGObalik();
   initGitHub();
+  initKatanaApp();
   initMall();
   initMergado();
   initNutshell();
@@ -161,9 +162,6 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
-  initCeskaPosta();
-  initGObalik();
-  initKatanaApp();
 }
 
 export async function closeConnection(): Promise<void> {
