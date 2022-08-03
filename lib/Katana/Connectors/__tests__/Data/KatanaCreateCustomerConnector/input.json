@@ -1,0 +1,32 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "name": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "company": "string",
+    "email": "string",
+    "phone": "string",
+    "currency": "string",
+    "comment": "string",
+    "addresses": [
+      {
+        "entity_type": "billing",
+        "default": true,
+        "first_name": "string",
+        "last_name": "string",
+        "company": "string",
+        "phone": "string",
+        "line_1": "string",
+        "line_2": "string",
+        "city": "string",
+        "state": "string",
+        "zip": "string",
+        "country": "string"
+      }
+    ]
+  }
+}
+
