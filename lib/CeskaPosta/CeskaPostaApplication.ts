@@ -22,9 +22,9 @@ export const HMAC256_HASH = 'Authorization';
 export default class CeskaPostaApplication extends ABasicApplication {
   public getName = (): string => NAME;
 
-  public getPublicName = (): string => 'Ceska Posta';
+  public getPublicName = (): string => 'CeskaPosta';
 
-  public getDescription = (): string => 'Ceska Posta description';
+  public getDescription = (): string => 'CeskaPosta description';
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
@@ -42,22 +42,28 @@ export default class CeskaPostaApplication extends ABasicApplication {
     data?: unknown,
   ): RequestDto => {
     const uuidv4 = randomUUID();
-    const authorizatioForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+    const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
     const timestamp = DateTimeUtils.getTimestamp(DateTimeUtils.utcDate) / 1000;
-    const sha256Hash = createHash('sha256').update(JSON.stringify(data)).digest('hex');
-    const signature = `${sha256Hash};${timestamp};${uuidv4}`;
-    const hmac256hash = createHmac('sha256', authorizatioForm[SECRET_KEY]).update(signature).digest('base64');
     const url = `https://b2b.postaonline.cz:444/restservices/ZSKService/v1/${_url}`;
     const request = new RequestDto(url, method, dto);
-    request.headers = {
+    const headers: HeadersInit = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
       [TIMESTAMP]: timestamp.toString(),
-      [CONTENT_SHA256]: sha256Hash,
-      [HMAC256_HASH]: `CP-HMAC-SHA256 nonce="${uuidv4}" signature="${hmac256hash}"`,
-      [CommonHeaders.AUTHORIZATION]: authorizatioForm[API_TOKEN],
+      [CommonHeaders.AUTHORIZATION]: authorizationForm[API_TOKEN],
     };
-
+    if (method === HttpMethods.GET) {
+      const signature = `;${timestamp};${uuidv4}`;
+      const hmac256hash = createHmac('sha256', authorizationForm[SECRET_KEY]).update(signature).digest('base64');
+      headers[HMAC256_HASH] = `CP-HMAC-SHA256 nonce="${uuidv4}" signature="${hmac256hash}"`;
+    } else {
+      const sha256Hash = createHash('sha256').update(JSON.stringify(data)).digest('hex');
+      const signature = `${sha256Hash};${timestamp};${uuidv4}`;
+      const hmac256hash = createHmac('sha256', authorizationForm[SECRET_KEY]).update(signature).digest('base64');
+      headers[CONTENT_SHA256] = sha256Hash;
+      headers[HMAC256_HASH] = `CP-HMAC-SHA256 nonce="${uuidv4}" signature="${hmac256hash}"`;
+    }
+    request.headers = headers;
     if (data) {
       request.setJsonBody(data);
     }

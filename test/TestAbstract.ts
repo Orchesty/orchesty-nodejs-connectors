@@ -108,8 +108,9 @@ import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/Productb
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
-import CeskaPostaApplication from '../lib/Česká pošta/CeskaPostaApplication';
-import CeskaPostaParcelStatusConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelStatusConnector';
+import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
+import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
+import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
 import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
@@ -827,6 +828,7 @@ function initCeskaPosta(): void {
   container.setApplication(app);
 
   const parcelStatus = new CeskaPostaParcelStatusConnector();
+  const getSendParcels = new CeskaPostaGetSendParcelsConnector();
   const parcelPrinting = new CeskaPostaParcelPrintingConnector();
 
   parcelStatus
@@ -834,6 +836,12 @@ function initCeskaPosta(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(parcelStatus);
+
+  getSendParcels
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getSendParcels);
 
   parcelPrinting
     .setSender(sender)
