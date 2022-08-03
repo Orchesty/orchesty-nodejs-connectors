@@ -35,14 +35,12 @@ export default class KatanaApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const settings = applicationInstall.getSettings();
-    const key = encode(`${settings[AUTHORIZATION_FORM][API_KEY]}`);
     const url = `https://api.katanamrp.com/v1/${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Bearer${key}`,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${API_KEY}`,
     };
 
     if (data) {
