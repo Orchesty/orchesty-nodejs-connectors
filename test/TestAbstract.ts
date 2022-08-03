@@ -95,6 +95,9 @@ import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
+import KatanaApplication from '../lib/Katana/KatanaApplication';
+import KatanaCreateCustomerConnector from '../lib/Katana/Connectors/KatanaCreateCustomerConnector';
+import KatanaCreateProductConnector from '../lib/Katana/Connectors/KatanaCreateProductConnector';
 import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
 import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
 import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
@@ -109,6 +112,7 @@ import CeskaPostaApplication from '../lib/Česká pošta/CeskaPostaApplication';
 import CeskaPostaParcelStatusConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelStatusConnector';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
+import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -151,6 +155,7 @@ export async function prepare(): Promise<void> {
   initZoho();
   initCeskaPosta();
   initGObalik();
+  initKatanaApp();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -835,4 +840,30 @@ function initCeskaPosta(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(parcelPrinting);
+}
+
+function initKatanaApp(): void {
+  const app = new KatanaApplication();
+  const listProducts = new KatanaListProductsBatch();
+  const createProduct = new KatanaCreateProductConnector();
+  const createCustomer = new KatanaCreateCustomerConnector();
+  container.setApplication(app);
+
+  listProducts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listProducts);
+
+  createProduct
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createProduct);
+
+  createCustomer
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createCustomer);
 }
