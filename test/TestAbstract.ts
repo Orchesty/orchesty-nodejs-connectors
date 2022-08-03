@@ -124,6 +124,7 @@ import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProduct
 import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
+import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/TypeformCreateWorkspaceConnector';
 import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -925,6 +926,7 @@ function initTypeform(): void {
 
   const createForm = new TypeformCreateFormConnector();
   const updateForm = new TypeformUpdateFormConnector();
+  const createWorkspace = new TypeformCreateWorkspaceConnector();
 
   createForm
     .setSender(sender)
@@ -936,6 +938,11 @@ function initTypeform(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(updateForm);
+  createWorkspace
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createWorkspace);
 }
 
 function initClickup(): void {
