@@ -904,3 +904,32 @@ function initShoptet(): void {
     .setApplication(implPluginShoptetApplication);
   container.setConnector(shoptetGetAllProducts);
 }
+
+function initShoptet(): void {
+  const redis = new Redis(process.env.REDIS_DSN ?? '');
+  container.set(CoreServices.REDIS, redis);
+
+  const cacheService = new CacheService(redis, sender);
+  const implPluginShoptetApplication = new ImplPluginShoptetApplication(
+    cacheService,
+    container.get(CoreServices.TOPOLOGY_RUNNER),
+  );
+
+  const shoptetGetAllOrders = new ShoptetGetAllOrders()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetAllOrders);
+
+  const shoptetGetAllProducts = new ShoptetGetAllProducts()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetAllProducts);
+
+  const shoptetJobFinishedWebhook = new ShoptetJobFinishedWebhook()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetJobFinishedWebhook);
+}
