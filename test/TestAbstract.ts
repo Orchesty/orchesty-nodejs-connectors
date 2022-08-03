@@ -110,9 +110,11 @@ import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/Productb
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
+import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
-import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
+import TypeformApplication from '../lib/Typeform/TypeformApplication';
+import TypeformCreateFormConnector from '../lib/Typeform/Connector/TypeformCreateFormConnector';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
 import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
@@ -159,6 +161,7 @@ export async function prepare(): Promise<void> {
   initTableau();
   initTwitter();
   initVyfakturuj();
+  initTypeform();
   initWedo();
   initWix();
   initZendesk();
@@ -910,4 +913,17 @@ function initShoptet(): void {
     .setDb(db)
     .setApplication(implPluginShoptetApplication);
   container.setConnector(shoptetJobFinishedWebhook);
+}
+
+function initTypeform(): void {
+  const app = new TypeformApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const createForm = new TypeformCreateFormConnector();
+
+  createForm
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createForm);
 }
