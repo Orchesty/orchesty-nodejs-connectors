@@ -119,6 +119,7 @@ import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch
 import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetApplication';
 import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
 import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
+import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -135,7 +136,6 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  iniVyfakturuj();
   initAllegro();
   initAlza();
   initAmazon();
@@ -158,6 +158,7 @@ export async function prepare(): Promise<void> {
   initShoptet();
   initTableau();
   initTwitter();
+  initVyfakturuj();
   initWedo();
   initWix();
   initZendesk();
@@ -658,7 +659,7 @@ function initMergado(): void {
   container.setConnector(createElement);
 }
 
-function iniVyfakturuj(): void {
+function initVyfakturuj(): void {
   const app = new VyfakturujApplication();
   container.setApplication(app);
 
@@ -880,29 +881,6 @@ function initKatanaApp(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createCustomer);
-}
-
-function initShoptet(): void {
-  const redis = new Redis(process.env.REDIS_DSN ?? '');
-  container.set(CoreServices.REDIS, redis);
-
-  const cacheService = new CacheService(redis, sender);
-  const implPluginShoptetApplication = new ImplPluginShoptetApplication(
-    cacheService,
-    container.get(CoreServices.TOPOLOGY_RUNNER),
-  );
-
-  const shoptetGetAllOrders = new ShoptetGetAllOrders()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetGetAllOrders);
-
-  const shoptetGetAllProducts = new ShoptetGetAllProducts()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetGetAllProducts);
 }
 
 function initShoptet(): void {

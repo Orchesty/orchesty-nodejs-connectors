@@ -38,9 +38,7 @@ import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as KATANA_APP } from '../lib/Katana/KatanaApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplication';
-import {
-  API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY,
-} from '../lib/CeskaPosta/CeskaPostaApplication';
+import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -342,14 +340,6 @@ export async function katanaApp() {
   return appInstall(KATANA_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_KEY]: 'Api key',
-    },
-  });
-}
-
-export async function shoptetApp() {
-  return appInstall(SHOPTET_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },
   });
 }
