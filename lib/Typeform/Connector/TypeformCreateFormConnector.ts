@@ -1,7 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { IInput, IOutput } from '../../Mergado/Connector/MergadoCreateElementConnector';
 
 export const NAME = 'typeform-create-form-connector';
 
@@ -17,14 +16,14 @@ export default class TypeformCreateFormConnector extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
     const resp = await this._sender.send(req, [201]);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+    dto.jsonData = resp.jsonBody;
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
-export interface RootObject {
+export interface IInput {
     cui_settings?: {
         avatar?: string;
     };
