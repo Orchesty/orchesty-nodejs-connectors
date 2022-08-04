@@ -129,6 +129,7 @@ import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdat
 import TodoistApplication from '../lib/Todoist/TodoistApplication';
 import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
 import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
+import TodoistCreateNewTaskConnector from '../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -967,7 +968,7 @@ function initTodoist(): void {
 
   const createProject = new TodoistCreateProjectConnector();
   const getAllProjects = new TodoistGetAllProjectsBatch();
-
+  const createNewTask = new TodoistCreateNewTaskConnector();
   createProject
     .setSender(sender)
     .setDb(db)
@@ -978,4 +979,9 @@ function initTodoist(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getAllProjects);
+  createNewTask
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createNewTask);
 }
