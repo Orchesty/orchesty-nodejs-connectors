@@ -1,0 +1,205 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "additionalName": "+ free gift",
+        "adult": false,
+        "allowIPlatba": true,
+        "allowOnlinePayments": true,
+        "atypicalBilling": false,
+        "atypicalShipping": false,
+        "brand": {
+            "code": "pelle",
+            "name": "Pelle"
+        },
+        "categories": [
+            {
+                "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+                "name": "Watches",
+                "parentGuid": "2a648227-d7b1-11e0-9a5c-feab5ed617ed"
+            }
+        ],
+        "changeTime": "2016-08-01T09:02:27+0200",
+        "creationTime": "2015-08-01T09:02:27+0200",
+        "defaultCategory": {
+            "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+            "name": "Hodinky"
+        },
+        "description": "<p>As it is often the case with jackets for kids, the emphasis is primarily on durability and quality workmanship. It is clear that it will be put through its paces, which the manufacturer has borne in mind. As previously stated, the manufacturer could also afford a less conservative design for a kids product, combining bold colours with a company logo on the front and back.</p>\\n\\n<ul>\\n\\t<li>Body - 60% Nylon, 40% wool</li>\\n<li>Inside - 100% Polyester</li>\\n</ul>",
+        "descriptiveParameters": [
+            {
+                "description": "Material the shirt is made of",
+                "name": "Material",
+                "priority": 1,
+                "value": "flannel"
+            }
+        ],
+        "filteringParameters": [
+            {
+                "code": "material",
+                "description": "Material of product",
+                "displayName": "Material of product",
+                "googleMapping": {
+                    "description": "Color",
+                    "value": "google:color"
+                },
+                "name": "Material",
+                "priority": 1,
+                "values": [
+                    {
+                        "color": "#34ff34",
+                        "image": "https://www.domena-eshopu.cz/user/parameters/100.jpg",
+                        "name": "Gold",
+                        "priority": 1,
+                        "valueIndex": "ag"
+                    }
+                ]
+            }
+        ],
+        "flags": [
+            {
+                "code": "action",
+                "dateFrom": "2020-01-01",
+                "dateTo": "2020-01-30",
+                "title": "Action"
+            }
+        ],
+        "gifts": [
+            {
+                "code": "0008",
+                "priority": 1
+            }
+        ],
+        "guid": "bffa3b98-d968-11e0-b04f-57a43310b768",
+        "images": [
+            {
+                "cdnName": "100_purple-apple.jpg?59393c3a",
+                "changeTime": "2018-04-19T09:49:21+0200",
+                "description": "Fresh purple apple for Snow White",
+                "name": "100.jpg",
+                "priority": 1,
+                "seoName": "100_purple-apple.jpg"
+            }
+        ],
+        "internalNote": "Note",
+        "metaDescription": "Pelle 1978. A high quality jacket, although its fairly bold design is not to everyone's taste, it has its fans, so you can find it in our offer too. For kids, why not.",
+        "metaTitle": "Nice product title",
+        "name": "Pelle 1978",
+        "setItems": [
+            {
+                "amount": "1.000",
+                "code": "154",
+                "guid": "934c504e-7481-11e8-8216-002590dad85e"
+            }
+        ],
+        "shortDescription": "A high quality jacket, although its fairly bold design is not to everyone's taste, it has its fans, so you can find it in our offer too. For kids, why not.",
+        "sizeIdName": "adidas - man - shoes (ID 142)",
+        "supplier": {
+            "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+            "name": "Dodavatel s.r.o"
+        },
+        "surchargeParameters": [
+            {
+                "code": "potisk",
+                "currency": "CZK",
+                "description": "Ozdobný potisk",
+                "displayName": "Příplatek za potisk",
+                "includingVat": true,
+                "name": "S potiskem",
+                "priority": 1,
+                "required": true,
+                "values": [
+                    {
+                        "description": "Zlatý",
+                        "price": "50.00",
+                        "priority": 1,
+                        "valueIndex": "zlaty",
+                        "visible": true
+                    }
+                ]
+            }
+        ],
+        "type": "product",
+        "url": "https://www.domena-eshopu.cz/hodinky/citizen-chronograph-eco-drive/",
+        "variants": [
+            {
+                "actionPrice": {
+                    "fromDate": "2018-02-15",
+                    "price": "189.00",
+                    "toDate": "2018-02-25"
+                },
+                "amountDecimalPlaces": 0,
+                "availability": {
+                    "id": -1,
+                    "name": "Skladem"
+                },
+                "availabilityWhenSoldOut": {
+                    "id": -5,
+                    "name": "Na dotaz"
+                },
+                "code": "0035",
+                "commonPrice": "900.00",
+                "currencyCode": "CZK",
+                "ean": "4010355051486",
+                "heurekaCPC": "0.0",
+                "image": null,
+                "includingVat": true,
+                "isbn": "99921-58-10-7",
+                "manufacturerCode": "OKI",
+                "measureUnit": {
+                    "measureAmount": "1",
+                    "measurePrice": "3937.5",
+                    "measureUnitId": -16,
+                    "measureUnitName": "kg",
+                    "packagingAmount": "64",
+                    "packagingUnitId": 22,
+                    "packagingUnitName": "g"
+                },
+                "minStockSupply": "null",
+                "mpn": "H2G2-42",
+                "name": "Colour: Red, size: 50 cm, shape: Square",
+                "negativeStockAllowed": "yes-global",
+                "parameters": [
+                    {
+                        "color": "fffeee",
+                        "image": "null",
+                        "paramIndex": "barva",
+                        "paramName": "Colour",
+                        "paramValue": "červená",
+                        "rawValue": "cervena",
+                        "valuePriority": 1
+                    }
+                ],
+                "pluCode": "0828",
+                "price": "850.00",
+                "recyclingFee": {
+                    "category": "Hrnky",
+                    "currency": "EUR",
+                    "fee": "50.00",
+                    "id": 1
+                },
+                "serialNo": "B412",
+                "stock": "1.000",
+                "unit": "ks",
+                "vatRate": "21.00",
+                "visible": true,
+                "weight": "null",
+                "zboziCZ": {
+                    "hidden": false,
+                    "maximalCPC": "0.0",
+                    "maximalSearchCPC": "0.0"
+                }
+            }
+        ],
+        "visibility": "normal",
+        "voteAverageScore": "2.6",
+        "voteCount": 16,
+        "warranty": {
+            "description": "Tři roky",
+            "id": -1,
+            "inMonths": 12
+        },
+        "xmlFeedName": "our-feed.xml"
+    }
+}

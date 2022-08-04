@@ -9,8 +9,9 @@ import { NAME as Shoptet } from '../../../../test/Implementation/ImplPluginShopt
 let tester: NodeTester;
 
 describe('Tests for ShoptetJobFinishedWebhook', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     tester = new NodeTester(container, __filename);
+
     await shoptetApp();
     const cacheKey = `${Shoptet}ApiKey_TestUser`;
 
