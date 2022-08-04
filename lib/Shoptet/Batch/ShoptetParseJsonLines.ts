@@ -3,6 +3,7 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import Zlib from 'zlib';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { IOutput } from '../Connector/ShoptetJobFinishedWebhook';
 
 export const NAME = 'shoptet-parse-json-lines';
@@ -26,7 +27,7 @@ export default class ShoptetParseJsonLines extends ABatchNode {
       applicationInstall,
       HttpMethods.GET,
       resultUrl,
-    )).addHeaders({ 'Accept-Encoding': 'gzip,deflate' });
+    )).addHeaders({ [CommonHeaders.ACCEPT_ENCODING]: 'gzip,deflate' });
 
     const response = await this._sender.send(requestDto, [200]);
     const data = Zlib.gunzipSync(response.body).toString().split('\n');
