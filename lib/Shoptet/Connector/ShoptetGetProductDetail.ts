@@ -12,7 +12,7 @@ export default class ShoptetGetProductDetail extends AShoptetConnector {
 
     const url = `api/products/code/${code}`;
 
-    const response = await this._doRequest(url, dto) as IOutput;
+    const response = await this._doRequest(url, dto) as IResponse;
 
     dto.jsonData = response.data;
 
@@ -24,11 +24,11 @@ export interface IInput {
   code: string
 }
 
-export interface IOutput {
-  data: IData;
+interface IResponse {
+  data: IOutput;
 }
 
-export interface IData {
+export interface IOutput {
     guid: string;
     type: string;
     brand: {
