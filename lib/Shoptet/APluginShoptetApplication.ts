@@ -41,7 +41,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
     };
 
     return new RequestDto(
-      `${BASE_URL}/${url}`,
+      url?.toLowerCase().includes('http') ? url : `${BASE_URL}/${url}`,
       parseHttpMethod(method),
       dto,
       data,
