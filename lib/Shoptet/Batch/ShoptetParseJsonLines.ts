@@ -2,6 +2,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import Zlib from 'zlib';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import { IOutput } from '../Connector/ShoptetJobFinishedWebhook';
 
 export const NAME = 'shoptet-parse-json-lines';
@@ -12,35 +13,38 @@ export default class ShoptetParseJsonLines extends ABatchNode {
   public processAction = async (_dto: BatchProcessDto): Promise<BatchProcessDto> => {
     const dto = _dto;
 
-    let data: string[];
+    const { resultUrl, status, jobId } = dto.jsonData as IOutput;
 
-    const cursor = dto.getBatchCursor('');
-    if (cursor) {
-      data = JSON.parse(cursor);
-    } else {
-      const { resultUrl } = dto.jsonData as IOutput;
-      const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-      const requestDto = (await this._application.getRequestDto(
-        dto,
-        applicationInstall,
-        HttpMethods.GET,
-        resultUrl,
-      )).addHeaders({ 'Accept-Encoding': 'gzip,deflate' });
-
-      const response = await this._sender.send(requestDto, [200]);
-      data = Zlib.gunzipSync(response.body).toString().split('\n');
+    if (status !== 'completed') {
+      dto.setStopProcess(ResultCode.STOP_AND_FAILED, `Job [jobId=${jobId}] from shoptet is not completed.`);
+      return dto;
     }
 
-    const slicedData = data.splice(0, 100);
-    if (data.length > 0) {
-      dto.setBatchCursor(JSON.stringify(data));
-    }
+    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
+    const requestDto = (await this._application.getRequestDto(
+      dto,
+      applicationInstall,
+      HttpMethods.GET,
+      resultUrl,
+    )).addHeaders({ 'Accept-Encoding': 'gzip,deflate' });
 
-    slicedData.forEach((jsonLine) => {
-      if (jsonLine) {
-        dto.addItem(JSON.parse(jsonLine), dto.user);
+    const response = await this._sender.send(requestDto, [200]);
+    const data = Zlib.gunzipSync(response.body).toString().split('\n');
+
+    do {
+      const slicedData = data.splice(0, 100);
+
+      const batchItem: unknown[] = [];
+      slicedData.forEach((jsonLine) => {
+        if (jsonLine) {
+          batchItem.push(JSON.parse(jsonLine));
+        }
+      });
+
+      if (batchItem.length > 0) {
+        dto.addItem(batchItem, dto.user);
       }
-    });
+    } while (data.length > 0);
 
     return dto;
   };
