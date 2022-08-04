@@ -130,6 +130,8 @@ import TodoistApplication from '../lib/Todoist/TodoistApplication';
 import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
 import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
 import TodoistCreateNewTaskConnector from '../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
+import IntercomApplication from '../lib/Intercom/IntercomApplication';
+import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -176,6 +178,7 @@ export async function prepare(): Promise<void> {
   initZoho();
   initClickup();
   initTodoist();
+  initIntercom();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -984,4 +987,15 @@ function initTodoist(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createNewTask);
+}
+function initIntercom(): void {
+  const app = new IntercomApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const createContact = new IntercomCreateContactConnector();
+  createContact
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createContact);
 }
