@@ -1,0 +1,15 @@
+{
+  "http": "POST https://api.todoist.com/rest/v1/projects",
+  "code": 200,
+  "body": {
+    "id": 2203306141,
+    "name": "Shopping List",
+    "comment_count": 0,
+    "color": 47,
+    "shared": false,
+    "sync_id": 0,
+    "order": 1,
+    "favorite": true,
+    "url": "https://todoist.com/showProject?id=2203306141"
+  }
+}

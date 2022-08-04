@@ -41,6 +41,7 @@ import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplicati
 import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as CLICKUP_APP } from '../lib/Clickup/ClickupApplication';
+import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -372,6 +373,18 @@ export async function clickupApp() {
 
 export async function typeformApp() {
   return appInstall(TYPEFORM_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
+    },
+  });
+}
+
+export async function todoistApp() {
+  return appInstall(TODOIST_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,

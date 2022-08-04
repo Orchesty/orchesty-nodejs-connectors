@@ -126,6 +126,8 @@ import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserCon
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
 import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/TypeformCreateWorkspaceConnector';
 import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
+import TodoistApplication from '../lib/Todoist/TodoistApplication';
+import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -171,6 +173,7 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initZoho();
   initClickup();
+  initTodoist();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -956,4 +959,16 @@ function initClickup(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+}
+function initTodoist(): void {
+  const app = new TodoistApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const createProject = new TodoistCreateProjectConnector();
+
+  createProject
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createProject);
 }
