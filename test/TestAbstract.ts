@@ -128,6 +128,7 @@ import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/Typeform
 import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
 import TodoistApplication from '../lib/Todoist/TodoistApplication';
 import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
+import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -965,10 +966,16 @@ function initTodoist(): void {
   container.setApplication(app);
 
   const createProject = new TodoistCreateProjectConnector();
+  const getAllProjects = new TodoistGetAllProjectsBatch();
 
   createProject
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createProject);
+  getAllProjects
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getAllProjects);
 }

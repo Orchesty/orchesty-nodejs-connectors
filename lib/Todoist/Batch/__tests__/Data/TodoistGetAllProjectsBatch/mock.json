@@ -1,0 +1,19 @@
+{
+  "http": "GET https://api.todoist.com/rest/v1/projects",
+  "code": 200,
+  "body": [
+    {
+      "id": 220474322,
+      "name": "Inbox",
+      "comment_count": 10,
+      "order": 1,
+      "color": 47,
+      "shared": false,
+      "favorite": false,
+      "inbox_project": true,
+      "team_inbox": false,
+      "url": "https://todoist.com/showProject?id=220474322",
+      "parent_id": null
+    }
+  ]
+}
