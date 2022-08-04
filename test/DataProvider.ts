@@ -42,6 +42,7 @@ import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta
 import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as CLICKUP_APP } from '../lib/Clickup/ClickupApplication';
 import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
+import { NAME as INTERCOM_APP } from '../lib/Intercom/IntercomApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -385,6 +386,18 @@ export async function typeformApp() {
 
 export async function todoistApp() {
   return appInstall(TODOIST_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
+    },
+  });
+}
+
+export async function intercomApp() {
+  return appInstall(INTERCOM_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
