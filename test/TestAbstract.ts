@@ -138,6 +138,7 @@ import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateT
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
 import OnesignalViewAppsConnector from '../lib/Onesignal/Connectors/OnesignalViewAppsConnector';
+import OnesignalCreateAppConnector from '../lib/Onesignal/Connectors/OnesignalCreateAppConnector';
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -1047,6 +1048,13 @@ function initOnesignal(): void {
   container.setApplication(app);
 
   const viewsApps = new OnesignalViewAppsConnector();
+  const createApp = new OnesignalCreateAppConnector();
+
+  createApp
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createApp);
 
   viewsApps
     .setSender(sender)
