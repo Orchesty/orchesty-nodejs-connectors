@@ -55,6 +55,7 @@ import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
+import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -417,6 +418,14 @@ export async function intercomApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function onesignalApp() {
+  return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [API_KEY]: 'api_key',
     },
   });
 }

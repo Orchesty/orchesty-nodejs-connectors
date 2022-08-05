@@ -134,6 +134,8 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
+import OnesignalViewAppsConnector from '../lib/Onesignal/Connectors/OnesignalViewAppsConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -181,6 +183,7 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
+  initOnesignal();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -1014,4 +1017,17 @@ function initIntercom(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createContact);
+}
+
+function initOnesignal(): void {
+  const app = new OnesignalApplication();
+  container.setApplication(app);
+
+  const viewsApps = new OnesignalViewAppsConnector();
+
+  viewsApps
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(viewsApps);
 }
