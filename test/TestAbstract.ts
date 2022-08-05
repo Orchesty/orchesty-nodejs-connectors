@@ -38,6 +38,7 @@ import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInvit
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
+import ShoptetParseJsonLines from '../lib/Shoptet/Batch/ShoptetParseJsonLines';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
@@ -933,6 +934,12 @@ function initShoptet(): void {
     .setDb(db)
     .setApplication(implPluginShoptetApplication);
   container.setConnector(shoptetGetProductDetail);
+
+  const shoptetParseJsonLines = new ShoptetParseJsonLines()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setBatch(shoptetParseJsonLines);
 }
 
 function initTypeform(): void {

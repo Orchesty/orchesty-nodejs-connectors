@@ -53,7 +53,7 @@ export default class FakturoidApplication extends ABasicApplication {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, ACCOUNT, 'Account', null, true))
       .addField(new Field(FieldType.TEXT, USER, 'Username', null, true))
-      .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', true));
+      .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', null, true));
 
     return new FormStack().addForm(form);
   };
