@@ -49,8 +49,10 @@ dependencies:
   '@types/node-fetch': 2.6.2
   form-data: 4.0.0
   luxon: 3.0.1
+  mongodb: 4.8.1
   mongodb-typescript: 3.0.0_yyyzprzmcubp242un7v33y3jai
   node-fetch: 2.6.7
+  reflect-metadata: 0.1.13
 
 optionalDependencies:
   '@aws-sdk/client-lambda': 3.142.0
@@ -82,9 +84,7 @@ devDependencies:
   eslint-import-resolver-typescript: 3.4.0_jatgrcxl4x7ywe7ak6cnjca2ae
   eslint-plugin-import: 2.26.0_klqlxqqxnpnfpttri4irupweri
   jest: 28.1.3_6caleeh6c3yahw3yaj3duy3aa4
-  mongodb: 4.8.1
   nodemon: 2.0.19
-  reflect-metadata: 0.1.13
   ts-jest: 28.0.7_bi2kohzqnxavgozw3csgny5hju
   ts-node: 10.9.1_hn66opzbaneygq52jmwjxha6su
   typescript: 4.7.4
