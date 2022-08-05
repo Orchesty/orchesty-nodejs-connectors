@@ -1,48 +1,60 @@
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import {
-  ApplicationInstall, IApplicationSettings,
+  ApplicationInstall,
+  IApplicationSettings,
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import { db } from './TestAbstract';
 import {
-  ACCOUNT_OWNER_NAME, API_DOMAIN, APP_LINK_NAME, CREATOR_FORM, FORM_LINK_NAME, NAME as ZOHO_APP, REPORT_LINK_NAME,
+  ACCOUNT_OWNER_NAME,
+  API_DOMAIN,
+  APP_LINK_NAME,
+  CREATOR_FORM,
+  FORM_LINK_NAME,
+  NAME as ZOHO_APP,
+  REPORT_LINK_NAME,
 } from '../lib/Zoho/ZohoApplication';
-import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
-import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
-import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
-import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
-import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
-import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
-import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
-import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
-import {
-  NAME as BULKGATE_APP, APPLICATION_TOKEN, APPLICATION_ID,
-} from '../lib/BulkGate/BulkGateApplicationApplication';
-import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
 import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
+import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
+import { db } from './TestAbstract';
 import {
-  DEVELOPERID, MWSAUTHTOKEN, SELLINGPARTNERID, NAME as AMAZON_APP,
+  DEVELOPERID,
+  MWSAUTHTOKEN,
+  SELLINGPARTNERID,
+  NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
-import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
-import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
-import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
-import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
-import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
-import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
-import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
-import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
-import { NAME as KATANA_APP } from '../lib/Katana/KatanaApplication';
+import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
+import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
+import {
+  NAME as BULKGATE_APP,
+  APPLICATION_TOKEN,
+  APPLICATION_ID,
+} from '../lib/BulkGate/BulkGateApplicationApplication';
 import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
-import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplication';
-import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
-import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as CLICKUP_APP } from '../lib/Clickup/ClickupApplication';
-import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
+import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
+import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as INTERCOM_APP } from '../lib/Intercom/IntercomApplication';
+import { NAME as KATANA_APP } from '../lib/Katana/KatanaApplication';
+import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
+import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
+import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
+import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
+import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
+import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
+import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplication';
+import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
+import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
+import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
+import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
+import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
+import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
+import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
+import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
+import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 
 const DEFAULT_USER = 'TestUser';
 const DEFAULT_CLIENT_ID = 'ClientId';
@@ -362,6 +374,7 @@ export async function shoptetApp() {
     },
   );
 }
+
 export async function clickupApp() {
   return appInstall(CLICKUP_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {

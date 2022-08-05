@@ -1,15 +1,18 @@
+import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import DIContainer from '@orchesty/nodejs-sdk/dist/lib/DIContainer/Container';
 import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
-import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
+import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import AllegroApplication from '../lib/Allegro/AllegroApplication';
+import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
+import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
 import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
 import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
+import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
 import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
 import AlzaApplication from '../lib/Alza/AlzaApplication';
 import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
@@ -19,12 +22,44 @@ import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConn
 import AlzaTrackAndTraceConnector from '../lib/Alza/Connectors/AlzaTrackAndTraceConnector';
 import AmazonApplication from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import AmazonCreateShipmentConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonCreateShipmentConnector';
+import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
+import AmazonGetOrdersBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonGetOrdersBatch';
+import AmazonListCatalogItemsBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonListCatalogItemsBatch';
+import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
 import BigcommerceApplication from '../lib/Bigcommerce/BigcommerceApplication';
 import BigcommerceCreateOrderConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateOrderConnector';
 import BigcommerceCreateProductConnector from '../lib/Bigcommerce/Connector/BigcommerceCreateProductConnector';
 import BulkGateApplicationApplication from '../lib/BulkGate/BulkGateApplicationApplication';
 import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetPromotionalSMSConnector';
 import BulkGateGetTransactionSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetTransactionSMSConnector';
+import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
+import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
+import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
+import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
+import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
+import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
+import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
+import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
+import ClickupApplication from '../lib/Clickup/ClickupApplication';
+import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
+import FakturaonlineApplication from '../lib/Fakturaonline/FakturaonlineApplication';
+import FakturaonlineCreateNewInvoiceConnector
+  from '../lib/Fakturaonline/Connector/FakturaonlineCreateNewInvoiceConnector';
+import FakturaonlineGetInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineGetInvoiceConnector';
+import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
+import GitHubApplication from '../lib/GitHub/GitHubApplication';
+import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
+import GObalikApplication from '../lib/GObalik/GObalikApplication';
+import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
+import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
+import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
+import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetApplication';
+import IntercomApplication from '../lib/Intercom/IntercomApplication';
+import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
+import KatanaApplication from '../lib/Katana/KatanaApplication';
+import KatanaCreateCustomerConnector from '../lib/Katana/Connectors/KatanaCreateCustomerConnector';
+import KatanaCreateProductConnector from '../lib/Katana/Connectors/KatanaCreateProductConnector';
+import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
 import MallApplication from '../lib/Mall/MallApplication';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
@@ -33,22 +68,58 @@ import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
+import MergadoApplication from '../lib/Mergado/MergadoApplication';
+import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
+import MergadoGetProjectConnector from '../lib/Mergado/Connector/MergadoGetProjectConnector';
+import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
+import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import NutshellApplication from '../lib/Nutshell/NutshellApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
 import NutshellNewTaskConnector from '../lib/Nutshell/Connector/NutshellNewTaskConnector';
+import PaypalApplication from '../lib/Paypal/PaypalApplication';
+import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
+import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
+import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
 import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLeadConnector';
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
 import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
+import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
+import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
+import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
+import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
+import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
 import QuickBooksCreateItemConnector from '../lib/Quickbooks/QuickBooksCreateItemConnector';
 import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
-import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
+import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
+import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
+import ShoptetGetProductDetail from '../lib/Shoptet/Connector/ShoptetGetProductDetail';
+import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 import TableauApplication from '../lib/Tableau/TableauApplication';
+import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
+import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
+import TodoistApplication from '../lib/Todoist/TodoistApplication';
+import TodoistCreateNewTaskConnector from '../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
+import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
+import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
+import TwitterApplication from '../lib/Twitter/TwitterApplication';
+import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
+import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
+import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
+import TypeformApplication from '../lib/Typeform/TypeformApplication';
+import TypeformCreateFormConnector from '../lib/Typeform/Connector/TypeformCreateFormConnector';
+import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/TypeformCreateWorkspaceConnector';
+import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
+import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
+import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
+import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
+import WedoApplication from '../lib/Wedo/WedoApplication';
+import WedoGetPackageBatch from '../lib/Wedo/Batch/WedoGetPackageBatch';
 import WixApplication from '../lib/Wix/WixApplication';
 import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
@@ -62,76 +133,6 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
-import FakturaonlineApplication from '../lib/Fakturaonline/FakturaonlineApplication';
-import FakturaonlineCreateNewInvoiceConnector
-  from '../lib/Fakturaonline/Connector/FakturaonlineCreateNewInvoiceConnector';
-import AmazonGetOrdersBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonGetOrdersBatch';
-import AmazonPutListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
-import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
-import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
-import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
-import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
-import WedoApplication from '../lib/Wedo/WedoApplication';
-import WedoGetPackageBatch from '../lib/Wedo/Batch/WedoGetPackageBatch';
-import AmazonListCatalogItemsBatch from '../lib/AmazonApps/SellingPartner/Batch/AmazonListCatalogItemsBatch';
-import MergadoApplication from '../lib/Mergado/MergadoApplication';
-import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
-import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
-import MergadoGetProjectConnector from '../lib/Mergado/Connector/MergadoGetProjectConnector';
-import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
-import GitHubApplication from '../lib/GitHub/GitHubApplication';
-import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
-import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
-import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
-import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
-import FakturaonlineGetInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineGetInvoiceConnector';
-import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
-import PaypalApplication from '../lib/Paypal/PaypalApplication';
-import PaypalCreateProductConnector from '../lib/Paypal/Connector/PaypalCreateProductConnector';
-import PaypalCreateOrderConnector from '../lib/Paypal/Connector/PaypalCreateOrderConnector';
-import GObalikApplication from '../lib/GObalik/GObalikApplication';
-import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
-import PaypalCreatePayoutConnector from '../lib/Paypal/Connector/PaypalCreatePayoutConnector';
-import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
-import TwitterApplication from '../lib/Twitter/TwitterApplication';
-import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
-import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
-import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
-import KatanaApplication from '../lib/Katana/KatanaApplication';
-import KatanaCreateCustomerConnector from '../lib/Katana/Connectors/KatanaCreateCustomerConnector';
-import KatanaCreateProductConnector from '../lib/Katana/Connectors/KatanaCreateProductConnector';
-import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
-import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
-import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
-import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
-import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
-import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
-import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
-import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
-import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
-import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
-import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
-import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
-import TypeformApplication from '../lib/Typeform/TypeformApplication';
-import TypeformCreateFormConnector from '../lib/Typeform/Connector/TypeformCreateFormConnector';
-import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
-import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
-import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
-import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetApplication';
-import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
-import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
-import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
-import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
-import ClickupApplication from '../lib/Clickup/ClickupApplication';
-import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/TypeformCreateWorkspaceConnector';
-import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
-import TodoistApplication from '../lib/Todoist/TodoistApplication';
-import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
-import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
-import TodoistCreateNewTaskConnector from '../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
-import IntercomApplication from '../lib/Intercom/IntercomApplication';
-import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -155,9 +156,11 @@ export async function prepare(): Promise<void> {
   initBulkGate();
   initCalendly();
   initCeskaPosta();
+  initClickup();
   initFakturaonline();
-  initGObalik();
   initGitHub();
+  initGObalik();
+  initIntercom();
   initKatanaApp();
   initMall();
   initMergado();
@@ -169,16 +172,14 @@ export async function prepare(): Promise<void> {
   initSalesForce();
   initShoptet();
   initTableau();
+  initTodoist();
   initTwitter();
-  initVyfakturuj();
   initTypeform();
+  initVyfakturuj();
   initWedo();
   initWix();
   initZendesk();
   initZoho();
-  initClickup();
-  initTodoist();
-  initIntercom();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -926,6 +927,12 @@ function initShoptet(): void {
     .setDb(db)
     .setApplication(implPluginShoptetApplication);
   container.setConnector(shoptetJobFinishedWebhook);
+
+  const shoptetGetProductDetail = new ShoptetGetProductDetail()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetProductDetail);
 }
 
 function initTypeform(): void {
@@ -965,6 +972,7 @@ function initClickup(): void {
     .setApplication(app);
   container.setConnector(getUser);
 }
+
 function initTodoist(): void {
   const app = new TodoistApplication(oauth2Provider);
   container.setApplication(app);
@@ -988,6 +996,7 @@ function initTodoist(): void {
     .setApplication(app);
   container.setConnector(createNewTask);
 }
+
 function initIntercom(): void {
   const app = new IntercomApplication(oauth2Provider);
   container.setApplication(app);
