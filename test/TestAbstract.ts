@@ -1,4 +1,3 @@
-import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import DIContainer from '@orchesty/nodejs-sdk/dist/lib/DIContainer/Container';
@@ -7,6 +6,7 @@ import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client'
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import AllegroApplication from '../lib/Allegro/AllegroApplication';
 import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
 import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
@@ -134,6 +134,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -972,12 +973,19 @@ function initClickup(): void {
   container.setApplication(app);
 
   const getUser = new ClickupGetUserConnector();
+  const createSpace = new ClickupCreateSpaceConnector();
 
   getUser
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+
+  createSpace
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createSpace);
 }
 
 function initTodoist(): void {
