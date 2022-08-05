@@ -10,12 +10,13 @@ export default class ClickupCreateTaskConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const { listId } = dto.jsonData as IInput;
+    const { listId, ...body } = dto.jsonData as IInput;
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.POST,
       `list/${listId}/task`,
+      body,
     );
 
     const resp = await this._sender.send(req, [200]);
@@ -27,7 +28,7 @@ export default class ClickupCreateTaskConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-listId: number
+    listId: number
     name: string,
     description: string,
     assignees: number[],
@@ -95,4 +96,5 @@ export interface IOutput {
     },
     url: string
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */
