@@ -43,7 +43,7 @@ export default class IDokladApplication extends AOAuth2Application {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', true));
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
 
     return new FormStack().addForm(form);
   };
