@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
-import { NAME as SHOPTET_GET_ALL_PRODUCTS } from '../ShoptetGetAllProducts';
+import { NAME as SHOPTET_GET_PRODUCT_DETAIL } from '../ShoptetGetProductDetail';
 import { container } from '../../../../test/TestAbstract';
 import { shoptetApp } from '../../../../test/DataProvider';
 import { NAME as Shoptet } from '../../../../test/Implementation/ImplPluginShoptetApplication';
 
 let tester: NodeTester;
 
-describe('Tests for ShoptetGetAllProducts', () => {
+describe('Tests for ShoptetGetProductDetail', () => {
   beforeAll(async () => {
     tester = new NodeTester(container, __filename);
 
@@ -25,6 +25,6 @@ describe('Tests for ShoptetGetAllProducts', () => {
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(SHOPTET_GET_ALL_PRODUCTS);
+    await tester.testConnector(SHOPTET_GET_PRODUCT_DETAIL);
   });
 });

@@ -10,6 +10,8 @@ let tester: NodeTester;
 
 describe('Tests for ShoptetGetAllOrders', () => {
   beforeAll(async () => {
+    tester = new NodeTester(container, __filename);
+
     await shoptetApp();
     const cacheKey = `${Shoptet}ApiKey_TestUser`;
 
@@ -20,10 +22,6 @@ describe('Tests for ShoptetGetAllOrders', () => {
       JSON.stringify({ expires_in: 55, access_token: 'testToken' }),
       5,
     );
-  });
-
-  beforeEach(() => {
-    tester = new NodeTester(container, __filename);
   });
 
   it('process - ok', async () => {
