@@ -2,9 +2,9 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
-export const NAME = 'onesignal-view-apps-connector';
+export const NAME = 'onesignal-view-apps-batch';
 
-export default class OnesignalViewAppsConnector extends ABatchNode {
+export default class OnesignalViewAppsBatch extends ABatchNode {
   public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
@@ -15,26 +15,17 @@ export default class OnesignalViewAppsConnector extends ABatchNode {
       appInstall,
       HttpMethods.GET,
       'apps',
-        dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IResponse;
+    const response = resp.jsonBody as IOutput[];
 
-    dto.setItemList(response.data ?? []);
-
+    dto.setItemList(response ?? []);
+    dto.removeBatchCursor();
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponse {
-    data: IOutput[]
-}
-
-export interface IInput {
-    Authorization: string
-}
-
 export interface IOutput {
     id: string,
     name: string,

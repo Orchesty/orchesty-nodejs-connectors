@@ -137,7 +137,7 @@ import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnect
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
-import OnesignalViewAppsConnector from '../lib/Onesignal/Connectors/OnesignalViewAppsConnector';
+import OnesignalViewAppsBatch from '../lib/Onesignal/Batch/OnesignalViewAppsBatch';
 import OnesignalCreateAppConnector from '../lib/Onesignal/Connectors/OnesignalCreateAppConnector';
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -1047,7 +1047,7 @@ function initOnesignal(): void {
   const app = new OnesignalApplication();
   container.setApplication(app);
 
-  const viewsApps = new OnesignalViewAppsConnector();
+  const viewsApps = new OnesignalViewAppsBatch();
   const createApp = new OnesignalCreateAppConnector();
 
   createApp
@@ -1060,5 +1060,5 @@ function initOnesignal(): void {
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
-  container.setConnector(viewsApps);
+  container.setBatch(viewsApps);
 }
