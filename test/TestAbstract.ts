@@ -136,6 +136,9 @@ import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
+import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
+import OnesignalViewAppsBatch from '../lib/Onesignal/Batch/OnesignalViewAppsBatch';
+import OnesignalCreateAppConnector from '../lib/Onesignal/Connectors/OnesignalCreateAppConnector';
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -184,6 +187,7 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
+  initOnesignal();
 }
 
 export async function closeConnection(): Promise<void> {
@@ -1037,4 +1041,24 @@ function initIntercom(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listAllContacts);
+}
+
+function initOnesignal(): void {
+  const app = new OnesignalApplication();
+  container.setApplication(app);
+
+  const viewsApps = new OnesignalViewAppsBatch();
+  const createApp = new OnesignalCreateAppConnector();
+
+  createApp
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createApp);
+
+  viewsApps
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(viewsApps);
 }
