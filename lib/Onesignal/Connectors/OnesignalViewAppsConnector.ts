@@ -1,13 +1,13 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
 export const NAME = 'onesignal-view-apps-connector';
 
-export default class OnesignalViewAppsConnector extends AConnector {
+export default class OnesignalViewAppsConnector extends ABatchNode {
   public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
@@ -17,7 +17,7 @@ export default class OnesignalViewAppsConnector extends AConnector {
       'apps',
     );
     const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
+    // const response = resp.jsonBody as IOutput;
 
     return dto;
   }

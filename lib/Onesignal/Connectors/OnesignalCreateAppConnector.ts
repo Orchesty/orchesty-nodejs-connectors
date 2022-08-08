@@ -71,4 +71,5 @@ export interface IOutput {
     site_name: string,
     basic_auth_key: string
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */
