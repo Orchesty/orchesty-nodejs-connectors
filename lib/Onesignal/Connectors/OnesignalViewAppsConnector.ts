@@ -2,6 +2,9 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
+/* eslint-enable @typescript-eslint/naming-convention */
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+
 export const NAME = 'onesignal-view-apps-connector';
 
 export default class OnesignalViewAppsConnector extends ABatchNode {
@@ -17,13 +20,25 @@ export default class OnesignalViewAppsConnector extends ABatchNode {
       'apps',
     );
     const resp = await this._sender.send(req, [200]);
-    // const response = resp.jsonBody as IOutput;
+    dto.setItemList(response.data ?? []);
+    if (response.pagination.next_page_token) {
+      const nextToken = `?page_token=${response.pagination.next_page_token}`;
+      dto.setBatchCursor(nextToken);
+    }
 
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+interface IResponse {
+    data: IOutput[]
+}
+
+export interface IInput {
+    Authorization: string
+}
+
 export interface IOutput {
     id: string,
     name: string,
@@ -50,5 +65,4 @@ export interface IOutput {
     site_name: string,
     basic_auth_key: string
 }
-
 /* eslint-enable @typescript-eslint/naming-convention */
