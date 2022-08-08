@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "regno": 123,
+        "email": "email",
+        "name": "name",
+        "country_code": "cz",
+        "bank_account": "bank_account",
+        "only_active": true,
+        "expand_regno": true,
+        "sort": "sort"
+    }
+}
