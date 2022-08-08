@@ -136,6 +136,7 @@ import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
+import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -1025,9 +1026,15 @@ function initIntercom(): void {
   container.setApplication(app);
 
   const createContact = new IntercomCreateContactConnector();
+  const listAllContacts = new IntercomListAllContactsBatch();
   createContact
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(createContact);
+  listAllContacts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listAllContacts);
 }
