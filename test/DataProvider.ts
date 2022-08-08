@@ -54,6 +54,7 @@ import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/Vyfakturuj
 import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
+import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 
@@ -418,6 +419,14 @@ export async function intercomApp() {
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
+    },
+  });
+}
+
+export async function merkApp() {
+  return appInstall(MERK_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [API_KEY]: 'Api key',
     },
   });
 }

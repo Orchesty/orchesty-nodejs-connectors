@@ -1,0 +1,258 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+    "regno": "",
+    "regno_str": "",
+    "vatno": "",
+    "taxno": "",
+    "databox_ids": [
+        {}
+    ],
+    "name": "",
+    "legal_form": {
+        "id": "",
+        "text": ""
+    },
+    "estab_date": "",
+    "closing_date": "",
+    "status": {
+        "id": "",
+        "text": ""
+    },
+    "is_active": false,
+    "address": {
+        "country_code": "choice",
+        "number_descriptive": "",
+        "municipality_part": "",
+        "municipality": "",
+        "number": "",
+        "street": "",
+        "postal_code": "",
+        "number_orientation": "",
+        "municipality_first": "",
+        "street_fixed": "",
+        "region": {
+            "id": "",
+            "text": ""
+        },
+        "county": {
+            "id": "",
+            "text": ""
+        },
+        "lines": [
+            {}
+        ],
+        "text": ""
+    },
+    "bank_accounts": [
+        {
+            "account_number": "",
+            "bank_code": ""
+        }
+    ],
+    "phones": [
+        {
+            "score": "",
+            "acc": "",
+            "number": ""
+        }
+    ],
+    "mobiles": [
+        {
+            "score": "",
+            "acc": "",
+            "number": ""
+        }
+    ],
+    "emails": [
+        {
+            "score": "",
+            "acc": "",
+            "email": ""
+        }
+    ],
+    "webs": [
+        {
+            "score": "",
+            "acc": "",
+            "url": ""
+        }
+    ],
+    "industry": {
+        "id": "",
+        "text": ""
+    },
+    "secondary_industries": [
+        {
+            "id": "",
+            "text": ""
+        }
+    ],
+    "magnitude": {
+        "id": "",
+        "trend": "",
+        "lower_bound": "",
+        "upper_bound": "",
+        "text": ""
+    },
+    "turnover": {
+        "id": "",
+        "trend": "",
+        "lower_bound": "",
+        "upper_bound": "",
+        "text": ""
+    },
+    "court": {
+        "name": "",
+        "file_nr": ""
+    },
+    "is_vatpayer": false,
+    "vat_registration_type": false,
+    "vat_registration_date": "",
+    "is_unreliable_vatpayer": false,
+    "unreliable_vatpayer_since": "",
+    "vzp_debt": "",
+    "insolvency_cases": [
+        {
+            "stamp": "",
+            "status": 0,
+            "ws_id": "",
+            "court_file_nr": ""
+        }
+    ],
+    "sk_insolvency_cases": [
+        {
+            "stamp": "",
+            "status": 0,
+            "type_id": 0,
+            "ru_id": 0,
+            "court_file_nr": ""
+        }
+    ],
+    "gps": {
+        "lat": 0,
+        "lon": 0
+    },
+    "salutation": "",
+    "owning_type": {
+        "id": "",
+        "text": ""
+    },
+    "profit": {
+        "trend": "",
+        "year": 0,
+        "amount": 0
+    },
+    "ebidta": {
+        "year": 0,
+        "amount": 0
+    },
+    "bank_accounts_balance": {
+        "year": 0,
+        "amount": 0
+    },
+    "company_index": {
+        "year": 0,
+        "value": 0
+    },
+    "link": "",
+    "business_premises_count": 0,
+    "active_licenses_count": 0,
+    "body": {
+        "average_age": 0,
+        "persons": [
+            {
+                "country_code": "choice",
+                "first_name": "",
+                "last_name": "",
+                "age": 0,
+                "degree_after": "",
+                "degree_before": "",
+                "link": "",
+                "gender": "",
+                "salutation": "",
+                "company_role": "",
+                "company_role_id": 0,
+                "address": {
+                    "country_code": "choice",
+                    "number_descriptive": "",
+                    "municipality_part": "",
+                    "municipality": "",
+                    "number": "",
+                    "street": "",
+                    "postal_code": "",
+                    "number_orientation": "",
+                    "municipality_first": "",
+                    "street_fixed": "",
+                    "text": ""
+                }
+            }
+        ]
+    },
+    "esi": [
+        {
+            "project_name": "",
+            "status_id": 0,
+            "esi_program": "",
+            "eu_fund": "",
+            "allocation_amount": 0,
+            "total_paid_from_project_start": 0,
+            "iterim_payment_date": "",
+            "allocation_date": "",
+            "expected_end_date_of_the_operation": "",
+            "union_cofinancing_rate": 0
+        }
+    ],
+    "government_grants": [
+        {
+            "grant_id": "",
+            "beneficiary_id": "",
+            "case_id": "",
+            "project_code": "",
+            "project_name": "",
+            "project_id": "",
+            "signed_date": "",
+            "amount_requested": 0,
+            "amount_granted": 0
+        }
+    ],
+    "trademarks": [
+        {
+            "wording": "",
+            "reproduction": "",
+            "stamp_application": "",
+            "stamp_registered": "",
+            "product_or_service_classes": "",
+            "image_classes": "",
+            "nr_register": "",
+            "nr_application": 0,
+            "source": "",
+            "url": "",
+            "url_doc": "",
+            "tm_type": "",
+            "status": ""
+        }
+    ],
+    "twitter": [
+        {}
+    ],
+    "facebook": [
+        {}
+    ],
+    "linkedin": [
+        {}
+    ],
+    "acting_manner": [
+        {
+            "manner_text": "",
+            "start_date": ""
+        }
+    ],
+    "last_financial_statement": {
+        "published_date": "",
+        "statement_date": ""
+    }
+}
+}
