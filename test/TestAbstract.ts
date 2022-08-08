@@ -50,6 +50,7 @@ import FakturaonlineGetInvoiceConnector from '../lib/Fakturaonline/Connector/Fak
 import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
 import GitHubApplication from '../lib/GitHub/GitHubApplication';
 import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
+import GitHubGeRespositoriesBatch from '../lib/GitHub/Batch/GitHubRepositoriesBatch';
 import GObalikApplication from '../lib/GObalik/GObalikApplication';
 import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
 import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
@@ -722,12 +723,19 @@ function initGitHub(): void {
   container.setApplication(app);
 
   const getApp = new GitHubGetAppConnector();
+  const getRepositories = new GitHubGeRespositoriesBatch();
 
   getApp
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getApp);
+
+  getRepositories
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getRepositories);
 }
 
 function initPaypal(): void {
