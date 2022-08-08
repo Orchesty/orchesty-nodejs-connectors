@@ -134,6 +134,7 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
@@ -974,12 +975,19 @@ function initClickup(): void {
 
   const getUser = new ClickupGetUserConnector();
   const createSpace = new ClickupCreateSpaceConnector();
+  const createTask = new ClickupCreateTaskConnector();
 
   getUser
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+
+  createTask
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createTask);
 
   createSpace
     .setSender(sender)
