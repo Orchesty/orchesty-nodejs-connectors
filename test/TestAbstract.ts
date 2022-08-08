@@ -141,6 +141,8 @@ import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
 import OnesignalViewAppsBatch from '../lib/Onesignal/Batch/OnesignalViewAppsBatch';
 import OnesignalCreateAppConnector from '../lib/Onesignal/Connectors/OnesignalCreateAppConnector';
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
+import MerkApplication from '../lib/Merk/MerkApplication';
+import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -186,6 +188,7 @@ export async function prepare(): Promise<void> {
   initVyfakturuj();
   initWedo();
   initWix();
+  initMerk();
   initZendesk();
   initZoho();
   initOnesignal();
@@ -1069,4 +1072,16 @@ function initOnesignal(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(viewsApps);
+}
+
+function initMerk(): void {
+  const app = new MerkApplication();
+  container.setApplication(app);
+
+  const getCompany = new MerkGetCompanyConnector();
+  getCompany
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getCompany);
 }
