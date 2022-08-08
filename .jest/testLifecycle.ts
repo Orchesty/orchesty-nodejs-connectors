@@ -18,6 +18,6 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await dropCollection(ApplicationInstall.getCollection());
-  await closeConnection();
+  // await dropCollection(ApplicationInstall.getCollection());
+  // await closeConnection();
 })

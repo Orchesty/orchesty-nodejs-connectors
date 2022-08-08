@@ -1,6 +1,6 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import init from '../../../../test/Implementation/allegro';
 import { NAME as ALLEGRO_GET_AVAILABLE_PRODUCTS_BATCH } from '../AllegroGetAvailableProductsBatch';
-import { allegroApp } from '../../../../test/DataProvider';
 import { container } from '../../../../test/TestAbstract';
 
 let tester: NodeTester;
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for AllegroGetAvailableProductsBatch', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename);
-    await allegroApp();
+    await init();
   });
 
   it('process - ok', async () => {

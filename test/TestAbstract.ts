@@ -7,19 +7,6 @@ import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
-import AllegroApplication from '../lib/Allegro/AllegroApplication';
-import AllegroCreateDraftOfferConnector from '../lib/Allegro/Connector/AllegroCreateDraftOfferConnector';
-import AllegroGetAvailableProductsBatch from '../lib/Allegro/Batch/AllegroGetAvailableProductsBatch';
-import AllegroGetOrderDetailConnector from '../lib/Allegro/Connector/AllegroGetOrderDetailConnector';
-import AllegroGetProductDetailConnector from '../lib/Allegro/Connector/AllegroGetProductDetailConnector';
-import AllegroGetUsersOrderListBatch from '../lib/Allegro/Batch/AllegroGetUsersOrderListBatch';
-import AllegroProposeProductConnector from '../lib/Allegro/Connector/AllegroProposeProductConnector';
-import AlzaApplication from '../lib/Alza/AlzaApplication';
-import AlzaCancelOrderConnector from '../lib/Alza/Connectors/AlzaCancelOrderConnector';
-import AlzaConfirmOrderConnector from '../lib/Alza/Connectors/AlzaConfirmOrderConnector';
-import AlzaCreateShipmentConnector from '../lib/Alza/Connectors/AlzaCreateShipmentConnector';
-import AlzaInsetrOrderConnector from '../lib/Alza/Connectors/AlzaInsetrOrderConnector';
-import AlzaTrackAndTraceConnector from '../lib/Alza/Connectors/AlzaTrackAndTraceConnector';
 import AmazonApplication from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import AmazonCreateShipmentConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonCreateShipmentConnector';
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
@@ -153,15 +140,19 @@ export let sender: CurlSender;
 export let oauth2Provider: OAuth2Provider;
 /* eslint-enable import/no-mutable-exports */
 
+let initiated = false;
+
 export async function prepare(): Promise<void> {
+  if (initiated) {
+    return;
+  }
+
   await initiateContainer();
   container = c;
   db = container.get(CoreServices.MONGO);
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
-  initAllegro();
-  initAlza();
   initAmazon();
   initBigcommerce();
   initBulkGate();
@@ -193,6 +184,8 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initZoho();
   initOnesignal();
+
+  initiated = true;
 }
 
 export async function closeConnection(): Promise<void> {
@@ -506,90 +499,6 @@ function initWix(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(updateProduct);
-}
-
-function initAlza(): void {
-  const app = new AlzaApplication();
-  container.setApplication(app);
-
-  const createShipment = new AlzaCreateShipmentConnector();
-  const insertOrder = new AlzaInsetrOrderConnector();
-  const cancelOrder = new AlzaCancelOrderConnector();
-  const confirmOrder = new AlzaConfirmOrderConnector();
-  const trackAndTrace = new AlzaTrackAndTraceConnector();
-
-  createShipment
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createShipment);
-
-  insertOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(insertOrder);
-
-  cancelOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(cancelOrder);
-
-  confirmOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(confirmOrder);
-
-  trackAndTrace
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(trackAndTrace);
-}
-
-function initAllegro(): void {
-  const app = new AllegroApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const getProductDetail = new AllegroGetProductDetailConnector();
-  const proposeProduct = new AllegroProposeProductConnector();
-  const getOrderDetail = new AllegroGetOrderDetailConnector();
-  const getUsersOrderList = new AllegroGetUsersOrderListBatch();
-  const getAvailableProducts = new AllegroGetAvailableProductsBatch();
-  const createDraftOffer = new AllegroCreateDraftOfferConnector();
-
-  getProductDetail
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(getProductDetail);
-  proposeProduct
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(proposeProduct);
-  getOrderDetail
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(getOrderDetail);
-  getUsersOrderList
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(getUsersOrderList);
-  getAvailableProducts
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(getAvailableProducts);
-  createDraftOffer
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createDraftOffer);
 }
 
 function initAmazon(): void {
