@@ -1,0 +1,136 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data":
+    {
+        "regno": "",
+        "regno_str": "",
+        "vatno": "",
+        "taxno": "",
+        "databox_ids": [
+            {}
+        ],
+        "name": "",
+        "legal_form": {
+            "id": "",
+            "text": ""
+        },
+        "estab_date": "",
+        "closing_date": "",
+        "status": {
+            "id": "",
+            "text": ""
+        },
+        "is_active": false,
+        "address": {
+            "country_code": "choice",
+            "number_descriptive": "",
+            "municipality_part": "",
+            "municipality": "",
+            "number": "",
+            "street": "",
+            "postal_code": "",
+            "number_orientation": "",
+            "municipality_first": "",
+            "street_fixed": "",
+            "region": {
+                "id": "",
+                "text": ""
+            },
+            "county": {
+                "id": "",
+                "text": ""
+            },
+            "lines": [
+                {}
+            ],
+            "text": ""
+        },
+        "bank_accounts": [
+            {
+                "account_number": "",
+                "bank_code": ""
+            }
+        ],
+        "phones": [
+            {
+                "score": "",
+                "acc": "",
+                "number": ""
+            }
+        ],
+        "mobiles": [
+            {
+                "score": "",
+                "acc": "",
+                "number": ""
+            }
+        ],
+        "emails": [
+            {
+                "score": "",
+                "acc": "",
+                "email": ""
+            }
+        ],
+        "webs": [
+            {
+                "score": "",
+                "acc": "",
+                "url": ""
+            }
+        ],
+        "industry": {
+            "id": "",
+            "text": ""
+        },
+        "secondary_industries": [
+            {
+                "id": "",
+                "text": ""
+            }
+        ],
+        "magnitude": {
+            "id": "",
+            "trend": "",
+            "lower_bound": "",
+            "upper_bound": "",
+            "text": ""
+        },
+        "turnover": {
+            "id": "",
+            "trend": "",
+            "lower_bound": "",
+            "upper_bound": "",
+            "text": ""
+        },
+        "court": {
+            "name": "",
+            "file_nr": ""
+        },
+        "is_vatpayer": false,
+        "vat_registration_type": false,
+        "vat_registration_date": "",
+        "is_unreliable_vatpayer": false,
+        "unreliable_vatpayer_since": "",
+        "vzp_debt": "",
+        "insolvency_cases": [
+            {
+                "stamp": "",
+                "status": 0,
+                "ws_id": "",
+                "court_file_nr": ""
+            }
+        ],
+        "sk_insolvency_cases": [
+            {
+                "stamp": "",
+                "status": 0,
+                "type_id": 0,
+                "ru_id": 0,
+                "court_file_nr": ""
+            }
+        ]
+    }
+}

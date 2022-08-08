@@ -143,6 +143,7 @@ import OnesignalCreateAppConnector from '../lib/Onesignal/Connectors/OnesignalCr
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 import MerkApplication from '../lib/Merk/MerkApplication';
 import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnector';
+import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -1079,9 +1080,16 @@ function initMerk(): void {
   container.setApplication(app);
 
   const getCompany = new MerkGetCompanyConnector();
+  const getSuggest = new MerkSuggestConnector();
   getCompany
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setConnector(getCompany);
+
+  getSuggest
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getSuggest);
 }
