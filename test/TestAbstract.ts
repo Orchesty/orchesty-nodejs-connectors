@@ -134,6 +134,7 @@ import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
+import MondayApplication from '../lib/Monday/MondayApplication';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -169,6 +170,7 @@ export async function prepare(): Promise<void> {
   initKatanaApp();
   initMall();
   initMergado();
+  initMonday();
   initNutshell();
   initPaypal();
   initPipedrive();
@@ -1024,4 +1026,9 @@ function initGreenHouse(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listCandidates);
+}
+
+function initMonday(): void {
+  const app = new MondayApplication();
+  container.setApplication(app);
 }
