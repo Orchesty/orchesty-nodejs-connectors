@@ -53,5 +53,6 @@ export default class MondayApplication extends ABasicApplication {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => [
     'boards:write',
+    'boards:read',
   ];
 }
