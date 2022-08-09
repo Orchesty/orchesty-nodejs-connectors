@@ -53,28 +53,22 @@ export interface IOutput{
   },
   rejection_reason: null,
   rejection_details: null,
-  jobs: [
+  jobs:
     {
       id: number,
       name: string
-    }
-  ],
+    }[],
   job_post_id: number,
   status: string,
   current_stage: {
     id: number,
     name: string
   },
-  answers: [
+  answers:
     {
       question: string,
       answer: string
-    },
-    {
-      question: string,
-      answer: string
-    }
-  ],
+    }[],
   prospective_office: null,
   prospective_department: null,
   prospect_detail: {
@@ -92,12 +86,11 @@ export interface IOutput{
       value: string
     }
   },
-  attachments: [
+  attachments:
     {
       filename: string,
       url: string,
       type: string
-    }
-  ]
+    }[]
 }
 /* eslint-enable @typescript-eslint/naming-convention */
