@@ -440,14 +440,6 @@ export async function greenHouseApp() {
   });
 }
 
-export async function recruitee() {
-  return appInstall(RECRUITEE_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
-    },
-  });
-}
-
 export async function mondayApp() {
   return appInstall(MONDAY_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
