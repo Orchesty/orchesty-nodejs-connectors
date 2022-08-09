@@ -48,7 +48,7 @@ export default class MarketoApplication extends ABasicApplication {
     const secret = settings[AUTHORIZATION_FORM][CLIENT_SECRET];
     const baseUrl = settings[AUTHORIZATION_FORM][MARKETO_URL];
     const logInRequest = new RequestDto(
-      `${baseUrl}/rest/oauth/token?grant_type=client_credentials&client_id=${id}&client_secret=${secret}`,
+      `${baseUrl}/identity/oauth/token?grant_type=client_credentials&client_id=${id}&client_secret=${secret}`,
       HttpMethods.GET,
       dto,
     );

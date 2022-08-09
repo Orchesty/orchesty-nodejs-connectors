@@ -16,7 +16,7 @@ export default class MarketoGetFilesBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `/asset/v1/files.json?offset=${offset}&limit=${LIMIT}`,
+      `/asset/v1/files.json?offset=${offset}&maxReturn=${LIMIT}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IOutput;
