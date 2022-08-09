@@ -49,8 +49,10 @@ dependencies:
   '@types/node-fetch': 2.6.2
   form-data: 4.0.0
   luxon: 3.0.1
+  mongodb: 4.8.1
   mongodb-typescript: 3.0.0_yyyzprzmcubp242un7v33y3jai
   node-fetch: 2.6.7
+  reflect-metadata: 0.1.13
 
 optionalDependencies:
   '@aws-sdk/client-lambda': 3.142.0
@@ -82,9 +84,7 @@ devDependencies:
   eslint-import-resolver-typescript: 3.4.0_jatgrcxl4x7ywe7ak6cnjca2ae
   eslint-plugin-import: 2.26.0_klqlxqqxnpnfpttri4irupweri
   jest: 28.1.3_6caleeh6c3yahw3yaj3duy3aa4
-  mongodb: 4.8.1
   nodemon: 2.0.19
-  reflect-metadata: 0.1.13
   ts-jest: 28.0.7_bi2kohzqnxavgozw3csgny5hju
   ts-node: 10.9.1_hn66opzbaneygq52jmwjxha6su
   typescript: 4.7.4
@@ -1880,7 +1880,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.18.10
+      '@babel/generator': 7.18.12
       '@babel/helper-compilation-targets': 7.18.9_@babel+core@7.18.10
       '@babel/helper-module-transforms': 7.18.9
       '@babel/helpers': 7.18.9
@@ -1897,8 +1897,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/generator/7.18.10:
-    resolution: {integrity: sha512-0+sW7e3HjQbiHbj1NeU/vN8ornohYlacAfZIaXhdoGweQqgcNy69COVciYYqEXJ/v+9OBA7Frxm4CVAuNqKeNA==}
+  /@babel/generator/7.18.12:
+    resolution: {integrity: sha512-dfQ8ebCN98SvyL7IxNMCUtZQSq5R7kxgN+r8qYTGDmmSion1hX2C0zq2yo1bsCDhXixokv1SAWTZUMYbO/V5zg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.18.10
@@ -2157,7 +2157,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.18.10
+      '@babel/generator': 7.18.12
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.18.9
       '@babel/helper-hoist-variables': 7.18.6
@@ -2644,7 +2644,7 @@ packages:
       prom-client: 12.0.0
       reflect-metadata: 0.1.13
       simple-oauth2: 4.3.0
-      sodium-native: 3.3.0
+      sodium-native: 3.4.0
       typescript: 4.7.4
       winston: 3.8.1
     transitivePeerDependencies:
@@ -3984,7 +3984,7 @@ packages:
       is-weakref: 1.0.2
       object-inspect: 1.12.2
       object-keys: 1.1.1
-      object.assign: 4.1.2
+      object.assign: 4.1.3
       regexp.prototype.flags: 1.4.3
       string.prototype.trimend: 1.0.5
       string.prototype.trimstart: 1.0.5
@@ -4052,7 +4052,7 @@ packages:
       confusing-browser-globals: 1.0.11
       eslint: 8.21.0
       eslint-plugin-import: 2.26.0_klqlxqqxnpnfpttri4irupweri
-      object.assign: 4.1.2
+      object.assign: 4.1.3
       object.entries: 1.1.5
       semver: 6.3.0
     dev: true
@@ -5434,7 +5434,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     dependencies:
       '@babel/core': 7.18.10
-      '@babel/generator': 7.18.10
+      '@babel/generator': 7.18.12
       '@babel/plugin-syntax-typescript': 7.18.6_@babel+core@7.18.10
       '@babel/traverse': 7.18.11
       '@babel/types': 7.18.10
@@ -6214,8 +6214,8 @@ packages:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
     engines: {node: '>= 0.4'}
 
-  /object.assign/4.1.2:
-    resolution: {integrity: sha512-ixT2L5THXsApyiUPYKmW+2EHpXXe5Ii3M+f4e+aJFAHao5amFRW6J0OO6c/LU8Be47utCx2GL89hxGB6XSmKuQ==}
+  /object.assign/4.1.3:
+    resolution: {integrity: sha512-ZFJnX3zltyjcYJL0RoCJuzb+11zWGyaDbjgxZbdV7rFEcHQuYxrZqhow67aA7xpes6LhojyFDaBKAFfogQrikA==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
@@ -7070,8 +7070,8 @@ packages:
       ip: 2.0.0
       smart-buffer: 4.2.0
 
-  /sodium-native/3.3.0:
-    resolution: {integrity: sha512-rg6lCDM/qa3p07YGqaVD+ciAbUqm6SoO4xmlcfkbU5r1zIGrguXztLiEtaLYTV5U6k8KSIUFmnU3yQUSKmf6DA==}
+  /sodium-native/3.4.0:
+    resolution: {integrity: sha512-eK6bZec++txj/VcLyMp98+UwqfZ8S8Mc8OSata1S31ZfbTFs61ulCaYQnlScxZsUxeq1A+xXLcVh3JX8Tr9k+A==}
     requiresBuild: true
     dependencies:
       node-gyp-build: 4.5.0

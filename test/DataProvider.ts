@@ -15,7 +15,6 @@ import {
   NAME as ZOHO_APP,
   REPORT_LINK_NAME,
 } from '../lib/Zoho/ZohoApplication';
-import { API, NAME as ALZA_APP, SERVER } from '../lib/Alza/AlzaApplication';
 import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
 import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 import { db } from './TestAbstract';
@@ -25,7 +24,6 @@ import {
   SELLINGPARTNERID,
   NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
-import { ENVIRONMENT, NAME as ALLEGRO_APP } from '../lib/Allegro/AllegroApplication';
 import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import {
@@ -58,11 +56,11 @@ import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 
-const DEFAULT_USER = 'TestUser';
-const DEFAULT_CLIENT_ID = 'ClientId';
-const DEFAULT_CLIENT_SECRET = 'ClientSecret';
-const DEFAULT_ACCESS_TOKEN = 'AccessToken';
-const DEFAULT_PASSWORD = 'Password';
+export const DEFAULT_USER = 'TestUser';
+export const DEFAULT_CLIENT_ID = 'ClientId';
+export const DEFAULT_CLIENT_SECRET = 'ClientSecret';
+export const DEFAULT_ACCESS_TOKEN = 'AccessToken';
+export const DEFAULT_PASSWORD = 'Password';
 
 export async function appInstall(
   name: string,
@@ -180,19 +178,6 @@ export async function mallApp() {
   });
 }
 
-export async function allegroApp() {
-  return appInstall(ALLEGRO_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [ENVIRONMENT]: 'test_environment',
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
-}
-
 export async function tableauApp() {
   return appInstall(TABLEAU_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
@@ -220,17 +205,6 @@ export async function bulkGateApp() {
     [AUTHORIZATION_FORM]: {
       [APPLICATION_TOKEN]: 'application token',
       [APPLICATION_ID]: 'application id',
-    },
-  });
-}
-
-export async function alzaApp() {
-  return appInstall(ALZA_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [USER]: DEFAULT_USER,
-      [PASSWORD]: DEFAULT_PASSWORD,
-      [SERVER]: 'https://server.cz',
-      [API]: 'api_path',
     },
   });
 }
