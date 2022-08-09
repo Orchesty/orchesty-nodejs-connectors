@@ -144,6 +144,7 @@ import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoar
 import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
+import BoxListTasksBatch from '../lib/Box/Batch/BoxListTasksBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -1075,6 +1076,7 @@ function initBox(): void {
 
   const getCollaboration = new BoxGetCollaborationConnector();
   const getUser = new BoxGetUserConnector();
+  const listTasks = new BoxListTasksBatch();
   getCollaboration
     .setSender(sender)
     .setDb(db)
@@ -1085,6 +1087,11 @@ function initBox(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getUser);
+  listTasks
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listTasks);
 }
 
 function initMarketo(): void {
