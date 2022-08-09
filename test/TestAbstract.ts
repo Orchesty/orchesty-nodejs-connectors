@@ -133,6 +133,7 @@ import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnect
 import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenhousListAppBatch from '../lib/GreenHouse/Batch/GreenhousListAppBatch';
+import GreenHousListCandidates from '../lib/GreenHouse/Batch/GreenHousListCandidates';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -1010,10 +1011,17 @@ function initGreenHous(): void {
   container.setApplication(app);
 
   const listApp = new GreenhousListAppBatch();
+  const listCandidates = new GreenHousListCandidates();
 
   listApp
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listApp);
+
+  listCandidates
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listCandidates);
 }
