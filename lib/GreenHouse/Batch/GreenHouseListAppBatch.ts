@@ -2,9 +2,9 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
-export const NAME = 'greenhous-list-app-batch';
+export const NAME = 'green-house-list-app-batch';
 
-export default class GreenhousListAppBatch extends ABatchNode {
+export default class GreenHouseListAppBatch extends ABatchNode {
   public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
