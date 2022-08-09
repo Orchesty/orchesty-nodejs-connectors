@@ -38,10 +38,12 @@ export default class GreenHouseApplication extends ABasicApplication {
     data?: unknown,
   ): RequestDto => {
     const request = new RequestDto(`https://harvest.greenhouse.io/v1/${_url}`, method, dto);
+    const username = applicationInstall.getSettings()[AUTHORIZATION_FORM][USERNAME];
+    const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${USERNAME}:${PASSWORD}`),
+      [CommonHeaders.AUTHORIZATION]: encode(`${username}:${password}`),
     };
 
     if (data) {
