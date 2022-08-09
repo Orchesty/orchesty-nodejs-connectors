@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"rating\":null,\"sources\":[],\"gdpr_uncompleted_removal_request_created_at\":null,\"last_activity_at\":\"2021-10-27T15:21:43Z\",\"deleted_by\":null,\"assigned_admins_ids\":[],\"source\":\"manual\",\"gdpr_expires_at\":\"2022-04-25T15:20:20Z\",\"new\":false,\"deleted_by_name\":null,\"id\":1711504,\"admin_id\":21775,\"rating_visible\":true,\"name\":\"Stephanie Wood\",\"photo_thumb_url\":\"https://recruitee.s3.eu-central-1.amazonaws.com/candidates/1711504/thumb_photo_un1dgnoee824.png\",\"phones\":[\"123456789\"],\"tags\":[],\"unread_notifications\":false,\"created_at\":\"2021-10-27T15:20:20Z\",\"gdpr_status\":\"no_consent\",\"initials\":\"SW\",\"company_id\":155616,\"has_avatar\":false,\"updated_at\":\"2022-03-25T09:00:33Z\",\"deleted_at\":null,\"emails\":[\"stephanie.wood@email.ghostinspector.com\"],\"placements\":[{\"disqualified\":false,\"disqualified_at\":null,\"disqualified_by\":null,\"disqualified_by_name\":null,\"disqualify_kind\":null,\"disqualify_reason\":null,\"eeo_data_status\":null,\"id\":2001897,\"offer\":{\"id\":433778,\"kind\":\"job\",\"slug\":\"backend-developer\",\"status\":\"internal\",\"title\":\"Backend Developer\"},\"overdue_at\":\"2021-11-03T15:21:43Z\",\"overdue_diff\":-13460272,\"positive_ratings\":null,\"rating_visible\":true,\"stage\":{\"id\":2216727,\"name\":\"Phone interview\",\"time_limit\":604800}}],\"gdpr_uncompleted_change_request_created_at\":null,\"example\":false,\"gdpr_consent_ever_given\":false,\"highlight\":null,\"soft_deleted_at\":null,\"positive_ratings\":null,\"deleted\":false}",
+            "headers": null
+        }
+    ]
+}
