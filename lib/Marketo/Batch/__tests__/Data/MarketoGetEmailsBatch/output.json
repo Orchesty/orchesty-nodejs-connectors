@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"createdAt\":\"2022-08-09T11:59:30.675Z\",\"description\":\"string\",\"folder\":{\"id\":0,\"type\":\"Folder\"},\"fromEmail\":{\"type\":\"string\",\"value\":\"string\"},\"fromName\":{\"type\":\"string\",\"value\":\"string\"},\"id\":0,\"name\":\"string\",\"operational\":true,\"publishToMSI\":true,\"replyEmail\":{\"type\":\"string\",\"value\":\"string\"},\"status\":\"string\",\"subject\":{\"type\":\"string\",\"value\":\"string\"},\"template\":0,\"textOnly\":true,\"updatedAt\":\"2022-08-09T11:59:30.675Z\",\"url\":\"string\",\"version\":1,\"webView\":true,\"workspace\":\"string\",\"autoCopyToText\":true,\"isOpenTrackingDisabled\":true,\"preHeader\":\"string\",\"ccFields\":[{\"attributeId\":\"string\",\"objectName\":\"string\",\"displayName\":\"string\",\"apiName\":\"string\"}]}",
+      "headers": null
+    }
+  ]
+}

@@ -141,6 +141,7 @@ import MondayApplication from '../lib/Monday/MondayApplication';
 import MondayCreateGroupConnector from '../lib/Monday/Connector/MondayCreateGroupConnector';
 import MondayCreateItemConnector from '../lib/Monday/Connector/MondayCreateItemConnector';
 import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
+import MarketoGetEmailsBatch from '../lib/Marketo/Batch/MarketoGetEmailsBatch';
 import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
@@ -1092,10 +1093,17 @@ function initMarketo(): void {
   container.setApplication(app);
 
   const getFiles = new MarketoGetFilesBatch();
+  const getEmails = new MarketoGetEmailsBatch();
 
   getFiles
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(getFiles);
+
+  getEmails
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getEmails);
 }
