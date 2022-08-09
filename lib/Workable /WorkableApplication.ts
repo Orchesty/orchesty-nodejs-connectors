@@ -12,6 +12,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 
 export const NAME = 'workable';
 export const ACCESS_TOKEN = 'access token';
+export const SUBDOMAIN = 'subdomain';
 
 export default class WorkableApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -22,7 +23,8 @@ export default class WorkableApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, ACCESS_TOKEN, ' access token', undefined, true));
+      .addField(new Field(FieldType.TEXT, ACCESS_TOKEN, ' access token', undefined, true))
+      .addField(new Field(FieldType.TEXT, SUBDOMAIN, ' subdomain', 'www', true));
 
     return new FormStack().addForm(form);
   };
@@ -39,7 +41,7 @@ export default class WorkableApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Bearer${accessToken}`,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${accessToken}`,
     };
 
     if (data) {

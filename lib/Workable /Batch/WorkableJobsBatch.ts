@@ -1,6 +1,8 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { SUBDOMAIN } from '../WorkableApplication';
 
 export const NAME = 'workable-jobs-batch';
 
@@ -9,9 +11,9 @@ export default class WorkableJobsBatch extends ABatchNode {
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
-    const { subdomain } = dto.jsonData as IInput;
-    const url = dto.getBatchCursor(`${subdomain}.workable.com/spi/v3/jobs`);
     const appInstall = await this._getApplicationInstallFromProcess(dto);
+    const subdomain = appInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
+    const url = dto.getBatchCursor(`${subdomain}.workable.com/spi/v3/jobs`);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
