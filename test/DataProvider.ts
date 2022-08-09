@@ -58,6 +58,7 @@ import { MARKETO_URL, NAME as MARKETO_APP } from '../lib/Marketo/MarketoApplicat
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
+import { NAME as RECRUITEE_APP } from '../lib/Recruitee/RecruiteeApplication';
 import { NAME as BOX_APP } from '../lib/Box/BoxApplication';
 
 export const DEFAULT_USER = 'TestUser';
