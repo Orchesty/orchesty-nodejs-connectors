@@ -11,13 +11,13 @@ export default class MondayCreateGroupConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     const body = dto.jsonData as IInput;
-    let graphQl = 'mutation { create_item (';
+    let graphQl = 'mutation { create_group (';
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(body)) {
       graphQl += `${key}"${value}",`;
     }
     graphQl = graphQl.slice(0, -1);
-    graphQl += ') {column_values ids creator_id id name parent_item subscribers}}';
+    graphQl += ') {color id position title}}';
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
