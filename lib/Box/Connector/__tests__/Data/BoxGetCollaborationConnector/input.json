@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "collaboration_id": "1234"
+    }
+}

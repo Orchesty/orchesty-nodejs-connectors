@@ -58,6 +58,7 @@ import { MARKETO_URL, NAME as MARKETO_APP } from '../lib/Marketo/MarketoApplicat
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
+import { NAME as BOX_APP } from '../lib/Box/BoxApplication';
 
 export const DEFAULT_USER = 'TestUser';
 export const DEFAULT_CLIENT_ID = 'ClientId';
@@ -442,6 +443,18 @@ export async function mondayApp() {
   return appInstall(MONDAY_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_KEY]: 'Api key',
+    },
+  });
+}
+
+export async function boxApp() {
+  return appInstall(BOX_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 }
