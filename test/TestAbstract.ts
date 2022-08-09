@@ -122,6 +122,8 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
+import MarketoApplication from '../lib/Marketo/MarketoApplication';
+import MarketoGetFilesBatch from '../lib/Marketo/Batch/MarketoGetFilesBatch';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
@@ -194,6 +196,7 @@ export async function prepare(): Promise<void> {
   initZoho();
   initOnesignal();
   initGreenHouse();
+  initMarketo();
 
   initiated = true;
 }
@@ -1061,4 +1064,17 @@ function initMonday(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createItem);
+}
+
+function initMarketo(): void {
+  const app = new MarketoApplication(sender);
+  container.setApplication(app);
+
+  const getFiles = new MarketoGetFilesBatch();
+
+  getFiles
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getFiles);
 }
