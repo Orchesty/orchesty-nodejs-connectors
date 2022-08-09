@@ -19,7 +19,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
 
   protected _shoptetLocker = 'locker_shoptet';
 
-  protected abstract _pluginHost: string;
+  protected abstract _shoptetHost: string;
 
   getDescription = (): string => 'Shoptet application';
 
@@ -64,7 +64,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
         [this._authorizationHeader]: `Bearer ${accessToken}`,
       };
       const requestDto = new RequestDto(
-        `${this._pluginHost}/action/ApiOAuthServer/getAccessToken`,
+        `${this._shoptetHost}/action/ApiOAuthServer/getAccessToken`,
         HttpMethods.GET,
         processDto,
         undefined,

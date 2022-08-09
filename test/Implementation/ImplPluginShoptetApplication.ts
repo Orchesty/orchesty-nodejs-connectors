@@ -6,7 +6,7 @@ export const NAME = 'shoptet';
 export default class ImplPluginShoptetApplication extends APluginShoptetApplication {
   getName = (): string => NAME;
 
-  protected _pluginHost = 'www.test.cz';
+  protected _shoptetHost = 'www.test.cz';
 
   getFormStack = (): FormStack => new FormStack();
 }
