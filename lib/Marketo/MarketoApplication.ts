@@ -13,7 +13,7 @@ import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/T
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 
 export const NAME = 'marketo';
-export const MARKETO_URL = 'marketo_url';
+export const MARKETO_URL = 'https://284-RPR-133.mktorest.com';
 
 export default class MarketoApplication extends ABasicApplication {
   // eslint-disable-next-line @typescript-eslint/naming-convention
