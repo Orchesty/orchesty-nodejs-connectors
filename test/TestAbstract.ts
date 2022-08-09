@@ -135,6 +135,7 @@ import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
 import MondayApplication from '../lib/Monday/MondayApplication';
+import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -1031,4 +1032,11 @@ function initGreenHouse(): void {
 function initMonday(): void {
   const app = new MondayApplication();
   container.setApplication(app);
+
+  const createBoard = new MondayCreateBoardConnector();
+  createBoard
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(createBoard);
 }

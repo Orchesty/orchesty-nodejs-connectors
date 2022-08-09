@@ -5,7 +5,7 @@ import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatE
 
 export const NAME = 'monday-create-board';
 
-export default class MondayCreateBoard extends AConnector {
+export default class MondayCreateBoardConnector extends AConnector {
   public getName = (): string => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
@@ -16,16 +16,23 @@ export default class MondayCreateBoard extends AConnector {
     for (const [key, value] of Object.entries(body)) {
       graphQl += `${key}"${value}",`;
     }
-    graphQl.slice(0, -1);
+    graphQl = graphQl.slice(0, -1);
     graphQl += ') {board_kind description groups id owner owners permissions state subscribers top_group}}';
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, undefined, graphQl);
+    const req = await this._application.getRequestDto(
+      dto,
+      appInstall,
+      HttpMethods.POST,
+      undefined,
+      { query: graphQl },
+    );
     const resp = await this._sender.send(req, [200]);
     const output = resp.jsonBody as IOutput;
 
     if (output.error_code) {
       throw new OnRepeatException(60, 10, output.error_code ?? 'Unknown error.');
     }
+    dto.jsonData = output;
     return dto;
   }
 }
