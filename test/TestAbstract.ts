@@ -134,6 +134,7 @@ import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
+import GreenHouseAddCandidateConnector from '../lib/GreenHouse/connector/GreenHouseAddCandidateConnector';
 import MondayApplication from '../lib/Monday/MondayApplication';
 import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -1015,6 +1016,7 @@ function initGreenHouse(): void {
 
   const listApp = new GreenHouseListAppBatch();
   const listCandidates = new GreenHouseListCandidatesBatch();
+  const addCandidates = new GreenHouseAddCandidateConnector();
 
   listApp
     .setSender(sender)
@@ -1027,6 +1029,12 @@ function initGreenHouse(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listCandidates);
+
+  addCandidates
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(addCandidates);
 }
 
 function initMonday(): void {
