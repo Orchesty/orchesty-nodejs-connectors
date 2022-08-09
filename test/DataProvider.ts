@@ -55,6 +55,7 @@ import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplicatio
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
+import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
 
 export const DEFAULT_USER = 'TestUser';
 export const DEFAULT_CLIENT_ID = 'ClientId';
@@ -409,6 +410,15 @@ export async function onesignalApp() {
   return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_KEY]: 'api_key',
+    },
+  });
+}
+
+export async function greenHousApp() {
+  return appInstall(GREENHOUS_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [USERNAME]: DEFAULT_USER,
+      [PASSWORD]: DEFAULT_PASSWORD,
     },
   });
 }

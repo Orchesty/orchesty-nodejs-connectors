@@ -1,0 +1,170 @@
+{
+  "http": "GET https://harvest.greenhouse.io/v1/applications?per_page=500&page=1",
+  "code": 200,
+  "body": [
+      {
+          "id": 69306314,
+          "candidate_id": 57683957,
+          "prospect": false,
+          "applied_at": "2017-09-29T12:56:05.244Z",
+          "rejected_at": null,
+          "last_activity_at": "2017-09-29T13:00:28.038Z",
+          "location": {
+              "address": "New York, New York, USA"
+          },
+          "source": {
+              "id": 2,
+              "public_name": "Jobs page on your website"
+          },
+          "credited_to": {
+              "id": 4080,
+              "first_name": "Kate",
+              "last_name": "Austen",
+              "name": "Kate Austen",
+              "employee_id": "12345"
+          },
+          "rejection_reason": null,
+          "rejection_details": null,
+          "jobs": [
+              {
+                  "id": 107761,
+                  "name": "UX Designer - Boston"
+              }
+          ],
+          "job_post_id": 123,
+          "status": "active",
+          "current_stage": {
+              "id": 767358,
+              "name": "Application Review"
+          },
+          "answers": [
+              {
+                  "question": "How did you hear about this job?",
+                  "answer": "Online Research"
+              },
+              {
+                  "question": "Website",
+                  "answer": "mytestwebsite.com"
+              }
+          ],
+          "prospective_office": null,
+          "prospective_department": null,
+          "prospect_detail": {
+              "prospect_pool": null,
+              "prospect_stage": null,
+              "prospect_owner": null
+          },
+          "custom_fields": {
+              "application_custom_test": "Option 1"
+          },
+          "keyed_custom_fields": {
+              "application_custom_test": {
+                  "name": "Application Custom Test",
+                  "type": "single_select",
+                  "value": "Option 1"
+              }
+          },
+          "attachments": [
+              {
+                  "filename": "John_Locke_Offer_Packet_09_27_2017.pdf",
+                  "url": "https://prod-heroku.s3.amazonaws.com/...",
+                  "type": "offer_packet"
+              }
+          ]
+      },
+      {
+          "id": 69306509,
+          "candidate_id": 57683957,
+          "prospect": true,
+          "applied_at": "2017-09-29T13:00:04.058Z",
+          "rejected_at": null,
+          "last_activity_at": "2017-09-29T13:08:19.111Z",
+          "location": null,
+          "source": {
+              "id": 100674,
+              "public_name": "Campus Job Fair"
+          },
+          "credited_to": {
+              "id": 566819,
+              "first_name": "Bob",
+              "last_name": "Smith",
+              "name": "Bob Smith",
+              "employee_id": "ABC12345"
+          },
+          "rejection_reason": null,
+          "rejection_details": null,
+          "jobs": [
+              {
+                  "id": 224587,
+                  "name": "Product Manager "
+              },
+              {
+                  "id": 109322,
+                  "name": "Web Developer "
+              }
+          ],
+          "job_post_id": null,
+          "status": "hired",
+          "current_stage": null,
+          "answers": [
+              {
+                  "question": "How did you hear about this job?",
+                  "answer": "Online Research"
+              },
+              {
+                  "question": "Website",
+                  "answer": "mytestwebsite.com"
+              }
+          ],
+          "prospective_office": {
+              "primary_contact_user_id": null,
+              "parent_id": null,
+              "name": "New York",
+              "location": {
+                  "name": "New York, NY"
+              },
+              "id": 59213,
+              "external_id": null,
+              "child_ids": []
+          },
+          "prospective_department": {
+              "parent_id": null,
+              "name": "Marketing",
+              "id": 9024,
+              "external_id": null,
+              "child_ids": []
+          },
+          "prospect_detail": {
+              "prospect_pool": {
+                  "id": 227,
+                  "name": "Opted In: In-Person Event"
+              },
+              "prospect_stage": {
+                  "id": 826,
+                  "name": "In Discussion"
+              },
+              "prospect_owner": {
+                  "id": 92120,
+                  "name": "Greenhouse Admin"
+              }
+          },
+          "custom_fields": {
+              "application_custom_test": "Option 1"
+          },
+          "keyed_custom_fields": {
+              "application_custom_test": {
+                  "name": "Application Custom Test",
+                  "type": "single_select",
+                  "value": "Option 1"
+              }
+          },
+          "attachments": [
+              {
+                  "filename": "Jack_Smith_Offer_Packet_09_27_2020.pdf",
+                  "url": "https://prod-heroku.s3.amazonaws.com/...",
+                  "type": "offer_packet"
+              }
+          ]
+      }
+  ]
+}

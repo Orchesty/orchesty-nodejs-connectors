@@ -13,6 +13,7 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 
 export const USERNAME = 'username';
 export const PASSWORD = 'password';
+export const NAME = 'green-house';
 
 export default class GreenHouseApplication extends ABasicApplication {
   public getName = (): string => 'green-house';
@@ -36,7 +37,7 @@ export default class GreenHouseApplication extends ABasicApplication {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const request = new RequestDto(`https://harvest.greenhouse.io/v1${_url}`, method, dto);
+    const request = new RequestDto(`https://harvest.greenhouse.io/v1/${_url}`, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

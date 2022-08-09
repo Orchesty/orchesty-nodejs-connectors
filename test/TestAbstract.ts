@@ -131,6 +131,8 @@ import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllC
 import MerkApplication from '../lib/Merk/MerkApplication';
 import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnector';
 import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
+import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
+import GreenhousListAppBatch from '../lib/GreenHouse/Batch/GreenhousListAppBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -184,6 +186,7 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initZoho();
   initOnesignal();
+  initGreenHous();
 
   initiated = true;
 }
@@ -1001,4 +1004,16 @@ function initMerk(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(getSuggest);
+}
+function initGreenHous(): void {
+  const app = new GreenHouseApplication();
+  container.setApplication(app);
+
+  const listApp = new GreenhousListAppBatch();
+
+  listApp
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listApp);
 }
