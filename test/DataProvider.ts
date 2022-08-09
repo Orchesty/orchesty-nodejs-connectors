@@ -54,6 +54,7 @@ import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
+import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
 
@@ -419,6 +420,14 @@ export async function greenHouseApp() {
     [AUTHORIZATION_FORM]: {
       [USERNAME]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,
+    },
+  });
+}
+
+export async function mondayApp() {
+  return appInstall(MONDAY_APP, DEFAULT_USER, {
+    [AUTHORIZATION_FORM]: {
+      [API_KEY]: 'Api key',
     },
   });
 }
