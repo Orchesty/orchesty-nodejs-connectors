@@ -1,0 +1,16 @@
+{
+  "http": "GET https://app.authentica.com/api/applinth/delivery-methods",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": "1",
+        "title": "DPD"
+      },
+      {
+        "id": "2",
+        "title": "PPL"
+      }
+    ]
+  }
+}

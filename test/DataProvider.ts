@@ -43,7 +43,6 @@ import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as PIPEDRIVE_APP } from '../lib/Pipedrive/PipedriveApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
-import { NAME as SHOPTET_APP } from './Implementation/ImplPluginShoptetApplication';
 import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
 import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
@@ -338,21 +337,6 @@ export async function katanaApp() {
       [API_KEY]: 'Api key',
     },
   });
-}
-
-export async function shoptetApp() {
-  return appInstall(
-    SHOPTET_APP,
-    DEFAULT_USER,
-    {
-      [AUTHORIZATION_FORM]: {
-        [TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-    {
-      eshopId: '222651',
-    },
-  );
 }
 
 export async function clickupApp() {
