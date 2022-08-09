@@ -141,6 +141,8 @@ import MondayApplication from '../lib/Monday/MondayApplication';
 import MondayCreateGroupConnector from '../lib/Monday/Connector/MondayCreateGroupConnector';
 import MondayCreateItemConnector from '../lib/Monday/Connector/MondayCreateItemConnector';
 import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
+import BoxApplication from '../lib/Box/BoxApplication';
+import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -166,6 +168,7 @@ export async function prepare(): Promise<void> {
   initAmazon();
   initBigcommerce();
   initBulkGate();
+  initBox();
   initCalendly();
   initCeskaPosta();
   initClickup();
@@ -1064,6 +1067,17 @@ function initMonday(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createItem);
+}
+function initBox(): void {
+  const app = new BoxApplication(oauth2Provider);
+  container.setApplication(app);
+
+  const getCollaboration = new BoxGetCollaborationConnector();
+  getCollaboration
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getCollaboration);
 }
 
 function initMarketo(): void {
