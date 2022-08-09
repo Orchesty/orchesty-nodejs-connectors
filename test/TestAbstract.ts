@@ -136,6 +136,8 @@ import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
+import RecruiteeApplication from '../lib/Recruitee/RecruiteeApplication';
+import RecruiteeListCandidatesBatch from '../lib/Recruitee/Batch/RecruiteeListCandidatesBatch';
 import GreenHouseAddCandidateConnector from '../lib/GreenHouse/connector/GreenHouseAddCandidateConnector';
 import MondayApplication from '../lib/Monday/MondayApplication';
 import MondayCreateGroupConnector from '../lib/Monday/Connector/MondayCreateGroupConnector';
@@ -201,6 +203,7 @@ export async function prepare(): Promise<void> {
   initOnesignal();
   initGreenHouse();
   initMarketo();
+  initRecruitee();
 
   initiated = true;
 }
@@ -1098,4 +1101,17 @@ function initMarketo(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getFiles);
+}
+
+function initRecruitee(): void {
+  const app = new RecruiteeApplication();
+  container.setApplication(app);
+
+  const listCandidates = new RecruiteeListCandidatesBatch();
+
+  listCandidates
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listCandidates);
 }
