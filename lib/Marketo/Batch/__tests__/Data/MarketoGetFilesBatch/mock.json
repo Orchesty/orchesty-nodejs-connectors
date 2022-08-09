@@ -1,0 +1,9 @@
+{
+  "http": "GET https://284-RPR-133.mktorest.com/identity/oauth/token?grant_type=client_credentials&client_id=ClientId&client_secret=ClientSecret",
+  "code": 200,
+  "body": {
+    "credentials": {
+    "token": "123"
+  }
+  }
+}
