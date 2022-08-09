@@ -414,7 +414,7 @@ export async function onesignalApp() {
   });
 }
 
-export async function greenHousApp() {
+export async function greenHouseApp() {
   return appInstall(GREENHOUS_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [USERNAME]: DEFAULT_USER,

@@ -132,7 +132,8 @@ import MerkApplication from '../lib/Merk/MerkApplication';
 import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnector';
 import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
 import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
-import GreenhousListAppBatch from '../lib/GreenHouse/Batch/GreenhousListAppBatch';
+import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
+import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -186,7 +187,7 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initZoho();
   initOnesignal();
-  initGreenHous();
+  initGreenHouse();
 
   initiated = true;
 }
@@ -1005,15 +1006,22 @@ function initMerk(): void {
     .setApplication(app);
   container.setConnector(getSuggest);
 }
-function initGreenHous(): void {
+function initGreenHouse(): void {
   const app = new GreenHouseApplication();
   container.setApplication(app);
 
-  const listApp = new GreenhousListAppBatch();
+  const listApp = new GreenHouseListAppBatch();
+  const listCandidates = new GreenHouseListCandidatesBatch();
 
   listApp
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listApp);
+
+  listCandidates
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(listCandidates);
 }
