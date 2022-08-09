@@ -123,7 +123,7 @@ export interface IOutput{
   coordinator: null,
   can_email: boolean,
   tags: string[],
-  applications: [
+  applications:
     {
       id: number,
       candidate_id: number,
@@ -158,8 +158,7 @@ export interface IOutput{
         prospect_owner: null
       },
       attachments: []
-    },
-  ],
+    }[],
   educations:
     {
       id: number,
