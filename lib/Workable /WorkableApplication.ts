@@ -9,8 +9,6 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
-import { PASSWORD } from '../GreenHouse/GreenHouseApplication';
 
 export const NAME = 'workable';
 export const ACCESS_TOKEN = 'access token';
@@ -33,11 +31,11 @@ export default class WorkableApplication extends ABasicApplication {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const request = new RequestDto(url ?? '', method, dto);
-    const accessToken = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
+    const request = new RequestDto(`https://${_url}`, method, dto);
+    const accessToken = applicationInstall.getSettings()[AUTHORIZATION_FORM][ACCESS_TOKEN];
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
