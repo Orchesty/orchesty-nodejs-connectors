@@ -55,7 +55,6 @@ import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplicatio
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
 import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { MARKETO_URL, NAME as MARKETO_APP } from '../lib/Marketo/MarketoApplication';
-import { NAME as MARKETO_APP } from '../lib/Marketo/MarketoApplication';
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
