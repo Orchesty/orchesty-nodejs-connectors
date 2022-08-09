@@ -116,8 +116,6 @@ import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
 import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
-import MarketoApplication from '../lib/Marketo/MarketoApplication';
-import MarketoGetFilesBatch from '../lib/Marketo/Batch/MarketoGetFilesBatch';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
@@ -135,7 +133,6 @@ import MondayApplication from '../lib/Monday/MondayApplication';
 import MondayCreateGroupConnector from '../lib/Monday/Connector/MondayCreateGroupConnector';
 import MondayCreateItemConnector from '../lib/Monday/Connector/MondayCreateItemConnector';
 import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
-import MarketoGetEmailsBatch from '../lib/Marketo/Batch/MarketoGetEmailsBatch';
 import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
@@ -184,7 +181,6 @@ export async function prepare(): Promise<void> {
   initIntercom();
   initKatanaApp();
   initMall();
-  initMarketo();
   initMergado();
   initMerk();
   initMonday();
@@ -204,6 +200,8 @@ export async function prepare(): Promise<void> {
   initWix();
   initZendesk();
   initZoho();
+  initOnesignal();
+  initGreenHouse();
 
   initiated = true;
 }
@@ -1053,24 +1051,4 @@ function initBox(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(listTasks);
-}
-
-function initMarketo(): void {
-  const app = new MarketoApplication(sender);
-  container.setApplication(app);
-
-  const getFiles = new MarketoGetFilesBatch();
-  const getEmails = new MarketoGetEmailsBatch();
-
-  getFiles
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(getFiles);
-
-  getEmails
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(getEmails);
 }
