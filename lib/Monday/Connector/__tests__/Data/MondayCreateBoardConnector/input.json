@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "board_name": "123456",
+    "board_kind": "public"
+  }
+}
