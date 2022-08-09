@@ -1,17 +1,17 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as GREEN_HOUS_LIST_CANDIDATES } from '../GreenHousListCandidates';
-import { greenHousApp } from '../../../../test/DataProvider';
+import { NAME as GREEN_HOUSE_LIST_APP_BATCH } from '../GreenHouseListAppBatch';
+import { greenHouseApp } from '../../../../test/DataProvider';
 
 let tester: NodeTester;
 
-describe('Tests for GreenHousListCandidates', () => {
+describe('Tests for GreenHouseListAppBatch', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename);
-    await greenHousApp();
+    await greenHouseApp();
   });
 
   it('process - ok', async () => {
-    await tester.testBatch(GREEN_HOUS_LIST_CANDIDATES);
+    await tester.testBatch(GREEN_HOUSE_LIST_APP_BATCH);
   });
 });

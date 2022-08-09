@@ -2,9 +2,9 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
-export const NAME = 'green-hous-list-candidates';
+export const NAME = 'green-house-list-candidates-batch';
 
-export default class GreenHousListCandidates extends ABatchNode {
+export default class GreenHouseListCandidatesBatch extends ABatchNode {
   public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
@@ -50,9 +50,9 @@ export interface IOutput
     }[],
   application_ids: number[],
   phone_numbers: {
-      value: string,
-      type: string
-    }[],
+    value: string,
+    type: string
+  }[],
   addresses:
     {
       value: string,
