@@ -13,6 +13,7 @@ import {
 import MarketoGetFilesBatch from '../../lib/Marketo/Batch/MarketoGetFilesBatch';
 import MarketoCreateEmailConnector from '../../lib/Marketo/Connectors/MarketoCreateEmailConnector';
 import { container, db, sender } from '../TestAbstract';
+import MarketoGetEmailsBatch from '../../lib/Marketo/Batch/MarketoGetEmailsBatch';
 
 export default async function init(): Promise<void> {
   await appInstall(MARKETO_APP, DEFAULT_USER, {
@@ -30,6 +31,7 @@ export default async function init(): Promise<void> {
   container.setApplication(app);
 
   const getFiles = new MarketoGetFilesBatch();
+  const getEmails = new MarketoGetEmailsBatch();
   const createEmail = new MarketoCreateEmailConnector();
 
   getFiles
@@ -37,6 +39,12 @@ export default async function init(): Promise<void> {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getFiles);
+
+  getEmails
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getEmails);
 
   createEmail
     .setSender(sender)

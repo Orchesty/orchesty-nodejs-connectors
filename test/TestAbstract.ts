@@ -185,7 +185,6 @@ export async function prepare(): Promise<void> {
   initMerk();
   initMonday();
   initNutshell();
-  initOnesignal();
   initPaypal();
   initPipedrive();
   initProductboard();
@@ -201,7 +200,6 @@ export async function prepare(): Promise<void> {
   initZendesk();
   initZoho();
   initOnesignal();
-  initGreenHouse();
 
   initiated = true;
 }
