@@ -25,7 +25,6 @@ import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInvit
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import ShoptetParseJsonLines from '../lib/Shoptet/Batch/ShoptetParseJsonLines';
 import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
 import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
@@ -42,7 +41,6 @@ import GObalikApplication from '../lib/GObalik/GObalikApplication';
 import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
 import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
 import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
-import ImplPluginShoptetApplication from './Implementation/ImplPluginShoptetApplication';
 import IntercomApplication from '../lib/Intercom/IntercomApplication';
 import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
 import KatanaApplication from '../lib/Katana/KatanaApplication';
@@ -85,10 +83,6 @@ import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBook
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
-import ShoptetGetAllOrders from '../lib/Shoptet/Connector/ShoptetGetAllOrders';
-import ShoptetGetAllProducts from '../lib/Shoptet/Connector/ShoptetGetAllProducts';
-import ShoptetGetProductDetail from '../lib/Shoptet/Connector/ShoptetGetProductDetail';
-import ShoptetJobFinishedWebhook from '../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 import TableauApplication from '../lib/Tableau/TableauApplication';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
@@ -153,6 +147,8 @@ export let container: DIContainer;
 export let db: MongoDbClient;
 export let sender: CurlSender;
 export let oauth2Provider: OAuth2Provider;
+export let redis: Redis;
+export let cacheService: CacheService;
 /* eslint-enable import/no-mutable-exports */
 
 let initiated = false;
@@ -168,28 +164,37 @@ export async function prepare(): Promise<void> {
   sender = container.get(CoreServices.CURL);
   oauth2Provider = container.get(CoreServices.OAUTH2_PROVIDER);
 
+  redis = new Redis(process.env.REDIS_DSN ?? '');
+  container.set(CoreServices.REDIS, redis);
+
+  cacheService = new CacheService(redis, sender);
+  container.set(CoreServices.CACHE, cacheService);
+
   initAmazon();
   initBigcommerce();
-  initBulkGate();
   initBox();
+  initBulkGate();
   initCalendly();
   initCeskaPosta();
   initClickup();
   initFakturaonline();
-  initGitHub();
   initGObalik();
+  initGitHub();
+  initGreenHouse();
   initIntercom();
   initKatanaApp();
   initMall();
+  initMarketo();
   initMergado();
+  initMerk();
   initMonday();
   initNutshell();
+  initOnesignal();
   initPaypal();
   initPipedrive();
   initProductboard();
   initQuickBooks();
   initSalesForce();
-  initShoptet();
   initTableau();
   initTodoist();
   initTwitter();
@@ -197,12 +202,8 @@ export async function prepare(): Promise<void> {
   initVyfakturuj();
   initWedo();
   initWix();
-  initMerk();
   initZendesk();
   initZoho();
-  initOnesignal();
-  initGreenHouse();
-  initMarketo();
 
   initiated = true;
 }
@@ -846,47 +847,6 @@ function initKatanaApp(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createCustomer);
-}
-
-function initShoptet(): void {
-  const redis = new Redis(process.env.REDIS_DSN ?? '');
-  container.set(CoreServices.REDIS, redis);
-
-  const cacheService = new CacheService(redis, sender);
-  const implPluginShoptetApplication = new ImplPluginShoptetApplication(
-    cacheService,
-    container.get(CoreServices.TOPOLOGY_RUNNER),
-  );
-
-  const shoptetGetAllOrders = new ShoptetGetAllOrders()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetGetAllOrders);
-
-  const shoptetGetAllProducts = new ShoptetGetAllProducts()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetGetAllProducts);
-
-  const shoptetJobFinishedWebhook = new ShoptetJobFinishedWebhook()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetJobFinishedWebhook);
-
-  const shoptetGetProductDetail = new ShoptetGetProductDetail()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setConnector(shoptetGetProductDetail);
-
-  const shoptetParseJsonLines = new ShoptetParseJsonLines()
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(implPluginShoptetApplication);
-  container.setBatch(shoptetParseJsonLines);
 }
 
 function initTypeform(): void {

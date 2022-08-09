@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "defaultRetailMethod": "6df78fa2-05b0-11e9-925b-0800273dc42e",
+    "defaultWholesaleMethod": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+    "shippingMethods": [
+      {
+        "description": "Uloženka na adrese Francouzská 28, Praha 2",
+        "guid": "e79bf6cd-044d-11e5-a8d3-ac162d8a2454",
+        "logoUrl": "https://fenix.myshoptet.com/user/system/ulozenkalogo.jpg",
+        "name": "Uloženka",
+        "priority": 16,
+        "shippingCompany": {
+          "code": "ulozenka",
+          "id": 9,
+          "name": "Uloženka (pobočky)"
+        },
+        "trackingUrl": "http://www.ppl.cz/main2.aspx?cls=Package&idSearch=#PACKAGE_NUMBER#",
+        "visible": true,
+        "wholesale": true
+      }
+    ],
+    "wholesaleActive": true
+  }
+}
