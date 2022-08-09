@@ -66,7 +66,7 @@ export interface IOutput {
         ids?: string[];
     }[];
     name?: string;
-    description: string;
+    description?: string;
     groups: {
         ids: string[];
     }[];
