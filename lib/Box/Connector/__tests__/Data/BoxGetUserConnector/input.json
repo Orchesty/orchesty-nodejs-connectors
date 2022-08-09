@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "user_id": "12345"
+    }
+}
