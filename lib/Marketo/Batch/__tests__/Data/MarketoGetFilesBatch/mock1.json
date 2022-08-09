@@ -1,0 +1,6 @@
+{
+  "http": "GET https://284-RPR-133.mktorest.com/rest/rest/asset/v1/files.json?offset=20&limit=200",
+  "code": 200,
+  "body":
+  [{"body": "{\"errors\":[{\"code\":\"string\",\"message\":\"string\"}],\"requestId\":\"string\",\"result\":[{\"createdAt\":\"2022-08-08T11:54:48.675Z\",\"description\":\"string\",\"folder\":{\"id\":0,\"name\":\"string\",\"type\":\"string\"},\"id\":0,\"mimeType\":\"string\",\"name\":\"string\",\"size\":0,\"updatedAt\":\"2022-08-08T11:54:48.675Z\",\"url\":\"string\"}],\"success\":true,\"warnings\":[\"string\"]}", "headers": null}]
+}
