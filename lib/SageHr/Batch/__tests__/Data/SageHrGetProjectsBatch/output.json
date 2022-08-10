@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "cursor": "2",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+    "user": "TestUser"
+  },
+  "data": [{"body": "error 1", "headers": null}, {"body": "error 2", "headers": null}]
+}
