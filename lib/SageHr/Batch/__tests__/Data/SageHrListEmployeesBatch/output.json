@@ -1,0 +1,14 @@
+{
+  "headers": {
+    "cursor": "2",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":19,\"email\":\"john@example.com\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"picture_url\":\"https://example.com/john.png\",\"employment_start_date\":\"2014-08-25\",\"date_of_birth\":\"1991-02-13\",\"team\":\"Sage HR\",\"team_id\":1,\"position\":\"Api developer\",\"position_id\":123,\"reports_to_employee_id\":5,\"work_phone\":\"555-0505\",\"home_phone\":\"555-0506\",\"mobile_phone\":\"555-0507\",\"gender\":\"Male\",\"street_first\":\"84 Glenwood Street\",\"street_second\":\"Peoria\",\"city\":\"London\",\"post_code\":99999,\"country\":\"GB\",\"employee_number\":\"A01\",\"employment_status\":\"Full-time\",\"team_history\":[{\"team_id\":1,\"start_date\":\"2018-01-01\",\"end_date\":\"201-01-01\",\"team_name\":\"Some Team\"}],\"employment_status_history\":[{\"employment_status_id\":1,\"start_date\":\"2018-01-01\",\"end_date\":\"201-01-01\",\"employment_statu_name\":\"Full time\"}],\"position_history\":[{\"position_id\":1,\"start_date\":\"2018-01-01\",\"end_date\":\"201-01-01\",\"position_name\":\"Developer\",\"position_code\":\"1234\"}]}",
+      "headers": null
+    }
+  ]
+}
