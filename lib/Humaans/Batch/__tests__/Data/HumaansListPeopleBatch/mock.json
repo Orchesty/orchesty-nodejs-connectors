@@ -1,0 +1,96 @@
+{
+  "http": "GET https://app.humaans.io/api/people?skip=1&limit=100",
+  "code": 200,
+  "body": {
+    "total": 1,
+    "limit": 100,
+    "skip": 0,
+    "data": [
+      {
+        "id": "VMB1yzL5uL8VvNNCJc9rykJz",
+        "companyId": "T7uqPFK7am4lFTZm39AmNuay",
+        "firstName": "Kelsey",
+        "middleName": null,
+        "lastName": "Wicks",
+        "preferredName": null,
+        "email": "kelsey@acme.com",
+        "locationId": "FnAjNOIyLRsmZGRohZsHApiE",
+        "remoteCity": null,
+        "remoteRegionCode": null,
+        "remoteCountryCode": null,
+        "remoteTimezone": null,
+        "personalEmail": "kwicks@example.com",
+        "phoneNumber": "+4479460001",
+        "formattedPhoneNumber": "+44 7946 0001",
+        "personalPhoneNumber": null,
+        "formattedPersonalPhoneNumber": null,
+        "gender": "Female",
+        "birthday": "1989-07-28",
+        "profilePhotoId": "Hgi5auXaKsjn2MjuYo1PDk3W",
+        "profilePhoto": {
+          "id": "Hgi5auXaKsjn2MjuYo1PDk3W",
+          "variants": {
+            "64": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@64.jpg",
+            "96": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@96.jpg",
+            "104": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@104.jpg",
+            "136": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@136.jpg",
+            "156": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@156.jpg",
+            "204": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@204.jpg",
+            "320": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@320.jpg",
+            "480": "https://storage.googleapis.com/humaans-public-prd/Hgi5auXaKsjn2MjuYo1PDk3W@480.jpg"
+          }
+        },
+        "nationality": "British",
+        "nationalities": [
+          "British"
+        ],
+        "dietaryPreference": "Pescetarian",
+        "foodAllergies": [
+          "Peanuts"
+        ],
+        "address": "58 Stroude Road",
+        "city": "Siddington",
+        "state": null,
+        "postcode": "SK11 1EN",
+        "countryCode": "GB",
+        "country": "United Kingdom",
+        "bio": "All about that filter coffee.",
+        "linkedIn": null,
+        "twitter": null,
+        "github": null,
+        "employmentStartDate": "2018-03-10",
+        "firstWorkingDay": "2018-03-10",
+        "employmentEndDate": null,
+        "lastWorkingDay": "2018-03-10",
+        "probationEndDate": null,
+        "leavingReason": null,
+        "leavingNote": null,
+        "leavingFileId": null,
+        "contractType": "Full time",
+        "employeeId": null,
+        "taxId": "QQ123456C",
+        "taxCode": "123456C",
+        "teams": [
+          {
+            "name": "Moonshot"
+          },
+          {
+            "name": "Growth Pod"
+          }
+        ],
+        "status": "active",
+        "isVerified": true,
+        "isWorkEmailHidden": false,
+        "calendarFeedToken": "bb6LCUqG4BAOZWKXQQB9a8H9",
+        "role": "user",
+        "seenDocumentsAt": "2020-02-21T17:09:29.290Z",
+        "source": null,
+        "sourceId": null,
+        "timezone": "Europe/London",
+        "payrollProvider": null,
+        "createdAt": "2020-01-28T08:44:42.000Z",
+        "updatedAt": "2020-01-29T14:52:21.000Z"
+      }
+    ]
+  }
+}
