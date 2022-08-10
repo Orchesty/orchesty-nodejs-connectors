@@ -12,6 +12,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 
 export const NAME = 'recruitee';
 export const API_TOKEN = 'api token';
+export const YOUR_COMPANY = 'your_company';
 
 export default class RecruiteeApplication extends ABasicApplication {
   public getName = (): string => NAME;
@@ -22,7 +23,8 @@ export default class RecruiteeApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true));
+      .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true))
+      .addField(new Field(FieldType.TEXT, YOUR_COMPANY, 'your company', undefined, true));
 
     return new FormStack().addForm(form);
   };
