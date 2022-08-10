@@ -1,0 +1,30 @@
+{
+  "http": "GET https://api.getresponse.com/v3/accounts",
+  "code": 200,
+  "body": {
+    "accountId": "VfEy1",
+    "email": "john.smith@test.com",
+    "countryCode": {
+      "countryCodeId": "175",
+      "countryCode": "PL"
+    },
+    "industryTag": {
+      "industryTagId": "1"
+    },
+    "timeZone": {
+      "name": "Europe/Warsaw",
+      "offset": "+01:00"
+    },
+    "href": "https://api.getresponse.com/v3/accounts",
+    "firstName": "John",
+    "lastName": "Smith",
+    "companyName": "MyBigCompany",
+    "phone": "+00155555555",
+    "state": "Oklahoma",
+    "city": "Alderson",
+    "street": "Sunset blv.",
+    "zipCode": "81-611",
+    "numberOfEmployees": "500",
+    "timeFormat": "24h"
+  }
+}
