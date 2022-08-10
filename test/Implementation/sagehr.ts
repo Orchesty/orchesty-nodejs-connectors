@@ -3,6 +3,7 @@ import SageHrApplication, { API_KEY, NAME as SAGEHR_APP, SUBDOMAIN } from '../..
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 import SageHrListEmployeesBatch from '../../lib/SageHr/Batch/SageHrListEmployeesBatch';
+import SageHrGetProjectsBatch from '../../lib/SageHr/Batch/SageHrGetProjectsBatch';
 
 export default async function init(): Promise<void> {
   await appInstall(SAGEHR_APP, DEFAULT_USER, {
@@ -15,10 +16,15 @@ export default async function init(): Promise<void> {
 
   container.setApplication(app);
   const listEmployees = new SageHrListEmployeesBatch();
-
+  const getProjects = new SageHrGetProjectsBatch();
   listEmployees
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listEmployees);
+  getProjects
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getProjects);
 }
