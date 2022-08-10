@@ -15,7 +15,7 @@ export default class HumaansListCompaniesBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `/api/companies?skip=${skip}&limit=${100}`,
+      `/companies?skip=${skip}&limit=100`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;

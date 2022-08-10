@@ -36,7 +36,7 @@ export default class HumaansApplication extends ABasicApplication {
   ): RequestDto => {
     const settings = applicationInstall.getSettings();
     const token = settings[AUTHORIZATION_FORM][APPLICATION_TOKEN];
-    const url = `https://app.humaans.io${_url}`;
+    const url = `https://app.humaans.io/api${_url}`;
     const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
