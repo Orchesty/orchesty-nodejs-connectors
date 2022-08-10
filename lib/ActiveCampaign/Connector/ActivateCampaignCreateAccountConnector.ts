@@ -15,7 +15,7 @@ export default class ActivateCampaignCreateAccountConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       'accounts',
-            dto.jsonData as IInput,
+      dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
     dto.jsonData = resp.jsonBody as IOutput;
@@ -25,44 +25,31 @@ export default class ActivateCampaignCreateAccountConnector extends AConnector {
 }
 
 export interface IInput {
-    'account': {
-        'name': 'Example Account',
-        'accountUrl': 'https://www.example.com',
-        'owner': 1,
-        'fields': [
-            {
-                'customFieldId': 9,
-                'fieldValue': '500-1000'
-            },
-            {
-                'customFieldId': 20,
-                'fieldValue': 1234,
-                'fieldCurrency': 'GBP'
-            }
-        ]
+    account: {
+        name: string,
+        accountUrl?: string,
+        owner?: number,
+        fields?: {
+            customFieldId: number,
+            fieldValue: number,
+            fieldCurrency?: string
+        }[]
     }
 }
 
 export interface IOutput {
-    'account': {
-        'name': 'Example Account',
-        'accountUrl': 'https://www.example.com',
-        'createdTimestamp': '2019-06-12T16:52:16-05:00',
-        'updatedTimestamp': '2019-06-12T16:52:16-05:00',
-        'links': [],
-        'fields': [
-            {
-                'customFieldId': 9,
-                'fieldValue': '501 - 1000',
-                'accountId': '1'
-            },
-            {
-                'customFieldId': 20,
-                'fieldValue': 1234,
-                'fieldCurrency': 'GBP',
-                'accountId': '1'
-            }
-        ],
-        'id': '1'
+    account: {
+        id: string,
+        name: string,
+        accountUrl: string,
+        createdTimestamp: string,
+        updatedTimestamp: string,
+        links: [],
+        fields: {
+            customFieldId: number,
+            fieldValue: number,
+            fieldCurrency: string,
+            accountId: string
+        }[],
     }
 }
