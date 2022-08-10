@@ -5,6 +5,7 @@ import {
   container, db, sender,
 } from '../TestAbstract';
 import WorkableJobsBatch from '../../lib/Workable /Batch/WorkableJobsBatch';
+import WorkableGetAccountsBatch from '../../lib/Workable /Batch/WorkableGetAccountsBatch';
 
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
@@ -18,10 +19,17 @@ export default async function init(): Promise<void> {
   container.setApplication(app);
 
   const jobs = new WorkableJobsBatch();
+  const getAccounts = new WorkableGetAccountsBatch();
 
   jobs
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(jobs);
+
+  getAccounts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getAccounts);
 }
