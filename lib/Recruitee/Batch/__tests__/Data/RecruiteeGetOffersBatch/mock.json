@@ -1,0 +1,164 @@
+{
+  "http": "GET https://yourCompany.recruitee.com/api/offers/",
+  "code": 200,
+  "body":{
+    "offers": [
+      {
+        "id": 487967,
+        "slug": "example-offer-1",
+        "position": 3,
+        "status": "published",
+        "options_phone": "optional",
+        "options_photo": "off",
+        "options_cover_letter": "optional",
+        "options_cv": "required",
+        "remote": true,
+        "country_code": "DE",
+        "state_code": "BB",
+        "postal_code": "11-111",
+        "min_hours": 20,
+        "max_hours": 30,
+        "title": "Example offer 1",
+        "description": "<p>Example job description</p>",
+        "requirements": "<p>Example job requirements</p>",
+        "location": "Remote job",
+        "city": "Berlin",
+        "country": "Germany",
+        "careers_url": "https://democompany.recruitee.com/o/example-offer-1",
+        "careers_apply_url": "https://democompany.recruitee.com/o/example-offer-1/c/new",
+        "company_name": "Demo company",
+        "department": "Product",
+        "created_at": "2020-06-04 08:13:47 UTC",
+        "updated_at": "2021-08-19 14:53:19 UTC",
+        "published_at": "2020-06-04 08:13:53 UTC",
+        "close_at": "2021-10-31 22:59:59 UTC",
+        "employment_type_code": "parttime",
+        "category_code": "information_technology",
+        "experience_code": "mid_level",
+        "education_code": "master_degree",
+        "tags": [
+          "example offer tag"
+        ],
+        "translations": {
+          "en": {
+            "title": "Example offer 1",
+            "description": "<p>Example job description</p>",
+            "requirements": "<p>Example job requirements</p>"
+          }
+        },
+        "open_questions": [
+          {
+            "id": 938761,
+            "kind": "string",
+            "required": true,
+            "position": 1,
+            "body": "In what time you are available to start a new job?",
+            "translations": {
+              "en": {
+                "body": "In what time you are available to start a new job?"
+              }
+            },
+            "open_question_options": [],
+            "options": {
+              "length": 120
+            }
+          },
+          {
+            "id": 938758,
+            "kind": "boolean",
+            "required": true,
+            "position": 2,
+            "body": "Are you ready to work from the office?",
+            "translations": {
+              "en": {
+                "body": "Are you ready to work from the office?"
+              }
+            },
+            "open_question_options": [],
+            "options": {
+              "length": 120
+            }
+          },
+          {
+            "id": 938756,
+            "kind": "text",
+            "required": false,
+            "position": 3,
+            "body": "How did you find out about the job?",
+            "translations": {
+              "en": {
+                "body": "How did you find out about the job?"
+              }
+            },
+            "open_question_options": [],
+            "options": {
+              "length": 120
+            }
+          }
+        ]
+      },
+      {
+        "id": 744510,
+        "slug": "example-offer-2",
+        "position": 2,
+        "status": "published",
+        "options_phone": "off",
+        "options_photo": "off",
+        "options_cover_letter": "off",
+        "options_cv": "required",
+        "remote": false,
+        "country_code": "PL",
+        "state_code": "WP",
+        "postal_code": "61-831",
+        "min_hours": null,
+        "max_hours": null,
+        "title": "Example offer 2",
+        "description": "<p>Example job description</p>",
+        "requirements": "<p>Example job requirements</p>",
+        "location": "Poznan, Poland",
+        "city": "Poznan",
+        "country": "Poland",
+        "careers_url": "https://democompany.recruitee.com/o/example-offer-2",
+        "careers_apply_url": "https://democompany.recruitee.com/o/example-offer-2/c/new",
+        "company_name": "Demo company",
+        "department": null,
+        "created_at": "2021-08-19 10:45:01 UTC",
+        "updated_at": "2021-08-19 14:50:53 UTC",
+        "published_at": "2021-08-19 10:45:01 UTC",
+        "close_at": null,
+        "employment_type_code": "fulltime",
+        "category_code": "information_technology",
+        "experience_code": "experienced",
+        "education_code": "high_school",
+        "tags": [],
+        "translations": {
+          "en": {
+            "title": "Example offer 2",
+            "description": "<p>Example job description</p>",
+            "requirements": "<p>Example job requirements</p>"
+          }
+        },
+        "open_questions": [
+          {
+            "id": 938779,
+            "kind": "string",
+            "required": false,
+            "position": 1,
+            "body": "If someone from our company recommended you this job, here you can provide the full name",
+            "translations": {
+              "en": {
+                "body": "If someone from our company recommended you this job, here you can provide the full name"
+              }
+            },
+            "open_question_options": [],
+            "options": {
+              "length": 120
+            }
+          }
+        ]
+      }
+    ]
+  }
+
+}
+
