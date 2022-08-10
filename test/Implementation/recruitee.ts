@@ -1,5 +1,5 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import RecruiteeApplication, { NAME as RECRUITEE_APP } from '../../lib/Recruitee/RecruiteeApplication';
+import RecruiteeApplication, { NAME as RECRUITEE_APP, YOUR_COMPANY } from '../../lib/Recruitee/RecruiteeApplication';
 import { API_TOKEN } from '../../lib/CeskaPosta/CeskaPostaApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import RecruiteeListCandidatesBatch from '../../lib/Recruitee/Batch/RecruiteeListCandidatesBatch';
@@ -10,6 +10,7 @@ export default async function init(): Promise<void> {
   await appInstall(RECRUITEE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      [YOUR_COMPANY]: 'your_company',
     },
   });
 

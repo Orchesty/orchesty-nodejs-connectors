@@ -1,6 +1,8 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { YOUR_COMPANY } from '../RecruiteeApplication';
 
 export const NAME = 'recruitee-get-offers-batch';
 
@@ -10,7 +12,7 @@ export default class RecruiteeGetOffersBatch extends ABatchNode {
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const { yourCompany } = dto.jsonData as IInput;
+    const yourCompany = appInstall.getSettings()[AUTHORIZATION_FORM][YOUR_COMPANY];
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -27,9 +29,6 @@ export default class RecruiteeGetOffersBatch extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IInput{
-  yourCompany: string
-}
 
 interface IResponse{
   offers: IOutput[]

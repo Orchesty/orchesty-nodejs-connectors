@@ -1,5 +1,5 @@
 {
-  "http": "GET https://yourCompany.recruitee.com/api/offers/",
+  "http": "GET https://your_company.recruitee.com/api/offers/",
   "code": 200,
   "body":{
     "offers": [
