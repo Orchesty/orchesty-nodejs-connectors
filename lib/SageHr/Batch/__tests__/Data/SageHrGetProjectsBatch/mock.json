@@ -1,0 +1,18 @@
+{
+  "http": "GET https://companydomain.sage.hr/api/timesheets/projects?page=1",
+  "code": 200,
+  "body": {
+    "errors": [
+      "error 1",
+      "error 2"
+    ],
+    "meta": {
+      "current_page": 1,
+      "next_page": 2,
+      "previous_page": null,
+      "total_pages": 2,
+      "per_page": 50,
+      "total_entries": 75
+    }
+  }
+}
