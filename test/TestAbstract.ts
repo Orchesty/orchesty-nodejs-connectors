@@ -7,7 +7,6 @@ import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import { container as c, initiateContainer } from '@orchesty/nodejs-sdk';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
-import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import AmazonApplication from '../lib/AmazonApps/SellingPartner/AmazonApplication';
 import AmazonCreateShipmentConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonCreateShipmentConnector';
 import AmazonGetListingsItemConnector from '../lib/AmazonApps/SellingPartner/Connector/AmazonGetListingsItemConnector';
@@ -26,7 +25,7 @@ import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInvit
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
+import CeskaPostaParcelPrintingConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelPrintingConnector';
 import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
 import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
