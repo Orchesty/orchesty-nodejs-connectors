@@ -1,42 +1,14 @@
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
-import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import WooCommerceApplication, { NAME } from '../WooCommerceApplication';
+import { NAME } from '../WooCommerceApplication';
+import AWooCommerceBatchCursor from './AWooCommerceBatchCursor';
 
-const WOOCOMMERCE_GET_ORDERS_ENDPOINT = 'wp-json/wc/v3/orders?per_page=100&page=';
+export default class WooCommerceGetOrders extends AWooCommerceBatchCursor<IOutput> {
+  protected _endpoint = 'wp-json/wc/v3/orders?per_page=100&page=';
 
-export default class WooCommerceGetOrders extends ABatchNode {
   public getName = (): string => `${NAME.toLowerCase()}-get-orders`;
-
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-    const pageNumber = dto.getBatchCursor('1');
-    const app = this._application as WooCommerceApplication;
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-
-    const requestDto = await app.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}`,
-    );
-
-    const res = await this._sender.send(requestDto, [200, 404]);
-    const totalPages = res.headers.get('x-wp-totalpages');
-    if (Number(totalPages) > Number(pageNumber)) {
-      dto.setBatchCursor((Number(pageNumber) + 1).toString());
-    } else {
-      dto.removeBatchCursor();
-    }
-    dto.setItemList(res.jsonBody as IResponseJson[]);
-    return dto;
-  }
 }
 
-type IResponseJson = IOrdersJson
-
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IOrdersJson {
+export interface IOutput {
   id: number;
   parent_id: number;
   number: string;

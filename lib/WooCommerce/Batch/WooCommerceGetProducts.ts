@@ -1,0 +1,114 @@
+import { NAME } from '../WooCommerceApplication';
+import AWooCommerceBatchCursor from './AWooCommerceBatchCursor';
+
+export default class WooCommerceGetProducts extends AWooCommerceBatchCursor<IOutput> {
+  protected _endpoint = 'wp-json/wc/v3/products?per_page=100&page=';
+
+  public getName = (): string => `${NAME.toLowerCase()}-get-products`;
+}
+
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IImage {
+  id: number;
+  date_created: Date;
+  date_created_gmt: Date;
+  date_modified: Date;
+  date_modified_gmt: Date;
+  src: string;
+  name: string;
+  alt: string;
+}
+
+export interface IAttribute {
+  id: number;
+  name: string;
+  position: number;
+  visible: boolean;
+  variation: boolean;
+  options: string[];
+}
+
+export interface IOutput {
+  id: number;
+  name: string;
+  slug: string;
+  permalink: string;
+  date_created: Date;
+  date_created_gmt: Date;
+  date_modified: Date;
+  date_modified_gmt: Date;
+  type: string;
+  status: string;
+  featured: boolean;
+  catalog_visibility: string;
+  description: string;
+  short_description: string;
+  sku: string;
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  date_on_sale_from?: Date;
+  date_on_sale_from_gmt?: Date;
+  date_on_sale_to?: Date;
+  date_on_sale_to_gmt?: Date;
+  price_html: string;
+  on_sale: boolean;
+  purchasable: boolean;
+  total_sales: number;
+  virtual: boolean;
+  downloadable: boolean;
+  downloads: undefined[];
+  download_limit: number;
+  download_expiry: number;
+  external_url: string;
+  button_text: string;
+  tax_status: string;
+  tax_class: string;
+  manage_stock: boolean;
+  stock_quantity?: number;
+  stock_status: string;
+  backorders: string;
+  backorders_allowed: boolean;
+  backordered: boolean;
+  sold_individually: boolean;
+  weight: string;
+  dimensions: {
+    length: string;
+    width: string;
+    height: string;
+  };
+  shipping_required: boolean;
+  shipping_taxable: boolean;
+  shipping_class: string;
+  shipping_class_id: number;
+  reviews_allowed: boolean;
+  average_rating: string;
+  rating_count: number;
+  related_ids: number[];
+  upsell_ids: number[];
+  cross_sell_ids: number[];
+  parent_id: number;
+  purchase_note: string;
+  categories: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  tags: undefined[];
+  images: IImage[];
+  attributes: IAttribute[];
+  default_attributes: IAttribute[];
+  variations: number[];
+  grouped_products: number[];
+  menu_order: number;
+  meta_data: undefined[];
+  _links: {
+    self: {
+      href: string;
+    }[];
+    collection: {
+      href: string;
+    }[];
+  };
+}
+/* eslint-enable @typescript-eslint/naming-convention */
