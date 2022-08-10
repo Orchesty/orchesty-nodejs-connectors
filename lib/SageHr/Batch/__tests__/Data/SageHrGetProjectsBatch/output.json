@@ -5,18 +5,5 @@
     "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
     "user": "TestUser"
   },
-  "data": {
-    "errors": [
-      "error 1",
-      "error 2"
-    ],
-    "meta": {
-      "current_page": 1,
-      "next_page": 2,
-      "previous_page": null,
-      "total_pages": 2,
-      "per_page": 50,
-      "total_entries": 75
-    }
-  }
+  "data": [{"body": "error 1", "headers": null}, {"body": "error 2", "headers": null}]
 }
