@@ -60,9 +60,10 @@ export default abstract class ABaseShoptet extends ABasicApplication implements 
   protected async _startTopology(
     applicationInstall: ApplicationInstall,
     topology: string,
+    data: Record<string, unknown>,
   ): Promise<void> {
     await this._runner.runByName(
-      {},
+      data,
       topology,
       'Start',
       new ProcessDto(),
