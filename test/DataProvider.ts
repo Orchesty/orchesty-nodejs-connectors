@@ -386,19 +386,6 @@ export async function intercomApp() {
   });
 }
 
-export async function marketoApp() {
-  return appInstall(MARKETO_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [MARKETO_URL]: 'https://284-RPR-133.mktorest.com',
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
-}
-
 export async function merkApp() {
   return appInstall(MERK_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
