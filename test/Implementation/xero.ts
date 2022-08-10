@@ -1,7 +1,9 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import {
-  appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
+  appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
 } from '../DataProvider';
 import XeroApplication, { NAME as XERO_APP } from '../../lib/Xero/XeroApplication';
 import {
@@ -14,6 +16,9 @@ export default async function init(): Promise<void> {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [TOKEN]: {
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      },
     },
   });
 

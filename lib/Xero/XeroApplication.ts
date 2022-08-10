@@ -7,11 +7,9 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 
 export const NAME = 'xero';
 export default class XeroApplication extends AOAuth2Application {
@@ -32,13 +30,13 @@ export default class XeroApplication extends AOAuth2Application {
     _url?: string,
     data?: unknown,
   ): RequestDto => {
-    const clientId = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
-    const clientSecret = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
     const url = `https://api.xero.com/api.xro/2.0/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${clientId}:${clientSecret}`)}`,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
+
     };
 
     if (data) {
@@ -58,4 +56,10 @@ export default class XeroApplication extends AOAuth2Application {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
+
+  protected _getProviderCustomOptions = (): Record<string, unknown> => ({
+    options: {
+      authorizationMethod: 'header',
+    },
+  });
 }
