@@ -6,6 +6,7 @@ import {
 } from '../TestAbstract';
 import PersonioApplication, { NAME } from '../../lib/Personio/PersonioApplication';
 import PersonioListEmployeesBatch from '../../lib/Personio/Batch/PersonioListEmployeesBatch';
+import PersonioGetProjectsBatch from '../../lib/Personio/Batch/PersonioGetProjectsBatch';
 
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
@@ -19,10 +20,17 @@ export default async function init(): Promise<void> {
   container.setApplication(app);
 
   const listEmployees = new PersonioListEmployeesBatch();
+  const getProjects = new PersonioGetProjectsBatch();
 
   listEmployees
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(listEmployees);
+
+  getProjects
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getProjects);
 }
