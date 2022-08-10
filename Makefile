@@ -31,6 +31,9 @@ docker-up-force: .env .lo0-up
 docker-down-clean: .env .lo0-down
 	docker-compose down -v
 
+oauth2:
+	docker-compose exec connectors pnpm run oauth2
+
 install:
 	$(DCS) pnpm install
 
