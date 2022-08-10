@@ -22,7 +22,7 @@ export default class PersonioListEmployeesBatch extends ABatchNode {
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.data ?? []);
-    if (response.metadata.current_page <= response.metadata.total_pages) {
+    if (response.metadata.current_page < response.metadata.total_pages) {
       dto.setBatchCursor((Number(offset) + 1).toString());
     }
     return dto;
