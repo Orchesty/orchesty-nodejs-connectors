@@ -1,14 +1,9 @@
 {
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": {
-        "number": "447700900000;7811901234;447712345678",
-        "text": "test_sms",
-        "unicode": true,
-        "sender_id": "gText",
-        "sender_id_value": "BulkGate",
-        "country": "gb",
-        "schedule": "2018-05-14T18:30:00-01:00"
-    }
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "number": "703654125;721482610",
+    "text": "Testovací SMS"
+  }
 }
