@@ -15,6 +15,7 @@ export default class MarketoCreateEmailConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       '/asset/v1/emails.json',
+        dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
     dto.jsonData = resp.jsonBody as IOutput;
@@ -23,13 +24,27 @@ export default class MarketoCreateEmailConnector extends AConnector {
   }
 }
 
+export interface IInput {
+    description: string,
+    folder: {
+        id: number,
+        type: string
+    },
+    fromEmail: string,
+    fromName: string,
+    name: string,
+    operational: boolean,
+    replyEmail: string,
+    subject: string,
+    template: number,
+    textOnly: string
+}
+
 export interface IOutput {
-    errors: [
-        {
-            code: string,
-            message: string
-        }
-    ],
+    errors: {
+        code: string,
+        message: string
+    }[],
     requestId: string,
     result: {
         createdAt: Date,

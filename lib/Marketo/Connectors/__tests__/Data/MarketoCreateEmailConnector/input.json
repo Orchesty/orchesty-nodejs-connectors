@@ -2,5 +2,19 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+    "description": "string",
+    "folder": {
+        "id": 0,
+        "type": "Folder"
+    },
+    "fromEmail": "string",
+    "fromName": "string",
+    "name": "string",
+    "operational": true,
+    "replyEmail": "string",
+    "subject": "string",
+    "template": 0,
+    "textOnly": "string"
+    }
 }

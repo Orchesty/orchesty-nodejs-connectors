@@ -49,7 +49,7 @@ export default class MarketoApplication extends ABasicApplication {
     const baseUrl = settings[AUTHORIZATION_FORM][MARKETO_URL];
     const logInRequest = new RequestDto(
       `${baseUrl}/identity/oauth/token?grant_type=client_credentials&client_id=${id}&client_secret=${secret}`,
-      method,
+      HttpMethods.GET,
       dto,
     );
     const loginResponseDto = await this._sender.send(logInRequest, [200]);
