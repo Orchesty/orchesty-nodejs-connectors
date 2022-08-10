@@ -22,7 +22,7 @@ export default class SageHrListEmployeesBatch extends ABatchNode {
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.data ?? []);
-    if (response.meta.current_page <= response.meta.total_pages) {
+    if (response.meta.current_page < response.meta.total_pages) {
       dto.setBatchCursor((response.meta.next_page).toString());
     }
     return dto;

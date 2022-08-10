@@ -10,6 +10,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 
+export const SUBDOMAIN = 'subdomain';
 export const NAME = 'sage-hr';
 export const API_KEY = 'api_key';
 export default class SageHrApplication extends ABasicApplication {
@@ -28,7 +29,8 @@ export default class SageHrApplication extends ABasicApplication {
   ): RequestDto => {
     const settings = applicationInstall.getSettings();
     const key = settings[AUTHORIZATION_FORM][API_KEY];
-    const url = `https://subdomain.sage.hr/api/${_url}`;
+    const subdomain = settings[AUTHORIZATION_FORM][SUBDOMAIN];
+    const url = `https://${subdomain}.sage.hr/api/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -45,6 +47,7 @@ export default class SageHrApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField((new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true)))
       .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true));
 
     return new FormStack().addForm(form);
