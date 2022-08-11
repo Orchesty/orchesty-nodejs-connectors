@@ -1,9 +1,50 @@
 {
-    "headers": {
-        "user": "TestUser"
+  "headers": {
+    "cursor": "2",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":23118801,\"purchase_id\":231188,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
     },
-    "data": [{
-        "body":"{\"id\":89591350,\"purchase_id\":89591351,\"cod\":25,\"ship_date\":\"2017-01-14\",\"delivered_at\":\"2018-01-14 08:13:00\",\"status\":\"open\",\"confirmed\":true,\"test\":false,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false,\"shipped\":\"2019-07-02 10:19:14\",\"shipping\":\"2019-07-02 10:19:14\",\"open\":\"2019-07-02 10:19:14\",\"blocked\":\"2019-07-02 10:19:14\",\"lost\":\"2019-07-02 10:19:14\",\"returned\":\"2019-07-02 10:19:14\",\"cancelled\":\"2019-07-02 10:19:14\",\"delivered\":\"2019-07-02 10:19:14\",\"customer_id\":1111111111,\"customer\":\"John Doe\"}",
-        "headers": null
-    }]
+    {
+      "body": "{\"id\":23118901,\"purchase_id\":231189,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119001,\"purchase_id\":231190,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119101,\"purchase_id\":231191,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119201,\"purchase_id\":231192,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119301,\"purchase_id\":231193,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119401,\"purchase_id\":231194,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119501,\"purchase_id\":231195,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119601,\"purchase_id\":231196,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    },
+    {
+      "body": "{\"id\":23119701,\"purchase_id\":231197,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
+      "headers": null
+    }
+  ]
 }

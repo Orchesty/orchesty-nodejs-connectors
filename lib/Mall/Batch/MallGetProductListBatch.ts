@@ -16,7 +16,7 @@ export default class MallGetProductListBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `products?page=${page}&page_size=1000`,
+      `products?page=${page}&page_size=1000&filter=basic`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
