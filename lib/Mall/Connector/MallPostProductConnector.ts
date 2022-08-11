@@ -16,9 +16,9 @@ export default class MallPostProductConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       'products',
-      { data: dto.jsonData as IInput },
+      dto.jsonData as IInput,
     );
-    const resp = await this._sender.send(req, [200]);
+    const resp = await this._sender.send(req, [201]);
 
     const records = resp.jsonBody as IResponse;
     dto.jsonData = records.data;
