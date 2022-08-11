@@ -168,6 +168,8 @@ export async function prepare(): Promise<void> {
   cacheService = new CacheService(redis, sender);
   container.set(CoreServices.CACHE, cacheService);
 
+  await dropCollection(ApplicationInstall.getCollection());
+
   initAmazon();
   initBigcommerce();
   initBox();
@@ -978,6 +980,7 @@ function initMerk(): void {
     .setApplication(app);
   container.setConnector(getSuggest);
 }
+
 function initGreenHouse(): void {
   const app = new GreenHouseApplication();
   container.setApplication(app);
@@ -1028,6 +1031,7 @@ function initMonday(): void {
     .setApplication(app);
   container.setConnector(createItem);
 }
+
 function initBox(): void {
   const app = new BoxApplication(oauth2Provider);
   container.setApplication(app);
