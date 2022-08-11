@@ -12,7 +12,7 @@
         "lint": "eslint lib --ext .ts --fix",
         "lint-ci": "eslint lib --ext .ts",
         "start": "nodemon test/index.ts",
-        "build": "rm -rf dist && tsc -d -p tsconfig.prod.json"
+        "build": "rm -rf dist && tsc -d -p tsconfig.prod.json && cp package.json ./dist/package.json"
     },
     "keywords": [],
     "author": "info@hanaboso.com",
@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "@aws-sdk/client-redshift": "^3.118.0",
-        "@orchesty/nodejs-sdk": "^2.0.21",
+        "@orchesty/nodejs-sdk": "^2.0.23",
         "@types/debug": "^4.1.7",
         "@types/jest": "^28.1.6",
         "@types/node": "^18.7.1",
