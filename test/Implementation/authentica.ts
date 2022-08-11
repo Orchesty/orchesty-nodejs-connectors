@@ -5,7 +5,7 @@ import AuthenticaApplication, { NAME as AUTHENTICA } from '../../lib/Authentica/
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/AuthenticaGetShippingMethods';
 import {
-  cacheService, container, db, redis, sender,
+  cacheService, container, db, sender,
 } from '../TestAbstract';
 
 export default async function init(): Promise<ApplicationInstall> {
