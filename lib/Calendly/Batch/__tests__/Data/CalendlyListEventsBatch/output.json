@@ -1,8 +1,5 @@
 {
   "headers": {
-    "cursor": "?page_token=sNjq4TvMDfUHEl7zHRR0k0E1PCEJWvdi",
-    "result-code": "1010",
-    "result-message": "Message will be used as a iterator with cursor [?page_token=sNjq4TvMDfUHEl7zHRR0k0E1PCEJWvdi]. Data will be send to follower(s).",
     "user": "TestUser"
   },
   "data": [

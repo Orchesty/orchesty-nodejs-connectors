@@ -3,7 +3,6 @@
   "code": 200,
   "body": {
     "payload": {
-      "NextToken": "2YgYW55IGNhcm5hbCBwbGVhc3VyZS4",
       "Orders": [
         {
           "AmazonOrderId": "902-3159896-1390916",
