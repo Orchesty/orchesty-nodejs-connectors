@@ -11,13 +11,12 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
 export const NAME = 'authentica';
-export const BASE_URL = 'https://app.authentica.com/api/applinth';
+export const BASE_URL = 'https://app.authentica.cz/api';
 const AUTHENTICA_SHOP_ID = 'authentica-shop-id';
 const CACHE_KEY = 'authentica_cache_key';
 const LOCK_KEY = 'authentica_lock_key';
@@ -58,26 +57,11 @@ export default class AuthenticaApplication extends ABasicApplication {
       [CommonHeaders.AUTHORIZATION]: await this._getAccessToken(dto, applicationInstall),
     };
 
-    return new RequestDto(`${BASE_URL}/${url}`, method, dto, data, headers);
+    return new RequestDto(`${BASE_URL}/applinth/${url}`, method, dto, data, headers);
   };
 
   private async _getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
-    const date = new Date();
-    date.setMinutes(date.getMinutes() - 5);
-    const storedAccessToken = await this._accessToken(processDto, applicationInstall);
-    let accessToken = storedAccessToken.access_token;
-    if (storedAccessToken.expiration < date.getTime()) {
-      accessToken = (await this._accessTokenByRefreshToken(
-        processDto,
-        storedAccessToken.access_token,
-        storedAccessToken.refresh_token,
-      )).access_token;
-    }
-    return `Bearer ${accessToken}`;
-  }
-
-  private async _accessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<IAccessToken> {
-    const url = 'www.authorization.com/authorize'; // TODO
+    const url = `${BASE_URL}/token`;
 
     const clientId = applicationInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_ID];
     const clientSecret = applicationInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_SECRET];
@@ -86,40 +70,20 @@ export default class AuthenticaApplication extends ABasicApplication {
       url,
       HttpMethods.POST,
       processDto,
-      undefined,
+      `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}&scopes=default applinth`,
       {
-        [CommonHeaders.AUTHORIZATION]: encode(`${clientId}:${clientSecret}`),
+        [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',
       },
     );
 
-    return this._cacheService.entryWithLock<IAccessToken>(
+    const storedAccessToken = await this._cacheService.entryWithLock<IAccessToken>(
       CACHE_KEY,
       LOCK_KEY,
       request,
       this._accessCallBack,
     );
-  }
 
-  private async _accessTokenByRefreshToken(
-    processDto: AProcessDto,
-    refreshToken: string,
-    accessToken: string,
-  ): Promise<IAccessToken> {
-    const url = ''; // TODO
-
-    const request = new RequestDto(
-      url,
-      HttpMethods.POST,
-      processDto,
-      JSON.stringify({ refreshToken, accessToken }),
-    );
-
-    return this._cacheService.entryWithLock<IAccessToken>(
-      CACHE_KEY,
-      LOCK_KEY,
-      request,
-      this._accessCallBack,
-    );
+    return `Bearer ${storedAccessToken.access_token}`;
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await

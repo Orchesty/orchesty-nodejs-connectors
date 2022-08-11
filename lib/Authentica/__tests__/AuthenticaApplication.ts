@@ -55,7 +55,7 @@ describe('Tests for AuthenticaApplication', () => {
       'orders',
       JSON.stringify({ test: 'test' }),
     );
-    expect(requestDto.url).toEqual('https://app.authentica.com/api/applinth/orders');
+    expect(requestDto.url).toEqual('https://app.authentica.cz/api/applinth/orders');
     expect(requestDto.method).toEqual(HttpMethods.GET);
     expect(requestDto.body).toEqual(JSON.stringify({ test: 'test' }));
   });

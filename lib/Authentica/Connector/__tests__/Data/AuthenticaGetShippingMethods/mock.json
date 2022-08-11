@@ -1,5 +1,5 @@
 {
-  "http": "GET https://app.authentica.com/api/applinth/delivery-methods",
+  "http": "GET https://app.authentica.cz/api/applinth/delivery-methods",
   "code": 200,
   "body": {
     "data": [
