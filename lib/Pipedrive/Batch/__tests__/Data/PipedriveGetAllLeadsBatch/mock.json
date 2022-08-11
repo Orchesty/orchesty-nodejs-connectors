@@ -32,7 +32,7 @@
     ],
     "additional_data": {
       "pagination": {
-        "more_items_in_collection": true
+        "more_items_in_collection": false
       }
     }
   }

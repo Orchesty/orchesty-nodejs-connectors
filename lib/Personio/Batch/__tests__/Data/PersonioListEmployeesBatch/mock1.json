@@ -4,8 +4,8 @@
   "body": {
       "success": true,
       "metadata": {
-          "total_elements": 2,
-          "current_page": 0,
+          "total_elements": 1,
+          "current_page": 1,
           "total_pages": 1
       },
       "offset": 0,

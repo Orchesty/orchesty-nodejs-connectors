@@ -61,12 +61,9 @@
     ],
     "meta": {
       "has_more": true,
-      "after_cursor": "100",
       "before_cursor": "0"
     },
     "links": {
-      "next": "https://test_subdomain.zendesk.com/api/v2/tickets.json?page[size]=100&page[after]=100",
-      "prev": "https://test_subdomain.zendesk.com/api/v2/tickets.json?page[size]=100&page[before]=0"
     }
   }
 }
