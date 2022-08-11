@@ -7,55 +7,60 @@ export const NAME = 'bulk-gate-get-promotional-sms-connector';
 export default class BulkGateGetPromotionalSMSConnector extends AConnector {
   public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+  public async processAction(_dto: ProcessDto<IInput>): Promise<ProcessDto> {
     const dto = _dto;
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
 
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.POST,
-      'promotional',
-            dto.jsonData as IInput,
-    );
+    dto.jsonData = (await this._sender.send<IResponse>(
+      await this._application.getRequestDto(
+        dto,
+        await this._getApplicationInstallFromProcess(dto),
+        HttpMethods.POST,
+        'promotional',
+        dto.jsonData,
+      ),
+      [200],
+    )).jsonBody.data.response;
 
-    const resp = await this._sender.send(req, [200]);
-    dto.jsonData = resp.jsonBody as IOutput;
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    number: string,
-    text: string,
-    unicode: boolean,
-    sender_id: string,
-    sender_id_value: string,
-    country: string,
-    schedule: string
+  number: string;
+  text: string;
+  unicode?: boolean;
+  sender_id?: string;
+  sender_id_value?: string;
+  country?: string;
+  schedule?: string;
 }
 
 export interface IOutput {
-    data: {
-        total: {
-            price: number,
-            status: {
-                sent: number,
-                accepted: number,
-                scheduled: number,
-                error: number
-            }
-        },
-        response:
-            {
-                status: string,
-                sms_id: string,
-                price: number,
-                credit: number,
-                number: string
-            }[],
-    }
+  status: string;
+  part_id: string[];
+  number: string;
+  channel: string;
+  sms_id: string;
+  price: number;
+  credit: number;
 }
 
+interface IResponse {
+  data: {
+    response: IOutput[];
+    total: {
+      price: number;
+      status: {
+        accepted: number;
+        blacklisted: number;
+        error: number;
+        invalid_number: number;
+        invalid_sender: number;
+        scheduled: number;
+        sent: number;
+      }
+    };
+  }
+}
 /* eslint-enable @typescript-eslint/naming-convention */
