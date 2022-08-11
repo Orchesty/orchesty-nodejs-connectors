@@ -182,56 +182,56 @@ estimatedValue: {
 
 export interface IInput{
   lead: {
-    primaryAccount: {id: string},
-    dueTime: string,
-    market: {id: string},
-    tags: string[],
-    description: string,
-    accounts: [
+    primaryAccount?: {id: string},
+    dueTime?: string,
+    market?: {id: string},
+    tags?: string[],
+    description?: string,
+    accounts?: [
       {
-        id: number
+        id?: number
       }
     ],
-    contacts: [
+    contacts?: [
       {
-        id: number
+        id?: number
       }
     ],
-    products: [
+    products?: [
       {
-        relationship: string,
-        quantity: number,
-        price: {
-          currency_shortname: string,
-          amount: string
+        relationship?: string,
+        quantity?: number,
+        price?: {
+          currency_shortname?: string,
+          amount?: string
         },
-        id: number
+        id?: number
       }
     ],
-    competitors: [
+    competitors?: [
       {
-        status: number,
-        relationship: string,
-        id: number
+        status?: number,
+        relationship?: string,
+        id?: number
       }
     ],
-    sources: [
-      { id: number }
+    sources?: [
+      { id?: number }
     ],
-    confidence: number,
-    assignee: {
-      entityType: string,
-      id: number
+    confidence?: number,
+    assignee?: {
+      entityType?: string,
+      id?: number
     },
-    customFields: {
-      'Tracking #': string,
-      Discount: {
-        currency_shortname: string,
-        amount: string
+    customFields?: {
+      'Tracking #'?: string,
+      Discount?: {
+        currency_shortname?: string,
+        amount?: string
       }
     },
-    note: string[],
-    priority: number
+    note?: string[],
+    priority?: number
   }
 }
 

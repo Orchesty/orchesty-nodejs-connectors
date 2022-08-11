@@ -1,6 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import crypto from 'crypto';
 
@@ -93,15 +92,15 @@ export interface IOutput{
 export interface IInput{
     task: {
         title: string,
-        description: string,
-        dueTime: string,
-        assignee: {
-            entityType: string,
-            id: number
+        description?: string,
+        dueTime?: string,
+        assignee?: {
+            entityType?: string,
+            id?: number
         },
-       entity: {
-           entityType: string,
-           id: number
+       entity?: {
+           entityType?: string,
+           id?: number
        }
     }
 
