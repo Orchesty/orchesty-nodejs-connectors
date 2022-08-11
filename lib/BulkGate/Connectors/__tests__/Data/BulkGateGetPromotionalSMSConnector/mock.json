@@ -2,39 +2,43 @@
   "http": "POST https://portal.bulkgate.com/api/1.0/simple/promotional",
   "code": 200,
   "body": {
-
     "data": {
-      "total": {
-        "price": 0.0522,
-        "status": {
-          "sent": 0,
-          "accepted": 0,
-          "scheduled": 2,
-          "error": 1
-        }
-      },
       "response": [
         {
-          "status": "scheduled",
-          "sms_id": "tmpde1f00539c7",
-          "price": 0.0261,
-          "credit": 215.81380,
-          "number": "447700900000"
+          "channel": "sms",
+          "credit": 0,
+          "number": "420703654125",
+          "part_id": [
+            "idjiqyty-0"
+          ],
+          "price": 0,
+          "sms_id": "idjiqyty-0",
+          "status": "accepted"
         },
         {
-          "status": "scheduled",
-          "sms_id": "tmpde1f0053f0c",
-          "price": 0.0261,
-          "credit": 215.81380,
-          "number": "447811901234"
-        },
-        {
-          "status": "error",
-          "code": 9,
-          "error": "Invalid phone number",
-          "number": "44771447678"
+          "channel": "sms",
+          "credit": 0,
+          "number": "420721482610",
+          "part_id": [
+            "idjiqyty-1"
+          ],
+          "price": 0,
+          "sms_id": "idjiqyty-1",
+          "status": "accepted"
         }
-      ]
+      ],
+      "total": {
+        "price": 0,
+        "status": {
+          "accepted": 2,
+          "blacklisted": 0,
+          "error": 0,
+          "invalid_number": 0,
+          "invalid_sender": 0,
+          "scheduled": 0,
+          "sent": 0
+        }
+      }
     }
   }
 }
