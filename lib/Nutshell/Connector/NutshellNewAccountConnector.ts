@@ -1,8 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ID } from '../NutshellApplication';
+import crypto from 'crypto';
 
 export const NAME = 'nutshell-new-account-connector';
 
@@ -17,8 +16,9 @@ export default class NutshellNewAccountConnector extends AConnector {
       jsonrpc: '2.0',
       method: 'newAccount',
       params: dto.jsonData as IInput,
-      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
+      id: crypto.randomBytes(4).toString('hex'),
     };
+
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -48,40 +48,40 @@ interface IResponse{
 export interface IInput {
   account: {
     name: string,
-    owner: {
-      entityType: string,
-      id: number
+    owner?: {
+      entityType?: string,
+      id?: number
     },
-    industryId: string,
-    accountTypeId: string,
-    territoryId: string,
-    url: string[],
-    phone: string[],
-    leads: [
+    industryId?: string,
+    accountTypeId?: string,
+    territoryId?: string,
+    url?: string[],
+    phone?: string[],
+    leads?: [
       {
-        relationship: string,
-        id: number
+        relationship?: string,
+        id?: number
       }
     ],
-    contacts: [
+    contacts?: [
       {
-        relationship: string,
-        id: number
+        relationship?: string,
+        id?: number
       }
     ],
-    address: [
+    address?: [
       {
-        address_1: string,
-        address_2: string,
-        address_3: string,
-        city: string,
-        state: string,
-        postalCode: string,
-        country: string
+        address_1?: string,
+        address_2?: string,
+        address_3?: string,
+        city?: string,
+        state?: string,
+        postalCode?: string,
+        country?: string
       }
     ],
-    customFields: {
-      Number_of_Employees: string
+    customFields?: {
+      Number_of_Employees?: string
     }
   }
 }
