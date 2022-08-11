@@ -1,10 +1,41 @@
-import { NAME } from '../WooCommerceApplication';
-import AWooCommerceBatchCursor from './AWooCommerceBatchCursor';
+import { DateTime } from 'luxon';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
 
-export default class WooCommerceGetProducts extends AWooCommerceBatchCursor<IOutput> {
+export const NAME = `${BASE_NAME.toLowerCase()}-get-products`;
+
+export default class WooCommerceGetProducts extends ABatchNode {
   protected _endpoint = 'wp-json/wc/v3/products?per_page=100&page=';
 
-  public getName = (): string => `${NAME.toLowerCase()}-get-products`;
+  public getName = (): string => NAME;
+
+  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
+    const dto = _dto;
+    const pageNumber = dto.getBatchCursor('1');
+    const app = this._application as WooCommerceApplication;
+    const appInstall = await this._getApplicationInstallFromProcess(dto);
+    // rich ma to prijit jako parametr nebo to mam mit ulozeny v appInstall?
+    const after = appInstall.getNonEncryptedSettings().productLastRun;
+
+    const requestDto = await app.getRequestDto(
+      dto,
+      appInstall,
+      HttpMethods.GET,
+      `${this._endpoint + pageNumber}${after ? `&after=${after}` : ''}`,
+    );
+
+    const res = await this._sender.send(requestDto, [200, 404]);
+    const totalPages = res.headers.get('x-wp-totalpages');
+    if (Number(totalPages) > Number(pageNumber)) {
+      dto.setBatchCursor((Number(pageNumber) + 1).toString());
+    } else {
+      appInstall.setNonEncryptedSettings({ productLastRun: DateTime.now() });
+    }
+    dto.setItemList(res.jsonBody as IOutput[]);
+    return dto;
+  }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
