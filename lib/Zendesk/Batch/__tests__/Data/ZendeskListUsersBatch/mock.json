@@ -14,7 +14,6 @@
         ],
         "meta": {
             "has_more": true,
-            "after_cursor": "100",
             "before_cursor": "0"
         },
         "links": {

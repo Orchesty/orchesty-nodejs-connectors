@@ -39,7 +39,6 @@
       "count": 1,
       "next_page": "https://api.calendly.com/scheduled_events?count=1&page_token=sNjq4TvMDfUHEl7zHRR0k0E1PCEJWvdi",
       "previous_page": "https://api.calendly.com/scheduled_events?count=1&page_token=VJs2rfDYeY8ahZpq0QI1O114LJkNjd7H",
-      "next_page_token": "sNjq4TvMDfUHEl7zHRR0k0E1PCEJWvdi",
       "previous_page_token": "VJs2rfDYeY8ahZpq0QI1O114LJkNjd7H"
     }
   }

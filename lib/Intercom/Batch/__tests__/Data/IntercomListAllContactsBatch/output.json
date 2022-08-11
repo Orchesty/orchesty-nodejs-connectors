@@ -1,8 +1,5 @@
 {
   "headers": {
-    "cursor": "?starting_after=WzE1NzEzMTc0NDYwMDAsIjViYTY4MmQyM2Q3Y2Y5MmJlZjg3YmZkNCIsMl0=",
-    "result-code": "1010",
-    "result-message": "Message will be used as a iterator with cursor [?starting_after=WzE1NzEzMTc0NDYwMDAsIjViYTY4MmQyM2Q3Y2Y5MmJlZjg3YmZkNCIsMl0=]. Data will be send to follower(s).",
     "user": "TestUser"
   },
   "data":[
