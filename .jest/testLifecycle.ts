@@ -21,5 +21,3 @@ beforeAll(async () => {
 afterAll(async () => {
   // await dropCollection(ApplicationInstall.getCollection()).then(closeConnection)
 })
-
-jest.setTimeout(100000);
