@@ -21,16 +21,20 @@ export default class WooCommerceGetOrders extends ABatchNode {
       `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}`,
     );
 
-    const res = await this._sender.send(requestDto, [200, 404]);
+    const res = await this._sender.send<IResponseJson[]>(requestDto, [200, 404]);
     const totalPages = res.headers.get('x-wp-totalpages');
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     } else {
       dto.removeBatchCursor();
     }
-    dto.setItemList(res.jsonBody as IResponseJson[]);
+    this._setItemsListToDto(dto, res.jsonBody);
     return dto;
   }
+
+  protected _setItemsListToDto = (dto: BatchProcessDto, responseBody: IResponseJson[]) => {
+    dto.setItemList(responseBody);
+  };
 }
 
 type IResponseJson = IOrdersJson
