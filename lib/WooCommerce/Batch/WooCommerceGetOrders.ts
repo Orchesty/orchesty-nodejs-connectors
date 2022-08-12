@@ -39,7 +39,7 @@ export default class WooCommerceGetOrders extends ABatchNode {
   };
 }
 
-type IResponseJson = IOrdersJson
+export type IResponseJson = IOrdersJson
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IOrdersJson {
