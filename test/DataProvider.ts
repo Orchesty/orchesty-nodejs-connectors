@@ -52,7 +52,7 @@ import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
-import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
+import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/QuickBooks/QuickBooksApplication';
 import { MARKETO_URL, NAME as MARKETO_APP } from '../lib/Marketo/MarketoApplication';
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
@@ -166,7 +166,7 @@ export async function quickBooksApp() {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [REALM_ID]: 'Kaja',
+      [REALM_ID]: '123456789',
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
