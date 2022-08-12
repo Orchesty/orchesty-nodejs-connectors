@@ -2,6 +2,7 @@ import { DateTime } from 'luxon';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
 
 export const NAME = `${BASE_NAME.toLowerCase()}-get-products`;
@@ -14,7 +15,6 @@ export default class WooCommerceGetProducts extends ABatchNode {
     const pageNumber = dto.getBatchCursor('1');
     const app = this._application as WooCommerceApplication;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    // rich ma to prijit jako parametr nebo to mam mit ulozeny v appInstall?
     const after = appInstall.getNonEncryptedSettings().productLastRun;
 
     const requestDto = await app.getRequestDto(
@@ -24,14 +24,16 @@ export default class WooCommerceGetProducts extends ABatchNode {
       `wp-json/wc/v3/products?per_page=100&page=${pageNumber}${after ? `&after=${after}` : ''}`,
     );
 
-    const res = await this._sender.send(requestDto, [200, 404]);
+    const res = await this._sender.send<IOutput[]>(requestDto, [200, 404]);
     const totalPages = res.headers.get('x-wp-totalpages');
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     } else {
       appInstall.setNonEncryptedSettings({ productLastRun: DateTime.now() });
+      const repo = await this._dbClient.getRepository(ApplicationInstall);
+      await repo.update(appInstall);
     }
-    dto.setItemList(res.jsonBody as IOutput[]);
+    dto.setItemList(res.jsonBody);
     return dto;
   }
 }
