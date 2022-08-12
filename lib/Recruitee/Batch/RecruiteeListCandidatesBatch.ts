@@ -13,19 +13,20 @@ export default class RecruiteeListCandidatesBatch extends ABatchNode {
     const page = dto.getBatchCursor('1');
 
     const { companyId } = dto.jsonData as IInput;
+    const limit = 1;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.GET,
-      `api.recruitee.com/c/${companyId}/search/new/candidates?limit=100&page=${page}`,
+      `api.recruitee.com/c/${companyId}/search/new/candidates?limit=${limit}&page=${page}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.hits ?? []);
-    if (response.total <= 0) {
+    if (response.total > Number(page) * limit) {
       dto.setBatchCursor((Number(page) + 1).toString());
     }
     return dto;

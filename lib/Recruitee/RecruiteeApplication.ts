@@ -6,7 +6,7 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 
@@ -39,8 +39,8 @@ export default class RecruiteeApplication extends ABasicApplication {
     const request = new RequestDto(`https://${_url}`, method, dto);
     const apiToken = applicationInstall.getSettings()[AUTHORIZATION_FORM][API_TOKEN];
     request.headers = {
-      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      // [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      // [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${apiToken}`,
     };
 

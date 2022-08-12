@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "cursor": "2",
+        "user": "TestUser"
+    },
+    "data": [{"body": "{\"source\":\"manual\",\"emails\":[\"johnwsmith@recruiteemail.com\"],\"updated_at\":\"2022-07-23T09:20:58Z\",\"new\":false,\"id\":40136160,\"deleted_by_name\":null,\"gdpr_consent_ever_given\":null,\"placements\":[{\"disqualified\":false,\"disqualified_at\":null,\"disqualified_by\":null,\"disqualified_by_name\":null,\"disqualify_kind\":null,\"disqualify_reason\":null,\"eeo_data_status\":null,\"id\":42230231,\"offer\":{\"id\":1051455,\"kind\":\"job\",\"slug\":\"senior-marketer-sample-london\",\"status\":\"published\",\"title\":\"Senior Marketer (Sample)\"},\"overdue_at\":null,\"overdue_diff\":null,\"positive_ratings\":null,\"rating_visible\":true,\"stage\":{\"id\":7504672,\"name\":\"On-site interview\",\"time_limit\":null}}],\"soft_deleted_at\":null,\"sources\":[{\"id\":1488314,\"name\":\"Referral\"}],\"rating\":null,\"company_id\":83653,\"assigned_admins_ids\":[],\"example\":true,\"gdpr_uncompleted_change_request_created_at\":null,\"name\":\"John W. Smith (Sample)\",\"deleted\":false,\"phones\":[\"+15555555555\"],\"deleted_by\":null,\"last_activity_at\":\"2022-07-23T09:20:58Z\",\"admin_id\":152125,\"rating_visible\":true,\"photo_thumb_url\":\"https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/40136160/thumb_photo_4do3m5ef5m5y.jpg\",\"initials\":\"JW\",\"has_avatar\":true,\"created_at\":\"2022-07-23T09:20:58Z\",\"unread_notifications\":false,\"tags\":[{\"id\":1488300,\"name\":\"Sample\"},{\"id\":1488302,\"name\":\"Mid-level\"}],\"highlight\":null,\"gdpr_status\":null,\"positive_ratings\":null,\"gdpr_uncompleted_removal_request_created_at\":null,\"deleted_at\":null,\"gdpr_expires_at\":null}", "headers": null}]
+}
+   
