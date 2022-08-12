@@ -1,32 +1,26 @@
 {
-  "http": "PATCH https://companydomain.pipedrive.com/api/v1/leads/test_id&api_token=AccessToken",
+  "http": "PATCH https://company.pipedrive.com/api/v1/leads/bb0964b0-194b-11ed-9d38-9baa95c5ecb4?api_token=AccessToken",
   "code": 200,
   "body": {
     "success": true,
     "data": {
-      "id": "adf21080-0e10-11eb-879b-05d71fb426ec",
-      "title": "Jane Doe Lead",
-      "owner_id": 1,
-      "creator_id": 1,
-      "label_ids": [
-        "f08b42a0-4e75-11ea-9643-03698ef1cfd6",
-        "f08b42a1-4e75-11ea-9643-03698ef1cfd6"
-      ],
-      "person_id": 1092,
-      "organization_id": null,
-      "source_name": "API",
-      "is_archived": false,
-      "was_seen": false,
-      "value": {
-        "amount": 999,
-        "currency": "USD"
-      },
+      "id": "bb0964b0-194b-11ed-9d38-9baa95c5ecb4",
+      "title": "Person Lead Updated",
+      "owner_id": 14832418,
+      "creator_id": 14832418,
+      "label_ids": [],
+      "value": null,
       "expected_close_date": null,
-      "next_activity_id": 1,
-      "add_time": "2020-10-14T11:30:36.551Z",
-      "update_time": "2020-10-14T11:30:36.551Z",
+      "person_id": 1,
+      "organization_id": null,
+      "is_archived": false,
+      "source_name": "API",
+      "was_seen": false,
+      "next_activity_id": null,
+      "add_time": "2022-08-11T08:00:56.955Z",
+      "update_time": "2022-08-11T16:04:53.675Z",
       "visible_to": "3",
-      "cc_email": "company+1+leadntPaYKA5QRxXkh6WMNHiGh@dev.pipedrivemail.com"
+      "cc_email": "pablos+11162469+leadp6zeXyW7mydmpxE3ioY1kE@pipedrivemail.com"
     }
   }
 }
