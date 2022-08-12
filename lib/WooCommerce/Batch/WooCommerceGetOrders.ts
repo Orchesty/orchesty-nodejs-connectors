@@ -1,12 +1,14 @@
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import WooCommerceApplication, { NAME } from '../WooCommerceApplication';
+import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
+
+export const NAME = `${BASE_NAME.toLowerCase()}-get-orders`;
 
 const WOOCOMMERCE_GET_ORDERS_ENDPOINT = 'wp-json/wc/v3/orders?per_page=100&page=';
 
 export default class WooCommerceGetOrders extends ABatchNode {
-  public getName = (): string => `${NAME.toLowerCase()}-get-orders`;
+  public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
@@ -21,19 +23,23 @@ export default class WooCommerceGetOrders extends ABatchNode {
       `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}`,
     );
 
-    const res = await this._sender.send(requestDto, [200, 404]);
+    const res = await this._sender.send<IResponseJson[]>(requestDto, [200, 404]);
     const totalPages = res.headers.get('x-wp-totalpages');
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     } else {
       dto.removeBatchCursor();
     }
-    dto.setItemList(res.jsonBody as IResponseJson[]);
+    this._setItemsListToDto(dto, res.jsonBody);
     return dto;
   }
+
+  protected _setItemsListToDto = (dto: BatchProcessDto, responseBody: IResponseJson[]) => {
+    dto.setItemList(responseBody);
+  };
 }
 
-type IResponseJson = IOrdersJson
+export type IResponseJson = IOrdersJson
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IOrdersJson {
