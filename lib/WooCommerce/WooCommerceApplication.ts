@@ -1,3 +1,4 @@
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import {
   ABasicApplication,
   PASSWORD,
@@ -63,6 +64,8 @@ export default class WooCommerceApplication extends ABasicApplication {
 
     return new FormStack().addForm(form);
   };
+
+  public getWebhookSubscriptions = (): WebhookSubscription[] => [];
 
   public getLogo = (): string => 'data:image/png;base64,'
     // eslint-disable-next-line max-len
