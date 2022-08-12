@@ -1,12 +1,14 @@
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import WooCommerceApplication, { NAME } from '../WooCommerceApplication';
+import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
+
+export const NAME = `${BASE_NAME.toLowerCase()}-get-orders`;
 
 const WOOCOMMERCE_GET_ORDERS_ENDPOINT = 'wp-json/wc/v3/orders?per_page=100&page=';
 
 export default class WooCommerceGetOrders extends ABatchNode {
-  public getName = (): string => `${NAME.toLowerCase()}-get-orders`;
+  public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
