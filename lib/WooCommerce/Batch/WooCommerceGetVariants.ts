@@ -2,12 +2,11 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
+import { IOutput as IInput } from './WooCommerceGetProducts';
 
-export const NAME = `${BASE_NAME.toLowerCase()}-get-products`;
+export const NAME = `${BASE_NAME.toLowerCase()}-get-variants`;
 
 export default class WooCommerceGetVariants extends ABatchNode {
-  protected _endpoint = 'wp-json/wc/v3/products<product_id>/variations/?per_page=100&page=';
-
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
     const pageNumber = dto.getBatchCursor('1');
@@ -19,29 +18,33 @@ export default class WooCommerceGetVariants extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `wp-json/wc/v3/products${product.id}/variations/?per_page=100&page=${pageNumber}`,
+      `wp-json/wc/v3/products/${product.id}/variations/?per_page=100&page=${pageNumber}`,
     );
 
-    const res = await this._sender.send(requestDto, [200, 404]);
+    const res = await this._sender.send<IVariant[]>(requestDto, [200, 404]);
     const totalPages = res.headers.get('x-wp-totalpages');
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     }
-    dto.addHeader('product_name', product.name);
-    dto.setItemList(res.jsonBody as IOutput[]);
+    dto.setItemList(res.jsonBody.map<IOutput>((variant) => (
+      {
+        product,
+        variant,
+      }
+    )));
     return dto;
   }
 
   public getName = (): string => NAME;
 }
 
-export interface IInput {
-  id: number;
-  name: string;
+export interface IOutput {
+  product: IInput,
+  variant: IVariant
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IOutput {
+export interface IVariant {
     id: number;
     date_created: Date;
     date_created_gmt: Date;

@@ -7,8 +7,6 @@ import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplica
 export const NAME = `${BASE_NAME.toLowerCase()}-get-products`;
 
 export default class WooCommerceGetProducts extends ABatchNode {
-  protected _endpoint = 'wp-json/wc/v3/products?per_page=100&page=';
-
   public getName = (): string => NAME;
 
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
@@ -23,7 +21,7 @@ export default class WooCommerceGetProducts extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `${this._endpoint + pageNumber}${after ? `&after=${after}` : ''}`,
+      `wp-json/wc/v3/products?per_page=100&page=${pageNumber}${after ? `&after=${after}` : ''}`,
     );
 
     const res = await this._sender.send(requestDto, [200, 404]);
