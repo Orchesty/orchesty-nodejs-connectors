@@ -1,0 +1,27 @@
+{
+  "http": "POST https://company.api-us1.com/api/3/accounts",
+  "code": 200,
+  "body": {
+    "account": {
+      "name": "Example Account",
+      "accountUrl": "https://www.example.com",
+      "createdTimestamp": "2019-06-12T16:52:16-05:00",
+      "updatedTimestamp": "2019-06-12T16:52:16-05:00",
+      "links": [],
+      "fields": [
+        {
+          "customFieldId": 9,
+          "fieldValue": "501 - 1000",
+          "accountId": "1"
+        },
+        {
+          "customFieldId": 20,
+          "fieldValue": 1234,
+          "fieldCurrency": "GBP",
+          "accountId": "1"
+        }
+      ],
+      "id": "1"
+    }
+  }
+}
