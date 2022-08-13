@@ -1,0 +1,23 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "account": {
+            "name": "Example Account",
+            "accountUrl": "https://www.example.com",
+            "owner": 1,
+            "fields": [
+                {
+                    "customFieldId": 9,
+                    "fieldValue": "500-1000"
+                },
+                {
+                    "customFieldId": 20,
+                    "fieldValue": 1234,
+                    "fieldCurrency": "GBP"
+                }
+            ]
+        }
+    }
+}
