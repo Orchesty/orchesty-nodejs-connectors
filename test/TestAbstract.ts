@@ -26,7 +26,7 @@ import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInvit
 import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import CeskaPostaParcelPrintingConnector from '../lib/Česká pošta/Connectors/CeskaPostaParcelPrintingConnector';
+import CeskaPostaParcelPrintingConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelPrintingConnector';
 import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
 import ClickupApplication from '../lib/Clickup/ClickupApplication';
 import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
