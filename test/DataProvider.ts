@@ -6,15 +6,6 @@ import {
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import {
-  ACCOUNT_OWNER_NAME,
-  API_DOMAIN,
-  APP_LINK_NAME,
-  CREATOR_FORM,
-  FORM_LINK_NAME,
-  NAME as ZOHO_APP,
-  REPORT_LINK_NAME,
-} from '../lib/Zoho/ZohoApplication';
 import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
 import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 import { db } from './TestAbstract';

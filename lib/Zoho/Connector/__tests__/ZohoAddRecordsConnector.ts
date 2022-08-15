@@ -15,7 +15,7 @@ describe('Tests for ZohoAddRecordsConnector', () => {
     await tester.testConnector(ZOHO_ADD_RECORDS_CONNECTOR);
   });
 
-//   it('process - error', async () => {
-//     await tester.testConnector(ZOHO_ADD_RECORDS_CONNECTOR, 'error', Error);
-//   });
+  it('process - error', async () => {
+    await tester.testConnector(ZOHO_ADD_RECORDS_CONNECTOR, 'error', Error);
+  });
 });

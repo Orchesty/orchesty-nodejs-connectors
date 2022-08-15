@@ -6,7 +6,7 @@ import init from '../../../../test/Implementation/zoho';
 let tester: NodeTester;
 
 describe('Tests for ZohoGetRecordsConnector', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     tester = new NodeTester(container, __filename);
     await init();
   });
@@ -15,7 +15,7 @@ describe('Tests for ZohoGetRecordsConnector', () => {
     await tester.testConnector(ZOHO_GET_RECORDS_CONNECTOR);
   });
 
-//   it('process - error', async () => {
-//     await tester.testConnector(ZOHO_GET_RECORDS_CONNECTOR, 'error', Error);
-//   });
+  it('process - error', async () => {
+    await tester.testConnector(ZOHO_GET_RECORDS_CONNECTOR, 'error', Error);
+  });
 });
