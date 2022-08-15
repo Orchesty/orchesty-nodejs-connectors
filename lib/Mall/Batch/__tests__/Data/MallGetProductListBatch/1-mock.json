@@ -1,5 +1,5 @@
 {
-  "http": "GET https://mpapi.mallgroup.com/v1/products?page=1&page_size=1000&filter=basic&client_id=ClientId",
+  "http": "GET https://mpapi.mallgroup.com/v1/products?page=2&page_size=1000&filter=basic&client_id=ClientId",
   "code": 200,
   "body": {
     "result": {
@@ -10,25 +10,23 @@
       "total": 2,
       "pages": 2,
       "size": 1,
-      "page": 1
+      "page": 2
     },
     "data": [
       {
-        "id": "1",
-        "product_id": 100094163651,
+        "id": "104570",
+        "product_id": 100094165277,
         "title": "Title of product",
         "status": "A",
         "stage": "draft",
         "in_stock": 23,
         "category_id": "MP008",
-        "price": 10000000,
+        "price": 10000009,
         "purchase_price": 0,
-        "rrp": 10000000,
+        "rrp": 10000009,
         "variants_count": 0,
         "has_variants": false
       }
     ]
   }
-
 }
-
