@@ -36,6 +36,7 @@ specifiers:
   oracledb: ^5.4.0
   pg: ^8.7.3
   pg-hstore: ^2.3.4
+  readline-sync: ^1.4.10
   reflect-metadata: ^0.1.13
   sequelize: ^6.21.3
   sqlite3: ^5.0.11
@@ -85,6 +86,7 @@ devDependencies:
   eslint-plugin-import: 2.26.0_5yqa6y7jadhx25xxnmrnyuevy4
   jest: 28.1.3_n3xoy7qirjmlijzezdtlwczclm
   nodemon: 2.0.19
+  readline-sync: 1.4.10
   ts-jest: 28.0.8_bi2kohzqnxavgozw3csgny5hju
   ts-node: 10.9.1_vugoqbkjnxc3odpmeek2omb3o4
   typescript: 4.7.4
@@ -6613,6 +6615,11 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: true
+
+  /readline-sync/1.4.10:
+    resolution: {integrity: sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==}
+    engines: {node: '>= 0.8.0'}
     dev: true
 
   /redis-commands/1.7.0:
