@@ -7,6 +7,7 @@ import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/Authent
 import {
   cacheService, container, db, sender,
 } from '../TestAbstract';
+import AuthenticaGetOrderStatuses from '../../lib/Authentica/Connector/AuthenticaGetOrderStatuses';
 
 export default async function init(): Promise<ApplicationInstall> {
   const authenticaApplication = new AuthenticaApplication(cacheService);
@@ -17,6 +18,12 @@ export default async function init(): Promise<ApplicationInstall> {
     .setDb(db)
     .setApplication(authenticaApplication);
   container.setConnector(authenticaGetShippingMethods);
+
+  const authenticaGetOrderStatuses = new AuthenticaGetOrderStatuses()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(authenticaApplication);
+  container.setConnector(authenticaGetOrderStatuses);
 
   return appInstall(
     AUTHENTICA,
