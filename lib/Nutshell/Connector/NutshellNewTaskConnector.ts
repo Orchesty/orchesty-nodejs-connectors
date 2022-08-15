@@ -1,8 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { ID } from '../NutshellApplication';
+import crypto from 'crypto';
 
 export const NAME = 'nutshell-new-task-connector';
 
@@ -17,7 +16,7 @@ export default class NutshellNewTaskConnector extends AConnector {
       jsonrpc: '2.0',
       method: 'newTask',
       params: dto.jsonData as IInput,
-      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
+      id: crypto.randomBytes(4).toString('hex'),
     };
     const req = await this._application.getRequestDto(
       dto,
@@ -93,15 +92,15 @@ export interface IOutput{
 export interface IInput{
     task: {
         title: string,
-        description: string,
-        dueTime: string,
-        assignee: {
-            entityType: string,
-            id: number
+        description?: string,
+        dueTime?: string,
+        assignee?: {
+            entityType?: string,
+            id?: number
         },
-       entity: {
-           entityType: string,
-           id: number
+       entity?: {
+           entityType?: string,
+           id?: number
        }
     }
 

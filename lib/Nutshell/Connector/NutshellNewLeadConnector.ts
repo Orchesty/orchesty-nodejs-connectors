@@ -1,8 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { ID } from '../NutshellApplication';
+import crypto from 'crypto';
 
 export const NAME = 'nutshell-new-lead-connector';
 
@@ -17,7 +16,7 @@ export default class NutshellNewLeadConnector extends AConnector {
       jsonrpc: '2.0',
       method: 'newLead',
       params: dto.jsonData as IInput,
-      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
+      id: crypto.randomBytes(4).toString('hex'),
     };
     const req = await this._application.getRequestDto(
       dto,
@@ -183,56 +182,56 @@ estimatedValue: {
 
 export interface IInput{
   lead: {
-    primaryAccount: {id: string},
-    dueTime: string,
-    market: {id: string},
-    tags: string[],
-    description: string,
-    accounts: [
+    primaryAccount?: {id: string},
+    dueTime?: string,
+    market?: {id: string},
+    tags?: string[],
+    description?: string,
+    accounts?: [
       {
-        id: number
+        id?: number
       }
     ],
-    contacts: [
+    contacts?: [
       {
-        id: number
+        id?: number
       }
     ],
-    products: [
+    products?: [
       {
-        relationship: string,
-        quantity: number,
-        price: {
-          currency_shortname: string,
-          amount: string
+        relationship?: string,
+        quantity?: number,
+        price?: {
+          currency_shortname?: string,
+          amount?: string
         },
-        id: number
+        id?: number
       }
     ],
-    competitors: [
+    competitors?: [
       {
-        status: number,
-        relationship: string,
-        id: number
+        status?: number,
+        relationship?: string,
+        id?: number
       }
     ],
-    sources: [
-      { id: number }
+    sources?: [
+      { id?: number }
     ],
-    confidence: number,
-    assignee: {
-      entityType: string,
-      id: number
+    confidence?: number,
+    assignee?: {
+      entityType?: string,
+      id?: number
     },
-    customFields: {
-      'Tracking #': string,
-      Discount: {
-        currency_shortname: string,
-        amount: string
+    customFields?: {
+      'Tracking #'?: string,
+      Discount?: {
+        currency_shortname?: string,
+        amount?: string
       }
     },
-    note: string[],
-    priority: number
+    note?: string[],
+    priority?: number
   }
 }
 

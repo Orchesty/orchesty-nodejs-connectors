@@ -1,5 +1,5 @@
 {
-  "http": "POST https//app.nutshell.com/api/v1/json",
+  "http": "POST https://app.nutshell.com/api/v1/json",
   "code": 200,
   "body": {
     "result": {
