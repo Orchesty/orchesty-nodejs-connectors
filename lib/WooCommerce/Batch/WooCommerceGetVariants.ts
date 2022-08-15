@@ -26,12 +26,7 @@ export default class WooCommerceGetVariants extends ABatchNode {
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
     }
-    dto.setItemList(res.jsonBody.map<IOutput>((variant) => (
-      {
-        product,
-        variant,
-      }
-    )));
+    dto.setItemList([{ product, variants: res.jsonBody }]);
     return dto;
   }
 
@@ -40,7 +35,7 @@ export default class WooCommerceGetVariants extends ABatchNode {
 
 export interface IOutput {
   product: IInput,
-  variant: IVariant
+  variants: IVariant[]
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
