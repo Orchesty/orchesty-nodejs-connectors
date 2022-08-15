@@ -357,7 +357,7 @@ export async function merkApp() {
 export async function onesignalApp() {
   return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [REST_API_KEY]: 'Api key',
+      [REST_API_KEY]: 'ODA4OTdiNjgtMjkyZC00MmViLWJjNDktZTM4ODQxZTcxZDVl',
     },
   });
 }
