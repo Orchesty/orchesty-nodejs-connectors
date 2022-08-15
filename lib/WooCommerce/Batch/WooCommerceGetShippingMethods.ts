@@ -20,7 +20,7 @@ export default class WooCommerceGetShippingMethods extends ABatchNode {
       `wp-json/wc/v3/shipping_methods?per_page=100&page=${pageNumber}`,
     );
 
-    const res = await this._sender.send<IVariant[]>(requestDto, [200, 404]);
+    const res = await this._sender.send<IShippingMethod[]>(requestDto, [200, 404]);
     const totalPages = res.headers.get('x-wp-totalpages');
     if (Number(totalPages) > Number(pageNumber)) {
       dto.setBatchCursor((Number(pageNumber) + 1).toString());
@@ -32,79 +32,18 @@ export default class WooCommerceGetShippingMethods extends ABatchNode {
   public getName = (): string => NAME;
 }
 
-export interface IOutput {
-  product: IInput,
-  variant: IVariant
-}
-
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IVariant {
-    id: number;
-    date_created: Date;
-    date_created_gmt: Date;
-    date_modified: Date;
-    date_modified_gmt: Date;
-    description: string;
-    permalink: string;
-    sku: string;
-    price: string;
-    regular_price: string;
-    sale_price: string;
-    date_on_sale_from?: Date;
-    date_on_sale_from_gmt?: Date;
-    date_on_sale_to?: Date;
-    date_on_sale_to_gmt?: Date;
-    on_sale: boolean;
-    status: string;
-    purchasable: boolean;
-    virtual: boolean;
-    downloadable: boolean;
-    downloads: undefined[];
-    download_limit: number;
-    download_expiry: number;
-    tax_status: string;
-    tax_class: string;
-    manage_stock: boolean;
-    stock_quantity?: number;
-    stock_status: string;
-    backorders: string;
-    backorders_allowed: boolean;
-    backordered: boolean;
-    weight: string;
-    dimensions: {
-      length: string;
-      width: string;
-      height: string;
-    };
-    shipping_class: string;
-    shipping_class_id: number;
-    image: {
-      id: number;
-      date_created: Date;
-      date_created_gmt: Date;
-      date_modified: Date;
-      date_modified_gmt: Date;
-      src: string;
-      name: string;
-      alt: string;
-    };
-    attributes: {
-      id: number;
-      name: string;
-      option: string;
+export interface IShippingMethod {
+  id: string;
+  title: string;
+  description: string;
+  _links: {
+    self: {
+      href: string;
     }[];
-    menu_order: number;
-    meta_data: undefined[];
-    _links: {
-      self: {
-        href: string;
-      }[];
-      collection: {
-        href: string;
-      }[];
-      up: {
-        href: string;
-      }[];
-    };
+    collection: {
+      href: string;
+    }[];
+  };
 }
 /* eslint-enable @typescript-eslint/naming-convention */
