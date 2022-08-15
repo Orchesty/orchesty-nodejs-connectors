@@ -43,7 +43,6 @@ import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
-import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
