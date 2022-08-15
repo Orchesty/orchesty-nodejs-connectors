@@ -12,6 +12,7 @@ import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetPr
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
 import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrders';
+import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Batch/WooCommerceGetShippingMethods';
 
 export default async function init(): Promise<void> {
   await appInstall(
@@ -46,4 +47,10 @@ export default async function init(): Promise<void> {
     .setDb(db)
     .setApplication(app);
   container.setBatch(wooCommerceGetOrders);
+
+  const wooCommerceGetShippingMethods = new WooCommerceGetShippingMethods()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(wooCommerceGetShippingMethods);
 }
