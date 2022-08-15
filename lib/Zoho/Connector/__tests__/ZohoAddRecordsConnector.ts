@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as ZOHO_ADD_RECORDS_CONNECTOR } from '../ZohoAddRecordsConnector';
-import { zohoApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/zoho';
 
 let tester: NodeTester;
 
 describe('Tests for ZohoAddRecordsConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
-    await zohoApp();
+  beforeAll(async () => {
+    tester = new NodeTester(container, __filename);
+    await init();
   });
 
   it('process - ok', async () => {
