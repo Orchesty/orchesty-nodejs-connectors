@@ -38,7 +38,7 @@ export default class OnesignalApplication extends ABasicApplication {
     const settings = applicationInstall.getSettings();
     const key = settings[AUTHORIZATION_FORM][REST_API_KEY];
     const url = `https://onesignal.com/api/v1/${_url}`;
-    const request = new RequestDto(url ?? '', method, dto);
+    const request = new RequestDto(url, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,

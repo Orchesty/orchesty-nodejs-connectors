@@ -43,8 +43,9 @@ import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as ZENDESK_APP, SUBDOMAIN } from '../lib/Zendesk/ZendeskApplication';
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
+import { REALM_ID, NAME as QUICKBOOKS_APP } from '../lib/Quickbooks/QuickbooksApplication';
 import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
-import { NAME as ONESIGNAL_APP } from '../lib/Onesignal/OnesignalApplication';
+import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
 import { NAME as BOX_APP } from '../lib/Box/BoxApplication';
 
@@ -357,7 +358,7 @@ export async function merkApp() {
 export async function onesignalApp() {
   return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [API_KEY]: 'OWM2YjNiM2EtOWUxNi00MWMzLWJiNjQtMTc0NmEzMGI5MGFi',
+      [REST_API_KEY]: 'Api key',
     },
   });
 }
