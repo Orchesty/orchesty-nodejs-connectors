@@ -1,48 +1,10 @@
 {
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": {
-
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
     "account": {
-        "name": "New Account Name",
-        "owner": {
-            "entityType": "Users",
-            "id": 1
-        },
-        "industryId": "3",
-        "accountTypeId": "1",
-        "territoryId": "10",
-        "url": [ "http://www.andyfowler.com/", "facebook.com/andy" ],
-        "phone": [ "717-555-0480", "717-555-0055", "877-555-9988" ],
-        "leads": [
-            {
-                "relationship": "First account",
-                "id": 12
-            }
-        ],
-        "contacts": [
-            {
-                "relationship": "First contact",
-                "id": 12
-            }
-        ],
-
-        "address": [
-            {
-                "address_1":  "100 Second St.",
-                "address_2":  "Apt. 4",
-                "address_3":  "c/o Barclay Fowler",
-                "city":       "Ann Arbor",
-                "state":      "MI",
-                "postalCode": "48103",
-                "country": "US"
-            }
-        ],
-        "customFields": {
-            "Number of Employees": "142"
-        }
+      "name": "New Account Name"
     }
+  }
 }
-}
-
