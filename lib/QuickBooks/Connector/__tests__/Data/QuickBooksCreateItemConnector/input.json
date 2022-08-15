@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "Name": "Product",
+    "IncomeAccountRef": {
+      "name": "Sales of Product",
+      "value": "1"
+    }
+  }
+}

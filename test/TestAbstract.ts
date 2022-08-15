@@ -78,9 +78,8 @@ import ProductboardApplication from '../lib/Productboard/ProductboardApplication
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
-import QuickbooksApplication from '../lib/Quickbooks/QuickbooksApplication';
-import QuickBooksCreateItemConnector from '../lib/Quickbooks/QuickBooksCreateItemConnector';
-import QuickBooksUpdateItemConnector from '../lib/Quickbooks/Connector/QuickBooksUpdateItemConnector';
+import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';
+import QuickBooksUpdateItemConnector from '../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
 import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
@@ -138,6 +137,7 @@ import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
 import BoxListTasksBatch from '../lib/Box/Batch/BoxListTasksBatch';
+import QuickBooksCreateItemConnector from '../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -372,7 +372,7 @@ function initSalesForce(): void {
 }
 
 function initQuickBooks(): void {
-  const quickApp = new QuickbooksApplication(oauth2Provider);
+  const quickApp = new QuickBooksApplication(oauth2Provider);
   const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
   const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
 

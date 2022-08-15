@@ -39,13 +39,20 @@ export default async function runCli(di: DIContainer) {
   const returnUri = question('Insert returned url: ');
   const req = new URL(returnUri);
 
-  const { state } = req.searchParams as {state?: string};
+  const parameters: Record<string, string> = {};
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of req.searchParams.entries()) {
+    parameters[key] = value;
+  }
+
+  const { state } = parameters as { state?: string };
   if (!state) {
     throw Error('Missing "state" query parameter.');
   }
   const stateDecode = OAuth2Provider.stateDecode(state.toString());
 
-  await appManager.saveAuthorizationToken(stateDecode.name, stateDecode.user, req.searchParams as any);
+  await appManager.saveAuthorizationToken(stateDecode.name, stateDecode.user, parameters);
   const updatedApp = await repo.findByNameAndUser(stateDecode.name, stateDecode.user);
 
   console.log(updatedApp?.getSettings());
