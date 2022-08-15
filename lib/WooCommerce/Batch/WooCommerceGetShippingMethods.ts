@@ -2,7 +2,6 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
-import { IOutput as IInput } from './WooCommerceGetProducts';
 
 export const NAME = `${BASE_NAME.toLowerCase()}-get-shipping-methods`;
 
