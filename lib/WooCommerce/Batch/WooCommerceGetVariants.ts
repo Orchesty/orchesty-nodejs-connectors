@@ -35,7 +35,7 @@ export default class WooCommerceGetVariants extends ABatchNode {
 
 export interface IOutput {
   product: IInput,
-  variant: IVariant
+  variants: IVariant[]
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
