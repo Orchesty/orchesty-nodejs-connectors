@@ -24,7 +24,7 @@ import {
   SELLINGPARTNERID,
   NAME as AMAZON_APP,
 } from '../lib/AmazonApps/SellingPartner/AmazonApplication';
-import { ID, NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
+import { NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
 import {
   NAME as BULKGATE_APP,
@@ -71,6 +71,11 @@ export async function appInstall(
 ): Promise<ApplicationInstall> {
   const repo = await db.getApplicationRepository();
   const app = new ApplicationInstall();
+  const test = await repo.findByNameAndUser(name, user);
+
+  if (test) {
+    await repo.remove(test);
+  }
   app
     .setName(name)
     .setUser(user)
@@ -153,7 +158,6 @@ export async function nutshellApp() {
     [AUTHORIZATION_FORM]: {
       [USER]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,
-      [ID]: DEFAULT_CLIENT_ID,
     },
   });
 }

@@ -1,8 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ID } from '../NutshellApplication';
+import crypto from 'crypto';
 
 export const NAME = 'nutshell-get-account-connector';
 
@@ -17,7 +16,7 @@ export default class NutshellGetAccountConnector extends AConnector {
       jsonrpc: '2.0',
       method: 'getAccount',
       params: dto.jsonData as IInput,
-      id: appInstall.getSettings()[AUTHORIZATION_FORM][ID],
+      id: crypto.randomBytes(4).toString('hex'),
     };
     const req = await this._application.getRequestDto(
       dto,
