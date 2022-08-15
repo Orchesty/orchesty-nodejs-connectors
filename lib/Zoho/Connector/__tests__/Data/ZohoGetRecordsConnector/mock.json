@@ -1,78 +1,10 @@
 {
-    "http": "GET https://creator.zoho.com/api/v2/name/name_app/report/report_link/123",
+    "http": "GET https://creator.zoho.eu/api/v2/hanaboso/HanabosoApp/report/karel_Report/152208000000004003",
     "code": 200,
     "body": {
         "code": 3000,
         "data": {
-            "Multi_Line": "Multiples\nLines\nof Text",
-            "Email": "jason@zylker.com",
-            "Address": {
-                "display_value": "4154 High Meadow Lane, Scranton, PA, 18503, United States",
-                "country": "United States",
-                "district_city": "Scranton",
-                "latitude": "41.4086874",
-                "address_line_1": "4154 High Meadow Lane",
-                "state_province": "PA",
-                "address_line_2": "",
-                "postal_code": "18503",
-                "longitude": "-75.6621294"
-            },
-            "Phone_Number": "+15704961113",
-            "Time": "10:30:00",
-            "Image": "/api/v2/jason18/zylker-store/report/All_Orders/3888833000000114023/Image/download?filepath=1605793663620_jasonprofile.jpg",
-            "Url": {
-                "value": "Zylker Inc",
-                "url": "https://www.zylker.com"
-            },
-            "Name": {
-                "display_value": "Mr. Jason Bowley Jr",
-                "prefix": "Mr.",
-                "last_name": "Bowley",
-                "suffix": "Jr",
-                "first_name": "Jason"
-            },
-            "Formula": "Single Line of Text - jason@zylker.com",
-            "Single_Line": "Single Line of Text",
-            "Number": "20",
-            "Decimal": "20.43",
-            "Decision_box": "true",
-            "File_upload": "/api/v2/jason18/zylker-store/report/All_Orders/3888833000000114023/File_upload/download?filepath=1605793668376_myfile.txt",
-            "Checkbox": "Choice 1,Choice 2",
-            "Currency": "1230.89",
-            "Rich_Text": "<div><b>Rich</b> <i><span class=\"highlight\" style=\"background-color: rgb(254, 255, 51)\">Text</span></i> <u><span class=\"colour\" style=\"color: rgb(51, 51, 255)\">data</span></u>.<br /></div>",
-            "Lookup": {
-                "display_value": "asdasd",
-                "ID": "3888833000000114027"
-            },
-            "ID": "3888833000000114023",
-            "Integration": {
-                "display_value": "Webster",
-                "ID": "3888833000000114007"
-            },
-            "Multi_Select": [
-                "Choice 2",
-                "Choice 3"
-            ],
-            "Keyword": "Multiples Lines,Text",
-            "Percent": "34.34",
-            "Prediction": "",
-            "Dropdown": "Choice 2",
-            "Inline_SubForm": [
-                {
-                    "display_value": "Barry",
-                    "ID": "3888833000000114013"
-                }
-            ],
-            "Radio": "Choice 1",
-            "Auto_Number": "1",
-            "users": "jason18",
-            "Audio": "/api/v2/jason18/zylker-store/report/All_Orders/3888833000000114023/Audio/download?filepath=1605793663623_audiofile.mp3",
-            "Video": "/api/v2/jason18/zylker-store/report/All_Orders/3888833000000114023/Video/download?filepath=1605793663626_videofile.mp4",
-            "Signature": "/api/v2/jason18/zylker-store/report/All_Orders/3888833000000114023/Signature/download?filepath=1605793663691_signature.png",
-            "Sentiment": "Positive",
-            "Date_Time": "24-Apr-2020 10:30:00",
-            "Date_field": "24-Apr-2020",
-            "Object_Detection": "tv,laptop"
+            "ID": "152208000000004003"
         }
     }
 }

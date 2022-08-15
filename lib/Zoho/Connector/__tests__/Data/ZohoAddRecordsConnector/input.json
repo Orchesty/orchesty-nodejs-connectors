@@ -18,7 +18,7 @@
                 "Phone_Number",
                 "Email"
             ],
-            "message": true,
+            "message": false,
             "tasks": true
         }
     }

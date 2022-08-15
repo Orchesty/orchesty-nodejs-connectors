@@ -49,7 +49,7 @@ export default class ZohoApplication extends AOAuth2Application {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
+      [CommonHeaders.AUTHORIZATION]: `Zoho-oauthtoken ${this.getAccessToken(applicationInstall)}`,
     };
 
     if (data) {
@@ -62,7 +62,7 @@ export default class ZohoApplication extends AOAuth2Application {
   public getScopes = (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string[] => ['ZohoCRM.modules.ALL', 'ZohoCRM.settings.ALL'];
+  ): string[] => ['ZohoCRM.modules.ALL', 'ZohoCRM.settings.ALL', 'ZohoCreator.form.ALL', 'ZohoCreator.report.ALL'];
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')

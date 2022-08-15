@@ -68,6 +68,7 @@
         "oracledb": "^5.4.0",
         "pg": "^8.7.3",
         "pg-hstore": "^2.3.4",
+        "readline-sync": "^1.4.10",
         "sequelize": "^6.21.1",
         "sqlite3": "^5.0.8",
         "tedious": "^15.0.0",

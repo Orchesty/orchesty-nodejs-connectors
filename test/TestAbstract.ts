@@ -111,9 +111,6 @@ import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreate
 import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
 import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
 import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
-import ZohoAddRecordsConnector from '../lib/Zoho/Connector/ZohoAddRecordsConnector';
-import ZohoApplication from '../lib/Zoho/ZohoApplication';
-import ZohoGetRecordsConnector from '../lib/Zoho/Connector/ZohoGetRecordsConnector';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
@@ -197,7 +194,6 @@ export async function prepare(): Promise<void> {
   initWedo();
   initWix();
   initZendesk();
-  initZoho();
   initOnesignal();
 
   initiated = true;
@@ -216,25 +212,6 @@ export async function dropCollection(collection: string) {
   } catch {
     // ...
   }
-}
-
-function initZoho(): void {
-  const zohoApp = new ZohoApplication(oauth2Provider);
-  const zohoAddRecordsConnector = new ZohoAddRecordsConnector();
-  const zohoGetRecordsConnector = new ZohoGetRecordsConnector();
-  container.setApplication(zohoApp);
-
-  zohoAddRecordsConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(zohoApp);
-  container.setConnector(zohoAddRecordsConnector);
-
-  zohoGetRecordsConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(zohoApp);
-  container.setConnector(zohoGetRecordsConnector);
 }
 
 function initPipedrive(): void {

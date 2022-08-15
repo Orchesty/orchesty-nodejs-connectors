@@ -27,24 +27,19 @@ export default class ZohoAddRecordsConnector extends AConnector {
     );
     const resp = await this._sender.send(req, [200]);
 
-    const records = resp.jsonBody as IResponse;
+    const records = resp.jsonBody as IOutput;
 
-    records.result.forEach((value) => {
-      if (value.code !== 3000) {
-        throw new Error(value.message);
-      }
-    });
+    if (records.code !== 3000) {
+      throw new Error(records.message);
+    }
 
-    dto.jsonData = records.result;
+    dto.jsonData = records.data;
 
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponse {
-  result: IOutput[],
-}
 
 export interface IInput {
   data: [
