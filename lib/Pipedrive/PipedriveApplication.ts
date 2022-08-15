@@ -46,7 +46,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
   ): RequestDto {
     const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
     let url = `https://${subdomain}.pipedrive.com/api/v1`;
-    const join = _url?.indexOf('?') ? '&' : '?';
+    const join = _url?.includes('?') ? '&' : '?';
     url += `${_url}${join}api_token=${this._getToken(applicationInstall)}`;
     const request = new RequestDto(url.toString(), method, dto);
     request.headers = {
@@ -54,7 +54,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
     };
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;
