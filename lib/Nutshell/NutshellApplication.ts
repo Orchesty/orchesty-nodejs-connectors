@@ -38,8 +38,8 @@ export default class NutshellApplication extends ABasicApplication {
   ): RequestDto | Promise<RequestDto> => {
     const request = new RequestDto('https://app.nutshell.com/api/v1/json', method, dto);
     request.headers = {
-      // [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-      // [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: JSON_TYPE,
       [CommonHeaders.AUTHORIZATION]: `Basic ${this._getToken(applicationInstall)}`,
     };
     if (data) {
