@@ -86,25 +86,6 @@ export async function appInstall(
   return app;
 }
 
-export async function zohoApp() {
-  return appInstall(ZOHO_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-        [API_DOMAIN]: 'https://creator.zoho.com',
-      },
-    },
-    [CREATOR_FORM]: {
-      [ACCOUNT_OWNER_NAME]: 'name',
-      [APP_LINK_NAME]: 'name_app',
-      [FORM_LINK_NAME]: 'form_link',
-      [REPORT_LINK_NAME]: 'report_link',
-    },
-  });
-}
-
 export async function bigcommerceApp() {
   return appInstall(BIGCOMMERCE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
