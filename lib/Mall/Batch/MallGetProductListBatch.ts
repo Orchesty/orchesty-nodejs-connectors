@@ -28,6 +28,7 @@ export default class MallGetProductListBatch extends ABatchNode {
     return dto;
   }
 }
+
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IResponse{
   result: {
