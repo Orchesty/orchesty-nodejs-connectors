@@ -1,9 +1,14 @@
 {
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": [{
-        "body":"{\"id\":\"100000000111\",\"product_id\":100000000001,\"title\":\"Some product title\",\"status\":\"A\",\"stage\":\"live\",\"in_stock\":0,\"category_id\":\"MP001\",\"price\":5.6,\"rrp\":29,\"variants_count\":0,\"has_variants\":false}",
-        "headers": null
-    }]
+  "headers": {
+    "cursor": "2",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":\"1\",\"product_id\":100094163651,\"title\":\"Title of product\",\"status\":\"A\",\"stage\":\"draft\",\"in_stock\":23,\"category_id\":\"MP008\",\"price\":10000000,\"purchase_price\":0,\"rrp\":10000000,\"variants_count\":0,\"has_variants\":false}",
+      "headers": null
+    }
+  ]
 }
