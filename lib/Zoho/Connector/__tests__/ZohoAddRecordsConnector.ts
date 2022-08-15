@@ -6,7 +6,7 @@ import init from '../../../../test/Implementation/zoho';
 let tester: NodeTester;
 
 describe('Tests for ZohoAddRecordsConnector', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     tester = new NodeTester(container, __filename);
     await init();
   });
