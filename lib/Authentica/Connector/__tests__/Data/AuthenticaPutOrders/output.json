@@ -1,0 +1,43 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "orderNumber": "string",
+      "destination": {
+        "firstName": "string",
+        "lastName": "string",
+        "phone": "string",
+        "email": "user@example.com",
+        "company": "string",
+        "address1": "string",
+        "address2": "string",
+        "city": "string",
+        "province": "string",
+        "country": "string",
+        "zip": "string"
+      },
+      "deliveryMethod": {
+        "id": 0,
+        "branchId": "string"
+      },
+      "paymentMethod": {
+        "codAmount": 0,
+        "codCurrency": "string"
+      },
+      "price": {
+        "totalPrice": 0,
+        "currency": "string"
+      },
+      "items": [
+        {
+          "sku": "string",
+          "quantity": 0,
+          "unitPrice": 0
+        }
+      ],
+      "variableSymbol": "string"
+    }
+  ]
+}

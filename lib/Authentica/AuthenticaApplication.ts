@@ -47,7 +47,7 @@ export default class AuthenticaApplication extends ABasicApplication {
     dto: ProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: BodyInit,
   ): Promise<RequestDto> => {
     const headers = {
@@ -57,7 +57,13 @@ export default class AuthenticaApplication extends ABasicApplication {
       [CommonHeaders.AUTHORIZATION]: await this._getAccessToken(dto, applicationInstall),
     };
 
-    return new RequestDto(`${BASE_URL}/applinth/${url}`, method, dto, data, headers);
+    let url: string;
+    url = `${BASE_URL}/applinth/${_url}`;
+    if (_url?.substring(0, 4) === 'http') {
+      url = _url;
+    }
+
+    return new RequestDto(url, method, dto, data, headers);
   };
 
   private async _getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
