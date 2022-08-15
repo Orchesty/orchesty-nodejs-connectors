@@ -10,6 +10,7 @@ import {
   container, db, oauth2Provider, sender,
 } from '../TestAbstract';
 import XeroGetAccountsBatch from '../../lib/Xero/Batch/XeroGetAccountsBatch';
+import XeroGetContactsBatch from '../../lib/Xero/Batch/XeroGetContactsBatch';
 
 export default async function init(): Promise<void> {
   await appInstall(XERO_APP, DEFAULT_USER, {
@@ -26,10 +27,16 @@ export default async function init(): Promise<void> {
 
   container.setApplication(app);
   const getAccounts = new XeroGetAccountsBatch();
+  const getContacts = new XeroGetContactsBatch();
 
   getAccounts
     .setSender(sender)
     .setDb(db)
     .setApplication(app);
   container.setBatch(getAccounts);
+  getContacts
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setBatch(getContacts);
 }
