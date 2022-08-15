@@ -1,261 +1,37 @@
 {
   "http": "POST https://app.nutshell.com/api/v1/json",
   "code": 200,
-  "body": {
-    "result": {
-      "id": 1,
-      "entityType": "Accounts",
-      "rev": "0",
-      "modifiedTime": "2022-07-12T19:28:20+0000",
-      "createdTime": "2022-07-12T19:28:20+0000",
-      "name": "Acme Corp",
-      "htmlUrl": "https:\/\/app.nutshell.com\/company\/1-acme-corp",
-      "htmlUrlPath": "\/company\/1-acme-corp",
-      "avatarUrl": "https:\/\/app.nutshell.com\/avatar\/accounts\/1\/39\/m6UNnKiVmiD9OGkkcXTsS-O0bSY2z4Ak3vICvpXWj60.2\/1657654100",
-      "accountType": {
-        "id": 1,
-        "name": "Standard Account"
+  "body":{
+    "result":{
+      "id":116,
+      "entityType":"Accounts",
+      "rev":"0",
+      "modifiedTime":"2022-08-10T15:49:23+0000",
+      "createdTime":"2022-08-10T15:49:23+0000",
+      "name":"New Account Name",
+      "htmlUrl":"https:\/\/app.nutshell.com\/company\/116-new-account-name",
+      "htmlUrlPath":"\/company\/116-new-account-name",
+      "avatarUrl":"https:\/\/app.nutshell.com\/avatar\/accounts\/116\/346392\/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2\/1660146563",
+      "accountType":{
+        "id":1,
+        "name":"Standard Account"
       },
-      "industry": {
-        "stub": true,
-        "id": 30,
-        "rev": "0",
-        "entityType": "Industries",
-        "name": "Manufacturing"
-      },
-      "creator": null,
-      "owner": null,
-      "tags": [],
-      "lastContactedDate": "2022-07-11T13:27:00+0000",
-      "contacts": [
-        {
-          "stub": true,
-          "id": 1,
-          "rev": "4",
-          "entityType": "Contacts",
-          "modifiedTime": "2022-07-12T19:28:20+0000",
-          "createdTime": "2022-07-12T19:28:19+0000",
-          "name": "Virginia Sprague",
-          "jobTitle": "Acme Corp",
-          "relationship": null
-        }
+      "industry":null,
+      "creator":null,
+      "owner":null,
+      "tags":[
       ],
-      "description": null,
-      "legacyId": null,
-      "address": {
-        "main": {
-          "name": null,
-          "location": {
-            "longitude": -93.2832790880275979361613281071186065673828125,
-            "latitude": 44.8759717330780034671988687478005886077880859375
-          },
-          "locationAccuracy": "5",
-          "address_1": "533 Rocket Drive",
-          "address_2": null,
-          "address_3": null,
-          "city": "Richfield",
-          "state": "Minnesota",
-          "postalCode": "55423",
-          "country": "US",
-          "timezone": null
-        },
-        "--primary": {
-          "name": null,
-          "location": {
-            "longitude": -93.2832790880275979361613281071186065673828125,
-            "latitude": 44.8759717330780034671988687478005886077880859375
-          },
-          "locationAccuracy": "5",
-          "address_1": "533 Rocket Drive",
-          "address_2": null,
-          "address_3": null,
-          "city": "Richfield",
-          "state": "Minnesota",
-          "postalCode": "55423",
-          "country": "US",
-          "timezone": null
-        }
-      },
-      "notes": [],
-      "leads": [
-        {
-          "stub": true,
-          "id": 1000,
-          "rev": "15",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:24+0000",
-          "createdTime": "2021-06-14T15:59:00+0000",
-          "name": "Lead\u20131000",
-          "description": "",
-          "status": 10,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 27600
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-02-04T11:38:00+0000",
-          "dueTime": "2021-07-19T08:43:00+0000",
-          "closedTime": "2021-07-19T08:43:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1079,
-          "rev": "17",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:46+0000",
-          "createdTime": "2021-08-31T09:10:00+0000",
-          "name": "Lead\u20131079",
-          "description": "",
-          "status": 10,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 44100
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-04-01T13:02:00+0000",
-          "dueTime": "2021-09-24T17:22:00+0000",
-          "closedTime": "2021-09-24T17:22:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1158,
-          "rev": "16",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:42+0000",
-          "createdTime": "2021-10-14T17:29:00+0000",
-          "name": "Lead\u20131158",
-          "description": "",
-          "status": 11,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 27600
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2021-11-04T15:00:00+0000",
-          "dueTime": "2021-10-19T09:41:00+0000",
-          "closedTime": "2021-10-19T09:41:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1237,
-          "rev": "10",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:36+0000",
-          "createdTime": "2021-10-28T17:31:00+0000",
-          "name": "Lead\u20131237",
-          "description": "",
-          "status": 10,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 33000
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2021-11-02T08:17:00+0000",
-          "dueTime": "2021-11-12T12:38:00+0000",
-          "closedTime": "2021-11-12T12:38:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1316,
-          "rev": "10",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:30+0000",
-          "createdTime": "2022-01-03T11:45:00+0000",
-          "name": "Lead\u20131316",
-          "description": "",
-          "status": 11,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 40500
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-01-06T17:40:00+0000",
-          "dueTime": "2022-01-19T11:21:00+0000",
-          "closedTime": "2022-01-19T11:21:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1395,
-          "rev": "17",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:51+0000",
-          "createdTime": "2022-02-17T10:58:00+0000",
-          "name": "Lead\u20131395",
-          "description": "",
-          "status": 10,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 55500
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-03-10T15:00:00+0000",
-          "dueTime": "2022-04-01T17:27:00+0000",
-          "closedTime": "2022-04-01T17:27:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1474,
-          "rev": "19",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:46+0000",
-          "createdTime": "2022-05-03T16:07:00+0000",
-          "name": "Lead\u20131474",
-          "description": "",
-          "status": 10,
-          "completion": 100,
-          "value": {
-            "currency": "USD",
-            "amount": 71100
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-06-17T13:54:00+0000",
-          "dueTime": "2022-06-08T16:16:00+0000",
-          "closedTime": "2022-06-08T16:16:00+0000"
-        },
-        {
-          "stub": true,
-          "id": 1553,
-          "rev": "11",
-          "entityType": "Leads",
-          "modifiedTime": "2022-07-13T08:48:41+0000",
-          "createdTime": "2022-07-07T13:00:00+0000",
-          "name": "Lead\u20131553",
-          "description": "",
-          "status": 0,
-          "completion": 25,
-          "value": {
-            "currency": "USD",
-            "amount": 88500
-          },
-          "primaryAccountName": "Acme Corp",
-          "primaryContactName": "Virginia Sprague",
-          "isOverdue": false,
-          "lastContactedDate": "2022-07-11T13:27:00+0000",
-          "dueTime": "2022-08-18T13:00:00+0000"
-        }
+      "lastContactedDate":null,
+      "contacts":[
+      ],
+      "description":null,
+      "legacyId":null,
+      "notes":[
+      ],
+      "leads":[
       ]
     },
-    "id": "apeye",
-    "jsonrpc": "2.0"
+    "id":"apeye",
+    "jsonrpc":"2.0"
   }
 }
