@@ -16,9 +16,9 @@ export default class MallPostProductConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       'products',
-      { data: dto.jsonData as IInput },
+      dto.jsonData as IInput,
     );
-    const resp = await this._sender.send(req, [200]);
+    const resp = await this._sender.send(req, [201]);
 
     const records = resp.jsonBody as IResponse;
     dto.jsonData = records.data;
@@ -43,9 +43,9 @@ export interface IInput {
   shortdesc: string,
   longdesc: string,
   priority: number,
-  barcode: number,
+  barcode?: number,
   price: number,
-  rrp: number,
+  rrp?: number,
   media: [
     {
       url: string,
@@ -55,25 +55,25 @@ export interface IInput {
       information_list: boolean
     }
   ],
-  promotions: [
+  promotions?: [
     {
       price: number,
       from: string,
       to: string
     }
   ],
-  labels: [
+  labels?: [
     {
       label: string,
       from: string,
       to: string
     }
   ],
-  parameters: {
+  parameters?: {
     COLOR: string,
     SIZE: string
   },
-  dimensions: {
+  dimensions?: {
     weight: number,
     width: number,
     length: number,
@@ -83,14 +83,14 @@ export interface IInput {
     status: string,
     in_stock: number
   },
-  recommended: string[],
-  delivery_delay: number,
-  free_delivery: boolean,
-  package_size: string,
-  mallbox_allowed: boolean,
-  category_id: string,
+  recommended?: string[],
+  delivery_delay?: number,
+  free_delivery?: boolean,
+  package_size?: string,
+  mallbox_allowed?: boolean,
+  category_id?: string,
   vat: number,
-  variants: [
+  variants?: [
     {
       id: string,
       title: string,
@@ -144,9 +144,9 @@ export interface IInput {
       mallbox_allowed: boolean
     }
   ],
-  variable_parameters: string[],
-  partner_title: string,
-  brand_id: string,
-  weee_fee: number
+  variable_parameters?: string[],
+  partner_title?: string,
+  brand_id?: string,
+  weee_fee?: number
 }
 /* eslint-enable @typescript-eslint/naming-convention */

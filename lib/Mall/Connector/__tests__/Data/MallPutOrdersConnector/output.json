@@ -3,11 +3,9 @@
         "user": "TestUser"
     },
     "data": {
-        "id": "ID",
+        "id": 23120201,
         "confirmed": true,
-        "status": "shipping",
-        "first_delivery_attempt": "2018-01-13 08:13:00",
-        "delivered_at": "2018-01-14 08:13:00",
+        "status": "shipped",
         "tracking_number": "abc123",
         "tracking_url": "https://www.exampletracker.com/track/abc123"
     }
