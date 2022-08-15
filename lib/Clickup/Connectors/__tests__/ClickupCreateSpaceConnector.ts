@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for ClickupCreateSpaceConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, false, ['test']);
+    tester = new NodeTester(container, __filename, true);
     await clickupApp();
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(CLICKUP_CREATE_SPACE_CONNECTOR, 'test');
+    await tester.testConnector(CLICKUP_CREATE_SPACE_CONNECTOR);
   });
 });
