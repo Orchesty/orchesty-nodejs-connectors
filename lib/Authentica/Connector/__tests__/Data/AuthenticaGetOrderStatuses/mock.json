@@ -1,0 +1,16 @@
+{
+  "http": "GET https://app.authentica.cz/api/applinth/order-statuses",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": "1",
+        "title": "completed"
+      },
+      {
+        "id": "2",
+        "title": "canceled"
+      }
+    ]
+  }
+}
