@@ -119,7 +119,7 @@ export async function bigcommerceApp() {
 export async function pipedriveApp() {
   return appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [SUBDOMAIN]: 'companydomain',
+      [SUBDOMAIN]: 'company',
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },
   });
