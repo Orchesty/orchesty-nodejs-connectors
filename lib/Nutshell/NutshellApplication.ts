@@ -7,7 +7,7 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
-import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
