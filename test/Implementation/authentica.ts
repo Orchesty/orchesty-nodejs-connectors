@@ -7,6 +7,10 @@ import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/Authent
 import {
   cacheService, container, db, sender,
 } from '../TestAbstract';
+import AuthenticaPutOrders from '../../lib/Authentica/Connector/AuthenticaPutOrders';
+import AuthenticaPostProducts from '../../lib/Authentica/Connector/AuthenticaPutProducts';
+import AuthenticaGetOrderStatus from '../../lib/Authentica/Connector/AuthenticaGetOrderStatus';
+import AuthenticaGetStock from '../../lib/Authentica/Batch/AuthenticaGetStock';
 
 export default async function init(): Promise<ApplicationInstall> {
   const authenticaApplication = new AuthenticaApplication(cacheService);
@@ -17,6 +21,30 @@ export default async function init(): Promise<ApplicationInstall> {
     .setDb(db)
     .setApplication(authenticaApplication);
   container.setConnector(authenticaGetShippingMethods);
+
+  const authenticaPostOrders = new AuthenticaPutOrders()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(authenticaApplication);
+  container.setConnector(authenticaPostOrders);
+
+  const authenticaPostProducts = new AuthenticaPostProducts()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(authenticaApplication);
+  container.setConnector(authenticaPostProducts);
+
+  const authenticaGetOrderStatus = new AuthenticaGetOrderStatus()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(authenticaApplication);
+  container.setConnector(authenticaGetOrderStatus);
+
+  const authenticaGetStock = new AuthenticaGetStock()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(authenticaApplication);
+  container.setBatch(authenticaGetStock);
 
   return appInstall(
     AUTHENTICA,
