@@ -57,11 +57,7 @@ export default class AuthenticaApplication extends ABasicApplication {
       [CommonHeaders.AUTHORIZATION]: await this._getAccessToken(dto, applicationInstall),
     };
 
-    let url: string;
-    url = `${BASE_URL}/applinth/${_url}`;
-    if (_url?.substring(0, 4) === 'http') {
-      url = _url;
-    }
+    const url = _url?.startsWith('http') ? _url : `${BASE_URL}/applinth/${_url}`;
 
     return new RequestDto(url, method, dto, data, headers);
   };
