@@ -3,9 +3,5 @@
     "user": "TestUser"
   },
   "data": [
-    {
-      "body": "{\"id\":\"zj8ZXJFpDnkfgGNSu2jqauBR\",\"name\":\"HB\",\"domain\":\"hanaboso.com\",\"isDomainOwner\":true,\"agreedToTermsAt\":\"2022-08-11T09:54:23.427Z\",\"demoDataCreatedAt\":\"2022-08-11T09:54:23.693Z\",\"trialEndDate\":\"2022-08-25\",\"status\":\"trialing\",\"paymentStatus\":\"ok\",\"package\":\"growth\",\"createdAt\":\"2022-08-11T09:54:22.494Z\",\"updatedAt\":\"2022-08-11T09:54:24.769Z\",\"requireTimeAwayApprovalFor\":[],\"isTimesheetEnabled\":false,\"timesheetFirstEnabledDate\":null,\"logoFileId\":\"ZDUdHnxuNc4ihKwy5NInuVKW\",\"logoResolvedAt\":\"2022-08-11T09:54:24.769Z\",\"logo\":{\"id\":\"ZDUdHnxuNc4ihKwy5NInuVKW\",\"variants\":{\"64\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@64.png\",\"96\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@96.png\",\"104\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@104.png\",\"136\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@136.png\",\"156\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@156.png\",\"204\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@204.png\",\"320\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@320.png\",\"480\":\"https://storage.googleapis.com/humaans-public-prd/ZDUdHnxuNc4ihKwy5NInuVKW@480.png\"},\"filename\":\"company-zj8ZXJFpDnkfgGNSu2jqauBR-logo.png\"},\"autogenerateEmployeeId\":false,\"nextEmployeeId\":null}",
-      "headers": null
-    }
 ]
 }
