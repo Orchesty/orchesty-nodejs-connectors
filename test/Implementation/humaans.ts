@@ -8,7 +8,7 @@ import HumaansListPeopleBatch from '../../lib/Humaans/Batch/HumaansListPeopleBat
 export default async function init(): Promise<void> {
   await appInstall(HUMAANS_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [APPLICATION_TOKEN]: 'gX67NyrVhuF81TEI7evS3WaYSpwO9UqA',
+      [APPLICATION_TOKEN]: 'Api key',
     },
   });
   const app = new HumaansApplication();
