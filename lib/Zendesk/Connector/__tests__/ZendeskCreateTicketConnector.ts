@@ -7,7 +7,7 @@ let tester: NodeTester;
 
 describe('Tests for ZendeskCreateTicketConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename);
     await init();
   });
 

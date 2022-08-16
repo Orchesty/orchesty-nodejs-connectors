@@ -1,15 +1,45 @@
 {
-    "http": "POST https://test_subdomain.zendesk.com/api/v2/users.json",
-    "code": 201,
-    "body": {
-        "user": {
-            "custom_role_id": 123456,
-            "email": "roge@example.org",
-            "id": 9873843,
-            "name": "Roger Wilco",
-            "organization_id": 57542,
-            "role": "agent",
-            "role_type": 0
-        }
+  "http": "POST https://hbtest8393.zendesk.com/api/v2/users.json",
+  "code": 201,
+  "body": {
+    "user": {
+      "active": true,
+      "alias": null,
+      "created_at": "2022-08-16T12:42:32Z",
+      "custom_role_id": 6279152989725,
+      "default_group_id": 6279167766941,
+      "details": null,
+      "email": "test1@user.com",
+      "external_id": null,
+      "iana_time_zone": "Europe/Prague",
+      "id": 6342061201949,
+      "last_login_at": null,
+      "locale": "en-US",
+      "locale_id": 1,
+      "moderator": true,
+      "name": "robert Wilco",
+      "notes": null,
+      "only_private_comments": false,
+      "organization_id": null,
+      "phone": null,
+      "photo": null,
+      "report_csv": false,
+      "restricted_agent": false,
+      "role": "admin",
+      "role_type": 4,
+      "shared": false,
+      "shared_agent": false,
+      "shared_phone_number": null,
+      "signature": null,
+      "suspended": false,
+      "tags": [],
+      "ticket_restriction": null,
+      "time_zone": "Europe/Prague",
+      "two_factor_auth_enabled": null,
+      "updated_at": "2022-08-16T12:42:32Z",
+      "url": "https://hbtest8393.zendesk.com/api/v2/users/6342061201949.json",
+      "user_fields": {},
+      "verified": false
     }
+  }
 }

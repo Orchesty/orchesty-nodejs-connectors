@@ -23,7 +23,7 @@ export default async function init(): Promise<void> {
       [CLIENT_SECRET]: '2a62ac3162358d4b31662dc0a332958291cb445cc15e58ef7aa9d85a5c71e804',
       [SUBDOMAIN]: 'hbtest8393',
       [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+        [ACCESS_TOKEN]: 'ea58cf14c8609b1840130c9b0cf3b84d98f63917068f7c2b494e7298f3989c68',
       },
     },
   });
