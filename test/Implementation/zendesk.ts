@@ -5,7 +5,7 @@ import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provid
 import ZendeskApplication, { NAME as ZENDESK_APP, SUBDOMAIN } from '../../lib/Zendesk/ZendeskApplication';
 import {
   appInstall,
-  DEFAULT_ACCESS_TOKEN,
+  DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_SECRET,
   DEFAULT_USER,
 } from '../DataProvider';
 import ZendeskCreateUserConnector from '../../lib/Zendesk/Connector/ZendeskCreateUserConnector';
@@ -19,11 +19,11 @@ import {
 export default async function init(): Promise<void> {
   await appInstall(ZENDESK_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: 'hanaboso',
-      [CLIENT_SECRET]: '2a62ac3162358d4b31662dc0a332958291cb445cc15e58ef7aa9d85a5c71e804',
+      [CLIENT_ID]: DEFAULT_USER,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
       [SUBDOMAIN]: 'hbtest8393',
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'ea58cf14c8609b1840130c9b0cf3b84d98f63917068f7c2b494e7298f3989c68',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
   });
