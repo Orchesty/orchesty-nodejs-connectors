@@ -1,84 +1,58 @@
 {
-  "http": "GET https://subdomain.workable.com/spi/v3/jobs",
+  "http": "GET https://hb-6.workable.com/spi/v3/jobs?state=published",
   "code": 200,
   "body": {
     "jobs": [
       {
-        "id": "61884e2",
-        "title": "Sales Intern",
-        "full_title": "Sales Intern - US/3/SI",
-        "shortcode": "GROOV003",
-        "code": "US/3/SI",
-        "state": "draft",
-        "department": "Sales",
-        "department_hierarchy": [
-          {
-            "id": 792289334,
-            "name": "Sales"
-          }
-        ],
-        "url": "https://groove-tech.workable.com/jobs/102268944",
-        "application_url": "https://groove-tech.workable.com/jobs/102268944/candidates/new",
-        "shortlink": "https://groove-tech.workable.com/j/GROOV003",
-        "location": {
-          "location_str": "Portland, Oregon, United States",
-          "country": "United States",
-          "country_code": "US",
-          "region": "Oregon",
-          "region_code": "OR",
-          "city": "Portland",
-          "zip_code": "97201",
-          "telecommuting": false
-        },
-        "created_at": "2015-07-01T00:00:00Z"
-      },
-      {
-        "id": "1166bf8c",
-        "title": "Operations Manager",
-        "full_title": "Operations Manager - US/02/CM",
-        "shortcode": "GROOV001",
-        "code": "US/02/CM",
-        "state": "archived",
-        "department": "Operations",
-        "url": "https://groove-tech.workable.com/jobs/291945146",
-        "application_url": "https://groove-tech.workable.com/jobs/291945146/candidates/new",
-        "shortlink": "https://groove-tech.workable.com/j/GROOV001",
-        "location": {
-          "location_str": "Chicago, Illinois, United States",
-          "country": "United States",
-          "country_code": "US",
-          "region": "Illinois",
-          "region_code": "IL",
-          "city": "Chicago",
-          "zip_code": "60290",
-          "telecommuting": false
-        },
-        "created_at": "2015-05-07T00:00:00Z"
-      },
-      {
-        "id": "167636b1",
-        "title": "Office Manager",
-        "full_title": "Office Manager - US/4/OM",
-        "shortcode": "GROOV005",
-        "code": "US/4/OM",
+        "id": "288307",
+        "title": "Job",
+        "full_title": "Job - 123456",
+        "shortcode": "4A16CF4210",
+        "code": "123456",
         "state": "published",
-        "department": "Administration",
-        "url": "https://groove-tech.workable.com/jobs/376844767",
-        "application_url": "https://groove-tech.workable.com/jobs/376844767/candidates/new",
-        "shortlink": "https://groove-tech.workable.com/j/GROOV005",
+        "sample": false,
+        "department": null,
+        "department_hierarchy": [],
+        "url": "https://hb-6.workable.com/jobs/2653749",
+        "application_url": "https://hb-6.workable.com/jobs/2653749/candidates/new",
+        "shortlink": "https://apply.workable.com/j/4A16CF4210",
         "location": {
-          "location_str": "Chicago, Illinois, United States",
-          "country": "United States",
-          "country_code": "US",
-          "region": "Illinois",
-          "region_code": "IL",
-          "city": "Chicago",
-          "zip_code": "60290",
+          "location_str": "Konecchlumí, Hradec Králové Region, Czechia",
+          "country": "Czechia",
+          "country_code": "CZ",
+          "region": "Hradec Králové Region",
+          "region_code": "Hradec Králové Region",
+          "city": "Konecchlumí",
+          "zip_code": null,
           "telecommuting": false
         },
-        "created_at": "2015-06-06T00:00:00Z"
+        "created_at": "2022-08-16T13:18:16Z"
+      },
+      {
+        "id": "28831e",
+        "title": "Jobík",
+        "full_title": "Jobík - Felton",
+        "shortcode": "AFE5476EB0",
+        "code": null,
+        "state": "published",
+        "sample": false,
+        "department": null,
+        "department_hierarchy": [],
+        "url": "https://hb-6.workable.com/jobs/2653772",
+        "application_url": "https://hb-6.workable.com/jobs/2653772/candidates/new",
+        "shortlink": "https://apply.workable.com/j/AFE5476EB0",
+        "location": {
+          "location_str": "Felton, Holguin, Cuba",
+          "country": "Cuba",
+          "country_code": "CU",
+          "region": "Holguin",
+          "region_code": "Holguin",
+          "city": "Felton",
+          "zip_code": null,
+          "telecommuting": false
+        },
+        "created_at": "2022-08-16T13:25:41Z"
       }
-    ],
+    ]
   }
-
 }
