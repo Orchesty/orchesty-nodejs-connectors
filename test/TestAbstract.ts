@@ -106,11 +106,6 @@ import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnecto
 import WixCreateProductConnector from '../lib/Wix/Connector/WixCreateProductConnector';
 import WixGetOrderConnector from '../lib/Wix/Connector/WixGetOrderConnector';
 import WixUpdateProductConnector from '../lib/Wix/Connector/WixUpdateProductConnector';
-import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
-import ZendeskCreateTicketConnector from '../lib/Zendesk/Connector/ZendeskCreateTicketConnector';
-import ZendeskCreateUserConnector from '../lib/Zendesk/Connector/ZendeskCreateUserConnector';
-import ZendeskListTicketsBatch from '../lib/Zendesk/Batch/ZendeskListTicketsBatch';
-import ZendeskListUsersBatch from '../lib/Zendesk/Batch/ZendeskListUsersBatch';
 import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
 import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
 import OnesignalApplication from '../lib/Onesignal/OnesignalApplication';
@@ -193,7 +188,6 @@ export async function prepare(): Promise<void> {
   initVyfakturuj();
   initWedo();
   initWix();
-  initZendesk();
   initOnesignal();
 
   initiated = true;
@@ -254,40 +248,6 @@ function initBigcommerce(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createProduct);
-}
-
-function initZendesk(): void {
-  const app = new ZendeskApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const createUser = new ZendeskCreateUserConnector();
-  const createTicket = new ZendeskCreateTicketConnector();
-  const listUser = new ZendeskListUsersBatch();
-  const listTicket = new ZendeskListTicketsBatch();
-
-  createUser
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createUser);
-
-  createTicket
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createTicket);
-
-  listUser
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listUser);
-
-  listTicket
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listTicket);
 }
 
 function initNutshell(): void {

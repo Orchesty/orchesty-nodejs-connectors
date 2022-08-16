@@ -10,20 +10,20 @@ export default class ZendeskListTicketsBatch extends ABatchNode {
   public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
     const dto = _dto;
 
-    const offset = dto.getBatchCursor('0');
+    const offset = dto.getBatchCursor('1');
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
       HttpMethods.GET,
-      `/tickets.json?page[size]=100&page[after]=${offset}`,
+      `/tickets.json?per_page=100&page=${offset}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.tickets ?? []);
-    if (response.meta.after_cursor) {
-      dto.setBatchCursor(response.meta.after_cursor);
+    if (response.next_page != null) {
+      dto.setBatchCursor((Number(offset) + 1).toString());
     }
 
     return dto;
@@ -33,11 +33,7 @@ export default class ZendeskListTicketsBatch extends ABatchNode {
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IResponse {
   tickets: IOutput[],
-  meta: {
-    has_more: boolean,
-    after_cursor: string | null
-    before_cursor: string | null
-  },
+  next_page: string,
   links: {
     next: string,
     prev: string

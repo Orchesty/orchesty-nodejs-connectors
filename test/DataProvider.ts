@@ -99,19 +99,6 @@ export async function pipedriveApp() {
   });
 }
 
-export async function zendeskApp() {
-  return appInstall(ZENDESK_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [SUBDOMAIN]: 'test_subdomain',
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
-}
-
 export async function salesforceAPP() {
   return appInstall(SALESFORCE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {

@@ -15,15 +15,19 @@ export default class ZendeskCreateUserConnector extends AConnector {
     const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, '/users.json', body);
     const resp = await this._sender.send(req, [201]);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+    const data = resp.jsonBody as IResponse;
+    dto.jsonData = data.user;
 
     return dto;
   }
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
+export interface IResponse{
+  user: IOutput
+}
+
 export interface IOutput {
-  user: {
     custom_role_id: number,
     email: string,
     id: number,
@@ -31,8 +35,6 @@ export interface IOutput {
     organization_id: number,
     role: string,
     role_type: number
-
-  }
 }
 
 export interface IInput {
