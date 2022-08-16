@@ -1,10 +1,17 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "cursor": "2",
+        "result-code": "1010",
+        "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s)."
     },
     "data": [
         {
-            "body": "{\"assignee_id\":235323,\"collaborator_ids\":[35334,234],\"created_at\":\"2009-07-20T22:55:29Z\",\"custom_fields\":[{\"id\":27642,\"value\":\"745\"},{\"id\":27648,\"value\":\"yes\"}],\"description\":\"The fire is very colorful.\",\"due_at\":null,\"external_id\":\"ahg35h3jh\",\"follower_ids\":[35334,234],\"group_id\":98738,\"has_incidents\":false,\"id\":35436,\"organization_id\":509974,\"priority\":\"high\",\"problem_id\":9873764,\"raw_subject\":\"{{dc.printer_on_fire}}\",\"recipient\":\"support@company.com\",\"requester_id\":20978392,\"satisfaction_rating\":{\"comment\":\"Great support!\",\"id\":1234,\"score\":\"good\"},\"sharing_agreement_ids\":[84432],\"status\":\"open\",\"subject\":\"Help, my printer is on fire!\",\"submitter_id\":76872,\"tags\":[\"enterprise\",\"other_tag\"],\"type\":\"incident\",\"updated_at\":\"2011-05-05T10:38:52Z\",\"url\":\"https://company.zendesk.com/api/v2/tickets/35436.json\",\"via\":{\"channel\":\"web\"}}",
+            "body": "{\"url\":\"https://hbtest8393.zendesk.com/api/v2/tickets/1.json\",\"id\":1,\"external_id\":null,\"via\":{\"channel\":\"sample_ticket\",\"source\":{\"from\":{},\"to\":{},\"rel\":null}},\"created_at\":\"2022-08-11T11:35:32Z\",\"updated_at\":\"2022-08-11T11:35:32Z\",\"type\":\"incident\",\"subject\":\"Sample ticket: Meet the ticket\",\"raw_subject\":\"Sample ticket: Meet the ticket\",\"description\":\"Hi there,\\n\\nI’m sending an email because I’m having a problem setting up your new product. Can you help me troubleshoot?\\n\\nThanks,\\n The Customer\\n\\n\",\"priority\":\"normal\",\"status\":\"open\",\"recipient\":null,\"requester_id\":6279106989085,\"submitter_id\":6279089898141,\"assignee_id\":6279089898141,\"organization_id\":null,\"group_id\":6279167766941,\"collaborator_ids\":[],\"follower_ids\":[],\"email_cc_ids\":[],\"forum_topic_id\":null,\"problem_id\":null,\"has_incidents\":false,\"is_public\":true,\"due_at\":null,\"tags\":[\"sample\",\"support\",\"zendesk\"],\"custom_fields\":[],\"satisfaction_rating\":null,\"sharing_agreement_ids\":[],\"fields\":[],\"followup_ids\":[],\"ticket_form_id\":6279120591901,\"brand_id\":6279120605853,\"allow_channelback\":false,\"allow_attachments\":true}",
+            "headers": null
+        },
+        {
+            "body": "{\"url\":\"https://hbtest8393.zendesk.com/api/v2/tickets/2.json\",\"id\":2,\"external_id\":null,\"via\":{\"channel\":\"api\",\"source\":{\"from\":{},\"to\":{},\"rel\":null}},\"created_at\":\"2022-08-16T11:14:59Z\",\"updated_at\":\"2022-08-16T11:14:59Z\",\"type\":null,\"subject\":\"My printer is on fire!\",\"raw_subject\":\"My printer is on fire!\",\"description\":\"The smoke is very colorful.\",\"priority\":\"urgent\",\"status\":\"open\",\"recipient\":null,\"requester_id\":6279089898141,\"submitter_id\":6279089898141,\"assignee_id\":6279089898141,\"organization_id\":6279167768093,\"group_id\":6279167766941,\"collaborator_ids\":[],\"follower_ids\":[],\"email_cc_ids\":[],\"forum_topic_id\":null,\"problem_id\":null,\"has_incidents\":false,\"is_public\":true,\"due_at\":null,\"tags\":[],\"custom_fields\":[],\"satisfaction_rating\":null,\"sharing_agreement_ids\":[],\"fields\":[],\"followup_ids\":[],\"ticket_form_id\":6279120591901,\"brand_id\":6279120605853,\"allow_channelback\":false,\"allow_attachments\":true}",
             "headers": null
         }
     ]

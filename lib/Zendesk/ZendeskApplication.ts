@@ -11,6 +11,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import OAuth2Dto from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/Dto/OAuth2Dto';
 
 export const SUBDOMAIN = 'subdomain';
 export const NAME = 'zendesk';
@@ -74,4 +75,17 @@ export default class ZendeskApplication extends AOAuth2Application {
   }
 
   protected _getScopesSeparator = (): string => ScopeSeparatorEnum.SPACE;
+
+  public createDto(applicationInstall: ApplicationInstall, redirectUrl?: string): OAuth2Dto {
+    const dto = new OAuth2Dto(
+      applicationInstall,
+      this.getAuthUrlWithSubdomain(applicationInstall),
+      this.getTokenUrlWithSubdomain(applicationInstall),
+    );
+    dto.setCustomAppDependencies(applicationInstall.getUser(), applicationInstall.getName());
+    if (redirectUrl) {
+      dto.setRedirectUrl(redirectUrl);
+    }
+    return dto;
+  }
 }
