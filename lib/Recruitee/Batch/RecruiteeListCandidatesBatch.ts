@@ -3,6 +3,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'recruitee-list-candidates-batch';
+const limit = 100;
 
 export default class RecruiteeListCandidatesBatch extends ABatchNode {
   public getName = (): string => NAME;
@@ -19,13 +20,13 @@ export default class RecruiteeListCandidatesBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `api.recruitee.com/c/${companyId}/search/new/candidates?limit=100&page=${page}`,
+      `api.recruitee.com/c/${companyId}/search/new/candidates?limit=${limit}&page=${page}`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.hits ?? []);
-    if (response.total <= 0) {
+    if (response.total > Number(page) * limit) {
       dto.setBatchCursor((Number(page) + 1).toString());
     }
     return dto;
