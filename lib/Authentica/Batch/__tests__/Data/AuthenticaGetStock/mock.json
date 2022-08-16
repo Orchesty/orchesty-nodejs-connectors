@@ -1,0 +1,20 @@
+{
+  "http": "GET https://app.authentica.cz/api/applinth/stock?page=1&limit=100",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "sku": "string",
+        "inStock": "string"
+      }
+    ],
+    "links": {
+      "first": "string",
+      "last": "string",
+      "prev": "string"
+    },
+    "meta": {
+      "totalPages": 0
+    }
+  }
+}

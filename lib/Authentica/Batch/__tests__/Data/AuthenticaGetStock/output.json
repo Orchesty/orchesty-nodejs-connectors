@@ -1,0 +1,6 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [{"body": "{\"sku\":\"string\",\"inStock\":\"string\"}", "headers": null}]
+}
