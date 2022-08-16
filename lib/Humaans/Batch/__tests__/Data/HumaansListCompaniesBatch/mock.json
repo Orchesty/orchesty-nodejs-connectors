@@ -1,5 +1,5 @@
 {
-  "http": "GET https://app.humaans.io/api/companies?skip=1&limit=100",
+  "http": "GET https://app.humaans.io/api/companies?$skip=1&$limit=100",
   "code": 200,
   "body": {
     "total": 1,

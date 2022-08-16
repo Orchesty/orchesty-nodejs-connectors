@@ -15,7 +15,7 @@ export default class HumaansListPeopleBatch extends ABatchNode {
       dto,
       appInstall,
       HttpMethods.GET,
-      `/people?skip=${skip}&limit=100`,
+      `/people?$skip=${skip}&$limit=100`,
     );
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
