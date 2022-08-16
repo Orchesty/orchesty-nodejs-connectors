@@ -1,5 +1,5 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { appInstall, DEFAULT_USER } from '../DataProvider';
+import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import WorkableApplication, { ACCESS_TOKEN, NAME, SUBDOMAIN } from '../../lib/Workable /WorkableApplication';
 import {
   container, db, sender,
@@ -10,8 +10,8 @@ import WorkableGetAccountsBatch from '../../lib/Workable /Batch/WorkableGetAccou
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [ACCESS_TOKEN]: 'access_token',
-      [SUBDOMAIN]: 'subdomain',
+      [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+      [SUBDOMAIN]: 'hb-6',
     },
   });
 
