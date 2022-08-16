@@ -3,9 +3,9 @@
         "user": "TestUser"
     },
     "data": {
-        "regno": "regno",
-        "vatno": "vatno",
+        "regno": "29460875",
+        "vatno": "CZ00014915",
         "src_app": "src_app",
-        "country_code": "country_code"
+        "country_code": "cz"
     }
 }

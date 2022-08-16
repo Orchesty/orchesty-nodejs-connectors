@@ -4,12 +4,12 @@
     },
     "data": {
         "regno": 123,
-        "email": "email",
+        "email": "email.test@gmail.com",
         "name": "name",
         "country_code": "cz",
         "bank_account": "bank_account",
         "only_active": true,
         "expand_regno": true,
-        "sort": "sort"
+        "sort": "name"
     }
 }
