@@ -38,10 +38,12 @@ export default class VyfakturujApplication extends ABasicApplication {
     data?: unknown,
   ): RequestDto => {
     const request = new RequestDto(`https://api.vyfakturuj.cz/2.0${_url}`, method, dto);
+    const userEmail = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER_EMAIL];
+    const apiKey = applicationInstall.getSettings()[AUTHORIZATION_FORM][API_KEY];
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${API_KEY}:${USER_EMAIL}`),
+      [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userEmail}:${apiKey}`)}`,
     };
 
     if (data) {
