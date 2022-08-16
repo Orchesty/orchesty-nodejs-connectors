@@ -3,13 +3,13 @@
         "user": "TestUser"
     },
     "data": {
-        "identifier": "identifier",
-        "id": "string",
-        "email": "user@example.com",
-        "anonymous_id": "string",
-        "created_at": 0,
+        "Attributes1": "4",
+        "Attributes2": "5",
         "_update": true,
-        "Attributes1": "string",
-        "Attributes2": "string"
+        "anonymous_id": "123",
+        "created_at": 0,
+        "email": "user@example.com",
+        "id": "1",
+        "identifier": "1"
     }
 }
