@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for WorkableJobsBatch', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename);
+    tester = new NodeTester(container, __filename, false, ['']);
     await init();
   });
 
   it('process - ok', async () => {
-    await tester.testBatch(WORKABLE_JOBS_BATCH);
+    await tester.testBatch(WORKABLE_JOBS_BATCH, '');
   });
 });

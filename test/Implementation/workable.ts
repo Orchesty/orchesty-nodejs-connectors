@@ -10,8 +10,8 @@ import WorkableGetAccountsBatch from '../../lib/Workable /Batch/WorkableGetAccou
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [ACCESS_TOKEN]: 'access_token',
-      [SUBDOMAIN]: 'subdomain',
+      [ACCESS_TOKEN]: '2UxrDKxm2cP-4Jjusinqef3xLfRiM7JPI0z13bNJB4A',
+      [SUBDOMAIN]: 'hb-6',
     },
   });
 
