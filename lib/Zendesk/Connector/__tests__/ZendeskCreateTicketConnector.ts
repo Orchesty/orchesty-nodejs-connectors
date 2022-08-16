@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as ZENDESK_CREATE_TICKET_CONNECTOR } from '../ZendeskCreateTicketConnector';
-import { zendeskApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/zendesk';
 
 let tester: NodeTester;
 
 describe('Tests for ZendeskCreateTicketConnector', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
-    await zendeskApp();
+    await init();
   });
 
   it('process - ok', async () => {
