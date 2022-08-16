@@ -1,257 +1,1462 @@
 {
-  "http": "GET https://api.merk.cz/company/?regno=regno&vatno=vatno&src_app=src_app&country_code=country_code",
+  "http": "GET https://api.merk.cz/company/?regno=29460875&vatno=CZ00014915&src_app=src_app&country_code=cz",
   "code": 200,
-  "body": {
-  "regno": "",
-  "regno_str": "",
-  "vatno": "",
-  "taxno": "",
-  "databox_ids": [
-    {}
-  ],
-  "name": "",
-  "legal_form": {
-    "id": "",
-    "text": ""
-  },
-  "estab_date": "",
-  "closing_date": "",
-  "status": {
-    "id": "",
-    "text": ""
-  },
-  "is_active": false,
-  "address": {
-    "country_code": "choice",
-    "number_descriptive": "",
-    "municipality_part": "",
-    "municipality": "",
-    "number": "",
-    "street": "",
-    "postal_code": "",
-    "number_orientation": "",
-    "municipality_first": "",
-    "street_fixed": "",
-    "region": {
-      "id": "",
-      "text": ""
-    },
-    "county": {
-      "id": "",
-      "text": ""
-    },
-    "lines": [
-      {}
-    ],
-    "text": ""
-  },
-  "bank_accounts": [
+  "body": [
     {
-      "account_number": "",
-      "bank_code": ""
-    }
-  ],
-  "phones": [
-    {
-      "score": "",
-      "acc": "",
-      "number": ""
-    }
-  ],
-  "mobiles": [
-    {
-      "score": "",
-      "acc": "",
-      "number": ""
-    }
-  ],
-  "emails": [
-    {
-      "score": "",
-      "acc": "",
-      "email": ""
-    }
-  ],
-  "webs": [
-    {
-      "score": "",
-      "acc": "",
-      "url": ""
-    }
-  ],
-  "industry": {
-    "id": "",
-    "text": ""
-  },
-  "secondary_industries": [
-    {
-      "id": "",
-      "text": ""
-    }
-  ],
-  "magnitude": {
-    "id": "",
-    "trend": "",
-    "lower_bound": "",
-    "upper_bound": "",
-    "text": ""
-  },
-  "turnover": {
-    "id": "",
-    "trend": "",
-    "lower_bound": "",
-    "upper_bound": "",
-    "text": ""
-  },
-  "court": {
-    "name": "",
-    "file_nr": ""
-  },
-  "is_vatpayer": false,
-  "vat_registration_type": false,
-  "vat_registration_date": "",
-  "is_unreliable_vatpayer": false,
-  "unreliable_vatpayer_since": "",
-  "vzp_debt": "",
-  "insolvency_cases": [
-    {
-      "stamp": "",
-      "status": 0,
-      "ws_id": "",
-      "court_file_nr": ""
-    }
-  ],
-  "sk_insolvency_cases": [
-    {
-      "stamp": "",
-      "status": 0,
-      "type_id": 0,
-      "ru_id": 0,
-      "court_file_nr": ""
-    }
-  ],
-  "gps": {
-    "lat": 0,
-    "lon": 0
-  },
-  "salutation": "",
-  "owning_type": {
-    "id": "",
-    "text": ""
-  },
-  "profit": {
-    "trend": "",
-    "year": 0,
-    "amount": 0
-  },
-  "ebidta": {
-    "year": 0,
-    "amount": 0
-  },
-  "bank_accounts_balance": {
-    "year": 0,
-    "amount": 0
-  },
-  "company_index": {
-    "year": 0,
-    "value": 0
-  },
-  "link": "",
-  "business_premises_count": 0,
-  "active_licenses_count": 0,
-  "body": {
-    "average_age": 0,
-    "persons": [
-      {
-        "country_code": "choice",
-        "first_name": "",
-        "last_name": "",
-        "age": 0,
-        "degree_after": "",
-        "degree_before": "",
-        "link": "",
-        "gender": "",
-        "salutation": "",
-        "company_role": "",
-        "company_role_id": 0,
-        "address": {
-          "country_code": "choice",
-          "number_descriptive": "",
-          "municipality_part": "",
-          "municipality": "",
-          "number": "",
-          "street": "",
-          "postal_code": "",
-          "number_orientation": "",
-          "municipality_first": "",
-          "street_fixed": "",
-          "text": ""
+      "acting_manner": [
+        {
+          "manner_text": "Za společnost jedná navenek ve všech záležitostech týkajících se společnosti a společnost ve všech záležitostech zavazuje představenstvo, a to vždy dva členové představenstva společně.",
+          "start_date": "2014-08-26T00:00:00"
         }
-      }
-    ]
-  },
-  "esi": [
-    {
-      "project_name": "",
-      "status_id": 0,
-      "esi_program": "",
-      "eu_fund": "",
-      "allocation_amount": 0,
-      "total_paid_from_project_start": 0,
-      "iterim_payment_date": "",
-      "allocation_date": "",
-      "expected_end_date_of_the_operation": "",
-      "union_cofinancing_rate": 0
+      ],
+      "active_licenses_count": 27,
+      "address": {
+        "country_code": "cz",
+        "county": {
+          "id": "CZ0100h",
+          "text": "Praha 8"
+        },
+        "lines": [
+          "Koželužská 2450/4",
+          "Libeň",
+          "18000 Praha 8"
+        ],
+        "municipality": "Praha",
+        "municipality_first": "Praha",
+        "municipality_part": "Libeň",
+        "number": "2450/4",
+        "number_descriptive": "2450",
+        "number_orientation": "4",
+        "postal_code": "18000",
+        "region": {
+          "id": "CZ010",
+          "text": "Hlavní město Praha"
+        },
+        "street": "Koželužská",
+        "street_fixed": "Koželužská",
+        "text": ""
+      },
+      "bank_accounts": [
+        {
+          "account_number": "115-9620260277",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "217260583",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "115-9545870277",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "115-9545860247",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "107-1189711109",
+          "bank_code": "6700"
+        },
+        {
+          "account_number": "5080108232",
+          "bank_code": "5500"
+        },
+        {
+          "account_number": "8013762",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "115-6698650247",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "7968102",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "5080141104",
+          "bank_code": "5500"
+        },
+        {
+          "account_number": "1387360362",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "7633222",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "115-6654620257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "7643682",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "117936013",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "115-1417640227",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "117937593",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "107-6911880237",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "107-6911870207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "117623113",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "107-4645440247",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "117602793",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "2034106507",
+          "bank_code": "2600"
+        },
+        {
+          "account_number": "2110592683",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "CZ3203001712800117443243",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "5060013893",
+          "bank_code": "5500"
+        },
+        {
+          "account_number": "64450-6003950009",
+          "bank_code": "6300"
+        },
+        {
+          "account_number": "43-7796540257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7569050207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2575370247",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2720950257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "107-1809071",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "107-59330207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2712070217",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2496360227",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2644950297",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2486710297",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2496390207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "51-2497830227",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "1124310144",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7583590277",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "3638730217",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7010310207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7013310237",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7562140277",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-7585030257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "35-9831450257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "43-2009800257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "43-2390760257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "43-4701120257",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "43-5123890237",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "CZ8801000000357019200207",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "CZ4301000000359832030297",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "CZ0827000000001225133028",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "1225133001",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "2106493527",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "2107333824",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "1021107725",
+          "bank_code": "5500"
+        },
+        {
+          "account_number": "1071000715",
+          "bank_code": "5500"
+        },
+        {
+          "account_number": "2000001088",
+          "bank_code": "8040"
+        },
+        {
+          "account_number": "2106494220",
+          "bank_code": "2700"
+        },
+        {
+          "account_number": "5210540120",
+          "bank_code": "4000"
+        },
+        {
+          "account_number": "122260126",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "3637150237",
+          "bank_code": "0100"
+        },
+        {
+          "account_number": "3995592",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "117443243",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "117424093",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "117117173",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "117370603",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "5075562",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "2000610369",
+          "bank_code": "0800"
+        },
+        {
+          "account_number": "600001963",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "117093263",
+          "bank_code": "0300"
+        },
+        {
+          "account_number": "2034106400",
+          "bank_code": "2600"
+        },
+        {
+          "account_number": "2034106005",
+          "bank_code": "2600"
+        },
+        {
+          "account_number": "2034100105",
+          "bank_code": "2600"
+        },
+        {
+          "account_number": "1809071",
+          "bank_code": "0100"
+        }
+      ],
+      "bank_accounts_balance": {
+        "amount": 4027353,
+        "year": 2020
+      },
+      "body": {
+        "average_age": 67,
+        "persons": [
+          {
+            "address": {
+              "country_code": "sk",
+              "municipality": "Bratislava - Lamač",
+              "municipality_first": "Bratislava - Lamač",
+              "municipality_part": "",
+              "number": "",
+              "number_descriptive": "",
+              "number_orientation": "",
+              "postal_code": "",
+              "street": "Havelkova 2807/32",
+              "street_fixed": "Havelkova 2807/32",
+              "text": ""
+            },
+            "age": 78,
+            "company_role": "Člen statutárního orgánu",
+            "company_role_id": 1,
+            "country_code": "sk",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Ivan",
+            "gender": "muž",
+            "last_name": "Šesták",
+            "link": "https://www.merk.cz/search/osoba/ivan-sestak-havelkova-2807-32-bratislava-lamac/FwAnTz7BO84/",
+            "salutation": "Vážený pane Šestáku,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Praha",
+              "municipality_first": "Praha",
+              "municipality_part": "Libeň",
+              "number": "2351/4",
+              "number_descriptive": "2351",
+              "number_orientation": "4",
+              "postal_code": "18200",
+              "street": "Nad Okrouhlíkem",
+              "street_fixed": "Nad Okrouhlíkem",
+              "text": ""
+            },
+            "age": 74,
+            "company_role": "Člen statutárního orgánu",
+            "company_role_id": 1,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Zdeněk",
+            "gender": "muž",
+            "last_name": "Šinovský",
+            "link": "https://www.merk.cz/search/osoba/zdenek-sinovsky-nad-okrouhlikem-2351-4-praha/NMH1naamx8k/",
+            "salutation": "Vážený pane Šinovský,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Praha",
+              "municipality_first": "Praha",
+              "municipality_part": "Libeň",
+              "number": "2351/4",
+              "number_descriptive": "2351",
+              "number_orientation": "4",
+              "postal_code": "18200",
+              "street": "Nad Okrouhlíkem",
+              "street_fixed": "Nad Okrouhlíkem",
+              "text": ""
+            },
+            "age": 76,
+            "company_role": "Člen statutárního orgánu",
+            "company_role_id": 1,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Daniel",
+            "gender": "muž",
+            "last_name": "Knotek",
+            "link": "https://www.merk.cz/search/osoba/daniel-knotek-nad-okrouhlikem-2351-4-praha/sQc56FQvB_k/",
+            "salutation": "Vážený pane Knotku,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Opočnice",
+              "municipality_first": "Opočnice",
+              "municipality_part": "",
+              "number": "174",
+              "number_descriptive": "174",
+              "number_orientation": "",
+              "postal_code": "28904",
+              "street": "",
+              "street_fixed": "Opočnice",
+              "text": ""
+            },
+            "age": 45,
+            "company_role": "Člen dozorčí rady",
+            "company_role_id": 4,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Petr",
+            "gender": "muž",
+            "last_name": "Půta",
+            "link": "https://www.merk.cz/search/osoba/petr-puta-opocnice-174-opocnice/JbXq-4FKp6w/",
+            "salutation": "Vážený pane Půto,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Praha",
+              "municipality_first": "Praha",
+              "municipality_part": "Chodov",
+              "number": "526/26",
+              "number_descriptive": "526",
+              "number_orientation": "26",
+              "postal_code": "14900",
+              "street": "Dunovského",
+              "street_fixed": "Dunovského",
+              "text": ""
+            },
+            "age": 82,
+            "company_role": "Člen dozorčí rady",
+            "company_role_id": 4,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Jindřich",
+            "gender": "muž",
+            "last_name": "Hess",
+            "link": "https://www.merk.cz/search/osoba/jindrich-hess-dunovskeho-526-26-praha/qhRyKfT25u0/",
+            "salutation": "Vážený pane Hessi,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Praha",
+              "municipality_first": "Praha",
+              "municipality_part": "Jinonice",
+              "number": "557/6",
+              "number_descriptive": "557",
+              "number_orientation": "6",
+              "postal_code": "15800",
+              "street": "K rovinám",
+              "street_fixed": "K rovinám",
+              "text": ""
+            },
+            "age": 61,
+            "company_role": "Člen statutárního orgánu",
+            "company_role_id": 1,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "František",
+            "gender": "muž",
+            "last_name": "Kočí",
+            "link": "https://www.merk.cz/search/osoba/frantisek-koci-k-rovinam-557-6-praha/TQ1vH_LPvts/",
+            "salutation": "Vážený pane Kočí,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Kladno",
+              "municipality_first": "Kladno",
+              "municipality_part": "Rozdělov",
+              "number": "944",
+              "number_descriptive": "944",
+              "number_orientation": "",
+              "postal_code": "27204",
+              "street": "Ve Strnadovně",
+              "street_fixed": "Ve Strnadovně",
+              "text": ""
+            },
+            "age": 49,
+            "company_role": "Člen statutárního orgánu",
+            "company_role_id": 1,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Ondřej",
+            "gender": "muž",
+            "last_name": "Fuchs",
+            "link": "https://www.merk.cz/search/osoba/ondrej-fuchs-ve-strnadovne-944-kladno/XZ9iaiVuRiw/",
+            "salutation": "Vážený pane Fuchsi,"
+          },
+          {
+            "address": {
+              "country_code": "sk",
+              "municipality": "Bratislava - Nové Město",
+              "municipality_first": "Bratislava - Nové Město",
+              "municipality_part": "",
+              "number": "",
+              "number_descriptive": "",
+              "number_orientation": "",
+              "postal_code": "83101",
+              "street": "Guothova 3",
+              "street_fixed": "Guothova 3",
+              "text": ""
+            },
+            "age": 78,
+            "company_role": "Člen dozorčí rady",
+            "company_role_id": 4,
+            "country_code": "sk",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "František",
+            "gender": "muž",
+            "last_name": "Potisk",
+            "link": "https://www.merk.cz/search/osoba/frantisek-potisk-guothova-3-bratislava-nove-mesto/0vdYxFVSGko/",
+            "salutation": "Vážený pane Potisku,"
+          },
+          {
+            "address": {
+              "country_code": "sk",
+              "municipality": "Bratislava 1",
+              "municipality_first": "Bratislava 1",
+              "municipality_part": "",
+              "number": "",
+              "number_descriptive": "",
+              "number_orientation": "",
+              "postal_code": "81101",
+              "street": "Radvanská 2125/5",
+              "street_fixed": "Radvanská 2125/5",
+              "text": ""
+            },
+            "age": 80,
+            "company_role": "Člen dozorčí rady",
+            "company_role_id": 4,
+            "country_code": "sk",
+            "degree_after": "",
+            "degree_before": "",
+            "first_name": "Viktor",
+            "gender": "muž",
+            "last_name": "Karel",
+            "link": "https://www.merk.cz/search/osoba/viktor-karel-radvanska-2125-5-bratislava-1/DTMcfP5AKgw/",
+            "salutation": "Vážený pane Karle,"
+          },
+          {
+            "address": {
+              "country_code": "cz",
+              "municipality": "Praha",
+              "municipality_first": "Praha",
+              "municipality_part": "Stodůlky",
+              "number": "2023/27",
+              "number_descriptive": "2023",
+              "number_orientation": "27",
+              "postal_code": "15500",
+              "street": "Bronzová",
+              "street_fixed": "Bronzová",
+              "text": ""
+            },
+            "age": 49,
+            "company_role": "Člen dozorčí rady",
+            "company_role_id": 4,
+            "country_code": "cz",
+            "degree_after": "",
+            "degree_before": "Ing.",
+            "first_name": "Miroslav",
+            "gender": "muž",
+            "last_name": "Pánek",
+            "link": "https://www.merk.cz/search/osoba/miroslav-panek-bronzova-2023-27-praha/OyOnvb6LPaE/",
+            "salutation": "Vážený pane Pánku,"
+          }
+        ]
+      },
+      "business_premises_count": 0,
+      "closing_date": null,
+      "company_index": {
+        "value": 73.125,
+        "year": 2020
+      },
+      "court": {
+        "file_nr": "B 758",
+        "name": "Městský soud v Praze"
+      },
+      "databox_ids": [
+        "bnpcf46"
+      ],
+      "ebidta": {
+        "amount": 912161,
+        "year": 2020
+      },
+      "emails": [
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "info@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "jaromir.hert@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "josef.kafka@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-07-19T00:00:00",
+          "email": "tibor.kobela@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "ivana.hrabalova@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "iceland@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "jan.syrucek@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "jiri.vich@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "lenka.svarcova@metrostav.cz",
+          "score": "A"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "email": "mechanizace@metrostav.cz",
+          "score": "A"
+        }
+      ],
+      "esi": null,
+      "estab_date": "1991-05-23T00:00:00",
+      "facebook": [
+        "https://www.facebook.com/metrostav/"
+      ],
+      "government_grants": [
+        {
+          "amount_granted": 12075000,
+          "amount_requested": 12075000,
+          "beneficiary_id": "61C2BB58ABE54A101813429A3A6BAC5333EF923D",
+          "case_id": "61DA0A5D0255AA7B1FE9C3DBB28073C1FD92F5C4",
+          "grant_id": "9BCD4E80A20D384126F008D1DE92DA202D6FDF29",
+          "project_code": "085BD872-AE3C-48BA-A578-C21FBA454218",
+          "project_id": "FV20472",
+          "project_name": "Aplikace vysokohodnotných cementových kompozitů na rekonstrukce betonových staveb",
+          "signed_date": "2017-08-16T02:00:00"
+        },
+        {
+          "amount_granted": 1009800,
+          "beneficiary_id": "524907840F83AB52560F44CA4281305DFD925563",
+          "case_id": "70755A58F612BFFAEA19B206E23E477317488AF6",
+          "grant_id": "39AE0F91FED0732EA7238BCC5018DB760318904D",
+          "project_code": "40001012628",
+          "project_id": "192/2011-910-ORG2/37",
+          "project_name": "",
+          "signed_date": "2011-07-18T02:00:00"
+        },
+        {
+          "amount_granted": 12384800,
+          "beneficiary_id": "D2FA992EDC8E8D580491B3DD6479742EC1CD9938",
+          "case_id": "7FC3BE2943118BC928FFD621DB281CD18473864F",
+          "grant_id": "1B1AE2B60A3A599DB74FE6D0D8C1E1FC6A6A6E91",
+          "project_code": "40000990431",
+          "project_id": "FR-TI3/531",
+          "project_name": "Zvýšení trvanlivosti betonových konstrukcí vystavených extrémním zatížením",
+          "signed_date": "2011-04-12T02:00:00"
+        }
+      ],
+      "gps": {
+        "lat": 50.1052627563,
+        "lon": 14.4707746506
+      },
+      "industry": {
+        "id": "4120",
+        "text": "Výstavba bytových a nebytových budov"
+      },
+      "insolvency_cases": null,
+      "is_active": true,
+      "is_unreliable_vatpayer": false,
+      "is_vatpayer": true,
+      "last_financial_statement": {
+        "published_date": "2021-07-23T00:00:00",
+        "statement_date": "2020-12-31T00:00:00"
+      },
+      "legal_form": {
+        "id": 121,
+        "text": "Akciová společnost"
+      },
+      "link": "https://www.merk.cz/search/detail/cz-14915/",
+      "linkedin": [
+        "https://www.linkedin.com/company/metrostav-a-s-/"
+      ],
+      "magnitude": {
+        "id": 440,
+        "lower_bound": "2 500 zam.",
+        "text": "2500 - 2999 zaměstnanců",
+        "trend": "falling",
+        "upper_bound": "2 999 zam."
+      },
+      "magnitude_history": [
+        {
+          "magnitude_id": 440,
+          "year": 2021
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2020
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2018
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2017
+        },
+        {
+          "magnitude_id": 440,
+          "year": 2016
+        },
+        {
+          "magnitude_id": 440,
+          "year": 2015
+        },
+        {
+          "magnitude_id": 440,
+          "year": 2014
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2013
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2012
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2011
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2010
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2009
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2008
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2007
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2006
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2005
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2004
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2003
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2002
+        },
+        {
+          "magnitude_id": 450,
+          "year": 2001
+        }
+      ],
+      "mobiles": [
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420602188759",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420724501534",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420606791204",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420602655136",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420724020164",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420606730267",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420603874571",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420602229683",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420602226121",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420722979345",
+          "score": "C"
+        }
+      ],
+      "name": "Metrostav a.s.",
+      "owning_type": {
+        "id": 8,
+        "text": "Mezinárodní (domácí + zahraniční)"
+      },
+      "phones": [
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266018000",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266019000",
+          "score": "B"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266019100",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266019300",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266019211",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420595620964",
+          "score": "B"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266011524",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266018500",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420284007771",
+          "score": "C"
+        },
+        {
+          "acc": "2022-08-13T00:00:00",
+          "number": "+420266018100",
+          "score": "C"
+        }
+      ],
+      "profit": {
+        "amount": 625107,
+        "year": 2020
+      },
+      "regno": 14915,
+      "regno_str": "00014915",
+      "salutation": null,
+      "secondary_industries": [
+        {
+          "id": "52100",
+          "text": "Skladování"
+        },
+        {
+          "id": "82920",
+          "text": "Balicí činnosti"
+        },
+        {
+          "id": "70220",
+          "text": "Ostatní poradenství v oblasti podnikání a řízení"
+        },
+        {
+          "id": "25720",
+          "text": "Výroba zámků a kování"
+        },
+        {
+          "id": "36",
+          "text": "Shromažďování, úprava a rozvod vody"
+        },
+        {
+          "id": "43210",
+          "text": "Elektrické instalace"
+        },
+        {
+          "id": "620",
+          "text": "Činnosti v oblasti informačních technologií"
+        },
+        {
+          "id": "234",
+          "text": "Výroba ostatních porcelánových a keramických výrobků"
+        },
+        {
+          "id": "46900",
+          "text": "Nespecializovaný velkoobchod"
+        },
+        {
+          "id": "256",
+          "text": "Povrchová úprava a zušlechťování kovů; obrábění"
+        },
+        {
+          "id": "38110",
+          "text": "Shromažďování a sběr odpadů, kromě nebezpečných"
+        },
+        {
+          "id": "25",
+          "text": "Výroba kovových konstrukcí a kovodělných výrobků, kromě strojů a zařízení"
+        },
+        {
+          "id": "01",
+          "text": "Rostlinná a živočišná výroba, myslivost a související činnosti"
+        },
+        {
+          "id": "68310",
+          "text": "Zprostředkovatelské činnosti realitních agentur"
+        },
+        {
+          "id": "772",
+          "text": "Pronájem a leasing výrobků pro osobní potřebu a převážně pro domácnost"
+        },
+        {
+          "id": "43330",
+          "text": "Obkládání stěn a pokládání podlahových krytin"
+        },
+        {
+          "id": "731",
+          "text": "Reklamní činnosti"
+        },
+        {
+          "id": "49393",
+          "text": "Nepravidelná pozemní osobní doprava"
+        },
+        {
+          "id": "43910",
+          "text": "Pokrývačské práce"
+        },
+        {
+          "id": "26110",
+          "text": "Výroba elektronických součástek"
+        },
+        {
+          "id": "45200",
+          "text": "Opravy a údržba motorových vozidel, kromě motocyklů"
+        },
+        {
+          "id": "4778",
+          "text": "Ostatní maloobchod s novým zbožím ve specializovaných prodejnách"
+        },
+        {
+          "id": "43290",
+          "text": "Ostatní stavební instalace"
+        },
+        {
+          "id": "282",
+          "text": "Výroba ostatních strojů a zařízení pro všeobecné účely"
+        },
+        {
+          "id": "7219",
+          "text": "Ostatní výzkum a vývoj v oblasti přírodních a technických věd"
+        },
+        {
+          "id": "74902",
+          "text": "Poradenství v oblasti požární ochrany"
+        },
+        {
+          "id": "69200",
+          "text": "Účetnické a auditorské činnosti; daňové poradenství"
+        },
+        {
+          "id": "581",
+          "text": "Vydávání knih, periodických publikací a ostatní vydavatelské činnosti"
+        },
+        {
+          "id": "71122",
+          "text": "Zeměměřické a kartografické činnosti"
+        },
+        {
+          "id": "71121",
+          "text": "Geologický průzkum"
+        },
+        {
+          "id": "952",
+          "text": "Opravy výrobků pro osobní potřebu a převážně pro domácnost"
+        },
+        {
+          "id": "25730",
+          "text": "Výroba nástrojů a nářadí"
+        },
+        {
+          "id": "27900",
+          "text": "Výroba ostatních elektrických zařízení"
+        },
+        {
+          "id": "49410",
+          "text": "Silniční nákladní doprava"
+        },
+        {
+          "id": "43220",
+          "text": "Instalace vody, odpadu, plynu, topení a klimatizace"
+        },
+        {
+          "id": "8559",
+          "text": "Ostatní vzdělávání j. n."
+        },
+        {
+          "id": "3317",
+          "text": "Opravy a údržba ostatních dopravních prostředků a zařízení j. n."
+        },
+        {
+          "id": "5590",
+          "text": "Ostatní ubytování"
+        },
+        {
+          "id": "900",
+          "text": "Tvůrčí, umělecké a zábavní činnosti"
+        },
+        {
+          "id": "33120",
+          "text": "Opravy strojů"
+        },
+        {
+          "id": "711",
+          "text": "Architektonické a inženýrské činnosti a související technické poradenství"
+        },
+        {
+          "id": "43320",
+          "text": "Truhlářské práce"
+        },
+        {
+          "id": "26300",
+          "text": "Výroba komunikačních zařízení"
+        },
+        {
+          "id": "471",
+          "text": "Maloobchod v nespecializovaných prodejnách"
+        },
+        {
+          "id": "74901",
+          "text": "Poradenství v oblasti bezpečnosti a ochrany zdraví při práci"
+        },
+        {
+          "id": "439",
+          "text": "Ostatní specializované stavební činnosti"
+        },
+        {
+          "id": "38120",
+          "text": "Shromažďování a sběr nebezpečných odpadů"
+        },
+        {
+          "id": "433",
+          "text": "Kompletační a dokončovací práce"
+        },
+        {
+          "id": "33140",
+          "text": "Opravy elektrických zařízení"
+        },
+        {
+          "id": "431",
+          "text": "Demolice a příprava staveniště"
+        }
+      ],
+      "sk_insolvency_cases": null,
+      "status": {
+        "id": 1,
+        "text": "Subjekt bez omezení v činnosti"
+      },
+      "taxno": null,
+      "trademarks": [
+        {
+          "image_classes": "14.1.1, 26.4.22, 29.1.8, 29.1.1, 27.3.15",
+          "nr_application": 575324,
+          "nr_register": "",
+          "product_or_service_classes": "6, 7, 37, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/753/o5753240.jpg",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2021-10-21T00:00:00",
+          "status": "Podaná",
+          "tm_type": "Obrazová",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/575324",
+          "url_doc": "",
+          "wording": "metrostav Metrostav DIZ s.r.o."
+        },
+        {
+          "image_classes": "",
+          "nr_application": 481016,
+          "nr_register": "317907",
+          "product_or_service_classes": "6, 7, 37, 42",
+          "reproduction": "",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2010-11-15T00:00:00",
+          "stamp_registered": "2011-05-04T00:00:00",
+          "stamp_renewed": "2030-11-15T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Slovní",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/481016",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/016/O-481016.pdf",
+          "wording": "METROSTAV"
+        },
+        {
+          "image_classes": "1.7.22, 1.7.6, 27.5.7, 27.5.4, 27.5.1",
+          "nr_application": 449615,
+          "nr_register": "295793",
+          "product_or_service_classes": "6, 37, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/496/o4496150.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2007-06-27T00:00:00",
+          "stamp_registered": "2008-02-06T00:00:00",
+          "stamp_renewed": "2027-06-27T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/449615",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/615/O-449615.pdf",
+          "wording": "METROSTAV"
+        },
+        {
+          "image_classes": "27.5.4, 27.5.1",
+          "nr_application": 344501,
+          "nr_register": "265777",
+          "product_or_service_classes": "6, 37",
+          "reproduction": "https://isdv.upv.cz/obr/oz/445/o3445010.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2004-03-16T00:00:00",
+          "stamp_registered": "2004-08-25T00:00:00",
+          "stamp_renewed": "2024-03-16T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/344501",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/501/O-344501.pdf",
+          "wording": "metrostav"
+        },
+        {
+          "image_classes": "26.4.24, 27.5.24, 29.1.12, 27.5.9, 29.1.1, 27.5.8",
+          "nr_application": 162550,
+          "nr_register": "244132",
+          "product_or_service_classes": "6, 7, 9, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/625/o1625500.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2000-12-20T00:00:00",
+          "stamp_registered": "2002-05-23T00:00:00",
+          "stamp_renewed": "2030-12-20T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/162550",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/550/O-162550.pdf",
+          "wording": "ZDE STAVÍ metrostav AKCIOVÁ SPOLEČNOST"
+        },
+        {
+          "image_classes": "26.4.24, 27.5.9, 27.5.8, 27.5.24",
+          "nr_application": 162438,
+          "nr_register": "239632",
+          "product_or_service_classes": "6, 7, 9, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/624/o1624380.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2000-12-15T00:00:00",
+          "stamp_registered": "2001-12-19T00:00:00",
+          "stamp_renewed": "2030-12-15T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/162438",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/438/O-162438.pdf",
+          "wording": "ZDE STAVÍ METROSTAV AKCIOVÁ SPOLEČNOST"
+        },
+        {
+          "image_classes": "26.4.10, 29.1.13, 27.5.4, 26.4.22",
+          "nr_application": 151945,
+          "nr_register": "235573",
+          "product_or_service_classes": "6, 7, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/519/o1519450.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2000-02-15T00:00:00",
+          "stamp_registered": "2001-08-27T00:00:00",
+          "stamp_renewed": "2030-02-15T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/151945",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/945/O-151945.pdf",
+          "wording": "metrostav Quality"
+        },
+        {
+          "image_classes": "26.4.10, 26.4.22, 27.5.4, 27.5.24, 26.4.24",
+          "nr_application": 151946,
+          "nr_register": "235574",
+          "product_or_service_classes": "6, 7, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
+          "reproduction": "https://isdv.upv.cz/obr/oz/519/o1519460.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "2000-02-15T00:00:00",
+          "stamp_registered": "2001-08-27T00:00:00",
+          "stamp_renewed": "2030-02-15T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/151946",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/946/O-151946.pdf",
+          "wording": "metrostav Quality"
+        },
+        {
+          "image_classes": "",
+          "nr_application": 130963,
+          "nr_register": "217422",
+          "product_or_service_classes": "6, 19, 37",
+          "reproduction": "",
+          "source": "ÚPV-ČR",
+          "stamp_application": "1998-03-18T00:00:00",
+          "stamp_registered": "1999-04-23T00:00:00",
+          "stamp_renewed": "2018-03-18T00:00:00",
+          "status": "Zaniklý dokument",
+          "tm_type": "Slovní",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/130963",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/963/O-130963.pdf",
+          "wording": "KUMUS"
+        },
+        {
+          "image_classes": "26.1.18, 26.1",
+          "nr_application": 56238,
+          "nr_register": "167515",
+          "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
+          "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562380.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "1989-04-18T00:00:00",
+          "stamp_registered": "1990-01-15T00:00:00",
+          "stamp_renewed": "2029-04-18T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56238",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/238/O-56238.pdf",
+          "wording": "METROSTAV"
+        },
+        {
+          "image_classes": "26.1.18, 26.1",
+          "nr_application": 56237,
+          "nr_register": "167514",
+          "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
+          "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562370.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "1989-04-18T00:00:00",
+          "stamp_registered": "1990-01-15T00:00:00",
+          "stamp_renewed": "2029-04-18T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Kombinovaná",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56237",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/237/O-56237.pdf",
+          "wording": "METROSTAV"
+        },
+        {
+          "image_classes": "26.1.18, 26.1",
+          "nr_application": 56236,
+          "nr_register": "167513",
+          "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
+          "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562360.gif",
+          "source": "ÚPV-ČR",
+          "stamp_application": "1989-04-18T00:00:00",
+          "stamp_registered": "1990-01-15T00:00:00",
+          "stamp_renewed": "2029-04-18T00:00:00",
+          "status": "Platný dokument",
+          "tm_type": "Obrazová",
+          "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56236",
+          "url_doc": "https://isdv.upv.cz/obr/ozvyprej/236/O-56236.pdf",
+          "wording": ""
+        }
+      ],
+      "turnover": {
+        "id": 150,
+        "lower_bound": "1,5 mld. Kč",
+        "text": "1 500 000 000 Kč a více",
+        "trend": "stagnating",
+        "upper_bound": "neomezeno"
+      },
+      "turnover_history": [
+        {
+          "turnover_id": 150,
+          "year": 2020
+        },
+        {
+          "turnover_id": 150,
+          "year": 2019
+        },
+        {
+          "turnover_id": 150,
+          "year": 2018
+        },
+        {
+          "turnover_id": 150,
+          "year": 2017
+        },
+        {
+          "turnover_id": 150,
+          "year": 2016
+        },
+        {
+          "turnover_id": 150,
+          "year": 2015
+        },
+        {
+          "turnover_id": 150,
+          "year": 2014
+        },
+        {
+          "turnover_id": 150,
+          "year": 2013
+        },
+        {
+          "turnover_id": 150,
+          "year": 2012
+        },
+        {
+          "turnover_id": 150,
+          "year": 2011
+        },
+        {
+          "turnover_id": 150,
+          "year": 2010
+        },
+        {
+          "turnover_id": 150,
+          "year": 2009
+        },
+        {
+          "turnover_id": 150,
+          "year": 2008
+        },
+        {
+          "turnover_id": 150,
+          "year": 2007
+        },
+        {
+          "turnover_id": 100,
+          "year": 2006
+        },
+        {
+          "turnover_id": 150,
+          "year": 2005
+        },
+        {
+          "turnover_id": 100,
+          "year": 2004
+        },
+        {
+          "turnover_id": 100,
+          "year": 2003
+        },
+        {
+          "turnover_id": 100,
+          "year": 2002
+        },
+        {
+          "turnover_id": 100,
+          "year": 2001
+        }
+      ],
+      "twitter": [],
+      "unreliable_vatpayer_since": null,
+      "updated": "2022-08-13T00:00:00",
+      "updated_from_src": "2022-08-12T23:16:28.531",
+      "updated_src": "2022-08-03T00:00:00",
+      "vat_registration_date": "1993-01-01T00:00:00",
+      "vat_registration_type": null,
+      "vatno": "CZ00014915",
+      "vzp_debt": null,
+      "webs": [
+        {
+          "acc": "2022-08-13T00:00:00",
+          "score": "B",
+          "url": "https://www.metrostav.cz"
+        }
+      ],
+      "years_in_business": 31
     }
-  ],
-  "government_grants": [
-    {
-      "grant_id": "",
-      "beneficiary_id": "",
-      "case_id": "",
-      "project_code": "",
-      "project_name": "",
-      "project_id": "",
-      "signed_date": "",
-      "amount_requested": 0,
-      "amount_granted": 0
-    }
-  ],
-  "trademarks": [
-    {
-      "wording": "",
-      "reproduction": "",
-      "stamp_application": "",
-      "stamp_registered": "",
-      "product_or_service_classes": "",
-      "image_classes": "",
-      "nr_register": "",
-      "nr_application": 0,
-      "source": "",
-      "url": "",
-      "url_doc": "",
-      "tm_type": "",
-      "status": ""
-    }
-  ],
-  "twitter": [
-    {}
-  ],
-  "facebook": [
-    {}
-  ],
-  "linkedin": [
-    {}
-  ],
-  "acting_manner": [
-    {
-      "manner_text": "",
-      "start_date": ""
-    }
-  ],
-  "last_financial_statement": {
-    "published_date": "",
-    "statement_date": ""
-  }
-}
+  ]
 }
