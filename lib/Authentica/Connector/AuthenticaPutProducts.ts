@@ -15,7 +15,7 @@ export default class AuthenticaPutProducts extends AConnector {
     const requestDto = await this._application.getRequestDto(
       dto,
       await this._getApplicationInstallFromProcess(dto),
-      HttpMethods.PUT,
+      HttpMethods.POST,
       'products',
       products,
     );

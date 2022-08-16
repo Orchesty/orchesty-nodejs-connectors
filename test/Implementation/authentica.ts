@@ -51,8 +51,9 @@ export default async function init(): Promise<ApplicationInstall> {
     DEFAULT_USER,
     {
       [AUTHORIZATION_FORM]: {
-        [CLIENT_ID]: 'testId',
-        [CLIENT_SECRET]: 'testSecret',
+        [CLIENT_ID]: '7c314ce107e4417de085331313ed80ab',
+        // eslint-disable-next-line max-len
+        [CLIENT_SECRET]: '56bac563ad5a4e0d9c397b61b7c0f6a9db454782b303db5d80e19cf1c7e99283c01945d5b3c6a295569b9cebde3bafeb3665de60b483a7f337575f1ad2b45c32',
       },
     },
   );
