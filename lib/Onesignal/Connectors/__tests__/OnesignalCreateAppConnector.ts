@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for OnesignalCreateAppConnector', () => {
   beforeEach(async () => {
     await onesignalApp();
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename);
   });
 
   it('process - ok', async () => {
