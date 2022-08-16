@@ -13,7 +13,7 @@ export default class WorkableJobsBatch extends ABatchNode {
     const dto = _dto;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const subdomain = appInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
-    const url = dto.getBatchCursor(`${subdomain}.workable.com/spi/v3/jobs`);
+    const url = dto.getBatchCursor(`${subdomain}.workable.com/spi/v3/jobs?state=published`);
     const req = await this._application.getRequestDto(
       dto,
       appInstall,
@@ -24,7 +24,7 @@ export default class WorkableJobsBatch extends ABatchNode {
     const response = resp.jsonBody as IResponse;
 
     dto.setItemList(response.jobs ?? []);
-    if (response.paging.next) {
+    if (response.paging?.next) {
       dto.setBatchCursor(response.paging.next);
     }
     return dto;
