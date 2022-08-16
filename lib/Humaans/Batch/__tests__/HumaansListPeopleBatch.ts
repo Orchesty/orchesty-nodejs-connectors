@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for HumaansListPeopleBatch', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     await init();
   });
 
   it('process - ok', async () => {
-    await tester.testBatch(HUMAANS_LIST_PEOPLE_BATCH, '');
+    await tester.testBatch(HUMAANS_LIST_PEOPLE_BATCH);
   });
 });
