@@ -16,7 +16,7 @@ export default class VyfakturujCreateInvoiceConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       '/invoice/',
-      { data: dto.jsonData as IInput },
+      dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
 

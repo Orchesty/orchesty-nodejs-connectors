@@ -16,7 +16,7 @@ export default class VyfakturujCreateContactConnector extends AConnector {
       appInstall,
       HttpMethods.POST,
       '/contact/',
-      { data: dto.jsonData as IInput },
+      dto.jsonData as IInput,
     );
     const resp = await this._sender.send(req, [200]);
 
