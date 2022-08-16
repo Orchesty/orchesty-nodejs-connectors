@@ -4,23 +4,22 @@
     },
     "data": {
         "user": {
-            "custom_role_id": 123456,
-            "email": "roge@example.org",
+            "email": "robert@example.org",
             "identities": [
                 {
                     "type": "email",
-                    "value": "test@user.com"
+                    "value": "test1@user.com"
                 },
                 {
                     "type": "twitter",
-                    "value": "tester84"
+                    "value": "tester841"
                 }
             ],
-            "name": "Roger Wilco",
+            "name": "robert Wilco",
             "organization": {
                 "name": "VIP Customers"
             },
-            "role": "agent"
+            "role": "admin"
         }
     }
 }
