@@ -1,6 +1,6 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import RecruiteeApplication, { NAME as RECRUITEE_APP, YOUR_COMPANY } from '../../lib/Recruitee/RecruiteeApplication';
-import { API_TOKEN } from '../../lib/CeskaPosta/CeskaPostaApplication';
+import RecruiteeApplication, { NAME as RECRUITEE_APP, YOUR_COMPANY, API_TOKEN }
+  from '../../lib/Recruitee/RecruiteeApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import RecruiteeListCandidatesBatch from '../../lib/Recruitee/Batch/RecruiteeListCandidatesBatch';
 import { container, db, sender } from '../TestAbstract';

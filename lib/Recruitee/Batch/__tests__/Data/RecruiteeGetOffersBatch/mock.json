@@ -1,164 +1,175 @@
 {
   "http": "GET https://your_company.recruitee.com/api/offers/",
   "code": 200,
-  "body":{
+  "body": {
     "offers": [
       {
-        "id": 487967,
-        "slug": "example-offer-1",
-        "position": 3,
-        "status": "published",
-        "options_phone": "optional",
-        "options_photo": "off",
-        "options_cover_letter": "optional",
-        "options_cv": "required",
-        "remote": true,
-        "country_code": "DE",
-        "state_code": "BB",
-        "postal_code": "11-111",
-        "min_hours": 20,
-        "max_hours": 30,
-        "title": "Example offer 1",
-        "description": "<p>Example job description</p>",
-        "requirements": "<p>Example job requirements</p>",
-        "location": "Remote job",
-        "city": "Berlin",
-        "country": "Germany",
-        "careers_url": "https://democompany.recruitee.com/o/example-offer-1",
-        "careers_apply_url": "https://democompany.recruitee.com/o/example-offer-1/c/new",
-        "company_name": "Demo company",
-        "department": "Product",
-        "created_at": "2020-06-04 08:13:47 UTC",
-        "updated_at": "2021-08-19 14:53:19 UTC",
-        "published_at": "2020-06-04 08:13:53 UTC",
-        "close_at": "2021-10-31 22:59:59 UTC",
-        "employment_type_code": "parttime",
-        "category_code": "information_technology",
-        "experience_code": "mid_level",
-        "education_code": "master_degree",
-        "tags": [
-          "example offer tag"
-        ],
-        "translations": {
-          "en": {
-            "title": "Example offer 1",
-            "description": "<p>Example job description</p>",
-            "requirements": "<p>Example job requirements</p>"
-          }
-        },
         "open_questions": [
           {
-            "id": 938761,
-            "kind": "string",
-            "required": true,
-            "position": 1,
-            "body": "In what time you are available to start a new job?",
-            "translations": {
-              "en": {
-                "body": "In what time you are available to start a new job?"
-              }
-            },
-            "open_question_options": [],
-            "options": {
-              "length": 120
-            }
-          },
-          {
-            "id": 938758,
-            "kind": "boolean",
-            "required": true,
-            "position": 2,
-            "body": "Are you ready to work from the office?",
-            "translations": {
-              "en": {
-                "body": "Are you ready to work from the office?"
-              }
-            },
-            "open_question_options": [],
-            "options": {
-              "length": 120
-            }
-          },
-          {
-            "id": 938756,
+            "body": "What do you consider to be your top 5 core strengths?",
+            "id": 1465131,
             "kind": "text",
-            "required": false,
-            "position": 3,
-            "body": "How did you find out about the job?",
+            "open_question_options": [],
+            "position": 1,
+            "required": true,
             "translations": {
               "en": {
-                "body": "How did you find out about the job?"
+                "body": "What do you consider to be your top 5 core strengths?"
               }
-            },
+            }
+          },
+          {
+            "body": "Which areas you feel are your strongest:",
+            "id": 1465132,
+            "kind": "multi_choice",
+            "open_question_options": [
+              {
+                "body": "Market research",
+                "id": 1963798,
+                "translations": {
+                  "en": {
+                    "body": "Market research"
+                  }
+                }
+              },
+              {
+                "body": "Content strategy",
+                "id": 1963797,
+                "translations": {
+                  "en": {
+                    "body": "Content strategy"
+                  }
+                }
+              },
+              {
+                "body": "SEO / SEM",
+                "id": 1963796,
+                "translations": {
+                  "en": {
+                    "body": "SEO / SEM"
+                  }
+                }
+              },
+              {
+                "body": "Social Media",
+                "id": 1963795,
+                "translations": {
+                  "en": {
+                    "body": "Social Media"
+                  }
+                }
+              },
+              {
+                "body": "Product marketing",
+                "id": 1963794,
+                "translations": {
+                  "en": {
+                    "body": "Product marketing"
+                  }
+                }
+              }
+            ],
+            "position": 2,
+            "required": true,
+            "translations": {
+              "en": {
+                "body": "Which areas you feel are your strongest:"
+              }
+            }
+          },
+          {
+            "body": "Are you ready to be a mentor for less experienced marketers?",
+            "id": 1465133,
+            "kind": "boolean",
             "open_question_options": [],
-            "options": {
-              "length": 120
+            "position": 3,
+            "required": true,
+            "translations": {
+              "en": {
+                "body": "Are you ready to be a mentor for less experienced marketers?"
+              }
+            }
+          },
+          {
+            "body": "Which city do you live in?",
+            "id": 1465134,
+            "kind": "string",
+            "open_question_options": [],
+            "position": 4,
+            "required": false,
+            "translations": {
+              "en": {
+                "body": "Which city do you live in?"
+              }
+            }
+          },
+          {
+            "body": "Tell us why you want to join us.",
+            "id": 1465135,
+            "kind": "video",
+            "open_question_options": [],
+            "position": 5,
+            "required": false,
+            "translations": {
+              "en": {
+                "body": "Tell us why you want to join us."
+              }
             }
           }
-        ]
-      },
-      {
-        "id": 744510,
-        "slug": "example-offer-2",
-        "position": 2,
-        "status": "published",
-        "options_phone": "off",
-        "options_photo": "off",
-        "options_cover_letter": "off",
-        "options_cv": "required",
-        "remote": false,
-        "country_code": "PL",
-        "state_code": "WP",
-        "postal_code": "61-831",
-        "min_hours": null,
-        "max_hours": null,
-        "title": "Example offer 2",
-        "description": "<p>Example job description</p>",
-        "requirements": "<p>Example job requirements</p>",
-        "location": "Poznan, Poland",
-        "city": "Poznan",
-        "country": "Poland",
-        "careers_url": "https://democompany.recruitee.com/o/example-offer-2",
-        "careers_apply_url": "https://democompany.recruitee.com/o/example-offer-2/c/new",
-        "company_name": "Demo company",
-        "department": null,
-        "created_at": "2021-08-19 10:45:01 UTC",
-        "updated_at": "2021-08-19 14:50:53 UTC",
-        "published_at": "2021-08-19 10:45:01 UTC",
-        "close_at": null,
+        ],
         "employment_type_code": "fulltime",
-        "category_code": "information_technology",
-        "experience_code": "experienced",
-        "education_code": "high_school",
-        "tags": [],
+        "tags": [
+          "Remote",
+          "Sample",
+          "Senior"
+        ],
+        "postal_code": "01-001",
+        "min_hours": 40,
+        "careers_apply_url": "https://hanabosotest.recruitee.com/o/senior-marketer-sample-london/c/new",
+        "requirements": "<div><div><div><ul><li><p>Strong propensity for analysis and research.</p></li><li><p>Ability to develop catchy and appealing ads and campaigns.</p></li><li><p>4 years experience in Marketing.</p></li><li><p>Ability to handle multiple projects simultaneously.</p></li><li><p>Excellent verbal and written communication in English and French.</p></li><li><p>Master's degree in Marketing or relevant fields.</p></li></ul></div></div></div>",
+        "country": "United States",
+        "created_at": "2022-08-10 09:20:58 UTC",
+        "sharing_image": null,
+        "id": 1051455,
+        "close_at": null,
+        "options_cv": "required",
+        "options_cover_letter": "optional",
+        "state_code": "NY",
+        "slug": "senior-marketer-sample-london",
+        "title": "Senior Marketer (Sample)",
+        "mailbox_email": "job.52vtf@hanabosotest.recruitee.com",
+        "max_hours": 40,
+        "company_name": "Hanabosotest",
+        "sharing_title": "Senior Marketer (Sample)",
+        "options_photo": "optional",
+        "sharing_description": "We are searching for a professional Marketeer. You will contribute to a variety of projects from content and graphics to publishing final materials.Contribute to the development of the overall marketi",
+        "careers_url": "https://hanabosotest.recruitee.com/o/senior-marketer-sample-london",
         "translations": {
           "en": {
-            "title": "Example offer 2",
-            "description": "<p>Example job description</p>",
-            "requirements": "<p>Example job requirements</p>"
+            "description": "<div><div><div><p>We are searching for a professional Marketeer. You will contribute to a variety of projects from content and graphics to publishing final materials.</p><ul><li><p>Contribute to the development of the overall marketing strategy.</p></li><li><p>Design branding materials, including logos, graphics, templates, and other images.</p></li><li><p>Use statistics and other tools to track the effectiveness of the existing marketing strategy.</p></li><li><p>Provide feedback to marketing and management teams.</p></li><li><p>Collaborate with graphic designers, web specialists, and other technical team members to create successful marketing campaigns.</p></li><li><p>Use social media to advertise products and solutions.</p></li><li><p>Develop strategically placed advertisements to reach a niche demographic.</p></li><li><p>Communicate new strategies to other members of the team.</p></li><li><p>Present findings to management team.</p></li><li><p>Initiate new marketing tactics and techniques to include in next year’s strategy.</p></li></ul><p><br /></p><p><strong>Job benefits:</strong><br /></p><ul><li><p>Salary: 5,000-7,000 EUR</p></li><li><p>26 vacation days</p></li><li><p>Sick, personal, and parental leave</p></li><li><p>Child and elder care</p></li><li><p>Health insurance</p></li><li><p>Retirement plans</p></li><li><p>Professional development</p></li></ul></div></div></div>",
+            "requirements": "<div><div><div><ul><li><p>Strong propensity for analysis and research.</p></li><li><p>Ability to develop catchy and appealing ads and campaigns.</p></li><li><p>4 years experience in Marketing.</p></li><li><p>Ability to handle multiple projects simultaneously.</p></li><li><p>Excellent verbal and written communication in English and French.</p></li><li><p>Master's degree in Marketing or relevant fields.</p></li></ul></div></div></div>",
+            "sharing_description": "We are searching for a professional Marketeer. You will contribute to a variety of projects from content and graphics to publishing final materials.Contribute to the development of the overall marketi",
+            "sharing_image": null,
+            "sharing_title": "Senior Marketer (Sample)",
+            "title": "Senior Marketer (Sample)"
           }
         },
-        "open_questions": [
-          {
-            "id": 938779,
-            "kind": "string",
-            "required": false,
-            "position": 1,
-            "body": "If someone from our company recommended you this job, here you can provide the full name",
-            "translations": {
-              "en": {
-                "body": "If someone from our company recommended you this job, here you can provide the full name"
-              }
-            },
-            "open_question_options": [],
-            "options": {
-              "length": 120
-            }
-          }
-        ]
+        "position": 4,
+        "description": "<div><div><div><p>We are searching for a professional Marketeer. You will contribute to a variety of projects from content and graphics to publishing final materials.</p><ul><li><p>Contribute to the development of the overall marketing strategy.</p></li><li><p>Design branding materials, including logos, graphics, templates, and other images.</p></li><li><p>Use statistics and other tools to track the effectiveness of the existing marketing strategy.</p></li><li><p>Provide feedback to marketing and management teams.</p></li><li><p>Collaborate with graphic designers, web specialists, and other technical team members to create successful marketing campaigns.</p></li><li><p>Use social media to advertise products and solutions.</p></li><li><p>Develop strategically placed advertisements to reach a niche demographic.</p></li><li><p>Communicate new strategies to other members of the team.</p></li><li><p>Present findings to management team.</p></li><li><p>Initiate new marketing tactics and techniques to include in next year’s strategy.</p></li></ul><p><br /></p><p><strong>Job benefits:</strong><br /></p><ul><li><p>Salary: 5,000-7,000 EUR</p></li><li><p>26 vacation days</p></li><li><p>Sick, personal, and parental leave</p></li><li><p>Child and elder care</p></li><li><p>Health insurance</p></li><li><p>Retirement plans</p></li><li><p>Professional development</p></li></ul></div></div></div>",
+        "category_code": "marketing_pr",
+        "city": "New York",
+        "remote": false,
+        "experience_code": "experienced",
+        "country_code": "US",
+        "location": "New York, New York, United States",
+        "guid": "52vtf",
+        "options_phone": "required",
+        "department": "Marketing",
+        "status": "published",
+        "published_at": null,
+        "education_code": "master_degree"
       }
     ]
   }
-
 }
 
