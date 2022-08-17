@@ -2,7 +2,9 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import AuthenticaApplication, { NAME as AUTHENTICA } from '../../lib/Authentica/AuthenticaApplication';
-import { appInstall, DEFAULT_USER } from '../DataProvider';
+import {
+  appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
+} from '../DataProvider';
 import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/AuthenticaGetShippingMethods';
 import {
   cacheService, container, db, sender,
@@ -51,8 +53,9 @@ export default async function init(): Promise<ApplicationInstall> {
     DEFAULT_USER,
     {
       [AUTHORIZATION_FORM]: {
-        [CLIENT_ID]: 'testId',
-        [CLIENT_SECRET]: 'testSecret',
+        [CLIENT_ID]: DEFAULT_CLIENT_ID,
+        // eslint-disable-next-line max-len
+        [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
       },
     },
   );

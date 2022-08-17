@@ -2,5 +2,10 @@
   "headers": {
     "user": "TestUser"
   },
-  "data": [{"body": "{\"sku\":\"string\",\"inStock\":\"string\"}", "headers": null}]
+  "data": [
+    {
+      "body": "{\"sku\":\"01-006\",\"inStock\":\"23\"}",
+      "headers": null
+    }
+  ]
 }

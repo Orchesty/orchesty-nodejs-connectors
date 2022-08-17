@@ -10,7 +10,7 @@ let redis: Redis;
 
 describe('Tests for AuthenticaGetOrderStatus', () => {
   beforeAll(async () => {
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename);
     redis = container.get(CoreServices.REDIS);
     await init();
   });
