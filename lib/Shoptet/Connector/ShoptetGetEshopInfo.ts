@@ -154,35 +154,34 @@ export interface IOutput {
 }
 
 export interface IOrderStatuses {
-  statuses: {
-    id: number;
-    order: number;
-    name: string;
-    markAsPaid: boolean;
-  }[];
+  statuses: IOrderStatus[];
   defaultStatus: number;
+}
+
+export interface IOrderStatus {
+  id: number;
+  order: number;
+  name: string;
+  markAsPaid: boolean;
 }
 
 export interface IShippingMethods {
   retail: {
-    methods: {
-      guid: string;
-      order: number;
-      name: string;
-      visible: boolean;
-    }[];
+    methods: IShippingMethod[];
     defaultShipping: string;
   };
   wholesale: {
-    methods: {
-      guid: string;
-      order: number;
-      name: string;
-      visible: boolean;
-    }[];
+    methods: IShippingMethod[];
     defaultShipping: string;
   };
   wholesaleActive: boolean;
+}
+
+export interface IShippingMethod {
+  guid: string;
+  order: number;
+  name: string;
+  visible: boolean;
 }
 
 export interface IPaymentMethods {
