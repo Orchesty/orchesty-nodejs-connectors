@@ -56,7 +56,7 @@ export default class SalesForceApplication extends AOAuth2Application {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['api'];
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
