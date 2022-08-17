@@ -3,29 +3,29 @@
         "user": "TestUser"
     },
     "data": {
-        "accountId": "VfEy1",
-        "email": "john.smith@test.com",
+        "accountId": "yWXbn",
+        "city": "PRague",
+        "companyName": "",
         "countryCode": {
-            "countryCodeId": "175",
-            "countryCode": "PL"
+            "countryCode": "CZ",
+            "countryCodeId": "58"
         },
+        "email": "test.hanaboso@gmail.com",
+        "firstName": "Test",
+        "href": "https://api.getresponse.com/v3/accounts",
         "industryTag": {
-            "industryTagId": "1"
+            "industryTagId": null
         },
+        "lastName": "Testovic",
+        "numberOfEmployees": null,
+        "phone": "+420703142341",
+        "state": "CZ",
+        "street": "Prague",
+        "timeFormat": "24h",
         "timeZone": {
-            "name": "Europe/Warsaw",
+            "name": "Europe/Prague",
             "offset": "+01:00"
         },
-        "href": "https://api.getresponse.com/v3/accounts",
-        "firstName": "John",
-        "lastName": "Smith",
-        "companyName": "MyBigCompany",
-        "phone": "+00155555555",
-        "state": "Oklahoma",
-        "city": "Alderson",
-        "street": "Sunset blv.",
-        "zipCode": "81-611",
-        "numberOfEmployees": "500",
-        "timeFormat": "24h"
+        "zipCode": "10001"
     }
 }
