@@ -8,11 +8,11 @@
         "name": "string",
         "englishName": "string",
         "ean": "string",
-        "width": 0,
-        "widthUnit": "mm",
-        "height": 0,
-        "heightUnit": "mm",
-        "weight": 0,
+        "width": 100,
+        "widthUnit": "100",
+        "height": 10,
+        "heightUnit": "20",
+        "weight": 500,
         "weightUnit": "g"
       }
     ]
