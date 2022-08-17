@@ -18,8 +18,7 @@ export default class GitHubGetRepositoryConnector extends AConnector {
       HttpMethods.GET,
       `/repos/${user}/${repo}`,
     );
-    const response = await this._sender.send(request);
-    await this._sender.send(request, [200]);
+    const response = await this._sender.send(request, [200]);
     dto.data = response.body;
     return dto;
   }
