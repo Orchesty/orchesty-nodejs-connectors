@@ -104,26 +104,7 @@ interface IOrdersJson {
     key: string,
     value: string
   }[];
-  line_items: {
-    id: number;
-    name: string;
-    product_id: number;
-    variation_id: number;
-    quantity: number;
-    tax_class: string;
-    subtotal: string;
-    subtotal_tax: string;
-    total: string;
-    total_tax: string;
-    taxes: {
-      id: number,
-      total: string,
-      subtotal: string
-    }[];
-    meta_data: [];
-    sku: string;
-    price: number;
-  }[];
+  line_items: ILineItems[];
   tax_lines: {
     id: number;
     rate_code: string;
@@ -154,6 +135,27 @@ interface IOrdersJson {
       href: string
     }[]
   };
+}
+
+export interface ILineItems {
+  id: number;
+  name: string;
+  product_id: number;
+  variation_id: number;
+  quantity: number;
+  tax_class: string;
+  subtotal: string;
+  subtotal_tax: string;
+  total: string;
+  total_tax: string;
+  taxes: {
+    id: number,
+    total: string,
+    subtotal: string
+  }[];
+  meta_data: [];
+  sku: string;
+  price: number;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
