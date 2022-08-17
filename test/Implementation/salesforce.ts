@@ -20,12 +20,12 @@ import {
 export default async function init(): Promise<void> {
   await appInstall(SALESFORCE_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: '3MVG9t0sl2P.pByqKoP5Mc1jKzKjPosaU0w8tMEKose3A5AFkS32wa7AYAWsS7QLfNZp0zjh.OhbphX3Aivbv',
-      [CLIENT_SECRET]: '4152D82E7BBDB13FFCC72F4735C95342C311B00F306A2B8E432F023D5CC2C00C',
-      [INSTANCE_NAME]: 'test96',
+      [CLIENT_ID]: '3MVG9t0sl2P.pByoVutEb9IKqhyygWGK3Mmxt5_nhG0sJmS2pV3AS.8oyGsnscOqp1tIDvRfTdk5s5cHs5iZh',
+      [CLIENT_SECRET]: '327869123EB8B51D370FC6F0CF1B314A42D7BE441604F1C91F5DA1DC08310D32',
+      [INSTANCE_NAME]: 'hanaboso-dev-ed',
       [TOKEN]: {
         // eslint-disable-next-line max-len
-        [ACCESS_TOKEN]: '00D7Q00000AC6fQ!AQcAQGwGs7HCAQnEpPeOtTeHozqpTUyx6Z3aLV_jxQpj0Fusb4CNCNvxNBDWO2tOWvcsD61kEXZZN8PJXSrCAA2XTsrhOUy5',
+        [ACCESS_TOKEN]: 'aPrxi6BfM_yOlkWohAFqUmU2dJ1Or7Ayh1ut4ynEukstHNaterqSqiTjYaxmwRmZPewkOTno6Q%3D%3D&state=ZGVmYXVsdF90ZXN0X3VzZXI6c2FsZXNmb3JjZQ',
       },
     },
   });
