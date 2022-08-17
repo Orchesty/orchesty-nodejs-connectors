@@ -1,0 +1,210 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "activeModules": [
+            {
+                "name": "abandonedCart",
+                "title": "Abandoned Cart"
+            }
+        ],
+        "billingInformation": {
+            "address": {
+                "city": "Prague",
+                "streetAddress": "Roháčova 15",
+                "zip": "130 00"
+            },
+            "billingEmail": "fakturace@domena-eshopu.cz",
+            "billingName": "John Doe",
+            "companyId": "12345678",
+            "country": {
+                "countryCode": "CZ",
+                "countryName": "Czech Republic"
+            },
+            "email": "novak@domena-eshopu.cz",
+            "phone": "+420777888999",
+            "registration": "C 12345",
+            "taxId": "CZ289324675",
+            "vatId": "CZ289324675"
+        },
+        "contactInformation": {
+            "contactPerson": "John Doe",
+            "contactPhotoUrl": "http://www.domena-eshopu.cz/...picture.jpg",
+            "email": "info@domena-eshopu.cz",
+            "eshopCategory": "Technology",
+            "eshopId": 9993,
+            "eshopName": "Shoptet",
+            "eshopSubtitle": "Shop quickly and easily",
+            "eshopTitle": "Shoptet",
+            "mobilePhone": "+420777888999",
+            "phone": "+420777888999",
+            "skypeAccount": "shoptet_123",
+            "url": "http://www.domena-eshopu.cz"
+        },
+        "countries": [
+            {
+                "companyIdExample": "28935675",
+                "companyIdPattern": "^\\d{8}$",
+                "countryCode": "CZ",
+                "countryName": "Czech Republic",
+                "zipCodePattern": "^[1-7]\\d{2}\\s*\\d{2}$"
+            }
+        ],
+        "currencies": [
+            {
+                "bankAccount": {
+                    "accountNumber": "19-2000145399/0800",
+                    "bic": "GIBACZPX",
+                    "iban": "CZ6508000000192000145399"
+                },
+                "code": "CZK",
+                "display": {
+                    "decimalsSeparator": ",",
+                    "location": "left",
+                    "text": "$",
+                    "thousandsSeparator": ""
+                },
+                "exchangeRate": "1.04568087",
+                "isDefault": true,
+                "isDefaultAdmin": true,
+                "isVisible": true,
+                "minimalOrderValue": "300.00",
+                "priceDecimalPlaces": 2,
+                "priority": 1,
+                "rounding": "up",
+                "title": "Crown"
+            }
+        ],
+        "imageCuts": [
+            {
+                "cdnPath": "https://cdn-api.myshoptet.com/usr/classic.shoptet.cz/user/shop/big/",
+                "height": 768,
+                "name": "big",
+                "urlPath": "https://classic.shoptet.cz/user/shop/big/",
+                "width": 1024
+            }
+        ],
+        "languages": [
+            {
+                "code": "cs",
+                "currencyCode": "CZK",
+                "dateFormat": "d.m.Y",
+                "isDefault": true,
+                "isVisible": true,
+                "priority": 1,
+                "timeFormat": "H:i:s"
+            }
+        ],
+        "orderAdditionalFields": [
+            {
+                "index": 1,
+                "label": "1. pole"
+            }
+        ],
+        "orderStatuses": {
+            "defaultStatus": -1,
+            "statuses": [
+                {
+                    "id": -4,
+                    "markAsPaid": true,
+                    "name": "Cancelled",
+                    "order": 6
+                }
+            ]
+        },
+        "paymentMethods": {
+            "retail": {
+                "defaultPayment": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+                "methods": [
+                    {
+                        "guid": "3d499cae-3af3-11e3-ab60-ac162d8a2454",
+                        "name": "Czech Post - in the post office",
+                        "order": 1,
+                        "visible": true
+                    }
+                ]
+            },
+            "wholesale": {
+                "defaultPayment": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+                "methods": [
+                    {
+                        "guid": "3d499cae-3af3-11e3-ab60-ac162d8a2454",
+                        "name": "Czech Post - in the post office",
+                        "order": 1,
+                        "visible": true
+                    }
+                ]
+            },
+            "wholesaleActive": true
+        },
+        "settings": {
+            "cashDeskOnly": false,
+            "dateFormat": "j.n.Y",
+            "defaultPricelist": {
+                "id": 1,
+                "name": "Hlavní ceník"
+            },
+            "eshopLanguage": "cs",
+            "exchangeRateFlip": true,
+            "internals": "cs",
+            "maxEmailAmount": 2000,
+            "maxProductAmount": 1000,
+            "negativeStockAmount": "allowed",
+            "timeFormat": "H:i",
+            "timezone": "Europe/Prague",
+            "trackStockClaims": true,
+            "vatPayer": true
+        },
+        "shippingMethods": {
+            "retail": {
+                "defaultShipping": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+                "methods": [
+                    {
+                        "guid": "3d499cae-3af3-11e3-ab60-ac162d8a2454",
+                        "name": "Czech Post - in the post office",
+                        "order": 1,
+                        "visible": true
+                    }
+                ]
+            },
+            "wholesale": {
+                "defaultShipping": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+                "methods": [
+                    {
+                        "guid": "3d499cae-3af3-11e3-ab60-ac162d8a2454",
+                        "name": "Czech Post - in the post office",
+                        "order": 1,
+                        "visible": true
+                    }
+                ]
+            },
+            "wholesaleActive": true
+        },
+        "socialNetworks": {
+            "facebookText": "Facebook profil",
+            "facebookUrl": "http://www.facebook.com/shoptet",
+            "instagramAccount": "shoptet_sro",
+            "twitterAccount": "shoptet_sro"
+        },
+        "taxClasses": [
+            {
+                "isDefault": false,
+                "rates": [
+                    {
+                        "vatRate": "15.00",
+                        "zone": "Default Zone"
+                    }
+                ],
+                "title": "Reduced VAT rate"
+            }
+        ],
+        "trial": false,
+        "urls": [
+            {
+                "ident": "admin-orders-list",
+                "url": "https://mujobchod.myshoptet.com/admin/prehled-objednavek"
+            }
+        ]
+    }
+}
