@@ -10,7 +10,7 @@ let redis: Redis;
 
 describe('Tests for AuthenticaGetShippingMethods', () => {
   beforeAll(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     redis = container.get(CoreServices.REDIS);
     await init();
   });
@@ -32,6 +32,6 @@ describe('Tests for AuthenticaGetShippingMethods', () => {
       }),
       4,
     );
-    await tester.testConnector(AUTHENTICA_GET_SHIPPING_METHODS, '');
+    await tester.testConnector(AUTHENTICA_GET_SHIPPING_METHODS);
   });
 });

@@ -10,7 +10,7 @@ let redis: Redis;
 
 describe('Tests for AuthenticaPostProducts', () => {
   beforeAll(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     redis = container.get(CoreServices.REDIS);
     await init();
   });
@@ -32,6 +32,6 @@ describe('Tests for AuthenticaPostProducts', () => {
       }),
       4,
     );
-    await tester.testConnector(AUTHENTICA_POST_PRODUCTS, '');
+    await tester.testConnector(AUTHENTICA_POST_PRODUCTS);
   });
 });

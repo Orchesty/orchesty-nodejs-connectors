@@ -10,7 +10,7 @@ let redis: Redis;
 
 describe('Tests for AuthenticaGetStock', () => {
   beforeAll(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     redis = container.get(CoreServices.REDIS);
     await init();
   });
@@ -32,6 +32,6 @@ describe('Tests for AuthenticaGetStock', () => {
       }),
       4,
     );
-    await tester.testBatch(AUTHENTICA_GET_STOCK, '');
+    await tester.testBatch(AUTHENTICA_GET_STOCK);
   });
 });
