@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.github.com/apps/GitHubApp",
+  "http": "GET https://api.github.com/apps/octoapp",
   "code": 200,
   "body": {
     "id": 1,

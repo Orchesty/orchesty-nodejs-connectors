@@ -127,6 +127,7 @@ import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
 import BoxListTasksBatch from '../lib/Box/Batch/BoxListTasksBatch';
+import GitHubGetRepositoryConnector from '../lib/GitHub/Connector/GitHubGetRepositoryConnector';
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 /* eslint-disable import/no-mutable-exports */
@@ -568,6 +569,7 @@ function initGitHub(): void {
 
   const getApp = new GitHubGetAppConnector();
   const getRepositories = new GitHubGeRespositoriesBatch();
+  const getRepository = new GitHubGetRepositoryConnector();
 
   getApp
     .setSender(sender)
@@ -580,6 +582,11 @@ function initGitHub(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getRepositories);
+  getRepository
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(app);
+  container.setConnector(getRepository);
 }
 
 function initPaypal(): void {
