@@ -43,7 +43,7 @@ export default class CustomerIoApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${siteId}:${apiKey}`),
+      [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${siteId}:${apiKey}`)}`,
     };
 
     if (data) {
