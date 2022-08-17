@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for SalesForceCreateRecord', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     await init();
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(SALESFORCE_CREATE_RECORD_CONNECTOR, '');
+    await tester.testConnector(SALESFORCE_CREATE_RECORD_CONNECTOR);
   });
 });
