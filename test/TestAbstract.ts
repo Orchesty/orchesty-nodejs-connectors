@@ -78,9 +78,6 @@ import ProductboardApplication from '../lib/Productboard/ProductboardApplication
 import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
 import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
-import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
-import SalesForceCreateRecordConnector from '../lib/SalesForce/Connector/SalesForceCreateRecordConnector';
-import SalesForceUpdateRecordConnector from '../lib/SalesForce/Connector/SalesForceUpdateRecordConnector';
 import TableauApplication from '../lib/Tableau/TableauApplication';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
@@ -181,7 +178,6 @@ export async function prepare(): Promise<void> {
   initPaypal();
   initPipedrive();
   initProductboard();
-  initSalesForce();
   initTableau();
   initTodoist();
   initTwitter();
@@ -283,26 +279,6 @@ function initNutshell(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(newTask);
-}
-
-function initSalesForce(): void {
-  const app = new SalesForceApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const createRecord = new SalesForceCreateRecordConnector();
-  const updateRecord = new SalesForceUpdateRecordConnector();
-
-  createRecord
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createRecord);
-
-  updateRecord
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(updateRecord);
 }
 
 function initMall(): void {

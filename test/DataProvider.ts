@@ -33,7 +33,6 @@ import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
-import { NAME as SALESFORCE_APP, INSTANCE_NAME } from '../lib/SalesForce/SalesForceApplication';
 import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
 import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
@@ -94,19 +93,6 @@ export async function pipedriveApp() {
     [AUTHORIZATION_FORM]: {
       [SUBDOMAIN]: 'company',
       [TOKEN]: DEFAULT_ACCESS_TOKEN,
-    },
-  });
-}
-
-export async function salesforceAPP() {
-  return appInstall(SALESFORCE_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [INSTANCE_NAME]: 'Domain',
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
     },
   });
 }

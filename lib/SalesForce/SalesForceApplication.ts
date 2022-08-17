@@ -49,7 +49,7 @@ export default class SalesForceApplication extends AOAuth2Application {
     };
 
     if (data) {
-      request.body = data;
+      request.setJsonBody(data);
     }
 
     return request;
