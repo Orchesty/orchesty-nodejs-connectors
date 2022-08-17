@@ -4,10 +4,10 @@ import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
-export const NAME = 'git-hub-get-repository-connector';
+export const NAME = 'github-get-repository-connector';
 
 export default class GitHubGetRepositoryConnector extends AConnector {
-  public getName = () => 'github-get-repository';
+  public getName = () => NAME;
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;

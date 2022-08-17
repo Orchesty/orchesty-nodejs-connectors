@@ -40,7 +40,7 @@ export default class GitHubApplication extends ABasicApplication {
     const request = new RequestDto(`https://api.github.com${_url}`, method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-      [CommonHeaders.ACCEPT]: JSON_TYPE,
+      [CommonHeaders.ACCEPT]: 'application/vnd.github+json',
       [CommonHeaders.AUTHORIZATION]: encode(`${TOKEN}:${USER}`),
     };
 

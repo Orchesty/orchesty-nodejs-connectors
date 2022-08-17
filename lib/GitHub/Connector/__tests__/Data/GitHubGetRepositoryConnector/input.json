@@ -2,5 +2,8 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "user": "Orchesty",
+        "repo": "orchesty-nodejs-connectors"
+    }
 }
