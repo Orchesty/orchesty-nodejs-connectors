@@ -214,8 +214,8 @@ export async function paypalApp() {
 export async function gitHubApp() {
   return appInstall(GITHUB_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [USER]: 'jirsa.r@gmail.com',
-      [TOKEN]: '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',
+      [USER]: DEFAULT_USER,
+      [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },
   });
 }
