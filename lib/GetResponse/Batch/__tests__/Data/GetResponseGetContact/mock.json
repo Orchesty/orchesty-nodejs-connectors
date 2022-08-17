@@ -1,0 +1,27 @@
+{
+  "http": "GET https://api.getresponse.com/v3/contacts?page=1&perPage=100&filter=basic",
+  "code": 200,
+  "body": [
+    {
+      "contactId": "pV3r",
+      "name": "John Doe",
+      "origin": "import",
+      "timeZone": "Europe/Warsaw",
+      "activities": "https://api.getresponse.com/v3/contacts/pV3r/activities",
+      "changedOn": "2017-12-19T13:11:48+0000",
+      "createdOn": "2017-03-02T07:30:49+0000",
+      "campaign": {
+        "campaignId": "C",
+        "href": "https://api.getresponse.com/v3/campaigns/C",
+        "name": "Promo campaign"
+      },
+      "email": "john.doe@example.com",
+      "dayOfCycle": "42",
+      "scoring": 8,
+      "engagementScore": 3,
+      "href": "https://api.getresponse.com/v3/contacts/pV3r",
+      "note": "string",
+      "ipAddress": "1.2.3.4"
+    }
+  ]
+}
