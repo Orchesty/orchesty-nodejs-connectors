@@ -14,6 +14,7 @@ import {
   cacheService, container, db, sender,
 } from '../TestAbstract';
 import APluginShoptetApplication from '../../lib/Shoptet/APluginShoptetApplication';
+import ShoptetGetEshopInfo from '../../lib/Shoptet/Connector/ShoptetGetEshopInfo';
 
 const NAME = 'shoptet';
 
@@ -88,4 +89,10 @@ export default async function init(): Promise<void> {
     .setDb(db)
     .setApplication(implPluginShoptetApplication);
   container.setConnector(shoptetGetShippingMethods);
+
+  const shoptetGetEshopInfo = new ShoptetGetEshopInfo()
+    .setSender(sender)
+    .setDb(db)
+    .setApplication(implPluginShoptetApplication);
+  container.setConnector(shoptetGetEshopInfo);
 }
