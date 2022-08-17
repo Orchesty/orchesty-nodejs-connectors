@@ -4,7 +4,7 @@
     },
     "data": [
         {
-            "body": "{\"contactId\":\"pV3r\",\"name\":\"John Doe\",\"origin\":\"import\",\"timeZone\":\"Europe/Warsaw\",\"activities\":\"https://api.getresponse.com/v3/contacts/pV3r/activities\",\"changedOn\":\"2017-12-19T13:11:48+0000\",\"createdOn\":\"2017-03-02T07:30:49+0000\",\"campaign\":{\"campaignId\":\"C\",\"href\":\"https://api.getresponse.com/v3/campaigns/C\",\"name\":\"Promo campaign\"},\"email\":\"john.doe@example.com\",\"dayOfCycle\":\"42\",\"scoring\":8,\"engagementScore\":3,\"href\":\"https://api.getresponse.com/v3/contacts/pV3r\",\"note\":\"string\",\"ipAddress\":\"1.2.3.4\"}",
+            "body": "{\"contactId\":\"V8bTMR1\",\"href\":\"https://api.getresponse.com/v3/contacts/V8bTMR1\",\"name\":\"Test Testovic\",\"email\":\"test.hanaboso@gmail.com\",\"note\":null,\"origin\":\"api\",\"dayOfCycle\":\"1\",\"changedOn\":\"2022-08-16T06:44:54+0000\",\"timeZone\":\"Europe/Prague\",\"ipAddress\":\"188.122.212.69\",\"activities\":\"https://api.getresponse.com/v3/contacts/V8bTMR1/activities\",\"campaign\":{\"campaignId\":\"rQSc4\",\"href\":\"https://api.getresponse.com/v3/campaigns/rQSc4\",\"name\":\"testhanaboso\"},\"createdOn\":\"2022-08-16T06:44:54+0000\",\"scoring\":null,\"engagementScore\":3}",
             "headers": null
         }
     ]

@@ -8,7 +8,7 @@ import GetResponseGetContact from '../../lib/GetResponse/Batch/GetResponseGetCon
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [API_KEY]: '4ue8hv2thnbnp1na4nziod9xfjsnpjjq',
+      [API_KEY]: 'api_key',
     },
   });
 

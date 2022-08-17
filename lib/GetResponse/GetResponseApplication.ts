@@ -39,7 +39,7 @@ export default class GetResponseApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `X-Auth-Token ${apiKey}`,
+      'X-Auth-Token': `api-key ${apiKey}`,
     };
 
     if (data) {
