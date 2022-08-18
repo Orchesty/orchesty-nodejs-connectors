@@ -81,10 +81,6 @@ import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/Productb
 import TableauApplication from '../lib/Tableau/TableauApplication';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
-import TodoistApplication from '../lib/Todoist/TodoistApplication';
-import TodoistCreateNewTaskConnector from '../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
-import TodoistCreateProjectConnector from '../lib/Todoist/Connector/TodoistCreateProjectConnector';
-import TodoistGetAllProjectsBatch from '../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
@@ -179,7 +175,6 @@ export async function prepare(): Promise<void> {
   initPipedrive();
   initProductboard();
   initTableau();
-  initTodoist();
   initTwitter();
   initTypeform();
   initVyfakturuj();
@@ -794,31 +789,6 @@ function initClickup(): void {
     .setApplication(app);
   container.setConnector(createSpace);
 }
-
-function initTodoist(): void {
-  const app = new TodoistApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const createProject = new TodoistCreateProjectConnector();
-  const getAllProjects = new TodoistGetAllProjectsBatch();
-  const createNewTask = new TodoistCreateNewTaskConnector();
-  createProject
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createProject);
-  getAllProjects
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(getAllProjects);
-  createNewTask
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createNewTask);
-}
-
 function initIntercom(): void {
   const app = new IntercomApplication(oauth2Provider);
   container.setApplication(app);

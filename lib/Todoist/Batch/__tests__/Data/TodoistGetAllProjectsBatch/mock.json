@@ -3,17 +3,37 @@
   "code": 200,
   "body": [
     {
-      "id": 220474322,
+      "id": 2296284649,
+      "color": 48,
       "name": "Inbox",
-      "comment_count": 10,
-      "order": 1,
-      "color": 47,
+      "comment_count": 0,
       "shared": false,
       "favorite": false,
+      "sync_id": 0,
       "inbox_project": true,
-      "team_inbox": false,
-      "url": "https://todoist.com/showProject?id=220474322",
-      "parent_id": null
+      "url": "https://todoist.com/showProject?id=2296284649"
+    },
+    {
+      "id": 2296284655,
+      "order": 1,
+      "color": 48,
+      "name": "Osobní 🙂",
+      "comment_count": 0,
+      "shared": false,
+      "favorite": false,
+      "sync_id": 0,
+      "url": "https://todoist.com/showProject?id=2296284655"
+    },
+    {
+      "id": 2296284649,
+      "color": 48,
+      "name": "Inbox",
+      "comment_count": 0,
+      "shared": false,
+      "favorite": false,
+      "sync_id": 0,
+      "inbox_project": true,
+      "url": "https://todoist.com/showProject?id=2296284649"
     }
   ]
 }
