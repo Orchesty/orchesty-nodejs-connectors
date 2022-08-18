@@ -3,16 +3,16 @@
         "user": "TestUser"
     },
     "data": {
-        "listId": 1,
-        "name": "New Task Name",
-        "description": "New Task Description",
+        "listId": 170322402,
+        "name": "Nevím ale snad to bude fugovat",
+        "description": "fungujjj",
         "assignees": [
             183
         ],
         "tags": [
             "tag name 1"
         ],
-        "status": "Open",
+        "status": "to do",
         "priority": 3,
         "due_date": 1508369194377,
         "due_date_time": false,

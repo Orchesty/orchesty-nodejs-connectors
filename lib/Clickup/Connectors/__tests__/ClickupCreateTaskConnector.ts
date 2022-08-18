@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for ClickupCreateTaskConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename, false, ['']);
     await clickupApp();
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(CLICKUP_CREATE_TASK_CONNECTOR);
+    await tester.testConnector(CLICKUP_CREATE_TASK_CONNECTOR, '');
   });
 });
