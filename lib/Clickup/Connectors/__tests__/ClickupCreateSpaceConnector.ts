@@ -7,7 +7,7 @@ let tester: NodeTester;
 
 describe('Tests for ClickupCreateSpaceConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename);
     await clickupApp();
   });
 

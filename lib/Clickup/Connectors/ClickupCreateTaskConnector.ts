@@ -31,18 +31,18 @@ export interface IInput {
     listId: number
     name: string,
     description: string,
-    assignees: number[],
-    tags: string[],
+    assignees?: number[],
+    tags?: string[],
     status: string,
     priority: number,
-    due_date: number,
-    due_date_time: boolean,
-    time_estimate: number,
-    start_date: number,
-    start_date_time: boolean,
-    notify_all: boolean,
-    check_required_custom_fields: boolean,
-    custom_fields: {
+    due_date?: number,
+    due_date_time?: boolean,
+    time_estimate?: number,
+    start_date?: number,
+    start_date_time?: boolean,
+    notify_all?: boolean,
+    check_required_custom_fields?: boolean,
+    custom_fields?: {
         id: string,
         value: number
     }[]

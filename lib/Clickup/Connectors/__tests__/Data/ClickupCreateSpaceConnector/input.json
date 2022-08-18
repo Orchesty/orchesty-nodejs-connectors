@@ -3,8 +3,8 @@
         "user": "TestUser"
     },
     "data": {
-        "teamId": 1,
-        "name": "New Space Name",
+        "teamId": 14353588,
+        "name": "Karové",
         "multiple_assignees": true,
         "features": {
             "due_dates": {

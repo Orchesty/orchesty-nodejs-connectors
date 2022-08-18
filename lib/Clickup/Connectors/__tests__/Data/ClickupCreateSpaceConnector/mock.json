@@ -1,77 +1,82 @@
 {
-  "http": "POST https://api.clickup.com/api/v2/team/1/space",
+  "http": "POST https://api.clickup.com/api/v2/team/14353588/space",
   "code": 200,
   "body": {
-    "id": "790",
-    "name": "New Space Name",
-    "private": false,
-    "statuses": [
-      {
-        "id": "p16911531_p8y2WNC6",
-        "status": "to do",
-        "type": "open",
-        "orderindex": 0,
-        "color": "#d3d3d3"
-      },
-      {
-        "id": "p17911545_ABo7jSsf",
-        "status": "complete",
-        "type": "closed",
-        "orderindex": 1,
-        "color": "#6bc950"
-      }
-    ],
-    "multiple_assignees": true,
+    "admin_can_manage": null,
+    "archived": false,
+    "avatar": null,
+    "color": null,
     "features": {
+      "checklists": {
+        "enabled": true
+      },
+      "custom_fields": {
+        "enabled": true
+      },
+      "custom_items": {
+        "enabled": false
+      },
+      "dependency_warning": {
+        "enabled": true
+      },
       "due_dates": {
         "enabled": true,
-        "start_date": false,
+        "remap_closed_due_date": false,
         "remap_due_dates": true,
-        "remap_closed_due_date": false
+        "start_date": true
       },
-      "sprints": {
+      "emails": {
+        "enabled": true
+      },
+      "milestones": {
         "enabled": false
+      },
+      "multiple_assignees": {
+        "enabled": true
       },
       "points": {
         "enabled": false
       },
-      "custom_items": {
+      "portfolios": {
+        "enabled": true
+      },
+      "remap_dependencies": {
+        "enabled": true
+      },
+      "sprints": {
         "enabled": false
       },
       "tags": {
         "enabled": true
       },
       "time_estimates": {
-        "enabled": true
-      },
-      "checklists": {
-        "enabled": true
+        "enabled": true,
+        "per_assignee": false,
+        "rollup": false
       },
       "zoom": {
         "enabled": false
-      },
-      "milestones": {
-        "enabled": false
-      },
-      "custom_fields": {
-        "enabled": true
-      },
-      "remap_dependencies": {
-        "enabled": true
-      },
-      "dependency_warning": {
-        "enabled": true
-      },
-      "multiple_assignees": {
-        "enabled": true
-      },
-      "portfolios": {
-        "enabled": true
-      },
-      "emails": {
-        "enabled": true
       }
     },
-    "archived": false
+    "id": "32121934",
+    "multiple_assignees": true,
+    "name": "Karové",
+    "private": false,
+    "statuses": [
+      {
+        "color": "#d3d3d3",
+        "id": "p32121934_IDH2qVSw",
+        "orderindex": 0,
+        "status": "to do",
+        "type": "open"
+      },
+      {
+        "color": "#6bc950",
+        "id": "p32121934_QNjDRcwe",
+        "orderindex": 1,
+        "status": "complete",
+        "type": "closed"
+      }
+    ]
   }
 }
