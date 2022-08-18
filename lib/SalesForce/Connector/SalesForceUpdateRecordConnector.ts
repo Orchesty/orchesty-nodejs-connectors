@@ -12,10 +12,10 @@ export default class SalesForceUpdateRecordConnector extends AConnector {
     const { recordId, ...body } = dto.jsonData as IInput;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, `/Account/${recordId}`, body);
-    const resp = await this._sender.send(req, [204]);
+    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.PATCH, `/Account/${recordId}`, body);
+    await this._sender.send(req, [204]);
 
-    dto.jsonData = resp.jsonBody;
+    dto.jsonData = {};
 
     return dto;
   }
