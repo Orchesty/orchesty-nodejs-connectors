@@ -1,5 +1,5 @@
 {
-    "http": "POST https://Domain.my.salesforce.com/services/data/v55.0/sobjects/Account/0001120012",
+    "http": "PATCH https://hanaboso-dev-ed.my.salesforce.com/services/data/v55.0/sobjects/Account/0017Q00000UpDLYQA3",
     "code": 204,
     "body": {}
     
