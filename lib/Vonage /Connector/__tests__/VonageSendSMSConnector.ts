@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for VonageSendSMSConnector', () => {
   beforeAll(async () => {
-    tester = new NodeTester(container, __filename);
+    tester = new NodeTester(container, __filename, true);
     await init();
   });
 
   it('process - ok', async () => {
-    await tester.testBatch(VONAGE_SEND_SMS_CONNECTOR);
+    await tester.testConnector(VONAGE_SEND_SMS_CONNECTOR);
   });
 });

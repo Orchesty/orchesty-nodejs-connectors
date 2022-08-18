@@ -23,7 +23,8 @@ export default class VonageApplication extends ABasicApplication {
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, API_KEY, 'Api Key', undefined, true));
+      .addField(new Field(FieldType.TEXT, API_KEY, 'Api Key', undefined, true))
+      .addField(new Field(FieldType.TEXT, API_SECRET, 'Api secret', undefined, true));
 
     return new FormStack().addForm(form);
   };
