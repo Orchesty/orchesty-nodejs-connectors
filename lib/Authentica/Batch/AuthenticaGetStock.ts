@@ -1,7 +1,6 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { IResponseJson } from '../../WooCommerce/Batch/WooCommerceGetOrders';
 
 export const NAME = 'authentica-get-stock';
 
