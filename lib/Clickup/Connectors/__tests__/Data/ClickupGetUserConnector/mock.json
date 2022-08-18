@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.clickup.com/api/v2/team/1/user/1",
+  "http": "GET https://api.clickup.com/api/v2/team/14353588/user/32316450",
   "code": 200,
   "body": {
     "member": {

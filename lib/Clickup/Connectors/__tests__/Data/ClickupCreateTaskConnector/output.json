@@ -3,80 +3,80 @@
         "user": "TestUser"
     },
     "data": {
-        "id": "9hx",
-        "name": "New Task Name",
-        "text_content": "New Task Description",
-        "description": "New Task Description",
-        "status": {
-            "status": "Open",
-            "color": "#d3d3d3",
-            "orderindex": 0,
-            "type": "open"
-        },
-        "orderindex": "1.00000000000000000000000000000000",
-        "date_created": "1567780450202",
-        "date_updated": "1567780450202",
-        "date_closed": null,
-        "creator": {
-            "id": 183,
-            "username": "John Doe",
-            "color": "#827718",
-            "profilePicture": "https://attachments-public.clickup.com/profilePictures/183_abc.jpg"
-        },
+        "archived": false,
         "assignees": [],
         "checklists": [],
-        "tags": [],
-        "parent": null,
-        "priority": null,
-        "due_date": null,
-        "start_date": null,
-        "time_estimate": null,
-        "time_spent": null,
-        "custom_fields": [
-            {
-                "id": "0a52c486-5f05-403b-b4fd-c512ff05131c",
-                "name": "My Number field",
-                "type": "checkbox",
-                "type_config": {},
-                "date_created": "1622176979540",
-                "hide_from_guests": false,
-                "value": "23",
-                "required": true
-            },
-            {
-                "id": "03efda77-c7a0-42d3-8afd-fd546353c2f5",
-                "name": "My Text field",
-                "type": "short_text",
-                "type_config": {},
-                "date_created": "1622176979540",
-                "hide_from_guests": false,
-                "value": "Text field input",
-                "required": false
-            },
-            {
-                "id": "f4d2a20d-6759-4420-b853-222dbe2589d5",
-                "name": "My People",
-                "type": "users",
-                "type_config": {
-                    "single_user": true,
-                    "include_groups": true,
-                    "include_guests": true,
-                    "include_team_members": true
-                },
-                "date_created": "1618440378816",
-                "hide_from_guests": false,
-                "required": false
-            }
-        ],
-        "list": {
-            "id": "123"
+        "creator": {
+            "color": "#388d3c",
+            "email": "test.hanaboso@gmail.com",
+            "id": 32316450,
+            "profilePicture": null,
+            "username": "Hanabosotest"
         },
+        "custom_fields": [],
+        "custom_id": null,
+        "date_closed": null,
+        "date_created": "1660821827519",
+        "date_updated": "1660821827519",
+        "dependencies": [],
+        "description": "fungujjj",
+        "due_date": null,
         "folder": {
-            "id": "456"
+            "access": true,
+            "hidden": true,
+            "id": "128229486",
+            "name": "hidden"
+        },
+        "id": "2uq8pdv",
+        "linked_tasks": [],
+        "list": {
+            "access": true,
+            "id": "170322402",
+            "name": "IDK"
+        },
+        "name": "Nevím ale snad to bude fugovat",
+        "orderindex": "4371720.00000000000000000000000000000000",
+        "parent": null,
+        "permission_level": "create",
+        "points": null,
+        "priority": {
+            "color": "#6fddff",
+            "id": "3",
+            "orderindex": "3",
+            "priority": "normal"
+        },
+        "project": {
+            "access": true,
+            "hidden": true,
+            "id": "128229486",
+            "name": "hidden"
         },
         "space": {
-            "id": "789"
+            "id": "32104437"
         },
-        "url": "https://app.clickup.com/t/9hx"
+        "start_date": null,
+        "status": {
+            "color": "#d3d3d3",
+            "id": "p32104437_s65wZViI",
+            "orderindex": 0,
+            "status": "to do",
+            "type": "open"
+        },
+        "tags": [],
+        "team_id": "14353588",
+        "text_content": "fungujjj",
+        "time_estimate": null,
+        "time_spent": 0,
+        "url": "https://app.clickup.com/t/2uq8pdv",
+        "watchers": [
+            {
+                "color": "#388d3c",
+                "email": "test.hanaboso@gmail.com",
+                "id": 32316450,
+                "initials": "H",
+                "profilePicture": null,
+                "username": "Hanabosotest"
+            }
+        ]
     }
 }
