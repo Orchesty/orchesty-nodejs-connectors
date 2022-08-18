@@ -1,6 +1,7 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { IResponseJson } from '../../WooCommerce/Batch/WooCommerceGetOrders';
 
 export const NAME = 'authentica-get-stock';
 
@@ -21,12 +22,16 @@ export default class AuthenticaGetStock extends ABatchNode {
     const resp = await this._sender.send(req, [200]);
     const response = resp.jsonBody as IResponse;
 
-    dto.setItemList(response.data ?? []);
+    this._setItemsListToDto(dto, response.data ?? []);
     if (Number(page) !== response.meta.totalPages) {
       dto.setBatchCursor((Number(page) + 1).toString());
     }
     return dto;
   }
+
+  protected _setItemsListToDto = (dto: BatchProcessDto, responseBody: IOutput[]) => {
+    dto.setItemList(responseBody);
+  };
 }
 
 interface IResponse{
