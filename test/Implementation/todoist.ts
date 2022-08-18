@@ -3,7 +3,9 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import TodoistApplication, { NAME as TODOIST_APP } from '../../lib/Todoist/TodoistApplication';
-import { appInstall, DEFAULT_USER } from '../DataProvider';
+import {
+  appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
+} from '../DataProvider';
 import TodoistCreateProjectConnector from '../../lib/Todoist/Connector/TodoistCreateProjectConnector';
 import TodoistGetAllProjectsBatch from '../../lib/Todoist/Batch/TodoistGetAllProjectsBatch';
 import TodoistCreateNewTaskConnector from '../../lib/Todoist/Connector/TodoistCreateNewTaskConnector';
@@ -14,10 +16,10 @@ import {
 export default async function init(): Promise<void> {
   await appInstall(TODOIST_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: '893d1b035e8a4db6a7a2f56c4601bc73',
-      [CLIENT_SECRET]: 'fa89d133b2a64b4082c72df1e92c33f1',
+      [CLIENT_ID]: DEFAULT_CLIENT_ID,
+      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'f850415def5a83b6a564b5a12a0b3c8ec76d72ab',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
   });
