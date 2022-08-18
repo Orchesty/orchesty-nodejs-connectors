@@ -34,7 +34,6 @@ import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
-import { NAME as TODOIST_APP } from '../lib/Todoist/TodoistApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
@@ -284,18 +283,6 @@ export async function clickupApp() {
 
 export async function typeformApp() {
   return appInstall(TYPEFORM_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
-}
-
-export async function todoistApp() {
-  return appInstall(TODOIST_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
