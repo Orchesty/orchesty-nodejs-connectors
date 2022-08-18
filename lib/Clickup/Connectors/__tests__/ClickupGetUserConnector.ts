@@ -7,7 +7,7 @@ let tester: NodeTester;
 
 describe('Tests for ClickupGetUserConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     await clickupApp();
   });
 
