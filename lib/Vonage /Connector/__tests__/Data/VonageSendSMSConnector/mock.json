@@ -1,5 +1,5 @@
 {
-  "http": "POST https://rest.nexmo.com/sms/json?api_key=api_key&from=+447700900000&to=+420777096123&api_secret=api_secret",
+  "http": "POST https://rest.nexmo.com/sms/json?api_key=api_key&api_secret=api_secret&from=+447700900000&to=+420777096123",
   "code": 200,
   "body": {
     "message-count": "1",
