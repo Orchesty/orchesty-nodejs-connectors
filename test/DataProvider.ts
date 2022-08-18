@@ -276,7 +276,7 @@ export async function clickupApp() {
   return appInstall(CLICKUP_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
       [TOKEN]: {
-        [ACCESS_TOKEN]: 'pk_32316450_54PFSBA4F3K31I9NEBJMH4QBTVD3V2VR',
+        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
   });
