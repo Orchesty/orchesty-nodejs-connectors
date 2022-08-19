@@ -4,14 +4,12 @@
     },
     "data": [
         {
-            "account-ref": "customer1234",
-            "client-ref": "my-personal-reference",
-            "message-id": "0A0000000123ABCD1",
-            "message-price": "0.03330000",
-            "network": "12345",
-            "remaining-balance": "3.14159265",
+            "message-id": "c26b1913-03f2-49b2-9528-b61c27cc2007",
+            "message-price": "0.05200000",
+            "network": "23001",
+            "remaining-balance": "1.94800000",
             "status": "0",
-            "to": "447700900000"
+            "to": "420132651455"
         }
     ]
 }

@@ -8,8 +8,8 @@ import VonageSendSMSConnector from '../../lib/Vonage /Connector/VonageSendSMSCon
 export default async function init(): Promise<void> {
   await appInstall(NAME, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [API_KEY]: 'api_key',
-      [API_SECRET]: 'api_secret',
+      [API_KEY]: 'Api_Key',
+      [API_SECRET]: 'Api_secret',
     },
   });
 
