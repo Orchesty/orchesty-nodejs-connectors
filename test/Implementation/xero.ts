@@ -5,7 +5,7 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import {
   appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
 } from '../DataProvider';
-import XeroApplication, { NAME as XERO_APP } from '../../lib/Xero/XeroApplication';
+import XeroApplication, { NAME as XERO_APP, XERO_TENANT_ID } from '../../lib/Xero/XeroApplication';
 import {
   container, db, oauth2Provider, sender,
 } from '../TestAbstract';
@@ -17,7 +17,9 @@ export default async function init(): Promise<void> {
     [AUTHORIZATION_FORM]: {
       [CLIENT_ID]: DEFAULT_CLIENT_ID,
       [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [XERO_TENANT_ID]: 'Xero-tenant-id',
       [TOKEN]: {
+        // eslint-disable-next-line max-len
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
       },
     },
