@@ -4,7 +4,7 @@
   },
   "data": [
     {
-      "body": "{\"sku\":\"01-006\",\"inStock\":\"23\"}",
+      "body": "{\"sku\":\"01-006\",\"inStock\":\"23\",\"productId\":\"1\"}",
       "headers": null
     }
   ]
