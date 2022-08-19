@@ -5,7 +5,8 @@
     "data": [
       {
         "sku": "01-006",
-        "inStock": "23"
+        "inStock": "23",
+        "productId": "1"
       }
     ],
     "links": {
