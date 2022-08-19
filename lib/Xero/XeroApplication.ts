@@ -10,8 +10,10 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 
 export const NAME = 'xero';
+export const XERO_TENANT_ID = 'Xero-tenant-id';
 export default class XeroApplication extends AOAuth2Application {
   public getName = (): string => NAME;
 
@@ -32,9 +34,11 @@ export default class XeroApplication extends AOAuth2Application {
   ): RequestDto => {
     const url = `https://api.xero.com/api.xro/2.0/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
+    const id = applicationInstall.getSettings()[AUTHORIZATION_FORM][XERO_TENANT_ID];
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
+      'Xero-tenant-id': id,
       [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
 
     };
@@ -49,13 +53,24 @@ export default class XeroApplication extends AOAuth2Application {
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
       .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
+      .addField(new Field(FieldType.TEXT, XERO_TENANT_ID, 'Xero-tenant-id', null, true));
 
     return new FormStack().addForm(form);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => [];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => [
+    'accounting.contacts',
+    'accounting.settings',
+    'email',
+    'profile',
+    'openid',
+    'accounting.transactions',
+    'offline_access',
+  ];
+
+  protected _getScopesSeparator = () => ScopeSeparatorEnum.SPACE;
 
   protected _getProviderCustomOptions = (): Record<string, unknown> => ({
     options: {
