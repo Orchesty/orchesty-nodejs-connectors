@@ -10,8 +10,6 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
-import { PASSWORD, USER } from '../Wedo/WedoApplication';
-import { ACCESS_TOKEN } from '../Workable /WorkableApplication';
 
 export const NAME = 'plivo';
 export const AUTH_ID = 'Authorization_id';
