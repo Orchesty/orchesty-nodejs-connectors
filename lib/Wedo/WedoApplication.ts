@@ -30,10 +30,12 @@ export default class WedoApplication extends ABasicApplication {
     data?: unknown,
   ): RequestDto => {
     const request = new RequestDto(`https://bridge.intime.cz${_url}`, method, dto);
+    const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
+    const user = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: encode(`${PASSWORD}:${USER}`),
+      [CommonHeaders.AUTHORIZATION]: encode(`${password}:${user}`),
     };
 
     if (data) {
