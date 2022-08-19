@@ -4,11 +4,7 @@
   },
   "data": [
     {
-      "body": "{\"ContactID\":\"bd2270c3-8706-4c11-9cfb-000b551c3f51\",\"ContactStatus\":\"ACTIVE\",\"Name\":\"ABC Limited\",\"FirstName\":\"Andrea\",\"LastName\":\"Dutchess\",\"CompanyNumber\":\"NumberBusiness1234\",\"EmailAddress\":\"a.dutchess@abclimited.com\",\"SkypeUserName\":\"skype.dutchess@abclimited.com\",\"BankAccountDetails\":\"45465844\",\"TaxNumber\":\"415465456454\",\"AccountsReceivableTaxType\":\"INPUT2\",\"AccountsPayableTaxType\":\"OUTPUT2\",\"Addresses\":[{\"AddressType\":\"POBOX\",\"AddressLine1\":\"P O Box 123\",\"City\":\"Wellington\",\"PostalCode\":\"6011\",\"AttentionTo\":\"Andrea\"},{\"AddressType\":\"STREET\"}],\"Phones\":[{\"PhoneType\":\"DEFAULT\",\"PhoneNumber\":\"1111111\",\"PhoneAreaCode\":\"04\",\"PhoneCountryCode\":\"64\"},{\"PhoneType\":\"FAX\"},{\"PhoneType\":\"MOBILE\"},{\"PhoneType\":\"DDI\"}],\"UpdatedDateUTC\":\"/Date(1488391422280+0000)/\",\"IsSupplier\":false,\"IsCustomer\":true,\"DefaultCurrency\":\"NZD\"}",
-      "headers": null
-    },
-    {
-      "body": "{\"ContactID\":\"6d42f03b-181f-43e3-93fb-2025c012de92\"}",
+      "body": "{\"ContactID\":\"4741c7d3-6398-45d6-9213-6b599d7cb8f0\",\"ContactStatus\":\"ACTIVE\",\"Name\":\"Hanaboso\",\"FirstName\":\"pepa\",\"LastName\":\"flinta\",\"EmailAddress\":\"name.k@gmail.com\",\"Addresses\":[{\"AddressType\":\"POBOX\"},{\"AddressType\":\"STREET\"}],\"Phones\":[{\"PhoneType\":\"DDI\"},{\"PhoneType\":\"DEFAULT\"},{\"PhoneType\":\"FAX\"},{\"PhoneType\":\"MOBILE\"}],\"UpdatedDateUTC\":\"/Date(1660901631360+0000)/\",\"ContactGroups\":[],\"IsSupplier\":false,\"IsCustomer\":false,\"ContactPersons\":[],\"HasAttachments\":false,\"HasValidationErrors\":false}",
       "headers": null
     }
   ]

@@ -2,25 +2,64 @@
   "http": "GET https://api.xero.com/api.xro/2.0/Accounts",
   "code": 200,
   "body": {
-    "Accounts": [{
-      "AccountID": "ebd06280-af70-4bed-97c6-7451a454ad85",
-      "Code": "091",
-      "Name": "Business Savings Account",
-      "Type": "BANK",
-      "TaxType": "NONE",
-      "EnablePaymentsToAccount": false,
-      "BankAccountNumber": "0209087654321050",
-      "BankAccountType": "BANK",
-      "CurrencyCode": "NZD"
-    },{
-      "AccountID": "7d05a53d-613d-4eb2-a2fc-dcb6adb80b80",
-      "Code": "200",
-      "Name": "Sales",
-      "Type": "REVENUE",
-      "TaxType": "OUTPUT2",
-      "Description": "Income from any normal business activity",
-      "EnablePaymentsToAccount": false
-    }]
+    "Accounts": [
+      {
+        "AccountID": "1620d1c2-be9a-4bc7-95c5-6b2452c0ee21",
+        "Code": "200",
+        "Name": "Sales",
+        "Status": "ACTIVE",
+        "Type": "REVENUE",
+        "TaxType": "OUTPUT",
+        "Description": "Income from any normal business activity",
+        "Class": "REVENUE",
+        "SystemAccount": "",
+        "EnablePaymentsToAccount": false,
+        "ShowInExpenseClaims": false,
+        "BankAccountType": "NONE",
+        "ReportingCode": "REV.TRA.GOO",
+        "ReportingCodeName": "Sale of goods",
+        "HasAttachments": false,
+        "UpdatedDateUTC": "/Date(1648420299263+0000)/",
+        "AddToWatchlist": false
+      },
+      {
+        "AccountID": "2ebf4e1f-823d-453d-a7d9-d1ffb4557cc1",
+        "Code": "260",
+        "Name": "Other Revenue",
+        "Status": "ACTIVE",
+        "Type": "REVENUE",
+        "TaxType": "OUTPUT",
+        "Description": "Any other income that does not relate to normal business activities and is not recurring",
+        "Class": "REVENUE",
+        "SystemAccount": "",
+        "EnablePaymentsToAccount": false,
+        "ShowInExpenseClaims": false,
+        "BankAccountType": "",
+        "ReportingCode": "REV.OTH",
+        "ReportingCodeName": "Other Revenue",
+        "HasAttachments": false,
+        "UpdatedDateUTC": "/Date(1648420299263+0000)/",
+        "AddToWatchlist": false
+      },
+      {
+        "AccountID": "9e371898-85e5-4333-b817-663934ad3130",
+        "Code": "270",
+        "Name": "Interest Income",
+        "Status": "ACTIVE",
+        "Type": "REVENUE",
+        "TaxType": "NONE",
+        "Description": "Interest income",
+        "Class": "REVENUE",
+        "SystemAccount": "",
+        "EnablePaymentsToAccount": false,
+        "ShowInExpenseClaims": false,
+        "BankAccountType": "",
+        "ReportingCode": "REV.INV.INT",
+        "ReportingCodeName": "Interest",
+        "HasAttachments": false,
+        "UpdatedDateUTC": "/Date(1648420299263+0000)/",
+        "AddToWatchlist": false
+      }
+    ]
   }
-
 }
