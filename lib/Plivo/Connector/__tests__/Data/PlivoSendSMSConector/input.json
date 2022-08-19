@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "src": "<from_number>",
+    "dst": "+12025551111",
+    "text": "Hello, this is sample text",
+    "url": "https://<yourdomain>.com/sms_status/"
+  }
+}
