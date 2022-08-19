@@ -1,0 +1,77 @@
+{
+  "http": "GET https://api.myob.com/accountright//Contact/Employee?$top=100&$skip=0",
+  "code": 200,
+  "body": [
+    {
+      "UID" : "0a30ff19-e8d7-4699-8efc-e05b6ff67239",
+      "LastName" : "Jones",
+      "FirstName" : "Mary",
+      "IsIndividual" : true,
+      "DisplayID" : "EMP00001",
+      "IsActive" : true,
+      "Addresses" : [
+        {
+          "Location" : 1,
+          "Street" : "37 Nelson Street",
+          "City" : "Annandale",
+          "State" : "NSW",
+          "PostCode" : "2038",
+          "Country" : "Australia",
+          "Phone1" : "03 9567 3459",
+          "Phone2" : "03 9537 2556",
+          "Phone3" : "03 9533 2349",
+          "Fax" : "03 8975 4547",
+          "Email" : "maryj@yahoo.com.au",
+          "Website" : "www.myob.com.au",
+          "ContactName" : "Penny",
+          "Salutation" : "Greetings"
+        }
+      ],
+      "Notes" : "Description for Mary",
+      "Identifiers" : [
+        {
+          "Label" : "AZZ",
+          "Value" : "C"
+        }
+      ],
+      "CustomList1" : null,
+      "CustomList2" : null,
+      "CustomList3" : null,
+      "CustomField1" : {
+        "Label" : "Custom Field No. 1",
+        "Value" : "Melbourne"
+      },
+      "CustomField2" : {
+        "Label" : "Custom Field No. 2",
+        "Value" : "Sydney"
+      },
+      "CustomField3" : {
+        "Label" : "Custom Field No. 3",
+        "Value" : "Perth"
+      },
+      "CurrentBalance" : 0,
+      "EmployeePayrollDetails" : {
+        "UID" : "c16c1f46-1212-4689-a049-c0cebd6fb07b",
+        "URI" : "{cf_uri}/Contact/EmployeePayrollDetails/c16c1f46-1212-4689-a049-c0cebd6fb07b"
+      },
+      "EmployeePaymentDetails" : {
+        "UID" : "2aa91efc-1abf-4fec-96f2-d2182cdb3553",
+        "URI" : "{cf_uri}/Contact/EmployeePaymentDetails/2aa91efc-1abf-4fec-96f2-d2182cdb3553"
+      },
+      "EmployeeStandardPay" : {
+        "UID" : "c16c1f46-1212-4689-a049-c0cebd6fb07b",
+        "URI" : "{cf_uri}/Contact/EmployeeStandardPay/c16c1f46-1212-4689-a049-c0cebd6fb07b"
+      },
+      "TimeBillingDetails": {
+        "EmployeeBillingRateExcludingTax":
+        45,
+        "CostPerHour":
+        16
+      },
+      "LastModified" : "2014-03-19T05:04:32.993",
+      "PhotoURI" : "{cf_uri}/Contact/Employee/0a30ff19-e8d7-4699-8efc-e05b6ff67239/Photo",
+      "URI" : "{cf_uri}/Contact/Employee/0a30ff19-e8d7-4699-8efc-e05b6ff67239",
+      "RowVersion" : "5302707086252048000"
+    }
+  ]
+}
