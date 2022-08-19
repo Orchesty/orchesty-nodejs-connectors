@@ -33,21 +33,22 @@ export default class AuthenticaGetStock extends ABatchNode {
   };
 }
 
-interface IResponse{
-    data: IOutput[],
-    links: {
-        first: string,
-        last: string,
-        prev?: string | null,
-        next?: string | null
+interface IResponse {
+  data: IOutput[],
+  links: {
+    first: string,
+    last: string,
+    prev?: string | null,
+    next?: string | null
 
-    },
-    meta: {
-        totalPages: number
-    }
+  },
+  meta: {
+    totalPages: number
+  }
 }
 
-export interface IOutput{
-        sku: string,
-        inStock: string
+export interface IOutput {
+  sku: string,
+  inStock: string,
+  productId: string
 }

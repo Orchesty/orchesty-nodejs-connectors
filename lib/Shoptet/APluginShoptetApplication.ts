@@ -64,7 +64,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
         [this._authorizationHeader]: `Bearer ${accessToken}`,
       };
       const requestDto = new RequestDto(
-        `${this._shoptetHost}/action/ApiOAuthServer/getAccessToken`,
+        `${this._shoptetHost}/action/ApiOAuthServer/token`,
         HttpMethods.GET,
         processDto,
         undefined,
