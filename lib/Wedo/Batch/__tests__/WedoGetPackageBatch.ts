@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for WedoGetPackageConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, false, ['']);
+    tester = new NodeTester(container, __filename);
     await wedoApp();
   });
 
   it('process - ok', async () => {
-    await tester.testBatch(WEDO_GET_PACKAGE_BATCH, '');
+    await tester.testBatch(WEDO_GET_PACKAGE_BATCH);
   });
 });
