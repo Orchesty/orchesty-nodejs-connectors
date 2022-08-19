@@ -166,8 +166,8 @@ export async function amazonApp() {
 export async function wedoApp() {
   return appInstall(WEDO_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [USER]: DEFAULT_USER,
-      [PASSWORD]: DEFAULT_PASSWORD,
+      [USER]: 'test.hanaboso@gmail.com',
+      [PASSWORD]: 'Kolobezka1.',
 
     },
 

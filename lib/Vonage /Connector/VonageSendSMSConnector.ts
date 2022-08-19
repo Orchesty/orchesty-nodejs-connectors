@@ -11,7 +11,7 @@ export default class VonageSendSMSConnector extends AConnector {
 
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
-    const { from, to } = dto.jsonData as IInput;
+    const { from, to, text } = dto.jsonData as IInput;
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const apiKey = appInstall.getSettings()[AUTHORIZATION_FORM][API_KEY];
     const apiSecret = appInstall.getSettings()[AUTHORIZATION_FORM][API_SECRET];
@@ -19,7 +19,7 @@ export default class VonageSendSMSConnector extends AConnector {
       dto,
       appInstall,
       HttpMethods.POST,
-      `sms/json?api_key=${apiKey}&api_secret=${apiSecret}&from=${from}&to=${to}`,
+      `sms/json?api_key=${apiKey}&api_secret=${apiSecret}&from=${from}&to=${to}&type=text&text=${text}`,
     );
     const resp = await this._sender.send(req, [200]);
     const data = resp.jsonBody as IResponse;
@@ -49,6 +49,7 @@ export interface IOutput{
 export interface IInput{
   from: string
   to: string
+  text: string
 
 }
 /* eslint-enable @typescript-eslint/naming-convention */
