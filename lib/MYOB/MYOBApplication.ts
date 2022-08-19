@@ -27,7 +27,7 @@ export default class MYOBApplication extends AOAuth2Application {
   public getScopes = (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     applicationInstall: ApplicationInstall,
-  ): string[] => [];
+  ): string[] => ['CompanyFile'];
 
   public getFormStack = (): FormStack => {
     const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
