@@ -1,6 +1,6 @@
 /* eslint-disable import/first */
 // Change this, if you need different host in redirectUri
-process.env.BACKEND_URL = 'https://hanaboso.com';
+process.env.BACKEND_URL = 'https://127.0.0.1';
 
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
 import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';
