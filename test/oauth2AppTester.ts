@@ -5,7 +5,6 @@ import ZohoApplication from '../lib/Zoho/ZohoApplication';
 import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
 import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
 import TodoistApplication from '../lib/Todoist/TodoistApplication';
-import MarketoApplication from '../lib/Marketo/MarketoApplication';
 
 // Change this, if you need different host in redirectUri
 process.env.BACKEND_URL = 'https://127.0.0.1';
