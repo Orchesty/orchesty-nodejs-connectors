@@ -1,6 +1,8 @@
 /* eslint-disable import/first */
 // Change this, if you need different host in redirectUri
-process.env.BACKEND_URL = 'https://127.0.0.1';
+import TypeformApplication from '../lib/Typeform/TypeformApplication';
+
+process.env.BACKEND_URL = 'https://applinth.io/connectors';
 
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
 import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';
@@ -21,5 +23,6 @@ prepare()
     container.setApplication(new SalesForceApplication(oauth2Provider));
     container.setApplication(new TodoistApplication(oauth2Provider));
     container.setApplication(new XeroApplication(oauth2Provider));
+    container.setApplication(new TypeformApplication(oauth2Provider));
   })
   .then(async () => runCli(container, {}));

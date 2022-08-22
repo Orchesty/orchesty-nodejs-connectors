@@ -281,18 +281,6 @@ export async function clickupApp() {
   });
 }
 
-export async function typeformApp() {
-  return appInstall(TYPEFORM_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
-}
-
 export async function intercomApp() {
   return appInstall(INTERCOM_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
