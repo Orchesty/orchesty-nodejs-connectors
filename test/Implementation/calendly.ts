@@ -2,7 +2,6 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import CalendlyApplication, { NAME as CALENDLY_APP } from '../../lib/Calendly/CalendlyApplication';
 import {
   appInstall,
   DEFAULT_ACCESS_TOKEN,
@@ -13,6 +12,7 @@ import {
 import {
   container, db, oauth2Provider, sender,
 } from '../TestAbstract';
+import CalendlyApplication, { NAME as CALENDLY_APP } from '../../lib/Calendly/CalendlyApplication';
 import CalendlyGetUserConnector from '../../lib/Calendly/Connector/CalendlyGetUserConnector';
 import CalendlyListEventsBatch from '../../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CalendlyInviteUserConnector from '../../lib/Calendly/Connector/CalendlyInviteUserConnector';
@@ -30,7 +30,6 @@ export default async function init(): Promise<void> {
 
   const app = new CalendlyApplication(oauth2Provider);
   container.setApplication(app);
-
   const getUser = new CalendlyGetUserConnector();
   const listEvents = new CalendlyListEventsBatch();
   const inviteUser = new CalendlyInviteUserConnector();
