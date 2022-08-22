@@ -13,6 +13,7 @@ import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooComm
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
 import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrders';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Batch/WooCommerceGetShippingMethods';
+import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connectors/WooCommerceUpdateOrder';
 
 export default async function init(): Promise<void> {
   await appInstall(
@@ -53,4 +54,11 @@ export default async function init(): Promise<void> {
     .setDb(db)
     .setApplication(app);
   container.setBatch(wooCommerceGetShippingMethods);
+
+  const wooCommerceUpdateOrder = new WooCommerceUpdateOrder();
+  wooCommerceUpdateOrder
+    .setApplication(app)
+    .setDb(db)
+    .setSender(sender);
+  container.setConnector(wooCommerceUpdateOrder);
 }
