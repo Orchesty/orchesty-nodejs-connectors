@@ -12,8 +12,8 @@ import AllegroProposeProductConnector from '../../lib/Allegro/Connector/AllegroP
 import {
   appInstall,
   DEFAULT_ACCESS_TOKEN,
-  DEFAULT_CLIENT_ID,
-  DEFAULT_CLIENT_SECRET,
+  // DEFAULT_CLIENT_ID,
+  // DEFAULT_CLIENT_SECRET,
   DEFAULT_USER,
 } from '../DataProvider';
 import {
@@ -23,8 +23,8 @@ import {
 export default async function init(): Promise<void> {
   await appInstall(ALLEGRO_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+      [CLIENT_ID]: 'f070c07c4d814b0c8f45f596bf654936',
+      [CLIENT_SECRET]: 'cpbqO3WtsLpyQ4V9RTauaSx0G1rb8S762fZdLYoA7VDAzFvhFrsfvJJIbqMAjyMs',
       [ENVIRONMENT]: 'test_environment',
       [TOKEN]: {
         [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,

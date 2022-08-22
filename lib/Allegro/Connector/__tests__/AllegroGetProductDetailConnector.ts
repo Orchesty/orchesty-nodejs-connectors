@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for AllegroGetProductDetailConnector', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
+    tester = new NodeTester(container, __filename, false, ['test']);
     await init();
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(ALLEGRO_GET_PRODUCT_DETAIL_CONNECTOR);
+    await tester.testConnector(ALLEGRO_GET_PRODUCT_DETAIL_CONNECTOR, 'test');
   });
 });
