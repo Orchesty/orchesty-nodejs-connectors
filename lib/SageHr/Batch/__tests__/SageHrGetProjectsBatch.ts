@@ -7,7 +7,7 @@ let tester: NodeTester;
 
 describe('Tests for SageHrGetProjectsBatch', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename);
+    tester = new NodeTester(container, __filename, true);
     await init();
   });
 
