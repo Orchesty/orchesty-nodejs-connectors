@@ -10,6 +10,7 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 
 export const NAME = 'typeform';
 export default class TypeformApplication extends AOAuth2Application {
@@ -59,4 +60,6 @@ export default class TypeformApplication extends AOAuth2Application {
     'forms:write',
     'workspaces:write',
   ];
+
+  protected _getScopesSeparator = (): string => ScopeSeparatorEnum.SPACE;
 }
