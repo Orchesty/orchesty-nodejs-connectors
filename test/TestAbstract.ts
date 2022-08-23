@@ -20,10 +20,6 @@ import BigcommerceCreateProductConnector from '../lib/Bigcommerce/Connector/Bigc
 import BulkGateApplicationApplication from '../lib/BulkGate/BulkGateApplicationApplication';
 import BulkGateGetPromotionalSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetPromotionalSMSConnector';
 import BulkGateGetTransactionSMSConnector from '../lib/BulkGate/Connectors/BulkGateGetTransactionSMSConnector';
-import CalendlyApplication from '../lib/Calendly/CalendlyApplication';
-import CalendlyGetUserConnector from '../lib/Calendly/Connector/CalendlyGetUserConnector';
-import CalendlyInviteUserConnector from '../lib/Calendly/Connector/CalendlyInviteUserConnector';
-import CalendlyListEventsBatch from '../lib/Calendly/Batch/CalendlyListEventsBatch';
 import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
 import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
 import CeskaPostaParcelPrintingConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelPrintingConnector';
@@ -153,7 +149,6 @@ export async function prepare(): Promise<void> {
   initBigcommerce();
   initBox();
   initBulkGate();
-  initCalendly();
   initCeskaPosta();
   initClickup();
   initFakturaonline();
@@ -654,30 +649,6 @@ function initGObalik(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(orderDetail);
-}
-
-function initCalendly(): void {
-  const app = new CalendlyApplication(oauth2Provider);
-  container.setApplication(app);
-  const getUser = new CalendlyGetUserConnector();
-  const listEvents = new CalendlyListEventsBatch();
-  const inviteUser = new CalendlyInviteUserConnector();
-
-  getUser
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(getUser);
-  listEvents
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listEvents);
-  inviteUser
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(inviteUser);
 }
 
 function initCeskaPosta(): void {
