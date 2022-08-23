@@ -56,11 +56,6 @@ import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
-import MergadoApplication from '../lib/Mergado/MergadoApplication';
-import MergadoCreateElementConnector from '../lib/Mergado/Connector/MergadoCreateElementConnector';
-import MergadoGetProjectConnector from '../lib/Mergado/Connector/MergadoGetProjectConnector';
-import MergadoGetUserConnector from '../lib/Mergado/Connector/MergadoGetUserConnector';
-import MergadoListAppsBatch from '../lib/Mergado/Batch/MergadoListAppsBatch';
 import NutshellApplication from '../lib/Nutshell/NutshellApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
@@ -163,7 +158,6 @@ export async function prepare(): Promise<void> {
   initIntercom();
   initKatanaApp();
   initMall();
-  initMergado();
   initMerk();
   initMonday();
   initNutshell();
@@ -464,36 +458,6 @@ function initFakturaonline(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(updateInvoice);
-}
-
-function initMergado(): void {
-  const app = new MergadoApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const listApps = new MergadoListAppsBatch();
-  const getUser = new MergadoGetUserConnector();
-  const getProject = new MergadoGetProjectConnector();
-  const createElement = new MergadoCreateElementConnector();
-  listApps
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listApps);
-  getUser
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(getUser);
-  getProject
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(getProject);
-  createElement
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createElement);
 }
 
 function initVyfakturuj(): void {
