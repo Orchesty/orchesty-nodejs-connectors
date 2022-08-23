@@ -10,11 +10,11 @@ export default class TypeformUpdateFormConnector extends AConnector {
   public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
     const dto = _dto;
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const { form_id } = dto.jsonData as IInput;
+    const { form_id, ...body } = dto.jsonData as IInput;
 
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const url = `forms/${form_id}`;
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.PUT, url);
+    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.PUT, url, body);
     const resp = await this._sender.send(req, [200]);
 
     dto.jsonData = resp.jsonBody;

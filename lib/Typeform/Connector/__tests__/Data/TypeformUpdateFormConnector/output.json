@@ -2,5 +2,60 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "_links": {
+            "display": "https://zljjtu2ca2n.typeform.com/to/SANAa1Np"
+        },
+        "id": "SANAa1Np",
+        "settings": {
+            "are_uploads_public": false,
+            "capabilities": {
+                "e2e_encryption": {
+                    "enabled": false,
+                    "modifiable": false
+                }
+            },
+            "hide_navigation": false,
+            "is_public": true,
+            "is_trial": false,
+            "language": "en",
+            "meta": {
+                "allow_indexing": false
+            },
+            "pro_subdomain_enabled": false,
+            "progress_bar": "proportion",
+            "show_cookie_consent": false,
+            "show_number_of_submissions": false,
+            "show_progress_bar": true,
+            "show_question_number": true,
+            "show_time_to_complete": true,
+            "show_typeform_branding": true
+        },
+        "thankyou_screens": [
+            {
+                "attachment": {
+                    "href": "https://images.typeform.com/images/2dpnUBBkz2VN",
+                    "type": "image"
+                },
+                "id": "DefaultTyScreen",
+                "properties": {
+                    "button_mode": "default_redirect",
+                    "button_text": "Create a *typeform*",
+                    "share_icons": false,
+                    "show_button": true
+                },
+                "ref": "default_tys",
+                "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, & beautiful",
+                "type": "thankyou_screen"
+            }
+        ],
+        "theme": {
+            "href": "https://api.typeform.com/themes/qHWOQ7"
+        },
+        "title": "example",
+        "type": "quiz",
+        "workspace": {
+            "href": "https://api.typeform.com/workspaces/KgFQ87"
+        }
+    }
 }

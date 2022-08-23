@@ -1,5 +1,7 @@
 /* eslint-disable import/first */
 // Change this, if you need different host in redirectUri
+import TypeformApplication from '../lib/Typeform/TypeformApplication';
+
 process.env.BACKEND_URL = 'https://127.0.0.1';
 
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
@@ -21,5 +23,6 @@ prepare()
     container.setApplication(new SalesForceApplication(oauth2Provider));
     container.setApplication(new TodoistApplication(oauth2Provider));
     container.setApplication(new XeroApplication(oauth2Provider));
+    container.setApplication(new TypeformApplication(oauth2Provider));
   })
   .then(async () => runCli(container, {}));

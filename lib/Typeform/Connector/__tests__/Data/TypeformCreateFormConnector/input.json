@@ -145,31 +145,6 @@
                 }
             },
             {
-                "properties": {
-                    "allow_multiple_selection": false,
-                    "allow_other_choice": true,
-                    "choices": [
-                        {
-                            "label": "Foo",
-                            "ref": "foo_choice_ref"
-                        },
-                        {
-                            "label": "Bar",
-                            "ref": "bar_choice_ref"
-                        }
-                    ],
-                    "description": "Description for the ranking",
-                    "randomize": true,
-                    "vertical_alignment": false
-                },
-                "ref": "nice_readable_ranking_reference",
-                "title": "Ranking Title",
-                "type": "ranking",
-                "validations": {
-                    "required": false
-                }
-            },
-            {
                 "attachment": {
                     "href": "https://images.typeform.com/images/4BKUhw8A9cSM",
                     "properties": {
@@ -365,7 +340,7 @@
                             "properties": {
                                 "description": "Cool description for the website"
                             },
-                            "ref": "nice_readable_website_reference",
+                            "ref": "nice_readable_website_reference1",
                             "title": "website",
                             "type": "website"
                         }
@@ -470,7 +445,6 @@
         "settings": {
             "facebook_pixel": "4347295725729872",
             "google_analytics": "UA-1111-22",
-            "google_tag_manager": "GTM-43959999",
             "hide_navigation": false,
             "is_public": false,
             "language": "en",
@@ -559,7 +533,7 @@
             }
         ],
         "workspace": {
-            "href": "https://api.typeform.com/workspaces/Aw33bz"
+            "href": "https://api.typeform.com/workspaces/KgFQ87"
         }
     }
 }
