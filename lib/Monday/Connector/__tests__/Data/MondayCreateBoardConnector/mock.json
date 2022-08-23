@@ -2,28 +2,36 @@
   "http": "POST https://api.monday.com/v2",
   "code": 200,
   "body": {
-    "board_kind": "public",
-    "board_name": "123456",
-    "description": "example description",
-    "groups": [
-      {
-        "ids": [
-          "548495"
-        ]
+    "account_id": 13049708,
+    "data": {
+      "create_board": {
+        "board_kind": "public",
+        "description": null,
+        "groups": [
+          {
+            "id": "topics"
+          }
+        ],
+        "id": "3127713296",
+        "owner": {
+          "id": 33097800
+        },
+        "owners": [
+          {
+            "id": 33097800
+          }
+        ],
+        "permissions": "everyone",
+        "state": "active",
+        "subscribers": [
+          {
+            "id": 33097800
+          }
+        ],
+        "top_group": {
+          "id": "topics"
+        }
       }
-    ],
-    "id": "1561asdf6513sadf18",
-    "owner": "Elon",
-    "owners": [
-      "Alza"
-    ],
-    "permissions": "everyone",
-    "state": "all",
-    "subscribers": [
-      "Elon2.0"
-    ],
-    "top_group": [
-      "24536"
-    ]
+    }
   }
 }
