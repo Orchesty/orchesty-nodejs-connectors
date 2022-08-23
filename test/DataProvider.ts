@@ -22,7 +22,6 @@ import {
   APPLICATION_TOKEN,
   APPLICATION_ID,
 } from '../lib/BulkGate/BulkGateApplicationApplication';
-import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import { NAME as CLICKUP_APP } from '../lib/Clickup/ClickupApplication';
 import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
 import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
@@ -35,7 +34,6 @@ import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveAppl
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
-import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
@@ -247,18 +245,6 @@ export async function ceskaPostaApp() {
     [AUTHORIZATION_FORM]: {
       [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
       [SECRET_KEY]: 'secret key',
-    },
-  });
-}
-
-export async function calendlyApp() {
-  return appInstall(CALENDLY_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
     },
   });
 }
