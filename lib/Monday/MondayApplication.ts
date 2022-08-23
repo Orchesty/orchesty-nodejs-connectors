@@ -33,7 +33,7 @@ export default class MondayApplication extends ABasicApplication {
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
       [CommonHeaders.ACCEPT]: JSON_TYPE,
-      [CommonHeaders.AUTHORIZATION]: `Authorization:${key}`,
+      [CommonHeaders.AUTHORIZATION]: key,
     };
 
     if (data) {
