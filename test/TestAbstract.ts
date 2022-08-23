@@ -85,10 +85,6 @@ import TwitterApplication from '../lib/Twitter/TwitterApplication';
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBatch';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
-import TypeformApplication from '../lib/Typeform/TypeformApplication';
-import TypeformCreateFormConnector from '../lib/Typeform/Connector/TypeformCreateFormConnector';
-import TypeformCreateWorkspaceConnector from '../lib/Typeform/Connector/TypeformCreateWorkspaceConnector';
-import TypeformUpdateFormConnector from '../lib/Typeform/Connector/TypeformUpdateFormConnector';
 import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
 import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
@@ -176,7 +172,6 @@ export async function prepare(): Promise<void> {
   initProductboard();
   initTableau();
   initTwitter();
-  initTypeform();
   initVyfakturuj();
   initWedo();
   initWix();
@@ -736,31 +731,6 @@ function initKatanaApp(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(createCustomer);
-}
-
-function initTypeform(): void {
-  const app = new TypeformApplication(oauth2Provider);
-  container.setApplication(app);
-
-  const createForm = new TypeformCreateFormConnector();
-  const updateForm = new TypeformUpdateFormConnector();
-  const createWorkspace = new TypeformCreateWorkspaceConnector();
-
-  createForm
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createForm);
-  updateForm
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(updateForm);
-  createWorkspace
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createWorkspace);
 }
 
 function initClickup(): void {

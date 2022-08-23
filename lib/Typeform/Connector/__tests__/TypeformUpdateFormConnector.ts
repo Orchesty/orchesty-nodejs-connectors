@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as TYPEFORM_UPDATE_FORM_CONNECTOR } from '../TypeformUpdateFormConnector';
-import { typeformApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/typeform';
 
 let tester: NodeTester;
 
 describe('Tests for TypeformUpdateFormConnector', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
-    await typeformApp();
+    await init();
   });
 
   it('process - ok', async () => {
