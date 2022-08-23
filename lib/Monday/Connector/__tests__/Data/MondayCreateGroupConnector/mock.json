@@ -2,9 +2,14 @@
   "http": "POST https://api.monday.com/v2",
   "code": 200,
   "body": {
-    "color": "blue",
-    "id": "afjkllkam",
-    "position": "center",
-    "title": "masters"
+    "account_id": 13049708,
+    "data": {
+      "create_group": {
+        "color": "#c4c4c4",
+        "id": "elon55938",
+        "position": "16384.0",
+        "title": "Elon"
+      }
+    }
   }
 }

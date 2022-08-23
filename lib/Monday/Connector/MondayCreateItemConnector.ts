@@ -14,10 +14,14 @@ export default class MondayCreateItemConnector extends AConnector {
     let graphQl = 'mutation { create_item (';
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(body)) {
-      graphQl += `${key}"${value}",`;
+      if (key === 'board_id') {
+        graphQl += `${key}:${value},`;
+      } else {
+        graphQl += `${key}:"${value}",`;
+      }
     }
     graphQl = graphQl.slice(0, -1);
-    graphQl += ') {column_values ids creator_id id name parent_item subscribers}}';
+    graphQl += ') {column_values{id} creator_id id name parent_item{id} subscribers{id}}}';
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,

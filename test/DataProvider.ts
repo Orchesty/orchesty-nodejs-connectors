@@ -34,12 +34,10 @@ import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveAppl
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
 import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
-import { NAME as TYPEFORM_APP } from '../lib/Typeform/TypeformApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
 import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { NAME as MERK_APP } from '../lib/Merk/MerkApplication';
-import { NAME as MONDAY_APP } from '../lib/Monday/MondayApplication';
 import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
 import { NAME as BOX_APP } from '../lib/Box/BoxApplication';
@@ -301,14 +299,6 @@ export async function greenHouseApp() {
     [AUTHORIZATION_FORM]: {
       [USERNAME]: DEFAULT_USER,
       [PASSWORD]: DEFAULT_PASSWORD,
-    },
-  });
-}
-
-export async function mondayApp() {
-  return appInstall(MONDAY_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [API_KEY]: 'Api key',
     },
   });
 }

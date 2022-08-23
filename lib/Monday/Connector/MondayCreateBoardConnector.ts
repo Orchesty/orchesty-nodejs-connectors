@@ -14,10 +14,15 @@ export default class MondayCreateBoardConnector extends AConnector {
     let graphQl = 'mutation { create_board (';
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(body)) {
-      graphQl += `${key}"${value}",`;
+      if (key === 'board_kind') {
+        graphQl += `${key}:${value},`;
+      } else {
+        graphQl += `${key}:"${value}",`;
+      }
     }
     graphQl = graphQl.slice(0, -1);
-    graphQl += ') {board_kind description groups id owner owners permissions state subscribers top_group}}';
+    graphQl += ') {board_kind description groups{id} id owner{id} owners{id}'
+        + ' permissions state subscribers{id} top_group{id}}}';
     const appInstall = await this._getApplicationInstallFromProcess(dto);
     const req = await this._application.getRequestDto(
       dto,

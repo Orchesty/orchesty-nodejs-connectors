@@ -103,10 +103,6 @@ import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
 import GreenHouseAddCandidateConnector from '../lib/GreenHouse/connector/GreenHouseAddCandidateConnector';
-import MondayApplication from '../lib/Monday/MondayApplication';
-import MondayCreateGroupConnector from '../lib/Monday/Connector/MondayCreateGroupConnector';
-import MondayCreateItemConnector from '../lib/Monday/Connector/MondayCreateItemConnector';
-import MondayCreateBoardConnector from '../lib/Monday/Connector/MondayCreateBoardConnector';
 import BoxApplication from '../lib/Box/BoxApplication';
 import BoxGetCollaborationConnector from '../lib/Box/Connector/BoxGetCollaborationConnector';
 import BoxGetUserConnector from '../lib/Box/Connector/BoxGetUserConnector';
@@ -159,7 +155,6 @@ export async function prepare(): Promise<void> {
   initKatanaApp();
   initMall();
   initMerk();
-  initMonday();
   initNutshell();
   initPaypal();
   initPipedrive();
@@ -805,30 +800,6 @@ function initGreenHouse(): void {
     .setDb(db)
     .setApplication(app);
   container.setConnector(addCandidates);
-}
-
-function initMonday(): void {
-  const app = new MondayApplication();
-  container.setApplication(app);
-
-  const createGroup = new MondayCreateGroupConnector();
-  const createBoard = new MondayCreateBoardConnector();
-  const createItem = new MondayCreateItemConnector();
-  createBoard
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createBoard);
-  createGroup
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createGroup);
-  createItem
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createItem);
 }
 
 function initBox(): void {
