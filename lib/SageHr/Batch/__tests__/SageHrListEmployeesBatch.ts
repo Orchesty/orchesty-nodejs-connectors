@@ -7,7 +7,7 @@ let tester: NodeTester;
 
 describe('Tests for SageHrListEmployeesBatch', () => {
   beforeEach(async () => {
-    tester = new NodeTester(container, __filename);
+    tester = new NodeTester(container, __filename, true);
     await init();
   });
 
