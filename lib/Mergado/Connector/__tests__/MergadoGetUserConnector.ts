@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as MERGADO_GET_USER_CONNECTOR } from '../MergadoGetUserConnector';
-import { mergadoApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/mergado';
 
 let tester: NodeTester;
 
 describe('Tests for MergadoGetUserConnector', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
-    await mergadoApp();
+    await init();
   });
 
   it('process - ok', async () => {

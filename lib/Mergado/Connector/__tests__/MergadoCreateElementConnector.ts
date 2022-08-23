@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as MERGADO_CREATE_ELEMENT_CONNECTOR } from '../MergadoCreateElementConnector';
-import { mergadoApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/mergado';
 
 let tester: NodeTester;
 
 describe('Tests for MergadoCreateElementConnector', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename, true);
-    await mergadoApp();
+    await init();
   });
 
   it('process - ok', async () => {

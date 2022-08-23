@@ -29,7 +29,6 @@ import { NAME as GOBALIK_APP } from '../lib/GObalik/GObalikApplication';
 import { NAME as INTERCOM_APP } from '../lib/Intercom/IntercomApplication';
 import { NAME as KATANA_APP } from '../lib/Katana/KatanaApplication';
 import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
-import { NAME as MERGADO_APP } from '../lib/Mergado/MergadoApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveApplication';
 import { NAME as PRODUCTBOARD_APP } from '../lib/Productboard/ProductboardApplication';
@@ -171,18 +170,6 @@ export async function wedoApp() {
 
     },
 
-  });
-}
-
-export async function mergadoApp() {
-  return appInstall(MERGADO_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
   });
 }
 

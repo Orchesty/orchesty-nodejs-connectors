@@ -1,14 +1,14 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { NAME as MERGADO_LIST_APPS_BATCH } from '../MergadoListAppsBatch';
-import { mergadoApp } from '../../../../test/DataProvider';
 import { container } from '../../../../test/TestAbstract';
+import init from '../../../../test/Implementation/mergado';
 
 let tester: NodeTester;
 
 describe('Tests for MergadoListAppsBatch', () => {
   beforeEach(async () => {
     tester = new NodeTester(container, __filename);
-    await mergadoApp();
+    await init();
   });
 
   it('process - ok', async () => {
