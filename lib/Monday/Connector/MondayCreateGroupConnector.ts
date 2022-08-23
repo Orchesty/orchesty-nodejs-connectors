@@ -14,7 +14,11 @@ export default class MondayCreateGroupConnector extends AConnector {
     let graphQl = 'mutation { create_group (';
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(body)) {
-      graphQl += `${key}"${value}",`;
+      if (key === 'board_id') {
+        graphQl += `${key}:${value},`;
+      } else {
+        graphQl += `${key}:"${value}",`;
+      }
     }
     graphQl = graphQl.slice(0, -1);
     graphQl += ') {color id position title}}';
