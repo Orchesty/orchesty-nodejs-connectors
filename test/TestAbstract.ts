@@ -158,7 +158,6 @@ export async function prepare(): Promise<void> {
   initNutshell();
   initPaypal();
   initPipedrive();
-  initProductboard();
   initTableau();
   initTwitter();
   initVyfakturuj();
@@ -562,31 +561,6 @@ function initTwitter(): void {
     .setDb(db)
     .setApplication(app);
   container.setBatch(getFollowers);
-}
-
-function initProductboard(): void {
-  const app = new ProductboardApplication();
-  container.setApplication(app);
-
-  const listAllFeatures = new ProductboardListAllFeaturesBatch();
-  const listAllProducts = new ProductboardListAllProductsBatch();
-  const createNewFeature = new ProductboardCreateNewFeatureConnector();
-
-  listAllFeatures
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listAllFeatures);
-  listAllProducts
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listAllProducts);
-  createNewFeature
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createNewFeature);
 }
 
 function initGObalik(): void {
