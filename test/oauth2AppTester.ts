@@ -2,7 +2,7 @@
 // Change this, if you need different host in redirectUri
 import TypeformApplication from '../lib/Typeform/TypeformApplication';
 
-process.env.BACKEND_URL = 'https://applinth.io/connectors';
+process.env.BACKEND_URL = 'https://127.0.0.1';
 
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
 import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';
