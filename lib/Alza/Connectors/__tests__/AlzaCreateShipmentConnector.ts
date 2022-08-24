@@ -6,12 +6,12 @@ import { NAME as ALZA_CREATE_SHIPMENT_CONNECTOR } from '../AlzaCreateShipmentCon
 let tester: NodeTester;
 
 describe('Tests for AlzaCreateShipmentConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
-    await init();
-  });
+    beforeEach(async () => {
+        tester = new NodeTester(container, __filename, true);
+        await init();
+    });
 
-  it('process - ok', async () => {
-    await tester.testConnector(ALZA_CREATE_SHIPMENT_CONNECTOR);
-  });
+    it('process - ok', async () => {
+        await tester.testConnector(ALZA_CREATE_SHIPMENT_CONNECTOR);
+    });
 });

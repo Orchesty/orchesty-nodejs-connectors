@@ -3,7 +3,6 @@
         "user": "TestUser"
     },
     "data": {
-
         "supplierId": 12345,
         "supplierBranchId": 212,
         "timestamp": "2020-01-23T19:33:43.511",

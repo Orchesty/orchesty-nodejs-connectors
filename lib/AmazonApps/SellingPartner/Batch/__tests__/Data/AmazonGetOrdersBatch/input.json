@@ -3,6 +3,9 @@
         "user": "TestUser"
     },
     "data": {
-        "marketplaceIds": ["Mall","Alza"]
+        "marketplaceIds": [
+            "Mall",
+            "Alza"
+        ]
     }
 }

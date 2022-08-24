@@ -1,328 +1,327 @@
 {
-  "http": "GET https://sellingpartnerapi-na.amazon.com/catalog/v0/items?MarketplaceId=eshop",
-  "code": 200,
-  "body": {
-
-    "payload": {
-      "Items": [
-        {
-          "Identifiers": {
-            "MarketplaceASIN": {
-              "MarketplaceId": "string",
-              "ASIN": "string"
-            },
-            "SKUIdentifier": {
-              "MarketplaceId": "string",
-              "SellerId": "string",
-              "SellerSKU": "string"
-            }
-          },
-          "AttributeSets": [
-            {
-              "Actor": [
-                "string"
-              ],
-              "Artist": [
-                "string"
-              ],
-              "AspectRatio": "string",
-              "AudienceRating": "string",
-              "Author": [
-                "string"
-              ],
-              "BackFinding": "string",
-              "BandMaterialType": "string",
-              "Binding": "string",
-              "BlurayRegion": "string",
-              "Brand": "string",
-              "CeroAgeRating": "string",
-              "ChainType": "string",
-              "ClaspType": "string",
-              "Color": "string",
-              "CpuManufacturer": "string",
-              "CpuSpeed": {
-                "value": 0,
-                "Units": "string"
-              },
-              "CpuType": "string",
-              "Creator": [
+    "http": "GET https://sellingpartnerapi-na.amazon.com/catalog/v0/items?MarketplaceId=eshop",
+    "code": 200,
+    "body": {
+        "payload": {
+            "Items": [
                 {
-                  "value": "string",
-                  "Role": "string"
+                    "Identifiers": {
+                        "MarketplaceASIN": {
+                            "MarketplaceId": "string",
+                            "ASIN": "string"
+                        },
+                        "SKUIdentifier": {
+                            "MarketplaceId": "string",
+                            "SellerId": "string",
+                            "SellerSKU": "string"
+                        }
+                    },
+                    "AttributeSets": [
+                        {
+                            "Actor": [
+                                "string"
+                            ],
+                            "Artist": [
+                                "string"
+                            ],
+                            "AspectRatio": "string",
+                            "AudienceRating": "string",
+                            "Author": [
+                                "string"
+                            ],
+                            "BackFinding": "string",
+                            "BandMaterialType": "string",
+                            "Binding": "string",
+                            "BlurayRegion": "string",
+                            "Brand": "string",
+                            "CeroAgeRating": "string",
+                            "ChainType": "string",
+                            "ClaspType": "string",
+                            "Color": "string",
+                            "CpuManufacturer": "string",
+                            "CpuSpeed": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "CpuType": "string",
+                            "Creator": [
+                                {
+                                    "value": "string",
+                                    "Role": "string"
+                                }
+                            ],
+                            "Department": "string",
+                            "Director": [
+                                "string"
+                            ],
+                            "DisplaySize": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "Edition": "string",
+                            "EpisodeSequence": "string",
+                            "EsrbAgeRating": "string",
+                            "Feature": [
+                                "string"
+                            ],
+                            "Flavor": "string",
+                            "Format": [
+                                "string"
+                            ],
+                            "GemType": [
+                                "string"
+                            ],
+                            "Genre": "string",
+                            "GolfClubFlex": "string",
+                            "GolfClubLoft": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "HandOrientation": "string",
+                            "HardDiskInterface": "string",
+                            "HardDiskSize": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "HardwarePlatform": "string",
+                            "HazardousMaterialType": "string",
+                            "ItemDimensions": {
+                                "Height": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Length": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Width": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Weight": {
+                                    "value": 0,
+                                    "Units": "string"
+                                }
+                            },
+                            "IsAdultProduct": true,
+                            "IsAutographed": true,
+                            "IsEligibleForTradeIn": true,
+                            "IsMemorabilia": true,
+                            "IssuesPerYear": "string",
+                            "ItemPartNumber": "string",
+                            "Label": "string",
+                            "Languages": [
+                                {
+                                    "Name": "string",
+                                    "Type": "string",
+                                    "AudioFormat": "string"
+                                }
+                            ],
+                            "LegalDisclaimer": "string",
+                            "ListPrice": {
+                                "Amount": 0,
+                                "CurrencyCode": "string"
+                            },
+                            "Manufacturer": "string",
+                            "ManufacturerMaximumAge": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "ManufacturerMinimumAge": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "ManufacturerPartsWarrantyDescription": "string",
+                            "MaterialType": [
+                                "string"
+                            ],
+                            "MaximumResolution": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "MediaType": [
+                                "string"
+                            ],
+                            "MetalStamp": "string",
+                            "MetalType": "string",
+                            "Model": "string",
+                            "NumberOfDiscs": 0,
+                            "NumberOfIssues": 0,
+                            "NumberOfItems": 0,
+                            "NumberOfPages": 0,
+                            "NumberOfTracks": 0,
+                            "OperatingSystem": [
+                                "string"
+                            ],
+                            "OpticalZoom": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "PackageDimensions": {
+                                "Height": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Length": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Width": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Weight": {
+                                    "value": 0,
+                                    "Units": "string"
+                                }
+                            },
+                            "PackageQuantity": 0,
+                            "PartNumber": "string",
+                            "PegiRating": "string",
+                            "Platform": [
+                                "string"
+                            ],
+                            "ProcessorCount": 0,
+                            "ProductGroup": "string",
+                            "ProductTypeName": "string",
+                            "ProductTypeSubcategory": "string",
+                            "PublicationDate": "string",
+                            "Publisher": "string",
+                            "RegionCode": "string",
+                            "ReleaseDate": "string",
+                            "RingSize": "string",
+                            "RunningTime": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "ShaftMaterial": "string",
+                            "Scent": "string",
+                            "SeasonSequence": "string",
+                            "SeikodoProductCode": "string",
+                            "Size": "string",
+                            "SizePerPearl": "string",
+                            "SmallImage": {
+                                "URL": "string",
+                                "Height": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Width": {
+                                    "value": 0,
+                                    "Units": "string"
+                                }
+                            },
+                            "Studio": "string",
+                            "SubscriptionLength": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "SystemMemorySize": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "SystemMemoryType": "string",
+                            "TheatricalReleaseDate": "string",
+                            "Title": "string",
+                            "TotalDiamondWeight": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "TotalGemWeight": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "Warranty": "string",
+                            "WeeeTaxValue": {
+                                "Amount": 0,
+                                "CurrencyCode": "string"
+                            }
+                        }
+                    ],
+                    "Relationships": [
+                        {
+                            "Identifiers": {
+                                "MarketplaceASIN": {
+                                    "MarketplaceId": "string",
+                                    "ASIN": "string"
+                                },
+                                "SKUIdentifier": {
+                                    "MarketplaceId": "string",
+                                    "SellerId": "string",
+                                    "SellerSKU": "string"
+                                }
+                            },
+                            "Color": "string",
+                            "Edition": "string",
+                            "Flavor": "string",
+                            "GemType": [
+                                "string"
+                            ],
+                            "GolfClubFlex": "string",
+                            "HandOrientation": "string",
+                            "HardwarePlatform": "string",
+                            "MaterialType": [
+                                "string"
+                            ],
+                            "MetalType": "string",
+                            "Model": "string",
+                            "OperatingSystem": [
+                                "string"
+                            ],
+                            "ProductTypeSubcategory": "string",
+                            "RingSize": "string",
+                            "ShaftMaterial": "string",
+                            "Scent": "string",
+                            "Size": "string",
+                            "SizePerPearl": "string",
+                            "GolfClubLoft": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "TotalDiamondWeight": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "TotalGemWeight": {
+                                "value": 0,
+                                "Units": "string"
+                            },
+                            "PackageQuantity": 0,
+                            "ItemDimensions": {
+                                "Height": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Length": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Width": {
+                                    "value": 0,
+                                    "Units": "string"
+                                },
+                                "Weight": {
+                                    "value": 0,
+                                    "Units": "string"
+                                }
+                            }
+                        }
+                    ],
+                    "SalesRankings": [
+                        {
+                            "ProductCategoryId": "string",
+                            "Rank": 0
+                        }
+                    ]
                 }
-              ],
-              "Department": "string",
-              "Director": [
-                "string"
-              ],
-              "DisplaySize": {
-                "value": 0,
-                "Units": "string"
-              },
-              "Edition": "string",
-              "EpisodeSequence": "string",
-              "EsrbAgeRating": "string",
-              "Feature": [
-                "string"
-              ],
-              "Flavor": "string",
-              "Format": [
-                "string"
-              ],
-              "GemType": [
-                "string"
-              ],
-              "Genre": "string",
-              "GolfClubFlex": "string",
-              "GolfClubLoft": {
-                "value": 0,
-                "Units": "string"
-              },
-              "HandOrientation": "string",
-              "HardDiskInterface": "string",
-              "HardDiskSize": {
-                "value": 0,
-                "Units": "string"
-              },
-              "HardwarePlatform": "string",
-              "HazardousMaterialType": "string",
-              "ItemDimensions": {
-                "Height": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Length": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Width": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Weight": {
-                  "value": 0,
-                  "Units": "string"
-                }
-              },
-              "IsAdultProduct": true,
-              "IsAutographed": true,
-              "IsEligibleForTradeIn": true,
-              "IsMemorabilia": true,
-              "IssuesPerYear": "string",
-              "ItemPartNumber": "string",
-              "Label": "string",
-              "Languages": [
-                {
-                  "Name": "string",
-                  "Type": "string",
-                  "AudioFormat": "string"
-                }
-              ],
-              "LegalDisclaimer": "string",
-              "ListPrice": {
-                "Amount": 0,
-                "CurrencyCode": "string"
-              },
-              "Manufacturer": "string",
-              "ManufacturerMaximumAge": {
-                "value": 0,
-                "Units": "string"
-              },
-              "ManufacturerMinimumAge": {
-                "value": 0,
-                "Units": "string"
-              },
-              "ManufacturerPartsWarrantyDescription": "string",
-              "MaterialType": [
-                "string"
-              ],
-              "MaximumResolution": {
-                "value": 0,
-                "Units": "string"
-              },
-              "MediaType": [
-                "string"
-              ],
-              "MetalStamp": "string",
-              "MetalType": "string",
-              "Model": "string",
-              "NumberOfDiscs": 0,
-              "NumberOfIssues": 0,
-              "NumberOfItems": 0,
-              "NumberOfPages": 0,
-              "NumberOfTracks": 0,
-              "OperatingSystem": [
-                "string"
-              ],
-              "OpticalZoom": {
-                "value": 0,
-                "Units": "string"
-              },
-              "PackageDimensions": {
-                "Height": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Length": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Width": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Weight": {
-                  "value": 0,
-                  "Units": "string"
-                }
-              },
-              "PackageQuantity": 0,
-              "PartNumber": "string",
-              "PegiRating": "string",
-              "Platform": [
-                "string"
-              ],
-              "ProcessorCount": 0,
-              "ProductGroup": "string",
-              "ProductTypeName": "string",
-              "ProductTypeSubcategory": "string",
-              "PublicationDate": "string",
-              "Publisher": "string",
-              "RegionCode": "string",
-              "ReleaseDate": "string",
-              "RingSize": "string",
-              "RunningTime": {
-                "value": 0,
-                "Units": "string"
-              },
-              "ShaftMaterial": "string",
-              "Scent": "string",
-              "SeasonSequence": "string",
-              "SeikodoProductCode": "string",
-              "Size": "string",
-              "SizePerPearl": "string",
-              "SmallImage": {
-                "URL": "string",
-                "Height": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Width": {
-                  "value": 0,
-                  "Units": "string"
-                }
-              },
-              "Studio": "string",
-              "SubscriptionLength": {
-                "value": 0,
-                "Units": "string"
-              },
-              "SystemMemorySize": {
-                "value": 0,
-                "Units": "string"
-              },
-              "SystemMemoryType": "string",
-              "TheatricalReleaseDate": "string",
-              "Title": "string",
-              "TotalDiamondWeight": {
-                "value": 0,
-                "Units": "string"
-              },
-              "TotalGemWeight": {
-                "value": 0,
-                "Units": "string"
-              },
-              "Warranty": "string",
-              "WeeeTaxValue": {
-                "Amount": 0,
-                "CurrencyCode": "string"
-              }
-            }
-          ],
-          "Relationships": [
+            ]
+        },
+        "errors": [
             {
-              "Identifiers": {
-                "MarketplaceASIN": {
-                  "MarketplaceId": "string",
-                  "ASIN": "string"
-                },
-                "SKUIdentifier": {
-                  "MarketplaceId": "string",
-                  "SellerId": "string",
-                  "SellerSKU": "string"
-                }
-              },
-              "Color": "string",
-              "Edition": "string",
-              "Flavor": "string",
-              "GemType": [
-                "string"
-              ],
-              "GolfClubFlex": "string",
-              "HandOrientation": "string",
-              "HardwarePlatform": "string",
-              "MaterialType": [
-                "string"
-              ],
-              "MetalType": "string",
-              "Model": "string",
-              "OperatingSystem": [
-                "string"
-              ],
-              "ProductTypeSubcategory": "string",
-              "RingSize": "string",
-              "ShaftMaterial": "string",
-              "Scent": "string",
-              "Size": "string",
-              "SizePerPearl": "string",
-              "GolfClubLoft": {
-                "value": 0,
-                "Units": "string"
-              },
-              "TotalDiamondWeight": {
-                "value": 0,
-                "Units": "string"
-              },
-              "TotalGemWeight": {
-                "value": 0,
-                "Units": "string"
-              },
-              "PackageQuantity": 0,
-              "ItemDimensions": {
-                "Height": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Length": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Width": {
-                  "value": 0,
-                  "Units": "string"
-                },
-                "Weight": {
-                  "value": 0,
-                  "Units": "string"
-                }
-              }
+                "code": "string",
+                "message": "string",
+                "details": "string"
             }
-          ],
-          "SalesRankings": [
-            {
-              "ProductCategoryId": "string",
-              "Rank": 0
-            }
-          ]
-        }
-      ]
-    },
-    "errors": [
-      {
-        "code": "string",
-        "message": "string",
-        "details": "string"
-      }
-    ]
-  }
+        ]
+    }
 }

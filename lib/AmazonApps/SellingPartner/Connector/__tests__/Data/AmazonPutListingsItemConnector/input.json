@@ -5,7 +5,9 @@
     "data": {
         "sellerId": "sellerId",
         "sku": "sku",
-        "marketplaceIds": ["Alza,Mall"],
+        "marketplaceIds": [
+            "Alza,Mall"
+        ],
         "productType": "string",
         "requirements": "LISTING",
         "attributes": {

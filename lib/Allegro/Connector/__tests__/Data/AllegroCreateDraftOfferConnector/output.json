@@ -1,196 +1,196 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "additionalServices": {
-      "id": "string"
+    "headers": {
+        "user": "TestUser"
     },
-    "afterSalesServices": {
-      "impliedWarranty": {
-        "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
-      },
-      "returnPolicy": {
-        "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
-      },
-      "warranty": {
-        "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
-      }
-    },
-    "attachments": [
-      {
-        "id": "1928302_MANUAL_45d7a0f543e1b0d05e12a1aef5642efe63389a1d419fe9286d0f158044391fdce"
-      }
-    ],
-    "category": {
-      "id": "257931"
-    },
-    "compatibilityList": {
-      "type": "MANUAL"
-    },
-    "contact": {
-      "id": "string"
-    },
-    "createdAt": "2019-08-24T14:15:22Z",
-    "customParameters": [
-      {
-        "name": "string",
-        "values": [
-          "string"
-        ]
-      }
-    ],
-    "delivery": {
-      "additionalInfo": "string",
-      "handlingTime": "PT24H",
-      "shippingRates": {
-        "id": "string"
-      },
-      "shipmentDate": "2018-04-01T08:00:00Z"
-    },
-    "description": {
-      "sections": [
-        {
-          "items": [
-            {
-              "type": "string"
-            }
-          ]
-        }
-      ]
-    },
-    "discounts": {
-      "wholesalePriceList": {
-        "id": "string"
-      }
-    },
-    "external": {
-      "id": "AH-129834"
-    },
-    "fundraisingCampaign": {
-      "id": "string"
-    },
-    "id": "string",
-    "images": [
-      {
-        "url": "string"
-      }
-    ],
-    "location": {
-      "city": "string",
-      "countryCode": "PL",
-      "postCode": "00-999",
-      "province": "string"
-    },
-    "name": "string",
-    "parameters": [
-      {
-        "id": "string",
-        "rangeValue": {
-          "from": "string",
-          "to": "string"
+    "data": {
+        "additionalServices": {
+            "id": "string"
         },
-        "values": [
-          "string"
+        "afterSalesServices": {
+            "impliedWarranty": {
+                "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
+            },
+            "returnPolicy": {
+                "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
+            },
+            "warranty": {
+                "id": "09f0b4cc-7880-11e9-8f9e-2a86e4085a59"
+            }
+        },
+        "attachments": [
+            {
+                "id": "1928302_MANUAL_45d7a0f543e1b0d05e12a1aef5642efe63389a1d419fe9286d0f158044391fdce"
+            }
         ],
-        "valuesIds": [
-          "string"
-        ]
-      }
-    ],
-    "payments": {
-      "invoice": "VAT"
-    },
-    "product": {
-      "id": "string"
-    },
-    "promotion": {
-      "bold": true,
-      "departmentPage": true,
-      "emphasized": true,
-      "emphasizedHighlightBoldPackage": true,
-      "highlight": true
-    },
-    "publication": {
-      "duration": "PT24H",
-      "endingAt": "2031-01-04T11:01:59Z",
-      "startingAt": "2031-01-04T11:01:59Z",
-      "status": "INACTIVE",
-      "endedBy": "USER",
-      "republish": false
-    },
-    "sellingMode": {
-      "format": "BUY_NOW",
-      "price": {
-        "amount": "123.45",
-        "currency": "PLN"
-      },
-      "minimalPrice": {
-        "amount": "123.45",
-        "currency": "PLN"
-      },
-      "startingPrice": {
-        "amount": "123.45",
-        "currency": "PLN"
-      },
-      "netPrice": {
-        "amount": "123.45",
-        "currency": "PLN"
-      }
-    },
-    "tax": {
-      "id": "ae727432-8b72-4bfe-b732-6f163a2bf32a",
-      "rate": "23.00",
-      "subject": "GOODS",
-      "exemption": "MONEY_EQUIVALENT",
-      "percentage": "23.00"
-    },
-    "sizeTable": {
-      "id": "string"
-    },
-    "stock": {
-      "available": 99,
-      "unit": "UNIT"
-    },
-    "tecdocSpecification": {
-      "id": "470b8513-b786-b7b9-9e7e-2f848729cfd6",
-      "items": [
-        {
-          "name": "Wersja TecDoc",
-          "values": [
-            "0319"
-          ]
-        }
-      ]
-    },
-    "b2b": {
-      "buyableOnlyByBusiness": false
-    },
-    "messageToSellerSettings": {
-      "mode": "OPTIONAL"
-    },
-    "updatedAt": "2019-08-24T14:15:22Z",
-    "validation": {
-      "errors": [
-        {
-          "code": "string",
-          "details": "string",
-          "message": "string",
-          "path": "string",
-          "userMessage": "string"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "string",
-          "details": "string",
-          "message": "string",
-          "path": "string",
-          "userMessage": "string"
-        }
-      ],
-      "validatedAt": "2019-08-24T14:15:22Z"
-    },
-    "language": "pl-PL"
-  }
+        "category": {
+            "id": "257931"
+        },
+        "compatibilityList": {
+            "type": "MANUAL"
+        },
+        "contact": {
+            "id": "string"
+        },
+        "createdAt": "2019-08-24T14:15:22Z",
+        "customParameters": [
+            {
+                "name": "string",
+                "values": [
+                    "string"
+                ]
+            }
+        ],
+        "delivery": {
+            "additionalInfo": "string",
+            "handlingTime": "PT24H",
+            "shippingRates": {
+                "id": "string"
+            },
+            "shipmentDate": "2018-04-01T08:00:00Z"
+        },
+        "description": {
+            "sections": [
+                {
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        "discounts": {
+            "wholesalePriceList": {
+                "id": "string"
+            }
+        },
+        "external": {
+            "id": "AH-129834"
+        },
+        "fundraisingCampaign": {
+            "id": "string"
+        },
+        "id": "string",
+        "images": [
+            {
+                "url": "string"
+            }
+        ],
+        "location": {
+            "city": "string",
+            "countryCode": "PL",
+            "postCode": "00-999",
+            "province": "string"
+        },
+        "name": "string",
+        "parameters": [
+            {
+                "id": "string",
+                "rangeValue": {
+                    "from": "string",
+                    "to": "string"
+                },
+                "values": [
+                    "string"
+                ],
+                "valuesIds": [
+                    "string"
+                ]
+            }
+        ],
+        "payments": {
+            "invoice": "VAT"
+        },
+        "product": {
+            "id": "string"
+        },
+        "promotion": {
+            "bold": true,
+            "departmentPage": true,
+            "emphasized": true,
+            "emphasizedHighlightBoldPackage": true,
+            "highlight": true
+        },
+        "publication": {
+            "duration": "PT24H",
+            "endingAt": "2031-01-04T11:01:59Z",
+            "startingAt": "2031-01-04T11:01:59Z",
+            "status": "INACTIVE",
+            "endedBy": "USER",
+            "republish": false
+        },
+        "sellingMode": {
+            "format": "BUY_NOW",
+            "price": {
+                "amount": "123.45",
+                "currency": "PLN"
+            },
+            "minimalPrice": {
+                "amount": "123.45",
+                "currency": "PLN"
+            },
+            "startingPrice": {
+                "amount": "123.45",
+                "currency": "PLN"
+            },
+            "netPrice": {
+                "amount": "123.45",
+                "currency": "PLN"
+            }
+        },
+        "tax": {
+            "id": "ae727432-8b72-4bfe-b732-6f163a2bf32a",
+            "rate": "23.00",
+            "subject": "GOODS",
+            "exemption": "MONEY_EQUIVALENT",
+            "percentage": "23.00"
+        },
+        "sizeTable": {
+            "id": "string"
+        },
+        "stock": {
+            "available": 99,
+            "unit": "UNIT"
+        },
+        "tecdocSpecification": {
+            "id": "470b8513-b786-b7b9-9e7e-2f848729cfd6",
+            "items": [
+                {
+                    "name": "Wersja TecDoc",
+                    "values": [
+                        "0319"
+                    ]
+                }
+            ]
+        },
+        "b2b": {
+            "buyableOnlyByBusiness": false
+        },
+        "messageToSellerSettings": {
+            "mode": "OPTIONAL"
+        },
+        "updatedAt": "2019-08-24T14:15:22Z",
+        "validation": {
+            "errors": [
+                {
+                    "code": "string",
+                    "details": "string",
+                    "message": "string",
+                    "path": "string",
+                    "userMessage": "string"
+                }
+            ],
+            "warnings": [
+                {
+                    "code": "string",
+                    "details": "string",
+                    "message": "string",
+                    "path": "string",
+                    "userMessage": "string"
+                }
+            ],
+            "validatedAt": "2019-08-24T14:15:22Z"
+        },
+        "language": "pl-PL"
+    }
 }

@@ -17,13 +17,15 @@ export const NAME = 'name';
 export const CONTENT = 'content';
 
 export default abstract class AAwsObjectConnector extends AConnector {
-  protected abstract _getCustomId(): string;
 
-  protected _checkParameters = (parameters: string[], content: Record<string, unknown>): void => {
-    parameters.forEach((parameter) => {
-      if (!(parameter in content)) {
-        throw Error(`Required parameter [${parameter}] is not provided!`);
-      }
-    });
-  };
+    protected abstract getCustomId(): string;
+
+    protected checkParameters(parameters: string[], content: Record<string, unknown>): void {
+        parameters.forEach((parameter) => {
+            if (!(parameter in content)) {
+                throw Error(`Required parameter [${parameter}] is not provided!`);
+            }
+        });
+    }
+
 }
