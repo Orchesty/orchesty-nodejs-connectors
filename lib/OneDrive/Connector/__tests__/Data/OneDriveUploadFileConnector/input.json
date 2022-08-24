@@ -3,7 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-        "id": "id",
-        "name": "name"
+        "name": "test/example.txt",
+        "content": "example"
     }
 }

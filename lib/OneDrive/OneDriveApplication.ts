@@ -7,6 +7,9 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
+import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
+import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
+import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 
 export const NAME = 'one-drive';
 export const TOKEN = 'token';
@@ -19,7 +22,9 @@ export default class OneDriveApplication extends AOAuth2Application {
   public getDescription = (): string => 'One Drive description';
 
   public getFormStack = (): FormStack => {
-    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings');
+    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+      .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client id', null, true))
+      .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client secret', null, true));
 
     return new FormStack().addForm(form);
   };
@@ -48,10 +53,10 @@ export default class OneDriveApplication extends AOAuth2Application {
     return request;
   };
 
-  public getAuthUrl = (): string => 'https://login.live.com/oauth20_authorize.srf';
+  public getAuthUrl = (): string => 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['onedrive.readwrite'];
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['Files.ReadWrite'];
 
-  public getTokenUrl = (): string => 'https://login.live.com/oauth20_token.srf';
+  public getTokenUrl = (): string => 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
 }

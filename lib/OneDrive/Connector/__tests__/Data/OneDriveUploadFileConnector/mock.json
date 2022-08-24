@@ -1,10 +1,58 @@
 {
-  "http": "PUT https://graph.microsoft.com/v1.0/me/drive/items/id:/name:/content",
-  "code": 200,
+  "http": "PUT https://graph.microsoft.com/v1.0/me/drive/root:/test/example.txt:/content",
+  "code": 201,
   "body": {
-    "id": "0123456789abc",
-    "name": "FileB.txt",
-    "size": 35,
-    "file": { }
+    "@microsoft.graph.downloadUrl": "https://jpo1ka.db.files.1drv.com/y4pVT0dUWahsv64nswrSkRSDE0513M0WRrYA1f_1K0sal0jKmW1MlC5HHDjUON_g3N5Xr76GVhuO1oEBqzU9lGfzCIoSVY1vfvpEco864MsgmKnkm4aeaVDR5qYfz2SwWJQ5rp55O67wHxRg57xB32KaJ9pCZl8E69IvdBaO9-1-57F-X0wEwDIxzIvSPQMRAuYUhXdepN_7M28ZXGdgK5LvsKGilWKgXj4ZJjtxlkFMtc",
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('martin.pilnas%40email.cz')/drive/root/$entity",
+    "cTag": "aYzoyMkFDQUVEOTJBNzI2REJGITU1ODUuMjU3",
+    "createdBy": {
+      "application": {
+        "displayName": "Hanaboso2",
+        "id": "4cbaeb3a"
+      },
+      "user": {
+        "displayName": "Martin Pilný",
+        "id": "22acaed92a726dbf"
+      }
+    },
+    "createdDateTime": "2022-08-24T15:42:20.993Z",
+    "eTag": "aMjJBQ0FFRDkyQTcyNkRCRiE1NTg1LjA",
+    "file": {
+      "hashes": {
+        "quickXorHash": "IigDHsLQBjiwoQwiCQAAAAAAAAA=",
+        "sha1Hash": "5B4C0623DED1480C3D8C3C2DF1BE09CE1756A67F",
+        "sha256Hash": "2E23250164957D519115F2DD253384E487806E87CB3557EB1372B937DFF93959"
+      },
+      "mimeType": "text/plain"
+    },
+    "fileSystemInfo": {
+      "createdDateTime": "2022-08-24T15:42:20.993Z",
+      "lastModifiedDateTime": "2022-08-24T15:42:20.993Z"
+    },
+    "id": "22ACAED92A726DBF!5585",
+    "lastModifiedBy": {
+      "application": {
+        "displayName": "Hanaboso2",
+        "id": "4cbaeb3a"
+      },
+      "user": {
+        "displayName": "Martin Pilný",
+        "id": "22acaed92a726dbf"
+      }
+    },
+    "lastModifiedDateTime": "2022-08-24T15:42:20.993Z",
+    "name": "example.txt",
+    "parentReference": {
+      "driveId": "22acaed92a726dbf",
+      "driveType": "personal",
+      "id": "22ACAED92A726DBF!5584",
+      "name": "test",
+      "path": "/drive/root:/test"
+    },
+    "reactions": {
+      "commentCount": 0
+    },
+    "size": 9,
+    "webUrl": "https://1drv.ms/t/s!AL9tcirZrqwiq1E"
   }
 }
