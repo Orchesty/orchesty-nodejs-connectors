@@ -1,25 +1,28 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'mergado-get-user-connector';
 
 export default class MergadoGetUserConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const { id } = dto.jsonData as IInput;
+    public getName(): string {
+        return NAME;
+    }
 
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = `users/${id}/`;
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.GET, url);
-    const resp = await this._sender.send(req, [200]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const { id } = dto.getJsonData();
 
-    dto.jsonData = resp.jsonBody as IOutput;
-    return dto;
-  }
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const url = `users/${id}/`;
+        const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.GET, url);
+        const resp = await this.getSender().send<IOutput>(req, [200]);
+
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
+
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {

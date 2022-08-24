@@ -1,19 +1,19 @@
 {
-  "http": "GET https://api.mergado.com/apps/?limit=99&offset=0",
-  "code": 200,
-  "body": {
-    "data": [
-      {
-        "creation_date": "2016-11-02T09:12:09+00:00",
-        "forum_url": "bidding-fox",
-        "latest_release_date": "2016-11-02T09:12:10+00:00",
-        "title": "Bidding Fox",
-        "trial_period": 10,
-        "type": "project"
-      }
-    ],
-    "limit": 10,
-    "total_results": 1,
-    "offset": 0
-  }
+    "http": "GET https://api.mergado.com/apps/?limit=99&offset=0",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "creation_date": "2016-11-02T09:12:09+00:00",
+                "forum_url": "bidding-fox",
+                "latest_release_date": "2016-11-02T09:12:10+00:00",
+                "title": "Bidding Fox",
+                "trial_period": 10,
+                "type": "project"
+            }
+        ],
+        "limit": 10,
+        "total_results": 1,
+        "offset": 0
+    }
 }

@@ -1,66 +1,66 @@
 {
-  "http": "POST https://284-RPR-133.mktorest.com/rest/asset/v1/emails.json",
-  "code": 200,
-  "body": {
-    "errors": [
-      {
-        "code": "string",
-        "message": "string"
-      }
-    ],
-    "requestId": "string",
-    "result": [
-      {
-        "createdAt": "2022-08-09T12:51:26.195Z",
-        "description": "string",
-        "folder": {
-          "id": 0,
-          "type": "Folder"
-        },
-        "fromEmail": {
-          "type": "string",
-          "value": "string"
-        },
-        "fromName": {
-          "type": "string",
-          "value": "string"
-        },
-        "id": 0,
-        "name": "string",
-        "operational": true,
-        "publishToMSI": true,
-        "replyEmail": {
-          "type": "string",
-          "value": "string"
-        },
-        "status": "string",
-        "subject": {
-          "type": "string",
-          "value": "string"
-        },
-        "template": 0,
-        "textOnly": true,
-        "updatedAt": "2022-08-09T12:51:26.195Z",
-        "url": "string",
-        "version": 1,
-        "webView": true,
-        "workspace": "string",
-        "autoCopyToText": true,
-        "isOpenTrackingDisabled": true,
-        "preHeader": "string",
-        "ccFields": [
-          {
-            "attributeId": "string",
-            "objectName": "string",
-            "displayName": "string",
-            "apiName": "string"
-          }
+    "http": "POST https://284-RPR-133.mktorest.com/rest/asset/v1/emails.json",
+    "code": 200,
+    "body": {
+        "errors": [
+            {
+                "code": "string",
+                "message": "string"
+            }
+        ],
+        "requestId": "string",
+        "result": [
+            {
+                "createdAt": "2022-08-09T12:51:26.195Z",
+                "description": "string",
+                "folder": {
+                    "id": 0,
+                    "type": "Folder"
+                },
+                "fromEmail": {
+                    "type": "string",
+                    "value": "string"
+                },
+                "fromName": {
+                    "type": "string",
+                    "value": "string"
+                },
+                "id": 0,
+                "name": "string",
+                "operational": true,
+                "publishToMSI": true,
+                "replyEmail": {
+                    "type": "string",
+                    "value": "string"
+                },
+                "status": "string",
+                "subject": {
+                    "type": "string",
+                    "value": "string"
+                },
+                "template": 0,
+                "textOnly": true,
+                "updatedAt": "2022-08-09T12:51:26.195Z",
+                "url": "string",
+                "version": 1,
+                "webView": true,
+                "workspace": "string",
+                "autoCopyToText": true,
+                "isOpenTrackingDisabled": true,
+                "preHeader": "string",
+                "ccFields": [
+                    {
+                        "attributeId": "string",
+                        "objectName": "string",
+                        "displayName": "string",
+                        "apiName": "string"
+                    }
+                ]
+            }
+        ],
+        "success": true,
+        "warnings": [
+            "string"
         ]
-      }
-    ],
-    "success": true,
-    "warnings": [
-      "string"
-    ]
-  }
+    }
 }

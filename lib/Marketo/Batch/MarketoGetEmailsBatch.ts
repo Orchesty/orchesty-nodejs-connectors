@@ -1,86 +1,89 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'marketo-get-emails-batch';
 const MAX_RETURN = 200;
 
 export default class MarketoGetEmailsBatch extends ABatchNode {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-    const offset = Number(dto.getBatchCursor('0'));
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      `/asset/v1/emails.json?offset=${offset}&maxReturn=${MAX_RETURN}`,
-    );
-    const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IOutput;
-
-    dto.setItemList(response.result ?? []);
-    if (response.result.length >= MAX_RETURN) {
-      dto.setBatchCursor((offset + MAX_RETURN).toString());
+    public getName(): string {
+        return NAME;
     }
 
-    return dto;
-  }
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const offset = Number(dto.getBatchCursor('0'));
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `/asset/v1/emails.json?offset=${offset}&maxReturn=${MAX_RETURN}`,
+        );
+        const resp = await this.getSender().send<IOutput>(req, [200]);
+        const response = resp.getJsonBody();
+
+        dto.setItemList(response.result ?? []);
+        if (response.result.length >= MAX_RETURN) {
+            dto.setBatchCursor((offset + MAX_RETURN).toString());
+        }
+
+        return dto;
+    }
+
 }
 
 export interface IOutput {
     errors: {
-        code: string,
-        message: string
-    }[],
-    requestId: string,
+        code: string;
+        message: string;
+    }[];
+    requestId: string;
     result: {
-        createdAt: string,
-        description: string,
+        createdAt: string;
+        description: string;
         folder: {
-            id: number,
-            type: string
-        },
+            id: number;
+            type: string;
+        };
         fromEmail: {
-            type: string,
-            value: string
-        },
+            type: string;
+            value: string;
+        };
         fromName: {
-            type: string,
-            value: string
-        },
-        id: number,
-        name: string,
-        operational: boolean,
-        publishToMSI: boolean,
+            type: string;
+            value: string;
+        };
+        id: number;
+        name: string;
+        operational: boolean;
+        publishToMSI: boolean;
         replyEmail: {
-            type: string,
-            value: string
-        },
-        status: string,
+            type: string;
+            value: string;
+        };
+        status: string;
         subject: {
-            type: string,
-            value: string
-        },
-        template: number,
-        textOnly: boolean,
-        updatedAt: string,
-        url: string,
-        version: number,
-        webView: boolean,
-        workspace: string,
-        autoCopyToText: boolean,
-        isOpenTrackingDisabled: boolean,
-        preHeader: string,
+            type: string;
+            value: string;
+        };
+        template: number;
+        textOnly: boolean;
+        updatedAt: string;
+        url: string;
+        version: number;
+        webView: boolean;
+        workspace: string;
+        autoCopyToText: boolean;
+        isOpenTrackingDisabled: boolean;
+        preHeader: string;
         ccFields: {
-            attributeId: string,
-            objectName: string,
-            displayName: string,
-            apiName: string
-        }[]
-    }[],
-    success: boolean,
-    warnings: string[]
+            attributeId: string;
+            objectName: string;
+            displayName: string;
+            apiName: string;
+        }[];
+    }[];
+    success: boolean;
+    warnings: string[];
 }

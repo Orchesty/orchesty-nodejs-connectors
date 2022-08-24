@@ -1,10 +1,10 @@
 {
-  "http": "PUT https://mpapi.mallgroup.com/v1/orders/23120201?client_id=ClientId",
-  "code": 200,
-  "body": {
-  "result": {
+    "http": "PUT https://mpapi.mallgroup.com/v1/orders/23120201?client_id=ClientId",
     "code": 200,
-    "status": "OK"
-  }
-}
+    "body": {
+        "result": {
+            "code": 200,
+            "status": "OK"
+        }
+    }
 }

@@ -1,42 +1,42 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "id": "8",
-    "shop_id": "1",
-    "creator_id": "1",
-    "name": "Billiger.de",
-    "url": "https://dummy.mergado.com/example-com.xml",
-    "activated": true,
-    "created": "2015-11-11T15:42:33+00:00",
-    "exported_items": 0,
-    "input_format": "zbozi.cz",
-    "output_format": "billiger.de",
-    "pairing_elements": "URL",
-    "readonly": false,
-    "is_paused": false,
-    "rules_changed_at": "2015-11-11T15:43:07+00:00",
-    "slug": "example-com-heureka-cz-asdf",
-    "turned_off": true,
-    "update_period": 14400,
-    "last_access": "2015-12-10T12:51:59+00:00",
-    "xml_synced_at": "2015-11-18T13:19:59+00:00",
-    "xml_updated_at": "2015-11-11T15:42:50+00:00",
-    "is_dirty": false,
-    "metadata": {
-      "stats_ga_medium": "agregator",
-      "stats_ga_source": "heureka.*.",
-      "generator": "mergado.magento.marketingpack.0_1"
+    "headers": {
+        "user": "TestUser"
     },
-    "number_of_elements": 28,
-    "all_products_query_id": "1",
-    "sync_schedule": {
-      "minute": "50",
-      "hour": "*/1",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*"
+    "data": {
+        "id": "8",
+        "shop_id": "1",
+        "creator_id": "1",
+        "name": "Billiger.de",
+        "url": "https://dummy.mergado.com/example-com.xml",
+        "activated": true,
+        "created": "2015-11-11T15:42:33+00:00",
+        "exported_items": 0,
+        "input_format": "zbozi.cz",
+        "output_format": "billiger.de",
+        "pairing_elements": "URL",
+        "readonly": false,
+        "is_paused": false,
+        "rules_changed_at": "2015-11-11T15:43:07+00:00",
+        "slug": "example-com-heureka-cz-asdf",
+        "turned_off": true,
+        "update_period": 14400,
+        "last_access": "2015-12-10T12:51:59+00:00",
+        "xml_synced_at": "2015-11-18T13:19:59+00:00",
+        "xml_updated_at": "2015-11-11T15:42:50+00:00",
+        "is_dirty": false,
+        "metadata": {
+            "stats_ga_medium": "agregator",
+            "stats_ga_source": "heureka.*.",
+            "generator": "mergado.magento.marketingpack.0_1"
+        },
+        "number_of_elements": 28,
+        "all_products_query_id": "1",
+        "sync_schedule": {
+            "minute": "50",
+            "hour": "*/1",
+            "day_of_week": "*",
+            "day_of_month": "*",
+            "month_of_year": "*"
+        }
     }
-  }
 }
