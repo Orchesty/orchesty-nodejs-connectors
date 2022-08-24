@@ -3,24 +3,24 @@
         "user": "TestUser"
     },
     "data": {
-      "StatusResponseList": [
-        {
-          "responseCode": 0,
-          "responseText": "string"
-        }
-      ],
-      "ResultSendParcelsList": [
-        {
-          "recordNumber": "1",
-          "parcelCode": "BA1234567890A",
-          "parcelStateResponse": [
+        "StatusResponseList": [
             {
-              "responseCode": 0,
-              "responseText": "string"
+                "responseCode": 0,
+                "responseText": "string"
             }
-          ]
-        }
-      ]
-}
+        ],
+        "ResultSendParcelsList": [
+            {
+                "recordNumber": "1",
+                "parcelCode": "BA1234567890A",
+                "parcelStateResponse": [
+                    {
+                        "responseCode": 0,
+                        "responseText": "string"
+                    }
+                ]
+            }
+        ]
+    }
 }
 

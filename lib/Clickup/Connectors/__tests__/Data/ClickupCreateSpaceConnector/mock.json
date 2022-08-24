@@ -1,82 +1,82 @@
 {
-  "http": "POST https://api.clickup.com/api/v2/team/14353588/space",
-  "code": 200,
-  "body": {
-    "admin_can_manage": null,
-    "archived": false,
-    "avatar": null,
-    "color": null,
-    "features": {
-      "checklists": {
-        "enabled": true
-      },
-      "custom_fields": {
-        "enabled": true
-      },
-      "custom_items": {
-        "enabled": false
-      },
-      "dependency_warning": {
-        "enabled": true
-      },
-      "due_dates": {
-        "enabled": true,
-        "remap_closed_due_date": false,
-        "remap_due_dates": true,
-        "start_date": true
-      },
-      "emails": {
-        "enabled": true
-      },
-      "milestones": {
-        "enabled": false
-      },
-      "multiple_assignees": {
-        "enabled": true
-      },
-      "points": {
-        "enabled": false
-      },
-      "portfolios": {
-        "enabled": true
-      },
-      "remap_dependencies": {
-        "enabled": true
-      },
-      "sprints": {
-        "enabled": false
-      },
-      "tags": {
-        "enabled": true
-      },
-      "time_estimates": {
-        "enabled": true,
-        "per_assignee": false,
-        "rollup": false
-      },
-      "zoom": {
-        "enabled": false
-      }
-    },
-    "id": "32121934",
-    "multiple_assignees": true,
-    "name": "Karové",
-    "private": false,
-    "statuses": [
-      {
-        "color": "#d3d3d3",
-        "id": "p32121934_IDH2qVSw",
-        "orderindex": 0,
-        "status": "to do",
-        "type": "open"
-      },
-      {
-        "color": "#6bc950",
-        "id": "p32121934_QNjDRcwe",
-        "orderindex": 1,
-        "status": "complete",
-        "type": "closed"
-      }
-    ]
-  }
+    "http": "POST https://api.clickup.com/api/v2/team/14353588/space",
+    "code": 200,
+    "body": {
+        "admin_can_manage": null,
+        "archived": false,
+        "avatar": null,
+        "color": null,
+        "features": {
+            "checklists": {
+                "enabled": true
+            },
+            "custom_fields": {
+                "enabled": true
+            },
+            "custom_items": {
+                "enabled": false
+            },
+            "dependency_warning": {
+                "enabled": true
+            },
+            "due_dates": {
+                "enabled": true,
+                "remap_closed_due_date": false,
+                "remap_due_dates": true,
+                "start_date": true
+            },
+            "emails": {
+                "enabled": true
+            },
+            "milestones": {
+                "enabled": false
+            },
+            "multiple_assignees": {
+                "enabled": true
+            },
+            "points": {
+                "enabled": false
+            },
+            "portfolios": {
+                "enabled": true
+            },
+            "remap_dependencies": {
+                "enabled": true
+            },
+            "sprints": {
+                "enabled": false
+            },
+            "tags": {
+                "enabled": true
+            },
+            "time_estimates": {
+                "enabled": true,
+                "per_assignee": false,
+                "rollup": false
+            },
+            "zoom": {
+                "enabled": false
+            }
+        },
+        "id": "32121934",
+        "multiple_assignees": true,
+        "name": "Karové",
+        "private": false,
+        "statuses": [
+            {
+                "color": "#d3d3d3",
+                "id": "p32121934_IDH2qVSw",
+                "orderindex": 0,
+                "status": "to do",
+                "type": "open"
+            },
+            {
+                "color": "#6bc950",
+                "id": "p32121934_QNjDRcwe",
+                "orderindex": 1,
+                "status": "complete",
+                "type": "closed"
+            }
+        ]
+    }
 }

@@ -1,30 +1,30 @@
 {
-  "http": "GET https://api.getresponse.com/v3/accounts",
-  "code": 200,
-  "body": {
-    "accountId": "yWXbn",
-    "city": "PRague",
-    "companyName": "",
-    "countryCode": {
-      "countryCode": "CZ",
-      "countryCodeId": "58"
-    },
-    "email": "test.hanaboso@gmail.com",
-    "firstName": "Test",
-    "href": "https://api.getresponse.com/v3/accounts",
-    "industryTag": {
-      "industryTagId": null
-    },
-    "lastName": "Testovic",
-    "numberOfEmployees": null,
-    "phone": "+420703142341",
-    "state": "CZ",
-    "street": "Prague",
-    "timeFormat": "24h",
-    "timeZone": {
-      "name": "Europe/Prague",
-      "offset": "+01:00"
-    },
-    "zipCode": "10001"
-  }
+    "http": "GET https://api.getresponse.com/v3/accounts",
+    "code": 200,
+    "body": {
+        "accountId": "yWXbn",
+        "city": "PRague",
+        "companyName": "",
+        "countryCode": {
+            "countryCode": "CZ",
+            "countryCodeId": "58"
+        },
+        "email": "test.hanaboso@gmail.com",
+        "firstName": "Test",
+        "href": "https://api.getresponse.com/v3/accounts",
+        "industryTag": {
+            "industryTagId": null
+        },
+        "lastName": "Testovic",
+        "numberOfEmployees": null,
+        "phone": "+420703142341",
+        "state": "CZ",
+        "street": "Prague",
+        "timeFormat": "24h",
+        "timeZone": {
+            "name": "Europe/Prague",
+            "offset": "+01:00"
+        },
+        "zipCode": "10001"
+    }
 }

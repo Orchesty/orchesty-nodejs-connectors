@@ -1,24 +1,24 @@
 {
-  "http": "GET https://b2b.postaonline.cz:444/restservices/ZSKService/v1/sendParcels/idTransaction/idTransaction",
-  "code": 200,
-  "body": {
-    "StatusResponseList": [
-      {
-        "responseCode": 0,
-        "responseText": "string"
-      }
-    ],
-    "ResultSendParcelsList": [
-      {
-        "recordNumber": "1",
-        "parcelCode": "BA1234567890A",
-        "parcelStateResponse": [
-          {
-            "responseCode": 0,
-            "responseText": "string"
-          }
+    "http": "GET https://b2b.postaonline.cz:444/restservices/ZSKService/v1/sendParcels/idTransaction/idTransaction",
+    "code": 200,
+    "body": {
+        "StatusResponseList": [
+            {
+                "responseCode": 0,
+                "responseText": "string"
+            }
+        ],
+        "ResultSendParcelsList": [
+            {
+                "recordNumber": "1",
+                "parcelCode": "BA1234567890A",
+                "parcelStateResponse": [
+                    {
+                        "responseCode": 0,
+                        "responseText": "string"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }
