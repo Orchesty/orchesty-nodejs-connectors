@@ -1,56 +1,56 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "id": 12345,
-    "name": "Luke Skywalker",
-    "first_name": "Luke",
-    "last_name": "Skywalker",
-    "company": "Company",
-    "email": "luke.skywalker@example.com",
-    "comment": "Luke Skywalker was a Tatooine farmboy who rose from humble beginnings to become one of the\n            greatest Jedi the galaxy has ever known.",
-    "phone": "123456",
-    "currency": "USD",
-    "created_at": "2020-10-23T10:37:05.085Z",
-    "updated_at": "2020-10-23T10:37:05.085Z",
-    "default_billing_id": 1,
-    "default_shipping_id": 2,
-    "addresses": [
-      {
-        "id": 1,
-        "customer_id": 12345,
-        "entity_type": "billing",
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 12345,
+        "name": "Luke Skywalker",
         "first_name": "Luke",
         "last_name": "Skywalker",
         "company": "Company",
-        "phone": "123456789",
-        "line_1": "Line 1",
-        "line_2": "Line 2",
-        "city": "City",
-        "state": "State",
-        "zip": "Zip",
-        "country": "Country",
+        "email": "luke.skywalker@example.com",
+        "comment": "Luke Skywalker was a Tatooine farmboy who rose from humble beginnings to become one of the\n            greatest Jedi the galaxy has ever known.",
+        "phone": "123456",
+        "currency": "USD",
+        "created_at": "2020-10-23T10:37:05.085Z",
         "updated_at": "2020-10-23T10:37:05.085Z",
-        "created_at": "2020-10-23T10:37:05.085Z"
-      },
-      {
-        "id": 2,
-        "customer_id": 12345,
-        "entity_type": "shipping",
-        "first_name": "Luke",
-        "last_name": "Skywalker",
-        "company": "Company",
-        "phone": "123456789",
-        "line_1": "Line 1",
-        "line_2": "Line 2",
-        "city": "City",
-        "state": "State",
-        "zip": "Zip",
-        "country": "Country",
-        "updated_at": "2020-10-23T10:37:05.085Z",
-        "created_at": "2020-10-23T10:37:05.085Z"
-      }
-    ]
-  }
+        "default_billing_id": 1,
+        "default_shipping_id": 2,
+        "addresses": [
+            {
+                "id": 1,
+                "customer_id": 12345,
+                "entity_type": "billing",
+                "first_name": "Luke",
+                "last_name": "Skywalker",
+                "company": "Company",
+                "phone": "123456789",
+                "line_1": "Line 1",
+                "line_2": "Line 2",
+                "city": "City",
+                "state": "State",
+                "zip": "Zip",
+                "country": "Country",
+                "updated_at": "2020-10-23T10:37:05.085Z",
+                "created_at": "2020-10-23T10:37:05.085Z"
+            },
+            {
+                "id": 2,
+                "customer_id": 12345,
+                "entity_type": "shipping",
+                "first_name": "Luke",
+                "last_name": "Skywalker",
+                "company": "Company",
+                "phone": "123456789",
+                "line_1": "Line 1",
+                "line_2": "Line 2",
+                "city": "City",
+                "state": "State",
+                "zip": "Zip",
+                "country": "Country",
+                "updated_at": "2020-10-23T10:37:05.085Z",
+                "created_at": "2020-10-23T10:37:05.085Z"
+            }
+        ]
+    }
 }

@@ -1,43 +1,43 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "name": "string",
-    "uom": "string",
-    "category_name": "string",
-    "is_producible": true,
-    "is_purchasable": false,
-    "default_supplier_id": 0,
-    "additional_info": "string",
-    "batch_tracked": true,
-    "purchase_uom": "string",
-    "purchase_uom_conversion_rate": 1,
-    "configs": [
-      {
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
         "name": "string",
-        "values": [
-          "string"
-        ]
-      }
-    ],
-    "variants": [
-      {
-        "sku": "string",
-        "purchase_price": 1,
-        "sales_price": 1,
-        "config_attributes": [
-          {
-            "config_name": "string",
-            "config_value": "string"
-          }
+        "uom": "string",
+        "category_name": "string",
+        "is_producible": true,
+        "is_purchasable": false,
+        "default_supplier_id": 0,
+        "additional_info": "string",
+        "batch_tracked": true,
+        "purchase_uom": "string",
+        "purchase_uom_conversion_rate": 1,
+        "configs": [
+            {
+                "name": "string",
+                "values": [
+                    "string"
+                ]
+            }
         ],
-        "internal_barcode": "string",
-        "registered_barcode": "string",
-        "supplier_item_codes": [
-          "string"
+        "variants": [
+            {
+                "sku": "string",
+                "purchase_price": 1,
+                "sales_price": 1,
+                "config_attributes": [
+                    {
+                        "config_name": "string",
+                        "config_value": "string"
+                    }
+                ],
+                "internal_barcode": "string",
+                "registered_barcode": "string",
+                "supplier_item_codes": [
+                    "string"
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }

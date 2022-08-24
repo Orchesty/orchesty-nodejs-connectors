@@ -1,40 +1,43 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import FormData from 'form-data';
 import { BASE_URL } from '../GoogleDriveApplication';
 
 export default class GoogleDriveUploadFileConnector extends AConnector {
-  protected _fileName = 'my.txt';
 
-  protected _folder = 'id';
+    protected fileName = 'my.txt';
 
-  public getName = (): string => 'google-drive-upload-file';
+    protected folder = 'id';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
+    public getName(): string {
+        return 'google-drive-upload-file';
+    }
 
-    const form = new FormData();
-    form.append('metadata', JSON.stringify({
-      name: this._fileName,
-      parents: [this._folder],
-    }));
-    form.append('file', dto.data, this._fileName);
+    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
-    const request = await this._application.getRequestDto(
-      dto,
-      applicationInstall,
-      HttpMethods.POST,
-      `${BASE_URL}/upload/drive/v3/files?uploadType=multipart`,
-      form,
-    );
-    request.body = form;
+        const form = new FormData();
+        form.append('metadata', JSON.stringify({
+            name: this.fileName,
+            parents: [this.folder],
+        }));
+        form.append('file', dto.getData(), this.fileName);
 
-    const response = await this._sender.send(request, [200, 201]);
+        const request = await this.getApplication().getRequestDto(
+            dto,
+            applicationInstall,
+            HttpMethods.POST,
+            `${BASE_URL}/upload/drive/v3/files?uploadType=multipart`,
+            form,
+        );
+        request.setBody(form);
 
-    dto.data = response.body;
+        const response = await this.getSender().send(request, [200, 201]);
 
-    return dto;
-  }
+        dto.setData(response.getBody());
+
+        return dto;
+    }
+
 }

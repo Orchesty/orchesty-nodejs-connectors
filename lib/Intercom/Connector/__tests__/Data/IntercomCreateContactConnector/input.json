@@ -1,22 +1,22 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "role": "user",
-    "external_id": "25",
-    "email": "wash@serenity.io",
-    "phone": "+1123456789",
-    "name": "Hoban Washburn",
-    "avatar": "https://example.org/128Wash.jpg",
-    "last_seen_at": 1571069751,
-    "signed_up_at": 1571069751,
-    "owner_id": 127,
-    "unsubscribed_from_emails": false,
-    "custom_attributes": {
-      "paid_subscriber": true,
-      "monthly_spend": 155.5,
-      "team_mates": 1
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "role": "user",
+        "external_id": "25",
+        "email": "wash@serenity.io",
+        "phone": "+1123456789",
+        "name": "Hoban Washburn",
+        "avatar": "https://example.org/128Wash.jpg",
+        "last_seen_at": 1571069751,
+        "signed_up_at": 1571069751,
+        "owner_id": 127,
+        "unsubscribed_from_emails": false,
+        "custom_attributes": {
+            "paid_subscriber": true,
+            "monthly_spend": 155.5,
+            "team_mates": 1
+        }
     }
-  }
 }

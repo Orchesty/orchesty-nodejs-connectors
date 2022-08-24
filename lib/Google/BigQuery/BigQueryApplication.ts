@@ -4,15 +4,26 @@ import AGoogle from '../AGoogle';
 export const BASE_URL = 'https://bigquery.googleapis.com';
 
 export default class BigQueryApplication extends AGoogle {
-  public getBaseUrl = (): string => BASE_URL;
 
-  // eslint-disable-next-line max-len
-  public getDescription = (): string => 'Serverless, highly scalable, and cost-effective multicloud data warehouse designed for business agility';
+    public getBaseUrl(): string {
+        return BASE_URL;
+    }
 
-  public getName = (): string => 'bigQuery';
+    public getDescription(): string {
+        return 'Serverless, highly scalable, and cost-effective multicloud data warehouse designed for business agility';
+    }
 
-  public getPublicName = (): string => 'BigQuery';
+    public getName(): string {
+        return 'bigQuery';
+    }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['https://www.googleapis.com/auth/bigquery'];
+    public getPublicName(): string {
+        return 'BigQuery';
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public getScopes(applicationInstall: ApplicationInstall): string[] {
+        return ['https://www.googleapis.com/auth/bigquery'];
+    }
+
 }
