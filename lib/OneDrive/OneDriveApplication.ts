@@ -3,15 +3,15 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 
 export const NAME = 'one-drive';
 export const TOKEN = 'token';
 
-export default class OneDriveApplication extends ABasicApplication {
+export default class OneDriveApplication extends AOAuth2Application {
   public getName = (): string => NAME;
 
   public getPublicName = (): string => 'One Drive';
@@ -47,4 +47,11 @@ export default class OneDriveApplication extends ABasicApplication {
 
     return request;
   };
+
+  public getAuthUrl = (): string => 'https://login.live.com/oauth20_authorize.srf';
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['onedrive.readwrite'];
+
+  public getTokenUrl = (): string => 'https://login.live.com/oauth20_token.srf';
 }

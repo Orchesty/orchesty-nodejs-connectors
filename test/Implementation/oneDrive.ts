@@ -1,7 +1,9 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import OneDriveApplication, { NAME as ONEDRIVE_APP, TOKEN } from '../../lib/OneDrive/OneDriveApplication';
-import { container, db, sender } from '../TestAbstract';
+import {
+  container, db, oauth2Provider, sender,
+} from '../TestAbstract';
 import OneDriveUploadFileConnector from '../../lib/OneDrive/Connector/OneDriveUploadFileConnector';
 
 export default async function init(): Promise<void> {
@@ -11,7 +13,7 @@ export default async function init(): Promise<void> {
     },
   });
 
-  const app = new OneDriveApplication();
+  const app = new OneDriveApplication(oauth2Provider);
   container.setApplication(app);
 
   const uploadFile = new OneDriveUploadFileConnector();
