@@ -3,32 +3,32 @@
         "user": "TestUser"
     },
     "data": {
-        "id":116,
-        "entityType":"Accounts",
-        "rev":"0",
-        "modifiedTime":"2022-08-10T15:49:23+0000",
-        "createdTime":"2022-08-10T15:49:23+0000",
-        "name":"New Account Name",
-        "htmlUrl":"https:\/\/app.nutshell.com\/company\/116-new-account-name",
-        "htmlUrlPath":"\/company\/116-new-account-name",
-        "avatarUrl":"https:\/\/app.nutshell.com\/avatar\/accounts\/116\/346392\/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2\/1660146563",
-        "accountType":{
-            "id":1,
-            "name":"Standard Account"
+        "id": 116,
+        "entityType": "Accounts",
+        "rev": "0",
+        "modifiedTime": "2022-08-10T15:49:23+0000",
+        "createdTime": "2022-08-10T15:49:23+0000",
+        "name": "New Account Name",
+        "htmlUrl": "https:\/\/app.nutshell.com\/company\/116-new-account-name",
+        "htmlUrlPath": "\/company\/116-new-account-name",
+        "avatarUrl": "https:\/\/app.nutshell.com\/avatar\/accounts\/116\/346392\/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2\/1660146563",
+        "accountType": {
+            "id": 1,
+            "name": "Standard Account"
         },
-        "industry":null,
-        "creator":null,
-        "owner":null,
-        "tags":[
+        "industry": null,
+        "creator": null,
+        "owner": null,
+        "tags": [
         ],
-        "lastContactedDate":null,
-        "contacts":[
+        "lastContactedDate": null,
+        "contacts": [
         ],
-        "description":null,
-        "legacyId":null,
-        "notes":[
+        "description": null,
+        "legacyId": null,
+        "notes": [
         ],
-        "leads":[
+        "leads": [
         ]
     }
 }

@@ -1,11 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "color": "blue",
-    "id": "afjkllkam",
-    "position": "center",
-    "title": "masters"
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "color": "blue",
+        "id": "afjkllkam",
+        "position": "center",
+        "title": "masters"
+    }
 }

@@ -1,10 +1,10 @@
 {
-  "http": "POST https://api.monday.com/v2",
-  "code": 200,
-  "body": {
-    "color": "blue",
-    "id": "afjkllkam",
-    "position": "center",
-    "title": "masters"
-  }
+    "http": "POST https://api.monday.com/v2",
+    "code": 200,
+    "body": {
+        "color": "blue",
+        "id": "afjkllkam",
+        "position": "center",
+        "title": "masters"
+    }
 }

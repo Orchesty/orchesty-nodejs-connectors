@@ -1,47 +1,50 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'monday-create-board';
 
 export default class MondayCreateBoardConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const body = dto.jsonData as IInput;
-    let graphQl = 'mutation { create_board (';
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of Object.entries(body)) {
-      graphQl += `${key}"${value}",`;
+    public getName(): string {
+        return NAME;
     }
-    graphQl = graphQl.slice(0, -1);
-    graphQl += ') {board_kind description groups id owner owners permissions state subscribers top_group}}';
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.POST,
-      undefined,
-      { query: graphQl },
-    );
-    const resp = await this._sender.send(req, [200]);
-    const output = resp.jsonBody as IOutput;
 
-    if (output.error_code) {
-      throw new OnRepeatException(60, 10, output.error_code ?? 'Unknown error.');
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const body = dto.getJsonData();
+        let graphQl = 'mutation { create_board (';
+        // eslint-disable-next-line no-restricted-syntax
+        for (const [key, value] of Object.entries(body)) {
+            graphQl += `${key}"${value}",`;
+        }
+        graphQl = graphQl.slice(0, -1);
+        graphQl += ') {board_kind description groups id owner owners permissions state subscribers top_group}}';
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.POST,
+            undefined,
+            { query: graphQl },
+        );
+        const resp = await this.getSender().send<IOutput>(req, [200]);
+        const output = resp.getJsonBody();
+
+        if (output.error_code) {
+            throw new OnRepeatException(60, 10, output.error_code ?? 'Unknown error.');
+        }
+
+        return dto.setNewJsonData(output);
     }
-    dto.jsonData = output;
-    return dto;
-  }
+
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
     board_name: string;
-    board_kind: 'public' | 'board_kind' | 'share';
+    board_kind: 'board_kind' | 'public' | 'share';
     folder_id?: number;
     workspace_id?: number;
     template_id?: number;
@@ -59,9 +62,9 @@ export interface IOutput {
         item_ids?: number;
         from?: Date;
         to?: Date;
-    }[]
+    }[];
     board_folder_id?: number;
-    board_kind: 'public' | 'board_kind' | 'share';
+    board_kind: 'board_kind' | 'public' | 'share';
     columns?: {
         ids?: string[];
     }[];
@@ -76,12 +79,12 @@ export interface IOutput {
         limit?: number;
         page?: number;
         newest_first?: boolean;
-    }
+    };
     owner: string;
     owners: string[];
-    permissions: 'everyone' | 'collaborators' | 'assignee' | 'owners';
+    permissions: 'assignee' | 'collaborators' | 'everyone' | 'owners';
     pos?: string;
-    state: 'all' | 'active' | 'archived' | 'deleted';
+    state: 'active' | 'all' | 'archived' | 'deleted';
     subscribers: string[];
     tags?: string[];
     top_group: string[];

@@ -1,29 +1,29 @@
 {
-  "http": "POST https://api.monday.com/v2",
-  "code": 200,
-  "body": {
-    "board_kind": "public",
-    "board_name": "123456",
-    "description": "example description",
-    "groups": [
-      {
-        "ids": [
-          "548495"
+    "http": "POST https://api.monday.com/v2",
+    "code": 200,
+    "body": {
+        "board_kind": "public",
+        "board_name": "123456",
+        "description": "example description",
+        "groups": [
+            {
+                "ids": [
+                    "548495"
+                ]
+            }
+        ],
+        "id": "1561asdf6513sadf18",
+        "owner": "Elon",
+        "owners": [
+            "Alza"
+        ],
+        "permissions": "everyone",
+        "state": "all",
+        "subscribers": [
+            "Elon2.0"
+        ],
+        "top_group": [
+            "24536"
         ]
-      }
-    ],
-    "id": "1561asdf6513sadf18",
-    "owner": "Elon",
-    "owners": [
-      "Alza"
-    ],
-    "permissions": "everyone",
-    "state": "all",
-    "subscribers": [
-      "Elon2.0"
-    ],
-    "top_group": [
-      "24536"
-    ]
-  }
+    }
 }
