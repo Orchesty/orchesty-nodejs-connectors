@@ -1,15 +1,15 @@
 {
-  "http": "POST https://api.todoist.com/rest/v1/projects",
-  "code": 200,
-  "body": {
-    "color": 47,
-    "comment_count": 0,
-    "favorite": false,
-    "id": 2296768858,
-    "name": "Shopping List",
-    "order": 2,
-    "shared": false,
-    "sync_id": 0,
-    "url": "https://todoist.com/showProject?id=2296768858"
-  }
+    "http": "POST https://api.todoist.com/rest/v1/projects",
+    "code": 200,
+    "body": {
+        "color": 47,
+        "comment_count": 0,
+        "favorite": false,
+        "id": 2296768858,
+        "name": "Shopping List",
+        "order": 2,
+        "shared": false,
+        "sync_id": 0,
+        "url": "https://todoist.com/showProject?id=2296768858"
+    }
 }

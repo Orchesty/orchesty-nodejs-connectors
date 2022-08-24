@@ -1,35 +1,35 @@
 {
-  "http": "GET https://api.myshoptet.com/api/shipping-methods",
-  "code": 200,
-  "body": {
-    "data": {
-      "shippingMethods": [
-        {
-          "guid": "e79bf6cd-044d-11e5-a8d3-ac162d8a2454",
-          "name": "Uloženka",
-          "description": "Uloženka na adrese Francouzská 28, Praha 2",
-          "shippingCompany": {
-            "id": 9,
-            "code": "ulozenka",
-            "name": "Uloženka (pobočky)"
-          },
-          "trackingUrl": "http://www.ppl.cz/main2.aspx?cls=Package&idSearch=#PACKAGE_NUMBER#",
-          "visible": true,
-          "priority": 16,
-          "wholesale": true,
-          "logoUrl": "https://fenix.myshoptet.com/user/system/ulozenkalogo.jpg"
-        }
-      ],
-      "wholesaleActive": true,
-      "defaultRetailMethod": "6df78fa2-05b0-11e9-925b-0800273dc42e",
-      "defaultWholesaleMethod": "b57f91bb-e920-11e0-baa3-7dc668b75ca8"
-    },
-    "errors": [
-      {
-        "errorCode": "",
-        "message": "",
-        "instance": ""
-      }
-    ]
-  }
+    "http": "GET https://api.myshoptet.com/api/shipping-methods",
+    "code": 200,
+    "body": {
+        "data": {
+            "shippingMethods": [
+                {
+                    "guid": "e79bf6cd-044d-11e5-a8d3-ac162d8a2454",
+                    "name": "Uloženka",
+                    "description": "Uloženka na adrese Francouzská 28, Praha 2",
+                    "shippingCompany": {
+                        "id": 9,
+                        "code": "ulozenka",
+                        "name": "Uloženka (pobočky)"
+                    },
+                    "trackingUrl": "http://www.ppl.cz/main2.aspx?cls=Package&idSearch=#PACKAGE_NUMBER#",
+                    "visible": true,
+                    "priority": 16,
+                    "wholesale": true,
+                    "logoUrl": "https://fenix.myshoptet.com/user/system/ulozenkalogo.jpg"
+                }
+            ],
+            "wholesaleActive": true,
+            "defaultRetailMethod": "6df78fa2-05b0-11e9-925b-0800273dc42e",
+            "defaultWholesaleMethod": "b57f91bb-e920-11e0-baa3-7dc668b75ca8"
+        },
+        "errors": [
+            {
+                "errorCode": "",
+                "message": "",
+                "instance": ""
+            }
+        ]
+    }
 }

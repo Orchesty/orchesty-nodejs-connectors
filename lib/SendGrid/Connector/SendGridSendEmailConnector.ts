@@ -1,60 +1,62 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import SendGridApplication, { BASE_URL } from '../SendGridApplication';
 
-interface IInputJson {
-  email: string,
-  name: string,
-  subject: string,
+interface IInput {
+    email: string;
+    name: string;
+    subject: string;
 }
 
 export default class SendGridSendEmailConnector extends AConnector {
-  public getName = (): string => 'send-grid-send-email';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-    const data = dto.jsonData as IInputJson;
-    if (!(data.email && data.name && data.subject)) {
-      throw new Error('Some data is missing. Keys [email, name, subject] is required.');
+    public getName(): string {
+        return 'send-grid-send-email';
     }
 
-    const body = {
-      personalizations: [
-        {
-          to: [{
-            email: data.email,
-            name: data.name,
-          }],
-          subject: data.subject,
-        },
-      ],
-      from:
-        {
-          email: 'noreply@johndoe.com',
-          name: 'John Doe',
-        },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      reply_to:
-        {
-          email: 'noreply@johndoe.com',
-          name: 'John Doe',
-        },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      template_id: '1',
-    };
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const data = dto.getJsonData();
+        if (!(data.email && data.name && data.subject)) {
+            throw new Error('Some data is missing. Keys [email, name, subject] is required.');
+        }
 
-    const url = `${BASE_URL}/mail/send`;
-    const request = await (this._application as SendGridApplication)
-      .getRequestDto(dto, applicationInstall, HttpMethods.POST, url, JSON.stringify(body));
+        const body = {
+            personalizations: [
+                {
+                    to: [{
+                        email: data.email,
+                        name: data.name,
+                    }],
+                    subject: data.subject,
+                },
+            ],
+            from:
+                {
+                    email: 'noreply@johndoe.com',
+                    name: 'John Doe',
+                },
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            reply_to:
+                {
+                    email: 'noreply@johndoe.com',
+                    name: 'John Doe',
+                },
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            template_id: '1',
+        };
 
-    const response = await this._sender.send(request);
-    if (!this.evaluateStatusCode(response, dto)) {
-      return dto;
+        const url = `${BASE_URL}/mail/send`;
+        const request = await this.getApplication<SendGridApplication>()
+            .getRequestDto(dto, applicationInstall, HttpMethods.POST, url, JSON.stringify(body));
+
+        const response = await this.getSender().send(request);
+        if (!this.evaluateStatusCode(response, dto)) {
+            return dto;
+        }
+
+        return dto.setNewJsonData(response.getBody());
     }
 
-    dto.jsonData = response.body;
-    return dto;
-  }
 }

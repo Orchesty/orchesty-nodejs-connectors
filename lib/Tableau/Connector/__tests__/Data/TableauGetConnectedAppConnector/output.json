@@ -1,14 +1,14 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "name": "ConnectedApp_MyCo",
-    "enabled": true,
-    "clientId": "ac95d175-c844-4779-9d58-415e01fe7dab",
-    "projectId": "1f2f3e4e-5d6d-7c8c-9b0b-1a2a3f4f5e6e",
-    "createdAt": "2021-08-10T18:46:30Z",
-    "unrestrictedEmbedding": false
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "name": "ConnectedApp_MyCo",
+        "enabled": true,
+        "clientId": "ac95d175-c844-4779-9d58-415e01fe7dab",
+        "projectId": "1f2f3e4e-5d6d-7c8c-9b0b-1a2a3f4f5e6e",
+        "createdAt": "2021-08-10T18:46:30Z",
+        "unrestrictedEmbedding": false
+    }
 }
 

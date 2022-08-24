@@ -1,116 +1,117 @@
-import {
-  ABasicApplication,
-  PASSWORD,
-  USER,
-} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { BodyInit } from 'node-fetch';
-import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import { Dialect, Options, Sequelize } from 'sequelize';
-import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
-import OracleDB, { ConnectionAttributes } from 'oracledb';
+import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import {
+    ABasicApplication,
+    PASSWORD,
+    USER,
+} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import { BodyInit } from 'node-fetch';
+import OracleDB, { ConnectionAttributes } from 'oracledb';
+import { Options, Sequelize } from 'sequelize';
 
 const HOST = 'host';
 const PORT = 'port';
 const DATABASE = 'database';
 
 export enum IDialect {
-  /* eslint-disable @typescript-eslint/naming-convention */
-  mysql = 'mysql',
-  postgres = 'postgres',
-  sqlite = 'sqlite',
-  mariadb = 'mariadb',
-  mssql = 'mssql',
-  oracledb = 'oracledb',
-  /* eslint-enable @typescript-eslint/naming-convention */
+    /* eslint-disable @typescript-eslint/naming-convention */
+    mysql = 'mysql',
+    postgres = 'postgres',
+    sqlite = 'sqlite',
+    mariadb = 'mariadb',
+    mssql = 'mssql',
+    oracledb = 'oracledb',
+    /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export default abstract class ASqlApplication extends ABasicApplication {
-  protected _cache: Record<string, Sequelize | OracleDB.Pool> = {};
 
-  protected constructor(private _dialect: IDialect) {
-    super();
-  }
+    protected cache: Record<string, OracleDB.Pool | Sequelize> = {};
 
-  public getName = (): string => this._dialect.toString();
-
-  public getRequestDto = (
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    dto: AProcessDto,
-    applicationInstall: ApplicationInstall,
-    method: HttpMethods,
-    url?: string,
-    data?: BodyInit,
-    /* eslint-enable @typescript-eslint/no-unused-vars */
-  ): RequestDto => {
-    throw new Error('Unsupported use GetConnection method instead');
-  };
-
-  public getFormStack = (): FormStack => {
-    const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-      .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
-      .addField(new Field(FieldType.TEXT, PORT, 'Port', undefined, true))
-      .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-      .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-      .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
-
-    return new FormStack().addForm(form);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/require-await
-  public async getConnection(appInstall: ApplicationInstall): Promise<Sequelize | OracleDB.Connection> {
-    const appId = appInstall.getId();
-    let sequelize = this._cache[appId] as Sequelize;
-
-    if (sequelize === undefined) {
-      sequelize = new Sequelize(this._getConfig(appInstall));
-      this._cache[appId] = sequelize;
+    protected constructor(private readonly dialect: IDialect) {
+        super();
     }
 
-    return sequelize;
-  }
-
-  protected _getConfig = (appInstall: ApplicationInstall): Options | ConnectionAttributes => {
-    const formSettings = appInstall.getSettings()[AUTHORIZATION_FORM];
-    switch (this._dialect) {
-      case IDialect.sqlite:
-        return {
-          storage: formSettings[HOST],
-          database: formSettings[DATABASE],
-          port: formSettings[PORT],
-          username: formSettings[USER],
-          password: formSettings[PASSWORD],
-          dialect: this._dialect,
-        };
-      case IDialect.mariadb:
-      case IDialect.mssql:
-      case IDialect.mysql:
-      case IDialect.postgres:
-        return {
-          host: formSettings[HOST],
-          database: formSettings[DATABASE],
-          port: formSettings[PORT],
-          username: formSettings[USER],
-          password: formSettings[PASSWORD],
-          dialect: this._dialect,
-        };
-      case IDialect.oracledb:
-        return {
-          user: formSettings[USER],
-          password: formSettings[PASSWORD],
-          connectString: `${formSettings[HOST]}:${formSettings[PORT]}/${formSettings[DATABASE]}`,
-        };
-      default:
-        throw new Error(`Dialect [${this._dialect}] is not compatible!`);
+    public getName(): string {
+        return this.dialect.toString();
     }
-  };
 
-  private _capitalizeFirstLetterOfDialect = (dialect: Dialect) => dialect.charAt(0)
-    .toUpperCase() + dialect.slice(1);
+    public getRequestDto(
+        /* eslint-disable @typescript-eslint/no-unused-vars */
+        dto: AProcessDto,
+        applicationInstall: ApplicationInstall,
+        method: HttpMethods,
+        url?: string,
+        data?: BodyInit,
+        /* eslint-enable @typescript-eslint/no-unused-vars */
+    ): RequestDto {
+        throw new Error('Unsupported use GetConnection method instead');
+    }
+
+    public getFormStack(): FormStack {
+        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+            .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
+            .addField(new Field(FieldType.TEXT, PORT, 'Port', undefined, true))
+            .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+            .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+            .addField(new Field(FieldType.TEXT, DATABASE, 'Database', undefined, true));
+
+        return new FormStack().addForm(form);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/require-await
+    public async getConnection(appInstall: ApplicationInstall): Promise<OracleDB.Connection | Sequelize> {
+        const appId = appInstall.getId();
+        let sequelize = this.cache[appId] as Sequelize;
+
+        if (sequelize === undefined) {
+            sequelize = new Sequelize(this.getConfig(appInstall));
+            this.cache[appId] = sequelize;
+        }
+
+        return sequelize;
+    }
+
+    protected getConfig(appInstall: ApplicationInstall): ConnectionAttributes | Options {
+        const formSettings = appInstall.getSettings()[AUTHORIZATION_FORM];
+        switch (this.dialect) {
+            case IDialect.sqlite:
+                return {
+                    storage: formSettings[HOST],
+                    database: formSettings[DATABASE],
+                    port: formSettings[PORT],
+                    username: formSettings[USER],
+                    password: formSettings[PASSWORD],
+                    dialect: this.dialect,
+                };
+            case IDialect.mariadb:
+            case IDialect.mssql:
+            case IDialect.mysql:
+            case IDialect.postgres:
+                return {
+                    host: formSettings[HOST],
+                    database: formSettings[DATABASE],
+                    port: formSettings[PORT],
+                    username: formSettings[USER],
+                    password: formSettings[PASSWORD],
+                    dialect: this.dialect,
+                };
+            case IDialect.oracledb:
+                return {
+                    user: formSettings[USER],
+                    password: formSettings[PASSWORD],
+                    connectString: `${formSettings[HOST]}:${formSettings[PORT]}/${formSettings[DATABASE]}`,
+                };
+            default:
+                throw new Error(`Dialect [${this.dialect}] is not compatible!`);
+        }
+    }
+
 }
