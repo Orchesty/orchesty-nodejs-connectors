@@ -1,27 +1,27 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "Name": "Product",
-    "Active": true,
-    "FullyQualifiedName": "Product",
-    "Taxable": false,
-    "UnitPrice": 0,
-    "Type": "Service",
-    "IncomeAccountRef": {
-      "value": "1",
-      "name": "Services"
+    "headers": {
+        "user": "TestUser"
     },
-    "PurchaseCost": 0,
-    "TrackQtyOnHand": false,
-    "domain": "QBO",
-    "sparse": false,
-    "Id": "20",
-    "SyncToken": "0",
-    "MetaData": {
-      "CreateTime": "2022-08-12T01:16:32-07:00",
-      "LastUpdatedTime": "2022-08-12T01:16:32-07:00"
+    "data": {
+        "Name": "Product",
+        "Active": true,
+        "FullyQualifiedName": "Product",
+        "Taxable": false,
+        "UnitPrice": 0,
+        "Type": "Service",
+        "IncomeAccountRef": {
+            "value": "1",
+            "name": "Services"
+        },
+        "PurchaseCost": 0,
+        "TrackQtyOnHand": false,
+        "domain": "QBO",
+        "sparse": false,
+        "Id": "20",
+        "SyncToken": "0",
+        "MetaData": {
+            "CreateTime": "2022-08-12T01:16:32-07:00",
+            "LastUpdatedTime": "2022-08-12T01:16:32-07:00"
+        }
     }
-  }
 }

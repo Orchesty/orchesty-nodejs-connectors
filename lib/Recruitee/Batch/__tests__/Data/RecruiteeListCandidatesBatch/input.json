@@ -1,8 +1,8 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "companyId": "83653"
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "companyId": "83653"
+    }
 }
