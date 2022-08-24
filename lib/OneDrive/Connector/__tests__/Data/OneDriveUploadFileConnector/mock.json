@@ -1,0 +1,10 @@
+{
+  "http": "PUT https://graph.microsoft.com/v1.0/me/drive/items/id:/name:/content",
+  "code": 200,
+  "body": {
+    "id": "0123456789abc",
+    "name": "FileB.txt",
+    "size": 35,
+    "file": { }
+  }
+}

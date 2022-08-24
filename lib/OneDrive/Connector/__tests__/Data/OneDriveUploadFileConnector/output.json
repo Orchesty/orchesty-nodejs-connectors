@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": "0123456789abc",
+        "name": "FileB.txt",
+        "size": 35,
+        "file": { }
+    }
+}
