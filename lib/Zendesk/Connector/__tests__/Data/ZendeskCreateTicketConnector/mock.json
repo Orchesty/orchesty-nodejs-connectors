@@ -1,194 +1,194 @@
 {
-  "http": "POST https://hbtest8393.zendesk.com/api/v2/tickets.json",
-  "code": 201,
-  "body": {
-    "ticket": {
-      "audit": {
-        "author_id": 6279089898141,
-        "created_at": "2022-08-16T11:14:59Z",
-        "events": [
-          {
-            "attachments": [],
-            "audit_id": 6340579809949,
-            "author_id": 6279089898141,
-            "body": "The smoke is very colorful.",
-            "html_body": "<div class=\"zd-comment\" dir=\"auto\"><p dir=\"auto\">The smoke is very colorful.</p></div>",
-            "id": 6340579810077,
-            "plain_body": "The smoke is very colorful.",
-            "public": true,
-            "type": "Comment"
-          },
-          {
-            "field_name": "priority",
-            "id": 6340579810205,
-            "type": "Create",
-            "value": "urgent"
-          },
-          {
-            "field_name": "subject",
-            "id": 6340579810333,
-            "type": "Create",
-            "value": "My printer is on fire!"
-          },
-          {
-            "field_name": "requester_id",
-            "id": 6340579810461,
-            "type": "Create",
-            "value": "6279089898141"
-          },
-          {
-            "field_name": "type",
-            "id": 6340579810589,
-            "type": "Create",
-            "value": null
-          },
-          {
-            "field_name": "status",
-            "id": 6340579810717,
-            "type": "Create",
-            "value": "open"
-          },
-          {
-            "field_name": "assignee_id",
-            "id": 6340579810845,
-            "type": "Create",
-            "value": "6279089898141"
-          },
-          {
-            "field_name": "group_id",
-            "id": 6340579810973,
-            "type": "Create",
-            "value": "6279167766941"
-          },
-          {
-            "field_name": "organization_id",
-            "id": 6340579811101,
-            "type": "Create",
-            "value": "6279167768093"
-          },
-          {
-            "field_name": "brand_id",
-            "id": 6340579811229,
-            "type": "Create",
-            "value": "6279120605853"
-          },
-          {
-            "field_name": "ticket_form_id",
-            "id": 6340579811357,
-            "type": "Create",
-            "value": "6279120591901"
-          },
-          {
-            "body": "A ticket (#{{ticket.id}}) by {{ticket.requester.name}} has been received. It is unassigned.\n\n{{ticket.latest_comment_html}}",
-            "id": 6340579811485,
-            "recipients": [
-              6279089898141
-            ],
-            "subject": "[{{ticket.account}}] {{ticket.title}}",
-            "type": "Notification",
-            "via": {
-              "channel": "rule",
-              "source": {
-                "from": {
-                  "deleted": false,
-                  "id": 6279167804573,
-                  "title": "Notify all agents of received request"
+    "http": "POST https://hbtest8393.zendesk.com/api/v2/tickets.json",
+    "code": 201,
+    "body": {
+        "ticket": {
+            "audit": {
+                "author_id": 6279089898141,
+                "created_at": "2022-08-16T11:14:59Z",
+                "events": [
+                    {
+                        "attachments": [],
+                        "audit_id": 6340579809949,
+                        "author_id": 6279089898141,
+                        "body": "The smoke is very colorful.",
+                        "html_body": "<div class=\"zd-comment\" dir=\"auto\"><p dir=\"auto\">The smoke is very colorful.</p></div>",
+                        "id": 6340579810077,
+                        "plain_body": "The smoke is very colorful.",
+                        "public": true,
+                        "type": "Comment"
+                    },
+                    {
+                        "field_name": "priority",
+                        "id": 6340579810205,
+                        "type": "Create",
+                        "value": "urgent"
+                    },
+                    {
+                        "field_name": "subject",
+                        "id": 6340579810333,
+                        "type": "Create",
+                        "value": "My printer is on fire!"
+                    },
+                    {
+                        "field_name": "requester_id",
+                        "id": 6340579810461,
+                        "type": "Create",
+                        "value": "6279089898141"
+                    },
+                    {
+                        "field_name": "type",
+                        "id": 6340579810589,
+                        "type": "Create",
+                        "value": null
+                    },
+                    {
+                        "field_name": "status",
+                        "id": 6340579810717,
+                        "type": "Create",
+                        "value": "open"
+                    },
+                    {
+                        "field_name": "assignee_id",
+                        "id": 6340579810845,
+                        "type": "Create",
+                        "value": "6279089898141"
+                    },
+                    {
+                        "field_name": "group_id",
+                        "id": 6340579810973,
+                        "type": "Create",
+                        "value": "6279167766941"
+                    },
+                    {
+                        "field_name": "organization_id",
+                        "id": 6340579811101,
+                        "type": "Create",
+                        "value": "6279167768093"
+                    },
+                    {
+                        "field_name": "brand_id",
+                        "id": 6340579811229,
+                        "type": "Create",
+                        "value": "6279120605853"
+                    },
+                    {
+                        "field_name": "ticket_form_id",
+                        "id": 6340579811357,
+                        "type": "Create",
+                        "value": "6279120591901"
+                    },
+                    {
+                        "body": "A ticket (#{{ticket.id}}) by {{ticket.requester.name}} has been received. It is unassigned.\n\n{{ticket.latest_comment_html}}",
+                        "id": 6340579811485,
+                        "recipients": [
+                            6279089898141
+                        ],
+                        "subject": "[{{ticket.account}}] {{ticket.title}}",
+                        "type": "Notification",
+                        "via": {
+                            "channel": "rule",
+                            "source": {
+                                "from": {
+                                    "deleted": false,
+                                    "id": 6279167804573,
+                                    "title": "Notify all agents of received request"
+                                },
+                                "rel": "trigger"
+                            }
+                        }
+                    },
+                    {
+                        "body": "This ticket was created on your behalf.\n\nTo add additional comments, reply to this email.\n\n{{ticket.latest_public_comment_html}}",
+                        "id": 6340579811613,
+                        "recipients": [
+                            6279089898141
+                        ],
+                        "subject": "{{ticket.title}}",
+                        "type": "Notification",
+                        "via": {
+                            "channel": "rule",
+                            "source": {
+                                "from": {
+                                    "deleted": false,
+                                    "id": 6279167793181,
+                                    "title": "Notify requester of new proactive ticket"
+                                },
+                                "rel": "trigger"
+                            }
+                        }
+                    }
+                ],
+                "id": 6340579809949,
+                "metadata": {
+                    "custom": {},
+                    "system": {
+                        "client": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
+                        "ip_address": "188.122.212.69",
+                        "latitude": 50.1982,
+                        "location": "Hradec KrÃ¡lovÃ©, 52, Czechia",
+                        "longitude": 15.8825
+                    }
                 },
-                "rel": "trigger"
-              }
+                "ticket_id": 2,
+                "via": {
+                    "channel": "api",
+                    "source": {
+                        "from": {},
+                        "rel": null,
+                        "to": {
+                            "address": "test.hanaboso@gmail.com",
+                            "name": "Test Test"
+                        }
+                    }
+                }
+            },
+            "ticket": {
+                "allow_attachments": true,
+                "allow_channelback": false,
+                "assignee_id": 6279089898141,
+                "brand_id": 6279120605853,
+                "collaborator_ids": [],
+                "created_at": "2022-08-16T11:14:59Z",
+                "custom_fields": [],
+                "description": "The smoke is very colorful.",
+                "due_at": null,
+                "email_cc_ids": [],
+                "external_id": null,
+                "fields": [],
+                "follower_ids": [],
+                "followup_ids": [],
+                "forum_topic_id": null,
+                "group_id": 6279167766941,
+                "has_incidents": false,
+                "id": 2,
+                "is_public": true,
+                "organization_id": 6279167768093,
+                "priority": "urgent",
+                "problem_id": null,
+                "raw_subject": "My printer is on fire!",
+                "recipient": null,
+                "requester_id": 6279089898141,
+                "satisfaction_rating": null,
+                "sharing_agreement_ids": [],
+                "status": "open",
+                "subject": "My printer is on fire!",
+                "submitter_id": 6279089898141,
+                "tags": [],
+                "ticket_form_id": 6279120591901,
+                "type": null,
+                "updated_at": "2022-08-16T11:14:59Z",
+                "url": "https://hbtest8393.zendesk.com/api/v2/tickets/2.json",
+                "via": {
+                    "channel": "api",
+                    "source": {
+                        "from": {},
+                        "rel": null,
+                        "to": {}
+                    }
+                }
             }
-          },
-          {
-            "body": "This ticket was created on your behalf.\n\nTo add additional comments, reply to this email.\n\n{{ticket.latest_public_comment_html}}",
-            "id": 6340579811613,
-            "recipients": [
-              6279089898141
-            ],
-            "subject": "{{ticket.title}}",
-            "type": "Notification",
-            "via": {
-              "channel": "rule",
-              "source": {
-                "from": {
-                  "deleted": false,
-                  "id": 6279167793181,
-                  "title": "Notify requester of new proactive ticket"
-                },
-                "rel": "trigger"
-              }
-            }
-          }
-        ],
-        "id": 6340579809949,
-        "metadata": {
-          "custom": {},
-          "system": {
-            "client": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
-            "ip_address": "188.122.212.69",
-            "latitude": 50.1982,
-            "location": "Hradec KrÃ¡lovÃ©, 52, Czechia",
-            "longitude": 15.8825
-          }
-        },
-        "ticket_id": 2,
-        "via": {
-          "channel": "api",
-          "source": {
-            "from": {},
-            "rel": null,
-            "to": {
-              "address": "test.hanaboso@gmail.com",
-              "name": "Test Test"
-            }
-          }
         }
-      },
-      "ticket": {
-        "allow_attachments": true,
-        "allow_channelback": false,
-        "assignee_id": 6279089898141,
-        "brand_id": 6279120605853,
-        "collaborator_ids": [],
-        "created_at": "2022-08-16T11:14:59Z",
-        "custom_fields": [],
-        "description": "The smoke is very colorful.",
-        "due_at": null,
-        "email_cc_ids": [],
-        "external_id": null,
-        "fields": [],
-        "follower_ids": [],
-        "followup_ids": [],
-        "forum_topic_id": null,
-        "group_id": 6279167766941,
-        "has_incidents": false,
-        "id": 2,
-        "is_public": true,
-        "organization_id": 6279167768093,
-        "priority": "urgent",
-        "problem_id": null,
-        "raw_subject": "My printer is on fire!",
-        "recipient": null,
-        "requester_id": 6279089898141,
-        "satisfaction_rating": null,
-        "sharing_agreement_ids": [],
-        "status": "open",
-        "subject": "My printer is on fire!",
-        "submitter_id": 6279089898141,
-        "tags": [],
-        "ticket_form_id": 6279120591901,
-        "type": null,
-        "updated_at": "2022-08-16T11:14:59Z",
-        "url": "https://hbtest8393.zendesk.com/api/v2/tickets/2.json",
-        "via": {
-          "channel": "api",
-          "source": {
-            "from": {},
-            "rel": null,
-            "to": {}
-          }
-        }
-      }
     }
-  }
 }
 

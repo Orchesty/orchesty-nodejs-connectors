@@ -1,17 +1,16 @@
 {
-  "http": "GET https://hb-6.workable.com/spi/v3/accounts",
-  "code": 200,
-  "body":{
-    "accounts": [
-      {
-        "id":"8c061",
-        "name":"HB",
-        "subdomain":"hb-6",
-        "description":null,
-        "summary":null,
-        "website_url":"http://hb.cz"
-      }
-    ]
-  }
-
+    "http": "GET https://hb-6.workable.com/spi/v3/accounts",
+    "code": 200,
+    "body": {
+        "accounts": [
+            {
+                "id": "8c061",
+                "name": "HB",
+                "subdomain": "hb-6",
+                "description": null,
+                "summary": null,
+                "website_url": "http://hb.cz"
+            }
+        ]
+    }
 }
