@@ -1,44 +1,44 @@
 {
-  "http": "POST https://portal.bulkgate.com/api/1.0/simple/promotional",
-  "code": 200,
-  "body": {
-    "data": {
-      "response": [
-        {
-          "channel": "sms",
-          "credit": 0,
-          "number": "420703654125",
-          "part_id": [
-            "idjiqyty-0"
-          ],
-          "price": 0,
-          "sms_id": "idjiqyty-0",
-          "status": "accepted"
-        },
-        {
-          "channel": "sms",
-          "credit": 0,
-          "number": "420721482610",
-          "part_id": [
-            "idjiqyty-1"
-          ],
-          "price": 0,
-          "sms_id": "idjiqyty-1",
-          "status": "accepted"
+    "http": "POST https://portal.bulkgate.com/api/1.0/simple/promotional",
+    "code": 200,
+    "body": {
+        "data": {
+            "response": [
+                {
+                    "channel": "sms",
+                    "credit": 0,
+                    "number": "420703654125",
+                    "part_id": [
+                        "idjiqyty-0"
+                    ],
+                    "price": 0,
+                    "sms_id": "idjiqyty-0",
+                    "status": "accepted"
+                },
+                {
+                    "channel": "sms",
+                    "credit": 0,
+                    "number": "420721482610",
+                    "part_id": [
+                        "idjiqyty-1"
+                    ],
+                    "price": 0,
+                    "sms_id": "idjiqyty-1",
+                    "status": "accepted"
+                }
+            ],
+            "total": {
+                "price": 0,
+                "status": {
+                    "accepted": 2,
+                    "blacklisted": 0,
+                    "error": 0,
+                    "invalid_number": 0,
+                    "invalid_sender": 0,
+                    "scheduled": 0,
+                    "sent": 0
+                }
+            }
         }
-      ],
-      "total": {
-        "price": 0,
-        "status": {
-          "accepted": 2,
-          "blacklisted": 0,
-          "error": 0,
-          "invalid_number": 0,
-          "invalid_sender": 0,
-          "scheduled": 0,
-          "sent": 0
-        }
-      }
     }
-  }
 }

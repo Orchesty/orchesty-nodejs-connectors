@@ -1,356 +1,356 @@
 {
-  "http": "GET https://app.authentica.cz/api/applinth/delivery-methods",
-  "code": 200,
-  "body": {
-    "data": [
-      {
-        "id": 1,
-        "title": "Česká pošta - Balík do ruky"
-      },
-      {
-        "id": 2,
-        "title": "Česká pošta - Balík na poštu"
-      },
-      {
-        "id": 3,
-        "title": "Česká pošta - Balík do balíkovny"
-      },
-      {
-        "id": 4,
-        "title": "Česká pošta - Doporučená zásilka Ekonomická"
-      },
-      {
-        "id": 5,
-        "title": "Česká pošta - RR Doporučená zásilka do zahraničí Prioritní"
-      },
-      {
-        "id": 6,
-        "title": "Česká pošta - EMS Expresní přeprava do zahraničí"
-      },
-      {
-        "id": 7,
-        "title": "Česká pošta - Obchodní balík do zahraničí"
-      },
-      {
-        "id": 8,
-        "title": "DPD - DPD Classic"
-      },
-      {
-        "id": 9,
-        "title": "DPD - DPD Private"
-      },
-      {
-        "id": 10,
-        "title": "GLS - Business Parcel"
-      },
-      {
-        "id": 11,
-        "title": "FedEx - International Priority"
-      },
-      {
-        "id": 12,
-        "title": "FedEx - International Economy"
-      },
-      {
-        "id": 13,
-        "title": "Zásilkovna - Výdejní místa Česká republika"
-      },
-      {
-        "id": 14,
-        "title": "Zásilkovna - Výdejní místa Slovenská republika"
-      },
-      {
-        "id": 15,
-        "title": "Zásilkovna - Výdejní místa Maďarsko"
-      },
-      {
-        "id": 16,
-        "title": "Zásilkovna - Výdejní místa Polsko"
-      },
-      {
-        "id": 17,
-        "title": "Zásilkovna - Výdejní místa Rumunsko"
-      },
-      {
-        "id": 18,
-        "title": "Zásilkovna - AT DPD HD"
-      },
-      {
-        "id": 19,
-        "title": "Zásilkovna - AT Rakouská pošta HD"
-      },
-      {
-        "id": 20,
-        "title": "Zásilkovna - BE Nizozemská pošta HD"
-      },
-      {
-        "id": 21,
-        "title": "Zásilkovna - BE Belgická pošta HD"
-      },
-      {
-        "id": 22,
-        "title": "Zásilkovna - BE Belgická pošta PP"
-      },
-      {
-        "id": 23,
-        "title": "Zásilkovna - BG Speedy HD"
-      },
-      {
-        "id": 24,
-        "title": "Zásilkovna - BG Speedy PP"
-      },
-      {
-        "id": 25,
-        "title": "Zásilkovna - CH LI Švýcarská pošta HD"
-      },
-      {
-        "id": 26,
-        "title": "Zásilkovna - CH LI Švýcarská pošta prioritní HD"
-      },
-      {
-        "id": 27,
-        "title": "Zásilkovna - CZ Zásilkovna domů HD"
-      },
-      {
-        "id": 28,
-        "title": "Zásilkovna - CZ Zásilkovna večerní doručení Ostrava HD"
-      },
-      {
-        "id": 29,
-        "title": "Zásilkovna - CZ Zásilkovna večerní doručení Brno HD"
-      },
-      {
-        "id": 30,
-        "title": "Zásilkovna - CZ Zásilkovna večerní doručení Praha HD"
-      },
-      {
-        "id": 31,
-        "title": "Zásilkovna - DE Home Delivery HD"
-      },
-      {
-        "id": 32,
-        "title": "Zásilkovna - DE Hermes HD"
-      },
-      {
-        "id": 33,
-        "title": "Zásilkovna - DE Hermes PP"
-      },
-      {
-        "id": 34,
-        "title": "Zásilkovna - DK Post Nord HD"
-      },
-      {
-        "id": 35,
-        "title": "Zásilkovna - DK Post Nord PP"
-      },
-      {
-        "id": 36,
-        "title": "Zásilkovna - DK DAO HD"
-      },
-      {
-        "id": 37,
-        "title": "Zásilkovna - DK DAO PP"
-      },
-      {
-        "id": 38,
-        "title": "Zásilkovna - EE Omniva HD"
-      },
-      {
-        "id": 39,
-        "title": "Zásilkovna - EE Omniva PP"
-      },
-      {
-        "id": 40,
-        "title": "Zásilkovna - EE Omniva Box"
-      },
-      {
-        "id": 41,
-        "title": "Zásilkovna - ES Correos HD"
-      },
-      {
-        "id": 42,
-        "title": "Zásilkovna - ES MRW HD"
-      },
-      {
-        "id": 43,
-        "title": "Zásilkovna - ES MRW PP"
-      },
-      {
-        "id": 44,
-        "title": "Zásilkovna - FI Post Nord PP"
-      },
-      {
-        "id": 45,
-        "title": "Zásilkovna - FI Post Nord HD"
-      },
-      {
-        "id": 46,
-        "title": "Zásilkovna - FR Colis Privé HD"
-      },
-      {
-        "id": 47,
-        "title": "Zásilkovna - FR Colissimo PP"
-      },
-      {
-        "id": 48,
-        "title": "Zásilkovna - FR Colissimo HD"
-      },
-      {
-        "id": 49,
-        "title": "Zásilkovna - FR Mondial Relay PP"
-      },
-      {
-        "id": 50,
-        "title": "Zásilkovna - GB Royal Mail 24 HD"
-      },
-      {
-        "id": 51,
-        "title": "Zásilkovna - GB Royal Mail 48 HD"
-      },
-      {
-        "id": 52,
-        "title": "Zásilkovna - GR Taxydromiki HD"
-      },
-      {
-        "id": 53,
-        "title": "Zásilkovna - HR Overseas HD"
-      },
-      {
-        "id": 54,
-        "title": "Zásilkovna - HR Overseas PP"
-      },
-      {
-        "id": 55,
-        "title": "Zásilkovna - HR Chorvatská pošta HD"
-      },
-      {
-        "id": 56,
-        "title": "Zásilkovna - HR Chorvatská pošta PP"
-      },
-      {
-        "id": 57,
-        "title": "Zásilkovna - HR DPD HD"
-      },
-      {
-        "id": 58,
-        "title": "Zásilkovna - HU Doručení na adresu HD"
-      },
-      {
-        "id": 59,
-        "title": "Zásilkovna - HU DPD HD"
-      },
-      {
-        "id": 60,
-        "title": "Zásilkovna - IE Fastway HD"
-      },
-      {
-        "id": 61,
-        "title": "Zásilkovna - IT GLS HD"
-      },
-      {
-        "id": 62,
-        "title": "Zásilkovna - IT Bartolini HD"
-      },
-      {
-        "id": 63,
-        "title": "Zásilkovna - IT Bartolini PP"
-      },
-      {
-        "id": 64,
-        "title": "Zásilkovna - LT Omniva HD"
-      },
-      {
-        "id": 65,
-        "title": "Zásilkovna - LT Omniva Box"
-      },
-      {
-        "id": 66,
-        "title": "Zásilkovna - LU DPD HD"
-      },
-      {
-        "id": 67,
-        "title": "Zásilkovna - LU Lucemburská pošta HD"
-      },
-      {
-        "id": 68,
-        "title": "Zásilkovna - LV Omniva HD"
-      },
-      {
-        "id": 69,
-        "title": "Zásilkovna - LV Omniva Box"
-      },
-      {
-        "id": 70,
-        "title": "Zásilkovna - NL Nizozemská pošta HD"
-      },
-      {
-        "id": 71,
-        "title": "Zásilkovna - NL DHL HD"
-      },
-      {
-        "id": 72,
-        "title": "Zásilkovna - NL DHL PP"
-      },
-      {
-        "id": 73,
-        "title": "Zásilkovna - PL InPost Paczkomaty Box"
-      },
-      {
-        "id": 74,
-        "title": "Zásilkovna - PL Doručení na adresu HD"
-      },
-      {
-        "id": 75,
-        "title": "Zásilkovna - PT MRW HD"
-      },
-      {
-        "id": 76,
-        "title": "Zásilkovna - PT MRW PP"
-      },
-      {
-        "id": 77,
-        "title": "Zásilkovna - RO Doručení na adresu HD"
-      },
-      {
-        "id": 78,
-        "title": "Zásilkovna - RO Cargus HD"
-      },
-      {
-        "id": 79,
-        "title": "Zásilkovna - RO Sameday HD"
-      },
-      {
-        "id": 80,
-        "title": "Zásilkovna - RO Sameday Box"
-      },
-      {
-        "id": 81,
-        "title": "Zásilkovna - RO FAN Courier HD"
-      },
-      {
-        "id": 82,
-        "title": "Zásilkovna - SE Post Nord PP"
-      },
-      {
-        "id": 83,
-        "title": "Zásilkovna - SE Post Nord HD"
-      },
-      {
-        "id": 84,
-        "title": "Zásilkovna - SI DPD HD"
-      },
-      {
-        "id": 85,
-        "title": "Zásilkovna - SI DPD PP"
-      },
-      {
-        "id": 86,
-        "title": "Zásilkovna - SK Packeta Home HD"
-      },
-      {
-        "id": 87,
-        "title": "Zásilkovna - Packeta večerní doručení Bratislava HD"
-      }
-    ]
-  }
+    "http": "GET https://app.authentica.cz/api/applinth/delivery-methods",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "id": 1,
+                "title": "Česká pošta - Balík do ruky"
+            },
+            {
+                "id": 2,
+                "title": "Česká pošta - Balík na poštu"
+            },
+            {
+                "id": 3,
+                "title": "Česká pošta - Balík do balíkovny"
+            },
+            {
+                "id": 4,
+                "title": "Česká pošta - Doporučená zásilka Ekonomická"
+            },
+            {
+                "id": 5,
+                "title": "Česká pošta - RR Doporučená zásilka do zahraničí Prioritní"
+            },
+            {
+                "id": 6,
+                "title": "Česká pošta - EMS Expresní přeprava do zahraničí"
+            },
+            {
+                "id": 7,
+                "title": "Česká pošta - Obchodní balík do zahraničí"
+            },
+            {
+                "id": 8,
+                "title": "DPD - DPD Classic"
+            },
+            {
+                "id": 9,
+                "title": "DPD - DPD Private"
+            },
+            {
+                "id": 10,
+                "title": "GLS - Business Parcel"
+            },
+            {
+                "id": 11,
+                "title": "FedEx - International Priority"
+            },
+            {
+                "id": 12,
+                "title": "FedEx - International Economy"
+            },
+            {
+                "id": 13,
+                "title": "Zásilkovna - Výdejní místa Česká republika"
+            },
+            {
+                "id": 14,
+                "title": "Zásilkovna - Výdejní místa Slovenská republika"
+            },
+            {
+                "id": 15,
+                "title": "Zásilkovna - Výdejní místa Maďarsko"
+            },
+            {
+                "id": 16,
+                "title": "Zásilkovna - Výdejní místa Polsko"
+            },
+            {
+                "id": 17,
+                "title": "Zásilkovna - Výdejní místa Rumunsko"
+            },
+            {
+                "id": 18,
+                "title": "Zásilkovna - AT DPD HD"
+            },
+            {
+                "id": 19,
+                "title": "Zásilkovna - AT Rakouská pošta HD"
+            },
+            {
+                "id": 20,
+                "title": "Zásilkovna - BE Nizozemská pošta HD"
+            },
+            {
+                "id": 21,
+                "title": "Zásilkovna - BE Belgická pošta HD"
+            },
+            {
+                "id": 22,
+                "title": "Zásilkovna - BE Belgická pošta PP"
+            },
+            {
+                "id": 23,
+                "title": "Zásilkovna - BG Speedy HD"
+            },
+            {
+                "id": 24,
+                "title": "Zásilkovna - BG Speedy PP"
+            },
+            {
+                "id": 25,
+                "title": "Zásilkovna - CH LI Švýcarská pošta HD"
+            },
+            {
+                "id": 26,
+                "title": "Zásilkovna - CH LI Švýcarská pošta prioritní HD"
+            },
+            {
+                "id": 27,
+                "title": "Zásilkovna - CZ Zásilkovna domů HD"
+            },
+            {
+                "id": 28,
+                "title": "Zásilkovna - CZ Zásilkovna večerní doručení Ostrava HD"
+            },
+            {
+                "id": 29,
+                "title": "Zásilkovna - CZ Zásilkovna večerní doručení Brno HD"
+            },
+            {
+                "id": 30,
+                "title": "Zásilkovna - CZ Zásilkovna večerní doručení Praha HD"
+            },
+            {
+                "id": 31,
+                "title": "Zásilkovna - DE Home Delivery HD"
+            },
+            {
+                "id": 32,
+                "title": "Zásilkovna - DE Hermes HD"
+            },
+            {
+                "id": 33,
+                "title": "Zásilkovna - DE Hermes PP"
+            },
+            {
+                "id": 34,
+                "title": "Zásilkovna - DK Post Nord HD"
+            },
+            {
+                "id": 35,
+                "title": "Zásilkovna - DK Post Nord PP"
+            },
+            {
+                "id": 36,
+                "title": "Zásilkovna - DK DAO HD"
+            },
+            {
+                "id": 37,
+                "title": "Zásilkovna - DK DAO PP"
+            },
+            {
+                "id": 38,
+                "title": "Zásilkovna - EE Omniva HD"
+            },
+            {
+                "id": 39,
+                "title": "Zásilkovna - EE Omniva PP"
+            },
+            {
+                "id": 40,
+                "title": "Zásilkovna - EE Omniva Box"
+            },
+            {
+                "id": 41,
+                "title": "Zásilkovna - ES Correos HD"
+            },
+            {
+                "id": 42,
+                "title": "Zásilkovna - ES MRW HD"
+            },
+            {
+                "id": 43,
+                "title": "Zásilkovna - ES MRW PP"
+            },
+            {
+                "id": 44,
+                "title": "Zásilkovna - FI Post Nord PP"
+            },
+            {
+                "id": 45,
+                "title": "Zásilkovna - FI Post Nord HD"
+            },
+            {
+                "id": 46,
+                "title": "Zásilkovna - FR Colis Privé HD"
+            },
+            {
+                "id": 47,
+                "title": "Zásilkovna - FR Colissimo PP"
+            },
+            {
+                "id": 48,
+                "title": "Zásilkovna - FR Colissimo HD"
+            },
+            {
+                "id": 49,
+                "title": "Zásilkovna - FR Mondial Relay PP"
+            },
+            {
+                "id": 50,
+                "title": "Zásilkovna - GB Royal Mail 24 HD"
+            },
+            {
+                "id": 51,
+                "title": "Zásilkovna - GB Royal Mail 48 HD"
+            },
+            {
+                "id": 52,
+                "title": "Zásilkovna - GR Taxydromiki HD"
+            },
+            {
+                "id": 53,
+                "title": "Zásilkovna - HR Overseas HD"
+            },
+            {
+                "id": 54,
+                "title": "Zásilkovna - HR Overseas PP"
+            },
+            {
+                "id": 55,
+                "title": "Zásilkovna - HR Chorvatská pošta HD"
+            },
+            {
+                "id": 56,
+                "title": "Zásilkovna - HR Chorvatská pošta PP"
+            },
+            {
+                "id": 57,
+                "title": "Zásilkovna - HR DPD HD"
+            },
+            {
+                "id": 58,
+                "title": "Zásilkovna - HU Doručení na adresu HD"
+            },
+            {
+                "id": 59,
+                "title": "Zásilkovna - HU DPD HD"
+            },
+            {
+                "id": 60,
+                "title": "Zásilkovna - IE Fastway HD"
+            },
+            {
+                "id": 61,
+                "title": "Zásilkovna - IT GLS HD"
+            },
+            {
+                "id": 62,
+                "title": "Zásilkovna - IT Bartolini HD"
+            },
+            {
+                "id": 63,
+                "title": "Zásilkovna - IT Bartolini PP"
+            },
+            {
+                "id": 64,
+                "title": "Zásilkovna - LT Omniva HD"
+            },
+            {
+                "id": 65,
+                "title": "Zásilkovna - LT Omniva Box"
+            },
+            {
+                "id": 66,
+                "title": "Zásilkovna - LU DPD HD"
+            },
+            {
+                "id": 67,
+                "title": "Zásilkovna - LU Lucemburská pošta HD"
+            },
+            {
+                "id": 68,
+                "title": "Zásilkovna - LV Omniva HD"
+            },
+            {
+                "id": 69,
+                "title": "Zásilkovna - LV Omniva Box"
+            },
+            {
+                "id": 70,
+                "title": "Zásilkovna - NL Nizozemská pošta HD"
+            },
+            {
+                "id": 71,
+                "title": "Zásilkovna - NL DHL HD"
+            },
+            {
+                "id": 72,
+                "title": "Zásilkovna - NL DHL PP"
+            },
+            {
+                "id": 73,
+                "title": "Zásilkovna - PL InPost Paczkomaty Box"
+            },
+            {
+                "id": 74,
+                "title": "Zásilkovna - PL Doručení na adresu HD"
+            },
+            {
+                "id": 75,
+                "title": "Zásilkovna - PT MRW HD"
+            },
+            {
+                "id": 76,
+                "title": "Zásilkovna - PT MRW PP"
+            },
+            {
+                "id": 77,
+                "title": "Zásilkovna - RO Doručení na adresu HD"
+            },
+            {
+                "id": 78,
+                "title": "Zásilkovna - RO Cargus HD"
+            },
+            {
+                "id": 79,
+                "title": "Zásilkovna - RO Sameday HD"
+            },
+            {
+                "id": 80,
+                "title": "Zásilkovna - RO Sameday Box"
+            },
+            {
+                "id": 81,
+                "title": "Zásilkovna - RO FAN Courier HD"
+            },
+            {
+                "id": 82,
+                "title": "Zásilkovna - SE Post Nord PP"
+            },
+            {
+                "id": 83,
+                "title": "Zásilkovna - SE Post Nord HD"
+            },
+            {
+                "id": 84,
+                "title": "Zásilkovna - SI DPD HD"
+            },
+            {
+                "id": 85,
+                "title": "Zásilkovna - SI DPD PP"
+            },
+            {
+                "id": 86,
+                "title": "Zásilkovna - SK Packeta Home HD"
+            },
+            {
+                "id": 87,
+                "title": "Zásilkovna - Packeta večerní doručení Bratislava HD"
+            }
+        ]
+    }
 }

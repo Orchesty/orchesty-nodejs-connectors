@@ -1,28 +1,29 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { STORE_HASH } from '../BigcommerceApplication';
 
 export const NAME = 'bigcommerce-create-product-connector';
 
 export default class BigcommerceCreateProductConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const body = dto.jsonData as IInput;
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const storeHash = appInstall.getSettings()[AUTHORIZATION_FORM][STORE_HASH];
-    const url = `${storeHash}/v3/catalog/products`;
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+    public getName(): string {
+        return NAME;
+    }
 
-    const resp = await this._sender.send(req, [200]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const body = dto.getJsonData();
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const storeHash = appInstall.getSettings()[AUTHORIZATION_FORM][STORE_HASH];
+        const url = `${storeHash}/v3/catalog/products`;
+        const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+        const resp = await this.getSender().send<IOutput>(req, [200]);
 
-    return dto;
-  }
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -127,7 +128,7 @@ export interface IInput {
         id: number;
         product_id: number;
         length: string;
-    }[]
+    }[];
 }
 
 export interface IOutput {
@@ -281,7 +282,8 @@ export interface ProductFull {
             sort_order: number;
             value_data: unknown;
             id: number;
-        };}[];
+        };
+    }[];
     modifiers: {
         type: string;
         required: boolean;

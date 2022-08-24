@@ -1,11 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": [
-    {
-      "id": "string",
-      "title": "string"
-    }
-  ]
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "id": "string",
+            "title": "string"
+        }
+    ]
 }

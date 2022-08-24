@@ -1,17 +1,17 @@
 {
-  "http": "POST https://portal.bulkgate.com/api/1.0/simple/transactional",
-  "code": 200,
-  "body": {
-    "data": {
-      "channel": "sms",
-      "credit": 0,
-      "number": "420703654125",
-      "part_id": [
-        "sms-61oek9y6qo30"
-      ],
-      "price": 0,
-      "sms_id": "sms-61oek9y6qo30",
-      "status": "accepted"
+    "http": "POST https://portal.bulkgate.com/api/1.0/simple/transactional",
+    "code": 200,
+    "body": {
+        "data": {
+            "channel": "sms",
+            "credit": 0,
+            "number": "420703654125",
+            "part_id": [
+                "sms-61oek9y6qo30"
+            ],
+            "price": 0,
+            "sms_id": "sms-61oek9y6qo30",
+            "status": "accepted"
+        }
     }
-  }
 }

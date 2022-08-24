@@ -1,9 +1,9 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "number": "703654125;721482610",
-    "text": "Testovací SMS"
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "number": "703654125;721482610",
+        "text": "Testovací SMS"
+    }
 }
