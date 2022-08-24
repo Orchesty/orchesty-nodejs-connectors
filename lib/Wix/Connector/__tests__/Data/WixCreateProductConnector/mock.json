@@ -1,166 +1,180 @@
 {
-  "http": "POST https://www.wixapis.com/stores/v1/products",
-  "code": 200,
-  "body": {
-    "product": {
-      "id": "4224c24b-5a58-4d14-8793-623e812fa377",
-      "name": "T-shirt",
-      "slug": "t-shirt",
-      "visible": false,
-      "productType": "physical",
-      "description": "nice summer t-shirt",
-      "weightRange":   {
-        "minValue": 0,
-        "maxValue": 0.2
-      },
-      "stock":   {
-        "trackInventory": false,
-        "inStock": true,
-        "inventoryStatus": "IN_STOCK"
-      },
-      "price":   {
-        "currency": "USD",
-        "price": 10.5,
-        "discountedPrice": 9.5,
-        "formatted":     {
-          "price": "$10.50",
-          "discountedPrice": "$9.50"
+    "http": "POST https://www.wixapis.com/stores/v1/products",
+    "code": 200,
+    "body": {
+        "product": {
+            "id": "4224c24b-5a58-4d14-8793-623e812fa377",
+            "name": "T-shirt",
+            "slug": "t-shirt",
+            "visible": false,
+            "productType": "physical",
+            "description": "nice summer t-shirt",
+            "weightRange": {
+                "minValue": 0,
+                "maxValue": 0.2
+            },
+            "stock": {
+                "trackInventory": false,
+                "inStock": true,
+                "inventoryStatus": "IN_STOCK"
+            },
+            "price": {
+                "currency": "USD",
+                "price": 10.5,
+                "discountedPrice": 9.5,
+                "formatted": {
+                    "price": "$10.50",
+                    "discountedPrice": "$9.50"
+                }
+            },
+            "priceData": {
+                "currency": "USD",
+                "price": 10.5,
+                "discountedPrice": 9.5,
+                "formatted": {
+                    "price": "$10.50",
+                    "discountedPrice": "$9.50"
+                }
+            },
+            "convertedPriceData": {
+                "currency": "USD",
+                "price": 10.5,
+                "discountedPrice": 9.5,
+                "formatted": {
+                    "price": "$10.50",
+                    "discountedPrice": "$9.50"
+                }
+            },
+            "priceRange": {
+                "minValue": 10.5,
+                "maxValue": 10.5
+            },
+            "costRange": {
+                "minValue": 0,
+                "maxValue": 7
+            },
+            "additionalInfoSections": [],
+            "ribbons": [
+                {
+                    "text": "Sale"
+                }
+            ],
+            "media": {
+                "items": []
+            },
+            "customTextFields": [],
+            "manageVariants": true,
+            "productOptions": [
+                {
+                    "optionType": "drop_down",
+                    "name": "Size",
+                    "choices": [
+                        {
+                            "value": "S",
+                            "description": "S",
+                            "inStock": true,
+                            "visible": true
+                        },
+                        {
+                            "value": "L",
+                            "description": "L",
+                            "inStock": true,
+                            "visible": true
+                        }
+                    ]
+                }
+            ],
+            "productPageUrl": {
+                "base": "https://wixsite.com/examplestore",
+                "path": "/product-page/t-shirt"
+            },
+            "numericId": "1657626871550000",
+            "inventoryItemId": "bddb3db4-a5a7-b2eb-786c-9dc17ed05c88",
+            "discount": {
+                "type": "AMOUNT",
+                "value": 1
+            },
+            "collectionIds": [
+                "00000000-000000-000000-000000000001"
+            ],
+            "variants": [
+                {
+                    "id": "05519a6e-222b-413a-957c-0ef7a32779b5",
+                    "choices": {
+                        "Size": "S"
+                    },
+                    "variant": {
+                        "priceData": {
+                            "currency": "USD",
+                            "price": 10.5,
+                            "discountedPrice": 9.5,
+                            "formatted": {
+                                "price": "$10.50",
+                                "discountedPrice": "$9.50"
+                            }
+                        },
+                        "convertedPriceData": {
+                            "currency": "USD",
+                            "price": 10.5,
+                            "discountedPrice": 9.5,
+                            "formatted": {
+                                "price": "$10.50",
+                                "discountedPrice": "$9.50"
+                            }
+                        },
+                        "costAndProfitData": {
+                            "itemCost": 7,
+                            "formattedItemCost": "$7.00",
+                            "profit": 2.5,
+                            "formattedProfit": "$2.50",
+                            "profitMargin": 0.2632
+                        },
+                        "weight": 0.2,
+                        "sku": "123df",
+                        "visible": false
+                    }
+                },
+                {
+                    "id": "0318a3d8-f31c-4ba3-98c7-387571a2eac4",
+                    "choices": {
+                        "Size": "L"
+                    },
+                    "variant": {
+                        "priceData": {
+                            "currency": "USD",
+                            "price": 10.5,
+                            "discountedPrice": 9.5,
+                            "formatted": {
+                                "price": "$10.50",
+                                "discountedPrice": "$9.50"
+                            }
+                        },
+                        "convertedPriceData": {
+                            "currency": "USD",
+                            "price": 10.5,
+                            "discountedPrice": 9.5,
+                            "formatted": {
+                                "price": "$10.50",
+                                "discountedPrice": "$9.50"
+                            }
+                        },
+                        "costAndProfitData": {
+                            "itemCost": 7,
+                            "formattedItemCost": "$7.00",
+                            "profit": 2.5,
+                            "formattedProfit": "$2.50",
+                            "profitMargin": 0.2632
+                        },
+                        "weight": 0.2,
+                        "sku": "123df",
+                        "visible": false
+                    }
+                }
+            ],
+            "lastUpdated": "2022-07-12T11:54:31.550Z",
+            "createdDate": "2022-07-12T11:54:31.550Z",
+            "ribbon": "Sale",
+            "brand": "Nice"
         }
-      },
-      "priceData":   {
-        "currency": "USD",
-        "price": 10.5,
-        "discountedPrice": 9.5,
-        "formatted":     {
-          "price": "$10.50",
-          "discountedPrice": "$9.50"
-        }
-      },
-      "convertedPriceData":   {
-        "currency": "USD",
-        "price": 10.5,
-        "discountedPrice": 9.5,
-        "formatted":     {
-          "price": "$10.50",
-          "discountedPrice": "$9.50"
-        }
-      },
-      "priceRange":   {
-        "minValue": 10.5,
-        "maxValue": 10.5
-      },
-      "costRange":   {
-        "minValue": 0,
-        "maxValue": 7
-      },
-      "additionalInfoSections": [],
-      "ribbons": [{"text": "Sale"}],
-      "media": {"items": []},
-      "customTextFields": [],
-      "manageVariants": true,
-      "productOptions": [  {
-        "optionType": "drop_down",
-        "name": "Size",
-        "choices":     [
-          {
-            "value": "S",
-            "description": "S",
-            "inStock": true,
-            "visible": true
-          },
-          {
-            "value": "L",
-            "description": "L",
-            "inStock": true,
-            "visible": true
-          }
-        ]
-      }],
-      "productPageUrl":   {
-        "base": "https://wixsite.com/examplestore",
-        "path": "/product-page/t-shirt"
-      },
-      "numericId": "1657626871550000",
-      "inventoryItemId": "bddb3db4-a5a7-b2eb-786c-9dc17ed05c88",
-      "discount":   {
-        "type": "AMOUNT",
-        "value": 1
-      },
-      "collectionIds": ["00000000-000000-000000-000000000001"],
-      "variants":   [
-        {
-          "id": "05519a6e-222b-413a-957c-0ef7a32779b5",
-          "choices": {"Size": "S"},
-          "variant":       {
-            "priceData":         {
-              "currency": "USD",
-              "price": 10.5,
-              "discountedPrice": 9.5,
-              "formatted":           {
-                "price": "$10.50",
-                "discountedPrice": "$9.50"
-              }
-            },
-            "convertedPriceData":         {
-              "currency": "USD",
-              "price": 10.5,
-              "discountedPrice": 9.5,
-              "formatted":           {
-                "price": "$10.50",
-                "discountedPrice": "$9.50"
-              }
-            },
-            "costAndProfitData":         {
-              "itemCost": 7,
-              "formattedItemCost": "$7.00",
-              "profit": 2.5,
-              "formattedProfit": "$2.50",
-              "profitMargin": 0.2632
-            },
-            "weight": 0.2,
-            "sku": "123df",
-            "visible": false
-          }
-        },
-        {
-          "id": "0318a3d8-f31c-4ba3-98c7-387571a2eac4",
-          "choices": {"Size": "L"},
-          "variant":       {
-            "priceData":         {
-              "currency": "USD",
-              "price": 10.5,
-              "discountedPrice": 9.5,
-              "formatted":           {
-                "price": "$10.50",
-                "discountedPrice": "$9.50"
-              }
-            },
-            "convertedPriceData":         {
-              "currency": "USD",
-              "price": 10.5,
-              "discountedPrice": 9.5,
-              "formatted":           {
-                "price": "$10.50",
-                "discountedPrice": "$9.50"
-              }
-            },
-            "costAndProfitData":         {
-              "itemCost": 7,
-              "formattedItemCost": "$7.00",
-              "profit": 2.5,
-              "formattedProfit": "$2.50",
-              "profitMargin": 0.2632
-            },
-            "weight": 0.2,
-            "sku": "123df",
-            "visible": false
-          }
-        }
-      ],
-      "lastUpdated": "2022-07-12T11:54:31.550Z",
-      "createdDate": "2022-07-12T11:54:31.550Z",
-      "ribbon": "Sale",
-      "brand": "Nice"
     }
-  }
 }

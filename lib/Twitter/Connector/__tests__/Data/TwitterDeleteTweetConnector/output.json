@@ -1,8 +1,8 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "deleted": true
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "deleted": true
+    }
 }

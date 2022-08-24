@@ -1,24 +1,26 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'typeform-create-form-connector';
 
 export default class TypeformCreateFormConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const body = dto.jsonData as IInput;
+    public getName(): string {
+        return NAME;
+    }
 
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = 'forms';
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
-    const resp = await this._sender.send(req, [201]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+        const body = dto.getJsonData();
 
-    dto.jsonData = resp.jsonBody;
-    return dto;
-  }
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const url = 'forms';
+        const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+        const resp = await this.getSender().send(req, [201]);
+
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -91,9 +93,7 @@ export interface IInput {
         };
         ref?: string;
         title: string;
-        type: 'matrix' | 'ranking' | 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' |
-            'legal' | 'long_text' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'picture_choice' |
-            'rating' | 'short_text' | 'statement' | 'website' | 'yes_no' | 'phone_number';
+        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
         validations?: {
             required?: boolean;
             max_length?: number;
@@ -180,8 +180,7 @@ export interface IInput {
     thankyou_screens?: {
         attachment?: {
             href?: string;
-            type?: 'form' | 'quiz' | 'classification' | 'score' | 'branching' |
-                'classification_branching' | 'score_branching';
+            type?: 'branching' | 'classification_branching' | 'classification' | 'form' | 'quiz' | 'score_branching' | 'score';
 
         };
         properties?: {
@@ -212,7 +211,7 @@ export interface IInput {
                 type?: 'image' | 'video';
             };
             placement?: 'left' | 'right';
-            type?: 'split' | 'wallpaper' | 'float';
+            type?: 'float' | 'split' | 'wallpaper';
         };
         properties?: {
             button_text?: string;

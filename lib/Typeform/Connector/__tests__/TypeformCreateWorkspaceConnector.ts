@@ -1,17 +1,17 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import { typeformApp } from '../../../../test/DataProvider';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as TYPEFORM_CREATE_WORKSPACE_CONNECTOR } from '../TypeformCreateWorkspaceConnector';
-import { typeformApp } from '../../../../test/DataProvider';
 
 let tester: NodeTester;
 
 describe('Tests for TypeformCreateWorkspaceConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
-    await typeformApp();
-  });
+    beforeEach(async () => {
+        tester = new NodeTester(container, __filename, true);
+        await typeformApp();
+    });
 
-  it('process - ok', async () => {
-    await tester.testConnector(TYPEFORM_CREATE_WORKSPACE_CONNECTOR);
-  });
+    it('process - ok', async () => {
+        await tester.testConnector(TYPEFORM_CREATE_WORKSPACE_CONNECTOR);
+    });
 });

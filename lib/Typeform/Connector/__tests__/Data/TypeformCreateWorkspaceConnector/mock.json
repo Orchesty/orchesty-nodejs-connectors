@@ -1,24 +1,24 @@
 {
-  "http": "POST https://api.typeform.com/workspaces",
-  "code": 201,
-  "body": {
-    "forms": {
-      "count": 10,
-      "href": "sdfwf5wf36456"
-    },
-    "id": "gfr516e5r1wfqe651",
-    "name": "My new workspace",
-    "self": {
-      "href": "adf15f16"
-    },
-    "shared": true,
-    "account_id": "sfwer1561216fr",
-    "members": [
-      {
-        "email": "hello@example.com",
-        "name": "Elon",
-        "role": "manager"
-      }
-    ]
-  }
+    "http": "POST https://api.typeform.com/workspaces",
+    "code": 201,
+    "body": {
+        "forms": {
+            "count": 10,
+            "href": "sdfwf5wf36456"
+        },
+        "id": "gfr516e5r1wfqe651",
+        "name": "My new workspace",
+        "self": {
+            "href": "adf15f16"
+        },
+        "shared": true,
+        "account_id": "sfwer1561216fr",
+        "members": [
+            {
+                "email": "hello@example.com",
+                "name": "Elon",
+                "role": "manager"
+            }
+        ]
+    }
 }
