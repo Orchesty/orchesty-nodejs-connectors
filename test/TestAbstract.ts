@@ -69,10 +69,6 @@ import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLe
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
 import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
-import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
-import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
-import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
-import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import TableauApplication from '../lib/Tableau/TableauApplication';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
@@ -692,6 +688,7 @@ function initClickup(): void {
     .setApplication(app);
   container.setConnector(createSpace);
 }
+
 function initIntercom(): void {
   const app = new IntercomApplication(oauth2Provider);
   container.setApplication(app);
