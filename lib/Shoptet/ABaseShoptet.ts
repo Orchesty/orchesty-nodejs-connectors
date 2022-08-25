@@ -64,17 +64,12 @@ export default abstract class ABaseShoptet extends ABasicApplication implements 
     }
 
     protected async startTopology(
-        applicationInstall: ApplicationInstall,
         topology: string,
-        data: Record<string, unknown>,
+        node: string,
+        user: string,
+        data?: Record<string, unknown>,
     ): Promise<void> {
-        await this.runner.runByName(
-            data,
-            topology,
-            'Start',
-            new ProcessDto(),
-            applicationInstall.getUser(),
-        );
+        await this.runner.runByName(data ?? {}, topology, node, new ProcessDto(), user);
     }
 
 }
