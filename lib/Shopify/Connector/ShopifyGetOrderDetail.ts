@@ -11,7 +11,7 @@ export default class ShopifyGetOrderDetail extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const app = this.getApplication();
+        const app = this.getApplication<ShopifyApplication>();
         const { url } = dto.getJsonData();
 
         const order: IResponseJson = await this.doRequest(app, url, dto);
