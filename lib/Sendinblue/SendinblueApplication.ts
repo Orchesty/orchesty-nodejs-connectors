@@ -24,9 +24,10 @@ export default class SendinblueApplication extends ABasicApplication {
     dto: AProcessDto,
     applicationInstall: ApplicationInstall,
     method: HttpMethods,
-    url?: string,
+    _url?: string,
     data?: unknown,
   ): RequestDto => {
+    const url = `https://api.sendinblue.com/v3/${_url}`;
     const request = new RequestDto(url ?? '', method, dto);
     request.headers = {
       [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
