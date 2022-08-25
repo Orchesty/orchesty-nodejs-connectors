@@ -1,16 +1,16 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "channel": "sms",
-    "credit": 0,
-    "number": "420703654125",
-    "part_id": [
-      "sms-61oek9y6qo30"
-    ],
-    "price": 0,
-    "sms_id": "sms-61oek9y6qo30",
-    "status": "accepted"
-  }
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "channel": "sms",
+        "credit": 0,
+        "number": "420703654125",
+        "part_id": [
+            "sms-61oek9y6qo30"
+        ],
+        "price": 0,
+        "sms_id": "sms-61oek9y6qo30",
+        "status": "accepted"
+    }
 }

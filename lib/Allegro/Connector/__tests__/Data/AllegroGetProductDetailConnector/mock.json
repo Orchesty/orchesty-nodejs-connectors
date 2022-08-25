@@ -1,100 +1,100 @@
 {
-  "http": "GET https://api.test_environment/sale/products/c9e39cae-9cb6-11e9-a2a3-2a2ae2dbcce4",
-  "code": 200,
-  "body": {
-    "id": "c9e39cae-9cb6-11e9-a2a3-2a2ae2dbcce4",
-    "name": "iPhone 5s",
-    "category": {
-      "id": "257931",
-      "similar": [
-        {
-          "id": "257931"
-        }
-      ]
-    },
-    "images": [
-      {
-        "url": "string"
-      }
-    ],
-    "parameters": [
-      {
-        "id": "string",
-        "name": "string",
-        "rangeValue": {
-          "from": "string",
-          "to": "string"
+    "http": "GET https://api.test_environment/sale/products/c9e39cae-9cb6-11e9-a2a3-2a2ae2dbcce4",
+    "code": 200,
+    "body": {
+        "id": "c9e39cae-9cb6-11e9-a2a3-2a2ae2dbcce4",
+        "name": "iPhone 5s",
+        "category": {
+            "id": "257931",
+            "similar": [
+                {
+                    "id": "257931"
+                }
+            ]
         },
-        "values": [
-          "string"
-        ],
-        "valuesIds": [
-          "string"
-        ],
-        "valuesLabels": [
-          "string"
-        ],
-        "unit": "string",
-        "options": {
-          "identifiesProduct": true
-        }
-      }
-    ],
-    "offerRequirements": {
-      "id": "2865624934",
-      "parameters": [
-        {
-          "id": "string",
-          "rangeValue": {
-            "from": "string",
-            "to": "string"
-          },
-          "values": [
-            "string"
-          ],
-          "valuesIds": [
-            "string"
-          ],
-          "valuesLabels": [
-            "string"
-          ],
-          "unit": "string",
-          "options": {
-            "identifiesProduct": true
-          }
-        }
-      ]
-    },
-    "compatibilityList": {
-      "id": "460b2511-b786-47b9-9d7e-1f868728cfd6-f103931434fbf4aa06764f3df74d371df23aa138a9cd46dbe570f51af79db1c4-2",
-      "type": "PRODUCT_BASED",
-      "items": [
-        {
-          "text": "AUDI 90 (89, 89Q, 8A, B3) 1988/06-1991/09 2.3 E 20V quattro 170KM/125kW 1501"
-        }
-      ]
-    },
-    "tecdocSpecification": {
-      "id": "470b8513-b786-b7b9-9e7e-2f848729cfd6",
-      "items": [
-        {
-          "name": "Wersja TecDoc",
-          "values": [
-            "0319"
-          ]
-        }
-      ]
-    },
-    "description": {
-      "sections": [
-        {
-          "items": [
+        "images": [
             {
-              "type": "string"
+                "url": "string"
             }
-          ]
+        ],
+        "parameters": [
+            {
+                "id": "string",
+                "name": "string",
+                "rangeValue": {
+                    "from": "string",
+                    "to": "string"
+                },
+                "values": [
+                    "string"
+                ],
+                "valuesIds": [
+                    "string"
+                ],
+                "valuesLabels": [
+                    "string"
+                ],
+                "unit": "string",
+                "options": {
+                    "identifiesProduct": true
+                }
+            }
+        ],
+        "offerRequirements": {
+            "id": "2865624934",
+            "parameters": [
+                {
+                    "id": "string",
+                    "rangeValue": {
+                        "from": "string",
+                        "to": "string"
+                    },
+                    "values": [
+                        "string"
+                    ],
+                    "valuesIds": [
+                        "string"
+                    ],
+                    "valuesLabels": [
+                        "string"
+                    ],
+                    "unit": "string",
+                    "options": {
+                        "identifiesProduct": true
+                    }
+                }
+            ]
+        },
+        "compatibilityList": {
+            "id": "460b2511-b786-47b9-9d7e-1f868728cfd6-f103931434fbf4aa06764f3df74d371df23aa138a9cd46dbe570f51af79db1c4-2",
+            "type": "PRODUCT_BASED",
+            "items": [
+                {
+                    "text": "AUDI 90 (89, 89Q, 8A, B3) 1988/06-1991/09 2.3 E 20V quattro 170KM/125kW 1501"
+                }
+            ]
+        },
+        "tecdocSpecification": {
+            "id": "470b8513-b786-b7b9-9e7e-2f848729cfd6",
+            "items": [
+                {
+                    "name": "Wersja TecDoc",
+                    "values": [
+                        "0319"
+                    ]
+                }
+            ]
+        },
+        "description": {
+            "sections": [
+                {
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }

@@ -1,23 +1,27 @@
-import OracleDB, { ExecuteOptions } from 'oracledb';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import OracleDB, { ExecuteOptions } from 'oracledb';
 import ASqlNode from './ASqlNode';
 
 export const NAME = 'sql-batch-connector';
 
 export default abstract class ASqlBatchConnector extends ASqlNode {
-  protected abstract _name: string;
 
-  protected abstract _processResult(res: unknown, dto: BatchProcessDto): Promise<BatchProcessDto> | BatchProcessDto;
+    protected abstract name: string;
 
-  protected abstract _getQuery(processDto: BatchProcessDto): Promise<string> | string;
+    protected abstract processResult(res: unknown, dto: BatchProcessDto): BatchProcessDto | Promise<BatchProcessDto>;
 
-  protected _getExecuteOptions = (): ExecuteOptions => ({ outFormat: OracleDB.OUT_FORMAT_OBJECT });
+    protected abstract getQuery(processDto: BatchProcessDto): Promise<string> | string;
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    return await super._processAction(_dto) as BatchProcessDto;
-  }
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        return await super.processAction(dto) as BatchProcessDto;
+    }
 
-  public getName(): string {
-    return `${this._name}-${NAME}`;
-  }
+    public getName(): string {
+        return `${this.name}-${NAME}`;
+    }
+
+    protected getExecuteOptions(): ExecuteOptions {
+        return { outFormat: OracleDB.OUT_FORMAT_OBJECT };
+    }
+
 }

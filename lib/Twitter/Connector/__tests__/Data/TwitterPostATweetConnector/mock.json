@@ -1,8 +1,8 @@
 {
-  "http": "POST https://api.twitter.com/2/tweets",
-  "code": 200,
-  "body": {
-    "id": "1445880548472328192",
-    "text": "Are you excited for the weekend?"
-  }
+    "http": "POST https://api.twitter.com/2/tweets",
+    "code": 200,
+    "body": {
+        "id": "1445880548472328192",
+        "text": "Are you excited for the weekend?"
+    }
 }

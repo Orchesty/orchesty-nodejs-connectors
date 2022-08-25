@@ -6,12 +6,12 @@ import { NAME as NUTSHELL_NEW_LEAD_CONNECTOR } from '../NutshellNewLeadConnector
 let tester: NodeTester;
 
 describe('Tests for NutshellNewLeadConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename);
-    await nutshellApp();
-  });
+    beforeEach(async () => {
+        tester = new NodeTester(container, __filename);
+        await nutshellApp();
+    });
 
-  it('process - ok', async () => {
-    await tester.testConnector(NUTSHELL_NEW_LEAD_CONNECTOR);
-  });
+    it('process - ok', async () => {
+        await tester.testConnector(NUTSHELL_NEW_LEAD_CONNECTOR);
+    });
 });

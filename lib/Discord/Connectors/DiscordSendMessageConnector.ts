@@ -1,63 +1,67 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import DiscordApplication from '../DiscordApplication';
 
 const DISCORD_SEND_MESSAGE_ENDPOINT = '/api/channels/channel.id/messages';
 
 interface IDiscordMessage {
-  title: string,
-  description: string,
-  color: number,
-  url: string,
-  channelId: string,
+    title: string;
+    description: string;
+    color: number;
+    url: string;
+    channelId: string;
 }
 
 export default class DiscordSendMessageConnector extends AConnector {
-  public getName = (): string => 'discord-send-message';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    checkParams(
-      dto.jsonData as Record<string, unknown>,
-      ['title', 'description', 'color', 'url', 'channelId'],
-    );
+    public getName(): string {
+        return 'discord-send-message';
+    }
 
-    const {
-      title,
-      description,
-      color,
-      url,
-      channelId,
-    } = dto.jsonData as IDiscordMessage;
+    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+        checkParams(
+            dto.getJsonData() as Record<string, unknown>,
+            ['title', 'description', 'color', 'url', 'channelId'],
+        );
 
-    const application = this._application as DiscordApplication;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-    const data = {
-      tts: false,
-      embeds: [
-        {
-          title,
-          description,
-          color,
-          image: {
+        const {
+            title,
+            description,
+            color,
             url,
-          },
-        },
-      ],
-    };
+            channelId,
+        } = dto.getJsonData() as IDiscordMessage;
 
-    const request = await application.getRequestDto(
-      dto,
-      applicationInstall,
-      HttpMethods.POST,
-      DISCORD_SEND_MESSAGE_ENDPOINT.replace('channel.id', channelId),
-      JSON.stringify(data),
-    );
+        const application = this.getApplication<DiscordApplication>();
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const data = {
+            tts: false,
+            embeds: [
+                {
+                    title,
+                    description,
+                    color,
+                    image: {
+                        url,
+                    },
+                },
+            ],
+        };
 
-    const response = await this._sender.send(request, [202]);
-    dto.data = response.body;
-    return dto;
-  }
+        const request = await application.getRequestDto(
+            dto,
+            applicationInstall,
+            HttpMethods.POST,
+            DISCORD_SEND_MESSAGE_ENDPOINT.replace('channel.id', channelId),
+            JSON.stringify(data),
+        );
+
+        const response = await this.getSender().send(request, [202]);
+        dto.setData(response.getBody());
+
+        return dto;
+    }
+
 }

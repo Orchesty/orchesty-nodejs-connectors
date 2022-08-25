@@ -10,108 +10,120 @@
             "visible": false,
             "productType": "physical",
             "description": "nice summer t-shirt",
-            "weightRange":   {
+            "weightRange": {
                 "minValue": 0,
                 "maxValue": 0.2
             },
-            "stock":   {
+            "stock": {
                 "trackInventory": false,
                 "inStock": true,
                 "inventoryStatus": "IN_STOCK"
             },
-            "price":   {
+            "price": {
                 "currency": "USD",
                 "price": 10.5,
                 "discountedPrice": 9.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$10.50",
                     "discountedPrice": "$9.50"
                 }
             },
-            "priceData":   {
+            "priceData": {
                 "currency": "USD",
                 "price": 10.5,
                 "discountedPrice": 9.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$10.50",
                     "discountedPrice": "$9.50"
                 }
             },
-            "convertedPriceData":   {
+            "convertedPriceData": {
                 "currency": "USD",
                 "price": 10.5,
                 "discountedPrice": 9.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$10.50",
                     "discountedPrice": "$9.50"
                 }
             },
-            "priceRange":   {
+            "priceRange": {
                 "minValue": 10.5,
                 "maxValue": 10.5
             },
-            "costRange":   {
+            "costRange": {
                 "minValue": 0,
                 "maxValue": 7
             },
             "additionalInfoSections": [],
-            "ribbons": [{"text": "Sale"}],
-            "media": {"items": []},
+            "ribbons": [
+                {
+                    "text": "Sale"
+                }
+            ],
+            "media": {
+                "items": []
+            },
             "customTextFields": [],
             "manageVariants": true,
-            "productOptions": [  {
-                "optionType": "drop_down",
-                "name": "Size",
-                "choices":     [
-                    {
-                        "value": "S",
-                        "description": "S",
-                        "inStock": true,
-                        "visible": true
-                    },
-                    {
-                        "value": "L",
-                        "description": "L",
-                        "inStock": true,
-                        "visible": true
-                    }
-                ]
-            }],
-            "productPageUrl":   {
+            "productOptions": [
+                {
+                    "optionType": "drop_down",
+                    "name": "Size",
+                    "choices": [
+                        {
+                            "value": "S",
+                            "description": "S",
+                            "inStock": true,
+                            "visible": true
+                        },
+                        {
+                            "value": "L",
+                            "description": "L",
+                            "inStock": true,
+                            "visible": true
+                        }
+                    ]
+                }
+            ],
+            "productPageUrl": {
                 "base": "https://wixsite.com/examplestore",
                 "path": "/product-page/t-shirt"
             },
             "numericId": "1657626871550000",
             "inventoryItemId": "bddb3db4-a5a7-b2eb-786c-9dc17ed05c88",
-            "discount":   {
+            "discount": {
                 "type": "AMOUNT",
                 "value": 1
             },
-            "collectionIds": ["00000000-000000-000000-000000000001"],
-            "variants":   [
+            "collectionIds": [
+                "00000000-000000-000000-000000000001"
+            ],
+            "variants": [
                 {
                     "id": "05519a6e-222b-413a-957c-0ef7a32779b5",
-                    "choices": {"Size": "S"},
-                    "variant":       {
-                        "priceData":         {
+                    "choices": {
+                        "Size": "S"
+                    },
+                    "variant": {
+                        "priceData": {
                             "currency": "USD",
                             "price": 10.5,
                             "discountedPrice": 9.5,
-                            "formatted":           {
+                            "formatted": {
                                 "price": "$10.50",
                                 "discountedPrice": "$9.50"
                             }
                         },
-                        "convertedPriceData":         {
+                        "convertedPriceData": {
                             "currency": "USD",
                             "price": 10.5,
                             "discountedPrice": 9.5,
-                            "formatted":           {
+                            "formatted": {
                                 "price": "$10.50",
                                 "discountedPrice": "$9.50"
                             }
                         },
-                        "costAndProfitData":         {
+                        "costAndProfitData": {
                             "itemCost": 7,
                             "formattedItemCost": "$7.00",
                             "profit": 2.5,
@@ -125,27 +137,29 @@
                 },
                 {
                     "id": "0318a3d8-f31c-4ba3-98c7-387571a2eac4",
-                    "choices": {"Size": "L"},
-                    "variant":       {
-                        "priceData":         {
+                    "choices": {
+                        "Size": "L"
+                    },
+                    "variant": {
+                        "priceData": {
                             "currency": "USD",
                             "price": 10.5,
                             "discountedPrice": 9.5,
-                            "formatted":           {
+                            "formatted": {
                                 "price": "$10.50",
                                 "discountedPrice": "$9.50"
                             }
                         },
-                        "convertedPriceData":         {
+                        "convertedPriceData": {
                             "currency": "USD",
                             "price": 10.5,
                             "discountedPrice": 9.5,
-                            "formatted":           {
+                            "formatted": {
                                 "price": "$10.50",
                                 "discountedPrice": "$9.50"
                             }
                         },
-                        "costAndProfitData":         {
+                        "costAndProfitData": {
                             "itemCost": 7,
                             "formattedItemCost": "$7.00",
                             "profit": 2.5,

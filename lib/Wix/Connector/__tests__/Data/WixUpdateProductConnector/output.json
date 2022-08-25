@@ -10,90 +10,104 @@
             "visible": false,
             "productType": "physical",
             "description": "nice summer t-shirt",
-            "stock":   {
+            "stock": {
                 "trackInventory": false,
                 "inStock": true
             },
-            "price":   {
+            "price": {
                 "currency": "USD",
                 "price": 12.5,
                 "discountedPrice": 10.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$12.50",
                     "discountedPrice": "$10.50"
                 }
             },
-            "priceData":   {
+            "priceData": {
                 "currency": "USD",
                 "price": 12.5,
                 "discountedPrice": 10.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$12.50",
                     "discountedPrice": "$10.50"
                 }
             },
-            "convertedPriceData":   {
+            "convertedPriceData": {
                 "currency": "USD",
                 "price": 12.5,
                 "discountedPrice": 10.5,
-                "formatted":     {
+                "formatted": {
                     "price": "$12.50",
                     "discountedPrice": "$10.50"
                 }
             },
             "additionalInfoSections": [],
-            "ribbons": [{"text": "Sold Out"}],
-            "media": {"items": []},
+            "ribbons": [
+                {
+                    "text": "Sold Out"
+                }
+            ],
+            "media": {
+                "items": []
+            },
             "customTextFields": [],
             "manageVariants": true,
-            "productOptions": [  {
-                "optionType": "drop_down",
-                "name": "Size",
-                "choices": [    {
-                    "value": "S",
-                    "description": "Small",
-                    "inStock": true,
-                    "visible": true
-                }]
-            }],
-            "productPageUrl":   {
+            "productOptions": [
+                {
+                    "optionType": "drop_down",
+                    "name": "Size",
+                    "choices": [
+                        {
+                            "value": "S",
+                            "description": "Small",
+                            "inStock": true,
+                            "visible": true
+                        }
+                    ]
+                }
+            ],
+            "productPageUrl": {
                 "base": "https://roysha.wixsite.com/roycoffeestore",
                 "path": "/product-page/t-shirt-1"
             },
             "numericId": "1620048324853000",
             "inventoryItemId": "7c0be6ee-ac8a-b121-5505-97074921161d",
-            "discount":   {
+            "discount": {
                 "type": "AMOUNT",
                 "value": 2
             },
             "collectionIds": [],
-            "variants": [  {
-                "id": "9a86bab7-0558-48a7-a953-0594e6d5534d",
-                "choices": {"Size": "Small"},
-                "variant":     {
-                    "priceData":       {
-                        "currency": "USD",
-                        "price": 12.5,
-                        "discountedPrice": 10.5,
-                        "formatted":         {
-                            "price": "$12.50",
-                            "discountedPrice": "$10.50"
-                        }
+            "variants": [
+                {
+                    "id": "9a86bab7-0558-48a7-a953-0594e6d5534d",
+                    "choices": {
+                        "Size": "Small"
                     },
-                    "convertedPriceData":       {
-                        "currency": "USD",
-                        "price": 12.5,
-                        "discountedPrice": 10.5,
-                        "formatted":         {
-                            "price": "$12.50",
-                            "discountedPrice": "$10.50"
-                        }
-                    },
-                    "weight": 0.2,
-                    "sku": "123df",
-                    "visible": false
+                    "variant": {
+                        "priceData": {
+                            "currency": "USD",
+                            "price": 12.5,
+                            "discountedPrice": 10.5,
+                            "formatted": {
+                                "price": "$12.50",
+                                "discountedPrice": "$10.50"
+                            }
+                        },
+                        "convertedPriceData": {
+                            "currency": "USD",
+                            "price": 12.5,
+                            "discountedPrice": 10.5,
+                            "formatted": {
+                                "price": "$12.50",
+                                "discountedPrice": "$10.50"
+                            }
+                        },
+                        "weight": 0.2,
+                        "sku": "123df",
+                        "visible": false
+                    }
                 }
-            }],
+            ],
             "lastUpdated": "2021-05-03T13:44:17.610Z",
             "ribbon": "Sold Out",
             "brand": "Nice"

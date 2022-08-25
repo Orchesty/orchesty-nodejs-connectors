@@ -2,7 +2,7 @@
     "headers": {
         "user": "TestUser"
     },
-    "data":{
+    "data": {
         "article_id": 100094165277,
         "availability": {
             "in_stock": 23,

@@ -1,11 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": [
-    {
-      "body": "{\"id\":\"00000000-0000-0000-0000-000000000000\",\"name\":\"Zlack Messaging App\",\"description\":\"<p>Custom <s>branding</s> for the agent and user portals.</p>\",\"owner\":{\"email\":\"email@example.com\"},\"links\":{\"self\":\"https://api.productboard.com/products/00000000-0000-0000-0000-000000000000\",\"html\":\"https://space.productboard.com/feature-board/planning/features/00000000-0000-0000-0000-000000000000\"}}",
-      "headers": null
-    }
-  ]
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":\"00000000-0000-0000-0000-000000000000\",\"name\":\"Zlack Messaging App\",\"description\":\"<p>Custom <s>branding</s> for the agent and user portals.</p>\",\"owner\":{\"email\":\"email@example.com\"},\"links\":{\"self\":\"https://api.productboard.com/products/00000000-0000-0000-0000-000000000000\",\"html\":\"https://space.productboard.com/feature-board/planning/features/00000000-0000-0000-0000-000000000000\"}}",
+            "headers": null
+        }
+    ]
 }

@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import UpgatesApplication from '../UpgatesApplication';
 
 const UPDATE_STOCK_ENDPOINT = 'api/v2/products';
@@ -8,47 +8,48 @@ const UPDATE_STOCK_ENDPOINT = 'api/v2/products';
 export const NAME = 'upgates-update-stock';
 
 export default class UpgatesUpdateStock extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const app = this._application as UpgatesApplication;
-    const {
-      data,
-    } = dto.jsonData as IInputJson;
+    public getName(): string {
+        return NAME;
+    }
 
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const requestDto = await app.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.PUT,
-      UPDATE_STOCK_ENDPOINT,
-      JSON.stringify(data),
-    );
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+        const app = this.getApplication<UpgatesApplication>();
+        const {
+            data,
+        } = dto.getJsonData();
 
-    const { products } = (await this._sender.send(requestDto)).jsonBody as IResponseJson;
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const requestDto = app.getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.PUT,
+            UPDATE_STOCK_ENDPOINT,
+            JSON.stringify(data),
+        );
 
-    dto.jsonData = products;
+        const { products } = (await this.getSender().send<IResponseJson>(requestDto)).getJsonBody();
 
-    return dto;
-  }
+        return dto.setNewJsonData(products);
+    }
+
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IInputJson {
-  data: IUpdateStock;
+interface IInput {
+    data: IUpdateStock;
 }
 
 interface IUpdateStock {
-  products: {
-    code: string,
-    stock: number
-  }[];
+    products: {
+        code: string;
+        stock: number;
+    }[];
 }
 
 interface IResponseJson {
-  products: {
-    code: string,
-    updated_yn: boolean
-  }[];
+    products: {
+        code: string;
+        updated_yn: boolean;
+    }[];
 }

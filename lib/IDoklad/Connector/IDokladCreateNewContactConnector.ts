@@ -1,30 +1,33 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { BASE_URL } from '../IDokladApplication';
 
 export default class IDokladCreateNewContactConnector extends AConnector {
-  public getName = (): string => 'i-doklad-create-new-contact';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    checkParams(dto.jsonData as Record<string, unknown>, ['CompanyName', 'CountryId', 'Name']);
+    public getName(): string {
+        return 'i-doklad-create-new-contact';
+    }
 
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
+    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+        checkParams(dto.getJsonData() as Record<string, unknown>, ['CompanyName', 'CountryId', 'Name']);
 
-    const request = await this._application.getRequestDto(
-      dto,
-      applicationInstall,
-      HttpMethods.POST,
-      `${BASE_URL}/Contacts`,
-      dto.data,
-    );
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
-    const response = await this._sender.send(request, [200, 201], 10);
-    this.evaluateStatusCode(response, dto);
-    dto.data = response.body;
+        const request = await this.getApplication().getRequestDto(
+            dto,
+            applicationInstall,
+            HttpMethods.POST,
+            `${BASE_URL}/Contacts`,
+            dto.getData(),
+        );
 
-    return dto;
-  }
+        const response = await this.getSender().send(request, [200, 201], 10);
+        this.evaluateStatusCode(response, dto);
+        dto.setData(response.getBody());
+
+        return dto;
+    }
+
 }

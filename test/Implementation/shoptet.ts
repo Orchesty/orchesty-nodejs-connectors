@@ -21,7 +21,7 @@ const NAME = 'shoptet';
 class ImplPluginShoptetApplication extends APluginShoptetApplication {
   getName = (): string => NAME;
 
-  protected _shoptetHost = 'www.test.cz';
+  protected shoptetHost = 'www.test.cz';
 
   getFormStack = (): FormStack => new FormStack();
 }

@@ -1,11 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "task": {
-      "title": "Send product sheet"
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "task": {
+            "title": "Send product sheet"
+        }
     }
-  }
 }
 

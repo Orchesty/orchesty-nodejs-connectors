@@ -1,30 +1,33 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'github-get-repository-connector';
 
 export default class GitHubGetRepositoryConnector extends AConnector {
-  public getName = () => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const { user, repo } = dto.jsonData as IInput;
-    const appInstall = await this._getApplicationInstall();
+    public getName(): string {
+        return NAME;
+    }
 
-    const request = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      `/repos/${user}/${repo}`,
-    );
-    const response = await this._sender.send(request, [200]);
-    dto.data = response.body;
-    return dto;
-  }
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+        const { user, repo } = dto.getJsonData();
+        const appInstall = await this.getApplicationInstall();
+
+        const request = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `/repos/${user}/${repo}`,
+        );
+        const response = await this.getSender().send(request, [200]);
+        dto.setData(response.getBody());
+        return dto;
+    }
+
 }
 
 interface IInput {
-  user: string;
-  repo: string;
+    user: string;
+    repo: string;
 }

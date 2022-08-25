@@ -3,7 +3,6 @@
         "user": "TestUser"
     },
     "data": {
-
         "clientReferenceId": "string",
         "shipTo": {
             "name": "string",

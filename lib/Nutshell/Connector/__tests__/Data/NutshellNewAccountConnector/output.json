@@ -1,30 +1,30 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "accountType": {
-      "id": 1,
-      "name": "Standard Account"
+    "headers": {
+        "user": "TestUser"
     },
-    "avatarUrl": "https://app.nutshell.com/avatar/accounts/116/346392/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2/1660146563",
-    "contacts": [],
-    "createdTime": "2022-08-10T15:49:23+0000",
-    "creator": null,
-    "description": null,
-    "entityType": "Accounts",
-    "htmlUrl": "https://app.nutshell.com/company/116-new-account-name",
-    "htmlUrlPath": "/company/116-new-account-name",
-    "id": 116,
-    "industry": null,
-    "lastContactedDate": null,
-    "leads": [],
-    "legacyId": null,
-    "modifiedTime": "2022-08-10T15:49:23+0000",
-    "name": "New Account Name",
-    "notes": [],
-    "owner": null,
-    "rev": "0",
-    "tags": []
-  }
+    "data": {
+        "accountType": {
+            "id": 1,
+            "name": "Standard Account"
+        },
+        "avatarUrl": "https://app.nutshell.com/avatar/accounts/116/346392/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2/1660146563",
+        "contacts": [],
+        "createdTime": "2022-08-10T15:49:23+0000",
+        "creator": null,
+        "description": null,
+        "entityType": "Accounts",
+        "htmlUrl": "https://app.nutshell.com/company/116-new-account-name",
+        "htmlUrlPath": "/company/116-new-account-name",
+        "id": 116,
+        "industry": null,
+        "lastContactedDate": null,
+        "leads": [],
+        "legacyId": null,
+        "modifiedTime": "2022-08-10T15:49:23+0000",
+        "name": "New Account Name",
+        "notes": [],
+        "owner": null,
+        "rev": "0",
+        "tags": []
+    }
 }

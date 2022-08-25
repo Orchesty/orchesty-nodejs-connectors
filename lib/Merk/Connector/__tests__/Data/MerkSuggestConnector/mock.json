@@ -1,173 +1,173 @@
 {
-  "http": "GET https://api.merk.cz/suggest/?regno=123&email=email.test@gmail.com&name=name&bank_account=bank_account&only_active=true&expand_regno=true&sort_by=name&country_code=cz",
-  "code": 200,
-  "body":[
-    {
-      "address": {
-        "country_code": "cz",
-        "county": {
-          "id": "CZ0534",
-          "text": "Ústí nad Orlicí"
-        },
-        "lines": [
-          "Nádražní 150",
-          "Žichlínské Předměstí",
-          "56301 Lanškroun"
-        ],
-        "municipality": "Lanškroun",
-        "municipality_first": "Lanškroun",
-        "municipality_part": "Žichlínské Předměstí",
-        "number": "150",
-        "number_descriptive": "150",
-        "number_orientation": "",
-        "postal_code": "56301",
-        "region": {
-          "id": "CZ053",
-          "text": "Pardubický kraj"
-        },
-        "street": "Nádražní",
-        "street_fixed": "Nádražní",
-        "text": ""
-      },
-      "bank_accounts": null,
-      "court": {
-        "file_nr": "B 85",
-        "name": "Krajský soud v Hradci Králové"
-      },
-      "databox_ids": [
-        "v4vhaq5"
-      ],
-      "emails": [],
-      "estab_date": "1990-12-29T00:00:00",
-      "industry": {
-        "id": "03220",
-        "text": "Sladkovodní akvakultura"
-      },
-      "insolvency_cases": null,
-      "is_active": true,
-      "is_unreliable_vatpayer": false,
-      "is_vatpayer": false,
-      "legal_form": {
-        "id": 121,
-        "text": "Akciová společnost"
-      },
-      "magnitude": {
-        "id": 0,
-        "lower_bound": "neuvedeno",
-        "text": "Neuvedeno",
-        "trend": "unknown",
-        "upper_bound": "neuvedeno"
-      },
-      "mobiles": [],
-      "name": "ORPA, a.s. v likvidaci",
-      "phones": [],
-      "regno": 12335,
-      "regno_str": "00012335",
-      "status": {
-        "id": 2,
-        "text": "Subjekt v likvidaci"
-      },
-      "taxno": null,
-      "turnover": {
-        "id": 0,
-        "lower_bound": "bez obratu",
-        "text": "bez obratu",
-        "trend": "unknown",
-        "upper_bound": "bez obratu"
-      },
-      "unreliable_vatpayer_since": null,
-      "updated": "2022-08-04T00:00:00",
-      "updated_from_src": "2022-08-04T15:50:06.266",
-      "updated_src": "2022-07-07T00:00:00",
-      "vatno": null,
-      "vzp_debt": null,
-      "webs": []
-    },
-    {
-      "address": {
-        "country_code": "cz",
-        "county": {
-          "id": "CZ0100",
-          "text": "Praha"
-        },
-        "lines": [
-          "U mlýna 1755/5",
-          "Záběhlice",
-          "14100 Praha"
-        ],
-        "municipality": "Praha",
-        "municipality_first": "Praha",
-        "municipality_part": "Záběhlice",
-        "number": "1755/5",
-        "number_descriptive": "1755",
-        "number_orientation": "5",
-        "postal_code": "14100",
-        "region": {
-          "id": "CZ010",
-          "text": "Hlavní město Praha"
-        },
-        "street": "U mlýna",
-        "street_fixed": "U mlýna",
-        "text": ""
-      },
-      "bank_accounts": [
+    "http": "GET https://api.merk.cz/suggest/?regno=123&email=email.test@gmail.com&name=name&bank_account=bank_account&only_active=true&expand_regno=true&sort_by=name&country_code=cz",
+    "code": 200,
+    "body": [
         {
-          "account_number": "107-1200070227",
-          "bank_code": "0100"
+            "address": {
+                "country_code": "cz",
+                "county": {
+                    "id": "CZ0534",
+                    "text": "Ústí nad Orlicí"
+                },
+                "lines": [
+                    "Nádražní 150",
+                    "Žichlínské Předměstí",
+                    "56301 Lanškroun"
+                ],
+                "municipality": "Lanškroun",
+                "municipality_first": "Lanškroun",
+                "municipality_part": "Žichlínské Předměstí",
+                "number": "150",
+                "number_descriptive": "150",
+                "number_orientation": "",
+                "postal_code": "56301",
+                "region": {
+                    "id": "CZ053",
+                    "text": "Pardubický kraj"
+                },
+                "street": "Nádražní",
+                "street_fixed": "Nádražní",
+                "text": ""
+            },
+            "bank_accounts": null,
+            "court": {
+                "file_nr": "B 85",
+                "name": "Krajský soud v Hradci Králové"
+            },
+            "databox_ids": [
+                "v4vhaq5"
+            ],
+            "emails": [],
+            "estab_date": "1990-12-29T00:00:00",
+            "industry": {
+                "id": "03220",
+                "text": "Sladkovodní akvakultura"
+            },
+            "insolvency_cases": null,
+            "is_active": true,
+            "is_unreliable_vatpayer": false,
+            "is_vatpayer": false,
+            "legal_form": {
+                "id": 121,
+                "text": "Akciová společnost"
+            },
+            "magnitude": {
+                "id": 0,
+                "lower_bound": "neuvedeno",
+                "text": "Neuvedeno",
+                "trend": "unknown",
+                "upper_bound": "neuvedeno"
+            },
+            "mobiles": [],
+            "name": "ORPA, a.s. v likvidaci",
+            "phones": [],
+            "regno": 12335,
+            "regno_str": "00012335",
+            "status": {
+                "id": 2,
+                "text": "Subjekt v likvidaci"
+            },
+            "taxno": null,
+            "turnover": {
+                "id": 0,
+                "lower_bound": "bez obratu",
+                "text": "bez obratu",
+                "trend": "unknown",
+                "upper_bound": "bez obratu"
+            },
+            "unreliable_vatpayer_since": null,
+            "updated": "2022-08-04T00:00:00",
+            "updated_from_src": "2022-08-04T15:50:06.266",
+            "updated_src": "2022-07-07T00:00:00",
+            "vatno": null,
+            "vzp_debt": null,
+            "webs": []
+        },
+        {
+            "address": {
+                "country_code": "cz",
+                "county": {
+                    "id": "CZ0100",
+                    "text": "Praha"
+                },
+                "lines": [
+                    "U mlýna 1755/5",
+                    "Záběhlice",
+                    "14100 Praha"
+                ],
+                "municipality": "Praha",
+                "municipality_first": "Praha",
+                "municipality_part": "Záběhlice",
+                "number": "1755/5",
+                "number_descriptive": "1755",
+                "number_orientation": "5",
+                "postal_code": "14100",
+                "region": {
+                    "id": "CZ010",
+                    "text": "Hlavní město Praha"
+                },
+                "street": "U mlýna",
+                "street_fixed": "U mlýna",
+                "text": ""
+            },
+            "bank_accounts": [
+                {
+                    "account_number": "107-1200070227",
+                    "bank_code": "0100"
+                }
+            ],
+            "court": {
+                "file_nr": "A      76031",
+                "name": "Městský soud v Praze"
+            },
+            "databox_ids": [
+                "dxusuqt"
+            ],
+            "emails": [],
+            "estab_date": "1989-07-01T00:00:00",
+            "industry": {
+                "id": "17120",
+                "text": "Výroba papíru a lepenky"
+            },
+            "insolvency_cases": null,
+            "is_active": true,
+            "is_unreliable_vatpayer": false,
+            "is_vatpayer": true,
+            "legal_form": {
+                "id": 301,
+                "text": "Státní podnik"
+            },
+            "magnitude": {
+                "id": 120,
+                "lower_bound": "1 zam.",
+                "text": "1 - 5 zaměstnanců",
+                "trend": "stagnating",
+                "upper_bound": "5 zam."
+            },
+            "mobiles": [],
+            "name": "Brněnské papírny, státní podnik - v likvidaci",
+            "phones": [],
+            "regno": 12343,
+            "regno_str": "00012343",
+            "status": {
+                "id": 2,
+                "text": "Subjekt v likvidaci"
+            },
+            "taxno": null,
+            "turnover": {
+                "id": 10,
+                "lower_bound": "1 Kč",
+                "text": "1 - 199 999 Kč",
+                "trend": "stagnating",
+                "upper_bound": "199 tis. Kč"
+            },
+            "unreliable_vatpayer_since": null,
+            "updated": "2022-08-04T00:00:00",
+            "updated_from_src": "2022-08-04T15:36:29.385",
+            "updated_src": "2018-10-12T00:00:00",
+            "vatno": "CZ00012343",
+            "vzp_debt": null,
+            "webs": []
         }
-      ],
-      "court": {
-        "file_nr": "A      76031",
-        "name": "Městský soud v Praze"
-      },
-      "databox_ids": [
-        "dxusuqt"
-      ],
-      "emails": [],
-      "estab_date": "1989-07-01T00:00:00",
-      "industry": {
-        "id": "17120",
-        "text": "Výroba papíru a lepenky"
-      },
-      "insolvency_cases": null,
-      "is_active": true,
-      "is_unreliable_vatpayer": false,
-      "is_vatpayer": true,
-      "legal_form": {
-        "id": 301,
-        "text": "Státní podnik"
-      },
-      "magnitude": {
-        "id": 120,
-        "lower_bound": "1 zam.",
-        "text": "1 - 5 zaměstnanců",
-        "trend": "stagnating",
-        "upper_bound": "5 zam."
-      },
-      "mobiles": [],
-      "name": "Brněnské papírny, státní podnik - v likvidaci",
-      "phones": [],
-      "regno": 12343,
-      "regno_str": "00012343",
-      "status": {
-        "id": 2,
-        "text": "Subjekt v likvidaci"
-      },
-      "taxno": null,
-      "turnover": {
-        "id": 10,
-        "lower_bound": "1 Kč",
-        "text": "1 - 199 999 Kč",
-        "trend": "stagnating",
-        "upper_bound": "199 tis. Kč"
-      },
-      "unreliable_vatpayer_since": null,
-      "updated": "2022-08-04T00:00:00",
-      "updated_from_src": "2022-08-04T15:36:29.385",
-      "updated_src": "2018-10-12T00:00:00",
-      "vatno": "CZ00012343",
-      "vzp_debt": null,
-      "webs": []
-    }
-  ]
+    ]
 }

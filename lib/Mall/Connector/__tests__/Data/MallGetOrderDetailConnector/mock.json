@@ -1,60 +1,60 @@
 {
-  "http": "GET https://mpapi.mallgroup.com/v1/orders/23120701?client_id=ClientId",
-  "code": 200,
-  "body": {
-    "result": {
-      "code": 200,
-      "status": "OK"
-    },
-    "data": {
-      "id": 23120701,
-      "purchase_id": 231207,
-      "external_order_id": 0,
-      "currency": "CZK",
-      "delivery_price": 0,
-      "cod_price": 0,
-      "cod": 0,
-      "discount": 0,
-      "payment_type": "A",
-      "delivery_method": "1",
-      "delivery_method_id": 1,
-      "branches": {
-        "overridden": false
-      },
-      "ship_date": "2022-08-11",
-      "delivery_date": "2022-08-12",
-      "address": {
-        "customer_id": 1000929311,
-        "name": "Josef Novák",
-        "phone": "+420701000001",
-        "email": "info@mall.cz",
-        "street": "U garáží 1",
-        "city": "Praha",
-        "zip": "17001",
-        "country": "CZ"
-      },
-      "confirmed": false,
-      "status": "open",
-      "items": [
-        {
-          "id": "104570",
-          "article_id": 100094165277,
-          "quantity": 1,
-          "price": 10000009,
-          "vat": 21,
-          "commission": 0,
-          "title": "Title of product",
-          "serial_numbers": []
+    "http": "GET https://mpapi.mallgroup.com/v1/orders/23120701?client_id=ClientId",
+    "code": 200,
+    "body": {
+        "result": {
+            "code": 200,
+            "status": "OK"
+        },
+        "data": {
+            "id": 23120701,
+            "purchase_id": 231207,
+            "external_order_id": 0,
+            "currency": "CZK",
+            "delivery_price": 0,
+            "cod_price": 0,
+            "cod": 0,
+            "discount": 0,
+            "payment_type": "A",
+            "delivery_method": "1",
+            "delivery_method_id": 1,
+            "branches": {
+                "overridden": false
+            },
+            "ship_date": "2022-08-11",
+            "delivery_date": "2022-08-12",
+            "address": {
+                "customer_id": 1000929311,
+                "name": "Josef Novák",
+                "phone": "+420701000001",
+                "email": "info@mall.cz",
+                "street": "U garáží 1",
+                "city": "Praha",
+                "zip": "17001",
+                "country": "CZ"
+            },
+            "confirmed": false,
+            "status": "open",
+            "items": [
+                {
+                    "id": "104570",
+                    "article_id": 100094165277,
+                    "quantity": 1,
+                    "price": 10000009,
+                    "vat": 21,
+                    "commission": 0,
+                    "title": "Title of product",
+                    "serial_numbers": []
+                }
+            ],
+            "test": true,
+            "mdp": false,
+            "mdp_classic": false,
+            "mdp_spectrum": false,
+            "ready_to_return": false,
+            "open": "2022-08-11 14:56:45",
+            "ulozenka_status_history": [],
+            "consignment_status_history": []
         }
-      ],
-      "test": true,
-      "mdp": false,
-      "mdp_classic": false,
-      "mdp_spectrum": false,
-      "ready_to_return": false,
-      "open": "2022-08-11 14:56:45",
-      "ulozenka_status_history": [],
-      "consignment_status_history": []
     }
-  }
 }

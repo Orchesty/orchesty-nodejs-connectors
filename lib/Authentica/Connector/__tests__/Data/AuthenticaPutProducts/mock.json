@@ -1,20 +1,20 @@
 {
-  "http": "PUT https://app.authentica.cz/api/applinth/products",
-  "code": 200,
-  "body": {
-    "data":[
-      {
-        "sku": "string",
-        "name": "string",
-        "englishName": "string",
-        "ean": "string",
-        "width": 0,
-        "widthUnit": "mm",
-        "height": 0,
-        "heightUnit": "mm",
-        "weight": 0,
-        "weightUnit": "g"
-      }
-    ]
-  }
+    "http": "PUT https://app.authentica.cz/api/applinth/products",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "sku": "string",
+                "name": "string",
+                "englishName": "string",
+                "ean": "string",
+                "width": 0,
+                "widthUnit": "mm",
+                "height": 0,
+                "heightUnit": "mm",
+                "weight": 0,
+                "weightUnit": "g"
+            }
+        ]
+    }
 }

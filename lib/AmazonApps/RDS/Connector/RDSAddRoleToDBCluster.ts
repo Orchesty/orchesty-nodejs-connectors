@@ -1,36 +1,46 @@
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { AddRoleToDBClusterCommand, AddRoleToDBClusterCommandInput } from '@aws-sdk/client-rds';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import ARDSObjectConnector from './ARDSObjectConnector';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RDSApplication from '../RDSApplication';
+import ARDSObjectConnector from './ARDSObjectConnector';
 
 export default class RDSAddRoleToDBCluster extends ARDSObjectConnector {
-  protected _getCustomId = (): string => 'add-role-to-db-cluster';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+        const content = dto.getJsonData();
+        this.checkParameters(['DBClusterIdentifier', 'RoleArn'], content as unknown as Record<string, unknown>);
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const content = dto.jsonData as { RoleArn: string, DBClusterIdentifier: string, FeatureName: string | undefined };
-    this._checkParameters(['DBClusterIdentifier', 'RoleArn'], content);
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const application = this.getApplication<RDSApplication>();
+        const client = application.getRDSClient(applicationInstall);
 
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-    const application = this._application as RDSApplication;
-    const client = application.getRDSClient(applicationInstall);
-
-    const input: AddRoleToDBClusterCommandInput = {
-      /* eslint-disable @typescript-eslint/naming-convention */
-      RoleArn: content.RoleArn,
-      DBClusterIdentifier: content.DBClusterIdentifier,
-      FeatureName: content.FeatureName,
-      /* eslint-enable @typescript-eslint/naming-convention */
-    };
-    const command = new AddRoleToDBClusterCommand(input);
-    try {
-      await client.send(command);
-    } catch (e) {
-      throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
+        const input: AddRoleToDBClusterCommandInput = {
+            /* eslint-disable @typescript-eslint/naming-convention */
+            RoleArn: content.RoleArn,
+            DBClusterIdentifier: content.DBClusterIdentifier,
+            FeatureName: content.FeatureName,
+            /* eslint-enable @typescript-eslint/naming-convention */
+        };
+        const command = new AddRoleToDBClusterCommand(input);
+        try {
+            await client.send(command);
+        } catch (e) {
+            throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
+        }
+        return dto;
     }
-    return dto;
-  }
+
+    protected getCustomId(): string {
+        return 'add-role-to-db-cluster';
+    }
+
 }
+
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IInput {
+    RoleArn: string;
+    DBClusterIdentifier: string;
+    FeatureName: string | undefined;
+}
+
+/* eslint-enable @typescript-eslint/naming-convention */

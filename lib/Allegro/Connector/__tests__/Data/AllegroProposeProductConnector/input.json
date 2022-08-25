@@ -1,49 +1,49 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "name": "iPhone 5s",
-    "category": {
-      "id": "257931"
+    "headers": {
+        "user": "TestUser"
     },
-    "images": [
-      {
-        "url": "string"
-      }
-    ],
-    "parameters": [
-      {
-        "id": "string",
-        "rangeValue": {
-          "from": "string",
-          "to": "string"
+    "data": {
+        "name": "iPhone 5s",
+        "category": {
+            "id": "257931"
         },
-        "values": [
-          "string"
-        ],
-        "valuesIds": [
-          "string"
-        ],
-        "valuesLabels": [
-          "string"
-        ],
-        "unit": "string",
-        "options": {
-          "identifiesProduct": true
-        }
-      }
-    ],
-    "description": {
-      "sections": [
-        {
-          "items": [
+        "images": [
             {
-              "type": "string"
+                "url": "string"
             }
-          ]
+        ],
+        "parameters": [
+            {
+                "id": "string",
+                "rangeValue": {
+                    "from": "string",
+                    "to": "string"
+                },
+                "values": [
+                    "string"
+                ],
+                "valuesIds": [
+                    "string"
+                ],
+                "valuesLabels": [
+                    "string"
+                ],
+                "unit": "string",
+                "options": {
+                    "identifiesProduct": true
+                }
+            }
+        ],
+        "description": {
+            "sections": [
+                {
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }

@@ -1,19 +1,19 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data":[
-    {
-      "sku": "string",
-      "name": "string",
-      "englishName": "string",
-      "ean": "string",
-      "width": 0,
-      "widthUnit": "mm",
-      "height": 0,
-      "heightUnit": "mm",
-      "weight": 0,
-      "weightUnit": "g"
-    }
-  ]
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "sku": "string",
+            "name": "string",
+            "englishName": "string",
+            "ean": "string",
+            "width": 0,
+            "widthUnit": "mm",
+            "height": 0,
+            "heightUnit": "mm",
+            "weight": 0,
+            "weightUnit": "g"
+        }
+    ]
 }

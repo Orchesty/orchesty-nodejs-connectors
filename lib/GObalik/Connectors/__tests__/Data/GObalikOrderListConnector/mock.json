@@ -1,13 +1,13 @@
 {
-  "http": "GET https://go-balik.cz/api/v1/order?from=from&to=to&id=id",
-  "code": 200,
-  "body": {
-    "hash": "XZY",
-    "id": "GB1111",
-    "pack_number": "123465789",
-    "price": 99,
-    "pick_up_date": "2020",
-    "carrier_name": "XYZ",
-    "reference_number": "1234"
-  }
+    "http": "GET https://go-balik.cz/api/v1/order?from=from&to=to&id=id",
+    "code": 200,
+    "body": {
+        "hash": "XZY",
+        "id": "GB1111",
+        "pack_number": "123465789",
+        "price": 99,
+        "pick_up_date": "2020",
+        "carrier_name": "XYZ",
+        "reference_number": "1234"
+    }
 }

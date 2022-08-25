@@ -1,32 +1,36 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'calendly-list-events-batch';
 
 export default class CalendlyListEventsBatch extends ABatchNode {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-    const token = dto.getBatchCursor('');
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      `scheduled_events${token}`,
-    );
-    const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IResponse;
-
-    dto.setItemList(response.collection ?? []);
-    if (response.pagination.next_page_token) {
-      const nextToken = `?page_token=${response.pagination.next_page_token}`;
-      dto.setBatchCursor(nextToken);
+    public getName(): string {
+        return NAME;
     }
-    return dto;
-  }
+
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const token = dto.getBatchCursor('');
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `scheduled_events${token}`,
+        );
+        const resp = await this.getSender().send<IResponse>(req, [200]);
+        const response = resp.getJsonBody();
+
+        dto.setItemList(response.collection ?? []);
+        if (response.pagination.next_page_token) {
+            const nextToken = `?page_token=${response.pagination.next_page_token}`;
+            dto.setBatchCursor(nextToken);
+        }
+
+        return dto;
+    }
+
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -39,7 +43,7 @@ interface IResponse {
         previous_page: string;
         next_page_token: string;
         previous_page_token: string;
-    }
+    };
 }
 
 interface IOutput {

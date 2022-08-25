@@ -1,54 +1,57 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'authentica-get-stock';
 
 export default class AuthenticaGetStock extends ABatchNode {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-
-    const page = dto.getBatchCursor('1');
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      `stock?page=${page}&limit=100`,
-    );
-    const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IResponse;
-
-    this._setItemsListToDto(dto, response.data ?? []);
-    if (Number(page) !== response.meta.totalPages) {
-      dto.setBatchCursor((Number(page) + 1).toString());
+    public getName(): string {
+        return NAME;
     }
-    return dto;
-  }
 
-  protected _setItemsListToDto = (dto: BatchProcessDto, responseBody: IOutput[]) => {
-    dto.setItemList(responseBody);
-  };
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const page = dto.getBatchCursor('1');
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `stock?page=${page}&limit=100`,
+        );
+        const resp = await this.getSender().send<IResponse>(req, [200]);
+        const response = resp.getJsonBody();
+
+        this.setItemsListToDto(dto, response.data ?? []);
+        if (Number(page) !== response.meta.totalPages) {
+            dto.setBatchCursor((Number(page) + 1).toString());
+        }
+
+        return dto;
+    }
+
+    protected setItemsListToDto(dto: BatchProcessDto, responseBody: IOutput[]): void {
+        dto.setItemList(responseBody);
+    }
+
 }
 
 interface IResponse {
-  data: IOutput[],
-  links: {
-    first: string,
-    last: string,
-    prev?: string | null,
-    next?: string | null
+    data: IOutput[];
+    links: {
+        first: string;
+        last: string;
+        prev?: string | null;
+        next?: string | null;
 
-  },
-  meta: {
-    totalPages: number
-  }
+    };
+    meta: {
+        totalPages: number;
+    };
 }
 
 export interface IOutput {
-  sku: string,
-  inStock: string,
-  productId: string
+    sku: string;
+    inStock: string;
+    productId: string;
 }

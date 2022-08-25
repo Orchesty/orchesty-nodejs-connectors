@@ -1,36 +1,38 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'allegro-get-available-products-batch';
 const LIMIT = 99;
 
 export default class AllegroGetAvailableProductsBatch extends ABatchNode {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-    const offset = Number(dto.getBatchCursor('0'));
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = `fulfillment/available-products?offset=${offset}&limit=${LIMIT}`;
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.GET,
-      url,
-    );
-    const resp = await this._sender.send(req, [200]);
-    const response = resp.jsonBody as IResponse;
-
-    dto.setItemList(response.products ?? []);
-    if (response.count === LIMIT + 1) {
-      dto.setBatchCursor((offset + LIMIT).toString());
+    public getName(): string {
+        return NAME;
     }
-    return dto;
-  }
-}
 
-/* eslint-disable @typescript-eslint/naming-convention */
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const offset = Number(dto.getBatchCursor('0'));
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const url = `fulfillment/available-products?offset=${offset}&limit=${LIMIT}`;
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            url,
+        );
+        const resp = await this.getSender().send<IResponse>(req, [200]);
+        const response = resp.getJsonBody();
+
+        dto.setItemList(response.products ?? []);
+        if (response.count === LIMIT + 1) {
+            dto.setBatchCursor((offset + LIMIT).toString());
+        }
+
+        return dto;
+    }
+
+}
 
 interface IResponse {
     products: IOutput[];
@@ -44,5 +46,3 @@ export interface IOutput {
     gtins: string[];
     image: string;
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

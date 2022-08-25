@@ -1,49 +1,52 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'authentica-put-products';
 
 export default class AuthenticaPutProducts extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
+    public getName(): string {
+        return NAME;
+    }
 
-    const { products } = dto.jsonData as IInput;
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutputItem[]>> {
+        const { products } = dto.getJsonData();
 
-    const requestDto = await this._application.getRequestDto(
-      dto,
-      await this._getApplicationInstallFromProcess(dto),
-      HttpMethods.PUT,
-      'products',
-      products,
-    );
+        const requestDto = await this.getApplication().getRequestDto(
+            dto,
+            await this.getApplicationInstallFromProcess(dto),
+            HttpMethods.PUT,
+            'products',
+            products,
+        );
 
-    const response = (await this._sender.send(requestDto, [200])).jsonBody as IOutput;
+        const response = (await this.getSender().send<IResponse>(requestDto, [200])).getJsonBody();
 
-    dto.jsonData = response.data;
+        return dto.setNewJsonData(response.data);
+    }
 
-    return dto;
-  }
 }
 
-export interface IProduct{
-      sku: string,
-      name: string,
-      englishName: string,
-      ean: string,
-      width: number,
-      widthUnit: string,
-      height: number,
-      heightUnit: string,
-      weight: number,
-      weightUnit: string
-}
-export interface IOutput {
-    data: IProduct[]
+export interface IProduct {
+    sku: string;
+    name: string;
+    englishName: string;
+    ean: string;
+    width: number;
+    widthUnit: string;
+    height: number;
+    heightUnit: string;
+    weight: number;
+    weightUnit: string;
 }
 
-export interface IInput{
-    products: IProduct[]
+interface IResponse {
+    data: IProduct[];
 }
+
+export interface IInput {
+    products: IProduct[];
+}
+
+export type IOutputItem = IProduct;

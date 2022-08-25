@@ -1,7 +1,7 @@
 {
-  "http": "POST https://api.twitter.com/2/tweets/123",
-  "code": 200,
-  "body": {
-    "deleted": true
-  }
+    "http": "POST https://api.twitter.com/2/tweets/123",
+    "code": 200,
+    "body": {
+        "deleted": true
+    }
 }

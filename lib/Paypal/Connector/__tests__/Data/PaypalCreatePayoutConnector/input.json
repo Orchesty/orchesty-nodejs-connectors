@@ -1,43 +1,43 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "sender_batch_header": {
-      "email_subject": "You have a payout!",
-      "email_message": "You have received a payout! Thanks for using our service!"
+    "headers": {
+        "user": "TestUser"
     },
-    "items": [
-      {
-        "recipient_type": "EMAIL",
-        "amount": {
-          "value": "9.87",
-          "currency": "USD"
+    "data": {
+        "sender_batch_header": {
+            "email_subject": "You have a payout!",
+            "email_message": "You have received a payout! Thanks for using our service!"
         },
-        "note": "Thanks for your patronage!",
-        "sender_item_id": "201403140001",
-        "receiver": "receiver@example.com"
-      },
-      {
-        "recipient_type": "PHONE",
-        "amount": {
-          "value": "112.34",
-          "currency": "USD"
-        },
-        "note": "Thanks for your support!",
-        "sender_item_id": "201403140002",
-        "receiver": "91-734-234-1234"
-      },
-      {
-        "recipient_type": "PAYPAL_ID",
-        "amount": {
-          "value": "5.32",
-          "currency": "USD"
-        },
-        "note": "Thanks for your patronage!",
-        "sender_item_id": "201403140003",
-        "receiver": "G83JXTJ5EHCQ2"
-      }
-    ]
-  }
+        "items": [
+            {
+                "recipient_type": "EMAIL",
+                "amount": {
+                    "value": "9.87",
+                    "currency": "USD"
+                },
+                "note": "Thanks for your patronage!",
+                "sender_item_id": "201403140001",
+                "receiver": "receiver@example.com"
+            },
+            {
+                "recipient_type": "PHONE",
+                "amount": {
+                    "value": "112.34",
+                    "currency": "USD"
+                },
+                "note": "Thanks for your support!",
+                "sender_item_id": "201403140002",
+                "receiver": "91-734-234-1234"
+            },
+            {
+                "recipient_type": "PAYPAL_ID",
+                "amount": {
+                    "value": "5.32",
+                    "currency": "USD"
+                },
+                "note": "Thanks for your patronage!",
+                "sender_item_id": "201403140003",
+                "receiver": "G83JXTJ5EHCQ2"
+            }
+        ]
+    }
 }

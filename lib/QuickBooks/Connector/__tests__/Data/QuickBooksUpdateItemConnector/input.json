@@ -1,14 +1,14 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "Id": "20",
-    "SyncToken": "1",
-    "Name": "Product Updated",
-    "IncomeAccountRef": {
-      "name": "Sales of Product Updated",
-      "value": "1"
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "Id": "20",
+        "SyncToken": "1",
+        "Name": "Product Updated",
+        "IncomeAccountRef": {
+            "name": "Sales of Product Updated",
+            "value": "1"
+        }
     }
-  }
 }

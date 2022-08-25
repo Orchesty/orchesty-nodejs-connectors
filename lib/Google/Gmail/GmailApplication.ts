@@ -5,15 +5,26 @@ export const BASE_URL = 'https://gmail.googleapis.com';
 export const NAME = 'google-gmail';
 
 export default class GmailApplication extends AGoogle {
-  public getBaseUrl = (): string => BASE_URL;
 
-  // eslint-disable-next-line max-len
-  public getDescription = (): string => 'The Gmail application lets you view and manage Gmail mailbox data like threads, messages, and labels.';
+    public getBaseUrl(): string {
+        return BASE_URL;
+    }
 
-  public getName = (): string => NAME;
+    public getDescription(): string {
+        return 'The Gmail application lets you view and manage Gmail mailbox data like threads, messages, and labels.';
+    }
 
-  public getPublicName = (): string => 'Gmail';
+    public getName(): string {
+        return NAME;
+    }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public getScopes = (applicationInstall: ApplicationInstall): string[] => ['https://www.googleapis.com/auth/gmail.compose'];
+    public getPublicName(): string {
+        return 'Gmail';
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public getScopes(applicationInstall: ApplicationInstall): string[] {
+        return ['https://www.googleapis.com/auth/gmail.compose'];
+    }
+
 }

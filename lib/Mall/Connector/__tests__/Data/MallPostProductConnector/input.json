@@ -1,28 +1,28 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "id": "104570",
-    "title": "Title of product",
-    "shortdesc": "Short description of the product",
-    "longdesc": "Long description of <strong>the product</strong>",
-    "priority": 1,
-    "category_id": "MP008",
-    "media": [
-      {
-        "url": "https://blog.inpage.cz/obrazek/2/kitten-jpg",
-        "main": true,
-        "switch": "COLOR",
-        "energy_label": false,
-        "information_list": false
-      }
-    ],
-    "vat": 21,
-    "availability": {
-      "status": "A",
-      "in_stock": 23
+    "headers": {
+        "user": "TestUser"
     },
-    "price": 10000000
-  }
+    "data": {
+        "id": "104570",
+        "title": "Title of product",
+        "shortdesc": "Short description of the product",
+        "longdesc": "Long description of <strong>the product</strong>",
+        "priority": 1,
+        "category_id": "MP008",
+        "media": [
+            {
+                "url": "https://blog.inpage.cz/obrazek/2/kitten-jpg",
+                "main": true,
+                "switch": "COLOR",
+                "energy_label": false,
+                "information_list": false
+            }
+        ],
+        "vat": 21,
+        "availability": {
+            "status": "A",
+            "in_stock": 23
+        },
+        "price": 10000000
+    }
 }

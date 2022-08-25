@@ -1,23 +1,24 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'allegro-propose-product-connector';
 
 export default class AllegroProposeProductConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
+    public getName(): string {
+        return NAME;
+    }
 
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = 'sale/product-proposals';
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url);
-    const resp = await this._sender.send(req, [201]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const url = 'sale/product-proposals';
+        const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.POST, url);
+        const resp = await this.getSender().send<IOutput>(req, [201]);
 
-    dto.jsonData = resp.jsonBody as IOutput;
-    return dto;
-  }
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
 
 export interface IInput {

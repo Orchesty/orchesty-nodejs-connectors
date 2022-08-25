@@ -6,12 +6,12 @@ import { NAME as ALZA_CONFIRM_ORDER_CONNECTOR } from '../AlzaConfirmOrderConnect
 let tester: NodeTester;
 
 describe('Tests for AlzaConfirmOrderConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
-    await init();
-  });
+    beforeEach(async () => {
+        tester = new NodeTester(container, __filename, true);
+        await init();
+    });
 
-  it('process - ok', async () => {
-    await tester.testConnector(ALZA_CONFIRM_ORDER_CONNECTOR);
-  });
+    it('process - ok', async () => {
+        await tester.testConnector(ALZA_CONFIRM_ORDER_CONNECTOR);
+    });
 });

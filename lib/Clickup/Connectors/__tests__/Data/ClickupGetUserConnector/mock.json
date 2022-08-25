@@ -1,35 +1,34 @@
 {
-  "http": "GET https://api.clickup.com/api/v2/team/14353588/user/32316450",
-  "code": 200,
-  "body": {
-    "member": {
-      "user": {
-        "id": 184,
-        "username": "Greg",
-        "email": "greg@example.com",
-        "color": null,
-        "profilePicture": null,
-        "initials": "G",
-        "role": 3,
-        "custom_role": null,
-        "last_active": "1639623752137",
-        "date_joined": "1625720320357",
-        "date_invited": "1583358383412"
-      },
-      "invited_by": {
-        "id": 183,
-        "username": "Jerry",
-        "color": "#827718",
-        "email": "jerry@example.com",
-        "initials": "J",
-        "profilePicture": "https://dev-attachments-public.clickup.com/profilePictures/profile.jpg"
-      },
-      "shared": {
-        "tasks": [],
-        "lists": [],
-        "folders": []
-      }
+    "http": "GET https://api.clickup.com/api/v2/team/14353588/user/32316450",
+    "code": 200,
+    "body": {
+        "member": {
+            "user": {
+                "id": 184,
+                "username": "Greg",
+                "email": "greg@example.com",
+                "color": null,
+                "profilePicture": null,
+                "initials": "G",
+                "role": 3,
+                "custom_role": null,
+                "last_active": "1639623752137",
+                "date_joined": "1625720320357",
+                "date_invited": "1583358383412"
+            },
+            "invited_by": {
+                "id": 183,
+                "username": "Jerry",
+                "color": "#827718",
+                "email": "jerry@example.com",
+                "initials": "J",
+                "profilePicture": "https://dev-attachments-public.clickup.com/profilePictures/profile.jpg"
+            },
+            "shared": {
+                "tasks": [],
+                "lists": [],
+                "folders": []
+            }
+        }
     }
-
-  }
 }

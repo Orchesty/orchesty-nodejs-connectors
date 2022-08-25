@@ -3,75 +3,75 @@
         "user": "TestUser"
     },
     "data": {
-    "first_name": "John",
-    "last_name": "Locke",
-    "company": "The Tustin Box Company",
-    "title": "Man of Mystery",
-    "is_private": false,
-    "phone_numbers": [
-        {
-            "value": "555-1212",
-            "type": "mobile"
-        }
-    ],
-    "addresses": [
-        {
-            "value": "123 Fake St.",
-            "type": "home"
-        }
-    ],
-    "email_addresses": [
-        {
-            "value": "john.locke+work@example.com",
-            "type": "work"
-        },
-        {
-            "value": "john.locke@example.com",
-            "type": "personal"
-        }
-    ],
-    "website_addresses": [
-        {
-            "value": "johnlocke.example.com",
-            "type": "personal"
-        }
-    ],
-    "social_media_addresses": [
-        {
-            "value": "linkedin.example.com/john.locke"
-        },
-        {
-            "value": "@johnlocke"
-        }
-    ],
-    "educations": [
-        {
-            "school_id": 459,
-            "discipline_id": 940,
-            "degree_id": 1230,
-            "start_date": "2001-09-15T00:00:00.000Z",
-            "end_date": "2004-05-15T00:00:00.000Z"
-        }
-    ],
-    "employments": [
-        {
-            "company_name": "Greenhouse",
-            "title": "Engineer",
-            "start_date": "2012-08-15T00:00:00.000Z",
-            "end_date": "2016-05-15T00:00:00.000Z"
-        }
-    ],
-    "tags": [
-        "Walkabout",
-        "Orientation"
-    ],
-    "applications": [
-        {
-            "job_id": 215725
-        },
-        {
-            "job_id": 185289
-        }
-    ]
-}
+        "first_name": "John",
+        "last_name": "Locke",
+        "company": "The Tustin Box Company",
+        "title": "Man of Mystery",
+        "is_private": false,
+        "phone_numbers": [
+            {
+                "value": "555-1212",
+                "type": "mobile"
+            }
+        ],
+        "addresses": [
+            {
+                "value": "123 Fake St.",
+                "type": "home"
+            }
+        ],
+        "email_addresses": [
+            {
+                "value": "john.locke+work@example.com",
+                "type": "work"
+            },
+            {
+                "value": "john.locke@example.com",
+                "type": "personal"
+            }
+        ],
+        "website_addresses": [
+            {
+                "value": "johnlocke.example.com",
+                "type": "personal"
+            }
+        ],
+        "social_media_addresses": [
+            {
+                "value": "linkedin.example.com/john.locke"
+            },
+            {
+                "value": "@johnlocke"
+            }
+        ],
+        "educations": [
+            {
+                "school_id": 459,
+                "discipline_id": 940,
+                "degree_id": 1230,
+                "start_date": "2001-09-15T00:00:00.000Z",
+                "end_date": "2004-05-15T00:00:00.000Z"
+            }
+        ],
+        "employments": [
+            {
+                "company_name": "Greenhouse",
+                "title": "Engineer",
+                "start_date": "2012-08-15T00:00:00.000Z",
+                "end_date": "2016-05-15T00:00:00.000Z"
+            }
+        ],
+        "tags": [
+            "Walkabout",
+            "Orientation"
+        ],
+        "applications": [
+            {
+                "job_id": 215725
+            },
+            {
+                "job_id": 185289
+            }
+        ]
+    }
 }

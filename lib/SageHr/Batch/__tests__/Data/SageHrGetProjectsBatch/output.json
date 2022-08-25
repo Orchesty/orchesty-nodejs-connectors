@@ -1,6 +1,15 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": [{"body": "error 1", "headers": null}, {"body": "error 2", "headers": null}]
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "error 1",
+            "headers": null
+        },
+        {
+            "body": "error 2",
+            "headers": null
+        }
+    ]
 }

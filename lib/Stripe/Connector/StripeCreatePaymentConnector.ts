@@ -1,52 +1,55 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import StripeApplication from '../StripeApplication';
 
 const STRIPE_CREATE_PAYMENT_ENDPOINT = '/v1/charges';
 
 interface IStripePayment {
-  amount: string,
-  currency: string,
-  source: string,
-  description: string,
+    amount: string;
+    currency: string;
+    source: string;
+    description: string;
 }
 
 export default class StripeCreatePaymentConnector extends AConnector {
-  public getName = (): string => 'stripe-create-payment';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
+    public getName(): string {
+        return 'stripe-create-payment';
+    }
 
-    checkParams(
-      dto.jsonData as Record<string, unknown>,
-      ['amount', 'currency', 'source', 'description'],
-    );
+    public async processAction(dto: ProcessDto<IStripePayment>): Promise<ProcessDto> {
+        checkParams(
+            dto.getJsonData(),
+            ['amount', 'currency', 'source', 'description'],
+        );
 
-    const {
-      amount,
-      currency,
-      source,
-      description,
-    } = dto.jsonData as IStripePayment;
-    const query = new URLSearchParams({
-      amount, currency, source, description,
-    });
+        const {
+            amount,
+            currency,
+            source,
+            description,
+        } = dto.getJsonData();
+        const query = new URLSearchParams({
+            amount, currency, source, description,
+        });
 
-    const application = this._application as StripeApplication;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
+        const application = this.getApplication<StripeApplication>();
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
-    const request = await application.getRequestDto(
-      dto,
-      applicationInstall,
-      HttpMethods.POST,
-      STRIPE_CREATE_PAYMENT_ENDPOINT,
-      query.toString(),
-    );
+        const request = await application.getRequestDto(
+            dto,
+            applicationInstall,
+            HttpMethods.POST,
+            STRIPE_CREATE_PAYMENT_ENDPOINT,
+            query.toString(),
+        );
 
-    const response = await this._sender.send(request, [200]);
-    dto.data = response.body;
-    return dto;
-  }
+        const response = await this.getSender().send(request, [200]);
+        dto.setData(response.getBody());
+
+        return dto;
+    }
+
 }

@@ -1,10 +1,10 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "lead": {
-      "description": "A great new lead"
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "lead": {
+            "description": "A great new lead"
+        }
     }
-  }
 }

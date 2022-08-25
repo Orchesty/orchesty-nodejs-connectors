@@ -6,12 +6,12 @@ import { NAME as ALZA_TRACK_AND_TRACE_CONNECTOR } from '../AlzaTrackAndTraceConn
 let tester: NodeTester;
 
 describe('Tests for AlzaTrackAndTraceConnector', () => {
-  beforeEach(async () => {
-    tester = new NodeTester(container, __filename, true);
-    await init();
-  });
+    beforeEach(async () => {
+        tester = new NodeTester(container, __filename, true);
+        await init();
+    });
 
-  it('process - ok', async () => {
-    await tester.testConnector(ALZA_TRACK_AND_TRACE_CONNECTOR);
-  });
+    it('process - ok', async () => {
+        await tester.testConnector(ALZA_TRACK_AND_TRACE_CONNECTOR);
+    });
 });

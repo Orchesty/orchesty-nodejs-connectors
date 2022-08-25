@@ -1,10 +1,12 @@
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AFakturoidConnector from './FakturoidAbstractConnector';
 
 export default class FakturoidGetAccountDetailConnector extends AFakturoidConnector {
-  protected _name = 'fakturoid-get-account-detail';
 
-  protected _endpoint = 'account.json';
+    protected name = 'fakturoid-get-account-detail';
 
-  protected _method = HttpMethods.GET;
+    protected endpoint = 'account.json';
+
+    protected method = HttpMethods.GET;
+
 }

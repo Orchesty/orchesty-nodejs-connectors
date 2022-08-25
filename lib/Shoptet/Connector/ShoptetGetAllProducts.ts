@@ -1,39 +1,40 @@
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import AShoptetConnector from './AShoptetConnector';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
+import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-all-products';
 
 export default class ShoptetGetAllProducts extends AShoptetConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const { from } = dto.jsonData as { from: string };
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-
-    let url = 'api/products/snapshot';
-
-    const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
-      appInstall.getNonEncryptedSettings().lastRunAllProducts,
-    );
-
-    if (creationTimeFrom) {
-      url = `${url}&creationTimeFrom=${creationTimeFrom}`;
+    public getName(): string {
+        return NAME;
     }
 
-    const response = await this._doRequest(url, dto) as IResponse;
+    public async processAction(dto: ProcessDto<{ from: string }>): Promise<ProcessDto<IOutput>> {
+        const { from } = dto.getJsonData();
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-    dto.jsonData = response.data;
+        let url = 'api/products/snapshot';
 
-    return dto;
-  }
+        const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
+            appInstall.getNonEncryptedSettings().lastRunAllProducts,
+        );
+
+        if (creationTimeFrom) {
+            url = `${url}&creationTimeFrom=${creationTimeFrom}`;
+        }
+
+        const response = await this.doRequest(url, dto) as IResponse;
+
+        return dto.setNewJsonData(response.data);
+    }
+
 }
 
 interface IResponse {
-  data: IOutput
+    data: IOutput;
 }
 
 export interface IOutput {
-  jobId: string
+    jobId: string;
 }

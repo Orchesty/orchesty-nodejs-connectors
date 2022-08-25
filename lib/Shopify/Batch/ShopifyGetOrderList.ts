@@ -1,5 +1,5 @@
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ShopifyApplication from '../ShopifyApplication';
 
@@ -7,58 +7,61 @@ const LIST_PAGE_ENDPOINT = 'admin/api/2021-07/orders.json?status=any&fulfillment
 const GET_DETAIL_ENDPOINT = 'admin/api/2021-07/orders/{orderId}.json?status=any';
 
 export default class ShopifyGetOrderList extends ABatchNode {
-  public getName = (): string => 'shopify-get-order-list';
 
-  public async processAction(_dto: BatchProcessDto): Promise<BatchProcessDto> {
-    const dto = _dto;
-    const app = this._application as ShopifyApplication;
-    const {
-      from,
-    } = dto.jsonData as IInputJson;
-    let url = dto.getBatchCursor(LIST_PAGE_ENDPOINT);
-    if (from) {
-      const separatorChar = url.includes('?') ? '&' : '?';
-      url = `${url}${separatorChar}created_at_min=${from}`;
+    public getName(): string {
+        return 'shopify-get-order-list';
     }
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
-    const res = await this._sender.send(requestDto);
-    const { orders } = res.jsonBody as IResponseJson;
+    public async processAction(dto: BatchProcessDto<IInputJson>): Promise<BatchProcessDto> {
+        const app = this.getApplication<ShopifyApplication>();
+        const {
+            from,
+        } = dto.getJsonData();
+        let url = dto.getBatchCursor(LIST_PAGE_ENDPOINT);
+        if (from) {
+            const separatorChar = url.includes('?') ? '&' : '?';
+            url = `${url}${separatorChar}created_at_min=${from}`;
+        }
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
-    let lastId = '';
+        const res = await this.getSender().send<IResponseJson>(requestDto);
+        const { orders } = res.getJsonBody();
 
-    const splitOrders: IOutputJson[] = [];
+        let lastId = '';
 
-    orders.forEach((order) => {
-      splitOrders.push({
-        id: order.id,
-        url: GET_DETAIL_ENDPOINT.replace('{orderId}', order.id),
-      });
-      lastId = order.id;
-    });
+        const splitOrders: IOutputJson[] = [];
 
-    const data: IOutputJson[] = splitOrders;
-    if (orders.length >= 250) {
-      dto.setBatchCursor(`${LIST_PAGE_ENDPOINT}&since_id=${lastId}`);
+        orders.forEach((order) => {
+            splitOrders.push({
+                id: order.id,
+                url: GET_DETAIL_ENDPOINT.replace('{orderId}', order.id),
+            });
+            lastId = order.id;
+        });
+
+        const data: IOutputJson[] = splitOrders;
+        if (orders.length >= 250) {
+            dto.setBatchCursor(`${LIST_PAGE_ENDPOINT}&since_id=${lastId}`);
+        }
+        dto.setItemList(data);
+
+        return dto;
     }
-    dto.setItemList(data);
 
-    return dto;
-  }
 }
 
 interface IInputJson {
-  from: string,
+    from: string;
 }
 
 interface IResponseJson {
-  orders: {
-    id: string,
-  }[];
+    orders: {
+        id: string;
+    }[];
 }
 
 export interface IOutputJson {
-  url: string,
-  id: string,
+    url: string;
+    id: string;
 }

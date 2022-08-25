@@ -1,37 +1,40 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { API_KEYPOINT, AUDIENCE_ID } from '../MailchimpApplication';
 
 export default class MailchimpCreateContactConnector extends AConnector {
-  public getName = (): string => 'mailchimp-create-contact';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-    const apiEndpoint = applicationInstall.getSettings()[API_KEYPOINT];
+    public getName(): string {
+        return 'mailchimp-create-contact';
+    }
 
-    const output = await this._sender.send(
-      await this._application.getRequestDto(
-        dto,
-        applicationInstall,
-        HttpMethods.POST,
-        `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/members/`,
-        dto.data,
-      ),
-    );
+    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const apiEndpoint = applicationInstall.getSettings()[API_KEYPOINT];
 
-    const json = output.jsonBody as { type: unknown, detail: unknown, instance: unknown };
+        const output = await this.getSender().send(
+            await this.getApplication().getRequestDto(
+                dto,
+                applicationInstall,
+                HttpMethods.POST,
+                `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/members/`,
+                dto.getData(),
+            ),
+        );
 
-    delete json.type;
-    delete json.detail;
-    delete json.instance;
+        const json = output.getJsonBody() as { type: unknown; detail: unknown; instance: unknown };
 
-    this.evaluateStatusCode(output, dto);
+        delete json.type;
+        delete json.detail;
+        delete json.instance;
 
-    dto.jsonData = json;
+        this.evaluateStatusCode(output, dto);
 
-    return dto;
-  }
+        dto.setJsonData(json);
+
+        return dto;
+    }
+
 }

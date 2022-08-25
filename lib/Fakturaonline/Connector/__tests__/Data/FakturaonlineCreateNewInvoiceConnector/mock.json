@@ -1,144 +1,144 @@
 {
-  "http": "POST https://api.fakturaonline.cz/v0/invoices",
-  "code": 200,
-  "body": {
-    "public_url": "/vystavene-faktury/1.pdf",
-    "invoice": {
-      "already_paid_note": null,
-      "buyer": {
-        "bank_account_name": null,
-        "bank_account_number": null,
-        "city": null,
-        "company_number": "54321",
-        "country_code": "CZ",
-        "iban": null,
-        "id": 2,
-        "name": null,
-        "postcode": null,
-        "show_iban": false,
-        "street": null,
-        "swift": null,
-        "tax_number": null,
-        "vat_number": null,
-        "vat_payer": null
-      },
-      "constant_symbol": null,
-      "contact_id": null,
-      "created_at": "2022-06-08T08:30:21+02:00",
-      "credit_noted_invoice_id": null,
-      "currency": "EUR",
-      "delivery_on": null,
-      "design": "1",
-      "due_in_api": "14",
-      "due_on": "2022-06-22",
-      "eet": {
-        "uuid_zpravy": null,
-        "bkp": null,
-        "dat_prij": null,
-        "fik": null,
-        "locked?": false,
-        "should_be_registered?": null
-      },
-      "eet_invoice": false,
-      "eet_state": "not_subject",
-      "foot_note": null,
-      "id": 1,
-      "is_accessible": true,
-      "issued_by": null,
-      "issued_on": "2022-06-08",
-      "kind": "invoice",
-      "language": "cs",
-      "lines": [
-        {
-          "description": "Invoice line 10",
-          "id": 1,
-          "invoice_id": 1,
-          "price": "199,90 €",
-          "quantity": "1,00",
-          "unit_type": null,
-          "vat_rate": "20%"
+    "http": "POST https://api.fakturaonline.cz/v0/invoices",
+    "code": 200,
+    "body": {
+        "public_url": "/vystavene-faktury/1.pdf",
+        "invoice": {
+            "already_paid_note": null,
+            "buyer": {
+                "bank_account_name": null,
+                "bank_account_number": null,
+                "city": null,
+                "company_number": "54321",
+                "country_code": "CZ",
+                "iban": null,
+                "id": 2,
+                "name": null,
+                "postcode": null,
+                "show_iban": false,
+                "street": null,
+                "swift": null,
+                "tax_number": null,
+                "vat_number": null,
+                "vat_payer": null
+            },
+            "constant_symbol": null,
+            "contact_id": null,
+            "created_at": "2022-06-08T08:30:21+02:00",
+            "credit_noted_invoice_id": null,
+            "currency": "EUR",
+            "delivery_on": null,
+            "design": "1",
+            "due_in_api": "14",
+            "due_on": "2022-06-22",
+            "eet": {
+                "uuid_zpravy": null,
+                "bkp": null,
+                "dat_prij": null,
+                "fik": null,
+                "locked?": false,
+                "should_be_registered?": null
+            },
+            "eet_invoice": false,
+            "eet_state": "not_subject",
+            "foot_note": null,
+            "id": 1,
+            "is_accessible": true,
+            "issued_by": null,
+            "issued_on": "2022-06-08",
+            "kind": "invoice",
+            "language": "cs",
+            "lines": [
+                {
+                    "description": "Invoice line 10",
+                    "id": 1,
+                    "invoice_id": 1,
+                    "price": "199,90 €",
+                    "quantity": "1,00",
+                    "unit_type": null,
+                    "vat_rate": "20%"
+                },
+                {
+                    "description": "Invoice line 11",
+                    "id": 2,
+                    "invoice_id": 1,
+                    "price": "312,00 €",
+                    "quantity": "1,00",
+                    "unit_type": null,
+                    "vat_rate": "10,5%"
+                },
+                {
+                    "description": "Invoice line 12",
+                    "id": 3,
+                    "invoice_id": 1,
+                    "price": "199,90 €",
+                    "quantity": "10,00",
+                    "unit_type": null,
+                    "vat_rate": "15%"
+                }
+            ],
+            "locked?": false,
+            "logo": {
+                "filename": null,
+                "thumb": {
+                    "filename": null,
+                    "thumb": null,
+                    "url": null
+                },
+                "url": null
+            },
+            "logo_id": null,
+            "means_of_payment": "cash",
+            "note": null,
+            "number": "INVOICE-0010",
+            "paid": false,
+            "paid_at": null,
+            "payment_symbol": "0010",
+            "registration_number": null,
+            "rounding_type": "none",
+            "seller": {
+                "bank_account_name": null,
+                "bank_account_number": null,
+                "city": null,
+                "company_number": "12345",
+                "country_code": "CZ",
+                "iban": null,
+                "id": 1,
+                "name": "Ohai",
+                "postcode": null,
+                "show_iban": false,
+                "street": null,
+                "swift": null,
+                "tax_number": null,
+                "vat_number": null,
+                "vat_payer": null
+            },
+            "seller_company_id": "12345",
+            "seller_id": null,
+            "settlement_method": null,
+            "show_qr_code": true,
+            "site": "cz",
+            "stamp": {
+                "filename": null,
+                "thumb": {
+                    "filename": null,
+                    "thumb": null,
+                    "url": null
+                },
+                "url": null
+            },
+            "stamp_id": null,
+            "state": null,
+            "stateful_invoice": false,
+            "submitted_at": null,
+            "subscription_id": 1,
+            "tax_point_on": "2022-06-08",
+            "total_float": 2883.49,
+            "updated_at": "2022-06-08T08:30:21+02:00",
+            "vat_calculation": "vat_exclusive",
+            "vat_totals_currency": "EUR",
+            "vat_totals_currency_conversion": false
         },
-        {
-          "description": "Invoice line 11",
-          "id": 2,
-          "invoice_id": 1,
-          "price": "312,00 €",
-          "quantity": "1,00",
-          "unit_type": null,
-          "vat_rate": "10,5%"
-        },
-        {
-          "description": "Invoice line 12",
-          "id": 3,
-          "invoice_id": 1,
-          "price": "199,90 €",
-          "quantity": "10,00",
-          "unit_type": null,
-          "vat_rate": "15%"
-        }
-      ],
-      "locked?": false,
-      "logo": {
-        "filename": null,
-        "thumb": {
-          "filename": null,
-          "thumb": null,
-          "url": null
-        },
-        "url": null
-      },
-      "logo_id": null,
-      "means_of_payment": "cash",
-      "note": null,
-      "number": "INVOICE-0010",
-      "paid": false,
-      "paid_at": null,
-      "payment_symbol": "0010",
-      "registration_number": null,
-      "rounding_type": "none",
-      "seller": {
-        "bank_account_name": null,
-        "bank_account_number": null,
-        "city": null,
-        "company_number": "12345",
-        "country_code": "CZ",
-        "iban": null,
-        "id": 1,
-        "name": "Ohai",
-        "postcode": null,
-        "show_iban": false,
-        "street": null,
-        "swift": null,
-        "tax_number": null,
-        "vat_number": null,
-        "vat_payer": null
-      },
-      "seller_company_id": "12345",
-      "seller_id": null,
-      "settlement_method": null,
-      "show_qr_code": true,
-      "site": "cz",
-      "stamp": {
-        "filename": null,
-        "thumb": {
-          "filename": null,
-          "thumb": null,
-          "url": null
-        },
-        "url": null
-      },
-      "stamp_id": null,
-      "state": null,
-      "stateful_invoice": false,
-      "submitted_at": null,
-      "subscription_id": 1,
-      "tax_point_on": "2022-06-08",
-      "total_float": 2883.49,
-      "updated_at": "2022-06-08T08:30:21+02:00",
-      "vat_calculation": "vat_exclusive",
-      "vat_totals_currency": "EUR",
-      "vat_totals_currency_conversion": false
-    },
-    "invoice_id": 1
-  }
+        "invoice_id": 1
+    }
 }

@@ -1,44 +1,45 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 
 export const NAME = 'tableau-create-connected-app-connector';
 
 export default class TableauCreateConnectedAppConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
+    public getName(): string {
+        return NAME;
+    }
 
-    const req = await this._application.getRequestDto(
-      dto,
-      appInstall,
-      HttpMethods.POST,
-      'sites/site-id/connected-applications',
-      dto.jsonData as IInput,
-    );
-    const resp = await this._sender.send(req, [200]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-    dto.jsonData = resp.jsonBody as IOutput;
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.POST,
+            'sites/site-id/connected-applications',
+            dto.getJsonData(),
+        );
+        const resp = await this.getSender().send<IOutput>(req, [200]);
 
-    return dto;
-  }
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
 
 export interface IInput {
-    name: string,
-    enabled: string,
-    projectId: string,
-    domainSafelist: string,
-    unrestrictedEmbedding: string
+    name: string;
+    enabled: string;
+    projectId: string;
+    domainSafelist: string;
+    unrestrictedEmbedding: string;
 }
 
 export interface IOutput {
-    name: string,
-    enable: boolean,
-    clientId: string
-    projectId: string,
-    createdAt: string,
-    unrestrictedEmbedding: boolean
+    name: string;
+    enable: boolean;
+    clientId: string;
+    projectId: string;
+    createdAt: string;
+    unrestrictedEmbedding: boolean;
 }

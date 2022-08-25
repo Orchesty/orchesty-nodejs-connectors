@@ -1,33 +1,39 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AirtableApplication, { BASE_ID, BASE_URL, TABLE_NAME } from '../AirtableApplication';
 
+export const NAME = 'airtable-new-record';
+
 export default class AirtableNewRecordConnector extends AConnector {
-  public getName = (): string => 'airtable-new-record';
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const applicationInstall = await this._getApplicationInstallFromProcess(dto);
-    const app = this._application as AirtableApplication;
-    if (!app.getValue(applicationInstall, BASE_ID)
-      || !app.getValue(applicationInstall, TABLE_NAME)) {
-      dto.setStopProcess(
-        ResultCode.STOP_AND_FAILED,
-        `AppInstall base id [${BASE_ID}] or table name [${TABLE_NAME}] not set.`,
-      );
-
-      return dto;
+    public getName(): string {
+        return NAME;
     }
 
-    const url = `
+    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const app = this.getApplication<AirtableApplication>();
+        if (!app.getValue(applicationInstall, BASE_ID)
+            || !app.getValue(applicationInstall, TABLE_NAME)) {
+            dto.setStopProcess(
+                ResultCode.STOP_AND_FAILED,
+                `AppInstall base id [${BASE_ID}] or table name [${TABLE_NAME}] not set.`,
+            );
+
+            return dto;
+        }
+
+        const url = `
       ${BASE_URL}
       ${app.getValue(applicationInstall, BASE_ID)}
       ${app.getValue(applicationInstall, TABLE_NAME)}
     `;
-    const requestDto = await app.getRequestDto(dto, applicationInstall, HttpMethods.POST, url);
-    dto.jsonData = await this._sender.send(requestDto, [200, 404]);
-    return dto;
-  }
+        const requestDto = await app.getRequestDto(dto, applicationInstall, HttpMethods.POST, url);
+        dto.setJsonData(await this.getSender().send(requestDto, [200, 404]));
+
+        return dto;
+    }
+
 }

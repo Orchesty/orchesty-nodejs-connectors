@@ -1,29 +1,29 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": [
-    {
-      "channel": "sms",
-      "credit": 0,
-      "number": "420703654125",
-      "part_id": [
-        "idjiqyty-0"
-      ],
-      "price": 0,
-      "sms_id": "idjiqyty-0",
-      "status": "accepted"
+    "headers": {
+        "user": "TestUser"
     },
-    {
-      "channel": "sms",
-      "credit": 0,
-      "number": "420721482610",
-      "part_id": [
-        "idjiqyty-1"
-      ],
-      "price": 0,
-      "sms_id": "idjiqyty-1",
-      "status": "accepted"
-    }
-  ]
+    "data": [
+        {
+            "channel": "sms",
+            "credit": 0,
+            "number": "420703654125",
+            "part_id": [
+                "idjiqyty-0"
+            ],
+            "price": 0,
+            "sms_id": "idjiqyty-0",
+            "status": "accepted"
+        },
+        {
+            "channel": "sms",
+            "credit": 0,
+            "number": "420721482610",
+            "part_id": [
+                "idjiqyty-1"
+            ],
+            "price": 0,
+            "sms_id": "idjiqyty-1",
+            "status": "accepted"
+        }
+    ]
 }
