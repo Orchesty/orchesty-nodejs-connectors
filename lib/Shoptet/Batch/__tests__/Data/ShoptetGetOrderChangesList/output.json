@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "cursor": "2",
+        "result-code": "1010",
+        "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"changeType\":\"edit\",\"changeTime\":\"2018-05-29T09:02:27+0200\",\"code\":\"201800001\"}",
+            "headers": null
+        }
+    ]
+}
