@@ -18,7 +18,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
         const app = this.getApplication<WooCommerceApplication>();
 
         const whData = app.getWebhookSubscriptions().map((sub) => ({
-            topic: sub.getParameters().topic,
+            topic: sub.getName(),
             token: this.getRandomToken(),
             node: sub.getNode(),
             topology: sub.getTopology(),
@@ -43,7 +43,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
         const respBody = res.getJsonBody();
 
         await Promise.all(
-            respBody.create.map(async (webhook) => {
+            respBody.create.map((webhook) => {
                 const located = whData.find((value) => value.topic === webhook.topic);
                 if (located) {
                     const wb = new Webhook()
@@ -55,8 +55,10 @@ export default class WooCommerceRegisterWebhook extends AConnector {
                         .setTopology(located.topology)
                         .setName(webhook.topic);
 
-                    await repo.insert(wb);
+                    return repo.insert(wb);
                 }
+
+                return undefined;
             }),
         );
         return dto;

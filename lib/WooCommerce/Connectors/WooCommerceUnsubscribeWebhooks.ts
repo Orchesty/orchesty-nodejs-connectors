@@ -38,7 +38,7 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
                 await Promise.all(
                     webhooks.map(async (wantedDelete) => {
                         wantedDelete.setUnsubscribeFailed(true);
-                        await repo.update(wantedDelete);
+                        return repo.update(wantedDelete);
                     }),
                 );
                 throw new OnRepeatException(60, 10, res.getBody());
@@ -52,12 +52,12 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
                         (item) => item.id.toString() === wantedDelete.getWebhookId(),
                     );
                     if (foundWebhook) {
-                        await repo.remove(wantedDelete);
-                    } else {
-                        repeat = true;
-                        wantedDelete.setUnsubscribeFailed(true);
-                        await repo.update(wantedDelete);
+                        return repo.remove(wantedDelete);
                     }
+
+                    repeat = true;
+                    wantedDelete.setUnsubscribeFailed(true);
+                    return repo.update(wantedDelete);
                 }),
             );
 
