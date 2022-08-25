@@ -1,0 +1,30 @@
+{
+    "http": "GET https://api.myshoptet.com/api/orders/changes?itemsPerPage=100&page=1&from=2017-03-23T17:03:12Z",
+    "code": 200,
+    "body": {
+        "data": {
+            "changes": [
+                {
+                    "changeType": "edit",
+                    "changeTime": "2018-05-29T09:02:27+0200",
+                    "code": "201800001"
+                }
+            ],
+            "paginator": {
+                "totalCount": 55,
+                "page": 1,
+                "pageCount": 2,
+                "itemsOnPage": 20,
+                "itemsPerPage": 20
+            }
+        },
+        "errors": [
+            {
+                "errorCode": "",
+                "message": "",
+                "instance": ""
+            }
+        ]
+    }
+}
+

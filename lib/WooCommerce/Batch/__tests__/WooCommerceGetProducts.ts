@@ -15,6 +15,7 @@ describe('Tests for WooCommerceGetProducts', () => {
     it('process - ok', async () => {
         await tester.testBatch(WOO_COMMERCE_GET_PRODUCTS);
     });
+
     it('process - with after', async () => {
         const repository = container.getRepository(ApplicationInstall);
         const app = await repository.findOne({ key: 'WOOCOMMERCE' });
