@@ -12,6 +12,6 @@ describe('Tests for ProductboardCreateNewFeatureConnector', () => {
   });
 
   it('process - ok', async () => {
-    await tester.testConnector(PRODUCTBOARD_CREATE_NEW_FEATURE_CONNECTOR, '');
+    await tester.testConnector(PRODUCTBOARD_CREATE_NEW_FEATURE_CONNECTOR);
   });
 });

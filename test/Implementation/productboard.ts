@@ -11,7 +11,7 @@ import ProductboardCreateNewFeatureConnector
 export default async function init(): Promise<void> {
   await appInstall(PRODUCTBOARD_APP, DEFAULT_USER, {
     [AUTHORIZATION_FORM]: {
-      [TOKEN]: '7bvdaaxvxzhwrg6ayei2d3umjjnaudlsa8knyrlkfuwrq5prrttucyjd4usulp7o',
+      [TOKEN]: DEFAULT_ACCESS_TOKEN,
     },
   });
   const app = new ProductboardApplication();
