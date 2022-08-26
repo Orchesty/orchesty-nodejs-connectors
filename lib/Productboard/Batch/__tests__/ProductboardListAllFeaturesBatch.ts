@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { productboardApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/productboard';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as PRODUCTBOARD_LIST_ALL_FEATURES_BATCH } from '../ProductboardListAllFeaturesBatch';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for ProductboardListAllFeaturesBatch', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename);
-        await productboardApp();
+        await init();
     });
 
     it('process - ok', async () => {
