@@ -1,0 +1,36 @@
+{
+    "http": "GET https://company.api-us1.com/api/3/accounts?offset=1&limit=50",
+    "code": 200,
+    "body": {
+        "accounts": [
+            {
+                "name": "First Example Account",
+                "accountUrl": null,
+                "createdTimestamp": "2019-04-29T07:51:31-05:00",
+                "updatedTimestamp": "2019-04-29T07:51:31-05:00",
+                "contactCount": "1",
+                "dealCount": "3",
+                "links": {
+                    "notes": "https://:account.api-us1.com/api/:version/accounts/1/notes",
+                    "accountCustomFieldData": "https://:account.api-us1.com/api/:version/accounts/1/accountCustomFieldData",
+                    "accountContacts": "https://:account.api-us1.com/api/:version/accounts/1/accountContacts"
+          },
+                "id": "1"
+            },
+            {
+                "name": "Second Example Account",
+                "accountUrl": null,
+                "createdTimestamp": "2019-04-29T07:51:32-05:00",
+                "updatedTimestamp": "2019-04-29T07:51:32-05:00",
+                "contactCount": "2",
+                "dealCount": "5",
+                "links": {
+                  "notes": "https://:account.api-us1.com/api/:version/accounts/2/notes",
+                  "accountCustomFieldData": "https://:account.api-us1.com/api/:version/accounts/2/accountCustomFieldData",
+                  "accountContacts": "https://:account.api-us1.com/api/:version/accounts/2/accountContacts"
+                },
+                "id": "2"
+            }
+        ]
+    }
+}
