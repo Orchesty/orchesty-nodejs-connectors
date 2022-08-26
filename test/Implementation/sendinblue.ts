@@ -1,4 +1,5 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import SendiblueCreateCampaignConnector from '../../lib/Sendinblue/Connector/SendiblueCreateCampaignConnector';
 import SendinblueSendEmailConnector from '../../lib/Sendinblue/Connector/SendinblueSendEmailConnector';
 import SendinblueApplication, { API_KEY, NAME as SENDINBLUE_APP } from '../../lib/Sendinblue/SendinblueApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
@@ -15,9 +16,15 @@ export default async function init(): Promise<void> {
     container.setApplication(app);
 
     const sendEmail = new SendinblueSendEmailConnector();
+    const createCampaign = new SendiblueCreateCampaignConnector();
     sendEmail
         .setSender(sender)
         .setDb(db)
         .setApplication(app);
     container.setConnector(sendEmail);
+    createCampaign
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(createCampaign);
 }

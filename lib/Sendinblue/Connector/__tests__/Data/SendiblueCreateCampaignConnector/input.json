@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "inlineImageActivation": false,
+    "sendAtBestTime": false,
+    "abTesting": false,
+    "ipWarmupEnable": false
+  }
+}
