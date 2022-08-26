@@ -1,28 +1,93 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import HttpMethods from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { IInput } from '../../Pipedrive/Connector/PipedriveAddLeadConnector';
-import { IOutput } from '../../Paypal/Connector/PaypalCreateOrderConnector';
 
 export const NAME = 'sendinblue-send-email-connector';
 
 export default class SendinblueSendEmailConnector extends AConnector {
-  public getName = (): string => NAME;
 
-  public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
-    const body = dto.jsonData as IInput;
+    public getName(): string {
+        return NAME;
+    }
 
-    const appInstall = await this._getApplicationInstallFromProcess(dto);
-    const url = '/leads';
-    const req = await this._application.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
-    const resp = await this._sender.send(req, [201]);
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const body = dto.getJsonData();
 
-    dto.jsonData = resp.jsonBody as IOutput;
-    return dto;
-  }
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const url = 'smtp/email';
+        const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+        const resp = await this.getSender().send<IOutput>(req, [201]);
+
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
 }
 
-export interface IInput {
+/* eslint-disable @typescript-eslint/naming-convention */
 
+export interface IInput {
+    sender: {
+        name: string;
+        email: string;
+        id: number;
+    };
+    to: {
+        email: string;
+        name: string;
+    }[];
+    bcc: {
+        email: string;
+        name: string;
+    }[];
+    cc: {
+        email: string;
+        name: string;
+    }[];
+    htmlContent: string;
+    textContent: string;
+    subject: string;
+    replyTo: {
+        email: string;
+        name: string;
+    };
+    attachment: {
+        url: string;
+        content: string;
+        name: string;
+    }[];
+    templateId: number;
+    params: {
+        FNAME: string;
+        LNAME: string;
+    };
+    messageVersions: {
+        to: {
+            email: string;
+            name: string;
+        }[];
+        params: {
+            FNAME: string;
+            LNAME: string;
+        };
+        bcc: {
+            email: string;
+            name: string;
+        }[];
+        cc: {
+            email: string;
+            name: string;
+        }[];
+        replyTo: {
+            email: string;
+            name: string;
+        };
+        subject: string;
+    }[];
+    tags: string[];
+    scheduledAt: Date;
+    batchId: string;
+}
+
+export interface IOutput {
+    messageId: string;
 }
