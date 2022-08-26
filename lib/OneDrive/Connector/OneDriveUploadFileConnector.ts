@@ -28,6 +28,7 @@ export default class OneDriveUploadFileConnector extends AConnector {
     }
 
 }
+
 export interface IInput {
     content: string;
     name: string;
