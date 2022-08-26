@@ -69,7 +69,7 @@ export default class AuthenticaApplication extends ABasicApplication {
         return new RequestDto(`${BASE_URL}/applinth/${_url}`, method, dto, data, headers);
     }
 
-    private async getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
+    protected async getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
         const url = `${BASE_URL}/token`;
 
         const clientId = applicationInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_ID];
@@ -96,7 +96,7 @@ export default class AuthenticaApplication extends ABasicApplication {
     }
 
     // eslint-disable-next-line @typescript-eslint/require-await
-    private async accessCallBack(res: ResponseDto): Promise<ICacheCallback<IAccessToken>> {
+    protected async accessCallBack(res: ResponseDto): Promise<ICacheCallback<IAccessToken>> {
         const token = res.getJsonBody() as IAccessToken;
         return {
             dataToStore: token,
