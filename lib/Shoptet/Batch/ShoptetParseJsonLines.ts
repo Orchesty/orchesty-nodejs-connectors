@@ -44,11 +44,15 @@ export default class ShoptetParseJsonLines extends ABatchNode {
             });
 
             if (batchItem.length > 0) {
-                dto.addItem(batchItem, dto.getUser());
+                this.addItem(dto, batchItem, dto.getUser());
             }
         } while (data.length > 0);
 
         return dto;
+    }
+
+    protected addItem(dto: BatchProcessDto, batchItem: unknown[], user: string | undefined): void {
+        dto.addItem(batchItem, user);
     }
 
 }
