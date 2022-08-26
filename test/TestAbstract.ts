@@ -69,10 +69,6 @@ import PipedriveAddLeadConnector from '../lib/Pipedrive/Connector/PipedriveAddLe
 import PipedriveApplication from '../lib/Pipedrive/PipedriveApplication';
 import PipedriveGetAllLeadsBatch from '../lib/Pipedrive/Batch/PipedriveGetAllLeadsBatch';
 import PipedriveUpdateLeadConnector from '../lib/Pipedrive/Connector/PipedriveUpdateLeadConnector';
-import ProductboardApplication from '../lib/Productboard/ProductboardApplication';
-import ProductboardCreateNewFeatureConnector from '../lib/Productboard/Connector/ProductboardCreateNewFeatureConnector';
-import ProductboardListAllFeaturesBatch from '../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
-import ProductboardListAllProductsBatch from '../lib/Productboard/Batch/ProductboardListAllProductsBatch';
 import TableauApplication from '../lib/Tableau/TableauApplication';
 import TableauCreateConnectedAppConnector from '../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../lib/Tableau/Connector/TableauGetConnectedAppConnector';
@@ -158,7 +154,6 @@ export async function prepare(): Promise<void> {
   initNutshell();
   initPaypal();
   initPipedrive();
-  initProductboard();
   initTableau();
   initTwitter();
   initVyfakturuj();
@@ -564,31 +559,6 @@ function initTwitter(): void {
   container.setBatch(getFollowers);
 }
 
-function initProductboard(): void {
-  const app = new ProductboardApplication();
-  container.setApplication(app);
-
-  const listAllFeatures = new ProductboardListAllFeaturesBatch();
-  const listAllProducts = new ProductboardListAllProductsBatch();
-  const createNewFeature = new ProductboardCreateNewFeatureConnector();
-
-  listAllFeatures
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listAllFeatures);
-  listAllProducts
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setBatch(listAllProducts);
-  createNewFeature
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createNewFeature);
-}
-
 function initGObalik(): void {
   const app = new GObalikApplication();
   container.setApplication(app);
@@ -718,6 +688,7 @@ function initClickup(): void {
     .setApplication(app);
   container.setConnector(createSpace);
 }
+
 function initIntercom(): void {
   const app = new IntercomApplication(oauth2Provider);
   container.setApplication(app);
