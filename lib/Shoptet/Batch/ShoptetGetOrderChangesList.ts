@@ -24,7 +24,7 @@ export default class ShoptetGetOrderChangesList extends AShoptetList<IResponseJs
 
 }
 
-interface IResponseJson {
+export interface IResponseJson {
     data: {
         changes: IOutputJson[];
         paginator: IPaging;
