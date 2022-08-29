@@ -34,7 +34,9 @@ import { NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
 import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveApplication';
-import { NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME } from '../lib/Tableau/TableauApplication';
+import {
+    CONTENT_URL, NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME, TOKEN_SECRET,
+} from '../lib/Tableau/TableauApplication';
 import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
 import { NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../lib/Vyfakturuj/VyfakturujApplication';
 import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
@@ -112,9 +114,10 @@ export async function mallApp() {
 export async function tableauApp() {
     return appInstall(TABLEAU_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
-            [TOKEN_NAME]: 'token name',
+            [TOKEN_NAME]: 'token',
             [PREFIX_SITE]: 'prefix',
-            [TOKEN]: DEFAULT_ACCESS_TOKEN,
+            [TOKEN_SECRET]: 'toke_secret',
+            [CONTENT_URL]: 'content_url',
         },
     });
 }

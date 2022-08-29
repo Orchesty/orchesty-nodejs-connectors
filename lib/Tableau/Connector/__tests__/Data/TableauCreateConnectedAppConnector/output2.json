@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "connectedApplication": {
+            "clientId": "8e91f018-5d45-4180-b518-738263c1a8e2",
+            "createdAt": "2022-08-22T13:42:51Z",
+            "enabled": false,
+            "name": "name8",
+            "unrestrictedEmbedding": false
+        }
+    }
+}
