@@ -1,6 +1,6 @@
 {
     "name": "@orchesty/nodejs-connectors",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "description": "",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -18,21 +18,21 @@
     "author": "info@hanaboso.com",
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.0.5",
+        "@orchesty/nodejs-sdk": "^3.0.10",
         "@types/luxon": "^3.0.0",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",
-        "luxon": "^3.0.1",
+        "luxon": "^3.0.2",
         "mongodb": "^4.9.0",
         "mongodb-typescript": "^3.0.0",
         "node-fetch": "^2.6.7",
         "reflect-metadata": "^0.1.13"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.154.0",
-        "@aws-sdk/client-rds": "^3.156.0",
-        "@aws-sdk/client-redshift": "^3.154.0",
-        "@aws-sdk/client-s3": "^3.157.0",
+        "@aws-sdk/client-lambda": "^3.159.0",
+        "@aws-sdk/client-rds": "^3.159.0",
+        "@aws-sdk/client-redshift": "^3.159.0",
+        "@aws-sdk/client-s3": "^3.159.0",
         "@types/oracledb": "^5.2.3",
         "@types/pg": "^8.6.5",
         "@types/sqlite3": "^3.1.8",
@@ -44,11 +44,11 @@
         "pg-hstore": "^2.3.4",
         "sequelize": "^6.21.4",
         "sqlite3": "^5.0.11",
-        "tedious": "^15.0.1"
+        "tedious": "^15.1.0"
     },
     "devDependencies": {
         "@aws-sdk/client-redshift": "^3.118.0",
-        "@hanaboso/eslint-plugin": "^1.0.0",
+        "@hanaboso/eslint-plugin": "^1.0.1",
         "@types/debug": "^4.1.7",
         "@types/jest": "^28.1.8",
         "@types/node": "^18.7.13",
@@ -69,7 +69,7 @@
         "tedious": "^15.0.0",
         "ts-jest": "^28.0.8",
         "ts-node": "^10.9.1",
-        "typescript": "^4.7.4"
+        "typescript": "~4.7.4"
     },
     "pnpm": {
         "overrides": {
