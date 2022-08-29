@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { productboardApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/productboard';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as PRODUCTBOARD_CREATE_NEW_FEATURE_CONNECTOR } from '../ProductboardCreateNewFeatureConnector';
 
@@ -7,8 +7,8 @@ let tester: NodeTester;
 
 describe('Tests for ProductboardCreateNewFeatureConnector', () => {
     beforeEach(async () => {
-        tester = new NodeTester(container, __filename, true);
-        await productboardApp();
+        tester = new NodeTester(container, __filename);
+        await init();
     });
 
     it('process - ok', async () => {
