@@ -1,0 +1,24 @@
+{
+    "http": "GET https://prefix.online.tableau.com/api/3.14/sites/123/connected-applications",
+    "code": 200,
+    "body": {
+        "connectedApplications": {
+            "connectedApplication": [
+                {
+                    "secret": [
+                        {
+                            "id": "81c3e3de-67fa-4fbc-b44d-8e3756b507cf",
+                            "createdAt": "2022-08-25T12:01:25Z"
+                        }
+                    ],
+                    "name": "test",
+                    "enabled": false,
+                    "clientId": "b7a867ad-0c50-4272-874d-93149ea3bb7e",
+                    "createdAt": "2022-08-25T12:01:22Z",
+                    "unrestrictedEmbedding": true
+                }
+            ]
+        }
+    }
+}
+

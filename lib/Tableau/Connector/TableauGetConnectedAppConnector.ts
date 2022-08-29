@@ -1,6 +1,8 @@
+import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import TableauApplication, { SITE_ID } from '../TableauApplication';
 
 export const NAME = 'tableau-get-connected-app-connector';
 
@@ -10,16 +12,15 @@ export default class TableauGetConnectedAppConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { siteId, clientId } = dto.getJsonData();
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-
+        await this.getApplication<TableauApplication>().setSettings(appInstall, dto);
+        const siteId = appInstall.getSettings()[AUTHORIZATION_FORM][SITE_ID];
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,
-            `sites/${siteId}/connected-applications/${clientId}`,
-            dto.getJsonData(),
+            `sites/${siteId}/connected-applications`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
@@ -29,10 +30,6 @@ export default class TableauGetConnectedAppConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IInput {
-    siteId: string;
-    clientId: string;
-}
 
 interface IResponse {
     secret: {
@@ -50,5 +47,4 @@ export interface IOutput {
     createdAt: string;
     unrestrictedEmbedding: false;
 }
-
 /* eslint-enable @typescript-eslint/naming-convention */
