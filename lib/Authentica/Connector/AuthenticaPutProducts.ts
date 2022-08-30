@@ -29,16 +29,19 @@ export default class AuthenticaPutProducts extends AConnector {
 }
 
 export interface IProduct {
+    productId: string;
     sku: string;
     name: string;
-    englishName: string;
+    englishName: string | null;
     ean: string;
-    width: number;
-    widthUnit: string;
-    height: number;
-    heightUnit: string;
-    weight: number;
-    weightUnit: string;
+    width: string | null;
+    widthUnit: string | null;
+    height: string | null;
+    heightUnit: string | null;
+    length: string | null;
+    lengthUnit: string | null;
+    weight: string | null;
+    weightUnit: string | null;
 }
 
 interface IResponse {
