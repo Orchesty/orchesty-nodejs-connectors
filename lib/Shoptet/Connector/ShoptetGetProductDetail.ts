@@ -29,7 +29,7 @@ export interface IInput {
     guid: string;
 }
 
-interface IResponse {
+export interface IResponse {
     data: IOutput;
 }
 
