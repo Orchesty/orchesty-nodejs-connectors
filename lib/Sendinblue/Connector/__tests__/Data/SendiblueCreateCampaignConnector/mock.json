@@ -1,0 +1,7 @@
+{
+  "http": "POST https://api.sendinblue.com/v3/emailCampaigns",
+  "code": 201,
+  "body": {
+    "id": 5
+  }
+}
