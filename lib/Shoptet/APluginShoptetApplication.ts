@@ -14,7 +14,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
 
     protected abstract shoptetHost: string;
 
-    protected authorizationHeader = CommonHeaders.AUTHORIZATION;
+    protected authorizationHeader = 'Shoptet-Access-Token';
 
     protected shoptetLocker = 'locker_shoptet';
 
