@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for ActivateCampaignCreateAccountConnector', () => {
     beforeEach(async () => {
-        tester = new NodeTester(container, __filename, true);
+        tester = new NodeTester(container, __filename, false, ['']);
         await init();
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(ACTIVATE_CAMPAIGN_CREATE_ACCOUNT_CONNECTOR);
+        await tester.testConnector(ACTIVATE_CAMPAIGN_CREATE_ACCOUNT_CONNECTOR, '');
     });
 });
