@@ -11,8 +11,8 @@ import { container, db, sender } from '../TestAbstract';
 export default async function init(): Promise<void> {
     await appInstall(ACTIVATECAMPAIGN_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
-            [APPLICATION_KEY]: '02cb0fd359345bb1e6fd8b5ad298e205276bc6c9d8ecd580eeeb0210a0b8eda89ed3b8b8',
-            [SUBDOMAIN]: 'testhanaboso',
+            [APPLICATION_KEY]: 'token',
+            [SUBDOMAIN]: 'subdomain',
         },
     });
     const app = new ActiveCampaignApplication();

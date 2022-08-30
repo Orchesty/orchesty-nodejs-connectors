@@ -1,5 +1,5 @@
 {
-    "http": "GET https://company.api-us1.com/api/3/accounts?offset=1&limit=50",
+    "http": "GET https://subdomain.api-us1.com/api/3/accounts?offset=1&limit=50",
     "code": 200,
     "body": {
         "accounts": [
