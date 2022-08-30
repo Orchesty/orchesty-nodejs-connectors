@@ -1,11 +1,7 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BASE_URL } from '../ABaseShoptet';
+import APluginShoptetApplication from '../APluginShoptetApplication';
 import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-eshop-info';
@@ -20,11 +16,9 @@ export default class ShoptetGetEshopInfo extends AShoptetConnector {
         const url = `${BASE_URL}/api/eshop`;
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = new RequestDto(url, HttpMethods.GET, dto);
-        requestDto.setHeaders({
-            [CommonHeaders.AUTHORIZATION]: appInstall.getSettings()[AUTHORIZATION_FORM][TOKEN][ACCESS_TOKEN],
-            [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
-        });
+        const requestDto = await this
+            .getApplication<APluginShoptetApplication>()
+            .getRequestDto(dto, appInstall, HttpMethods.GET, url);
         const resp = await this.getSender().send<IResponse>(requestDto, [200]);
 
         return dto.setNewJsonData(resp.getJsonBody().data);
