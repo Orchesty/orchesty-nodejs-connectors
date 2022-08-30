@@ -11,7 +11,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const NAME = 'active-campaign';
-export const APPLICATION_TOKEN = 'application_token';
+export const APPLICATION_KEY = 'application_token';
 export const SUBDOMAIN = 'subdomain';
 
 export default class ActiveCampaignApplication extends ABasicApplication {
@@ -30,7 +30,7 @@ export default class ActiveCampaignApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, APPLICATION_TOKEN, 'Application token', undefined, true))
+            .addField(new Field(FieldType.TEXT, APPLICATION_KEY, 'Application key', undefined, true))
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Account name', undefined, true));
 
         return new FormStack().addForm(form);
@@ -44,14 +44,14 @@ export default class ActiveCampaignApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const token = settings[AUTHORIZATION_FORM][APPLICATION_TOKEN];
+        const token = settings[AUTHORIZATION_FORM][APPLICATION_KEY];
         const subdomain = settings[AUTHORIZATION_FORM][SUBDOMAIN];
         const url = `https://${subdomain}.api-us1.com/api/3/${_url}`;
         const request = new RequestDto(url, method, dto);
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.AUTHORIZATION]: `Api-Token ${token}`,
+            'Api-Token': token,
         });
 
         if (data) {

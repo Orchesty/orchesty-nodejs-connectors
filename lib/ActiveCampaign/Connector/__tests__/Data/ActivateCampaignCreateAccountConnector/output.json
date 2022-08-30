@@ -4,25 +4,25 @@
     },
     "data": {
         "account": {
-            "name": "Example Account",
             "accountUrl": "https://www.example.com",
             "createdTimestamp": "2019-06-12T16:52:16-05:00",
-            "updatedTimestamp": "2019-06-12T16:52:16-05:00",
-            "links": [],
             "fields": [
                 {
+                    "accountId": "1",
                     "customFieldId": 9,
-                    "fieldValue": "501 - 1000",
-                    "accountId": "1"
+                    "fieldValue": "501 - 1000"
                 },
                 {
+                    "accountId": "1",
                     "customFieldId": 20,
-                    "fieldValue": 1234,
                     "fieldCurrency": "GBP",
-                    "accountId": "1"
+                    "fieldValue": 1234
                 }
             ],
-            "id": "1"
+            "id": "1",
+            "links": [],
+            "name": "Example Account",
+            "updatedTimestamp": "2019-06-12T16:52:16-05:00"
         }
-    }
+}
 }

@@ -1,6 +1,6 @@
 {
-    "http": "POST https://company.api-us1.com/api/3/accounts",
-    "code": 200,
+    "http": "POST https://testhanaboso.api-us1.com/api/3/accounts",
+    "code": 201,
     "body": {
         "account": {
             "name": "Example Account",
