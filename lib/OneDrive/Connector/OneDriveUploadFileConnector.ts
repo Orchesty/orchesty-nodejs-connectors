@@ -29,6 +29,8 @@ export default class OneDriveUploadFileConnector extends AConnector {
 
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
+
 export interface IInput {
     content: string;
     name: string;
@@ -87,3 +89,5 @@ export interface IOutput {
     size: number;
     webUrl: string;
 }
+
+/* eslint-enable @typescript-eslint/naming-convention */
