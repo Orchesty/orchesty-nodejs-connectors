@@ -10,9 +10,9 @@ export default class ShoptetGetProductDetail extends AShoptetConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { code } = dto.getJsonData();
+        const { guid } = dto.getJsonData();
 
-        const url = `api/products/code/${code}`;
+        const url = `api/products/${guid}`;
 
         const response = await this.doRequest(url, dto) as IResponse;
 
@@ -26,7 +26,7 @@ export default class ShoptetGetProductDetail extends AShoptetConnector {
 }
 
 export interface IInput {
-    code: string;
+    guid: string;
 }
 
 interface IResponse {
