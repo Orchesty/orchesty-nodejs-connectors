@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "name": "test/example.txt",
+        "content": "example"
+    }
+}
