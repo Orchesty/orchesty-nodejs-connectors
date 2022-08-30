@@ -3,33 +3,33 @@ import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-product-detail';
 
-export default class ShoptetGetProductDetail extends AShoptetConnector {
+export default class ShoptetGetProductDetail<T = IOutput> extends AShoptetConnector {
 
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { code } = dto.getJsonData();
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<T>> {
+        const { guid } = dto.getJsonData();
 
-        const url = `api/products/code/${code}`;
+        const url = `api/products/${guid}`;
 
         const response = await this.doRequest(url, dto) as IResponse;
 
         return this.processResult(dto, response);
     }
 
-    protected processResult(dto: ProcessDto, response: IResponse): ProcessDto<IOutput> {
-        return dto.setNewJsonData(response.data);
+    protected processResult(dto: ProcessDto, response: IResponse): ProcessDto<T> {
+        return dto.setNewJsonData<T>(response.data as unknown as T);
     }
 
 }
 
 export interface IInput {
-    code: string;
+    guid: string;
 }
 
-interface IResponse {
+export interface IResponse {
     data: IOutput;
 }
 
