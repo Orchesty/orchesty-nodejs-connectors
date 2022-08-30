@@ -16,6 +16,10 @@ export default class ShoptetGetProductDetail extends AShoptetConnector {
 
         const response = await this.doRequest(url, dto) as IResponse;
 
+        return this.processResult(dto, response);
+    }
+
+    protected processResult(dto: ProcessDto, response: IResponse): ProcessDto<IOutput> {
         return dto.setNewJsonData(response.data);
     }
 
