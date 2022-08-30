@@ -7,11 +7,11 @@ let tester: NodeTester;
 
 describe('Tests for SendiblueCreateCampaignConnector', () => {
     beforeAll(async () => {
-        tester = new NodeTester(container, __filename);
+        tester = new NodeTester(container, __filename, false, ['']);
         await init();
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(SENDIBLUE_CREATE_CAMPAIGN_CONNECTOR);
+        await tester.testConnector(SENDIBLUE_CREATE_CAMPAIGN_CONNECTOR, '');
     });
 });
