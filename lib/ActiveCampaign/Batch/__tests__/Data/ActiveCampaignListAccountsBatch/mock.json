@@ -1,36 +1,116 @@
 {
-    "http": "GET https://subdomain.api-us1.com/api/3/accounts?offset=1&limit=50",
-    "code": 200,
-    "body": {
-        "accounts": [
-            {
-                "name": "First Example Account",
-                "accountUrl": null,
-                "createdTimestamp": "2019-04-29T07:51:31-05:00",
-                "updatedTimestamp": "2019-04-29T07:51:31-05:00",
-                "contactCount": "1",
-                "dealCount": "3",
-                "links": {
-                    "notes": "https://:account.api-us1.com/api/:version/accounts/1/notes",
-                    "accountCustomFieldData": "https://:account.api-us1.com/api/:version/accounts/1/accountCustomFieldData",
-                    "accountContacts": "https://:account.api-us1.com/api/:version/accounts/1/accountContacts"
-          },
-                "id": "1"
-            },
-            {
-                "name": "Second Example Account",
-                "accountUrl": null,
-                "createdTimestamp": "2019-04-29T07:51:32-05:00",
-                "updatedTimestamp": "2019-04-29T07:51:32-05:00",
-                "contactCount": "2",
-                "dealCount": "5",
-                "links": {
-                  "notes": "https://:account.api-us1.com/api/:version/accounts/2/notes",
-                  "accountCustomFieldData": "https://:account.api-us1.com/api/:version/accounts/2/accountCustomFieldData",
-                  "accountContacts": "https://:account.api-us1.com/api/:version/accounts/2/accountContacts"
-                },
-                "id": "2"
-            }
-        ]
-    }
+  "http": "GET https://subdomain.api-us1.com/api/3/accounts?offset=0&limit=50",
+  "code": 200,
+  "body": {
+    "accounts": [
+      {
+        "name": "Example Account",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T06:59:14-05:00",
+        "updatedTimestamp": "2022-08-30T06:59:14-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/1/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/1/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/1/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/1/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/1/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/1/owner"
+        },
+        "id": "1"
+      },
+      {
+        "name": "Example Account2",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T07:00:27-05:00",
+        "updatedTimestamp": "2022-08-30T07:00:27-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/2/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/2/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/2/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/2/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/2/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/2/owner"
+        },
+        "id": "2"
+      },
+      {
+        "name": "Example Account3",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T07:00:48-05:00",
+        "updatedTimestamp": "2022-08-30T07:00:48-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/3/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/3/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/3/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/3/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/3/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/3/owner"
+        },
+        "id": "3"
+      },
+      {
+        "name": "Example Account4",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T07:02:13-05:00",
+        "updatedTimestamp": "2022-08-30T07:02:13-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/4/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/4/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/4/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/4/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/4/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/4/owner"
+        },
+        "id": "4"
+      },
+      {
+        "name": "Example Account5",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T07:03:03-05:00",
+        "updatedTimestamp": "2022-08-30T07:03:03-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/5/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/5/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/5/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/5/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/5/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/5/owner"
+        },
+        "id": "5"
+      },
+      {
+        "name": "Example Account6",
+        "accountUrl": null,
+        "createdTimestamp": "2022-08-30T07:03:30-05:00",
+        "updatedTimestamp": "2022-08-30T07:03:30-05:00",
+        "owner": "1",
+        "contactCount": "0",
+        "dealCount": "0",
+        "links": {
+          "notes": "https://testhanaboso.api-us1.com/api/3/accounts/6/notes",
+          "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/6/accountCustomFieldData",
+          "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/6/accountContacts",
+          "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/6/emailActivities",
+          "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/6/contactEmails",
+          "owner": "https://testhanaboso.api-us1.com/api/3/accounts/6/owner"
+        },
+        "id": "6"
+      }
+    ]
+  }
 }

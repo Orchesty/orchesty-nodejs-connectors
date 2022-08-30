@@ -12,7 +12,7 @@ export default class ActiveCampaignListAccountsBatch extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
-        const offset = Number(dto.getBatchCursor('1'));
+        const offset = Number(dto.getBatchCursor('0'));
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const req = await this.getApplication().getRequestDto(
             dto,
@@ -36,6 +36,7 @@ interface IResponse {
     accounts: IOutput[];
     total_records: number;
 }
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export interface IOutput {
     name: string;
@@ -43,7 +44,13 @@ export interface IOutput {
     updatedTimestamp: string;
     contactCount: string;
     dealCount: string;
-    links: string[];
+    links: {
+        notes: string;
+        accountCustomFieldData: string;
+        accountContacts: string;
+        emailActivities: string;
+        contactEmails: string;
+        owner: string;
+    };
     id: string;
 }
-/* eslint-enable @typescript-eslint/naming-convention */
