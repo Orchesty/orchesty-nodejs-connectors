@@ -13,7 +13,7 @@ export default class ShoptetGetEshopInfo extends AShoptetConnector {
     }
 
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
-        const url = `${BASE_URL}/api/eshop`;
+        const url = `${BASE_URL}/api/eshop?include=orderStatuses,paymentMethods,shippingMethods`;
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await this
