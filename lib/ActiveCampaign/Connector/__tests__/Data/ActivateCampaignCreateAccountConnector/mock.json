@@ -1,5 +1,5 @@
 {
-    "http": "POST https://testhanaboso.api-us1.com/api/3/accounts",
+    "http": "POST https://subdomain.api-us1.com/api/3/accounts",
     "code": 201,
     "body": {
         "account": {

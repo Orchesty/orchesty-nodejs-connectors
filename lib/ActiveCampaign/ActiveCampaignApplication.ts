@@ -51,7 +51,8 @@ export default class ActiveCampaignApplication extends ABasicApplication {
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            'Api-Token': token,
+            /* eslint-disable @typescript-eslint/naming-convention */
+            'api-token': token,
         });
 
         if (data) {
