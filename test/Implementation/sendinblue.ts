@@ -8,7 +8,7 @@ import { container, db, sender } from '../TestAbstract';
 export default async function init(): Promise<void> {
     await appInstall(SENDINBLUE_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
-            [API_KEY]: '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',
+            [API_KEY]: 'Api key',
         },
     });
 
