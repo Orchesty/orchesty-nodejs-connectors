@@ -10,51 +10,51 @@ import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
-  await appInstall(ALZA_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [USER]: DEFAULT_USER,
-      [PASSWORD]: DEFAULT_PASSWORD,
-      [SERVER]: 'https://server.cz',
-      [API]: 'api_path',
-    },
-  });
+    await appInstall(ALZA_APP, DEFAULT_USER, {
+        [AUTHORIZATION_FORM]: {
+            [USER]: DEFAULT_USER,
+            [PASSWORD]: DEFAULT_PASSWORD,
+            [SERVER]: 'https://server.cz',
+            [API]: 'api_path',
+        },
+    });
 
-  const app = new AlzaApplication();
-  container.setApplication(app);
+    const app = new AlzaApplication();
+    container.setApplication(app);
 
-  const createShipment = new AlzaCreateShipmentConnector();
-  const insertOrder = new AlzaInsetrOrderConnector();
-  const cancelOrder = new AlzaCancelOrderConnector();
-  const confirmOrder = new AlzaConfirmOrderConnector();
-  const trackAndTrace = new AlzaTrackAndTraceConnector();
+    const createShipment = new AlzaCreateShipmentConnector();
+    const insertOrder = new AlzaInsetrOrderConnector();
+    const cancelOrder = new AlzaCancelOrderConnector();
+    const confirmOrder = new AlzaConfirmOrderConnector();
+    const trackAndTrace = new AlzaTrackAndTraceConnector();
 
-  createShipment
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(createShipment);
+    createShipment
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(createShipment);
 
-  insertOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(insertOrder);
+    insertOrder
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(insertOrder);
 
-  cancelOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(cancelOrder);
+    cancelOrder
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(cancelOrder);
 
-  confirmOrder
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(confirmOrder);
+    confirmOrder
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(confirmOrder);
 
-  trackAndTrace
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(app);
-  container.setConnector(trackAndTrace);
+    trackAndTrace
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(trackAndTrace);
 }

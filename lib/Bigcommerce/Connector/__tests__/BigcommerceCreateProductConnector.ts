@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { bigcommerceApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/bigcommerce';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as BIGCOMMERCE_CREATE_PRODUCT_CONNECTOR } from '../BigcommerceCreateProductConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for BigcommerceCreateProductConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename, true);
-        await bigcommerceApp();
+        await init();
     });
 
     it('process - ok', async () => {

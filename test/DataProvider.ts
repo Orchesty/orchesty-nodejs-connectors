@@ -6,20 +6,6 @@ import {
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import {
-    DEVELOPERID,
-    MWSAUTHTOKEN,
-    NAME as AMAZON_APP,
-    SELLINGPARTNERID,
-} from '../lib/AmazonApps/SellingPartner/AmazonApplication';
-import { NAME as BIGCOMMERCE_APP, STORE_HASH } from '../lib/Bigcommerce/BigcommerceApplication';
-import { NAME as BOX_APP } from '../lib/Box/BoxApplication';
-import {
-    APPLICATION_ID,
-    APPLICATION_TOKEN,
-    NAME as BULKGATE_APP,
-} from '../lib/BulkGate/BulkGateApplicationApplication';
-import { NAME as CALENDLY_APP } from '../lib/Calendly/CalendlyApplication';
 import { API_TOKEN, NAME as CESKAPOSTA_APP, SECRET_KEY } from '../lib/CeskaPosta/CeskaPostaApplication';
 import { NAME as CLICKUP_APP } from '../lib/Clickup/ClickupApplication';
 import { API_KEY, NAME as FAKTURAONLINE_APP } from '../lib/Fakturaonline/FakturaonlineApplication';
@@ -72,20 +58,7 @@ export async function appInstall(
     return app;
 }
 
-export async function bigcommerceApp() {
-    return appInstall(BIGCOMMERCE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
-            [STORE_HASH]: 'testHash',
-        },
-    });
-}
-
-export async function pipedriveApp() {
+export async function pipedriveApp(): Promise<ApplicationInstall> {
     return appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [SUBDOMAIN]: 'company',
@@ -94,7 +67,7 @@ export async function pipedriveApp() {
     });
 }
 
-export async function nutshellApp() {
+export async function nutshellApp(): Promise<ApplicationInstall> {
     return appInstall(NUTSHELL_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
@@ -103,7 +76,7 @@ export async function nutshellApp() {
     });
 }
 
-export async function mallApp() {
+export async function mallApp(): Promise<ApplicationInstall> {
     return appInstall(MALL_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
@@ -111,7 +84,7 @@ export async function mallApp() {
     });
 }
 
-export async function tableauApp() {
+export async function tableauApp(): Promise<ApplicationInstall> {
     return appInstall(TABLEAU_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [TOKEN_NAME]: 'token',
@@ -122,7 +95,7 @@ export async function tableauApp() {
     });
 }
 
-export async function wixApp() {
+export async function wixApp(): Promise<ApplicationInstall> {
     return appInstall(WIX_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
@@ -134,16 +107,7 @@ export async function wixApp() {
     });
 }
 
-export async function bulkGateApp() {
-    return appInstall(BULKGATE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [APPLICATION_TOKEN]: 'application token',
-            [APPLICATION_ID]: 'application id',
-        },
-    });
-}
-
-export async function fakturaonlineApp() {
+export async function fakturaonlineApp(): Promise<ApplicationInstall> {
     return appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [API_KEY]: 'api_key',
@@ -151,18 +115,7 @@ export async function fakturaonlineApp() {
     });
 }
 
-export async function amazonApp() {
-    return appInstall(AMAZON_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [SELLINGPARTNERID]: 'selling_partner_id',
-            [DEVELOPERID]: 'developer_id',
-            [MWSAUTHTOKEN]: 'mws_auth_token',
-        },
-
-    });
-}
-
-export async function wedoApp() {
+export async function wedoApp(): Promise<ApplicationInstall> {
     return appInstall(WEDO_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
@@ -173,7 +126,7 @@ export async function wedoApp() {
     });
 }
 
-export async function paypalApp() {
+export async function paypalApp(): Promise<ApplicationInstall> {
     return appInstall(PAYPAL_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
@@ -182,7 +135,7 @@ export async function paypalApp() {
     });
 }
 
-export async function gitHubApp() {
+export async function gitHubApp(): Promise<ApplicationInstall> {
     return appInstall(GITHUB_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
@@ -191,7 +144,7 @@ export async function gitHubApp() {
     });
 }
 
-export async function vyfakturujApp() {
+export async function vyfakturujApp(): Promise<ApplicationInstall> {
     return appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USER_EMAIL]: 'info@examle.com',
@@ -200,7 +153,7 @@ export async function vyfakturujApp() {
     });
 }
 
-export async function twitterApp() {
+export async function twitterApp(): Promise<ApplicationInstall> {
     return appInstall(TWITTER_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
@@ -212,7 +165,7 @@ export async function twitterApp() {
     });
 }
 
-export async function gobalikApp() {
+export async function gobalikApp(): Promise<ApplicationInstall> {
     return appInstall(GOBALIK_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
@@ -221,7 +174,7 @@ export async function gobalikApp() {
     });
 }
 
-export async function ceskaPostaApp() {
+export async function ceskaPostaApp(): Promise<ApplicationInstall> {
     return appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
@@ -230,19 +183,7 @@ export async function ceskaPostaApp() {
     });
 }
 
-export async function calendlyApp() {
-    return appInstall(CALENDLY_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
-        },
-    });
-}
-
-export async function katanaApp() {
+export async function katanaApp(): Promise<ApplicationInstall> {
     return appInstall(KATANA_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
@@ -250,7 +191,7 @@ export async function katanaApp() {
     });
 }
 
-export async function clickupApp() {
+export async function clickupApp(): Promise<ApplicationInstall> {
     return appInstall(CLICKUP_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [TOKEN]: {
@@ -260,7 +201,7 @@ export async function clickupApp() {
     });
 }
 
-export async function intercomApp() {
+export async function intercomApp(): Promise<ApplicationInstall> {
     return appInstall(INTERCOM_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
@@ -272,7 +213,7 @@ export async function intercomApp() {
     });
 }
 
-export async function merkApp() {
+export async function merkApp(): Promise<ApplicationInstall> {
     return appInstall(MERK_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
@@ -280,7 +221,7 @@ export async function merkApp() {
     });
 }
 
-export async function onesignalApp() {
+export async function onesignalApp(): Promise<ApplicationInstall> {
     return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [REST_API_KEY]: 'Api key',
@@ -288,23 +229,11 @@ export async function onesignalApp() {
     });
 }
 
-export async function greenHouseApp() {
+export async function greenHouseApp(): Promise<ApplicationInstall> {
     return appInstall(GREENHOUS_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [USERNAME]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,
-        },
-    });
-}
-
-export async function boxApp() {
-    return appInstall(BOX_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
         },
     });
 }

@@ -6,44 +6,44 @@ import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickB
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
 import QuickBooksApplication, { NAME as QUICKBOOKS_APP, REALM_ID } from '../../lib/QuickBooks/QuickBooksApplication';
 import {
-  appInstall,
-  DEFAULT_ACCESS_TOKEN,
-  DEFAULT_CLIENT_ID,
-  DEFAULT_CLIENT_SECRET,
-  DEFAULT_USER,
+    appInstall,
+    DEFAULT_ACCESS_TOKEN,
+    DEFAULT_CLIENT_ID,
+    DEFAULT_CLIENT_SECRET,
+    DEFAULT_USER,
 } from '../DataProvider';
 import {
-  container, db, oauth2Provider, sender,
+    container, db, oauth2Provider, sender,
 } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
-  await appInstall(QUICKBOOKS_APP, DEFAULT_USER, {
-    [AUTHORIZATION_FORM]: {
-      [CLIENT_ID]: DEFAULT_CLIENT_ID,
-      [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-      [REALM_ID]: '123456789',
-      [TOKEN]: {
-        [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-      },
-    },
-  });
+    await appInstall(QUICKBOOKS_APP, DEFAULT_USER, {
+        [AUTHORIZATION_FORM]: {
+            [CLIENT_ID]: DEFAULT_CLIENT_ID,
+            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+            [REALM_ID]: '123456789',
+            [TOKEN]: {
+                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+            },
+        },
+    });
 
-  const quickApp = new QuickBooksApplication(oauth2Provider);
-  const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
-  const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
+    const quickApp = new QuickBooksApplication(oauth2Provider);
+    const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
+    const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
 
-  container.setApplication(quickApp);
+    container.setApplication(quickApp);
 
-  quickBookCreateItemConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(quickApp);
+    quickBookCreateItemConnector
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
 
-  container.setConnector(quickBookCreateItemConnector);
+    container.setConnector(quickBookCreateItemConnector);
 
-  quickBookUpdateItemConnector
-    .setSender(sender)
-    .setDb(db)
-    .setApplication(quickApp);
-  container.setConnector(quickBookUpdateItemConnector);
+    quickBookUpdateItemConnector
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
+    container.setConnector(quickBookUpdateItemConnector);
 }
