@@ -43,7 +43,7 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         const res = await this.getSender().send<ResponseData>(requestDto, [200]);
         const paginator = this.processResult(res, dto);
 
-        if (paginator.pageCount !== page) {
+        if (paginator.pageCount > page) {
             dto.setBatchCursor((page + 1).toString());
         } else {
             appInstall.addNonEncryptedSettings({ [this.lastRunKey]: new Date() });
