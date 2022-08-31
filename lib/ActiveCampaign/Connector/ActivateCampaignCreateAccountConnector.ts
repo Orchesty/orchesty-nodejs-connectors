@@ -19,7 +19,7 @@ export default class ActivateCampaignCreateAccountConnector extends AConnector {
             'accounts',
             dto.getJsonData(),
         );
-        const resp = await this.getSender().send<IOutput>(req, [200]);
+        const resp = await this.getSender().send<IOutput>(req, [201]);
 
         return dto.setNewJsonData(resp.getJsonBody());
     }

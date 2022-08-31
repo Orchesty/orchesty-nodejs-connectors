@@ -1,17 +1,17 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import init from '../../../../test/Implementation/activateCampaign';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as ACTIVATE_CAMPAIGN_CREATE_ACCOUNT_CONNECTOR } from '../ActivateCampaignCreateAccountConnector';
+import { NAME as ACTIVE_CAMPAIGN_LIST_ACCOUNTS_BATCH } from '../ActiveCampaignListAccountsBatch';
 
 let tester: NodeTester;
 
-describe('Tests for ActivateCampaignCreateAccountConnector', () => {
+describe('Tests for ActiveCampaignListAccountsBatch', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename);
         await init();
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(ACTIVATE_CAMPAIGN_CREATE_ACCOUNT_CONNECTOR);
+        await tester.testBatch(ACTIVE_CAMPAIGN_LIST_ACCOUNTS_BATCH);
     });
 });
