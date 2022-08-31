@@ -10,8 +10,8 @@ export default class AuthenticaPutOrders extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutputItem[]>> {
-        const { orders } = dto.getJsonData();
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const orders = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
@@ -21,9 +21,9 @@ export default class AuthenticaPutOrders extends AConnector {
             orders,
         );
 
-        const response = (await this.getSender().send<IResponse>(requestDto, [200])).getJsonBody();
+        await this.getSender().send<IResponse>(requestDto, [200]);
 
-        return dto.setNewJsonData(response.data);
+        return dto.setNewJsonData(orders);
     }
 
 }
@@ -69,8 +69,6 @@ interface IResponse {
     data: IOrder[];
 }
 
-export type IOutputItem = IOrder;
+export type IInput = IOrder[];
 
-export interface IInput {
-    orders: IOrder[];
-}
+export type IOutput = IInput;
