@@ -9,7 +9,7 @@ specifiers:
   '@aws-sdk/client-redshift': ^3.161.0
   '@aws-sdk/client-s3': ^3.161.0
   '@hanaboso/eslint-plugin': ^1.0.1
-  '@orchesty/nodejs-sdk': ^3.0.12
+  '@orchesty/nodejs-sdk': ^3.1.0
   '@types/debug': ^4.1.7
   '@types/jest': ^28.1.8
   '@types/luxon': ^3.0.0
@@ -42,7 +42,7 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  '@orchesty/nodejs-sdk': 3.0.12
+  '@orchesty/nodejs-sdk': 3.1.0
   '@types/luxon': 3.0.0
   '@types/node-fetch': 2.6.2
   form-data: 4.0.0
@@ -2612,8 +2612,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk/3.0.12:
-    resolution: {integrity: sha512-ranRjK0ezNx3oXElBYJh2/yVuA0FcVa/qMogFdOjpoO/AlV1N6mT+1HuGJR0zR7OSLqt04XZDljuL5F1UT8/Fw==}
+  /@orchesty/nodejs-sdk/3.1.0:
+    resolution: {integrity: sha512-MMU9eDKXf8onoUJ9OmEPSGpzrcDG89gHv8rU/y02g1AvhF0IX7dUOPFq92+7GiYQMBL0WEDTiUrkOqWQ48NjQQ==}
     dependencies:
       '@types/express': 4.17.13
       '@types/express-prometheus-middleware': 1.2.1

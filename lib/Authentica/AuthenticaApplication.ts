@@ -100,17 +100,13 @@ export default class AuthenticaApplication extends ABasicApplication {
         const token = res.getJsonBody() as IAccessToken;
         return {
             dataToStore: token,
-            expire: token.refresh_token_expiration,
+            expire: token.expires_in,
         };
     }
 
 }
 
 interface IAccessToken {
-    expiration: number;
-    /* eslint-disable @typescript-eslint/naming-convention */
+    expires_in: number;
     access_token: string;
-    refresh_token: string;
-    refresh_token_expiration: number;
-    /* eslint-enable @typescript-eslint/naming-convention */
 }
