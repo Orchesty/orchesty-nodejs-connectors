@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "cursor": "2",
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"changeType\":\"edit\",\"changeTime\":\"2018-05-29T09:02:27+0200\",\"guid\":\"201800001\"}",
+            "headers": null
+        }
+    ]
+}
