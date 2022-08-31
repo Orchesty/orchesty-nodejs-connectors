@@ -34,13 +34,13 @@ export interface IProduct {
     name: string;
     englishName: string | null;
     ean: string;
-    width: string | null;
+    width: number | null;
     widthUnit: string | null;
-    height: string | null;
+    height: number | null;
     heightUnit: string | null;
-    length: string | null;
+    length: number | null;
     lengthUnit: string | null;
-    weight: string | null;
+    weight: number | null;
     weightUnit: string | null;
 }
 
