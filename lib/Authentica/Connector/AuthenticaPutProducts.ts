@@ -10,8 +10,8 @@ export default class AuthenticaPutProducts extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutputItem[]>> {
-        const { products } = dto.getJsonData();
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+        const products = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
@@ -48,8 +48,6 @@ interface IResponse {
     data: IProduct[];
 }
 
-export interface IInput {
-    products: IProduct[];
-}
+export type IInput = IProduct[];
 
-export type IOutputItem = IProduct;
+export type IOutput = IInput;
