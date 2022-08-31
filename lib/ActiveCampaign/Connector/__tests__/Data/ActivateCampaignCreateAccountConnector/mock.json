@@ -1,27 +1,20 @@
 {
-    "http": "POST https://company.api-us1.com/api/3/accounts",
-    "code": 200,
-    "body": {
-        "account": {
-            "name": "Example Account",
-            "accountUrl": "https://www.example.com",
-            "createdTimestamp": "2019-06-12T16:52:16-05:00",
-            "updatedTimestamp": "2019-06-12T16:52:16-05:00",
-            "links": [],
-            "fields": [
-                {
-                    "customFieldId": 9,
-                    "fieldValue": "501 - 1000",
-                    "accountId": "1"
-                },
-                {
-                    "customFieldId": 20,
-                    "fieldValue": 1234,
-                    "fieldCurrency": "GBP",
-                    "accountId": "1"
-                }
-            ],
-            "id": "1"
-        }
-    }
+  "http": "POST https://subdomain.api-us1.com/api/3/accounts",
+  "code": 201,
+  "body": {
+    "createdTimestamp": "2022-08-30T09:07:52-05:00",
+    "fields": [],
+    "id": "7",
+    "links": {
+      "accountContacts": "https://testhanaboso.api-us1.com/api/3/accounts/7/accountContacts",
+      "accountCustomFieldData": "https://testhanaboso.api-us1.com/api/3/accounts/7/accountCustomFieldData",
+      "contactEmails": "https://testhanaboso.api-us1.com/api/3/accounts/7/contactEmails",
+      "emailActivities": "https://testhanaboso.api-us1.com/api/3/accounts/7/emailActivities",
+      "notes": "https://testhanaboso.api-us1.com/api/3/accounts/7/notes",
+      "owner": "https://testhanaboso.api-us1.com/api/3/accounts/7/owner"
+    },
+    "name": "Example Account7",
+    "owner": "1",
+    "updatedTimestamp": "2022-08-30T09:07:52-05:00"
+  }
 }
