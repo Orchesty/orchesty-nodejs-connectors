@@ -1,0 +1,26 @@
+version: '2.2'
+services:
+    mariadb:
+        image: bitnami/mariadb:10.6
+        ports:
+            - "3306:3306"
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+            - MARIADB_USER=bn_opencart
+            - MARIADB_DATABASE=bitnami_opencart
+
+    opencart:
+        image: bitnami/opencart:3
+        ports:
+            - "8888:8080"
+        environment:
+            - OPENCART_HOST=localhost
+            - OPENCART_DATABASE_HOST=mariadb
+            - OPENCART_DATABASE_PORT_NUMBER=3306
+            - OPENCART_DATABASE_USER=bn_opencart
+            - OPENCART_DATABASE_NAME=bitnami_opencart
+            - OPENCART_EXTERNAL_HTTP_PORT_NUMBER=8888
+            - OPENCART_USERNAME=admin
+            - OPENCART_PASSWORD=admin
+            - ALLOW_EMPTY_PASSWORD=yes
+
