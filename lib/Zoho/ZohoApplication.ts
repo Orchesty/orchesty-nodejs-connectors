@@ -21,7 +21,7 @@ export const CREATOR_FORM = 'creator_form';
 export const ACCOUNT_OWNER_NAME = 'account_owner_name';
 export const APP_LINK_NAME = 'app_link_name';
 export const FORM_LINK_NAME = 'form_link_name';
-export const REPORT_LINK_NAME = 'REPORT_LINK_NAME';
+export const REPORT_LINK_NAME = 'report_link_name';
 
 export default class ZohoApplication extends AOAuth2Application {
 

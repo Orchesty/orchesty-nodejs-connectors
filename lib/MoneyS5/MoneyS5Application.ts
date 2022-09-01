@@ -13,7 +13,7 @@ import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Tran
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
-const NAME = 'MONEYS5';
+const NAME = 'moneys5';
 const BASE_URL = 'https://{host}/';
 const AUTH_TOKEN_URL = 'connect/token';
 const MONEYS5_URL = 'moneys5Url';
