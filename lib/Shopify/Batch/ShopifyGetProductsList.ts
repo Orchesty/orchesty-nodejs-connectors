@@ -38,7 +38,7 @@ export default class ShopifyGetProductsList extends ABatchNode {
         const linkHeaders = res.getHeaders().get('Link');
 
         if (linkHeaders) {
-            const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('next'));
+            const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('rel=next'));
             // eslint-disable-next-line prefer-named-capture-group
             const nextLink = (/<(.+)>/).exec(nextLinkHeader ?? '');
             if (nextLink) {
