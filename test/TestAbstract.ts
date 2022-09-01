@@ -8,25 +8,6 @@ import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
-import GitHubGeRespositoriesBatch from '../lib/GitHub/Batch/GitHubRepositoriesBatch';
-import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
-import GitHubGetRepositoryConnector from '../lib/GitHub/Connector/GitHubGetRepositoryConnector';
-import GitHubApplication from '../lib/GitHub/GitHubApplication';
-import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
-import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
-import GreenHouseAddCandidateConnector from '../lib/GreenHouse/connector/GreenHouseAddCandidateConnector';
-import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
-import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
-import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
-import IntercomApplication from '../lib/Intercom/IntercomApplication';
-import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
-import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
-import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
-import MallGetProductDetailConnector from '../lib/Mall/Connector/MallGetProductDetailConnector';
-import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConnector';
-import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
-import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
-import MallApplication from '../lib/Mall/MallApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
@@ -89,10 +70,6 @@ export async function prepare(): Promise<void> {
 
     await dropCollection(ApplicationInstall.getCollection());
 
-    initGitHub();
-    initGreenHouse();
-    initIntercom();
-    initMall();
     initNutshell();
     initPaypal();
     initPipedrive();
@@ -178,61 +155,6 @@ function initNutshell(): void {
     container.setConnector(newTask);
 }
 
-function initMall(): void {
-    const app = new MallApplication();
-    container.setApplication(app);
-
-    const getProductList = new MallGetProductListBatch();
-    const getOrdersList = new MallGetOrderListBatch();
-    const postProduct = new MallPostProductConnector();
-    const getProductDetail = new MallGetProductDetailConnector();
-    const getOrderDetail = new MallGetOrderDetailConnector();
-    const putProduct = new MallPutProductConnector();
-    const putOrder = new MallPutOrdersConnector();
-
-    getProductList
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getProductList);
-
-    getOrdersList
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getOrdersList);
-
-    postProduct
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(postProduct);
-
-    getProductDetail
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getProductDetail);
-
-    getOrderDetail
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getOrderDetail);
-
-    putProduct
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(putProduct);
-
-    putOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(putOrder);
-}
-
 function initTableau(): void {
     const tableauApp = new TableauApplication(sender, db);
     const tableauGetConnectedAppConnector = new TableauGetConnectedAppConnector();
@@ -300,32 +222,6 @@ function initWedo(): void {
     container.setBatch(getPackage);
 }
 
-function initGitHub(): void {
-    const app = new GitHubApplication();
-    container.setApplication(app);
-
-    const getApp = new GitHubGetAppConnector();
-    const getRepositories = new GitHubGeRespositoriesBatch();
-    const getRepository = new GitHubGetRepositoryConnector();
-
-    getApp
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getApp);
-
-    getRepositories
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getRepositories);
-    getRepository
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getRepository);
-}
-
 function initPaypal(): void {
     const app = new PaypalApplication(sender);
     container.setApplication(app);
@@ -376,24 +272,6 @@ function initTwitter(): void {
     container.setBatch(getFollowers);
 }
 
-function initIntercom(): void {
-    const app = new IntercomApplication(oauth2Provider);
-    container.setApplication(app);
-
-    const createContact = new IntercomCreateContactConnector();
-    const listAllContacts = new IntercomListAllContactsBatch();
-    createContact
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createContact);
-    listAllContacts
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listAllContacts);
-}
-
 function initOnesignal(): void {
     const app = new OnesignalApplication();
     container.setApplication(app);
@@ -412,31 +290,4 @@ function initOnesignal(): void {
         .setDb(db)
         .setApplication(app);
     container.setBatch(viewsApps);
-}
-
-function initGreenHouse(): void {
-    const app = new GreenHouseApplication();
-    container.setApplication(app);
-
-    const listApp = new GreenHouseListAppBatch();
-    const listCandidates = new GreenHouseListCandidatesBatch();
-    const addCandidates = new GreenHouseAddCandidateConnector();
-
-    listApp
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listApp);
-
-    listCandidates
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listCandidates);
-
-    addCandidates
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(addCandidates);
 }

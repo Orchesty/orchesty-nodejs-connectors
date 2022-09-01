@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { greenHouseApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/greenHouse';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as GREEN_HOUSE_LIST_CANDIDATES_BATCH } from '../GreenHouseListCandidatesBatch';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for GreenHouseListCandidatesBatch', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename, true);
-        await greenHouseApp();
+        await init();
     });
 
     it('process - ok', async () => {

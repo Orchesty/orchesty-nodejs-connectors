@@ -25,10 +25,10 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
             node: sub.getNode(),
             topology: sub.getTopology(),
         }));
-        const body = app.getWebhookSubscriptions().map((sub, index) => ({
+        const body = { data: app.getWebhookSubscriptions().map((sub, index) => ({
             event: whData[index].event,
             url: TopologyRunner.getWebhookUrl(whData[index].topology, whData[index].node, whData[index].token),
-        }));
+        })) };
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;

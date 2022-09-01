@@ -6,10 +6,6 @@ import {
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { NAME as GITHUB_APP } from '../lib/GitHub/GitHubApplication';
-import { NAME as GREENHOUS_APP, USERNAME } from '../lib/GreenHouse/GreenHouseApplication';
-import { NAME as INTERCOM_APP } from '../lib/Intercom/IntercomApplication';
-import { NAME as MALL_APP } from '../lib/Mall/MallApplication';
 import { NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
 import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
 import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
@@ -69,14 +65,6 @@ export async function nutshellApp(): Promise<ApplicationInstall> {
     });
 }
 
-export async function mallApp(): Promise<ApplicationInstall> {
-    return appInstall(MALL_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-        },
-    });
-}
-
 export async function tableauApp(): Promise<ApplicationInstall> {
     return appInstall(TABLEAU_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
@@ -120,29 +108,8 @@ export async function paypalApp(): Promise<ApplicationInstall> {
     });
 }
 
-export async function gitHubApp(): Promise<ApplicationInstall> {
-    return appInstall(GITHUB_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [USER]: DEFAULT_USER,
-            [TOKEN]: DEFAULT_ACCESS_TOKEN,
-        },
-    });
-}
-
 export async function twitterApp(): Promise<ApplicationInstall> {
     return appInstall(TWITTER_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
-        },
-    });
-}
-
-export async function intercomApp(): Promise<ApplicationInstall> {
-    return appInstall(INTERCOM_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
@@ -157,15 +124,6 @@ export async function onesignalApp(): Promise<ApplicationInstall> {
     return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
         [AUTHORIZATION_FORM]: {
             [REST_API_KEY]: 'Api key',
-        },
-    });
-}
-
-export async function greenHouseApp(): Promise<ApplicationInstall> {
-    return appInstall(GREENHOUS_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [USERNAME]: DEFAULT_USER,
-            [PASSWORD]: DEFAULT_PASSWORD,
         },
     });
 }

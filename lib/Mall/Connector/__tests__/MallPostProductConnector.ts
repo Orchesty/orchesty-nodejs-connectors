@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { mallApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/mall';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as MALL_POST_PRODUCT_CONNECTOR } from '../MallPostProductConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for MallPostProductConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename);
-        await mallApp();
+        await init();
     });
 
     it('process - ok', async () => {
