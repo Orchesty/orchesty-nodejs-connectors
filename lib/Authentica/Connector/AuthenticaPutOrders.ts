@@ -37,6 +37,7 @@ export default class AuthenticaPutOrders extends AConnector {
 }
 
 export interface IOrder {
+    id: string;
     orderNumber: string;
     destination: {
         firstName: string;
