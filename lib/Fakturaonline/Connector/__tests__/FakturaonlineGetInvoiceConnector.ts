@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { fakturaonlineApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/fakturaOnline';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as FAKTURAONLINE_GET_INVOICE_CONNECTOR } from '../FakturaonlineGetInvoiceConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for FakturaonlineGetInvoiceConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename, true);
-        await fakturaonlineApp();
+        await init();
     });
 
     it('process - ok', async () => {

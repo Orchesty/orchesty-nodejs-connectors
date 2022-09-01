@@ -8,27 +8,10 @@ import Metrics from '@orchesty/nodejs-sdk/dist/lib/Metrics/Metrics';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
-import CeskaPostaApplication from '../lib/CeskaPosta/CeskaPostaApplication';
-import CeskaPostaGetSendParcelsConnector from '../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import CeskaPostaParcelPrintingConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelPrintingConnector';
-import CeskaPostaParcelStatusConnector from '../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
-import ClickupApplication from '../lib/Clickup/ClickupApplication';
-import ClickupCreateSpaceConnector from '../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
-import ClickupCreateTaskConnector from '../lib/Clickup/Connectors/ClickupCreateTaskConnector';
-import ClickupGetUserConnector from '../lib/Clickup/Connectors/ClickupGetUserConnector';
-import FakturaonlineCreateNewInvoiceConnector
-    from '../lib/Fakturaonline/Connector/FakturaonlineCreateNewInvoiceConnector';
-import FakturaonlineGetInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineGetInvoiceConnector';
-import FakturaonlineUpdateInvoiceConnector from '../lib/Fakturaonline/Connector/FakturaonlineUpdateInvoiceConnector';
-import FakturaonlineApplication from '../lib/Fakturaonline/FakturaonlineApplication';
 import GitHubGeRespositoriesBatch from '../lib/GitHub/Batch/GitHubRepositoriesBatch';
 import GitHubGetAppConnector from '../lib/GitHub/Connector/GitHubGetAppConnector';
 import GitHubGetRepositoryConnector from '../lib/GitHub/Connector/GitHubGetRepositoryConnector';
 import GitHubApplication from '../lib/GitHub/GitHubApplication';
-import GObalikCreateOrderConnector from '../lib/GObalik/Connectors/GObalikCreateOrderConnector';
-import GObalikOrderDetailConnector from '../lib/GObalik/Connectors/GObalikOrderDetailConnector';
-import GObalikOrderListConnector from '../lib/GObalik/Connectors/GObalikOrderListConnector';
-import GObalikApplication from '../lib/GObalik/GObalikApplication';
 import GreenHouseListAppBatch from '../lib/GreenHouse/Batch/GreenHouseListAppBatch';
 import GreenHouseListCandidatesBatch from '../lib/GreenHouse/Batch/GreenHouseListCandidatesBatch';
 import GreenHouseAddCandidateConnector from '../lib/GreenHouse/connector/GreenHouseAddCandidateConnector';
@@ -36,10 +19,6 @@ import GreenHouseApplication from '../lib/GreenHouse/GreenHouseApplication';
 import IntercomListAllContactsBatch from '../lib/Intercom/Batch/IntercomListAllContactsBatch';
 import IntercomCreateContactConnector from '../lib/Intercom/Connector/IntercomCreateContactConnector';
 import IntercomApplication from '../lib/Intercom/IntercomApplication';
-import KatanaListProductsBatch from '../lib/Katana/Batch/KatanaListProductsBatch';
-import KatanaCreateCustomerConnector from '../lib/Katana/Connectors/KatanaCreateCustomerConnector';
-import KatanaCreateProductConnector from '../lib/Katana/Connectors/KatanaCreateProductConnector';
-import KatanaApplication from '../lib/Katana/KatanaApplication';
 import MallGetOrderListBatch from '../lib/Mall/Batch/MallGetOrderListBatch';
 import MallGetProductListBatch from '../lib/Mall/Batch/MallGetProductListBatch';
 import MallGetOrderDetailConnector from '../lib/Mall/Connector/MallGetOrderDetailConnector';
@@ -48,9 +27,6 @@ import MallPostProductConnector from '../lib/Mall/Connector/MallPostProductConne
 import MallPutOrdersConnector from '../lib/Mall/Connector/MallPutOrdersConnector';
 import MallPutProductConnector from '../lib/Mall/Connector/MallPutProductConnector';
 import MallApplication from '../lib/Mall/MallApplication';
-import MerkGetCompanyConnector from '../lib/Merk/Connector/MerkGetCompanyConnector';
-import MerkSuggestConnector from '../lib/Merk/Connector/MerkSuggestConnector';
-import MerkApplication from '../lib/Merk/MerkApplication';
 import NutshellGetAccountConnector from '../lib/Nutshell/Connector/NutshellGetAccountConnector';
 import NutshellNewAccountConnector from '../lib/Nutshell/Connector/NutshellNewAccountConnector';
 import NutshellNewLeadConnector from '../lib/Nutshell/Connector/NutshellNewLeadConnector';
@@ -74,9 +50,6 @@ import TwitterGetFollowersBatch from '../lib/Twitter/Batch/TwitterGetFollowersBa
 import TwitterDeleteTweetConnector from '../lib/Twitter/Connector/TwitterDeleteTweetConnector';
 import TwitterPostATweetConnector from '../lib/Twitter/Connector/TwitterPostATweetConnector';
 import TwitterApplication from '../lib/Twitter/TwitterApplication';
-import VyfakturujCreateContactConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
-import VyfakturujCreateInvoiceConnector from '../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
-import VyfakturujApplication from '../lib/Vyfakturuj/VyfakturujApplication';
 import WedoGetPackageBatch from '../lib/Wedo/Batch/WedoGetPackageBatch';
 import WedoApplication from '../lib/Wedo/WedoApplication';
 import WixCreateOrderConnector from '../lib/Wix/Connector/WixCreateOrderConnector';
@@ -116,22 +89,15 @@ export async function prepare(): Promise<void> {
 
     await dropCollection(ApplicationInstall.getCollection());
 
-    initCeskaPosta();
-    initClickup();
-    initFakturaonline();
-    initGObalik();
     initGitHub();
     initGreenHouse();
     initIntercom();
-    initKatanaApp();
     initMall();
-    initMerk();
     initNutshell();
     initPaypal();
     initPipedrive();
     initTableau();
     initTwitter();
-    initVyfakturuj();
     initWedo();
     initWix();
     initOnesignal();
@@ -321,52 +287,6 @@ function initWix(): void {
     container.setConnector(updateProduct);
 }
 
-function initFakturaonline(): void {
-    const app = new FakturaonlineApplication();
-    const createNewInvoice = new FakturaonlineCreateNewInvoiceConnector();
-    const createGetInvoice = new FakturaonlineGetInvoiceConnector();
-    const updateInvoice = new FakturaonlineUpdateInvoiceConnector();
-    container.setApplication(app);
-
-    createNewInvoice
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createNewInvoice);
-
-    createGetInvoice
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createGetInvoice);
-
-    updateInvoice
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(updateInvoice);
-}
-
-function initVyfakturuj(): void {
-    const app = new VyfakturujApplication();
-    container.setApplication(app);
-
-    const createInvoice = new VyfakturujCreateInvoiceConnector();
-    const createContact = new VyfakturujCreateContactConnector();
-
-    createInvoice
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createInvoice);
-
-    createContact
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createContact);
-}
-
 function initWedo(): void {
     const app = new WedoApplication();
     container.setApplication(app);
@@ -456,112 +376,6 @@ function initTwitter(): void {
     container.setBatch(getFollowers);
 }
 
-function initGObalik(): void {
-    const app = new GObalikApplication();
-    container.setApplication(app);
-    const createOrder = new GObalikCreateOrderConnector();
-    const orderList = new GObalikOrderListConnector();
-    const orderDetail = new GObalikOrderDetailConnector();
-
-    createOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createOrder);
-
-    orderList
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(orderList);
-
-    orderDetail
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(orderDetail);
-}
-
-function initCeskaPosta(): void {
-    const app = new CeskaPostaApplication();
-    container.setApplication(app);
-
-    const parcelStatus = new CeskaPostaParcelStatusConnector();
-    const getSendParcels = new CeskaPostaGetSendParcelsConnector();
-    const parcelPrinting = new CeskaPostaParcelPrintingConnector();
-
-    parcelStatus
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(parcelStatus);
-
-    getSendParcels
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getSendParcels);
-
-    parcelPrinting
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(parcelPrinting);
-}
-
-function initKatanaApp(): void {
-    const app = new KatanaApplication();
-    const listProducts = new KatanaListProductsBatch();
-    const createProduct = new KatanaCreateProductConnector();
-    const createCustomer = new KatanaCreateCustomerConnector();
-    container.setApplication(app);
-
-    listProducts
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listProducts);
-
-    createProduct
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createProduct);
-
-    createCustomer
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createCustomer);
-}
-
-function initClickup(): void {
-    const app = new ClickupApplication();
-    container.setApplication(app);
-
-    const getUser = new ClickupGetUserConnector();
-    const createSpace = new ClickupCreateSpaceConnector();
-    const createTask = new ClickupCreateTaskConnector();
-
-    getUser
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getUser);
-
-    createTask
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createTask);
-
-    createSpace
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createSpace);
-}
-
 function initIntercom(): void {
     const app = new IntercomApplication(oauth2Provider);
     container.setApplication(app);
@@ -598,25 +412,6 @@ function initOnesignal(): void {
         .setDb(db)
         .setApplication(app);
     container.setBatch(viewsApps);
-}
-
-function initMerk(): void {
-    const app = new MerkApplication();
-    container.setApplication(app);
-
-    const getCompany = new MerkGetCompanyConnector();
-    const getSuggest = new MerkSuggestConnector();
-    getCompany
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getCompany);
-
-    getSuggest
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getSuggest);
 }
 
 function initGreenHouse(): void {

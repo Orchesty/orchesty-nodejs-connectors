@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { gobalikApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/goBalik';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as GO_BALIK_ORDER_DETAIL_CONNECTOR } from '../GObalikOrderDetailConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for GObalikOrderDetailConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename, true);
-        await gobalikApp();
+        await init();
     });
 
     it('process - ok', async () => {

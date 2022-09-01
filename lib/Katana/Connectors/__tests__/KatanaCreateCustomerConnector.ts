@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { katanaApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/katana';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as KATANA_CREATE_CUSTOMER_CONNECTOR } from '../KatanaCreateCustomerConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for KatanaCreateCustomerConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename, true);
-        await katanaApp();
+        await init();
     });
 
     it('process - ok', async () => {

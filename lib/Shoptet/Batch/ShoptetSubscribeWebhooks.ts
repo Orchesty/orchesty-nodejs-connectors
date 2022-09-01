@@ -32,7 +32,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
-        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
+        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
         const res = await this.getSender().send<IResponseJson>(requestDto);
         if (res.getResponseCode() !== 201 && res.getResponseCode() !== 404) {
             throw new OnRepeatException(300, 12, res.getBody());
