@@ -20,7 +20,7 @@ export default class ShoptetGetOrderChangesList extends AShoptetList<IResponseJs
     protected processResult(responseDto: ResponseDto<IResponseJson>, batchProcessDto: BatchProcessDto): IPaging {
         const body = responseDto.getJsonBody().data;
 
-        if (body.changes) {
+        if (body.changes.length) {
             this.setItemsListToDto(batchProcessDto, body.changes);
         } else {
             batchProcessDto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'No changes since last import.');
