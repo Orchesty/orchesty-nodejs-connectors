@@ -64,13 +64,11 @@ export interface IOrder {
         totalPrice: number;
         currency: string;
     };
-    items: [
-        {
-            sku: string;
-            quantity: number;
-            unitPrice: number;
-        },
-    ];
+    items: {
+        sku: string;
+        quantity: number;
+        unitPrice: number;
+    }[];
     variableSymbol: string;
 }
 
