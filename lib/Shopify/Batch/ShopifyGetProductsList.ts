@@ -35,17 +35,10 @@ export default class ShopifyGetProductsList extends ABatchNode {
         const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
         const res = await this.getSender().send<IResponseJson>(requestDto);
-        const linkHeaders = res.getHeaders().get('Link');
+        const nextPageLink = app.getNextPageFromHeaders(res.getHeaders());
 
-        if (linkHeaders) {
-            const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('rel=next'));
-            // eslint-disable-next-line prefer-named-capture-group
-            const nextLink = (/<(.+)>/).exec(nextLinkHeader ?? '');
-            if (nextLink) {
-                dto.setBatchCursor(nextLink[1]);
-            } else {
-                await this.writeLastTimeRun(appInstall);
-            }
+        if (nextPageLink) {
+            dto.setBatchCursor(nextPageLink);
         } else {
             await this.writeLastTimeRun(appInstall);
         }
