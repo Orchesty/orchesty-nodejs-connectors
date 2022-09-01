@@ -21,12 +21,16 @@ export default class ShoptetGetProductChangesList extends AShoptetList<IResponse
         const body = responseDto.getJsonBody().data;
 
         if (body.changes) {
-            batchProcessDto.setItemList(body.changes);
+            this.setItemsListToDto(batchProcessDto, body.changes);
         } else {
             batchProcessDto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'No changes since last import.');
         }
 
         return body.paginator;
+    }
+
+    protected setItemsListToDto(dto: BatchProcessDto, responseBody: IOutputJson[]): void {
+        dto.setItemList(responseBody);
     }
 
 }
