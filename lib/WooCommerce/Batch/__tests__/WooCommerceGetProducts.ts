@@ -18,7 +18,7 @@ describe('Tests for WooCommerceGetProducts', () => {
 
     it('process - with after', async () => {
         const repository = container.getRepository(ApplicationInstall);
-        const app = await repository.findOne({ key: 'WOOCOMMERCE' });
+        const app = await repository.findOne({ key: 'woocommerce' });
         app?.addNonEncryptedSettings({ productLastRun: '2017-03-23T17:03:12' });
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         await repository.update(app!);
