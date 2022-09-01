@@ -13,7 +13,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { BodyInit } from 'node-fetch';
 
 export const NAME = 'authentica';
 export const BASE_URL = 'https://app.authentica.cz/api';
@@ -56,8 +55,8 @@ export default class AuthenticaApplication extends ABasicApplication {
         dto: ProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
-        _url?: string,
-        data?: BodyInit,
+        url?: string,
+        data?: unknown,
     ): Promise<RequestDto> {
         const headers = {
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -66,7 +65,14 @@ export default class AuthenticaApplication extends ABasicApplication {
             [CommonHeaders.AUTHORIZATION]: await this.getAccessToken(dto, applicationInstall),
         };
 
-        return new RequestDto(`${BASE_URL}/applinth/${_url}`, method, dto, data, headers);
+        const req = new RequestDto(`${BASE_URL}/applinth/${url}`, method, dto);
+        req.setHeaders(headers);
+
+        if (data) {
+            req.setJsonBody(data);
+        }
+
+        return req;
     }
 
     protected async getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
