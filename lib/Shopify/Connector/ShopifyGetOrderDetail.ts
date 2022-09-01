@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { IOutputJson as IInput } from '../Batch/ShopifyGetOrderList';
+import { IOutput as IInput } from '../Batch/ShopifyGetOrderList';
 import ShopifyApplication from '../ShopifyApplication';
 
 export default class ShopifyGetOrderDetail extends AConnector {
