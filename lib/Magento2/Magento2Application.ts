@@ -16,7 +16,7 @@ import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Tran
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
-export const NAME = 'MAGENTO';
+export const NAME = 'magento';
 export const MAGENTO_URL = 'magentoUrl';
 
 const AUTH_TOKEN_URL = 'https://{host}/index.php/rest/V1/integration/admin/token';

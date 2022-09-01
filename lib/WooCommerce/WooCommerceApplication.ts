@@ -19,7 +19,7 @@ import { BodyInit } from 'node-fetch';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
 
-export const NAME = 'WOOCOMMERCE';
+export const NAME = 'woocommerce';
 
 export default class WooCommerceApplication extends ABasicApplication {
 

@@ -25,7 +25,7 @@ const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
 const SHOP_INFO_URL = 'admin/api/2022-01/shop.json';
 
-export const NAME = 'SHOPIFY';
+export const NAME = 'shopify';
 
 export default class ShopifyApplication extends ABasicApplication implements ILimitedApplication {
 
