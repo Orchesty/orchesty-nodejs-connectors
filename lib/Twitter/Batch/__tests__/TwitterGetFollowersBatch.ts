@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { twitterApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/twitter';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as TWITTER_GET_FOLLOWERS_BATCH } from '../TwitterGetFollowersBatch';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for TwitterGetFollowersBatch', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename);
-        await twitterApp();
+        await init();
     });
 
     it('process - ok', async () => {

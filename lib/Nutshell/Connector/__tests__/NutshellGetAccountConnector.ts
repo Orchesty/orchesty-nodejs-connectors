@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { nutshellApp } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/nutshell';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as NUTSHELL_GET_ACCOUNT_CONNECTOR } from '../NutshellGetAccountConnector';
 
@@ -8,7 +8,7 @@ let tester: NodeTester;
 describe('Tests for NutshellGetAccountConnector', () => {
     beforeEach(async () => {
         tester = new NodeTester(container, __filename);
-        await nutshellApp();
+        await init();
     });
 
     it('process - ok', async () => {

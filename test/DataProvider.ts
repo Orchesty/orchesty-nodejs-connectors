@@ -1,21 +1,7 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import {
     ApplicationInstall,
     IApplicationSettings,
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
-import { PASSWORD, TOKEN, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
-import { NAME as NUTSHELL_APP } from '../lib/Nutshell/NutshellApplication';
-import { NAME as ONESIGNAL_APP, REST_API_KEY } from '../lib/Onesignal/OnesignalApplication';
-import { NAME as PAYPAL_APP } from '../lib/Paypal/PaypalApplication';
-import { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../lib/Pipedrive/PipedriveApplication';
-import {
-    CONTENT_URL, NAME as TABLEAU_APP, PREFIX_SITE, TOKEN_NAME, TOKEN_SECRET,
-} from '../lib/Tableau/TableauApplication';
-import { NAME as TWITTER_APP } from '../lib/Twitter/TwitterApplication';
-import { NAME as WEDO_APP } from '../lib/Wedo/WedoApplication';
-import { NAME as WIX_APP } from '../lib/Wix/WixApplication';
 import { db } from './TestAbstract';
 
 export const DEFAULT_USER = 'TestUser';
@@ -45,85 +31,4 @@ export async function appInstall(
     await repo.insert(app);
 
     return app;
-}
-
-export async function pipedriveApp(): Promise<ApplicationInstall> {
-    return appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [SUBDOMAIN]: 'company',
-            [TOKEN]: DEFAULT_ACCESS_TOKEN,
-        },
-    });
-}
-
-export async function nutshellApp(): Promise<ApplicationInstall> {
-    return appInstall(NUTSHELL_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [USER]: DEFAULT_USER,
-            [PASSWORD]: DEFAULT_PASSWORD,
-        },
-    });
-}
-
-export async function tableauApp(): Promise<ApplicationInstall> {
-    return appInstall(TABLEAU_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [TOKEN_NAME]: 'token',
-            [PREFIX_SITE]: 'prefix',
-            [TOKEN_SECRET]: 'toke_secret',
-            [CONTENT_URL]: 'content_url',
-        },
-    });
-}
-
-export async function wixApp(): Promise<ApplicationInstall> {
-    return appInstall(WIX_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
-        },
-    });
-}
-
-export async function wedoApp(): Promise<ApplicationInstall> {
-    return appInstall(WEDO_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [USER]: DEFAULT_USER,
-            [PASSWORD]: DEFAULT_PASSWORD,
-
-        },
-
-    });
-}
-
-export async function paypalApp(): Promise<ApplicationInstall> {
-    return appInstall(PAYPAL_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-        },
-    });
-}
-
-export async function twitterApp(): Promise<ApplicationInstall> {
-    return appInstall(TWITTER_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [CLIENT_ID]: DEFAULT_CLIENT_ID,
-            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            [TOKEN]: {
-                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
-            },
-        },
-    });
-}
-
-export async function onesignalApp(): Promise<ApplicationInstall> {
-    return appInstall(ONESIGNAL_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
-            [REST_API_KEY]: 'Api key',
-        },
-    });
 }
