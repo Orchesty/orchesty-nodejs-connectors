@@ -3,7 +3,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { IResponseJson as IOutput } from '../Batch/WooCommerceGetOrders';
 
-export const NAME = 'woo-commerce-update-order';
+export const NAME = 'woocommerce-update-order';
 
 export default class WooCommerceUpdateOrder extends AConnector {
 
