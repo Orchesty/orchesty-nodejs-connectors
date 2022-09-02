@@ -4,17 +4,21 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { IOutput as IInput } from '../Batch/ShopifyGetOrderList';
 import ShopifyApplication from '../ShopifyApplication';
 
+export const NAME = 'shopify-get-order-detail';
+
+const DETAIL_ORDER_ENDPOINT = 'admin/api/2022-07/orders/{id}';
+
 export default class ShopifyGetOrderDetail extends AConnector {
 
     public getName(): string {
-        return 'shopify-get-order-detail';
+        return NAME;
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const app = this.getApplication<ShopifyApplication>();
-        const { url } = dto.getJsonData();
+        const { id } = dto.getJsonData();
 
-        const order: IResponseJson = await this.doRequest(app, url, dto);
+        const order: IResponseJson = await this.doRequest(app, id, dto);
 
         return dto.setNewJsonData({
             ...order,
@@ -23,11 +27,16 @@ export default class ShopifyGetOrderDetail extends AConnector {
 
     private async doRequest(
         app: ShopifyApplication,
-        url: string,
+        id: number,
         dto: ProcessDto,
     ): Promise<IResponseJson> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
+        const requestDto = app.getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            DETAIL_ORDER_ENDPOINT.replace('{id}', id.toString()),
+        );
         const res = await this.getSender().send<IResponseJson>(requestDto, [200, 404]);
 
         return res.getJsonBody();
