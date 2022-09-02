@@ -48,7 +48,7 @@ interface IResponse {
 }
 
 export interface IOutput {
-    jobId: string;
+    eventInstance: string;
     endpoint: string;
     creationTime: string;
     duration: string;

@@ -15,7 +15,7 @@ export default class ShoptetParseJsonLines extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto<IOutput>): Promise<BatchProcessDto> {
-        const { resultUrl, status, jobId } = dto.getJsonData();
+        const { resultUrl, status, eventInstance: jobId } = dto.getJsonData();
 
         if (status !== 'completed') {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, `Job [jobId=${jobId}] from shoptet is not completed.`);
