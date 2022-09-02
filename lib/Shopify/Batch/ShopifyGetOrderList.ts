@@ -41,9 +41,13 @@ export default class ShopifyGetOrderList extends ABatchNode {
 
         const { orders } = res.getJsonBody();
 
-        dto.setItemList(orders);
+        this.setItemsListToDto(dto, orders);
 
         return dto;
+    }
+
+    protected setItemsListToDto(dto: BatchProcessDto, orders: IOutput[]): void {
+        dto.setItemList(orders);
     }
 
     private async writeLastTimeRun(appInstall: ApplicationInstall): Promise<void> {
@@ -53,7 +57,7 @@ export default class ShopifyGetOrderList extends ABatchNode {
 
 }
 
-interface IInput {
+export interface IInput {
     from: string;
 }
 
@@ -61,10 +65,7 @@ interface IResponse {
     orders: IOrder[];
 }
 
-export interface IOutput {
-    url: string;
-    id: string;
-}
+export type IOutput = IOrder;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IClientDetails {
