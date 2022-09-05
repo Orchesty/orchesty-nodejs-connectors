@@ -1,6 +1,7 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import Deleted from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Filters/Impl/Deleted';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import WooCommerceApplication from '../WooCommerceApplication';
@@ -15,7 +16,12 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
 
     public async processAction(dto: ProcessDto): Promise<ProcessDto> {
         const app = this.getApplication<WooCommerceApplication>();
+
+        const appRepo = await this.getDbClient().getApplicationRepository();
+        appRepo.disableFilter(Deleted.name);
         const appInstall = await this.getApplicationInstallFromProcess(dto);
+        appRepo.enableFilter(Deleted.name);
+
         const repo = await this.getDbClient().getRepository(Webhook);
         const webhooks = await repo.findMany({ user: appInstall.getUser(), application: app.getName() });
 
