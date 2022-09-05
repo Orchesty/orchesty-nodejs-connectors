@@ -47,10 +47,11 @@ export default class GitHubApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://api.github.com${uri}`, method, dto);
+        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: 'application/vnd.github+json',
-            [CommonHeaders.AUTHORIZATION]: encode(`${TOKEN}:${USER}`),
+            [CommonHeaders.AUTHORIZATION]: encode(`${form[USER] ?? ''}:${form[TOKEN] ?? ''}`),
         });
 
         if (data) {

@@ -1,7 +1,6 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import Zlib from 'zlib';
 import { IOutput } from '../Connector/ShoptetJobFinishedWebhook';
@@ -23,15 +22,15 @@ export default class ShoptetParseJsonLines extends ABatchNode {
         }
 
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = (await this.getApplication().getRequestDto(
+        const requestDto = await this.getApplication().getRequestDto(
             dto,
             applicationInstall,
             HttpMethods.GET,
             resultUrl,
-        )).addHeaders({ [CommonHeaders.ACCEPT_ENCODING]: 'gzip,deflate' });
+        );
 
         const response = await this.getSender().send(requestDto, [200]);
-        const data = Zlib.gunzipSync(response.getBody()).toString().split('\n');
+        const data = Zlib.gunzipSync(response.getBuffer()).toString().split('\n');
 
         do {
             const slicedData = data.splice(0, 100);
