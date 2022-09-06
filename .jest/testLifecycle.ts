@@ -22,3 +22,20 @@ beforeAll(async () => {
 afterAll(async () => {
   // await dropCollection(ApplicationInstall.getCollection()).then(closeConnection)
 })
+
+export default class MockDate extends Date {
+  constructor() {
+    super("2022-01-01T11:12:58.135Z");
+  }
+}
+
+const originalDate = global.Date;
+
+export function mockDate() {
+  // @ts-ignore
+  global.Date = MockDate;
+}
+
+export function restoreDate() {
+  global.Date = originalDate;
+}

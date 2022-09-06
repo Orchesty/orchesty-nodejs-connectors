@@ -12,6 +12,8 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
     protected abstract lastRunKey: string;
 
+    protected forceLastRun = false;
+
     protected abstract processResult(responseDto: ResponseDto<ResponseData>, batchProcessDto: BatchProcessDto): IPaging;
 
     public async processAction(dto: BatchProcessDto<{ from: string }>): Promise<BatchProcessDto> {
@@ -21,9 +23,13 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
         let url = `${this.endpoint}?itemsPerPage=100`;
 
-        const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
+        let creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
             appInstall.getNonEncryptedSettings()[this.lastRunKey],
         );
+
+        if (this.forceLastRun && !creationTimeFrom) {
+            creationTimeFrom = ShoptetPremiumApplication.shoptetDateISO(new Date(), -1 * 30 * 24);
+        }
 
         if (page) {
             url = `${url}&page=${page}`;

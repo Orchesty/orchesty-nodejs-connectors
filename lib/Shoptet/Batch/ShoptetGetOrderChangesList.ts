@@ -13,6 +13,8 @@ export default class ShoptetGetOrderChangesList extends AShoptetList<IResponseJs
 
     public fromParamKey = 'from';
 
+    protected forceLastRun = true;
+
     public getName(): string {
         return NAME;
     }
