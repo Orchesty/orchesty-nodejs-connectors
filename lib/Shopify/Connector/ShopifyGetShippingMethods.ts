@@ -35,7 +35,7 @@ interface IResponse {
     carrier_services: ICarrier[];
 }
 
-interface ICarrier {
+export interface ICarrier {
     id: number;
     name: string;
     active: boolean;
