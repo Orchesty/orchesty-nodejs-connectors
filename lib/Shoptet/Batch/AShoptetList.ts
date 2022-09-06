@@ -27,8 +27,8 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
             appInstall.getNonEncryptedSettings()[this.lastRunKey],
         );
 
-        if (this.forceLastRun && !creationTimeFrom) {
-            creationTimeFrom = ShoptetPremiumApplication.shoptetDateISO(new Date(), -1 * 30 * 24);
+        if (!creationTimeFrom) {
+            creationTimeFrom = this.getDefaultLastRun();
         }
 
         if (page) {
@@ -57,6 +57,10 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         }
 
         return dto;
+    }
+
+    protected getDefaultLastRun(): string {
+        return '';
     }
 
 }
