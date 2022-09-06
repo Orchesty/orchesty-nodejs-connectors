@@ -12,8 +12,6 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
     protected abstract lastRunKey: string;
 
-    protected forceLastRun = false;
-
     protected abstract processResult(responseDto: ResponseDto<ResponseData>, batchProcessDto: BatchProcessDto): IPaging;
 
     public async processAction(dto: BatchProcessDto<{ from: string }>): Promise<BatchProcessDto> {
