@@ -25,9 +25,17 @@ export default class ShoptetJobFinishedWebhook extends AShoptetConnector {
 
             return dto;
         }
-
         dto.setUser(appInstall.getUser());
         const response = await this.doRequest(`api/system/jobs/${data.eventInstance}`, dto) as IResponse;
+
+        const { job } = response.data;
+        if (job.endpoint === '/api/products/snapshot') {
+            appInstall.addNonEncryptedSettings({ lastRunListProductChanges: job.completionTime });
+            await repo.update(appInstall);
+        } else if (job.endpoint === '/api/orders/snapshot') {
+            appInstall.addNonEncryptedSettings({ lastRunListOrderChanges: job.completionTime });
+            await repo.update(appInstall);
+        }
 
         return dto.setNewJsonData(response.data.job);
     }

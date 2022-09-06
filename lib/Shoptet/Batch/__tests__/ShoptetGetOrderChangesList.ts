@@ -1,5 +1,6 @@
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import { mockDate, restoreDate } from '../../../../.jest/testLifecycle';
 import init from '../../../../test/Implementation/shoptet';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as SHOPTET_GET_ORDER_CHANGES_LIST } from '../ShoptetGetOrderChangesList';
@@ -13,7 +14,9 @@ describe('Tests for ShoptetGetOrderChangesList', () => {
     });
 
     it('process - ok', async () => {
+        mockDate();
         await tester.testBatch(SHOPTET_GET_ORDER_CHANGES_LIST);
+        restoreDate();
     });
 
     it('process - with after', async () => {
