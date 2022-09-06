@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "available": 5,
+        "inventory_item_id": "Product1",
+        "location_id": "123abc"
+    }
+}
