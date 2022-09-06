@@ -1,6 +1,7 @@
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
 import AShoptetList, { IPaging } from './AShoptetList';
 
 export const NAME = 'shoptet-get-product-changes-list';
@@ -31,6 +32,10 @@ export default class ShoptetGetProductChangesList extends AShoptetList<IResponse
 
     protected setItemsListToDto(dto: BatchProcessDto, responseBody: IOutputJson[]): void {
         dto.setItemList(responseBody);
+    }
+
+    protected getDefaultLastRun(): string {
+        return ShoptetPremiumApplication.shoptetDateISO(new Date(), -1 * 30 * 24);
     }
 
 }
