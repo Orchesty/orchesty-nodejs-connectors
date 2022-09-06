@@ -21,9 +21,13 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
         let url = `${this.endpoint}?itemsPerPage=100`;
 
-        const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
+        let creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
             appInstall.getNonEncryptedSettings()[this.lastRunKey],
         );
+
+        if (!creationTimeFrom) {
+            creationTimeFrom = this.getDefaultLastRun();
+        }
 
         if (page) {
             url = `${url}&page=${page}`;
@@ -51,6 +55,10 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         }
 
         return dto;
+    }
+
+    protected getDefaultLastRun(): string {
+        return '';
     }
 
 }
