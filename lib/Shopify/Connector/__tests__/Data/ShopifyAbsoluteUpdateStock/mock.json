@@ -1,5 +1,13 @@
 {
-  "http": "POST http://url.com",
+  "http": "POST https://kube.myshopify.com/admin/api/2022-07/inventory_levels/set.json",
   "code": 200,
-  "body": {}
+  "body": {
+    "inventory_level": {
+      "inventory_item_id": 808950810,
+      "location_id": 905684977,
+      "available": 42,
+      "updated_at": "2021-09-14T17:57:05-04:00",
+      "admin_graphql_api_id": "gid://shopify/InventoryLevel/905684977?inventory_item_id=808950810"
+    }
+  }
 }
