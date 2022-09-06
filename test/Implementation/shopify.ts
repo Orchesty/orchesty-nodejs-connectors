@@ -3,6 +3,7 @@ import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
 import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsoluteUpdateStock';
+import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyGetShippingMethods from '../../lib/Shopify/Connector/ShopifyGetShippingMethods';
 import ShopifyApplication, { NAME } from '../../lib/Shopify/ShopifyApplication';
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
@@ -48,4 +49,10 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(shopifyApplication);
     container.setConnector(shopifyAbsoluteUpdateStock);
+
+    const shopifyCreateFulfillment = new ShopifyCreateFulfillment()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(shopifyApplication);
+    container.setConnector(shopifyCreateFulfillment);
 }

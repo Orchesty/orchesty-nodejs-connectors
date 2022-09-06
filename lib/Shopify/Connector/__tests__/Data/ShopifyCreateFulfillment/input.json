@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "fulfillment": {
+            "order_id": "testOrderId",
+            "status": "testStatus",
+            "tracking_numbers": ["testTrackingNumber"]
+        }
+    }
+}
