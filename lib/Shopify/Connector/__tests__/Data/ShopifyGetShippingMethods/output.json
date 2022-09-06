@@ -1,0 +1,25 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "active": true,
+            "admin_graphql_api_id": "gid://shopify/DeliveryCarrierService/1036894955",
+            "callback_url": "http://example.com/",
+            "carrier_service_type": "api",
+            "format": "json",
+            "id": 1036894955,
+            "name": "Purolator",
+            "service_discovery": true
+        },
+        {
+            "active": true,
+            "admin_graphql_api_id": "gid://shopify/DeliveryCarrierService/260046840",
+            "carrier_service_type": "legacy",
+            "id": 260046840,
+            "name": "ups_shipping",
+            "service_discovery": true
+        }
+    ]
+}
