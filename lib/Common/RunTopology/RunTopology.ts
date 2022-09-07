@@ -15,7 +15,7 @@ export default class RunTopology extends AConnector {
     }
 
     public getName(): string {
-        return NAME;
+        return `${this.topology}-${this.node}-${NAME}`;
     }
 
     public async processAction(dto: ProcessDto): Promise<ProcessDto> {
