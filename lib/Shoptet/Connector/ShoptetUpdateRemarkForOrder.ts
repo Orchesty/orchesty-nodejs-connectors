@@ -29,7 +29,7 @@ export default class ShoptetUpdateRemarkForOrder extends AConnector {
         );
         await this.getSender().send(
             requestDto,
-            [200, 404, createFailRange(422)],
+            [200, createFailRange(422)],
         );
 
         return dto;

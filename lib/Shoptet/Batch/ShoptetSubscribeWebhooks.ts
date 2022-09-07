@@ -33,7 +33,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
-        const res = await this.getSender().send<IResponseJson>(requestDto, [201, 404, createFailRange(422)]);
+        const res = await this.getSender().send<IResponseJson>(requestDto, [201, createFailRange(422)]);
 
         const respBody = res.getJsonBody();
         const repo = await this.getDbClient().getRepository(Webhook);
