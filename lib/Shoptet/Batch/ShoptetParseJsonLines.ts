@@ -29,7 +29,10 @@ export default class ShoptetParseJsonLines extends ABatchNode {
             resultUrl,
         );
 
-        const response = await this.getSender().send(requestDto, [200]);
+        const response = await this.getSender().send(
+            requestDto,
+            [200, { from: 422, to: 422, action: ResultCode.STOP_AND_FAILED }],
+        );
         const data = Zlib.gunzipSync(response.getBuffer()).toString().split('\n');
 
         do {

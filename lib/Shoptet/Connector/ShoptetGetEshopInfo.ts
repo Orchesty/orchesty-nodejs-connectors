@@ -1,5 +1,6 @@
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import { BASE_URL } from '../ABaseShoptet';
 import APluginShoptetApplication from '../APluginShoptetApplication';
 import AShoptetConnector from './AShoptetConnector';
@@ -19,7 +20,10 @@ export default class ShoptetGetEshopInfo extends AShoptetConnector {
         const requestDto = await this
             .getApplication<APluginShoptetApplication>()
             .getRequestDto(dto, appInstall, HttpMethods.GET, url);
-        const resp = await this.getSender().send<IResponse>(requestDto, [200]);
+        const resp = await this.getSender().send<IResponse>(
+            requestDto,
+            [200, { from: 422, to: 422, action: ResultCode.STOP_AND_FAILED }],
+        );
 
         return dto.setNewJsonData(resp.getJsonBody().data);
     }
