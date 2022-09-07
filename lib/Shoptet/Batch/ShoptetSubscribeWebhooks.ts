@@ -1,7 +1,7 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
-import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import * as crypto from 'crypto';
@@ -33,10 +33,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
-        const res = await this.getSender().send<IResponseJson>(requestDto);
-        if (res.getResponseCode() !== 201 && res.getResponseCode() !== 404) {
-            throw new OnRepeatException(300, 12, res.getBody());
-        }
+        const res = await this.getSender().send<IResponseJson>(requestDto, [201, createFailRange(422)]);
 
         const respBody = res.getJsonBody();
         const repo = await this.getDbClient().getRepository(Webhook);
