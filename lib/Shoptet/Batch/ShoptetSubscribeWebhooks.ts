@@ -1,9 +1,9 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import * as crypto from 'crypto';
 import ABaseShoptet, { BASE_URL } from '../ABaseShoptet';
 
@@ -33,14 +33,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
-        const res = await this.getSender().send<IResponseJson>(
-            requestDto,
-            [
-                201,
-                404,
-                { from: 422, to: 422, action: ResultCode.STOP_AND_FAILED },
-            ],
-        );
+        const res = await this.getSender().send<IResponseJson>(requestDto, [201, 404, createFailRange(422)]);
 
         const respBody = res.getJsonBody();
         const repo = await this.getDbClient().getRepository(Webhook);

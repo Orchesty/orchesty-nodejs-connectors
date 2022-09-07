@@ -1,4 +1,5 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
@@ -31,7 +32,7 @@ export default class ShoptetParseJsonLines extends ABatchNode {
 
         const response = await this.getSender().send(
             requestDto,
-            [200, { from: 422, to: 422, action: ResultCode.STOP_AND_FAILED }],
+            [200, createFailRange(422)],
         );
         const data = Zlib.gunzipSync(response.getBuffer()).toString().split('\n');
 
