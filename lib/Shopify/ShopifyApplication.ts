@@ -96,6 +96,14 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
             .getSettings()?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL] ?? '';
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const settings = applicationInstall.getSettings();
+        return !!(settings?.[AUTHORIZATION_FORM]
+          && settings?.[AUTHORIZATION_FORM]?.[USER]
+          && settings?.[AUTHORIZATION_FORM]?.[PASSWORD]
+          && settings?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL]);
+    }
+
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
