@@ -1,5 +1,6 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
@@ -44,7 +45,10 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
             url,
         );
 
-        const res = await this.getSender().send<ResponseData>(requestDto, [200]);
+        const res = await this.getSender().send<ResponseData>(
+            requestDto,
+            [200, createFailRange(422)],
+        );
         const paginator = this.processResult(res, dto);
 
         if (paginator.pageCount > page) {

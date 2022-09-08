@@ -1,4 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BASE_URL } from '../ABaseShoptet';
@@ -26,7 +27,10 @@ export default class ShoptetUpdateRemarkForOrder extends AConnector {
             url,
             JSON.stringify({ data: notes }),
         );
-        await this.getSender().send(requestDto, [200, 404]);
+        await this.getSender().send(
+            requestDto,
+            [200, createFailRange(422)],
+        );
 
         return dto;
     }
