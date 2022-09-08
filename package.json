@@ -18,7 +18,7 @@
     "author": "info@hanaboso.com",
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.1.4",
+        "@orchesty/nodejs-sdk": "^3.1.6",
         "@types/luxon": "^3.0.1",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",
