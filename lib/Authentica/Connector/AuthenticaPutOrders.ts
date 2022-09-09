@@ -1,8 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
 export const NAME = 'authentica-post-orders';
 
@@ -22,14 +21,10 @@ export default class AuthenticaPutOrders extends AConnector {
             'orders',
             orders,
         );
-        const response = await this.getSender().send<IResponse>(requestDto);
-        if (response.getResponseCode() >= 500) {
-            throw new OnRepeatException();
-        } else if (response.getResponseCode() >= 300) {
-            dto.setStopProcess(ResultCode.STOP_AND_FAILED, response.getBody());
-        } else {
-            dto.setNewJsonData(orders);
-        }
+
+        await this.getSender().send<IResponse>(requestDto, [createFailRange(300, 499)]);
+
+        dto.setNewJsonData(orders);
 
         return dto;
     }
