@@ -2,12 +2,12 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ShopifyApplication from '../ShopifyApplication';
+import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-order-list';
 
 const LIMIT = 100;
-const LIST_PAGE_ENDPOINT = `admin/api/2021-07/orders.json?limit=${LIMIT}`;
+const LIST_PAGE_ENDPOINT = `admin/api/${API_VERSION}/orders.json?limit=${LIMIT}`;
 
 const LAST_RUN_KEY = 'lastRunListOrdersChanges';
 
