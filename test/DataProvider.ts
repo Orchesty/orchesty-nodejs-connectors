@@ -24,6 +24,7 @@ export async function appInstall(
         await repo.remove(test);
     }
     app
+        .setEnabled(true)
         .setName(name)
         .setUser(user)
         .setSettings(settings)

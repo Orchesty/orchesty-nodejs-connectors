@@ -1,6 +1,6 @@
 {
     "name": "@orchesty/nodejs-connectors",
-    "version": "2.0.35",
+    "version": "2.0.41",
     "description": "",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -18,7 +18,7 @@
     "author": "info@hanaboso.com",
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.1.7",
+        "@orchesty/nodejs-sdk": "^3.1.10",
         "@types/luxon": "^3.0.1",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",
@@ -29,10 +29,10 @@
         "reflect-metadata": "^0.1.13"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.165.0",
-        "@aws-sdk/client-rds": "^3.165.0",
-        "@aws-sdk/client-redshift": "^3.165.0",
-        "@aws-sdk/client-s3": "^3.165.0",
+        "@aws-sdk/client-lambda": "^3.169.0",
+        "@aws-sdk/client-rds": "^3.169.0",
+        "@aws-sdk/client-redshift": "^3.169.0",
+        "@aws-sdk/client-s3": "^3.169.0",
         "@types/oracledb": "^5.2.3",
         "@types/pg": "^8.6.5",
         "@types/sqlite3": "^3.1.8",
@@ -51,7 +51,7 @@
         "@hanaboso/eslint-plugin": "^1.0.2",
         "@types/debug": "^4.1.7",
         "@types/jest": "^28.1.8",
-        "@types/node": "^18.7.16",
+        "@types/node": "^18.7.17",
         "@types/oracledb": "^5.2.3",
         "@types/pg": "^8.6.5",
         "@types/sqlite3": "^3.1.8",
