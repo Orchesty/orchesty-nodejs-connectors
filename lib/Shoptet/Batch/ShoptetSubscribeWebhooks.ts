@@ -18,43 +18,49 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
-        const app = this.getApplication<ABaseShoptet>();
-        const whData = app.getWebhookSubscriptions().map((sub) => ({
-            event: sub.getName(),
-            token: this.getRandomToken(),
-            node: sub.getNode(),
-            topology: sub.getTopology(),
-        }));
-        const body = { data: app.getWebhookSubscriptions().map((sub, index) => ({
-            event: whData[index].event,
-            url: TopologyRunner.getWebhookUrl(whData[index].topology, whData[index].node, whData[index].token),
-        })) };
-
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
-        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
-        const res = await this.getSender().send<IResponseJson>(requestDto, [201, createFailRange(422)]);
-
-        const respBody = res.getJsonBody();
         const repo = await this.getDbClient().getRepository(Webhook);
+        const app = this.getApplication<ABaseShoptet>();
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        await Promise.all(respBody.data.webhooks.map((webhook) => {
-            const located = whData.find((value) => value.event === webhook.event);
-            if (located) {
-                const wb = new Webhook()
-                    .setWebhookId(webhook.id.toString())
-                    .setUser(appInstall.getUser())
-                    .setNode(located.node)
-                    .setToken(located.token)
-                    .setApplication(app.getName())
-                    .setTopology(located.topology)
-                    .setName(webhook.event);
+        const dbWh = await repo.findOne({ user: appInstall.getUser(), application: appInstall.getName() });
+        if (!dbWh) {
+            const whData = app.getWebhookSubscriptions().map((sub) => ({
+                event: sub.getName(),
+                token: this.getRandomToken(),
+                node: sub.getNode(),
+                topology: sub.getTopology(),
+            }));
+            const body = {
+                data: app.getWebhookSubscriptions().map((sub, index) => ({
+                    event: whData[index].event,
+                    url: TopologyRunner.getWebhookUrl(whData[index].topology, whData[index].node, whData[index].token),
+                })),
+            };
 
-                return repo.insert(wb);
-            }
+            const url = `${BASE_URL}/${REGISTER_WEBHOOKS_ENDPOINT}`;
+            const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.POST, url, JSON.stringify(body));
+            const res = await this.getSender().send<IResponseJson>(requestDto, [201, createFailRange(422)]);
 
-            return undefined;
-        }));
+            const respBody = res.getJsonBody();
+
+            await Promise.all(respBody.data.webhooks.map((webhook) => {
+                const located = whData.find((value) => value.event === webhook.event);
+                if (located) {
+                    const wb = new Webhook()
+                        .setWebhookId(webhook.id.toString())
+                        .setUser(appInstall.getUser())
+                        .setNode(located.node)
+                        .setToken(located.token)
+                        .setApplication(app.getName())
+                        .setTopology(located.topology)
+                        .setName(webhook.event);
+
+                    return repo.insert(wb);
+                }
+
+                return undefined;
+            }));
+        }
 
         dto.removeLimiter();
 

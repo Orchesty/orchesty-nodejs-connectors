@@ -18,7 +18,7 @@ export default class ShoptetUnsubscribeWebhooks extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const app = this.getApplication();
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
         const repo = await this.getDbClient().getRepository(Webhook);
         const webhook = await repo.findOne({ user: appInstall.getUser(), application: appInstall.getName() });
 

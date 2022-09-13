@@ -12,7 +12,7 @@ export default class GitHubGetRepositoryConnector extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const { user, repo } = dto.getJsonData();
-        const appInstall = await this.getApplicationInstall();
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
 
         const request = await this.getApplication().getRequestDto(
             dto,

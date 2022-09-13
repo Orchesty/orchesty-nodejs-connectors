@@ -14,7 +14,7 @@ export default class ShopifyGetShippingMethods extends AConnector {
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput[]>> {
         const app = this.getApplication<ShopifyApplication>();
 
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
         const requestDto = app.getRequestDto(
             dto,
             appInstall,

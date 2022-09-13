@@ -19,7 +19,7 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
 
         const appRepo = await this.getDbClient().getApplicationRepository();
         appRepo.disableFilter(Deleted.name);
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
         appRepo.enableFilter(Deleted.name);
 
         const repo = await this.getDbClient().getRepository(Webhook);

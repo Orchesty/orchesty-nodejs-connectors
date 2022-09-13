@@ -14,7 +14,7 @@ export default class WooCommerceGetShippingMethods extends ABatchNode {
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const pageNumber = dto.getBatchCursor('1');
         const app = this.getApplication<WooCommerceApplication>();
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
 
         const requestDto = app.getRequestDto(
             dto,
