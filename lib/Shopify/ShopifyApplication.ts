@@ -8,25 +8,22 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import {
-    ABasicApplication,
-    PASSWORD,
-    USER,
-} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Headers } from 'node-fetch';
 
+export const NAME = 'shopify';
+export const API_VERSION = '2022-07';
+
+const API_KEY_HEADER = 'X-Shopify-Access-Token';
 const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
-const SHOP_INFO_URL = 'admin/api/2022-01/shop.json';
-
-export const NAME = 'shopify';
+const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
 
 export default class ShopifyApplication extends ABasicApplication implements ILimitedApplication {
 
@@ -68,11 +65,8 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
         data?: string,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const base64 = encode(
-            `${settings[AUTHORIZATION_FORM][USER]}:${settings[AUTHORIZATION_FORM][PASSWORD]}`,
-        );
         const headers = {
-            [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
+            [API_KEY_HEADER]: settings[AUTHORIZATION_FORM][TOKEN],
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
@@ -99,15 +93,13 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const settings = applicationInstall.getSettings();
         return !!(settings?.[AUTHORIZATION_FORM]
-          && settings?.[AUTHORIZATION_FORM]?.[USER]
-          && settings?.[AUTHORIZATION_FORM]?.[PASSWORD]
+          && settings?.[AUTHORIZATION_FORM]?.[TOKEN]
           && settings?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL]);
     }
 
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-            .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+            .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
             .addField(new Field(FieldType.URL, SHOPIFY_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);

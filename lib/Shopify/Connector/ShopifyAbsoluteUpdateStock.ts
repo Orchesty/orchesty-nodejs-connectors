@@ -1,11 +1,11 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ShopifyApplication from '../ShopifyApplication';
+import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-absolute-update-stock';
 
-const SHOPIFY_UPDATE_STOCK = 'admin/api/2022-07/inventory_levels/set.json';
+const SHOPIFY_UPDATE_STOCK = `admin/api/${API_VERSION}/inventory_levels/set.json`;
 
 export default class ShopifyAbsoluteUpdateStock extends AConnector {
 

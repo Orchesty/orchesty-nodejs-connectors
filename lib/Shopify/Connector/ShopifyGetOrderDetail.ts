@@ -2,11 +2,11 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { IOutput as IInput } from '../Batch/ShopifyGetOrderList';
-import ShopifyApplication from '../ShopifyApplication';
+import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-order-detail';
 
-const DETAIL_ORDER_ENDPOINT = 'admin/api/2022-07/orders/{id}';
+const DETAIL_ORDER_ENDPOINT = `admin/api/${API_VERSION}/orders/{id}`;
 
 export default class ShopifyGetOrderDetail extends AConnector {
 
