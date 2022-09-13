@@ -1,11 +1,11 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ShopifyApplication from '../ShopifyApplication';
+import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-create-fulfillment';
 
-const CREATE_FULFILLMENT = 'admin/api/2022-07/fulfillments.json';
+const CREATE_FULFILLMENT = `admin/api/${API_VERSION}/fulfillments.json`;
 
 export default class ShopifyCreateFulfillment extends AConnector {
 
