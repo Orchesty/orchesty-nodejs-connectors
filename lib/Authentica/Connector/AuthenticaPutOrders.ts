@@ -54,7 +54,7 @@ export interface IOrder {
     paymentMethod: {
         codAmount: number;
         codCurrency: string;
-    };
+    } | null;
     price: {
         totalPrice: number;
         currency: string;
@@ -64,7 +64,7 @@ export interface IOrder {
         quantity: number;
         unitPrice: number;
     }[];
-    variableSymbol: string;
+    variableSymbol: string | null;
 }
 
 interface IResponse {
