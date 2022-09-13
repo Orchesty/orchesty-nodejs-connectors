@@ -100,7 +100,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
-            .addField(new Field(FieldType.URL, SHOPIFY_URL, 'Url', undefined, true));
+            .addField(new Field(FieldType.TEXT, SHOPIFY_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);
     }
