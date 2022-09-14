@@ -22,7 +22,13 @@ export default class ListUsers extends ABatchNode {
 
     protected async getUsers(dto: BatchProcessDto, body: unknown): Promise<BatchProcessDto> {
         const repo = await this.getDbClient().getApplicationRepository();
-        const appInstalls = await repo.findMany({ key: this.getApplication().getName(), user: { $ne: '' } });
+        const appInstalls = await repo.findMany(
+            {
+                key: this.getApplication().getName(),
+                user: { $ne: '' },
+                enabled: true,
+            },
+        );
         if (!appInstalls || appInstalls.length < 1) {
             dto.setStopProcess(
                 ResultCode.DO_NOT_CONTINUE,
