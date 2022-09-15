@@ -20,7 +20,12 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const page = Number(dto.getBatchCursor('1'));
 
-        let url = `${this.endpoint}?itemsPerPage=100`;
+        let querySeparator = '?';
+        if (this.endpoint.includes('?')) {
+            querySeparator = '&';
+        }
+
+        let url = `${this.endpoint}${querySeparator}itemsPerPage=100`;
 
         let creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
             appInstall.getNonEncryptedSettings()[this.lastRunKey],
