@@ -1,6 +1,7 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
 export const NAME = 'authentica-get-stock';
 
@@ -23,6 +24,11 @@ export default class AuthenticaGetStock extends ABatchNode {
         const response = resp.getJsonBody();
 
         this.setItemsListToDto(dto, response.data ?? []);
+        if (!response?.meta?.totalPages) {
+            dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Response not equal meta.totalPages');
+            return dto;
+        }
+
         if (Number(page) !== response.meta.totalPages) {
             dto.setBatchCursor((Number(page) + 1).toString());
         }

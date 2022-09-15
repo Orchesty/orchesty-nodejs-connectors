@@ -17,9 +17,6 @@ describe('Tests for AuthenticaGetStock', () => {
 
     beforeEach(async () => {
         await redis.remove('authentica_cache_key');
-    });
-
-    it('process - ok', async () => {
         await redis.set(
             'authentica_cache_key',
             JSON.stringify({
@@ -32,6 +29,13 @@ describe('Tests for AuthenticaGetStock', () => {
             }),
             4,
         );
+    });
+
+    it('process - ok', async () => {
         await tester.testBatch(AUTHENTICA_GET_STOCK);
+    });
+
+    it('process - nok', async () => {
+        await tester.testBatch(AUTHENTICA_GET_STOCK, 'nok');
     });
 });
