@@ -9,9 +9,10 @@ export default class ListUsers extends ABatchNode {
     }
 
     public async processAction(_dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+        const userHeader = _dto.getUser();
         const { user, ...rest } = _dto.getJsonData();
         let dto;
-        if (!user) {
+        if (!userHeader) {
             dto = await this.getUsers(_dto, rest);
         } else {
             dto = await this.getUser(_dto, user, rest);

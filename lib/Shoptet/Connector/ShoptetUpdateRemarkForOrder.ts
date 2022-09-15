@@ -25,7 +25,7 @@ export default class ShoptetUpdateRemarkForOrder extends AConnector {
             appInstall,
             HttpMethods.PATCH,
             url,
-            JSON.stringify({ data: notes }),
+            JSON.stringify(notes),
         );
         await this.getSender().send(
             requestDto,
