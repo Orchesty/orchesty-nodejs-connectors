@@ -4,7 +4,7 @@ import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-order-detail';
 
-const GET_ORDER_DETAIL_ENDPOINT = 'api/orders/{code}?include=shippingDetails';
+export const GET_ORDER_DETAIL_ENDPOINT = 'api/orders/{code}?include=shippingDetails';
 
 export default class ShoptetGetOrderDetail extends AShoptetConnector {
 
