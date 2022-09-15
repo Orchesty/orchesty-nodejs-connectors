@@ -24,12 +24,12 @@ export default class AuthenticaGetStock extends ABatchNode {
         const response = resp.getJsonBody();
 
         this.setItemsListToDto(dto, response.data ?? []);
-        if (!response?.meta?.totalPages) {
+        if (response?.meta?.totalPages === undefined || response.meta.totalPages === null) {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Response not equal meta.totalPages');
             return dto;
         }
 
-        if (Number(page) !== response.meta.totalPages) {
+        if (Number(page) < response.meta.totalPages) {
             dto.setBatchCursor((Number(page) + 1).toString());
         }
 
