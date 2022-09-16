@@ -32,7 +32,7 @@ export default class WooCommerceGetProducts extends ABatchNode {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else {
             appInstall.setNonEncryptedSettings({ productLastRun: DateTime.now() });
-            const repo = await this.getDbClient().getRepository(ApplicationInstall);
+            const repo = await this.getDbClient().getApplicationRepository();
             await repo.update(appInstall);
         }
         dto.setItemList(res.getJsonBody());

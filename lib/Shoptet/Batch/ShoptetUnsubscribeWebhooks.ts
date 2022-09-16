@@ -34,7 +34,7 @@ export default class ShoptetUnsubscribeWebhooks extends ABatchNode {
             await repo.remove(webhook);
             dto.setBatchCursor('1', true);
         } else {
-            const appRepo = await this.getDbClient().getRepository(ApplicationInstall);
+            const appRepo = await this.getDbClient().getApplicationRepository();
             await appRepo.remove(appInstall);
         }
 

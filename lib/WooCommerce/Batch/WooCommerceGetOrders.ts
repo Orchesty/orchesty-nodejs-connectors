@@ -34,7 +34,7 @@ export default class WooCommerceGetOrders extends ABatchNode {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else {
             appInstall.setNonEncryptedSettings({ orderLastRun: DateTime.now() });
-            const repo = await this.getDbClient().getRepository(ApplicationInstall);
+            const repo = await this.getDbClient().getApplicationRepository();
             await repo.update(appInstall);
         }
         this.setItemsListToDto(dto, res.getJsonBody());
