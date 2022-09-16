@@ -1,6 +1,8 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { DateTime } from 'luxon';
 import WooCommerceApplication, { NAME as BASE_NAME } from '../WooCommerceApplication';
 
 export const NAME = `${BASE_NAME.toLowerCase()}-get-orders`;
@@ -17,12 +19,13 @@ export default class WooCommerceGetOrders extends ABatchNode {
         const pageNumber = dto.getBatchCursor('1');
         const app = this.getApplication<WooCommerceApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const after = appInstall.getNonEncryptedSettings().orderLastRun;
 
         const requestDto = app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,
-            `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}`,
+            `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}${after ? `&after=${after}` : ''}`,
         );
 
         const res = await this.getSender().send<IResponseJson[]>(requestDto, [200, 404]);
@@ -30,7 +33,9 @@ export default class WooCommerceGetOrders extends ABatchNode {
         if (Number(totalPages) > Number(pageNumber)) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else {
-            dto.removeBatchCursor();
+            appInstall.setNonEncryptedSettings({ orderLastRun: DateTime.now() });
+            const repo = await this.getDbClient().getRepository(ApplicationInstall);
+            await repo.update(appInstall);
         }
         this.setItemsListToDto(dto, res.getJsonBody());
 
