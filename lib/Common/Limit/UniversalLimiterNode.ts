@@ -17,7 +17,7 @@ export default class UniversalLimiterNode extends ACommonNode {
         if (noLimit) {
             return dto;
         }
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
 
         return (this.getApplication() as unknown as ILimitedApplication).injectLimit(dto, appInstall) as ProcessDto;
     }
