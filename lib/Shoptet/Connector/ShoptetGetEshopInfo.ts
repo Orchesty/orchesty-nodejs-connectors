@@ -21,7 +21,7 @@ export default class ShoptetGetEshopInfo extends AShoptetConnector {
             .getApplication<APluginShoptetApplication>()
             .getRequestDto(dto, appInstall, HttpMethods.GET, url);
         const resp = await this.getSender().send<IResponse>(
-            requestDto,
+            requestDto.setTimeout(5000),
             [200, createFailRange(422)],
         );
 

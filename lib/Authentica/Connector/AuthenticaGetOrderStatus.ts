@@ -18,7 +18,10 @@ export default class AuthenticaGetOrderStatus extends AConnector {
             'order-statuses',
         );
 
-        const response = (await this.getSender().send<IResponse>(requestDto, [200])).getJsonBody();
+        const response = (await this.getSender().send<IResponse>(
+            requestDto.setTimeout(5000),
+            [200],
+        )).getJsonBody();
 
         return dto.setNewJsonData(response.data);
     }
