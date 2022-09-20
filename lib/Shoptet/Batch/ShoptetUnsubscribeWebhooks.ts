@@ -1,4 +1,3 @@
-import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
@@ -33,9 +32,6 @@ export default class ShoptetUnsubscribeWebhooks extends ABatchNode {
             }
             await repo.remove(webhook);
             dto.setBatchCursor('1', true);
-        } else {
-            const appRepo = await this.getDbClient().getApplicationRepository();
-            await appRepo.remove(appInstall);
         }
 
         return dto;
