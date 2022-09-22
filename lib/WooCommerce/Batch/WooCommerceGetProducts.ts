@@ -16,7 +16,7 @@ export default class WooCommerceGetProducts extends ABatchNode {
         const pageNumber = dto.getBatchCursor('1');
         const app = this.getApplication<WooCommerceApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const after = appInstall.getNonEncryptedSettings().productLastRun;
+        const after = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().productLastRun);
 
         const requestDto = app.getRequestDto(
             dto,

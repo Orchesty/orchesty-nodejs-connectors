@@ -2,6 +2,7 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import init from '../../../../test/Implementation/woocommerce';
 import { container } from '../../../../test/TestAbstract';
+import { NAME as WOOCOMMERCE_APP } from '../../WooCommerceApplication';
 import { NAME as WOO_COMMERCE_GET_PRODUCTS } from '../WooCommerceGetProducts';
 
 let tester: NodeTester;
@@ -18,10 +19,10 @@ describe('Tests for WooCommerceGetProducts', () => {
 
     it('process - with after', async () => {
         const repository = container.getRepository(ApplicationInstall);
-        const app = await repository.findOne({ key: 'woocommerce' });
-        app?.addNonEncryptedSettings({ productLastRun: '2017-03-23T17:03:12' });
+        const app = await repository.findOne({ key: WOOCOMMERCE_APP });
+        app?.addNonEncryptedSettings({ productLastRun: '2022-09-22T08:21:27.000Z' });
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         await repository.update(app!);
-        await tester.testBatch(WOO_COMMERCE_GET_PRODUCTS, 'with after');
+        await tester.testBatch(WOO_COMMERCE_GET_PRODUCTS, 'withAfter');
     });
 });
