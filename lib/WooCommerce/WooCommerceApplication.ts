@@ -60,6 +60,10 @@ export default class WooCommerceApplication extends ABasicApplication {
         return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
     }
 
+    public getIsoDateFromDate(date?: string): string {
+        return date ? new Date(date).toISOString() : '';
+    }
+
     public getDecoratedUrl(app: ApplicationInstall): string {
         return app
             .getSettings()?.[AUTHORIZATION_FORM]?.[WOOCOMMERCE_URL] ?? '';

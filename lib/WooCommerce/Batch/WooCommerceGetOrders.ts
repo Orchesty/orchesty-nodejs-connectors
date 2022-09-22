@@ -18,7 +18,7 @@ export default class WooCommerceGetOrders extends ABatchNode {
         const pageNumber = dto.getBatchCursor('1');
         const app = this.getApplication<WooCommerceApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const after = appInstall.getNonEncryptedSettings().orderLastRun;
+        const after = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().orderLastRun);
 
         const requestDto = app.getRequestDto(
             dto,
