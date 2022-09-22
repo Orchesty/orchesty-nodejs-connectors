@@ -38,14 +38,28 @@ export default class ListUsers extends ABatchNode {
             return dto;
         }
 
+        const a = dto.getHeader('applications', '')?.split(';');
+        const appInstalls1 = await repo.findMany(
+            {
+                key: { $in: a },
+                enabled: true,
+            },
+        );
+
         appInstalls.forEach((appInstall) => {
             if (appInstall.getUser()) {
-                dto.addItem(body ?? {}, appInstall.getUser());
+                const b = appInstalls1.filter((item) => item.getUser() === appInstall.getUser()).map((item1) => {
+                    item1.getSettings()[LIMITER_FORM];
+                    return '';
+                    createLimiterKey();
+                });
+                dto.addItem(body ?? {}, appInstall.getUser(), b.join(';'));
             }
         });
         return dto;
     }
 
+    // TADY TAKY!!!
     protected async getUser(dto: BatchProcessDto, user: string, body: unknown): Promise<BatchProcessDto> {
         const repo = await this.getDbClient().getApplicationRepository();
         const appInstall = await repo.findByNameAndUser(this.getApplication().getName(), user);
