@@ -1,5 +1,5 @@
 {
-    "http": "GET http://woocomerce.com/wp-json/wc/v3/products?per_page=100&page=1&after=2017-03-23T17:03:12",
+    "http": "GET http://woocomerce.com/wp-json/wc/v3/products?per_page=100&page=1&after=2022-09-22T08:21:27.000Z",
     "code": 200,
     "body": [
         {
