@@ -55,4 +55,7 @@ localtest:
 	pnpm run lint
 	pnpm run test
 
+generate-app-metadata:
+	pnpm run generate-app-metadata
+
 test: docker-up-force install fasttest docker-down-clean
