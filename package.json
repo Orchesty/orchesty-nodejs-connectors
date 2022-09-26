@@ -12,6 +12,7 @@
         "lint": "eslint lib test --ext .ts --fix",
         "lint-ci": "eslint lib --ext .ts",
         "start": "nodemon test/index.ts",
+        "generate-app-metadata": "ts-node GenerateApplicationMetaToJson.ts",
         "build": "rm -rf dist && tsc -d -p tsconfig.prod.json && cp package.json ./dist/package.json"
     },
     "keywords": [],
