@@ -12,7 +12,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 
 export const NAME = 'digitoo';
 
@@ -33,27 +32,34 @@ export default class DigitooApplication extends ABasicApplication {
     }
 
     public getRequestDto(
-        _dto: AProcessDto,
+        dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         const token = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
         if (!token) {
             throw new Error(`Application [${this.getPublicName()}] doesn't have token!`);
         }
         const baseUrl = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[DIGITOO_URL] ?? '';
-        return new RequestDto(
+        const request = new RequestDto(
             `${baseUrl}${url}`,
             method,
-            _dto,
-            data,
+            dto,
+        );
+        request.setHeaders(
             {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
             },
         );
+
+        if (data) {
+            request.setJsonBody(data);
+        }
+
+        return request;
     }
 
     public getFormStack(): FormStack {
