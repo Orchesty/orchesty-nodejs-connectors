@@ -17,7 +17,6 @@ interface IDescription {
   text: string;
 }
 
-// TODO rich prepsat na getMetadata
 function getFileMetadata(source: string, folderName: string): IFileMetadata[] {
     const filesMetadata: IFileMetadata[] = [];
 
