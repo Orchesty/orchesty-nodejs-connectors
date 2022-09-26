@@ -1,0 +1,5 @@
+{
+    "http": "POST https://api.digitoo.cz/api/documents/1/mark-as-exported",
+    "code": 200,
+    "body": {}
+}

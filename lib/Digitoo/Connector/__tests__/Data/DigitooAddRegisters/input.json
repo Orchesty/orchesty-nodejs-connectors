@@ -1,0 +1,18 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "registers": [
+            {
+                "type": "string",
+                "options": [
+                    {
+                        "label": "string",
+                        "value": "string"
+                    }
+                ]
+            }
+        ]
+    }
+}
