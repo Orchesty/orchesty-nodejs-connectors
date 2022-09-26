@@ -72,7 +72,7 @@ export default class ListUsers extends ABatchNode {
             return dto;
         }
 
-        const headerApplications = dto.getHeader('applications', '')?.split(';');
+        const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
         const allAppInstalls = await repo.findMany(
             {
                 key: { $in: headerApplications },
