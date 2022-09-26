@@ -3,7 +3,7 @@ import { CoreFormsEnum } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/Co
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import { getLimiterKey } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { APPLICATIONS, getLimiterKey } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
 export default class ListUsers extends ABatchNode {
@@ -42,7 +42,7 @@ export default class ListUsers extends ABatchNode {
             return dto;
         }
 
-        const headerApplications = dto.getHeader('applications', '')?.split(';');
+        const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
         const allAppInstalls = await repo.findMany(
             {
                 key: { $in: headerApplications },
