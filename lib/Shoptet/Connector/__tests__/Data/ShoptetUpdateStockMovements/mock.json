@@ -1,0 +1,8 @@
+{
+  "http": "PATCH https://api.myshoptet.com/api/stocks/1/movements",
+  "code": 200,
+  "body": {
+    "data": null,
+    "errors": null
+  }
+}
