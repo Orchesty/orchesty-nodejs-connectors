@@ -1,0 +1,25 @@
+{
+  "http": "GET https://api.myshoptet.com/api/stocks",
+  "code": 200,
+  "body": {
+    "data": {
+      "stocks": [
+        {
+          "id": 1,
+          "title": "Default stock",
+          "isDeliveryPoint": false,
+          "deliveryPointTitle": "Main shop",
+          "deliveryPointAddress": "Straight 13, Melnik"
+        }
+      ],
+      "defaultStockId": 1
+    },
+    "errors": [
+      {
+        "errorCode": "",
+        "message": "",
+        "instance": ""
+      }
+    ]
+  }
+}
