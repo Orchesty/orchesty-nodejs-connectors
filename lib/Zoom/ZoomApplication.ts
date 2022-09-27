@@ -34,7 +34,7 @@ export default class ZoomApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'Zoom brings teams together to get more done in a frictionless environment. Zoom\'s reliable, video-first unified communications platform provides video meetings, voice, webinars, and chat across desktops, phones, mobile devices, and conference systems';
+        return 'Video-first unified communications platform provides video meetings, voice and webinars';
     }
 
     public getLogo(): string {

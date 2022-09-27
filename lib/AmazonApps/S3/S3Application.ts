@@ -21,7 +21,7 @@ export const BUCKET = 'Bucket';
 export default class S3Application extends AAwsApplication {
 
     public getDescription(): string {
-        return 'Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance.';
+        return 'Object storage service that offers industry-leading scalability, data availability, security, and performance';
     }
 
     public getName(): string {

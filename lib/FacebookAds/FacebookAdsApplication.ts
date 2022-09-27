@@ -25,7 +25,7 @@ export default class FacebookAdsApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'Facebook lead ads make signing up for business information easy for people and more valuable for businesses. The Facebook lead ad app is useful for marketers who want to automate actions on their leads.';
+        return 'Signing up for business information easy for people and more valuable for businesses';
     }
 
     public getAuthUrl(): string {

@@ -11,7 +11,7 @@ export default class SqliteApplication extends ASqlApplication {
     }
 
     public getDescription(): string {
-        return 'SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.';
+        return 'Leading enterprise customer relationship manager (CRM) application';
     }
 
     public getLogo(): string {

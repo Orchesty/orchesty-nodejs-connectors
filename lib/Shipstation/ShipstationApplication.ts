@@ -26,7 +26,7 @@ export const ORDER_NOTIFY = 'ORDER_NOTIFY';
 export default class ShipstationApplication extends ABasicApplication implements IWebhookApplication {
 
     public getDescription(): string {
-        return 'ShipStation helps eCommerce retailers organize, process, and fulfill their orders from all the most popular marketplaces and shopping carts using the top shipping carriers.';
+        return 'Subscription-based software that allows anyone to set up an online store and sell their products';
     }
 
     public getName(): string {

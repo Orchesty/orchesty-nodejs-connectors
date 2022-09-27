@@ -42,7 +42,7 @@ export default class TableauApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Tableau helps global organizations unleash the power of their most valuable assets: their data and their people.';
+        return 'Global organizations unleash the power of their most valuable assets: their data and their people';
     }
 
     public getLogo(): string {

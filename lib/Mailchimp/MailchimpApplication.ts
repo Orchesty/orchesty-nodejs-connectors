@@ -32,7 +32,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     }
 
     public getDescription(): string {
-        return 'MailChimp is an email marketing automation service that lets you send out professional-looking newsletters to promote your brand.';
+        return 'Mail marketing automation service that lets you send out professional-looking newsletters';
     }
 
     public getName(): string {
