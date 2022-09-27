@@ -15,7 +15,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'digitoo';
 
-export const DIGITOO_URL = 'digitooUrl';
+const BASE_URL = 'https://api.digitoo.cz/';
 
 export default class DigitooApplication extends ABasicApplication {
 
@@ -42,9 +42,8 @@ export default class DigitooApplication extends ABasicApplication {
         if (!token) {
             throw new Error(`Application [${this.getPublicName()}] doesn't have token!`);
         }
-        const baseUrl = applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[DIGITOO_URL] ?? '';
         const request = new RequestDto(
-            `${baseUrl}${url}`,
+            `${BASE_URL}${url}`,
             method,
             dto,
         );
@@ -64,8 +63,7 @@ export default class DigitooApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
-            .addField(new Field(FieldType.URL, DIGITOO_URL, 'Url', undefined, true));
+            .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true));
 
         return new FormStack().addForm(form);
     }

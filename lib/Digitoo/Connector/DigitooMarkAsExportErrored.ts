@@ -21,9 +21,9 @@ export default class DigitooMarkAsExportErrored extends AConnector {
             `api/documents/${documentId}/mark-as-export-errored`,
             body,
         );
-        await this.getSender().send(req, [200]);
+        const res = await this.getSender().send(req, [200]);
 
-        dto.setNewJsonData({});
+        dto.setNewJsonData(res.getJsonBody());
         return dto;
     }
 

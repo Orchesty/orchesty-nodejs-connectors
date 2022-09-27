@@ -2,8 +2,5 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {
-        "status": "done",
-        "multivalue": true
-    }
+    "data": {}
 }

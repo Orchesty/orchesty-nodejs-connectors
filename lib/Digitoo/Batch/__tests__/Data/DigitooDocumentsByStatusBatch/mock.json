@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.digitoo.cz/api/documents?page[pageSize]=100&multivalue=true&filter[status]=done&page[pageNumber]=0",
+    "http": "GET https://api.digitoo.cz/api/documents?page[pageSize]=100&multivalue=true&filter[status]=ready-to-export&page[pageNumber]=0",
     "code": 200,
     "body": {
         "data": [

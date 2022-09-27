@@ -6,16 +6,14 @@ export const NAME = 'digitoo-documents-by-status-batch';
 
 export default class DigitooDocumentsByStatusBatch extends ABatchNode {
 
+    protected status = 'ready-to-export';
+
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const page = dto.getBatchCursor('0');
-        const {
-            multivalue,
-            status,
-        } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const req = await this.getApplication()
@@ -23,7 +21,7 @@ export default class DigitooDocumentsByStatusBatch extends ABatchNode {
                 dto,
                 appInstall,
                 HttpMethods.GET,
-                `api/documents?page[pageSize]=100&multivalue=${multivalue}&filter[status]=${status}&page[pageNumber]=${page}`,
+                `api/documents?page[pageSize]=100&multivalue=true&filter[status]=${this.status}&page[pageNumber]=${page}`,
             );
         const resp = await this.getSender()
             .send<IOutput>(req, [200]);
@@ -37,11 +35,6 @@ export default class DigitooDocumentsByStatusBatch extends ABatchNode {
         return dto;
     }
 
-}
-
-export interface IInput {
-    multivalue: boolean;
-    status: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */

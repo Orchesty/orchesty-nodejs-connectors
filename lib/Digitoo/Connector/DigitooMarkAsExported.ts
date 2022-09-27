@@ -21,10 +21,9 @@ export default class DigitooMarkAsExported extends AConnector {
             `api/documents/${documentId}/mark-as-exported`,
             body,
         );
-        await this.getSender().send(req, [200]);
+        const res = await this.getSender().send(req, [200]);
 
-        // TODO rich odmazavat?
-        dto.setNewJsonData({});
+        dto.setNewJsonData(res.getJsonBody());
         return dto;
     }
 

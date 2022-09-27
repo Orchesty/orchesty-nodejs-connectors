@@ -5,7 +5,7 @@ import DigitooDocumentsByStatusBatch from '../../lib/Digitoo/Batch/DigitooDocume
 import DigitooAddRegisters from '../../lib/Digitoo/Connector/DigitooAddRegisters';
 import DigitooMarkAsExported from '../../lib/Digitoo/Connector/DigitooMarkAsExported';
 import DigitooMarkAsExportErrored from '../../lib/Digitoo/Connector/DigitooMarkAsExportErrored';
-import DigitooApplication, { DIGITOO_URL, NAME as DIGITOO_APP } from '../../lib/Digitoo/DigitooApplication';
+import DigitooApplication, { NAME as DIGITOO_APP } from '../../lib/Digitoo/DigitooApplication';
 import {
     appInstall,
     DEFAULT_ACCESS_TOKEN,
@@ -19,7 +19,6 @@ export default async function init(): Promise<void> {
             [TOKEN]: {
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
-            [DIGITOO_URL]: 'https://api.digitoo.cz/',
         },
     });
 

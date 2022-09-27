@@ -11,19 +11,17 @@ export default class DigitooAddRegisters extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const body = dto.getJsonData();
-
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,
             HttpMethods.PUT,
             'api/registers',
-            body,
+            dto.getJsonData(),
         );
-        await this.getSender().send(req, [200]);
+        const res = await this.getSender().send(req, [200]);
 
-        dto.setNewJsonData({});
+        dto.setNewJsonData(res.getJsonBody());
         return dto;
     }
 
