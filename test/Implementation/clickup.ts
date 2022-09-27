@@ -2,9 +2,9 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ClickupApplication, { NAME as CLICKUP_APP } from '../../lib/Clickup/ClickupApplication';
-import ClickupCreateSpaceConnector from '../../lib/Clickup/Connectors/ClickupCreateSpaceConnector';
-import ClickupCreateTaskConnector from '../../lib/Clickup/Connectors/ClickupCreateTaskConnector';
-import ClickupGetUserConnector from '../../lib/Clickup/Connectors/ClickupGetUserConnector';
+import ClickupCreateSpaceConnector from '../../lib/Clickup/Connector/ClickupCreateSpaceConnector';
+import ClickupCreateTaskConnector from '../../lib/Clickup/Connector/ClickupCreateTaskConnector';
+import ClickupGetUserConnector from '../../lib/Clickup/Connector/ClickupGetUserConnector';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 

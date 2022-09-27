@@ -13,6 +13,7 @@ import ShoptetGetEshopInfo from '../../lib/Shoptet/Connector/ShoptetGetEshopInfo
 import ShoptetGetProductDetail from '../../lib/Shoptet/Connector/ShoptetGetProductDetail';
 import ShoptetGetShippingMethods from '../../lib/Shoptet/Connector/ShoptetGetShippingMethods';
 import ShoptetJobFinishedWebhook from '../../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
+import ShoptetUpdateStockMovements from '../../lib/Shoptet/Connector/ShoptetUpdateStockMovements';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import {
     cacheService, container, db, sender,
@@ -115,4 +116,10 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(implPluginShoptetApplication);
     container.setBatch(shoptetGetProductChangesList);
+
+    const shoptetUpdateStockMovements = new ShoptetUpdateStockMovements()
+        .setApplication(implPluginShoptetApplication)
+        .setDb(db)
+        .setSender(sender);
+    container.setConnector(shoptetUpdateStockMovements);
 }
