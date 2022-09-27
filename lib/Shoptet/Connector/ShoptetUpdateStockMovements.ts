@@ -11,7 +11,7 @@ export default class ShoptetUpdateStockMovements extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { stockId, ...data } = dto.getJsonData();
+        const { stockId, data } = dto.getJsonData();
         const req = await this.getApplication()
             .getRequestDto(
                 dto,
@@ -30,8 +30,10 @@ export default class ShoptetUpdateStockMovements extends AConnector {
 
 export interface IInput {
     stockId: string;
-    productCode: string;
-    quantity: number;
+    data: {
+        productCode: string;
+        quantity: number;
+    }[];
 }
 
 export interface IOutput {
