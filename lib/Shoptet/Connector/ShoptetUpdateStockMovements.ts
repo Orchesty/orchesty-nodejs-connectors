@@ -18,7 +18,7 @@ export default class ShoptetUpdateStockMovements extends AConnector {
                 await this.getApplicationInstallFromProcess(dto),
                 HttpMethods.PATCH,
                 `api/stocks/${stockId}/movements`,
-                data,
+                JSON.stringify({ data }),
             );
         const resp = await this.getSender()
             .send<IOutput>(req, [200]);
