@@ -10,6 +10,7 @@ import ShoptetParseJsonLines from '../../lib/Shoptet/Batch/ShoptetParseJsonLines
 import ShoptetGetAllOrders from '../../lib/Shoptet/Connector/ShoptetGetAllOrders';
 import ShoptetGetAllProducts from '../../lib/Shoptet/Connector/ShoptetGetAllProducts';
 import ShoptetGetEshopInfo from '../../lib/Shoptet/Connector/ShoptetGetEshopInfo';
+import ShoptetGetListOfStocks from '../../lib/Shoptet/Connector/ShoptetGetListOfStocks';
 import ShoptetGetProductDetail from '../../lib/Shoptet/Connector/ShoptetGetProductDetail';
 import ShoptetGetShippingMethods from '../../lib/Shoptet/Connector/ShoptetGetShippingMethods';
 import ShoptetJobFinishedWebhook from '../../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
@@ -116,6 +117,12 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(implPluginShoptetApplication);
     container.setBatch(shoptetGetProductChangesList);
+
+    const shoptetGetListOfStocks = new ShoptetGetListOfStocks()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetListOfStocks);
 
     const shoptetUpdateStockMovements = new ShoptetUpdateStockMovements()
         .setApplication(implPluginShoptetApplication)

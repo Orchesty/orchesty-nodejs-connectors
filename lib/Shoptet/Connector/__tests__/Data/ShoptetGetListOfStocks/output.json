@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "defaultStockId": 1,
+        "stocks": [
+            {
+                "deliveryPointAddress": "Straight 13, Melnik",
+                "deliveryPointTitle": "Main shop",
+                "id": 1,
+                "isDeliveryPoint": false,
+                "title": "Default stock"
+            }
+        ]
+    }
+}
