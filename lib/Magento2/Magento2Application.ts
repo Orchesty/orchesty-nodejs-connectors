@@ -116,4 +116,9 @@ export default class Magento2Application extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[USER] && authorizationForm?.[PASSWORD] && authorizationForm?.[MAGENTO_URL];
+    }
+
 }

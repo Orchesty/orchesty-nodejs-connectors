@@ -82,6 +82,11 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[AUDIENCE_ID];
+    }
+
     public getAuthUrl(): string {
         return MAILCHIMP_URL;
     }

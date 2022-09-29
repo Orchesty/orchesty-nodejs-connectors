@@ -4,9 +4,9 @@ import CeskaPostaApplication, {
     NAME as CESKAPOSTA_APP,
     SECRET_KEY,
 } from '../../lib/CeskaPosta/CeskaPostaApplication';
-import CeskaPostaGetSendParcelsConnector from '../../lib/CeskaPosta/Connectors/CeskaPostaGetSendParcelsConnector';
-import CeskaPostaParcelPrintingConnector from '../../lib/CeskaPosta/Connectors/CeskaPostaParcelPrintingConnector';
-import CeskaPostaParcelStatusConnector from '../../lib/CeskaPosta/Connectors/CeskaPostaParcelStatusConnector';
+import CeskaPostaGetSendParcelsConnector from '../../lib/CeskaPosta/Connector/CeskaPostaGetSendParcelsConnector';
+import CeskaPostaParcelPrintingConnector from '../../lib/CeskaPosta/Connector/CeskaPostaParcelPrintingConnector';
+import CeskaPostaParcelStatusConnector from '../../lib/CeskaPosta/Connector/CeskaPostaParcelStatusConnector';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 

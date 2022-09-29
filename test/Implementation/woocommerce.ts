@@ -4,7 +4,7 @@ import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrde
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Batch/WooCommerceGetShippingMethods';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
-import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connectors/WooCommerceUpdateOrder';
+import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
 import {
     appInstall,

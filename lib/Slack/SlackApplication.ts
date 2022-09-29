@@ -83,4 +83,9 @@ export default class SlackApplication extends AOAuth2Application {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
+    }
+
 }

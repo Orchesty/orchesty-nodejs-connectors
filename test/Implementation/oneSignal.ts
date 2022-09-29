@@ -1,6 +1,6 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import OnesignalViewAppsBatch from '../../lib/Onesignal/Batch/OnesignalViewAppsBatch';
-import OnesignalCreateAppConnector from '../../lib/Onesignal/Connectors/OnesignalCreateAppConnector';
+import OnesignalCreateAppConnector from '../../lib/Onesignal/Connector/OnesignalCreateAppConnector';
 import OnesignalApplication, { NAME as ONESIGNAL_APP, REST_API_KEY } from '../../lib/Onesignal/OnesignalApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';

@@ -4,7 +4,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import MarketoGetEmailsBatch from '../../lib/Marketo/Batch/MarketoGetEmailsBatch';
 import MarketoGetFilesBatch from '../../lib/Marketo/Batch/MarketoGetFilesBatch';
-import MarketoCreateEmailConnector from '../../lib/Marketo/Connectors/MarketoCreateEmailConnector';
+import MarketoCreateEmailConnector from '../../lib/Marketo/Connector/MarketoCreateEmailConnector';
 import MarketoApplication, { MARKETO_URL, NAME as MARKETO_APP } from '../../lib/Marketo/MarketoApplication';
 import {
     appInstall,

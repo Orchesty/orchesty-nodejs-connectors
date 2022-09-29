@@ -71,6 +71,11 @@ export default class ZendeskApplication extends AOAuth2Application {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[SUBDOMAIN] && authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
+    }
+
     public getAuthUrlWithSubdomain(applicationInstall: ApplicationInstall): string {
         return `https://${applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/authorizations/new`;
     }

@@ -1,7 +1,7 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import KatanaListProductsBatch from '../../lib/Katana/Batch/KatanaListProductsBatch';
-import KatanaCreateCustomerConnector from '../../lib/Katana/Connectors/KatanaCreateCustomerConnector';
-import KatanaCreateProductConnector from '../../lib/Katana/Connectors/KatanaCreateProductConnector';
+import KatanaCreateCustomerConnector from '../../lib/Katana/Connector/KatanaCreateCustomerConnector';
+import KatanaCreateProductConnector from '../../lib/Katana/Connector/KatanaCreateProductConnector';
 import KatanaApplication, { API_KEY, NAME as KATANA_APP } from '../../lib/Katana/KatanaApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';

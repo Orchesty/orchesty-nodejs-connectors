@@ -63,6 +63,11 @@ export default class DiscordApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[TOKEN] && authorizationForm?.[CLIENT_ID];
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected customFormReplace(forms: FormStack, applicationInstall: ApplicationInstall): void {
         forms.getForms().forEach((form) => {
