@@ -24,7 +24,7 @@ export const NAME = 'pipedrive';
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
 
     public getDescription(): string {
-        return 'Sales pipeline and CRM software for deal makers. Get super-organized. Close deals in less time.';
+        return 'Sales pipeline and CRM software for deal makers, close deals in less time';
     }
 
     public getName(): string {

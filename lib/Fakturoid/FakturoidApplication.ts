@@ -31,7 +31,7 @@ export default class FakturoidApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Fakturoid is an online invoicing service for freelancers and small businesses. It simplifies the invoicing process and gives users the option to choose from several invoice designs. ';
+        return 'Online invoicing service for freelancers and small businesses';
     }
 
     public getLogo(): string {

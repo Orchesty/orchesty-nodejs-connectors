@@ -48,7 +48,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
     }
 
     public getDescription(): string {
-        return 'HubSpot offers a full stack of software for marketing, sales, and customer service, with a completely free CRM at its core. They’re powerful alone — but even better when used together.';
+        return 'Marketing, sales, and customer service, with a completely free CRM at its core';
     }
 
     public getRequestDto(

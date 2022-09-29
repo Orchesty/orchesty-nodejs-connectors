@@ -32,7 +32,7 @@ export default class DropboxApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'Dropbox lets you store your files online, sync them to all your devices, and share them easily. Get started for free, then upgrade for more space and security features.';
+        return 'Store your files online, sync them to all your devices, and share them easily';
     }
 
     public getLogo(): string {

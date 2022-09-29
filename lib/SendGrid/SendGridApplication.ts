@@ -16,7 +16,7 @@ export const BASE_URL = 'https://api.sendgrid.com/v3';
 export default class SendGridApplication extends ABasicApplication {
 
     public getDescription(): string {
-        return 'Cloud-based email infrastructure relieves businesses of the cost and complexity of maintaining custom email systems';
+        return 'Helps eCommerce retailers organize, process, and fulfill their orders from all the most popular marketplaces';
     }
 
     public getName(): string {

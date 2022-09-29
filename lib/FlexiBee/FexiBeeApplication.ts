@@ -59,7 +59,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'FlexiBee is a modern economic system designed for small companies. It covers tax records, homebanking, pricing, accounts receivable/payable and has many other other options.';
+        return 'Modern economic system designed for small companies';
     }
 
     public getPublicName(): string {
