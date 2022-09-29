@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "documentId": "1",
+        "message": "Random error"
+    }
+}
