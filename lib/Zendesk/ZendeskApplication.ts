@@ -18,7 +18,7 @@ export const NAME = 'zendesk';
 export default class ZendeskApplication extends AOAuth2Application {
 
     public getDescription(): string {
-        return 'Zendesk is a customer support software. It helps companies and organisations manage customer queries and problems through a ticketing system.';
+        return 'Customer support software that helps companies manage customer problems through a ticketing system';
     }
 
     public getName(): string {

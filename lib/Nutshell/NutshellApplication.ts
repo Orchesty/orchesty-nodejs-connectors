@@ -21,7 +21,7 @@ export const NAME = 'nutshell';
 export default class NutshellApplication extends ABasicApplication {
 
     public getDescription(): string {
-        return 'Affordable, easy-to-use CRM that helps small-business sales teams win more deals.';
+        return 'Affordable, easy-to-use CRM that helps small-business sales teams win more deals';
     }
 
     public getName(): string {

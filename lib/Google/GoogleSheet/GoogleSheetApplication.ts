@@ -18,7 +18,7 @@ export default class GoogleSheetApplication extends AGoogle {
     }
 
     public getDescription(): string {
-        return 'Create, edit, and share spreadsheets wherever you are with Google Sheets, and get automated insights from your data.';
+        return 'Create, edit, and share spreadsheets wherever you are';
     }
 
     public getLogo(): string {

@@ -27,7 +27,7 @@ export default class BigcommerceApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'BigCommerce is an e-commerce platform that provides an all-encompassing solution for a business online store. If you\'re trying to sell physical goods online, you\'ll want to check out Bigcommerce.';
+        return 'E-commerce platform that provides an all-encompassing solution for a business online store';
     }
 
     public getAuthUrl(): string {

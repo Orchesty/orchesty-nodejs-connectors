@@ -27,7 +27,7 @@ export default class SlackApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'Platform for team communication: everything in one place, instantly searchable, available wherever you go. Offering instant messaging, document sharing and knowledge search for modern teams.';
+        return 'In-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine';
     }
 
     public getName(): string {

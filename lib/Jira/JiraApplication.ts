@@ -29,7 +29,7 @@ export default class JiraApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Jira Software is a bug and issue tracking tool that allows software developers to manage product development and build better software. This integration connects to cloud-hosted instances of Jira.';
+        return 'Issue and bug tracking tool that allows software developers to manage product development';
     }
 
     public getBaseUrl(

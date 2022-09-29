@@ -25,7 +25,7 @@ export default class DiscordApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Discord is an all-in-one voice & text chat for gamers';
+        return 'All-in-one voice & text chat for gamers';
     }
 
     public getLogo(): string {

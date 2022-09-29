@@ -18,7 +18,7 @@ const API_KEY = 'api_key';
 export default class StripeApplication extends ABasicApplication {
 
     public getDescription(): string {
-        return 'Stripe is a developer-friendly way to accept payments online and in mobile apps. Stripe\'s suite of APIs powers commerce for thousands of companies of all sizes, processing billions of dollars for businesses each year.';
+        return 'Developer-friendly way to accept payments online and in mobile apps';
     }
 
     public getName(): string {

@@ -25,7 +25,7 @@ export default class IDokladApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'iDoklad is a web service for managing and issuing invoices.';
+        return 'Web service for managing and issuing invoices';
     }
 
     public getLogo(): string {

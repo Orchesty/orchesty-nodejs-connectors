@@ -34,7 +34,7 @@ export default class AsanaApplication extends AOAuth2Application {
     }
 
     public getDescription(): string {
-        return 'Asana is a collaborative information manager for workspace. It helps you organize people and tasks effectively.';
+        return 'Collaborative information manager for workspace. It helps you organize people and tasks effectively';
     }
 
     public getLogo(): string {
