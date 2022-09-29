@@ -1,0 +1,5 @@
+{
+    "http": "PUT https://api.digitoo.cz/api/registers",
+    "code": 200,
+    "body": {}
+}

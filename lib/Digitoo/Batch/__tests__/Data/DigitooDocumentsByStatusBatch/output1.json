@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "cursor": "1",
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"annotations_map\":{\"sender_address\":\"Sokolovská 123, Praha, 18000\",\"sender_name\":\"ABC s.r.o.\",\"sender_register_id\":\"05944619\",\"sender_vat_id\":\"CZ05944619\",\"sender_tax_id\":\"CZ05944619\",\"recipient_name\":\"Digitoo s.r.o.\",\"recipient_address\":\"Bělehradská 858/23, 120 00 Praha\",\"recipient_register_id\":\"08494584\",\"recipient_tax_id\":\"CZ08494584\",\"recipient_vat_id\":\"08494584\",\"iban\":\"CZ4900000000001000175813\",\"bic\":\"CEKOCZPP\",\"due_date\":\"2020-02-15\",\"issue_date\":\"2020-01-15\",\"taxable_supply_date\":\"2020-01-15\",\"accounting_date\":\"2020-01-15\",\"currency\":\"EUR\",\"exchange_rate\":25.145,\"invoice_id\":\"20010003\",\"total_base\":1992,\"total_tax\":418.32,\"total_incl_tax\":2410.32,\"tax_details\":[{\"rate\":21,\"base\":50088.84,\"tax\":10518.66}],\"line_items\":[{\"description\":\"Cognitive invoice data capture\",\"quantity\":1,\"unit_base\":1992,\"total_base\":1992,\"tax_rate\":21,\"total_tax\":418.32,\"total_incl_tax\":2410.32,\"vat_code\":null,\"report_code\":\"A.1.\",\"assignment\":null,\"stock\":null,\"cost_center\":null,\"contract\":null,\"activity\":null,\"account_code\":null,\"employee\":null,\"vehicle\":null}],\"vat_code\":null,\"report_code\":\"A.1.\",\"assignment\":null,\"stock\":null,\"cost_center\":null,\"contract\":null,\"activity\":null,\"account_code\":null,\"accounting_sequence\":null,\"employee\":null,\"vehicle\":null,\"spec_sym\":null,\"const_sym\":null,\"received_date\":null,\"payment_type\":\"BANK_TRANSFER\",\"document_type\":\"TAX_INVOICE\"},\"created_at\":\"2022-09-26T11:29:04.601Z\",\"id\":\"161da0e2-de9d-4751-aa9a-73221dbd1989\",\"export_version_id\":\"082253ab-b0dd-4c49-82a3-d9094cc7c1ca\",\"internal_erp_id\":\"string\",\"queue_id\":\"f9c8a92a-6bac-46c0-af15-4e4bc21b0213\",\"queue_type\":\"received-invoice\",\"status\":\"ready-to-export\",\"last_status_changed_by\":\"customer@digitoo.ai\",\"export_error\":\"string\",\"marked_as_exported_at\":\"2022-09-26T11:29:04.601Z\",\"marked_as_exporting_at\":\"2022-09-26T11:29:04.601Z\",\"marked_as_ready_to_export_at\":\"2022-09-26T11:29:04.601Z\",\"document_url\":\"https://app.digitoo.cz/o1/q2/invoice/df133b4b-f157-434a-a88e-b1bc0b2b8ce4\",\"file_name\":\"invoice.pdf\"}",
+            "headers": null
+        }
+    ]
+}
