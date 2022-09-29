@@ -3,6 +3,7 @@ import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import { readdirSync, readFileSync, writeFileSync } from 'fs';
 
 const EXCLUDED_FOLDERS = ['Common'];
+const DEEP_FOLDERS = ['AmazonApps', 'Google'];
 
 interface IFileMetadata {
     name?: string;
@@ -17,12 +18,12 @@ interface IDescription {
   text: string;
 }
 
-function getFileMetadata(source: string, folderName: string): IFileMetadata[] {
-    const filesMetadata: IFileMetadata[] = [];
+function getFileMetadata(source: string, folderName: string, deepSearch: boolean): IFileMetadata[] {
+    let filesMetadata: IFileMetadata[] = [];
 
     readdirSync(`${source}/${folderName}`, { withFileTypes: true })
         .forEach((item) => {
-            if (item.name.endsWith('Application.ts') && !(/A[A-Z].*/).exec(item.name)) {
+            if (item.isFile() && item.name.endsWith('Application.ts') && !(/A[A-Z].*/).exec(item.name)) {
                 const path = `./${source}/${folderName}/${item.name}`;
                 // eslint-disable-next-line
                 const classDefault = require(path).default;
@@ -38,20 +39,25 @@ function getFileMetadata(source: string, folderName: string): IFileMetadata[] {
                 fileMetadata.logo = reflectedClass.getLogo();
                 fileMetadata.categories = [];
                 filesMetadata.push(fileMetadata);
+            } else if (deepSearch && item.isDirectory()) {
+                filesMetadata = [
+                  ...filesMetadata,
+                  ...getFileMetadata(`${source}/${folderName}`, item.name, false)
+                ];
             }
         });
 
     return filesMetadata;
 }
 
-function getDirectories(source: string, exclude: string[]): IFileMetadata[] {
+function getDirectories(source: string, exclude: string[], deepSearch: string[]): IFileMetadata[] {
     return readdirSync(source, { withFileTypes: true })
         .filter((dirent) => dirent.isDirectory() && !exclude.includes(dirent.name))
-        .flatMap((dirent) => getFileMetadata(source, dirent.name));
+        .flatMap((dirent) => getFileMetadata(source, dirent.name, deepSearch.includes(dirent.name)));
 }
 
 function generateApplicationMetaToJson(): void {
-    const directories = getDirectories('lib', EXCLUDED_FOLDERS);
+    const directories = getDirectories('lib', EXCLUDED_FOLDERS, DEEP_FOLDERS);
     let originalJsonFile: IFileMetadata[];
     try {
         originalJsonFile = JSON.parse(readFileSync('appMetadata.json').toString());
@@ -83,6 +89,17 @@ function generateApplicationMetaToJson(): void {
 
         newJsonFile.push(item);
         return;
+    });
+
+    newJsonFile.sort((a, b) => {
+      const aName = a?.publicName!!.toLowerCase();
+      const bName = b?.publicName!!.toLowerCase();
+        if (aName  > bName) {
+          return 1;
+        } else if (aName < bName) {
+          return -1;
+        }
+        return 0;
     });
 
     const json = JSON.stringify(newJsonFile, null, 4);

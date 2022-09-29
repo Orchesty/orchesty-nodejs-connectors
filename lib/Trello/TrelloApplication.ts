@@ -25,7 +25,7 @@ export default class TrelloApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Trello is a team collaboration tool that lets you organize anything and everything to keep your projects on task.';
+        return 'Team collaboration tool that lets you organize anything and everything to keep your projects on task';
     }
 
     public getLogo(): string {

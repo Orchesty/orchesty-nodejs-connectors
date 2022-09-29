@@ -11,7 +11,7 @@ export default class MariaDbApplication extends ASqlApplication {
     }
 
     public getDescription(): string {
-        return 'MariaDB Server is one of the most popular open source relational databases.';
+        return 'One of the most popular open source relational databases';
     }
 
     public getLogo(): string {

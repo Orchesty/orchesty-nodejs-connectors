@@ -18,7 +18,7 @@ export const TABLE_NAME = 'table_name';
 export default class AirtableApplication extends ABasicApplication {
 
     public getDescription(): string {
-        return 'Airtable is an online platform for creating and sharing relational databases. Fast & flexible way to create tables to keep track of anything, from sales leads to vacation planning to inventory management. ';
+        return 'Cloud-based system for organization and collaboration. It works on the principle of creating individual Projects, to which you add Topics and in them you create Spreadsheets';
     }
 
     public getName(): string {

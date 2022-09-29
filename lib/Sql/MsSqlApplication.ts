@@ -11,7 +11,7 @@ export default class MsSqlApplication extends ASqlApplication {
     }
 
     public getDescription(): string {
-        return 'Microsoft SQL Server is a relational database and analytics system for e-commerce, business and data warehousing solutions developed by Microsoft.';
+        return 'Relational database and analytics system for e-commerce a business by Microsoft';
     }
 
     public getLogo(): string {

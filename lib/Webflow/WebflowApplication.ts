@@ -26,7 +26,7 @@ export default class WebflowApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Design and build professional websites with a CMS from scratch online with Webflow.';
+        return 'Design and build professional websites with a CMS from scratch online with Webflow';
     }
 
     public getLogo(): string {

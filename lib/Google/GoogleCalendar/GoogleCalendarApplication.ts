@@ -18,7 +18,7 @@ export default class GoogleCalendarApplication extends AGoogle {
     }
 
     public getDescription(): string {
-        return 'Google Calendar lets you organize your schedule and share events with co-workers and friends. With Google\'s free online calendar, it\'s easy to keep track of your daily schedule.';
+        return 'Organize your schedule and share events with your co-workers and friends';
     }
 
     public getLogo(): string {

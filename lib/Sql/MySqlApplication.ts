@@ -11,7 +11,7 @@ export default class MySqlApplication extends ASqlApplication {
     }
 
     public getDescription(): string {
-        return 'MySQL is a widely used relational database management system (RDBMS). MySQL is free and open-source. MySQL is ideal for both small and large applications.';
+        return 'Free and open-source relational database management system (RDBMS)';
     }
 
     public getLogo(): string {

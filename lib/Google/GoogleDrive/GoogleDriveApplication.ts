@@ -18,7 +18,7 @@ export default class GoogleDriveApplication extends AGoogle {
     }
 
     public getDescription(): string {
-        return 'Google\'s cloud storage where you can store and access your photos, videos or documents from anywhere.';
+        return 'Cloud storage to store and access your photos, videos or documents from anywhere';
     }
 
     public getLogo(): string {

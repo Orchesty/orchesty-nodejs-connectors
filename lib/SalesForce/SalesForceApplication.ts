@@ -22,7 +22,7 @@ const TOKEN_URL = 'https://login.salesforce.com/services/oauth2/token';
 export default class SalesForceApplication extends AOAuth2Application {
 
     public getDescription(): string {
-        return 'Salesforce is a leading enterprise customer relationship manager (CRM) application.';
+        return 'Cloud-based email infrastructure relieves businesses of the cost and complexity of maintaining email systems';
     }
 
     public getName(): string {
