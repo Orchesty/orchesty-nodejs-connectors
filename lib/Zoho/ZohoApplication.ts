@@ -92,6 +92,17 @@ export default class ZohoApplication extends AOAuth2Application {
             .addForm(creatorForm);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const creatorForm = applicationInstall.getSettings()[CREATOR_FORM];
+        return authorizationForm?.[CLIENT_ID]
+          && authorizationForm?.[CLIENT_SECRET]
+          && creatorForm?.[ACCOUNT_OWNER_NAME]
+          && creatorForm?.[APP_LINK_NAME]
+          && creatorForm?.[FORM_LINK_NAME]
+          && creatorForm?.[REPORT_LINK_NAME];
+    }
+
     public getTokenUrl(): string {
         return 'https://accounts.zoho.eu/oauth/v2/token';
     }

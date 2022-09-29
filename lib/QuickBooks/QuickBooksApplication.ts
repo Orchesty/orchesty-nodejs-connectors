@@ -49,6 +49,11 @@ export default class QuickBooksApplication extends AOAuth2Application {
         );
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
+    }
+
     public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,

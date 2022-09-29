@@ -42,6 +42,11 @@ export default class AirtableApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[TOKEN] && authorizationForm?.[BASE_ID] && authorizationForm?.[TABLE_NAME];
+    }
+
     public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,

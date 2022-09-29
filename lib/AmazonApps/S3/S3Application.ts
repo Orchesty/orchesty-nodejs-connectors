@@ -43,6 +43,15 @@ export default class S3Application extends AAwsApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[KEY]
+          && authorizationForm?.[SECRET]
+          && authorizationForm?.[BUCKET]
+          && authorizationForm?.[REGION]
+          && authorizationForm?.[ENDPOINT];
+    }
+
     public getS3Client(applicationInstall: ApplicationInstall): S3Client {
         const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
         const endpoint = settings[ENDPOINT];

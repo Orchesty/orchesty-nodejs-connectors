@@ -76,6 +76,11 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[APP_ID];
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public getScopes(applicationInstall: ApplicationInstall): string[] {
         return ['oauth', 'crm.lists.read', 'crm.objects.contacts.read', 'crm.objects.contacts.write', 'crm.objects.companies.write', 'crm.schemas.contacts.read', 'crm.lists.write', 'crm.objects.companies.read', 'crm.objects.deals.read', 'crm.objects.deals.write', 'crm.schemas.companies.read', 'crm.schemas.companies.write', 'crm.schemas.contacts.write', 'crm.schemas.deals.read', 'crm.schemas.deals.write', 'crm.objects.owners.read'];
