@@ -37,6 +37,11 @@ export default class RDSApplication extends AAwsApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[KEY] && authorizationForm?.[SECRET] && authorizationForm?.[REGION];
+    }
+
     public getRDSClient(applicationInstall: ApplicationInstall): RDSClient {
         const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
 

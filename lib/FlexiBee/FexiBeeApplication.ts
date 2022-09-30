@@ -109,6 +109,11 @@ export default class FlexiBeeApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[PASSWORD] && authorizationForm?.[FLEXIBEE_URL];
+    }
+
     public getUrl(applicationInstall: ApplicationInstall, url?: string): string {
         const host = applicationInstall.getSettings()[AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
 

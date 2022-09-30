@@ -67,6 +67,11 @@ export default class WisepopsApplication extends ABasicApplication implements IW
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[API_KEY];
+    }
+
     public getWebhookSubscribeRequestDto(
         applicationInstall: ApplicationInstall,
         subscription: WebhookSubscription,

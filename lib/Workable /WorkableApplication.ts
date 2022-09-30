@@ -36,6 +36,11 @@ export default class WorkableApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[ACCESS_TOKEN] && authorizationForm?.[SUBDOMAIN];
+    }
+
     public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,

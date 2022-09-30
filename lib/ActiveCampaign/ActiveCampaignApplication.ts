@@ -36,6 +36,11 @@ export default class ActiveCampaignApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[APPLICATION_KEY] && authorizationForm?.[SUBDOMAIN];
+    }
+
     public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,

@@ -66,6 +66,15 @@ export default abstract class ASqlApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[HOST]
+          && authorizationForm?.[PORT]
+          && authorizationForm?.[USER]
+          && authorizationForm?.[PASSWORD]
+          && authorizationForm?.[DATABASE];
+    }
+
     // eslint-disable-next-line @typescript-eslint/require-await
     public async getConnection(appInstall: ApplicationInstall): Promise<OracleDB.Connection | Sequelize> {
         const appId = appInstall.getId();

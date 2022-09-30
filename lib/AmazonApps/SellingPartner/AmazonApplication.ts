@@ -71,6 +71,13 @@ export default class AmazonApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[SELLINGPARTNERID]
+          && authorizationForm?.[DEVELOPERID]
+          && authorizationForm?.[MWSAUTHTOKEN];
+    }
+
     private async getAuthorizationCode(appInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
         const sId = appInstall.getSettings()[AUTHORIZATION_FORM][SELLINGPARTNERID];
         const dId = appInstall.getSettings()[AUTHORIZATION_FORM][DEVELOPERID];

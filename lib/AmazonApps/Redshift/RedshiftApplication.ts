@@ -55,6 +55,14 @@ export default class RedshiftApplication extends AAwsApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[KEY]
+          && authorizationForm?.[SECRET]
+          && authorizationForm?.[REGION]
+          && authorizationForm?.[DB_PASSWORD];
+    }
+
     public getRedshiftClient(applicationInstall: ApplicationInstall): RedshiftClient {
         const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
 

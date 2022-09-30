@@ -86,6 +86,11 @@ export default class TableauApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[TOKEN] && authorizationForm?.[TOKEN_NAME] && authorizationForm?.[CONTENT_URL];
+    }
+
     public async setSettings(applicationInstall: ApplicationInstall, dto: AProcessDto): Promise<ApplicationInstall> {
         const { siteId, token } = await this.getToken(applicationInstall, dto);
         const date = new Date();

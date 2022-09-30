@@ -43,6 +43,11 @@ export default class GitHubApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[USER] && authorizationForm?.[TOKEN];
+    }
+
     public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,

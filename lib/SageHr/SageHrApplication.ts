@@ -60,4 +60,9 @@ export default class SageHrApplication extends ABasicApplication {
         return new FormStack().addForm(form);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[SUBDOMAIN] && authorizationForm?.[API_KEY];
+    }
+
 }

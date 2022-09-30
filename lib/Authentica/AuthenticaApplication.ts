@@ -47,8 +47,9 @@ export default class AuthenticaApplication extends ABasicApplication {
         return new FormStack().addForm(settingsForm);
     }
 
-    public isAuthorized(): boolean {
-        return true;
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
     }
 
     public async getRequestDto(
