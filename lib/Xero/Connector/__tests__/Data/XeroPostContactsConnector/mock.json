@@ -1,0 +1,5 @@
+{
+  "http": "POST https://api.xero.com/api.xro/2.0/contacts",
+  "code": 200,
+  "body": {}
+}
