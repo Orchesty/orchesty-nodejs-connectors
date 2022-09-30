@@ -5,8 +5,8 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export default abstract class AShoptetConnector extends AConnector {
 
-    protected async doRequest(url: string, dto: ProcessDto): Promise<unknown> {
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+    protected async doRequest(url: string, dto: ProcessDto, enabled?: boolean | null): Promise<unknown> {
+        const appInstall = await this.getApplicationInstallFromProcess(dto, enabled);
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             appInstall,

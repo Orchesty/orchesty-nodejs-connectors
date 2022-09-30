@@ -10,7 +10,7 @@ export default class ShoptetGetListOfStocks extends AShoptetConnector {
     }
 
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
-        const response = await this.doRequest('api/stocks', dto) as IResponse;
+        const response = await this.doRequest('api/stocks', dto, null) as IResponse;
 
         return dto.setNewJsonData(response.data);
     }

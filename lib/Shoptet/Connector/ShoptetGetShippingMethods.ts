@@ -12,7 +12,7 @@ export default class ShoptetGetShippingMethods extends AShoptetConnector {
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
         const url = 'api/shipping-methods';
 
-        const response = await this.doRequest(url, dto) as IResponse;
+        const response = await this.doRequest(url, dto, null) as IResponse;
 
         return dto.setNewJsonData(response.data);
     }
