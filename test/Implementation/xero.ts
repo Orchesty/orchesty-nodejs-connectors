@@ -4,6 +4,8 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import XeroGetAccountsBatch from '../../lib/Xero/Batch/XeroGetAccountsBatch';
 import XeroGetContactsBatch from '../../lib/Xero/Batch/XeroGetContactsBatch';
+import XeroPostContactsConnector from '../../lib/Xero/Connector/XeroPostContactsConnector';
+import XeroPostInvoiceConnector from '../../lib/Xero/Connector/XeroPostInvoiceConnector';
 import XeroApplication, { NAME as XERO_APP, XERO_TENANT_ID } from '../../lib/Xero/XeroApplication';
 import {
     appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
@@ -41,4 +43,16 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(app);
     container.setBatch(getContacts);
+
+    const xeroPutContactsConnector = new XeroPostContactsConnector()
+        .setDb(db)
+        .setApplication(app)
+        .setSender(sender);
+    container.setConnector(xeroPutContactsConnector);
+
+    const xeroPutInvoiceConnector = new XeroPostInvoiceConnector()
+        .setDb(db)
+        .setApplication(app)
+        .setSender(sender);
+    container.setConnector(xeroPutInvoiceConnector);
 }

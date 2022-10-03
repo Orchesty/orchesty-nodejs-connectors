@@ -1,0 +1,5 @@
+{
+  "http": "POST https://api.xero.com/api.xro/2.0/invoices",
+  "code": 200,
+  "body": {}
+}
