@@ -34,3 +34,8 @@ services:
         image: mendhak/udp-listener
         ports:
             - ${DEV_IP}:5005:5005
+
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        ports:
+            - ${DEV_IP}:15672:15672
