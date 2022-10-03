@@ -1,4 +1,5 @@
 import { prepare } from '../test/TestAbstract';
+import nodemailer from 'nodemailer';
 
 // Mock Logger module
 jest.mock('@orchesty/nodejs-sdk/dist/lib/Logger/Logger', () => ({
@@ -22,6 +23,12 @@ beforeAll(async () => {
 afterAll(async () => {
   // await dropCollection(ApplicationInstall.getCollection()).then(closeConnection)
 })
+
+jest.mock('nodemailer', () => ({
+    createTransport: jest.fn().mockReturnValue({
+        sendMail: jest.fn().mockReturnValue({}),
+    }),
+}));
 
 export default class MockDate extends Date {
   constructor() {
