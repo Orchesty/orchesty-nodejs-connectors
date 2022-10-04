@@ -52,16 +52,12 @@ export default class SmtpApplication extends ABasicApplication {
         throw new Error('Unsupported use getConnection method instead');
     }
 
-    public async getConnection(appInstall: ApplicationInstall): Promise<Transporter> {
+    public getConnection(appInstall: ApplicationInstall): Transporter {
         if (!this.isAuthorized(appInstall)) {
             throw new Error(`Application [${this.getPublicName()}] is not authorized!`);
         }
 
-        const transporter = nodemailer.createTransport(appInstall.getSettings()[AUTHORIZATION_FORM][CONNECTION_URL]);
-        // TODO musi to tady byt?
-        await transporter.verify();
-
-        return transporter;
+        return nodemailer.createTransport(appInstall.getSettings()[AUTHORIZATION_FORM][CONNECTION_URL]);
     }
 
 }

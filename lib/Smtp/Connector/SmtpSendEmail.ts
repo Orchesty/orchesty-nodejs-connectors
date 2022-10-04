@@ -13,9 +13,9 @@ export default class SmtpSendEmail extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const conn = await this.getApplication<SmtpApplication>().getConnection(appInstall);
+        const conn = this.getApplication<SmtpApplication>().getConnection(appInstall);
 
-        const res = await conn.sendMail(dto.getJsonData());
+        const res = conn.sendMail(dto.getJsonData());
 
         return dto.setNewJsonData(res);
     }
