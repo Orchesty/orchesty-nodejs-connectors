@@ -24,7 +24,11 @@ export default class ProductboardApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Productboard description';
+        return 'Customer-driven product management system that empowers teams to get the right products to market, faster';
+    }
+
+    public getLogo(): string {
+        return 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNGRjI2Mzg7fQoJLnN0MXtmaWxsOiNGRkM2MDA7fQoJLnN0MntmaWxsOiMwMDc5RjI7fQo8L3N0eWxlPgo8Zz4KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMzMuMyw1MCA2Ni43LDgyLjggMCw4Mi44IAkiLz4KCTxwb2x5Z29uIGNsYXNzPSJzdDEiIHBvaW50cz0iMCwxNy4yIDMzLjMsNTAgNjYuNywxNy4yIAkiLz4KCTxwb2x5Z29uIGNsYXNzPSJzdDIiIHBvaW50cz0iMzMuMyw1MCA2Ni43LDgyLjggMTAwLDUwIDY2LjcsMTcuMiAJIi8+CjwvZz4KPC9zdmc+Cg==';
     }
 
     public getRequestDto(
