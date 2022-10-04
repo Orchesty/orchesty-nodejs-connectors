@@ -1,0 +1,19 @@
+{
+    "headers": {
+        "result-code": "1003",
+        "result-message": "Filtered out!",
+        "user": "TestUser"
+    },
+    "data": {
+        "type": "processFailed",
+        "data": {
+            "topologyId": "1234",
+            "correlationId": "123",
+            "processId": "12",
+            "user": "1",
+            "timestampMs": 1664880404000,
+            "resultMessage": "Hurray!"
+        }
+    }
+}
+
