@@ -15,7 +15,7 @@ export default class SmtpSendEmail extends AConnector {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const conn = this.getApplication<SmtpApplication>().getConnection(appInstall);
 
-        const res = conn.sendMail(dto.getJsonData());
+        const res = await conn.sendMail(dto.getJsonData());
 
         return dto.setNewJsonData(res);
     }
