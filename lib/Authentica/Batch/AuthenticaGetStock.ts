@@ -23,7 +23,7 @@ export default class AuthenticaGetStock extends ABatchNode {
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
         if (resp.getResponseCode() === 204) {
-            dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Empty body!');
+            dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'Empty body!');
             return dto;
         }
 
