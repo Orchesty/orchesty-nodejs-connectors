@@ -1,4 +1,5 @@
 import { prepare } from '../test/TestAbstract';
+import nodemailer from 'nodemailer';
 
 // Mock Logger module
 jest.mock('@orchesty/nodejs-sdk/dist/lib/Logger/Logger', () => ({
@@ -22,6 +23,28 @@ beforeAll(async () => {
 afterAll(async () => {
   // await dropCollection(ApplicationInstall.getCollection()).then(closeConnection)
 })
+
+jest.mock('nodemailer', () => ({
+    createTransport: jest.fn().mockReturnValue({
+        sendMail: jest.fn().mockReturnValue({
+          "accepted": [
+            "neco@gmail.com"
+          ],
+          "envelope": {
+            "from": "neco@neco.com",
+            "to": [
+              "neco@gmail.com"
+            ]
+          },
+          "envelopeTime": 2,
+          "messageId": "<731836a2-74d2-36f6-8053-08242c91ce1c@neco.com>",
+          "messageSize": 614,
+          "messageTime": 3,
+          "rejected": [],
+          "response": "250 Ok: queued as uDtelNMtPWAML6YfHjji5zYLhJjL1frJBtBBOZNJIcE=@mailhog.example"
+        }),
+    }),
+}));
 
 export default class MockDate extends Date {
   constructor() {
