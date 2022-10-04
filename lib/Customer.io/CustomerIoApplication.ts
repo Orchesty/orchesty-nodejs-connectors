@@ -22,11 +22,15 @@ export default class CustomerIoApplication extends ABasicApplication {
     }
 
     public getPublicName(): string {
-        return 'Customer Io';
+        return 'Customer.io';
     }
 
     public getDescription(): string {
-        return 'Customer Io description';
+        return 'Automated messaging platform for tech-savvy marketers - send data-driven emails, push notifications, in-app messages, and SMS';
+    }
+
+    public getLogo(): string {
+        return 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNGRkNEMDA7fQoJLnN0MXtmaWxsOiMwMEVDQkI7fQoJLnN0MntmaWxsOiNBRjY0RkY7fQoJLnN0M3tmaWxsOiM3MTMxRkY7fQo8L3N0eWxlPgo8Zz4KCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00OS45LDU1YzgsMCwxNS4zLTQuOCwxOC40LTEyLjNjMy4xLTcuNCwxLjQtMTYtNC4zLTIxLjdjLTUuNy01LjctMTQuMy03LjQtMjEuNy00LjNTMzAsMjcsMzAsMzUuMQoJCWMwLDUuMywyLjEsMTAuMyw1LjgsMTQuMUMzOS42LDUyLjksNDQuNyw1NSw0OS45LDU1TDQ5LjksNTV6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNTAuMSw2NC45TDUwLjEsNjQuOWMtMTMuNywwLTI1LjYtOS4zLTI5LTIyLjVjLTEtNC00LjItNy4zLTguMy03LjNIMC4zYzAsMjcuNSwyMi4zLDQ5LjcsNDkuNyw0OS43aDAuMVY2NC45CgkJeiIvPgoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTQ5LjksNjQuOUw0OS45LDY0LjljMTMuNywwLDI1LjYtOS4zLDI5LTIyLjVjMS00LDQuMi03LjMsOC4zLTcuM2gxMi41YzAsMjcuNS0yMi4zLDQ5LjctNDkuNyw0OS43aC0wLjFWNjQuOQoJCXoiLz4KCTxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik04NS4yLDcwLjNjLTkuMyw5LjMtMjIsMTQuNi0zNS4yLDE0LjZzLTI1LjgtNS4yLTM1LjItMTQuNmwxNC4xLTE0LjFjMTEuNywxMS43LDMwLjYsMTEuNyw0Mi4yLDBMODUuMiw3MC4zeiIKCQkvPgo8L2c+Cjwvc3ZnPgo=';
     }
 
     public getFormStack(): FormStack {
