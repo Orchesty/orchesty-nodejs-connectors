@@ -3,7 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-        "type": "process_success",
+        "type": "processSuccess",
         "data": {
             "topologyId": "1234",
             "correlationId": "123",
