@@ -362,8 +362,8 @@
                 "text": "Online invoicing software for businesses and freelancers"
             },
             {
-                "lang": "en",
-                "text": "Online invoicing software for businesses and freelancers"
+                "lang": "cs",
+                "text": "Online fakturační software pro firmy a podnikatele"
             }
         ],
         "logo": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiMwOTdGQjU7fQoJLnN0MXtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiNGRkZGRkY7fQo8L3N0eWxlPgo8Zz4KCTxyZWN0IHg9IjAiIHk9IjAiIGNsYXNzPSJzdDAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIi8+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMyA0NykiPgoJCTxwb2x5Z29uIGNsYXNzPSJzdDEiIHBvaW50cz0iLTguNSwtMTYuMiAtOC41LDIyLjIgMS41LDIyLjIgMS41LDkgMTcuMiw5IDE3LjIsMC4yIDEuNSwwLjIgMS41LC02LjggMjAuNCwtNi44IDIwLjQsLTE2LjIgCQkiLz4KCQk8cGF0aCBkPSJNNDQuMy0xNy40YzExLjUsMCwyMC44LDkuMiwyMC44LDIwLjRzLTkuMywyMC40LTIwLjgsMjAuNFMyMy41LDE0LjMsMjMuNSwzUzMyLjgtMTcuNCw0NC4zLTE3LjR6IE00NC4zLTcuNAoJCQlDMzguNC03LjQsMzMuNi0yLjcsMzMuNiwzczQuOCwxMC40LDEwLjcsMTAuNFM1NSw4LjcsNTUsM1M1MC4yLTcuNCw0NC4zLTcuNHoiLz4KCTwvZz4KPC9nPgo8L3N2Zz4K",
@@ -1098,8 +1098,8 @@
                 "text": "Subscription-based software that allows anyone to set up an online store and sell their products"
             },
             {
-                "lang": "en",
-                "text": "Subscription-based software that allows anyone to set up an online store and sell their products"
+                "lang": "cs",
+                "text": "Software založený na předplatném, který umožňuje komukoli založit internetový obchod a prodávat své produkty"
             }
         ],
         "logo": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMDAgMTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6IzkxQzMzRjt9Cjwvc3R5bGU+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik04Ni42LDYwLjJjMC4xLTAuNCwwLjQtMC42LDAuNy0wLjdsMTEuOS0xLjhjMC40LTAuMSwwLjctMC40LDAuNy0wLjh2LTE0YzAtMC40LTAuMy0wLjctMC43LTAuOAoJYy0zLjktMC42LTcuOS0xLjItMTEuOC0xLjhjLTAuNi0wLjEtMC44LTAuNC0wLjktMC45Yy0wLjgtMi44LTEuOS01LjUtMy4zLTguMWMtMC4zLTAuNi0wLjMtMC45LDAuMS0xLjRjMi4zLTMuMSw0LjYtNi4yLDYuOS05LjQKCWMwLjQtMC42LDAuNS0wLjktMC4xLTEuNWMtMy4yLTMuMS02LjMtNi4zLTkuNC05LjVjLTAuNC0wLjQtMS0wLjUtMS41LTAuMWMtMy4xLDIuNC02LjMsNC43LTkuNCw3Yy0wLjUsMC40LTAuOCwwLjQtMS40LDAKCWMtMi4zLTEuNi00LjktMi42LTcuNy0zLjJjLTAuOC0wLjItMS0wLjQtMS4xLTFjLTAuMi0xLjYtMC41LTMuMi0wLjctNC45Yy0wLjQtMi4zLTAuNy00LjYtMS4xLTYuOGMtMC4xLTAuNC0wLjQtMC43LTAuOC0wLjdINDMuMQoJYy0wLjQsMC0wLjcsMC4zLTAuOCwwLjdjLTAuNiwzLjgtMS4yLDcuNS0xLjcsMTEuM2MtMC4xLDAuOS0wLjUsMS40LTEuNiwxLjZjLTIuNSwwLjUtNC45LDEuNS03LDNjLTAuNywwLjUtMS4yLDAuNS0xLjgsMAoJYy0zLjEtMi4zLTYuMi00LjYtOS4zLTYuOWMtMC42LTAuNC0wLjktMC40LTEuNCwwLjFjLTMuMiwzLjItNi40LDYuNC05LjYsOS42Yy0wLjUsMC41LTAuNSwwLjgtMC4xLDEuM2MyLjMsMy4xLDQuNiw2LjMsNyw5LjQKCWMwLjMsMC40LDAuNSwwLjgsMC4yLDEuM2MtMS41LDIuNi0yLjcsNS40LTMuNCw4LjNjLTAuMSwwLjQtMC4zLDAuNi0wLjcsMC43Yy00LDAuNi04LDEuMi0xMiwxLjhjLTAuNCwwLjEtMC43LDAuNC0wLjcsMC44CgljMCwxLjQsMCwyLjcsMCw0LjFjMCwzLjMsMCw2LjYsMC4xLDkuOWMwLDAuNCwwLjMsMC43LDAuNywwLjhjNCwwLjYsOCwxLjIsMTIsMS44YzAuNSwwLjEsMC42LDAuNCwwLjcsMC44YzAuOCwyLjgsMS45LDUuNCwzLjMsOAoJYzAuNCwwLjcsMC4zLDEuMS0wLjEsMS43Yy0yLjMsMy00LjUsNi4xLTYuOCw5LjJjLTAuNSwwLjctMC40LDEsMC4yLDEuNmMzLjIsMy4xLDYuMyw2LjIsOS40LDkuM2MwLjYsMC42LDAuOSwwLjUsMS42LDAuMQoJYzMtMi4zLDYuMS00LjUsOS4yLTYuOGMwLjctMC41LDEtMC40LDIuMiwwLjRjMS45LDEuMiw0LDEuOSw2LjIsMi42YzEuNSwwLjUsMS45LDAuNiwyLDEuNmMwLjUsMy44LDEuMSw3LjUsMS43LDExLjMKCWMwLjEsMC40LDAuNCwwLjcsMC44LDAuN0g1N2MwLjQsMCwwLjctMC4zLDAuOC0wLjdjMC4zLTIuMSwxLjQtOC40LDEuOC0xMS43YzAuMS0wLjYsMC4zLTAuOCwwLjgtMWMyLjgtMC44LDUuNi0xLjksOC4xLTMuNAoJYzAuNS0wLjMsMC44LTAuMiwxLjMsMC4xYzMuMSwyLjQsNi4zLDQuNyw5LjQsN2MwLjUsMC40LDAuOCwwLjUsMS40LTAuMWMzLjItMy4yLDYuMy02LjQsOS42LTkuNmMwLjUtMC41LDAuNS0wLjgsMC4xLTEuNAoJYy0yLjMtMy4xLTQuNi02LjMtNy05LjRjLTAuMy0wLjMtMC41LTAuNi0wLjItMS4yQzg0LjcsNjYuMSw4NS45LDYzLjIsODYuNiw2MC4yTDg2LjYsNjAuMnogTTUwLDY2LjhjLTkuMiwwLjEtMTYuNi03LjYtMTYuNi0xNi44CgljMC05LjEsNy42LTE2LjcsMTYuNy0xNi43YzkuMiwwLDE2LjcsNy41LDE2LjYsMTYuOEM2Ni45LDU4LjMsNjAuMyw2Ni43LDUwLDY2LjhMNTAsNjYuOHoiLz4KPC9zdmc+Cg==",
@@ -1127,11 +1127,11 @@
         "description": [
             {
                 "lang": "en",
-                "text": "Platform for team communication: everything in one place, instantly searchable, available wherever you go"
+                "text": "Shoptet Premium offers private access to eshop data via Shoptet API and custom design based on blank template"
             },
             {
-                "lang": "en",
-                "text": "Platform for team communication: everything in one place, instantly searchable, available wherever you go"
+                "lang": "cs",
+                "text": "Shoptet Premium nabízí soukromý přístup k datům eshopu prostřednictvím rozhraní Shoptet API a vlastní design založený na vlastní šabloně"
             }
         ],
         "logo": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtlbmFibGUtYmFja2dyb3VuZDpuZXcgICAgO30KPC9zdHlsZT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0MjYpIj4KCTxyZWN0IHg9IjE0NTgiIHk9IjAiIGNsYXNzPSJzdDAiIHdpZHRoPSI2OC4xIiBoZWlnaHQ9IjMyIi8+Cgk8cmVjdCB4PSIxNDI2IiB5PSI2Ny45IiBjbGFzcz0ic3QwIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIuNCIvPgoJPHJlY3QgeD0iMTQ5My43IiB5PSIwIiBjbGFzcz0ic3QwIiB3aWR0aD0iMzIuNCIgaGVpZ2h0PSI2OC43Ii8+CjwvZz4KPC9zdmc+Cg==",
