@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "type": "processSuccess",
+        "data": {
+            "topologyId": "1234",
+            "correlationId": "123",
+            "processId": "12",
+            "user": "1",
+            "timestampMs": 1664880404000,
+            "resultMessage": "Hurray!"
+        }
+    }
+}
+
