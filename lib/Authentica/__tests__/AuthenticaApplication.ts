@@ -23,15 +23,7 @@ describe('Tests for AuthenticaApplication', () => {
     });
 
     it('should get public name', () => {
-        expect(app.getPublicName()).toEqual('Authentica Application');
-    });
-
-    it('should get description', () => {
-        expect(app.getDescription()).toEqual('Authentica Application description');
-    });
-
-    it('should get logo', () => {
-        expect(app.getLogo()).toBeNull();
+        expect(app.getPublicName()).toEqual('Fulfillment by Authentica');
     });
 
     it('should get requestDto', async () => {
