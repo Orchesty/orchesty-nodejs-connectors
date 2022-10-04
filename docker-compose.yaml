@@ -39,3 +39,4 @@ services:
         image: rabbitmq:3-management-alpine
         ports:
             - ${DEV_IP}:15672:15672
+            - ${DEV_IP}:5672:5672

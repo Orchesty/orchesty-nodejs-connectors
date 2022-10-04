@@ -1,9 +1,0 @@
-{
-    "headers": {
-        "user": "TestUser"
-    },
-    "data": {
-        "message": "testMessage",
-        "queue": "testQueue"
-    }
-}

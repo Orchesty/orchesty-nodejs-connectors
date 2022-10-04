@@ -1,5 +1,4 @@
-import { AMQPClient } from '@cloudamqp/amqp-client';
-import { AMQPQueue } from '@cloudamqp/amqp-client/types/amqp-queue';
+import { AMQPClient, AMQPQueue, QueueParams } from '@cloudamqp/amqp-client';
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -20,9 +19,15 @@ export const PORT = 'port';
 
 export const NAME = 'rabbit-mq';
 
+enum QueueEnum {
+    CLASSIC = 'classic',
+    QUORUM = 'quorum',
+    STREAM = 'stream',
+}
+
 export default class RabbitMqApplication extends ABasicApplication {
 
-    protected cache: Record<string, IChannel> = {};
+    protected cache: Record<string, AMQPQueue> = {};
 
     public getName(): string {
         return NAME;
@@ -66,46 +71,49 @@ export default class RabbitMqApplication extends ABasicApplication {
         throw new Error('Unsupported use getChannel method instead');
     }
 
-    public async getQueue(appInstall: ApplicationInstall, queue: string): Promise<AMQPQueue> {
+    public async getQueue(
+        appInstall: ApplicationInstall,
+        queue: string,
+        queueParams: IQueueArguments = {},
+    ): Promise<AMQPQueue> {
         const appId = appInstall.getId();
-        const cachedQueue = this.cache[appId] ?? { channel: undefined, waitForClose: false };
+        let cachedQueue = this.cache[appId];
 
-        if (cachedQueue.queue === undefined) {
+        if (cachedQueue === undefined) {
             const authForm = appInstall.getSettings()[AUTHORIZATION_FORM];
             const dsn = `amqp://${authForm[USER]}:${authForm[PASSWORD]}@${authForm[HOST]}:${authForm[PORT]}`;
-            cachedQueue.queue = await this.connect(dsn, queue, appId);
+            cachedQueue = await this.connect(dsn, queue, queueParams);
             this.cache[appId] = cachedQueue;
-        }
-        if (cachedQueue.waitForClose) {
+        } else if (cachedQueue.channel.closed || cachedQueue.channel.connection.closed) {
             try {
-                await cachedQueue.queue.channel.connection.close();
+                await cachedQueue.channel.connection.close();
             } catch (e) {
 
             }
-
-            this.cache[appId].waitForClose = false;
-            this.cache[appId].queue = undefined;
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+            delete this.cache[appId];
         }
 
-        return cachedQueue.queue ?? await this.getQueue(appInstall, queue);
+        return cachedQueue ?? await this.getQueue(appInstall, queue, queueParams);
     }
 
-    private async connect(dsn: string, queue: string, appId: string): Promise<AMQPQueue> {
-        try {
-            const amqp = new AMQPClient(dsn);
-            const conn = await amqp.connect();
-            const ch = await conn.channel();
-            return await ch.queue(queue);
-            ch.
-        } catch (e) {
-            // e.connection.close();
-            throw e;
+    private async connect(dsn: string, queue: string, queueParams: IQueueArguments): Promise<AMQPQueue> {
+        const amqp = new AMQPClient(dsn);
+        const conn = await amqp.connect();
+        const ch = await conn.channel();
+        const { params, args } = queueParams;
+        const queueType = args?.['x-queue-type'] ?? QueueEnum.CLASSIC;
+        if (!Object.values(QueueEnum).includes(queueType)) {
+            throw Error(`Queue type: [${queueType}] is not allowed`);
         }
+
+        return ch.queue(queue, params, args);
     }
 
 }
 
-export interface IChannel {
-    queue?: AMQPQueue;
-    waitForClose: boolean;
+export interface IQueueArguments {
+    params?: QueueParams;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    args?: { 'x-queue-type': QueueEnum };
 }
