@@ -21,6 +21,12 @@ export default class AuthenticaGetStock extends ABatchNode {
             `stock?page=${page}&limit=50`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
+
+        if (resp.getResponseCode() === 204) {
+            dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'Empty body!');
+            return dto;
+        }
+
         const response = resp.getJsonBody();
 
         this.setItemsListToDto(dto, response.data ?? []);
