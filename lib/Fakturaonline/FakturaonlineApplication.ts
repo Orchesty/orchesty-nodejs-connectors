@@ -21,7 +21,7 @@ export default class FakturaonlineApplication extends ABasicApplication {
     }
 
     public getPublicName(): string {
-        return 'Fakturaonline';
+        return 'FakturaOnline.cz';
     }
 
     public getDescription(): string {
