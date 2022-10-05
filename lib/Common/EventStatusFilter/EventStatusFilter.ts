@@ -11,7 +11,7 @@ export default class EventStatusFilter extends ACommonNode {
     }
 
     public getName(): string {
-        return NAME;
+        return `${NAME}-${this.type}`;
     }
 
     public processAction(dto: ProcessDto<IInput>): ProcessDto<IInput> {
