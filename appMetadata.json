@@ -161,7 +161,7 @@
     },
     {
         "name": "bigcommerce",
-        "publicName": "Bigcommerce",
+        "publicName": "BigCommerce",
         "description": [
             {
                 "lang": "en",
@@ -353,7 +353,7 @@
     },
     {
         "name": "fakturaonline",
-        "publicName": "Fakturaonline",
+        "publicName": "FakturaOnline.cz",
         "description": [
             {
                 "lang": "en",
@@ -1409,7 +1409,7 @@
     },
     {
         "name": "wix",
-        "publicName": "Wix Application",
+        "publicName": "Wix",
         "description": [
             {
                 "lang": "en",
