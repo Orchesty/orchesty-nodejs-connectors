@@ -23,7 +23,7 @@ export default class BigcommerceApplication extends AOAuth2Application {
     }
 
     public getPublicName(): string {
-        return 'Bigcommerce';
+        return 'BigCommerce';
     }
 
     public getDescription(): string {
