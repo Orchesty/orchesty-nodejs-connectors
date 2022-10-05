@@ -33,7 +33,7 @@ export default class WixApplication extends AOAuth2Application {
     }
 
     public getPublicName(): string {
-        return 'Wix Application';
+        return 'Wix';
     }
 
     public getDescription(): string {
