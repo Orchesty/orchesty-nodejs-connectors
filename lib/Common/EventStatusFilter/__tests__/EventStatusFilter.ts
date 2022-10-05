@@ -12,10 +12,10 @@ describe('Tests for EventStatusFilter', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testCustomNode(`${EVENT_STATUS_FILTER}_processSuccess`);
+        await tester.testCustomNode(`${EVENT_STATUS_FILTER}-processSuccess`);
     });
 
     it('process - ok but filtered out', async () => {
-        await tester.testCustomNode(`${EVENT_STATUS_FILTER}_processSuccess`, 'failed');
+        await tester.testCustomNode(`${EVENT_STATUS_FILTER}-processSuccess`, 'failed');
     });
 });
