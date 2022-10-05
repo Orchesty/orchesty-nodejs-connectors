@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "queue": "testQueue",
+        "queueParams" : {
+            "args": {
+                "x-queue-type": "quorum"
+            }
+        },
+        "message": "testMessage"
+    }
+}
