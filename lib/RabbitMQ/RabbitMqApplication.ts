@@ -5,17 +5,12 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import {
-    ABasicApplication,
-    PASSWORD,
-    USER,
-} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-export const HOST = 'host';
-export const PORT = 'port';
+export const DSN = 'dsn';
 
 export const NAME = 'rabbit-mq';
 
@@ -47,21 +42,13 @@ export default class RabbitMqApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings');
-        form
-            .addField(new Field(FieldType.TEXT, HOST, 'Host', undefined, true))
-            .addField(new Field(FieldType.NUMBER, PORT, 'Port', undefined, true))
-            .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-            .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Password', undefined, true));
+        form.addField(new Field(FieldType.TEXT, DSN, 'dsn', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
-        return authorizationForm?.[HOST]
-          && authorizationForm?.[PORT]
-          && authorizationForm?.[USER]
-          && authorizationForm?.[PASSWORD];
+        return applicationInstall.getSettings()[AUTHORIZATION_FORM]?.[DSN];
     }
 
     public getRequestDto(
@@ -72,7 +59,7 @@ export default class RabbitMqApplication extends ABasicApplication {
         url?: string,
         data?: unknown,
     ): RequestDto {
-        throw new Error('Unsupported use getChannel method instead');
+        throw new Error('Unsupported use getQueue method instead');
     }
 
     public async getQueue(
@@ -82,11 +69,8 @@ export default class RabbitMqApplication extends ABasicApplication {
     ): Promise<AMQPQueue> {
         const appId = appInstall.getId();
         let cachedQueue = this.cache[appId];
-
         if (cachedQueue === undefined) {
-            const authForm = appInstall.getSettings()[AUTHORIZATION_FORM];
-            const dsn = `amqp://${authForm[USER]}:${authForm[PASSWORD]}@${authForm[HOST]}:${authForm[PORT]}`;
-            cachedQueue = await this.connect(dsn, queue, queueParams);
+            cachedQueue = await this.connect(appInstall, queue, queueParams);
             this.cache[appId] = cachedQueue;
         } else if (cachedQueue.channel.closed || cachedQueue.channel.connection.closed) {
             try {
@@ -101,7 +85,15 @@ export default class RabbitMqApplication extends ABasicApplication {
         return cachedQueue ?? await this.getQueue(appInstall, queue, queueParams);
     }
 
-    private async connect(dsn: string, queue: string, queueParams: IQueueArguments): Promise<AMQPQueue> {
+    private async connect(
+        appInstall: ApplicationInstall,
+        queue: string,
+        queueParams: IQueueArguments,
+    ): Promise<AMQPQueue> {
+        const dsn = appInstall.getSettings()[AUTHORIZATION_FORM]?.[DSN];
+        if (!dsn) {
+            throw Error(`RabbitMQ [user=${appInstall.getUser()}] dsn is not set`);
+        }
         const amqp = new AMQPClient(dsn);
         const conn = await amqp.connect();
         const ch = await conn.channel();
