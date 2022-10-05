@@ -11,12 +11,14 @@ if (process.env.JEST_DOCKER) {
     process.env.METRICS_DSN = 'mongodb://mongo:27017/metrics'
     process.env.MONGODB_DSN = `mongodb://mongo:27017/node-sdk${jestWorkerId}`
     process.env.REDIS_DSN = `redis://redis/${jestWorkerId}`
+    process.env.RABBITMQ_HOST = `rabbitmq`
 } else {
   // --- LOCALHOST ---
     process.env.UDP_LOGGER_DSN = '127.0.0.40:5005'
     process.env.METRICS_DSN = 'mongodb://127.0.0.40:27017/metrics'
     process.env.MONGODB_DSN = `mongodb://127.0.0.40:27017/node-sdk${jestWorkerId}`
     process.env.REDIS_DSN = `redis://127.0.0.40/${jestWorkerId}`
+    process.env.RABBITMQ_HOST = `127.0.0.40`
 }
 
 
