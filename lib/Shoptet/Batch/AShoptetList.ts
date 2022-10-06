@@ -18,7 +18,7 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
     public async processAction(dto: BatchProcessDto<{ from: string }>): Promise<BatchProcessDto> {
         const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const { page, dateFrom } = JSON.parse(dto.getBatchCursor('{ "page": 1, "dateFrom": null }')) as unknown as ICursor;
+        const { page, dateFrom } = JSON.parse(dto.getBatchCursor('{ "page": 1, "dateFrom": null }')) as ICursor;
 
         let querySeparator = '?';
         if (this.endpoint.includes('?')) {

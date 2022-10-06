@@ -14,7 +14,7 @@ jest.mock('@orchesty/nodejs-sdk/dist/lib/Logger/Logger', () => ({
   Logger: jest.fn().mockImplementation(() => ({})),
 }));
 
-jest.setTimeout(10000000);
+jest.setTimeout(10000);
 
 beforeAll(async () => {
   await prepare();
