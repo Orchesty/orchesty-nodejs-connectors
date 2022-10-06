@@ -1,8 +1,8 @@
 {
     "headers": {
-        "cursor": "2",
+        "cursor": "{\"page\":2,\"dateFrom\":\"2021-12-02T11:12:58Z\"}",
         "result-code": "1010",
-        "result-message": "Message will be used as a iterator with cursor [2]. Data will be send to follower(s).",
+        "result-message": "Message will be used as a iterator with cursor [{\"page\":2,\"dateFrom\":\"2021-12-02T11:12:58Z\"}]. Data will be send to follower(s).",
         "user": "TestUser"
     },
     "data": [

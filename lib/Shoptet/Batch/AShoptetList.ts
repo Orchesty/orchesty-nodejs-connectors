@@ -18,7 +18,7 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
     public async processAction(dto: BatchProcessDto<{ from: string }>): Promise<BatchProcessDto> {
         const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const page = Number(dto.getBatchCursor('1'));
+        const { page, dateFrom } = JSON.parse(dto.getBatchCursor('{ "page": 1, "dateFrom": null }')) as ICursor;
 
         let querySeparator = '?';
         if (this.endpoint.includes('?')) {
@@ -27,9 +27,9 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
         let url = `${this.endpoint}${querySeparator}itemsPerPage=100`;
 
-        let creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
+        let creationTimeFrom = dateFrom ?? (from || ShoptetPremiumApplication.shoptetDateISO(
             appInstall.getNonEncryptedSettings()[this.lastRunKey],
-        );
+        ));
 
         if (!creationTimeFrom) {
             creationTimeFrom = this.getDefaultLastRun();
@@ -56,11 +56,13 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         );
         const paginator = this.processResult(res, dto);
 
-        if (paginator.pageCount > page) {
-            dto.setBatchCursor((page + 1).toString());
-        } else {
+        if (page === 1) {
             appInstall.addNonEncryptedSettings({ [this.lastRunKey]: new Date() });
             await (await this.getDbClient().getApplicationRepository()).update(appInstall);
+        }
+
+        if (paginator.pageCount > page) {
+            dto.setBatchCursor(JSON.stringify({ page: page + 1, dateFrom: creationTimeFrom }));
         }
 
         return dto;
@@ -78,4 +80,9 @@ export interface IPaging {
     pageCount: number;
     itemsOnPage: number;
     itemsPerPage: number;
+}
+
+export interface ICursor {
+    page: number;
+    dateFrom?: string;
 }
