@@ -1,17 +1,11 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
-import JiraApplication from '../JiraApplication';
+import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, STORY_TYPE, TASK_TYPE } from '../JiraApplication';
 
-const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/latest/issue';
-
-interface IJiraIssue {
-    description: string;
-    summary: string;
-    projectKey: string;
-    issueType: string;
-}
+const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/3/issue';
 
 export default class JiraCreateIssueConnector extends AConnector {
 
@@ -22,7 +16,7 @@ export default class JiraCreateIssueConnector extends AConnector {
     public async processAction(dto: ProcessDto<IJiraIssue>): Promise<ProcessDto> {
         checkParams(
             dto.getJsonData(),
-            ['description', 'summary', 'projectKey', 'issueType'],
+            ['description', 'summary', 'projectKey', 'issueType', 'labels'],
         );
 
         const {
@@ -30,6 +24,7 @@ export default class JiraCreateIssueConnector extends AConnector {
             summary,
             projectKey,
             issueType,
+            labels,
         } = dto.getJsonData();
 
         const application = this.getApplication<JiraApplication>();
@@ -42,8 +37,9 @@ export default class JiraCreateIssueConnector extends AConnector {
                 summary,
                 description,
                 issuetype: {
-                    name: issueType,
+                    id: this.getIssueTypeId(applicationInstall, issueType),
                 },
+                labels,
             },
         };
 
@@ -61,4 +57,33 @@ export default class JiraCreateIssueConnector extends AConnector {
         return dto;
     }
 
+    private getIssueTypeId(applicationInstall: ApplicationInstall, issueType: IssueTypeEnum): number {
+        const issueTypeForm = applicationInstall.getSettings()[ISSUE_TYPE_FROM];
+        const types = [
+            issueTypeForm?.[BUG_TYPE],
+            issueTypeForm?.[TASK_TYPE],
+            issueTypeForm?.[STORY_TYPE],
+        ];
+
+        if (types[issueType]) {
+            return types[issueType];
+        }
+
+        throw new Error(`Connector [${this.getName()}] doesn't have correct issueType.`);
+    }
+
+}
+
+export interface IJiraIssue {
+    description: string;
+    summary: string;
+    projectKey: string;
+    issueType: IssueTypeEnum;
+    labels: string[];
+}
+
+export enum IssueTypeEnum {
+    BUG = 0,
+    TASK = 1,
+    STORY = 2,
 }
