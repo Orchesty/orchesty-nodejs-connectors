@@ -1,6 +1,6 @@
 {
     "headers": {
-        "cursor": "2",
+        "cursor": "{\"page\":2,\"dateFrom\":\"2017-03-23T17:03:12Z\"}",
         "user": "TestUser"
     },
     "data": [
