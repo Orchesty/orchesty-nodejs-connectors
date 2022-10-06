@@ -11,3 +11,14 @@
 - Click on `Create and manage API tokens`
 - Click on `Create an API token`
 - Copy token and done ✅
+
+### How to get issue type id
+
+- Go to project setting
+- Click on issue types
+- Click on selected type and id is last number in url
+> Example idType
+> ```url
+> https://<organization>.atlassian.net/jira/core/projects/<projectKey>/settings/issuetypes/<idType>
+> ```
+
