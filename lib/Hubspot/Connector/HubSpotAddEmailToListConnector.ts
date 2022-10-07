@@ -10,7 +10,7 @@ export default class HubSpotAddEmailToListConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const { listId } = dto.getJsonData();
+        const { listId, ...data } = dto.getJsonData();
 
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
@@ -19,7 +19,7 @@ export default class HubSpotAddEmailToListConnector extends AConnector {
             applicationInstall,
             HttpMethods.POST,
             `${BASE_URL}/contacts/v1/lists/${listId}/add`,
-            dto.getData(),
+            JSON.stringify(data),
         );
 
         const response = await this.getSender().send(request, [200]);
@@ -32,7 +32,7 @@ export default class HubSpotAddEmailToListConnector extends AConnector {
 }
 
 export interface IInput {
-    emails: string[];
-    vids: number[];
+    emails?: string[];
+    vids?: number[];
     listId: number;
 }
