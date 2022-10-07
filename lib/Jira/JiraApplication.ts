@@ -17,6 +17,10 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { BodyInit } from 'node-fetch';
 
 const PREFIX_URL = 'prefix_url';
+export const ISSUE_TYPE_FROM = 'issue_type_from';
+export const BUG_TYPE = 'bug_type';
+export const TASK_TYPE = 'task_type';
+export const STORY_TYPE = 'story_type';
 
 export default class JiraApplication extends ABasicApplication {
 
@@ -77,7 +81,14 @@ export default class JiraApplication extends ABasicApplication {
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
 
-        return new FormStack().addForm(form);
+        const issueTypesForm = new Form(ISSUE_TYPE_FROM, 'Issue type settings')
+            .addField(new Field(FieldType.NUMBER, BUG_TYPE, 'Bug type id', undefined, true))
+            .addField(new Field(FieldType.NUMBER, TASK_TYPE, 'Task type id', undefined, true))
+            .addField(new Field(FieldType.NUMBER, STORY_TYPE, 'Story type id', undefined, true));
+
+        return new FormStack()
+            .addForm(form)
+            .addForm(issueTypesForm);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
