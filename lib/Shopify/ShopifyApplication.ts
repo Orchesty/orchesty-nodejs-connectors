@@ -9,6 +9,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -85,7 +86,12 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     public async saveApplicationForms(applicationInstall: ApplicationInstall, settings: IApplicationSettings):
     Promise<ApplicationInstall> {
         const appInstall = await super.saveApplicationForms(applicationInstall, settings);
-        await this.checkShopPlan(applicationInstall);
+        try {
+            await this.checkShopPlan(applicationInstall);
+        } catch (e) {
+            logger.error((e as { message?: string })?.message ?? 'Unknown error.', {}, true);
+        }
+
         return appInstall;
     }
 
@@ -98,7 +104,8 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
         const settings = applicationInstall.getSettings();
         return !!(settings?.[AUTHORIZATION_FORM]
           && settings?.[AUTHORIZATION_FORM]?.[TOKEN]
-          && settings?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL]);
+          && settings?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL]
+          && settings?.[AUTHORIZATION_FORM]?.[PREMIUM_PLAN] !== undefined);
     }
 
     public getFormStack(): FormStack {
