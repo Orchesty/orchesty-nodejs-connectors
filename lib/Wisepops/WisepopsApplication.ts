@@ -16,7 +16,7 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BodyInit } from 'node-fetch';
 
 const API_KEY = 'api_key';
-const WISEPOOPS_URL = 'https://app.wisepops.com/api1/hooks';
+const WISEPOPS_URL = 'https://app.wisepops.com/api1/hooks';
 const EMAIL_EVENT = 'email';
 
 export default class WisepopsApplication extends ABasicApplication implements IWebhookApplication {
@@ -82,7 +82,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
             request,
             applicationInstall,
             HttpMethods.POST,
-            WISEPOOPS_URL,
+            WISEPOPS_URL,
             JSON.stringify({
                 // eslint-disable-next-line @typescript-eslint/naming-convention
                 target_url: url,
@@ -103,7 +103,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
             request,
             applicationInstall,
             HttpMethods.DELETE,
-            `${WISEPOOPS_URL}?hook_id=${id}`,
+            `${WISEPOPS_URL}?hook_id=${id}`,
         );
     }
 

@@ -1,23 +1,27 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import {
     ABasicApplication,
     TOKEN,
-    USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
-import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
+export const OWNER = 'owner';
+export const REPOSITORY = 'repository';
 export const NAME = 'git-hub';
 
-export default class GitHubApplication extends ABasicApplication {
+export default class GitHubApplication extends ABasicApplication implements IWebhookApplication {
 
     public getName(): string {
         return NAME;
@@ -37,15 +41,16 @@ export default class GitHubApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, USER, ' User name', undefined, true))
-            .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true));
+            .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true))
+            .addField(new Field(FieldType.TEXT, OWNER, ' Owner', undefined, true))
+            .addField(new Field(FieldType.TEXT, REPOSITORY, ' Repository', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
-        return authorizationForm?.[USER] && authorizationForm?.[TOKEN];
+        return authorizationForm?.[TOKEN] && authorizationForm?.[OWNER] && authorizationForm?.[REPOSITORY];
     }
 
     public getRequestDto(
@@ -56,11 +61,14 @@ export default class GitHubApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://api.github.com${uri}`, method, dto);
+        if (!this.isAuthorized(applicationInstall)) {
+            throw new Error(`Application [${this.getPublicName()}] is not authorized!`);
+        }
         const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: 'application/vnd.github+json',
-            [CommonHeaders.AUTHORIZATION]: encode(`${form[USER] ?? ''}:${form[TOKEN] ?? ''}`),
+            [CommonHeaders.AUTHORIZATION]: `Bearer ${form[TOKEN]}`,
         });
 
         if (data) {
@@ -68,6 +76,60 @@ export default class GitHubApplication extends ABasicApplication {
         }
 
         return request;
+    }
+
+    public getWebhookSubscribeRequestDto(
+        applicationInstall: ApplicationInstall,
+        subscription: WebhookSubscription,
+        url: string,
+    ): RequestDto {
+        const request = new ProcessDto();
+        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+        return this.getRequestDto(
+            request,
+            applicationInstall,
+            HttpMethods.POST,
+            `repos/${form?.[OWNER]}/${form?.[REPOSITORY]}/hooks`,
+            JSON.stringify({
+                config: {
+                    url,
+                    // eslint-disable-next-line @typescript-eslint/naming-convention
+                    content_type: 'json',
+                },
+                name: 'web',
+                events: [subscription.getName()],
+            }),
+        );
+    }
+
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [
+            new WebhookSubscription('issues', '', ''),
+            new WebhookSubscription('pull-request', '', ''),
+        ];
+    }
+
+    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
+        const request = new ProcessDto();
+        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+        return this.getRequestDto(
+            request,
+            applicationInstall,
+            HttpMethods.DELETE,
+            `repos/${form?.[OWNER]}/${form?.[REPOSITORY]}/hooks/${id}`,
+        );
+    }
+
+    public processWebhookSubscribeResponse(
+        dto: ResponseDto,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        applicationInstall: ApplicationInstall,
+    ): string {
+        return (dto.getJsonBody() as { id: string }).id;
+    }
+
+    public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
+        return dto.getResponseCode() === 204;
     }
 
 }
