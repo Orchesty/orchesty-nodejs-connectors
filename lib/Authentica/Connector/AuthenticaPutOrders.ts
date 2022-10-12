@@ -62,7 +62,7 @@ export interface IOrder {
     items: {
         sku: string;
         quantity: number;
-        unitPrice: number;
+        unitPrice: number | null;
     }[];
     variableSymbol: string | null;
 }
