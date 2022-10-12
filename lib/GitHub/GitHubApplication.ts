@@ -42,8 +42,8 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
     public getFormStack(): FormStack {
         const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true))
-            .addField(new Field(FieldType.TEXT, OWNER, ' Owner', undefined, true))
-            .addField(new Field(FieldType.TEXT, REPOSITORY, ' Repository', undefined, true));
+            .addField(new Field(FieldType.TEXT, OWNER, ' Owner'))
+            .addField(new Field(FieldType.TEXT, REPOSITORY, ' Repository'));
 
         return new FormStack().addForm(form);
     }

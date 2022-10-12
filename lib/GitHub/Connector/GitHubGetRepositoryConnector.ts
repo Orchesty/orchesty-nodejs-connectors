@@ -11,14 +11,14 @@ export default class GitHubGetRepositoryConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const { user, repo } = dto.getJsonData();
+        const { org, repo } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
         const request = await this.getApplication().getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,
-            `/repos/${user}/${repo}`,
+            `/repos/${org}/${repo}`,
         );
         const response = await this.getSender().send(request, [200]);
         dto.setData(response.getBody());
@@ -28,6 +28,6 @@ export default class GitHubGetRepositoryConnector extends AConnector {
 }
 
 interface IInput {
-    user: string;
+    org: string;
     repo: string;
 }

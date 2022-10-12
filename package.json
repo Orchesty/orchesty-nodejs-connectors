@@ -19,7 +19,7 @@
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.1.23",
+        "@orchesty/nodejs-sdk": "^3.1.24",
         "@types/luxon": "^3.0.1",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",

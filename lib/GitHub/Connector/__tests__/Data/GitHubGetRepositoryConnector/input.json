@@ -3,7 +3,7 @@
         "user": "TestUser"
     },
     "data": {
-        "user": "Orchesty",
+        "org": "Orchesty",
         "repo": "orchesty-nodejs-connectors"
     }
 }
