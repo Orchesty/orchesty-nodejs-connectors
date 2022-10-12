@@ -15,7 +15,7 @@ export default abstract class AShoptetConnector extends AConnector {
         );
         const resp = await this.getSender().send(
             requestDto,
-            [200, createFailRange(422)],
+            [200, createFailRange(404, 422)],
         );
 
         return resp.getJsonBody();
