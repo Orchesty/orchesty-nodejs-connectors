@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import KatanaListProductsBatch from '../../lib/Katana/Batch/KatanaListProductsBatch';
 import KatanaCreateCustomerConnector from '../../lib/Katana/Connector/KatanaCreateCustomerConnector';
 import KatanaCreateProductConnector from '../../lib/Katana/Connector/KatanaCreateProductConnector';
@@ -8,7 +8,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(KATANA_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },
     });

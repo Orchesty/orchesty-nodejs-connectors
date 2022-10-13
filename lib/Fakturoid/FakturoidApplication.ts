@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -45,8 +45,8 @@ export default class FakturoidApplication extends ABasicApplication {
         url?: string,
         data?: BodyInit,
     ): RequestDto {
-        const userName = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
-        const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
+        const userName = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
+        const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
         const headers = new Headers({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -57,7 +57,7 @@ export default class FakturoidApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, ACCOUNT, 'Account', null, true))
             .addField(new Field(FieldType.TEXT, USER, 'Username', null, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'API key', null, true));
@@ -66,7 +66,7 @@ export default class FakturoidApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[ACCOUNT] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD];
     }
 

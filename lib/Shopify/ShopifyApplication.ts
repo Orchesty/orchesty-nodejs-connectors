@@ -1,5 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import {
     ApplicationInstall,
     IApplicationSettings,
@@ -26,24 +25,10 @@ const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
 const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
 
-export default class ShopifyApplication extends ABasicApplication implements ILimitedApplication {
+export default class ShopifyApplication extends ABasicApplication {
 
     public constructor(private readonly curlSender: CurlSender) {
         super();
-    }
-
-    public injectLimit(dto: AProcessDto, appInstall: ApplicationInstall): AProcessDto {
-        const premium = appInstall.getSettings()[PREMIUM_PLAN];
-        let amount = 2;
-        if (premium) {
-            amount = 4;
-        }
-        dto.setLimiter(
-            appInstall.getName(),
-            1,
-            amount,
-        );
-        return dto;
     }
 
     public getDescription(): string {
@@ -71,7 +56,7 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const headers = {
-            [API_KEY_HEADER]: settings[AUTHORIZATION_FORM][TOKEN],
+            [API_KEY_HEADER]: settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN],
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
@@ -97,19 +82,19 @@ export default class ShopifyApplication extends ABasicApplication implements ILi
 
     public getDecoratedUrl(app: ApplicationInstall): string {
         return app
-            .getSettings()?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL] ?? '';
+            .getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[SHOPIFY_URL] ?? '';
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const settings = applicationInstall.getSettings();
-        return !!(settings?.[AUTHORIZATION_FORM]
-          && settings?.[AUTHORIZATION_FORM]?.[TOKEN]
-          && settings?.[AUTHORIZATION_FORM]?.[SHOPIFY_URL]
-          && settings?.[AUTHORIZATION_FORM]?.[PREMIUM_PLAN] !== undefined);
+        return !!(settings?.[CoreFormsEnum.AUTHORIZATION_FORM]
+          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN]
+          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[SHOPIFY_URL]
+          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PREMIUM_PLAN] !== undefined);
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
             .addField(new Field(FieldType.TEXT, SHOPIFY_URL, 'Url', undefined, true));
 

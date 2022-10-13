@@ -1,9 +1,9 @@
-import { TIME, USE_LIMIT, VALUE } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { CoreFormsEnum } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import { GROUP_TIME, GROUP_VALUE, TIME, USE_LIMIT, VALUE } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import { APPLICATIONS, getLimiterKey } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { APPLICATIONS, getLimiterKey, getLimiterKeyWithGroup } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
 export default class ListUsers extends ABatchNode {
@@ -95,15 +95,31 @@ export default class ListUsers extends ABatchNode {
             return '';
         }
 
-        const useLimit = limiterForm?.[USE_LIMIT] ?? undefined;
-        if (!useLimit) {
-            return '';
-        }
-
         const time = limiterForm?.[TIME] ?? undefined;
         const value = limiterForm?.[VALUE] ?? undefined;
 
-        return getLimiterKey(`${user}|${appInstall.getName()}`, time, value);
+        const useLimit = limiterForm?.[USE_LIMIT] ?? undefined;
+        if (!useLimit || !time || !value) {
+            return '';
+        }
+
+        const groupTime = limiterForm?.[GROUP_TIME] ?? undefined;
+        const groupValue = limiterForm?.[GROUP_VALUE] ?? undefined;
+
+        const key = `${user}|${appInstall.getName()}`;
+
+        if (groupTime && groupValue) {
+            return getLimiterKeyWithGroup(
+                key,
+                time,
+                value,
+                `|${appInstall.getName()}`,
+                groupTime,
+                groupValue,
+            );
+        }
+
+        return getLimiterKey(key, time, value);
     }
 
 }

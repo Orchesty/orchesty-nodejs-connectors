@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -33,7 +33,7 @@ export default class BulkGateApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, APPLICATION_ID, 'Application Id', undefined, true))
             .addField(new Field(FieldType.TEXT, APPLICATION_TOKEN, 'Application token', undefined, true));
 
@@ -41,13 +41,13 @@ export default class BulkGateApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[APPLICATION_ID] && authorizationForm?.[APPLICATION_TOKEN];
     }
 
     public getRequestDto(
         dto: AProcessDto,
-        applicationInstall: ApplicationInstall,
+        appInstall: ApplicationInstall,
         method: HttpMethods,
         _url?: string,
         data?: unknown,
@@ -61,8 +61,8 @@ export default class BulkGateApplication extends ABasicApplication {
 
         if (data) {
             const newBody = {
-                [APPLICATION_ID]: applicationInstall.getSettings()[AUTHORIZATION_FORM][APPLICATION_ID],
-                [APPLICATION_TOKEN]: applicationInstall.getSettings()[AUTHORIZATION_FORM][APPLICATION_TOKEN],
+                [APPLICATION_ID]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APPLICATION_ID],
+                [APPLICATION_TOKEN]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APPLICATION_TOKEN],
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 ...data as any,
             };

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -15,7 +15,7 @@ export default class BigcommerceCreateProductConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const body = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const storeHash = appInstall.getSettings()[AUTHORIZATION_FORM][STORE_HASH];
+        const storeHash = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][STORE_HASH];
         const url = `${storeHash}/v3/catalog/products`;
         const req = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.POST, url, body);
 

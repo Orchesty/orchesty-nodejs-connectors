@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -27,7 +27,7 @@ export default abstract class AFakturoidConnector extends AConnector {
         }
 
         const url = `${BASE_URL}/${BASE_ACCOUNTS}/${applicationInstall
-            .getSettings()[AUTHORIZATION_FORM][ACCOUNT]}/${this.endpoint}`;
+            .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][ACCOUNT]}/${this.endpoint}`;
         const arrayBodyMethods: string[] = [HttpMethods.POST, HttpMethods.PUT, HttpMethods.PATCH];
         if (arrayBodyMethods.includes(this.method)) {
             body = dto.getData();

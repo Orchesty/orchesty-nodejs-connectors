@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -33,7 +33,7 @@ export default class ActiveCampaignApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, APPLICATION_KEY, 'Application key', undefined, true))
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Account name', undefined, true));
 
@@ -41,7 +41,7 @@ export default class ActiveCampaignApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[APPLICATION_KEY] && authorizationForm?.[SUBDOMAIN];
     }
 
@@ -53,8 +53,8 @@ export default class ActiveCampaignApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const token = settings[AUTHORIZATION_FORM][APPLICATION_KEY];
-        const subdomain = settings[AUTHORIZATION_FORM][SUBDOMAIN];
+        const token = settings[CoreFormsEnum.AUTHORIZATION_FORM][APPLICATION_KEY];
+        const subdomain = settings[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
         const url = `https://${subdomain}.api-us1.com/api/3/${_url}`;
         const request = new RequestDto(url, method, dto);
         request.setHeaders({

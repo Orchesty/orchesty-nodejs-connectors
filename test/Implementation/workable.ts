@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import WorkableGetAccountsBatch from '../../lib/Workable /Batch/WorkableGetAccountsBatch';
 import WorkableJobsBatch from '../../lib/Workable /Batch/WorkableJobsBatch';
 import WorkableApplication, { ACCESS_TOKEN, NAME, SUBDOMAIN } from '../../lib/Workable /WorkableApplication';
@@ -9,7 +9,7 @@ import {
 
 export default async function init(): Promise<void> {
     await appInstall(NAME, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             [SUBDOMAIN]: 'hb-6',
         },

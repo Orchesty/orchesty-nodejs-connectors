@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -21,7 +21,7 @@ export default class GreenHouseAddCandidateConnector extends AConnector {
             'candidates',
             { data: dto.getJsonData() },
         );
-        const username = appInstall.getSettings()[AUTHORIZATION_FORM][USERNAME];
+        const username = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USERNAME];
         req.addHeaders({ 'On-Behalf-Of': username }); // eslint-disable-line
         const resp = await this.getSender().send<IOutput>(req, [200]);
 

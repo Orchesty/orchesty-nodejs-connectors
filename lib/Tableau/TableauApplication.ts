@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -71,7 +71,7 @@ export default class TableauApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(
                 FieldType.TEXT,
                 PREFIX_SITE,
@@ -87,7 +87,7 @@ export default class TableauApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[TOKEN] && authorizationForm?.[TOKEN_NAME] && authorizationForm?.[CONTENT_URL];
     }
 
@@ -96,14 +96,14 @@ export default class TableauApplication extends ABasicApplication {
         const date = new Date();
         date.setDate(date.getDate() + MAX_EXPIRE);
         applicationInstall.setExpires(date);
-        applicationInstall.addSettings({ [AUTHORIZATION_FORM]: { [TOKEN]: token } });
-        applicationInstall.addSettings({ [AUTHORIZATION_FORM]: { [SITE_ID]: siteId } });
+        applicationInstall.addSettings({ [CoreFormsEnum.AUTHORIZATION_FORM]: { [TOKEN]: token } });
+        applicationInstall.addSettings({ [CoreFormsEnum.AUTHORIZATION_FORM]: { [SITE_ID]: siteId } });
 
         return applicationInstall;
     }
 
     private getUrl(applicationInstall: ApplicationInstall): string {
-        const prefix = applicationInstall.getSettings()[AUTHORIZATION_FORM][PREFIX_SITE];
+        const prefix = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PREFIX_SITE];
         if (prefix) {
             return BASE_URL.replace('replace_me', prefix);
         }
@@ -112,13 +112,13 @@ export default class TableauApplication extends ABasicApplication {
 
     private async getOrRefreshToken(applicationInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
         let appInstall = applicationInstall;
-        const expires = appInstall.getSettings()?.[AUTHORIZATION_FORM]?.[EXPIRES];
+        const expires = appInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[EXPIRES];
         if (!expires || expires > new Date()) {
             appInstall = await this.setSettings(appInstall, dto);
             await (await this.dbClient.getApplicationRepository()).upsert(appInstall);
         }
 
-        return appInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN];
+        return appInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN];
     }
 
     private async getToken(
@@ -129,7 +129,7 @@ export default class TableauApplication extends ABasicApplication {
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         });
-        const form = applicationInstall.getSettings()?.[AUTHORIZATION_FORM];
+        const form = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM];
         checkParams(form, [TOKEN_NAME, TOKEN_SECRET, PREFIX_SITE]);
         const data = {
             credentials: {

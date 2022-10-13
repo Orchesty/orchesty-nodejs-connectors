@@ -5,7 +5,7 @@
     "data": [
         {
             "body": "{\"ContactID\":\"4741c7d3-6398-45d6-9213-6b599d7cb8f0\",\"ContactStatus\":\"ACTIVE\",\"Name\":\"Hanaboso\",\"FirstName\":\"pepa\",\"LastName\":\"flinta\",\"EmailAddress\":\"name.k@gmail.com\",\"Addresses\":[{\"AddressType\":\"POBOX\"},{\"AddressType\":\"STREET\"}],\"Phones\":[{\"PhoneType\":\"DDI\"},{\"PhoneType\":\"DEFAULT\"},{\"PhoneType\":\"FAX\"},{\"PhoneType\":\"MOBILE\"}],\"UpdatedDateUTC\":\"/Date(1660901631360+0000)/\",\"ContactGroups\":[],\"IsSupplier\":false,\"IsCustomer\":false,\"ContactPersons\":[],\"HasAttachments\":false,\"HasValidationErrors\":false}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

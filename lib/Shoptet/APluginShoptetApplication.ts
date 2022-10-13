@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
@@ -64,7 +64,7 @@ export default abstract class APluginShoptetApplication extends ABaseShoptet {
                 this.getName()
             }ApiKey_${applicationInstall.getUser()}`;
             const lockKey = `${this.shoptetLocker}_${applicationInstall.getUser()}`;
-            const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+            const settings = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
             const accessToken = settings[TOKEN];
             const headers = {
                 [CommonHeaders.AUTHORIZATION]: `Bearer ${accessToken}`,

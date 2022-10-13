@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import CeskaPostaApplication, {
     API_TOKEN,
     NAME as CESKAPOSTA_APP,
@@ -12,7 +12,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
             [SECRET_KEY]: 'secret key',
         },

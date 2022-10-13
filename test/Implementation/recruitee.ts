@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import RecruiteeGetOffersBatch from '../../lib/Recruitee/Batch/RecruiteeGetOffersBatch';
 import RecruiteeListCandidatesBatch from '../../lib/Recruitee/Batch/RecruiteeListCandidatesBatch';
 import
@@ -9,7 +9,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(RECRUITEE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
             [YOUR_COMPANY]: 'your_company',
         },

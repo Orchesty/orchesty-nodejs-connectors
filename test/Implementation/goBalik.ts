@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import GObalikCreateOrderConnector from '../../lib/GObalik/Connectors/GObalikCreateOrderConnector';
 import GObalikOrderDetailConnector from '../../lib/GObalik/Connectors/GObalikOrderDetailConnector';
@@ -9,7 +9,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(GOBALIK_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,
         },

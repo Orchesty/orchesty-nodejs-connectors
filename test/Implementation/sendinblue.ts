@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import SendiblueCreateCampaignConnector from '../../lib/Sendinblue/Connector/SendiblueCreateCampaignConnector';
 import SendinblueSendEmailConnector from '../../lib/Sendinblue/Connector/SendinblueSendEmailConnector';
 import SendinblueApplication, { API_KEY, NAME as SENDINBLUE_APP } from '../../lib/Sendinblue/SendinblueApplication';
@@ -7,7 +7,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(SENDINBLUE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },
     });

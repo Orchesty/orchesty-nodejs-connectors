@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import MerkGetCompanyConnector from '../../lib/Merk/Connector/MerkGetCompanyConnector';
 import MerkSuggestConnector from '../../lib/Merk/Connector/MerkSuggestConnector';
 import MerkApplication, { API_KEY, NAME as MERK_APP } from '../../lib/Merk/MerkApplication';
@@ -7,7 +7,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(MERK_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },
     });

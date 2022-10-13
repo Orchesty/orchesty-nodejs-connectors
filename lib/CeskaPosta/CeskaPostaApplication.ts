@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -38,7 +38,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true))
             .addField(new Field(FieldType.TEXT, SECRET_KEY, 'secret key', undefined, true));
 
@@ -46,7 +46,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[API_TOKEN] && authorizationForm?.[SECRET_KEY];
     }
 
@@ -58,7 +58,7 @@ export default class CeskaPostaApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const uuidv4 = randomUUID();
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         const timestamp = DateTimeUtils.getTimestamp(DateTimeUtils.getUtcDate()) / 1000;
         const url = `https://b2b.postaonline.cz:444/restservices/ZSKService/v1/${uri}`;
         const request = new RequestDto(url, method, dto);

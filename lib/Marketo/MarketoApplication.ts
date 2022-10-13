@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -38,7 +38,7 @@ export default class MarketoApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
             .addField(new Field(FieldType.TEXT, MARKETO_URL, 'marketo url', undefined, true));
@@ -47,7 +47,7 @@ export default class MarketoApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[MARKETO_URL];
     }
 
@@ -59,9 +59,9 @@ export default class MarketoApplication extends ABasicApplication {
         data?: unknown,
     ): Promise<RequestDto> {
         const settings = applicationInstall.getSettings();
-        const id = settings[AUTHORIZATION_FORM][CLIENT_ID];
-        const secret = settings[AUTHORIZATION_FORM][CLIENT_SECRET];
-        const baseUrl = settings[AUTHORIZATION_FORM][MARKETO_URL];
+        const id = settings[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID];
+        const secret = settings[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET];
+        const baseUrl = settings[CoreFormsEnum.AUTHORIZATION_FORM][MARKETO_URL];
         const logInRequest = new RequestDto(
             `${baseUrl}/identity/oauth/token?grant_type=client_credentials&client_id=${id}&client_secret=${secret}`,
             HttpMethods.GET,

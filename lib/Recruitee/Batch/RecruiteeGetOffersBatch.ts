@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
@@ -14,7 +14,7 @@ export default class RecruiteeGetOffersBatch extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const yourCompany = appInstall.getSettings()[AUTHORIZATION_FORM][YOUR_COMPANY];
+        const yourCompany = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][YOUR_COMPANY];
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,

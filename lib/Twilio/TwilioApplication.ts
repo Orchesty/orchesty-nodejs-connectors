@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -43,8 +43,8 @@ export default class TwilioApplication extends ABasicApplication {
         url?: string,
         data?: BodyInit,
     ): Promise<RequestDto> | RequestDto {
-        const userName = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
-        const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
+        const userName = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
+        const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
         const headers = new Headers({
             [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -56,7 +56,7 @@ export default class TwilioApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'ACCOUNT SID', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'AUTH TOKEN', undefined, true));
 

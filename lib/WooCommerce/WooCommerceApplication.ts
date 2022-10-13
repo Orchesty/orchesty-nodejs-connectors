@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -48,7 +48,7 @@ export default class WooCommerceApplication extends ABasicApplication {
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const base64 = encode(
-            `${settings[AUTHORIZATION_FORM][USER]}:${settings[AUTHORIZATION_FORM][PASSWORD]}`,
+            `${settings[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:${settings[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`,
         );
         const headers = {
             [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
@@ -70,11 +70,11 @@ export default class WooCommerceApplication extends ABasicApplication {
 
     public getDecoratedUrl(app: ApplicationInstall): string {
         return app
-            .getSettings()?.[AUTHORIZATION_FORM]?.[WOOCOMMERCE_URL] ?? '';
+            .getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[WOOCOMMERCE_URL] ?? '';
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
             .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Url', undefined, true));
@@ -83,7 +83,7 @@ export default class WooCommerceApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[USER] && authorizationForm?.[PASSWORD] && authorizationForm?.[WOOCOMMERCE_URL];
     }
 

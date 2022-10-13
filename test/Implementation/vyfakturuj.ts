@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import VyfakturujCreateContactConnector from '../../lib/Vyfakturuj/Connector/VyfakturujCreateContactConnector';
 import VyfakturujCreateInvoiceConnector from '../../lib/Vyfakturuj/Connector/VyfakturujCreateInvoiceConnector';
 import VyfakturujApplication, { API_KEY, NAME as VYFAKTURUJ_APP, USER_EMAIL } from '../../lib/Vyfakturuj/VyfakturujApplication';
@@ -7,7 +7,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER_EMAIL]: 'info@examle.com',
             [API_KEY]: 'Api key',
         },
