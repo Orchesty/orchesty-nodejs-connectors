@@ -5,7 +5,7 @@
     "data": [
         {
             "body": "{\"creation_date\":\"2016-11-02T09:12:09+00:00\",\"forum_url\":\"bidding-fox\",\"latest_release_date\":\"2016-11-02T09:12:10+00:00\",\"title\":\"Bidding Fox\",\"trial_period\":10,\"type\":\"project\"}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

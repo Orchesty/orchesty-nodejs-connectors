@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -37,7 +37,7 @@ export default class PersonioApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, CLIENT_ID, ' client id', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'client secret', undefined, true));
 
@@ -45,7 +45,7 @@ export default class PersonioApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
     }
 
@@ -71,8 +71,8 @@ export default class PersonioApplication extends ABasicApplication {
     }
 
     private async getAuthorizationCode(appInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
-        const clientId = appInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_ID];
-        const clientSecret = appInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_SECRET];
+        const clientId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID];
+        const clientSecret = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET];
         const req = new RequestDto(
             `https://api.personio.de/v1/auth?client_id=${clientId}&client_secret=${clientSecret}`,
             HttpMethods.GET,

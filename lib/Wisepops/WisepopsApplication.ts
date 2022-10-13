@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -50,7 +50,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.AUTHORIZATION]:
             /* eslint-enable @typescript-eslint/naming-convention */
-                `WISEPOPS-API key="${applicationInstall.getSettings()[AUTHORIZATION_FORM][API_KEY]}"`,
+                `WISEPOPS-API key="${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY]}"`,
         });
 
         if (data) {
@@ -61,14 +61,14 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, API_KEY, 'API Key', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[API_KEY];
     }
 

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -78,19 +78,19 @@ export default class FlexiBeeApplication extends ABasicApplication {
         data?: BodyInit,
     ): Promise<RequestDto> {
         let headers = new Headers();
-        if (applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH] === AUTH_JSON) {
+        if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH] === AUTH_JSON) {
             headers = new Headers({
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
                 [X_AUTH_SESSION_ID]: await this.getApiToken(applicationInstall, dto),
             });
-        } else if (applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH] === AUTH_HTTP) {
+        } else if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH] === AUTH_HTTP) {
             headers = new Headers({
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
                 [CommonHeaders.AUTHORIZATION]: `Basic 
-        ${encode(`${applicationInstall.getSettings()[AUTHORIZATION_FORM][USER]}:
-        ${applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD]}`)}`,
+        ${encode(`${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:
+        ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`)}`,
             });
         }
 
@@ -101,7 +101,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
         const authTypeField = new Field(FieldType.SELECT_BOX, AUTH, 'Authorize type', null, true);
         authTypeField.setChoices([AUTH_HTTP, AUTH_JSON]);
 
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', null, true))
             .addField(new Field(FieldType.URL, FLEXIBEE_URL, 'Flexibee URL', null, true))
             .addField(authTypeField);
@@ -110,12 +110,12 @@ export default class FlexiBeeApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[PASSWORD] && authorizationForm?.[FLEXIBEE_URL];
     }
 
     public getUrl(applicationInstall: ApplicationInstall, url?: string): string {
-        const host = applicationInstall.getSettings()[AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
+        const host = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
 
         if (host) {
             throw Error('There is no flexibee url');
@@ -179,8 +179,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
             throw new Error('User is not authenticated');
         }
 
-        const user = setting[AUTHORIZATION_FORM][USER];
-        const password = setting[AUTHORIZATION_FORM][PASSWORD];
+        const user = setting[CoreFormsEnum.AUTHORIZATION_FORM][USER];
+        const password = setting[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
         const headers = {
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -40,7 +40,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true))
             .addField(new Field(FieldType.TEXT, OWNER, ' Owner'))
             .addField(new Field(FieldType.TEXT, REPOSITORY, ' Repository'));
@@ -49,7 +49,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[TOKEN] && authorizationForm?.[OWNER] && authorizationForm?.[REPOSITORY];
     }
 
@@ -64,7 +64,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
         if (!this.isAuthorized(applicationInstall)) {
             throw new Error(`Application [${this.getPublicName()}] is not authorized!`);
         }
-        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+        const form = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: 'application/vnd.github+json',
@@ -84,7 +84,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
         url: string,
     ): RequestDto {
         const request = new ProcessDto();
-        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+        const form = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
         return this.getRequestDto(
             request,
             applicationInstall,
@@ -111,7 +111,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
         const request = new ProcessDto();
-        const form = applicationInstall.getSettings()[AUTHORIZATION_FORM] ?? {};
+        const form = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
         return this.getRequestDto(
             request,
             applicationInstall,

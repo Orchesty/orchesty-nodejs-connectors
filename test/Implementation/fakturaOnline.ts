@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import FakturaonlineCreateNewInvoiceConnector
     from '../../lib/Fakturaonline/Connector/FakturaonlineCreateNewInvoiceConnector';
 import FakturaonlineGetInvoiceConnector from '../../lib/Fakturaonline/Connector/FakturaonlineGetInvoiceConnector';
@@ -12,7 +12,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'api_key',
         },
     });

@@ -1,5 +1,5 @@
 import { LambdaClient } from '@aws-sdk/client-lambda';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -28,7 +28,7 @@ export default class LambdaApplication extends AAwsApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, KEY, 'Key', undefined, true))
             .addField(new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true))
             .addField(new Field(FieldType.SELECT_BOX, REGION, 'Region', undefined, true).setChoices(REGIONS));
@@ -37,12 +37,12 @@ export default class LambdaApplication extends AAwsApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[KEY] && authorizationForm?.[SECRET] && authorizationForm?.[REGION];
     }
 
     public getLambdaClient(applicationInstall: ApplicationInstall): LambdaClient {
-        const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const settings = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
 
         return new LambdaClient({
             [CREDENTIALS]: {

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import AAwsObjectConnector from '../../AAwsObjectConnector';
 import { BUCKET } from '../S3Application';
@@ -10,7 +10,7 @@ export default abstract class AS3ObjectConnector extends AAwsObjectConnector {
     }
 
     public getBucket(applicationInstall: ApplicationInstall): string {
-        return applicationInstall.getSettings()[AUTHORIZATION_FORM][BUCKET];
+        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BUCKET];
     }
 
 }

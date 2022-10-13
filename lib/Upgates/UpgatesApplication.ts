@@ -1,5 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
-import { ILimitedApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ILimitedApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -20,17 +19,7 @@ export const NAME = 'upgates';
 
 const UPGATES_URL = 'upgatesUrl';
 
-export default class UpgatesApplication extends ABasicApplication implements ILimitedApplication {
-
-    public injectLimit(dto: AProcessDto, appInstall: ApplicationInstall): AProcessDto {
-        dto.setLimiter(
-            appInstall.getName(),
-            1,
-            3,
-        );
-
-        return dto;
-    }
+export default class UpgatesApplication extends ABasicApplication {
 
     public getDescription(): string {
         return 'Customizable e-shop solution that you can tailor to your needs and ideas';
@@ -57,7 +46,7 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const base64 = encode(
-            `${settings[AUTHORIZATION_FORM][USER]}:${settings[AUTHORIZATION_FORM][PASSWORD]}`,
+            `${settings[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:${settings[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`,
         );
         const headers = {
             [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,
@@ -74,11 +63,11 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
     }
 
     public getDecoratedUrl(app: ApplicationInstall): string {
-        return app.getSettings()?.[AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
+        return app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
             .addField(new Field(FieldType.URL, UPGATES_URL, 'Url', undefined, true));
@@ -87,7 +76,7 @@ export default class UpgatesApplication extends ABasicApplication implements ILi
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[USER] && authorizationForm?.[PASSWORD] && authorizationForm?.[UPGATES_URL];
     }
 

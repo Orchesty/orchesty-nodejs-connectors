@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
@@ -20,7 +20,7 @@ export default class Magento2GetOrders extends ABatchNode {
         const app = this.getApplication<Magento2Application>();
         const currentPage = Number(dto.getBatchCursor('1'));
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const host = appInstall.getSettings()[AUTHORIZATION_FORM][MAGENTO_URL];
+        const host = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][MAGENTO_URL];
         const url = `${host}/${GET_ORDERS_ENDPOINT}`
             .replace('{items_per_page}', ITEMS_PER_PAGE.toString())
             .replace('{current_page}', currentPage.toString());

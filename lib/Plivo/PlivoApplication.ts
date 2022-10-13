@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -34,7 +34,7 @@ export default class PlivoApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, AUTH_ID, ' Authorization id', undefined, true))
             .addField(new Field(FieldType.PASSWORD, AUTH_TOKEN, ' Authorization token', undefined, true));
 
@@ -42,7 +42,7 @@ export default class PlivoApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[AUTH_ID] && authorizationForm?.[AUTH_TOKEN];
     }
 
@@ -54,8 +54,8 @@ export default class PlivoApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://api.plivo.com/v1/${url}`, method, dto);
-        const id = applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH_ID];
-        const token = applicationInstall.getSettings()[AUTHORIZATION_FORM][AUTH_TOKEN];
+        const id = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH_ID];
+        const token = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH_TOKEN];
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,

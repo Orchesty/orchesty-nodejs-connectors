@@ -10,7 +10,7 @@ specifiers:
   '@aws-sdk/client-s3': ^3.186.0
   '@cloudamqp/amqp-client': ^2.1.0
   '@hanaboso/eslint-plugin': ^1.0.4
-  '@orchesty/nodejs-sdk': ^3.1.24
+  '@orchesty/nodejs-sdk': ^3.2.0
   '@types/debug': ^4.1.7
   '@types/jest': ^29.1.2
   '@types/luxon': ^3.0.1
@@ -45,7 +45,7 @@ specifiers:
   typescript: ^4.8.4
 
 dependencies:
-  '@orchesty/nodejs-sdk': 3.1.24
+  '@orchesty/nodejs-sdk': 3.2.0
   '@types/luxon': 3.0.1
   '@types/node-fetch': 2.6.2
   form-data: 4.0.0
@@ -2720,8 +2720,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk/3.1.24:
-    resolution: {integrity: sha512-LMwj8ggHJWqyFDHCrkXGPBac+GsR2aFtWFP7AzVZb/JpOKVCqZKkeNDhOVk8CaOqJZ91g1KyG1geiBLiHtQ0Ww==}
+  /@orchesty/nodejs-sdk/3.2.0:
+    resolution: {integrity: sha512-cCDle4aW1FxzfxbpyUNWmXArE7mPY7nBxeDlS52i/q6CdgIUpCgqlvuKtQvQh1qJ8LewVLV6NEmbEmChdAJ3Dg==}
     dependencies:
       '@types/express': 4.17.14
       '@types/express-prometheus-middleware': 1.2.1
@@ -2737,6 +2737,7 @@ packages:
       express-prometheus-middleware: 1.2.0_6736nwuwgj3nv2t23e3irndv6i
       fast-xml-parser: 4.0.11
       http-status-codes: 2.2.0
+      joi: 17.6.3
       luxon: 3.0.4
       metrics-sender: 0.0.10
       mime-types: 2.1.35

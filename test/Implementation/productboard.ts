@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ProductboardListAllFeaturesBatch from '../../lib/Productboard/Batch/ProductboardListAllFeaturesBatch';
 import ProductboardListAllProductsBatch from '../../lib/Productboard/Batch/ProductboardListAllProductsBatch';
@@ -10,7 +10,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(PRODUCTBOARD_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: DEFAULT_ACCESS_TOKEN,
         },
     });

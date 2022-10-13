@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -40,7 +40,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const appInstall = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const appInstall = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return !!appInstall?.[TOKEN] && !!appInstall?.[SUBDOMAIN];
     }
 
@@ -51,7 +51,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
         _url?: string,
         data?: BodyInit,
     ): RequestDto {
-        const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
+        const subdomain = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
         let url = `https://${subdomain}.pipedrive.com/api/v1`;
         const join = _url?.includes('?') ? '&' : '?';
         url += `${_url}${join}api_token=${this.getToken(applicationInstall)}`;
@@ -68,7 +68,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, 'API token', undefined, true))
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true));
 
@@ -140,7 +140,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     private getToken(
         applicationInstall: ApplicationInstall,
     ): string {
-        return applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN];
+        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
     }
 
 }

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -63,7 +63,7 @@ export default class AmazonApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, SELLINGPARTNERID, ' Selling partner Id', undefined, true))
             .addField(new Field(FieldType.TEXT, DEVELOPERID, 'Developer Id', undefined, true))
             .addField(new Field(FieldType.TEXT, MWSAUTHTOKEN, 'MWS auth token', undefined, true));
@@ -72,16 +72,16 @@ export default class AmazonApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[SELLINGPARTNERID]
           && authorizationForm?.[DEVELOPERID]
           && authorizationForm?.[MWSAUTHTOKEN];
     }
 
     private async getAuthorizationCode(appInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
-        const sId = appInstall.getSettings()[AUTHORIZATION_FORM][SELLINGPARTNERID];
-        const dId = appInstall.getSettings()[AUTHORIZATION_FORM][DEVELOPERID];
-        const token = appInstall.getSettings()[AUTHORIZATION_FORM][MWSAUTHTOKEN];
+        const sId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SELLINGPARTNERID];
+        const dId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][DEVELOPERID];
+        const token = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][MWSAUTHTOKEN];
         const req = new RequestDto(
             `${BASE_URL}/authorization/v1/authorizationCode?sellingPartnerId=${sId}&developerId=${dId}&mwsAuthToken=${token}`,
             HttpMethods.GET,

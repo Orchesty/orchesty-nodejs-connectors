@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import
 AmazonApplication, {
     DEVELOPERID, MWSAUTHTOKEN,
@@ -17,7 +17,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(AMAZON_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [SELLINGPARTNERID]: 'selling_partner_id',
             [DEVELOPERID]: 'developer_id',
             [MWSAUTHTOKEN]: 'mws_auth_token',
