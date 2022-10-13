@@ -55,7 +55,7 @@
         "@hanaboso/eslint-plugin": "^1.0.4",
         "@types/debug": "^4.1.7",
         "@types/jest": "^29.1.2",
-        "@types/node": "^18.8.4",
+        "@types/node": "^18.8.5",
         "@types/nodemailer": "^6.4.6",
         "@types/oracledb": "^5.2.3",
         "@types/pg": "^8.6.5",
