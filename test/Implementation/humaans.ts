@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import HumaansListCompaniesBatch from '../../lib/Humaans/Batch/HumaansListCompaniesBatch';
 import HumaansListPeopleBatch from '../../lib/Humaans/Batch/HumaansListPeopleBatch';
 import HumaansApplication, { APPLICATION_TOKEN, NAME as HUMAANS_APP } from '../../lib/Humaans/HumaansApplication';
@@ -7,7 +7,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(HUMAANS_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [APPLICATION_TOKEN]: DEFAULT_ACCESS_TOKEN,
         },
     });

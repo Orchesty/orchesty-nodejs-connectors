@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import SmtpSendEmail from '../../lib/Smtp/Connector/SmtpSendEmail';
 import SmtpApplication, { CONNECTION_URL, NAME } from '../../lib/Smtp/SmtpApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
@@ -10,7 +10,7 @@ export const connectionUrl = 'smtps://username:password@smtp.example.com/?pool=t
 
 export default async function init(): Promise<void> {
     await appInstall(NAME, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CONNECTION_URL]: connectionUrl,
         },
     });

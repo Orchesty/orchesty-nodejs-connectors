@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -51,7 +51,7 @@ export default class TwilioSendMessage extends AConnector {
             HttpMethods.POST,
             `${BASE_URL}/${TWILIO_SEND_MESSAGE_ENDPOINT.replace(
                 '{AccountSid}',
-                applicationInstall.getSettings()[AUTHORIZATION_FORM][USER],
+                applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER],
             )}`,
             form,
         );

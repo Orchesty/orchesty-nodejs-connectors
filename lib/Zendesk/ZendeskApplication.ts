@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -40,7 +40,7 @@ export default class ZendeskApplication extends AOAuth2Application {
         _url?: string,
         data?: unknown,
     ): Promise<RequestDto> | RequestDto {
-        const subdomain = applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN];
+        const subdomain = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
         const url = `https://${subdomain}.zendesk.com/api/v2${_url}`;
 
         const request = new RequestDto(url, method, dto);
@@ -63,7 +63,7 @@ export default class ZendeskApplication extends AOAuth2Application {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true));
@@ -72,12 +72,12 @@ export default class ZendeskApplication extends AOAuth2Application {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[SUBDOMAIN] && authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
     }
 
     public getAuthUrlWithSubdomain(applicationInstall: ApplicationInstall): string {
-        return `https://${applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/authorizations/new`;
+        return `https://${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/authorizations/new`;
     }
 
     public getAuthUrl(): string {
@@ -85,7 +85,7 @@ export default class ZendeskApplication extends AOAuth2Application {
     }
 
     public getTokenUrlWithSubdomain(applicationInstall: ApplicationInstall): string {
-        return `https://${applicationInstall.getSettings()[AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/tokens`;
+        return `https://${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN]}.zendesk.com/oauth/tokens`;
     }
 
     public getTokenUrl(): string {

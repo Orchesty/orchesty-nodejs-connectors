@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import TableauCreateConnectedAppConnector from '../../lib/Tableau/Connector/TableauCreateConnectedAppConnector';
 import TableauGetConnectedAppConnector from '../../lib/Tableau/Connector/TableauGetConnectedAppConnector';
 import TableauApplication, {
@@ -13,7 +13,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(TABLEAU_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN_NAME]: DEFAULT_ACCESS_TOKEN,
             [TOKEN_SECRET]: DEFAULT_CLIENT_SECRET,
             [PREFIX_SITE]: 'prefix',

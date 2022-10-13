@@ -8,43 +8,43 @@
     "data": [
         {
             "body": "{\"id\":23118801,\"purchase_id\":231188,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23118901,\"purchase_id\":231189,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119001,\"purchase_id\":231190,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119101,\"purchase_id\":231191,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119201,\"purchase_id\":231192,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119301,\"purchase_id\":231193,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119401,\"purchase_id\":231194,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119501,\"purchase_id\":231195,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119601,\"purchase_id\":231196,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":23119701,\"purchase_id\":231197,\"customer_id\":1000929311,\"customer\":\"Josef Novák\",\"cod\":0,\"payment_type\":\"A\",\"ship_date\":\"2022-08-11\",\"status\":\"open\",\"confirmed\":false,\"test\":true,\"mdp\":false,\"mdp_classic\":false,\"mdp_spectrum\":false}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

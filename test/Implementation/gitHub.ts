@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import GitHubGeRespositoriesBatch from '../../lib/GitHub/Batch/GitHubRepositoriesBatch';
 import GitHubGetAppConnector from '../../lib/GitHub/Connector/GitHubGetAppConnector';
@@ -9,7 +9,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(GITHUB_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: 'owner',
             [OWNER]: 'repository',
             [REPOSITORY]: DEFAULT_ACCESS_TOKEN,

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -14,7 +14,7 @@ export default class PlivoSendSMSConector extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const id = appInstall.getSettings()[AUTHORIZATION_FORM][AUTH_ID];
+        const id = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH_ID];
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,

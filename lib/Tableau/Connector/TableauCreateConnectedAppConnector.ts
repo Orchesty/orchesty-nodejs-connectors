@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -16,7 +16,7 @@ export default class TableauCreateConnectedAppConnector extends AConnector {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const body = dto.getJsonData();
         await this.getApplication<TableauApplication>().setSettings(appInstall, dto);
-        const siteId = appInstall.getSettings()[AUTHORIZATION_FORM][SITE_ID];
+        const siteId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SITE_ID];
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,

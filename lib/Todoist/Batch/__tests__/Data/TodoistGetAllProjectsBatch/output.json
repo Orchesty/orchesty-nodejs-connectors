@@ -5,15 +5,15 @@
     "data": [
         {
             "body": "{\"id\":2296284649,\"color\":48,\"name\":\"Inbox\",\"comment_count\":0,\"shared\":false,\"favorite\":false,\"sync_id\":0,\"inbox_project\":true,\"url\":\"https://todoist.com/showProject?id=2296284649\"}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":2296284655,\"order\":1,\"color\":48,\"name\":\"Osobní 🙂\",\"comment_count\":0,\"shared\":false,\"favorite\":false,\"sync_id\":0,\"url\":\"https://todoist.com/showProject?id=2296284655\"}",
-            "headers": null
+            "headers": {}
         },
         {
             "body": "{\"id\":2296284649,\"color\":48,\"name\":\"Inbox\",\"comment_count\":0,\"shared\":false,\"favorite\":false,\"sync_id\":0,\"inbox_project\":true,\"url\":\"https://todoist.com/showProject?id=2296284649\"}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

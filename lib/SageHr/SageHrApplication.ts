@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -39,8 +39,8 @@ export default class SageHrApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const key = settings[AUTHORIZATION_FORM][API_KEY];
-        const subdomain = settings[AUTHORIZATION_FORM][SUBDOMAIN];
+        const key = settings[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY];
+        const subdomain = settings[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
         const url = `https://${subdomain}.sage.hr/api/${uri}`;
         const request = new RequestDto(url ?? '', method, dto);
         request.setHeaders({
@@ -57,7 +57,7 @@ export default class SageHrApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true))
             .addField(new Field(FieldType.TEXT, API_KEY, 'API key', undefined, true));
 
@@ -65,7 +65,7 @@ export default class SageHrApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[SUBDOMAIN] && authorizationForm?.[API_KEY];
     }
 

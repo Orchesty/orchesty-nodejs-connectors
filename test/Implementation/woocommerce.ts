@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrders';
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
@@ -20,7 +20,7 @@ export default async function init(): Promise<void> {
         NAME,
         DEFAULT_USER,
         {
-            [AUTHORIZATION_FORM]: {
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
                 [USER]: DEFAULT_USER,
                 [PASSWORD]: DEFAULT_PASSWORD,
                 [WOOCOMMERCE_URL]: 'http://woocomerce.com',

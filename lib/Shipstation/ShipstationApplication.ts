@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -62,7 +62,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'API Key', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'API Secret', undefined, true));
 
@@ -121,8 +121,8 @@ export default class ShipstationApplication extends ABasicApplication implements
 
     private getToken(applicationInstall: ApplicationInstall): string {
         return encode(
-            `${applicationInstall.getSettings()[AUTHORIZATION_FORM][USER]}:
-      ${applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD]}`,
+            `${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:
+      ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`,
         );
     }
 

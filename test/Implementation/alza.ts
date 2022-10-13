@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AlzaApplication, { API, NAME as ALZA_APP, SERVER } from '../../lib/Alza/AlzaApplication';
 import AlzaCancelOrderConnector from '../../lib/Alza/Connector/AlzaCancelOrderConnector';
@@ -11,7 +11,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(ALZA_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,
             [SERVER]: 'https://server.cz',

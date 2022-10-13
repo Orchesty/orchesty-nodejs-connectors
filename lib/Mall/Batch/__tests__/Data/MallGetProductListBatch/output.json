@@ -8,7 +8,7 @@
     "data": [
         {
             "body": "{\"id\":\"1\",\"product_id\":100094163651,\"title\":\"Title of product\",\"status\":\"A\",\"stage\":\"draft\",\"in_stock\":23,\"category_id\":\"MP008\",\"price\":10000000,\"purchase_price\":0,\"rrp\":10000000,\"variants_count\":0,\"has_variants\":false}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

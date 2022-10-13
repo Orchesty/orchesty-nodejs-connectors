@@ -1,5 +1,5 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -68,7 +68,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
             .addField(new Field(FieldType.TEXT, APP_ID, 'Application Id', null, true));
@@ -77,7 +77,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[APP_ID];
     }
 
@@ -98,7 +98,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
         subscription: WebhookSubscription,
         url: string,
     ): RequestDto {
-        const hubspotUrl = `${BASE_URL}/webhooks/v1/${applicationInstall.getSettings()[AUTHORIZATION_FORM][APP_ID]}`;
+        const hubspotUrl = `${BASE_URL}/webhooks/v1/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}`;
         const body = JSON.stringify({
             webhookUrl: url,
             subscriptionDetails: {
@@ -113,7 +113,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
         const url = `${BASE_URL}/webhooks/v1/${applicationInstall
-            .getSettings()[AUTHORIZATION_FORM][APP_ID]}/subscriptions/${id}`;
+            .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${id}`;
 
         return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.DELETE, url);
     }
