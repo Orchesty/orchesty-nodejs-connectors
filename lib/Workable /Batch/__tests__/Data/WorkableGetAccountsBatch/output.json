@@ -5,7 +5,7 @@
     "data": [
         {
             "body": "{\"id\":\"8c061\",\"name\":\"HB\",\"subdomain\":\"hb-6\",\"description\":null,\"summary\":null,\"website_url\":\"http://hb.cz\"}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

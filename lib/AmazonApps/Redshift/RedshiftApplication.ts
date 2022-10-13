@@ -3,7 +3,7 @@ import {
     DescribeClustersCommandInput,
     RedshiftClient,
 } from '@aws-sdk/client-redshift';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -46,7 +46,7 @@ export default class RedshiftApplication extends AAwsApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, KEY, 'Key', undefined, true))
             .addField(new Field(FieldType.TEXT, SECRET, 'Secret', undefined, true))
             .addField(new Field(FieldType.TEXT, DB_PASSWORD, 'Database Password', undefined, true))
@@ -56,7 +56,7 @@ export default class RedshiftApplication extends AAwsApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[KEY]
           && authorizationForm?.[SECRET]
           && authorizationForm?.[REGION]
@@ -64,7 +64,7 @@ export default class RedshiftApplication extends AAwsApplication {
     }
 
     public getRedshiftClient(applicationInstall: ApplicationInstall): RedshiftClient {
-        const settings = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const settings = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
 
         return new RedshiftClient([
             /* eslint-disable @typescript-eslint/naming-convention */
@@ -106,7 +106,7 @@ export default class RedshiftApplication extends AAwsApplication {
             {
                 CLUSTER_IDENTIFIER: cluster.ClusterIdentifier,
                 MASTER_USER: cluster.MasterUsername,
-                DB_PASSWORD: applicationInstall.getSettings()[AUTHORIZATION_FORM][DB_PASSWORD],
+                DB_PASSWORD: applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][DB_PASSWORD],
                 DBNAME: cluster.DBName,
                 HOST: cluster.Endpoint?.Address,
                 PORT: cluster.Endpoint?.Port,

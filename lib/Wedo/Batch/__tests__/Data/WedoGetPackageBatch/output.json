@@ -5,7 +5,7 @@
     "data": [
         {
             "body": "{\"order_number\":\"cislo zasilky intime\",\"reference_number\":\"\",\"barcode\":[],\"sorting_code\":\"smerovy kod\",\"product_name\":\"nazev produktu\",\"delivery_price\":1.23}",
-            "headers": null
+            "headers": {}
         }
     ]
 }

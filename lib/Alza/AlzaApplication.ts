@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -35,7 +35,7 @@ export default class AlzaApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, 'Client', null, true))
             .addField(new Field(FieldType.PASSWORD, PASSWORD, 'Secret', null, true))
             .addField(new Field(FieldType.TEXT, SERVER, 'Server', null, true))
@@ -45,7 +45,7 @@ export default class AlzaApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[USER]
           && authorizationForm?.[PASSWORD]
           && authorizationForm?.[SERVER]
@@ -76,8 +76,8 @@ export default class AlzaApplication extends ABasicApplication {
     }
 
     private getBaseUrl(applicationInstall: ApplicationInstall): string {
-        const server = applicationInstall.getSettings()[AUTHORIZATION_FORM][SERVER];
-        const apiPath = applicationInstall.getSettings()[AUTHORIZATION_FORM][API];
+        const server = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SERVER];
+        const apiPath = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API];
 
         return `${server}/${apiPath}`;
     }
@@ -87,12 +87,12 @@ export default class AlzaApplication extends ABasicApplication {
         url: string,
         applicationInstall: ApplicationInstall,
     ): string {
-        const secret = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
+        const secret = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
         if (!secret) {
             throw new Error('Invalid secret.');
         }
 
-        const client = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
+        const client = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
         if (!client) {
             throw new Error('Invalid user.');
         }

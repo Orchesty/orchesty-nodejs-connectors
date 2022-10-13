@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -34,7 +34,7 @@ export default class AirtableApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings');
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings');
         form.addField(new Field(FieldType.TEXT, TOKEN, 'API Key', undefined, true));
         form.addField(new Field(FieldType.TEXT, BASE_ID, 'Base id', undefined, true));
         form.addField(new Field(FieldType.TEXT, TABLE_NAME, 'Table name', undefined, true));
@@ -43,7 +43,7 @@ export default class AirtableApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[TOKEN] && authorizationForm?.[BASE_ID] && authorizationForm?.[TABLE_NAME];
     }
 
@@ -63,16 +63,16 @@ export default class AirtableApplication extends ABasicApplication {
     }
 
     public getValue(applicationInstall: ApplicationInstall, value: string): string | undefined {
-        if (applicationInstall.getSettings()[AUTHORIZATION_FORM][value]) {
-            return applicationInstall.getSettings()[AUTHORIZATION_FORM][value];
+        if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][value]) {
+            return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][value];
         }
 
         return undefined;
     }
 
     private getAccessToken(applicationInstall: ApplicationInstall): string {
-        if (applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN]) {
-            return applicationInstall.getSettings()[AUTHORIZATION_FORM][TOKEN];
+        if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN]) {
+            return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
         }
 
         throw new Error('There is no access token');

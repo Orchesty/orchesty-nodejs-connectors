@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -34,7 +34,7 @@ export default class VyfakturujApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER_EMAIL, ' User email', undefined, true))
             .addField(new Field(FieldType.TEXT, API_KEY, ' Api Key', undefined, true));
 
@@ -42,7 +42,7 @@ export default class VyfakturujApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[USER_EMAIL] && authorizationForm?.[API_KEY];
     }
 
@@ -54,8 +54,8 @@ export default class VyfakturujApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://api.vyfakturuj.cz/2.0${uri}`, method, dto);
-        const userEmail = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER_EMAIL];
-        const apiKey = applicationInstall.getSettings()[AUTHORIZATION_FORM][API_KEY];
+        const userEmail = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER_EMAIL];
+        const apiKey = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY];
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,

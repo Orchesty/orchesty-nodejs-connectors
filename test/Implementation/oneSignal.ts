@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import OnesignalViewAppsBatch from '../../lib/Onesignal/Batch/OnesignalViewAppsBatch';
 import OnesignalCreateAppConnector from '../../lib/Onesignal/Connector/OnesignalCreateAppConnector';
 import OnesignalApplication, { NAME as ONESIGNAL_APP, REST_API_KEY } from '../../lib/Onesignal/OnesignalApplication';
@@ -7,7 +7,7 @@ import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(ONESIGNAL_APP, DEFAULT_USER, {
-        [AUTHORIZATION_FORM]: {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [REST_API_KEY]: 'Api key',
         },
     });

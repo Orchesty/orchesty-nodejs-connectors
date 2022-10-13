@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
@@ -41,7 +41,7 @@ export default async function init(): Promise<void> {
         NAME,
         DEFAULT_USER,
         {
-            [AUTHORIZATION_FORM]: {
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
                 [TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
         },

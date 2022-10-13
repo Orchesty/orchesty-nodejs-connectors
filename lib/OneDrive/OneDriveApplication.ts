@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -33,7 +33,7 @@ export default class OneDriveApplication extends AOAuth2Application {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client secret', null, true));
 
@@ -41,7 +41,7 @@ export default class OneDriveApplication extends AOAuth2Application {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
     }
 
@@ -53,7 +53,7 @@ export default class OneDriveApplication extends AOAuth2Application {
         data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const token = settings[AUTHORIZATION_FORM][TOKEN];
+        const token = settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
         const url = `https://graph.microsoft.com/v1.0/${_url}`;
         const request = new RequestDto(url, method, dto);
         request.setHeaders({

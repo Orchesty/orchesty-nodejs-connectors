@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -41,8 +41,8 @@ export default class WedoApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://bridge.intime.cz${uri}`, method, dto);
-        const password = applicationInstall.getSettings()[AUTHORIZATION_FORM][PASSWORD];
-        const user = applicationInstall.getSettings()[AUTHORIZATION_FORM][USER];
+        const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
+        const user = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
@@ -57,7 +57,7 @@ export default class WedoApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, USER, ' User name', undefined, true))
             .addField(new Field(FieldType.PASSWORD, PASSWORD, ' Password', undefined, true));
 

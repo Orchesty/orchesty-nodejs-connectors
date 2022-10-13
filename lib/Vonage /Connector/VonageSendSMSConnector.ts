@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -15,8 +15,8 @@ export default class VonageSendSMSConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutputItem[]>> {
         const { from, to, text } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const apiKey = appInstall.getSettings()[AUTHORIZATION_FORM][API_KEY];
-        const apiSecret = appInstall.getSettings()[AUTHORIZATION_FORM][API_SECRET];
+        const apiKey = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY];
+        const apiSecret = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_SECRET];
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,

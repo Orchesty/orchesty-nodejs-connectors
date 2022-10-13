@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -43,7 +43,7 @@ export default class AuthenticaApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const settingsForm = new Form(AUTHORIZATION_FORM, 'Settings');
+        const settingsForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Settings');
         const clientId = new Field(FieldType.TEXT, CLIENT_ID, 'Client id');
         const clientSecret = new Field(FieldType.PASSWORD, CLIENT_SECRET, 'Client secret');
 
@@ -52,7 +52,7 @@ export default class AuthenticaApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
     }
 
@@ -83,8 +83,8 @@ export default class AuthenticaApplication extends ABasicApplication {
     protected async getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
         const url = `${BASE_URL}/token`;
 
-        const clientId = applicationInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_ID];
-        const clientSecret = applicationInstall.getSettings()[AUTHORIZATION_FORM][CLIENT_SECRET];
+        const clientId = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID];
+        const clientSecret = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET];
 
         const request = new RequestDto(
             url,

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -33,7 +33,7 @@ export default class RecruiteeApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, API_TOKEN, 'api token', undefined, true))
             .addField(new Field(FieldType.TEXT, YOUR_COMPANY, 'your company', undefined, true));
 
@@ -41,7 +41,7 @@ export default class RecruiteeApplication extends ABasicApplication {
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[AUTHORIZATION_FORM];
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[API_TOKEN] && authorizationForm?.[YOUR_COMPANY];
     }
 
@@ -53,7 +53,7 @@ export default class RecruiteeApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`https://${_url}`, method, dto);
-        const apiToken = applicationInstall.getSettings()[AUTHORIZATION_FORM][API_TOKEN];
+        const apiToken = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_TOKEN];
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,

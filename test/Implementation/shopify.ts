@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
@@ -16,7 +16,7 @@ export default async function init(): Promise<void> {
         NAME,
         DEFAULT_USER,
         {
-            [AUTHORIZATION_FORM]: {
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
                 [USER]: DEFAULT_USER,
                 [PASSWORD]: DEFAULT_PASSWORD,
                 shopifyUrl: 'https://kube.myshopify.com',

@@ -1,4 +1,4 @@
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -34,7 +34,7 @@ export default class ShoptetPremiumApplication extends ABaseShoptet {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TOKEN, 'Shoptet private API token', undefined, true));
 
         return new FormStack().addForm(form);
@@ -48,7 +48,7 @@ export default class ShoptetPremiumApplication extends ABaseShoptet {
         data?: string,
     ): RequestDto {
         const headers = {
-            [this.authorizationHeader]: applicationInstall.getSettings()?.[AUTHORIZATION_FORM]?.[TOKEN],
+            [this.authorizationHeader]: applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN],
             [CommonHeaders.CONTENT_TYPE]: 'application/vnd.shoptet.v1.0',
         };
 

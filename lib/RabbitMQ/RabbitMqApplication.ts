@@ -1,5 +1,5 @@
 import { AMQPClient, AMQPQueue, QueueParams } from '@cloudamqp/amqp-client';
-import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -41,14 +41,14 @@ export default class RabbitMqApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(AUTHORIZATION_FORM, 'Authorization settings');
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings');
         form.addField(new Field(FieldType.TEXT, DSN, 'dsn', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        return applicationInstall.getSettings()[AUTHORIZATION_FORM]?.[DSN];
+        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[DSN];
     }
 
     public getRequestDto(
@@ -90,7 +90,7 @@ export default class RabbitMqApplication extends ABasicApplication {
         queue: string,
         queueParams: IQueueArguments,
     ): Promise<AMQPQueue> {
-        const dsn = appInstall.getSettings()[AUTHORIZATION_FORM]?.[DSN];
+        const dsn = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[DSN];
         if (!dsn) {
             throw Error(`RabbitMQ [user=${appInstall.getUser()}] dsn is not set`);
         }
