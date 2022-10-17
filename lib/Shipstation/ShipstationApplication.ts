@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -97,13 +98,13 @@ export default class ShipstationApplication extends ABasicApplication implements
         ];
     }
 
-    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
+    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
         const request = new ProcessDto();
         return this.getRequestDto(
             request,
             applicationInstall,
             HttpMethods.DELETE,
-            `${SHIPSTATION_URL}/webhooks/${id}`,
+            `${SHIPSTATION_URL}/webhooks/${webhook.getWebhookId()}`,
         );
     }
 

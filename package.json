@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -19,7 +19,7 @@
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.2.2",
+        "@orchesty/nodejs-sdk": "^3.2.3",
         "@types/luxon": "^3.0.1",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",

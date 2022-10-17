@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -133,14 +134,14 @@ export default class MailchimpApplication extends AOAuth2Application implements 
 
     public getWebhookUnsubscribeRequestDto(
         applicationInstall: ApplicationInstall,
-        id: string,
+        webhook: Webhook,
     ): RequestDto {
         return this.getRequestDto(
             new ProcessDto(),
             applicationInstall,
             HttpMethods.DELETE,
             // eslint-disable-next-line max-len
-            `${applicationInstall.getSettings()[API_KEYPOINT]}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/webhooks/${id}`,
+            `${applicationInstall.getSettings()[API_KEYPOINT]}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/webhooks/${webhook.getWebhookId()}`,
         );
     }
 

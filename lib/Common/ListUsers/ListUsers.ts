@@ -2,6 +2,7 @@ import { GROUP_TIME, GROUP_VALUE, TIME, USE_LIMIT, VALUE } from '@orchesty/nodej
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import { APPLICATIONS, getLimiterKey, getLimiterKeyWithGroup } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
@@ -15,11 +16,17 @@ export default class ListUsers extends ABatchNode {
     public async processAction(_dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const userHeader = _dto.getUser();
         const { user, ...rest } = _dto.getJsonData();
+
+        let runnableUser: string | undefined = user ?? userHeader;
+        if (runnableUser === orchestyOptions.systemUser) {
+            runnableUser = undefined;
+        }
+
         let dto;
-        if (!userHeader) {
+        if (!runnableUser) {
             dto = await this.getUsers(_dto, rest);
         } else {
-            dto = await this.getUser(_dto, user, rest);
+            dto = await this.getUser(_dto, runnableUser, rest);
         }
 
         return dto;

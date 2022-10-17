@@ -2,6 +2,7 @@ import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -111,9 +112,9 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
         return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.POST, hubspotUrl, body);
     }
 
-    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
+    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
         const url = `${BASE_URL}/webhooks/v1/${applicationInstall
-            .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${id}`;
+            .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${webhook.getWebhookId()}`;
 
         return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.DELETE, url);
     }
