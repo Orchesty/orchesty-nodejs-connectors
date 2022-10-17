@@ -1,0 +1,15 @@
+{
+  "http": "POST https://kube.myshopify.com/admin/api/2022-10/webhooks.json",
+  "code": 201,
+  "body": {
+    "webhook": {
+      "id": 7226364934,
+      "address": "http://starting-point:8080/topologies/shopify-to-authentica-products/nodes/webhook/token/ed59a942313e8a78e37b5d17e7fb548730e0f029e8d5082ebc48ada685f4b1dea11fd7585db7632ee93b5cef74764f54b07b6a6bc1fcba03b1e13b170873859f/run",
+      "topic": "products/create",
+      "created_at": "2022-10-03T13:00:26-04:00",
+      "updated_at": "2022-10-03T13:00:26-04:00",
+      "format": "json"
+    }
+  }
+}
+
