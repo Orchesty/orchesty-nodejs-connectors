@@ -2,6 +2,8 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
+import ShopifyRegisterWebhook from '../../lib/Shopify/Batch/ShopifyRegisterWebhook';
+import ShopifyUnregisterWebhook from '../../lib/Shopify/Batch/ShopifyUnregisterWebhook';
 import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsoluteUpdateStock';
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyGetShippingMethods from '../../lib/Shopify/Connector/ShopifyGetShippingMethods';
@@ -55,4 +57,16 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(shopifyApplication);
     container.setConnector(shopifyCreateFulfillment);
+
+    const shopifyRegisterWebhook = new ShopifyRegisterWebhook()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setBatch(shopifyRegisterWebhook);
+
+    const shopifyUnregisterWebhook = new ShopifyUnregisterWebhook()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setBatch(shopifyUnregisterWebhook);
 }
