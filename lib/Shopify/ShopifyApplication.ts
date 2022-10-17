@@ -7,6 +7,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
@@ -29,6 +30,10 @@ export default class ShopifyApplication extends ABasicApplication {
 
     public constructor(private readonly curlSender: CurlSender) {
         super();
+    }
+
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [];
     }
 
     public getDescription(): string {

@@ -3,14 +3,16 @@ import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { DEFAULT_USER } from '../../../../test/DataProvider';
+import init from '../../../../test/Implementation/shopify';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as SHOPIFY_UNREGISTER_WEBHOOK } from '../ShopifyUnregisterWebhook';
 
 let tester: NodeTester;
 
 describe('Tests for ShopifyUnregisterWebhook', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
         tester = new NodeTester(container, __filename);
+        await init();
     });
 
     it('process - ok', async () => {
