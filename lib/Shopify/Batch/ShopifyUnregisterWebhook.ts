@@ -26,6 +26,7 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
 
         const repo = await this.getDbClient().getRepository(Webhook);
 
+        repo.clearCache();
         const webhooks = await repo.findMany({ user: appInstall.getUser(), application: app.getName() });
 
         if (webhooks && webhooks.length > 0) {
@@ -46,7 +47,7 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
             await repo.remove(webhooks[0]);
 
             if (webhooks.length > 1) {
-                dto.setBatchCursor(JSON.stringify(webhooks));
+                dto.setBatchCursor('next');
             }
         }
 
