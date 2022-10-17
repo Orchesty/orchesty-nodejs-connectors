@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -115,13 +116,13 @@ export default class PipedriveApplication extends ABasicApplication implements I
 
     public getWebhookUnsubscribeRequestDto(
         applicationInstall: ApplicationInstall,
-        id: string,
+        webhook: Webhook,
     ): RequestDto {
         return this.getRequestDto(
             new ProcessDto(),
             applicationInstall,
             HttpMethods.DELETE,
-            `${PIPEDRIVE_URL}/v1/webhooks/${id}`,
+            `${PIPEDRIVE_URL}/v1/webhooks/${webhook.getWebhookId()}`,
         );
     }
 

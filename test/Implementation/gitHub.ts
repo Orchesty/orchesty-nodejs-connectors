@@ -3,16 +3,14 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import GitHubGeRespositoriesBatch from '../../lib/GitHub/Batch/GitHubRepositoriesBatch';
 import GitHubGetAppConnector from '../../lib/GitHub/Connector/GitHubGetAppConnector';
 import GitHubGetRepositoryConnector from '../../lib/GitHub/Connector/GitHubGetRepositoryConnector';
-import GitHubApplication, { NAME as GITHUB_APP, OWNER, REPOSITORY } from '../../lib/GitHub/GitHubApplication';
+import GitHubApplication, { NAME as GITHUB_APP } from '../../lib/GitHub/GitHubApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
 export default async function init(): Promise<void> {
     await appInstall(GITHUB_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
-            [TOKEN]: 'owner',
-            [OWNER]: 'repository',
-            [REPOSITORY]: DEFAULT_ACCESS_TOKEN,
+            [TOKEN]: DEFAULT_ACCESS_TOKEN,
         },
     });
 
