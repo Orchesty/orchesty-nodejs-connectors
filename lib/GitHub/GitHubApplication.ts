@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
@@ -17,8 +18,6 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
-export const OWNER = 'owner';
-export const REPOSITORY = 'repository';
 export const NAME = 'git-hub';
 
 export default class GitHubApplication extends ABasicApplication implements IWebhookApplication {
@@ -41,16 +40,14 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true))
-            .addField(new Field(FieldType.TEXT, OWNER, ' Owner'))
-            .addField(new Field(FieldType.TEXT, REPOSITORY, ' Repository'));
+            .addField(new Field(FieldType.TEXT, TOKEN, ' Token', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[TOKEN] && authorizationForm?.[OWNER] && authorizationForm?.[REPOSITORY];
+        return authorizationForm?.[TOKEN];
     }
 
     public getRequestDto(
@@ -84,12 +81,12 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
         url: string,
     ): RequestDto {
         const request = new ProcessDto();
-        const form = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
+        const { owner, record } = subscription.getParameters();
         return this.getRequestDto(
             request,
             applicationInstall,
             HttpMethods.POST,
-            `repos/${form?.[OWNER]}/${form?.[REPOSITORY]}/hooks`,
+            `repos/${owner}/${record}/hooks`,
             JSON.stringify({
                 config: {
                     url,
@@ -104,19 +101,23 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
 
     public getWebhookSubscriptions(): WebhookSubscription[] {
         return [
-            new WebhookSubscription('issues', '', ''),
-            new WebhookSubscription('pull-request', '', ''),
+            new WebhookSubscription('issues', '', '', { record: 'record', owner: 'owner' }),
+            new WebhookSubscription('pull-request', '', '', { record: 'record', owner: 'owner' }),
         ];
     }
 
-    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, id: string): RequestDto {
+    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
+        const webhookSubscription = this.getWebhookSubscriptions().filter(
+            (item) => item.getName() === webhook.getName(),
+        )[0];
+        const { repository, owner } = webhookSubscription.getParameters();
+
         const request = new ProcessDto();
-        const form = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
         return this.getRequestDto(
             request,
             applicationInstall,
             HttpMethods.DELETE,
-            `repos/${form?.[OWNER]}/${form?.[REPOSITORY]}/hooks/${id}`,
+            `repos/${owner}/${repository}/hooks/${webhook.getWebhookId()}`,
         );
     }
 
