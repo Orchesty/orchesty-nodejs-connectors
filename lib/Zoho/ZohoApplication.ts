@@ -95,12 +95,13 @@ export default class ZohoApplication extends AOAuth2Application {
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         const creatorForm = applicationInstall.getSettings()[CREATOR_FORM];
-        return authorizationForm?.[CLIENT_ID]
-          && authorizationForm?.[CLIENT_SECRET]
-          && creatorForm?.[ACCOUNT_OWNER_NAME]
-          && creatorForm?.[APP_LINK_NAME]
-          && creatorForm?.[FORM_LINK_NAME]
-          && creatorForm?.[REPORT_LINK_NAME];
+        return super.isAuthorized(applicationInstall)
+            && authorizationForm?.[CLIENT_ID]
+            && authorizationForm?.[CLIENT_SECRET]
+            && creatorForm?.[ACCOUNT_OWNER_NAME]
+            && creatorForm?.[APP_LINK_NAME]
+            && creatorForm?.[FORM_LINK_NAME]
+            && creatorForm?.[REPORT_LINK_NAME];
     }
 
     public getTokenUrl(): string {
