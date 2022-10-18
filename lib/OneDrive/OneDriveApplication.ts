@@ -42,7 +42,9 @@ export default class OneDriveApplication extends AOAuth2Application {
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET];
+        return super.isAuthorized(applicationInstall)
+            && authorizationForm?.[CLIENT_ID]
+            && authorizationForm?.[CLIENT_SECRET];
     }
 
     public getRequestDto(
