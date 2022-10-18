@@ -78,9 +78,10 @@ export default class SalesForceApplication extends AOAuth2Application {
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[CLIENT_ID]
-          && authorizationForm?.[CLIENT_SECRET]
-          && authorizationForm?.[INSTANCE_NAME];
+        return super.isAuthorized(applicationInstall)
+            && authorizationForm?.[CLIENT_ID]
+            && authorizationForm?.[CLIENT_SECRET]
+            && authorizationForm?.[INSTANCE_NAME];
     }
 
     public getAuthUrl(): string {
