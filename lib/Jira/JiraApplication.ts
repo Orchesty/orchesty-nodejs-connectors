@@ -16,7 +16,7 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit } from 'node-fetch';
 
-const PREFIX_URL = 'prefix_url';
+const HOST_URL = 'prefix_url';
 export const ISSUE_TYPE_FROM = 'issue_type_from';
 export const BUG_TYPE = 'bug_type';
 export const TASK_TYPE = 'task_type';
@@ -34,16 +34,6 @@ export default class JiraApplication extends ABasicApplication {
 
     public getDescription(): string {
         return 'Issue and bug tracking tool that allows software developers to manage product development';
-    }
-
-    public getBaseUrl(
-        applicationInstall: ApplicationInstall,
-    ): string {
-        const prefix = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PREFIX_URL];
-        if (!prefix) {
-            throw new Error(`Application [${this.getPublicName()}] doesn't have url prefix!`);
-        }
-        return `https://${prefix}.atlassian.net`;
     }
 
     public getLogo(): string {
@@ -64,7 +54,7 @@ export default class JiraApplication extends ABasicApplication {
             throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
         }
         return new RequestDto(
-            `${this.getBaseUrl(applicationInstall)}${url}`,
+            `${applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL]}${url}`,
             method,
             _dto,
             data,
@@ -77,7 +67,7 @@ export default class JiraApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, PREFIX_URL, 'Attlasian prefix url', undefined, true))
+            .addField(new Field(FieldType.TEXT, HOST_URL, 'Atlassian url', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
 
@@ -93,7 +83,7 @@ export default class JiraApplication extends ABasicApplication {
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[PREFIX_URL] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD];
+        return authorizationForm?.[HOST_URL] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD];
     }
 
 }
