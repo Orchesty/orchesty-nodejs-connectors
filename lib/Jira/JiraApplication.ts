@@ -67,7 +67,7 @@ export default class JiraApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, HOST_URL, 'Attlasian url', undefined, true))
+            .addField(new Field(FieldType.TEXT, HOST_URL, 'Atlassian url', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
 
