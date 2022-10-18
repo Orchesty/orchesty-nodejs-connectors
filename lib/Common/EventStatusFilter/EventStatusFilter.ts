@@ -35,4 +35,10 @@ export interface IInput {
         timestampMs: number;
         resultMessage: string;
     };
+    contents: IStatusMessageContent[];
+}
+
+export interface IStatusMessageContent {
+    trashId?: string;
+    body: string;
 }
