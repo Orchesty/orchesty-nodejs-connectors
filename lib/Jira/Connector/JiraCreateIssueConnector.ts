@@ -5,7 +5,7 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, STORY_TYPE, TASK_TYPE } from '../JiraApplication';
 
-const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/3/issue';
+const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/2/issue';
 
 export default class JiraCreateIssueConnector extends AConnector {
 
