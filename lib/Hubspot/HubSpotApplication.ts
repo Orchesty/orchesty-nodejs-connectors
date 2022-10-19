@@ -19,7 +19,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BodyInit, Headers } from 'node-fetch';
 
-const APP_ID = 'app_id';
+export const APP_ID = 'app_id';
 export const BASE_URL = 'https://api.hubapi.com';
 
 export default class HubSpotApplication extends AOAuth2Application implements IWebhookApplication {
