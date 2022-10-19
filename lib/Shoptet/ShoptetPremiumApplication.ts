@@ -18,7 +18,7 @@ export default class ShoptetPremiumApplication extends ABaseShoptet {
     protected authorizationHeader = 'Shoptet-Private-API-Token';
 
     public getDescription(): string {
-        return 'Platform for team communication: everything in one place, instantly searchable, available wherever you go';
+        return 'Shoptet Premium offers private access to eshop data via Shoptet API and custom design based on blank template. Therese features are not available for standard tarifs';
     }
 
     public getName(): string {

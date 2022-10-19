@@ -2,7 +2,7 @@ import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/Re
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BASE_URL } from '../ABaseShoptet';
-import APluginShoptetApplication from '../APluginShoptetApplication';
+import APluginShoptetApplication from '../PluginShoptetApplication';
 import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-eshop-info';

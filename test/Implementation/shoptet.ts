@@ -3,7 +3,6 @@ import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
-import APluginShoptetApplication from '../../lib/Shoptet/APluginShoptetApplication';
 import ShoptetGetOrderChangesList from '../../lib/Shoptet/Batch/ShoptetGetOrderChangesList';
 import ShoptetGetProductChangesList from '../../lib/Shoptet/Batch/ShoptetGetProductChangesList';
 import ShoptetParseJsonLines from '../../lib/Shoptet/Batch/ShoptetParseJsonLines';
@@ -15,6 +14,7 @@ import ShoptetGetProductDetail from '../../lib/Shoptet/Connector/ShoptetGetProdu
 import ShoptetGetShippingMethods from '../../lib/Shoptet/Connector/ShoptetGetShippingMethods';
 import ShoptetJobFinishedWebhook from '../../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 import ShoptetUpdateStockMovements from '../../lib/Shoptet/Connector/ShoptetUpdateStockMovements';
+import APluginShoptetApplication from '../../lib/Shoptet/PluginShoptetApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import {
     cacheService, container, db, sender,

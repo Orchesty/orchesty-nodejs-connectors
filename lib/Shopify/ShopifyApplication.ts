@@ -37,7 +37,7 @@ export default class ShopifyApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Allows users to leverage Shoptet’s core and infrastructure while building a customized frontend solution and customizing add-ons';
+        return 'Simple way to create an online store to list products, collect credit card payments, and ship your goods';
     }
 
     public getName(): string {
