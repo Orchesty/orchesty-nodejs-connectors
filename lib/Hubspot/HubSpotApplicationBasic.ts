@@ -1,28 +1,18 @@
-import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
-import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
-import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
-import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BodyInit, Headers } from 'node-fetch';
 import { APP_ID, BASE_URL } from './HubSpotApplication';
 
-export default class HubSpotApplicationBasic extends ABasicApplication implements IWebhookApplication {
-
-    public getApplicationType(): ApplicationTypeEnum {
-        return ApplicationTypeEnum.WEBHOOK;
-    }
+export default class HubSpotApplicationBasic extends ABasicApplication {
 
     public getName(): string {
         return 'hub-spot-basic';
@@ -69,49 +59,6 @@ export default class HubSpotApplicationBasic extends ABasicApplication implement
         return super.isAuthorized(applicationInstall)
             && authorizationForm?.[TOKEN]
             && authorizationForm?.[APP_ID];
-    }
-
-    public getWebhookSubscriptions(): WebhookSubscription[] {
-        return [
-            new WebhookSubscription('Create Contact', 'Webhook', '', { name: 'contact.creation' }),
-            new WebhookSubscription('Delete Contact', 'Webhook', '', { name: 'contact.deletion' }),
-        ];
-    }
-
-    public getWebhookSubscribeRequestDto(
-        applicationInstall: ApplicationInstall,
-        subscription: WebhookSubscription,
-        url: string,
-    ): RequestDto {
-        const hubspotUrl = `${BASE_URL}/webhooks/v1/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}`;
-        const body = JSON.stringify({
-            webhookUrl: url,
-            subscriptionDetails: {
-                subscriptionType: subscription.getParameters().name,
-                propertyName: 'email',
-            },
-            enabled: false,
-        });
-
-        return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.POST, hubspotUrl, body);
-    }
-
-    public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
-        const url = `${BASE_URL}/webhooks/v1/${applicationInstall
-            .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${webhook.getWebhookId()}`;
-
-        return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.DELETE, url);
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public processWebhookSubscribeResponse(dto: ResponseDto, applicationInstall: ApplicationInstall): string {
-        const jsonBody = dto.getJsonBody() as { id: string };
-
-        return jsonBody.id ?? '';
-    }
-
-    public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 204;
     }
 
 }
