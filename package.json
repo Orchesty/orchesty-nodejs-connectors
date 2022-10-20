@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "2.1.6",
+    "version": "2.1.7",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -24,16 +24,16 @@
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",
         "luxon": "^3.0.4",
-        "mongodb": "^4.10.0",
+        "mongodb": "^4.11.0",
         "mongodb-typescript": "^3.0.0",
         "node-fetch": "^2.6.7",
         "reflect-metadata": "^0.1.13"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.190.0",
-        "@aws-sdk/client-rds": "^3.190.0",
-        "@aws-sdk/client-redshift": "^3.190.0",
-        "@aws-sdk/client-s3": "^3.190.0",
+        "@aws-sdk/client-lambda": "^3.192.0",
+        "@aws-sdk/client-rds": "^3.192.0",
+        "@aws-sdk/client-redshift": "^3.192.0",
+        "@aws-sdk/client-s3": "^3.192.0",
         "@aws-sdk/client-ses": "^3.192.0",
         "@cloudamqp/amqp-client": "^2.1.0",
         "@types/nodemailer": "^6.4.6",
@@ -52,7 +52,6 @@
         "tedious": "^15.1.0"
     },
     "devDependencies": {
-        "@aws-sdk/client-redshift": "^3.118.0",
         "@hanaboso/eslint-plugin": "^1.0.5",
         "@types/debug": "^4.1.7",
         "@types/jest": "^29.2.0",
@@ -80,8 +79,6 @@
         "typescript": "^4.8.4"
     },
     "pnpm": {
-        "overrides": {
-            "@aws-sdk/client-sts": "3.118.1"
-        }
+        "overrides": {}
     }
 }
