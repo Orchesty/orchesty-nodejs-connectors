@@ -22,7 +22,7 @@ export default class HubSpotAddEmailToListConnector extends AConnector {
             JSON.stringify(data),
         );
 
-        const response = await this.getSender().send(request, [200]);
+        const response = await this.getSender().send(request, [200, 409]);
 
         dto.setData(response.getBody());
 

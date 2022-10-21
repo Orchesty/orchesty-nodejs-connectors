@@ -10,7 +10,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { BodyInit, Headers } from 'node-fetch';
-import { APP_ID, BASE_URL } from './HubSpotApplication';
+import { BASE_URL } from './HubSpotApplication';
 
 export default class HubSpotApplicationBasic extends ABasicApplication {
 
@@ -48,8 +48,7 @@ export default class HubSpotApplicationBasic extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
-            .addField(new Field(FieldType.TEXT, TOKEN, 'Token', null, true))
-            .addField(new Field(FieldType.TEXT, APP_ID, 'Application Id', null, true));
+            .addField(new Field(FieldType.TEXT, TOKEN, 'Token', null, true));
 
         return new FormStack().addForm(form);
     }
@@ -57,8 +56,7 @@ export default class HubSpotApplicationBasic extends ABasicApplication {
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return super.isAuthorized(applicationInstall)
-            && authorizationForm?.[TOKEN]
-            && authorizationForm?.[APP_ID];
+            && authorizationForm?.[TOKEN];
     }
 
 }
