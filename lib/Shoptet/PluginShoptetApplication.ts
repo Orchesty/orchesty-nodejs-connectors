@@ -104,7 +104,9 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
                 [200],
             );
         } catch (e) {
-            if (e instanceof Error) logger.error(e.message || 'Unknown error in ShoptetApplication.', processDto);
+            if (e instanceof Error) {
+                logger.error(e.message || 'Unknown error in ShoptetApplication.', processDto);
+            }
             throw e;
         }
     }

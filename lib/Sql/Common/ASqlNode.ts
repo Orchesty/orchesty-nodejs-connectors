@@ -32,7 +32,7 @@ export default abstract class ASqlNode extends ANode {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (e: any) {
             if (e instanceof ConnectionError) {
-                logger.error(e.message, dto);
+                logger.error(e.message, dto, false, e);
                 switch (e.message) {
                     case SqlErrorEnum.TOO_MANY_CONNECTIONS:
                         throw new OnRepeatException(60, 10, e.message);
@@ -41,7 +41,7 @@ export default abstract class ASqlNode extends ANode {
                         break;
                 }
             } else {
-                logger.error(e?.message, dto);
+                logger.error(e?.message, dto, false, e);
                 dto.setStopProcess(ResultCode.STOP_AND_FAILED, e.message);
             }
 
@@ -52,7 +52,7 @@ export default abstract class ASqlNode extends ANode {
                     await conn.close();
                 } catch (e) {
                     if (e instanceof Error) {
-                        logger.error(e.message, dto);
+                        logger.error(e.message, dto, false, e);
                     }
                 }
             }
