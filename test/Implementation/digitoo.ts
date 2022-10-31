@@ -3,6 +3,7 @@ import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provid
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import DigitooDocumentsByStatusBatch from '../../lib/Digitoo/Batch/DigitooDocumentsByStatusBatch';
 import DigitooAddRegisters from '../../lib/Digitoo/Connector/DigitooAddRegisters';
+import DigitooGetDocument from '../../lib/Digitoo/Connector/DigitooGetDocument';
 import DigitooMarkAsExported from '../../lib/Digitoo/Connector/DigitooMarkAsExported';
 import DigitooMarkAsExportErrored from '../../lib/Digitoo/Connector/DigitooMarkAsExportErrored';
 import DigitooApplication, { NAME as DIGITOO_APP } from '../../lib/Digitoo/DigitooApplication';
@@ -52,4 +53,11 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(app);
     container.setBatch(digitooDocumentsByStatusBatch);
+
+    const digitooGetDocument = new DigitooGetDocument();
+    digitooGetDocument
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(digitooGetDocument);
 }

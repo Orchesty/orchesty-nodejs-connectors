@@ -1,0 +1,5 @@
+{
+    "http": "GET https://api.digitoo.cz/api/documents/1/file",
+    "code": 200,
+    "body": "[file]"
+}
