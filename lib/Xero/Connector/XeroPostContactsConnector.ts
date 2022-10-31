@@ -14,9 +14,9 @@ export default class XeroPostContactsConnector extends AConnector {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
-            // TODO nabizeji i moznost PUT, ktera kontroluje jestli uz name neexistuji a pak vyhodi chybu
             HttpMethods.POST,
             'contacts',
+            JSON.stringify(dto.getJsonData()),
         );
         const resp = await this.getSender().send(req, [200]);
 

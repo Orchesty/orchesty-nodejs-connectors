@@ -1,0 +1,5 @@
+{
+    "http": "POST https://api.xero.com/files.xro/1.0/Files",
+    "code": 200,
+    "body": {}
+}
