@@ -4,6 +4,7 @@
     },
     "data": {
         "Type": "ACCREC",
+        "Name": "Test",
         "Contact": {
             "ContactID": "eaa28f49-6028-4b6e-bb12-d8f6278073fc"
         },
@@ -22,5 +23,4 @@
             }
         ]
     }
-
 }

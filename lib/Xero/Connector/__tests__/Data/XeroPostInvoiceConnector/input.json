@@ -2,5 +2,24 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "Type": "ACCREC",
+        "Contact": {
+            "ContactID": "55eaafb4-cd2b-4901-b352-5cf024888310"
+        },
+        "Date": "\/Date(1518685950940+0000)\/",
+        "DueDate": "\/Date(1518685950940+0000)\/",
+        "DateString": "2009-05-27T00:00:00",
+        "DueDateString": "2009-06-06T00:00:00",
+        "LineAmountTypes": "Exclusive",
+        "LineItems": [
+            {
+                "Description": "Consulting services as agreed (20% off standard rate)",
+                "Quantity": "10",
+                "UnitAmount": "100.00",
+                "AccountCode": "200",
+                "DiscountRate": "20"
+            }
+        ]
+    }
 }
