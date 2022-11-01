@@ -101,6 +101,7 @@ export default class AuthenticaApplication extends ABasicApplication {
             LOCK_KEY,
             request,
             this.accessCallBack.bind(this),
+            [200],
         );
 
         return `Bearer ${storedAccessToken.access_token}`;
@@ -111,7 +112,7 @@ export default class AuthenticaApplication extends ABasicApplication {
         const token = res.getJsonBody() as IAccessToken;
         return {
             dataToStore: token,
-            expire: token.expires_in,
+            expire: token.expires_in - 300,
         };
     }
 
