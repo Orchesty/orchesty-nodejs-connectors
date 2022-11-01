@@ -16,7 +16,7 @@ export default class GetApplicationForRefreshBatchConnector extends ABatchNode {
 
         const repository = await this.getDbClient().getApplicationRepository();
 
-        const applications = repository.find({ expires: { $in: [{ $lte: time }, { $ne: null }] } });
+        const applications = repository.find({ expires: { $lte: time } });
         await applications.forEach((app) => {
             dto.addItem({}, app.getUser());
         });
