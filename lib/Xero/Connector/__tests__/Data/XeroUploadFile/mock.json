@@ -1,5 +1,20 @@
 {
     "http": "POST https://api.xero.com/files.xro/1.0/Files",
     "code": 200,
-    "body": {}
+    "body": {
+        "Name": "1",
+        "MimeType": "1",
+        "Size": 1,
+        "CreatedDateUtc": "2022-11-01T05:33:58.1270000",
+        "UpdatedDateUtc": "2022-11-01T05:33:58.1270000",
+        "User": {
+            "Name": "1",
+            "FirstName": "1",
+            "LastName": "1",
+            "FullName": "1",
+            "Id": "1"
+        },
+        "FolderId": "1",
+        "Id": "1"
+    }
 }

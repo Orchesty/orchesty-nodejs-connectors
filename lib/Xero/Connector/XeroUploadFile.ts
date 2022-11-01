@@ -20,7 +20,7 @@ export default class XeroUploadFile extends AConnector {
     }
 
     @validate(inputSchema)
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const { file, fileName } = dto.getJsonData();
 
         const form = new FormData();
@@ -38,9 +38,9 @@ export default class XeroUploadFile extends AConnector {
         delete headers?.[CommonHeaders.CONTENT_TYPE];
         req.setHeaders(headers);
 
-        await this.getSender().send(req, [200]);
+        const resp = await this.getSender().send<IResponse>(req, [200]);
 
-        return dto.setNewJsonData({});
+        return dto.setNewJsonData(resp.getJsonBody());
     }
 
 }
@@ -49,3 +49,23 @@ export interface IInput {
     file: string;
     fileName: string;
 }
+
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IResponse {
+    Name: string;
+    MimeType: string;
+    Size: number;
+    CreatedDateUtc: string;
+    UpdatedDateUtc: string;
+    User: {
+        Name: string;
+        FirstName: string;
+        LastName: string;
+        FullName: string;
+        Id: string;
+    };
+    FolderId: string;
+    Id: string;
+}
+
+/* eslint-enable @typescript-eslint/naming-convention */
