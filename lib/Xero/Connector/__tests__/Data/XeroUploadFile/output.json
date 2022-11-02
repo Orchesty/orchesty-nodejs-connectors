@@ -1,0 +1,21 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "CreatedDateUtc": "2022-11-01T05:33:58.1270000",
+        "FolderId": "1",
+        "Id": "1",
+        "MimeType": "1",
+        "Name": "1",
+        "Size": 1,
+        "UpdatedDateUtc": "2022-11-01T05:33:58.1270000",
+        "User": {
+            "FirstName": "1",
+            "FullName": "1",
+            "Id": "1",
+            "LastName": "1",
+            "Name": "1"
+        }
+    }
+}

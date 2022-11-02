@@ -2,5 +2,69 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "Contacts": [
+            {
+                "Addresses": [
+                    {
+                        "AddressType": "STREET",
+                        "City": "",
+                        "Country": "",
+                        "PostalCode": "",
+                        "Region": ""
+                    },
+                    {
+                        "AddressType": "POBOX",
+                        "City": "",
+                        "Country": "",
+                        "PostalCode": "",
+                        "Region": ""
+                    }
+                ],
+                "BankAccountDetails": "",
+                "ContactGroups": [],
+                "ContactID": "55eaafb4-cd2b-4901-b352-5cf024888310",
+                "ContactPersons": [],
+                "ContactStatus": "ACTIVE",
+                "EmailAddress": "",
+                "HasValidationErrors": false,
+                "IsCustomer": false,
+                "IsSupplier": false,
+                "Name": "Test",
+                "Phones": [
+                    {
+                        "PhoneAreaCode": "",
+                        "PhoneCountryCode": "",
+                        "PhoneNumber": "",
+                        "PhoneType": "DEFAULT"
+                    },
+                    {
+                        "PhoneAreaCode": "",
+                        "PhoneCountryCode": "",
+                        "PhoneNumber": "",
+                        "PhoneType": "DDI"
+                    },
+                    {
+                        "PhoneAreaCode": "",
+                        "PhoneCountryCode": "",
+                        "PhoneNumber": "",
+                        "PhoneType": "FAX"
+                    },
+                    {
+                        "PhoneAreaCode": "",
+                        "PhoneCountryCode": "",
+                        "PhoneNumber": "",
+                        "PhoneType": "MOBILE"
+                    }
+                ],
+                "PurchasesTrackingCategories": [],
+                "SalesTrackingCategories": [],
+                "UpdatedDateUTC": "/Date(1667222832707+0000)/"
+            }
+        ],
+        "DateTimeUTC": "/Date(1667222832729)/",
+        "Id": "3dab7eef-daef-4f37-81e3-6de187538d71",
+        "ProviderName": "test",
+        "Status": "OK"
+    }
 }
