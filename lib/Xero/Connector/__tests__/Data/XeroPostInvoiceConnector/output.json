@@ -2,5 +2,114 @@
     "headers": {
         "user": "TestUser"
     },
-    "data": {}
+    "data": {
+        "DateTimeUTC": "/Date(1667223496573)/",
+        "Id": "620535c9-e500-4dac-be44-2b01450e0121",
+        "Invoices": [
+            {
+                "AmountDue": 800,
+                "AmountPaid": 0,
+                "BrandingThemeID": "22c8b5db-4ef1-44f4-84b9-ab59ca607eda",
+                "Contact": {
+                    "Addresses": [
+                        {
+                            "AddressType": "STREET",
+                            "City": "",
+                            "Country": "",
+                            "PostalCode": "",
+                            "Region": ""
+                        },
+                        {
+                            "AddressType": "POBOX",
+                            "City": "",
+                            "Country": "",
+                            "PostalCode": "",
+                            "Region": ""
+                        }
+                    ],
+                    "BankAccountDetails": "",
+                    "ContactGroups": [],
+                    "ContactID": "55eaafb4-cd2b-4901-b352-5cf024888310",
+                    "ContactPersons": [],
+                    "ContactStatus": "ACTIVE",
+                    "EmailAddress": "",
+                    "HasValidationErrors": false,
+                    "IsCustomer": true,
+                    "IsSupplier": false,
+                    "Name": "Test",
+                    "Phones": [
+                        {
+                            "PhoneAreaCode": "",
+                            "PhoneCountryCode": "",
+                            "PhoneNumber": "",
+                            "PhoneType": "DEFAULT"
+                        },
+                        {
+                            "PhoneAreaCode": "",
+                            "PhoneCountryCode": "",
+                            "PhoneNumber": "",
+                            "PhoneType": "DDI"
+                        },
+                        {
+                            "PhoneAreaCode": "",
+                            "PhoneCountryCode": "",
+                            "PhoneNumber": "",
+                            "PhoneType": "FAX"
+                        },
+                        {
+                            "PhoneAreaCode": "",
+                            "PhoneCountryCode": "",
+                            "PhoneNumber": "",
+                            "PhoneType": "MOBILE"
+                        }
+                    ],
+                    "PurchasesTrackingCategories": [],
+                    "SalesTrackingCategories": [],
+                    "UpdatedDateUTC": "/Date(1667222832707+0000)/"
+                },
+                "CurrencyCode": "CZK",
+                "CurrencyRate": 1,
+                "Date": "/Date(1243382400000+0000)/",
+                "DateString": "2009-05-27T00:00:00",
+                "DueDate": "/Date(1244246400000+0000)/",
+                "DueDateString": "2009-06-06T00:00:00",
+                "HasErrors": false,
+                "InvoiceID": "afa1e8fa-1e9a-4112-a0b8-172636b0e357",
+                "InvoiceNumber": "INV-0001",
+                "InvoicePaymentServices": [],
+                "IsDiscounted": true,
+                "LineAmountTypes": "Exclusive",
+                "LineItems": [
+                    {
+                        "AccountCode": "200",
+                        "Description": "Consulting services as agreed (20% off standard rate)",
+                        "DiscountAmount": 200,
+                        "DiscountEnteredAsPercent": true,
+                        "DiscountRate": 20,
+                        "LineAmount": 800,
+                        "LineItemID": "c5f94322-2bd4-4e1a-bb5f-c736e1f1366d",
+                        "Quantity": 10,
+                        "TaxAmount": 0,
+                        "TaxType": "OUTPUT",
+                        "Tracking": [],
+                        "UnitAmount": 100,
+                        "ValidationErrors": []
+                    }
+                ],
+                "Overpayments": [],
+                "Prepayments": [],
+                "Reference": "",
+                "SentToContact": false,
+                "Status": "DRAFT",
+                "SubTotal": 800,
+                "Total": 800,
+                "TotalDiscount": 200,
+                "TotalTax": 0,
+                "Type": "ACCREC",
+                "UpdatedDateUTC": "/Date(1667223496543+0000)/"
+            }
+        ],
+        "ProviderName": "test",
+        "Status": "OK"
+    }
 }

@@ -11,6 +11,7 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { BodyInit } from 'node-fetch';
 
 export const NAME = 'xero';
 export const XERO_TENANT_ID = 'Xero-tenant-id';
@@ -45,20 +46,20 @@ export default class XeroApplication extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         uri?: string,
-        data?: unknown,
+        data?: BodyInit | undefined,
     ): RequestDto {
-        const url = `https://api.xero.com/api.xro/2.0/${uri}`;
+        const url = uri?.startsWith('http') ? uri : `https://api.xero.com/api.xro/2.0/${uri}`;
         const request = new RequestDto(url ?? '', method, dto);
         const id = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][XERO_TENANT_ID];
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            'Xero-tenant-id': id, // eslint-disable-line
+            'Xero-Tenant-Id': id, // eslint-disable-line
             [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
         });
 
         if (data) {
-            request.setJsonBody(data);
+            request.setBody(data);
         }
 
         return request;
