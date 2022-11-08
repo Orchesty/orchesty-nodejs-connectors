@@ -1,3 +1,4 @@
+import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
@@ -23,6 +24,10 @@ export const SUBDOMAIN = 'subdomain';
 export const NAME = 'pipedrive';
 
 export default class PipedriveApplication extends ABasicApplication implements IWebhookApplication {
+
+    public getApplicationType(): ApplicationTypeEnum {
+        return ApplicationTypeEnum.WEBHOOK;
+    }
 
     public getDescription(): string {
         return 'Sales pipeline and CRM software for deal makers, close deals in less time';

@@ -1,3 +1,4 @@
+import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
@@ -25,6 +26,10 @@ export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
 
 export default class ShipstationApplication extends ABasicApplication implements IWebhookApplication {
+
+    public getApplicationType(): ApplicationTypeEnum {
+        return ApplicationTypeEnum.WEBHOOK;
+    }
 
     public getDescription(): string {
         return 'Subscription-based software that allows anyone to set up an online store and sell their products';

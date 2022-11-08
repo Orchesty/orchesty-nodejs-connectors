@@ -1,3 +1,4 @@
+import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
@@ -30,6 +31,10 @@ export default class MailchimpApplication extends AOAuth2Application implements 
 
     public constructor(private readonly sender: CurlSender, private readonly inputProvider: OAuth2Provider) {
         super(inputProvider);
+    }
+
+    public getApplicationType(): ApplicationTypeEnum {
+        return ApplicationTypeEnum.WEBHOOK;
     }
 
     public getDescription(): string {
@@ -101,9 +106,9 @@ export default class MailchimpApplication extends AOAuth2Application implements 
 
     public getWebhookSubscriptions(): WebhookSubscription[] {
         return [
-            new WebhookSubscription('Create User', 'starting-point', '', { name: 'subscribe' }),
-            new WebhookSubscription('Update User', 'starting-point', '', { name: 'upemail' }),
-            new WebhookSubscription('Delete User', 'starting-point', '', { name: 'unsubscribe' }),
+            new WebhookSubscription('Create User', 'Webhook', '', { name: 'subscribe' }),
+            new WebhookSubscription('Update User', 'Webhook', '', { name: 'upemail' }),
+            new WebhookSubscription('Delete User', 'Webhook', '', { name: 'unsubscribe' }),
         ];
     }
 
