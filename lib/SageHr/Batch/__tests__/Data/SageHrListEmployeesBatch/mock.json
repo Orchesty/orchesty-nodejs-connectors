@@ -1,5 +1,5 @@
 {
-    "http": "GET https://companydomain.sage.hr/api/employees?page=1",
+    "http": "GET https://companydomain.sage.hr/api/employees\\?page=1",
     "code": 200,
     "body": {
         "data": [

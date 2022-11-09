@@ -1,10 +1,5 @@
 {
-    "http": "POST https://server.cz/api_path//shipment?token=123456789",
-    "httpReplacement": {
-        "query": {
-            "token": "123456789"
-        }
-    },
+    "http": "POST https://server.cz/api_path//shipment\\?token=.*",
     "code": 200,
     "body": {
         "supplierId": 12345,

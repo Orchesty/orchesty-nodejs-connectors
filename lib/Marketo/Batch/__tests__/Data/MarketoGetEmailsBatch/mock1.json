@@ -1,5 +1,5 @@
 {
-    "http": "GET https://284-RPR-133.mktorest.com/rest/asset/v1/emails.json?offset=0&maxReturn=200",
+    "http": "GET https://284-RPR-133.mktorest.com/rest/asset/v1/emails.json\\?offset=0&maxReturn=200",
     "code": 200,
     "body": {
         "errors": [

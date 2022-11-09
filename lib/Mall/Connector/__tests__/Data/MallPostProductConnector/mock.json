@@ -1,5 +1,5 @@
 {
-    "http": "POST https://mpapi.mallgroup.com/v1/products?client_id=ClientId",
+    "http": "POST https://mpapi.mallgroup.com/v1/products\\?client_id=ClientId",
     "code": 201,
     "body": {
         "result": {

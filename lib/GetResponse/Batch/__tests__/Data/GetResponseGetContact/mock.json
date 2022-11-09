@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.getresponse.com/v3/contacts?page=1&perPage=100&filter=basic",
+    "http": "GET https://api.getresponse.com/v3/contacts\\?page=1&perPage=100&filter=basic",
     "code": 200,
     "body": [
         {

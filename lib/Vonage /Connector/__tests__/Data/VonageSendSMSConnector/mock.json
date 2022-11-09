@@ -1,5 +1,5 @@
 {
-    "http": "POST https://rest.nexmo.com/sms/json?api_key=Api_Key&api_secret=Api_secret&from=+447700900000&to=+420132651455&type=text&text=Ahoj_jak_se_mas?_TEST",
+    "http": "POST https://rest.nexmo.com/sms/json\\?api_key=Api_Key&api_secret=Api_secret&from=\\+447700900000&to=\\+420132651455&type=text&text=Ahoj_jak_se_mas\\?_TEST",
     "code": 200,
     "body": {
         "message-count": "1",

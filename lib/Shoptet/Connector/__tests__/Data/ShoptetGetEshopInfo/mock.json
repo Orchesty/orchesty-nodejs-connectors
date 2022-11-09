@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.myshoptet.com/api/eshop?include=orderStatuses,paymentMethods,shippingMethods",
+    "http": "GET https://api.myshoptet.com/api/eshop\\?include=orderStatuses,paymentMethods,shippingMethods",
     "code": 200,
     "body": {
         "data": {

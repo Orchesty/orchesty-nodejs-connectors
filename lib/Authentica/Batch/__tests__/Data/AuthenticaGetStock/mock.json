@@ -1,5 +1,5 @@
 {
-    "http": "GET https://app.authentica.cz/api/applinth/stock?page=1&limit=50",
+    "http": "GET https://app.authentica.cz/api/applinth/stock\\?page=1&limit=50",
     "code": 200,
     "body": {
         "data": [

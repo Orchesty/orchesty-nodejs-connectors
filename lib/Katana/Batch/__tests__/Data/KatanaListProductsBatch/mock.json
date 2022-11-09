@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.katanamrp.com/v1/products?offset=1&limit=50",
+    "http": "GET https://api.katanamrp.com/v1/products\\?offset=1&limit=50",
     "code": 200,
     "body": {
         "data": [

@@ -1,5 +1,5 @@
 {
-    "http": "GET https://hbtest8393.zendesk.com/api/v2/tickets.json?per_page=100&page=1",
+    "http": "GET https://hbtest8393.zendesk.com/api/v2/tickets.json\\?per_page=100&page=1",
     "code": 200,
     "body": {
         "tickets": [

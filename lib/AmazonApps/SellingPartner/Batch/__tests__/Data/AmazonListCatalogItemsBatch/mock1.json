@@ -1,5 +1,5 @@
 {
-    "http": "GET https://sellingpartnerapi-na.amazon.com/catalog/v0/items?MarketplaceId=eshop",
+    "http": "GET https://sellingpartnerapi-na.amazon.com/catalog/v0/items\\?MarketplaceId=eshop",
     "code": 200,
     "body": {
         "payload": {

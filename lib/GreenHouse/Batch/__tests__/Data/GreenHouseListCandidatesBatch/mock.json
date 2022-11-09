@@ -1,5 +1,5 @@
 {
-    "http": "GET https://harvest.greenhouse.io/v1/candidates?per_page=500&page=1",
+    "http": "GET https://harvest.greenhouse.io/v1/candidates\\?per_page=500&page=1",
     "code": 200,
     "body": [
         {
