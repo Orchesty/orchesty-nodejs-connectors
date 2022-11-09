@@ -1,0 +1,369 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "_links": {
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods"
+                    }
+                ],
+                "describes": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5"
+                    }
+                ],
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods/26"
+                    }
+                ]
+            },
+            "enabled": true,
+            "instance_id": 26,
+            "method_description": "<p>Lets you charge a fixed rate for shipping.</p>\n",
+            "method_id": "flat_rate",
+            "method_title": "Flat rate",
+            "order": 1,
+            "settings": {
+                "class_cost_91": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "class_cost_91",
+                    "label": "\"Priority\" shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "class_cost_92": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "class_cost_92",
+                    "label": "\"Express\" shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "class_costs": {
+                    "default": "",
+                    "description": "These costs can optionally be added based on the <a href=\"https://example.com/wp-admin/admin.php?page=wc-settings&tab=shipping&section=classes\">product shipping class</a>.",
+                    "id": "class_costs",
+                    "label": "Shipping class costs",
+                    "placeholder": "",
+                    "tip": "These costs can optionally be added based on the <a href=\"https://example.com/wp-admin/admin.php?page=wc-settings&tab=shipping&section=classes\">product shipping class</a>.",
+                    "type": "title",
+                    "value": ""
+                },
+                "cost": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "cost",
+                    "label": "Cost",
+                    "placeholder": "",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": "0"
+                },
+                "no_class_cost": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "no_class_cost",
+                    "label": "No shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "tax_status": {
+                    "default": "taxable",
+                    "description": "",
+                    "id": "tax_status",
+                    "label": "Tax status",
+                    "options": {
+                        "none": "None",
+                        "taxable": "Taxable"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": "taxable"
+                },
+                "title": {
+                    "default": "Flat rate",
+                    "description": "This controls the title which the user sees during checkout.",
+                    "id": "title",
+                    "label": "Method title",
+                    "placeholder": "",
+                    "tip": "This controls the title which the user sees during checkout.",
+                    "type": "text",
+                    "value": "Flat rate"
+                },
+                "type": {
+                    "default": "class",
+                    "description": "",
+                    "id": "type",
+                    "label": "Calculation type",
+                    "options": {
+                        "class": "Per class: Charge shipping for each shipping class individually",
+                        "order": "Per order: Charge shipping for the most expensive shipping class"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": "class"
+                }
+            },
+            "title": "Flat rate"
+        },
+        {
+            "_links": {
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods"
+                    }
+                ],
+                "describes": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5"
+                    }
+                ],
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods/27"
+                    }
+                ]
+            },
+            "enabled": true,
+            "instance_id": 27,
+            "method_description": "<p>Free shipping is a special method which can be triggered with coupons and minimum spends.</p>\n",
+            "method_id": "free_shipping",
+            "method_title": "Free shipping",
+            "order": 2,
+            "settings": {
+                "min_amount": {
+                    "default": "",
+                    "description": "Users will need to spend this amount to get free shipping (if enabled above).",
+                    "id": "min_amount",
+                    "label": "Minimum order amount",
+                    "placeholder": "",
+                    "tip": "Users will need to spend this amount to get free shipping (if enabled above).",
+                    "type": "price",
+                    "value": "0"
+                },
+                "requires": {
+                    "default": "",
+                    "description": "",
+                    "id": "requires",
+                    "label": "Free shipping requires...",
+                    "options": {
+                        "": "N/A",
+                        "both": "A minimum order amount AND a coupon",
+                        "coupon": "A valid free shipping coupon",
+                        "either": "A minimum order amount OR a coupon",
+                        "min_amount": "A minimum order amount"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": ""
+                },
+                "title": {
+                    "default": "Free shipping",
+                    "description": "This controls the title which the user sees during checkout.",
+                    "id": "title",
+                    "label": "Title",
+                    "placeholder": "",
+                    "tip": "This controls the title which the user sees during checkout.",
+                    "type": "text",
+                    "value": "Free shipping"
+                }
+            },
+            "title": "Free shipping"
+        },
+        {
+            "_links": {
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods"
+                    }
+                ],
+                "describes": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5"
+                    }
+                ],
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods/26"
+                    }
+                ]
+            },
+            "enabled": true,
+            "instance_id": 26,
+            "method_description": "<p>Lets you charge a fixed rate for shipping.</p>\n",
+            "method_id": "flat_rate",
+            "method_title": "Flat rate",
+            "order": 1,
+            "settings": {
+                "class_cost_91": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "class_cost_91",
+                    "label": "\"Priority\" shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "class_cost_92": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "class_cost_92",
+                    "label": "\"Express\" shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "class_costs": {
+                    "default": "",
+                    "description": "These costs can optionally be added based on the <a href=\"https://example.com/wp-admin/admin.php?page=wc-settings&tab=shipping&section=classes\">product shipping class</a>.",
+                    "id": "class_costs",
+                    "label": "Shipping class costs",
+                    "placeholder": "",
+                    "tip": "These costs can optionally be added based on the <a href=\"https://example.com/wp-admin/admin.php?page=wc-settings&tab=shipping&section=classes\">product shipping class</a>.",
+                    "type": "title",
+                    "value": ""
+                },
+                "cost": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "cost",
+                    "label": "Cost",
+                    "placeholder": "",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": "0"
+                },
+                "no_class_cost": {
+                    "default": "",
+                    "description": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "id": "no_class_cost",
+                    "label": "No shipping class cost",
+                    "placeholder": "N/A",
+                    "tip": "Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>.<br/><br/>Use <code>[qty]</code> for the number of items, <br/><code>[cost]</code> for the total cost of items, and <code>[fee percent=\"10\" min_fee=\"20\" max_fee=\"\"]</code> for percentage based fees.",
+                    "type": "text",
+                    "value": ""
+                },
+                "tax_status": {
+                    "default": "taxable",
+                    "description": "",
+                    "id": "tax_status",
+                    "label": "Tax status",
+                    "options": {
+                        "none": "None",
+                        "taxable": "Taxable"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": "taxable"
+                },
+                "title": {
+                    "default": "Flat rate",
+                    "description": "This controls the title which the user sees during checkout.",
+                    "id": "title",
+                    "label": "Method title",
+                    "placeholder": "",
+                    "tip": "This controls the title which the user sees during checkout.",
+                    "type": "text",
+                    "value": "Flat rate"
+                },
+                "type": {
+                    "default": "class",
+                    "description": "",
+                    "id": "type",
+                    "label": "Calculation type",
+                    "options": {
+                        "class": "Per class: Charge shipping for each shipping class individually",
+                        "order": "Per order: Charge shipping for the most expensive shipping class"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": "class"
+                }
+            },
+            "title": "Flat rate"
+        },
+        {
+            "_links": {
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods"
+                    }
+                ],
+                "describes": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5"
+                    }
+                ],
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/methods/27"
+                    }
+                ]
+            },
+            "enabled": true,
+            "instance_id": 27,
+            "method_description": "<p>Free shipping is a special method which can be triggered with coupons and minimum spends.</p>\n",
+            "method_id": "free_shipping",
+            "method_title": "Free shipping",
+            "order": 2,
+            "settings": {
+                "min_amount": {
+                    "default": "",
+                    "description": "Users will need to spend this amount to get free shipping (if enabled above).",
+                    "id": "min_amount",
+                    "label": "Minimum order amount",
+                    "placeholder": "",
+                    "tip": "Users will need to spend this amount to get free shipping (if enabled above).",
+                    "type": "price",
+                    "value": "0"
+                },
+                "requires": {
+                    "default": "",
+                    "description": "",
+                    "id": "requires",
+                    "label": "Free shipping requires...",
+                    "options": {
+                        "": "N/A",
+                        "both": "A minimum order amount AND a coupon",
+                        "coupon": "A valid free shipping coupon",
+                        "either": "A minimum order amount OR a coupon",
+                        "min_amount": "A minimum order amount"
+                    },
+                    "placeholder": "",
+                    "tip": "",
+                    "type": "select",
+                    "value": ""
+                },
+                "title": {
+                    "default": "Free shipping",
+                    "description": "This controls the title which the user sees during checkout.",
+                    "id": "title",
+                    "label": "Title",
+                    "placeholder": "",
+                    "tip": "This controls the title which the user sees during checkout.",
+                    "type": "text",
+                    "value": "Free shipping"
+                }
+            },
+            "title": "Free shipping"
+        }
+    ]
+}
