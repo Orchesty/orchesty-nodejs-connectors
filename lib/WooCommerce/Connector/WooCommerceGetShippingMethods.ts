@@ -11,7 +11,7 @@ export default class WooCommerceGetShippingMethods extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IShippingMethod[]>> {
         const app = this.getApplication<WooCommerceApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto, null);
 
@@ -34,18 +34,18 @@ export default class WooCommerceGetShippingMethods extends AConnector {
             );
 
             const innerRes = await this.getSender().send<IShippingMethod[]>(innerRequestDto, [200, 404]);
-            shippingMethods.push(...innerRes.getJsonBody().map((shippingMethod) => {
-                // eslint-disable-next-line no-param-reassign
-                shippingMethod.shipping_zone_title = shippingZone.name;
+            shippingMethods.push(...innerRes.getJsonBody()
+                .filter((shippingMethod) => shippingMethod.enabled)
+                .map((shippingMethod) => {
+                    // eslint-disable-next-line no-param-reassign
+                    shippingMethod.shipping_zone_title = shippingZone.name;
 
-                return shippingMethod;
-            }));
+                    return shippingMethod;
+                }));
         });
         await Promise.all(result);
 
-        dto.setJsonData(shippingMethods);
-
-        return dto;
+        return dto.setNewJsonData(shippingMethods);
     }
 
 }
