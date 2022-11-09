@@ -12,6 +12,6 @@ describe('Tests for WooCommerceGetShippingMethods', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testBatch(WOO_COMMERCE_GET_SHIPPING_METHODS);
+        await tester.testConnector(WOO_COMMERCE_GET_SHIPPING_METHODS);
     });
 });
