@@ -1,0 +1,50 @@
+{
+    "http": "GET http://woocomerce.com/wp-json/wc/v3/shipping/zones?per_page=10000",
+    "code": 200,
+    "body": [
+        {
+            "id": 0,
+            "name": "Rest of the World",
+            "order": 0,
+            "_links": {
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/0"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones"
+                    }
+                ],
+                "describedby": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/0/locations"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "name": "Brazil",
+            "order": 0,
+            "_links": {
+                "self": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5"
+                    }
+                ],
+                "collection": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones"
+                    }
+                ],
+                "describedby": [
+                    {
+                        "href": "https://example.com/wp-json/wc/v3/shipping/zones/5/locations"
+                    }
+                ]
+            }
+        }
+    ]
+}
