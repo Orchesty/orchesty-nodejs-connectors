@@ -117,6 +117,7 @@
                     "value": "class"
                 }
             },
+            "shipping_zone_title": "Rest of the World",
             "title": "Flat rate"
         },
         {
@@ -182,6 +183,7 @@
                     "value": "Free shipping"
                 }
             },
+            "shipping_zone_title": "Rest of the World",
             "title": "Free shipping"
         },
         {
@@ -298,6 +300,7 @@
                     "value": "class"
                 }
             },
+            "shipping_zone_title": "Brazil",
             "title": "Flat rate"
         },
         {
@@ -363,6 +366,7 @@
                     "value": "Free shipping"
                 }
             },
+            "shipping_zone_title": "Brazil",
             "title": "Free shipping"
         }
     ]

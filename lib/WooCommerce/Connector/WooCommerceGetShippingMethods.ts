@@ -34,7 +34,12 @@ export default class WooCommerceGetShippingMethods extends AConnector {
             );
 
             const innerRes = await this.getSender().send<IShippingMethod[]>(innerRequestDto, [200, 404]);
-            shippingMethods.push(...innerRes.getJsonBody());
+            shippingMethods.push(...innerRes.getJsonBody().map((shippingMethod) => {
+                // eslint-disable-next-line no-param-reassign
+                shippingMethod.shipping_zone_title = shippingZone.name;
+
+                return shippingMethod;
+            }));
         });
         await Promise.all(result);
 
@@ -71,6 +76,7 @@ export interface IShippingMethod {
     method_id: string;
     method_title: string;
     method_description: string;
+    shipping_zone_title?: string;
     settings: {
         title: {
             id: string;
