@@ -4,6 +4,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import XeroGetAccountsBatch from '../../lib/Xero/Batch/XeroGetAccountsBatch';
 import XeroGetContactsBatch from '../../lib/Xero/Batch/XeroGetContactsBatch';
+import XeroGetTaxRatesBatch from '../../lib/Xero/Batch/XeroGetTaxRatesBatch';
 import XeroPostContactsConnector from '../../lib/Xero/Connector/XeroPostContactsConnector';
 import XeroPostInvoiceConnector from '../../lib/Xero/Connector/XeroPostInvoiceConnector';
 import XeroUploadFile from '../../lib/Xero/Connector/XeroUploadFile';
@@ -62,4 +63,10 @@ export default async function init(): Promise<void> {
         .setApplication(app)
         .setSender(sender);
     container.setConnector(xeroUploadFile);
+
+    const xeroGetTaxRates = new XeroGetTaxRatesBatch()
+        .setDb(db)
+        .setApplication(app)
+        .setSender(sender);
+    container.setBatch(xeroGetTaxRates);
 }
