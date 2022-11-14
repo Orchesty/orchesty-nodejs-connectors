@@ -1,18 +1,17 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import XeroApplication from '../XeroApplication';
 
-export const NAME = 'xero-get-tax-rates';
+export const NAME = 'xero-get-tax-rates-batch';
 
-export default class XeroGetTaxRates extends ABatchNode {
+export default class XeroGetTaxRatesBatch extends ABatchNode {
 
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
-        const requestDto = this.getApplication<XeroApplication>()
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto<unknown, IOutput[]>> {
+        const requestDto = await this.getApplication()
             .getRequestDto(
                 dto,
                 await this.getApplicationInstallFromProcess(dto),
@@ -20,18 +19,18 @@ export default class XeroGetTaxRates extends ABatchNode {
                 'TaxRates',
             );
 
-        const response = await this.getSender().send<IResponse>(requestDto);
+        const response = await this.getSender().send<IResponse>(requestDto, [200]);
 
-        this.setItemsListToDto(dto, response.getJsonBody().TaxRates);
-
-        return dto;
+        return this.setItemsListToDto(dto, response.getJsonBody().TaxRates);
     }
 
-    protected setItemsListToDto(dto: BatchProcessDto, taxes: TaxRate[]): void {
-        dto.setItemList(taxes);
+    protected setItemsListToDto(dto: BatchProcessDto, taxes: TaxRate[]): BatchProcessDto<unknown, IOutput[]> {
+        return dto.setItemList(taxes);
     }
 
 }
+
+export type IOutput = TaxRate;
 
 export interface IResponse {
     // eslint-disable-next-line @typescript-eslint/naming-convention
