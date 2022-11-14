@@ -18,7 +18,7 @@ export default class XeroGetTrackingCategoriesBatch extends ABatchNode {
             'TrackingCategories',
         );
 
-        const response = await this.getSender().send<IResponse>(requestDto);
+        const response = await this.getSender().send<IResponse>(requestDto, [200]);
 
         this.setItemsListToDto(dto, response.getJsonBody().TrackingCategories);
         return dto;
