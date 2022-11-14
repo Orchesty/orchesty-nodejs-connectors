@@ -10,7 +10,7 @@ export default class XeroGetTrackingCategoriesBatch extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto<unknown, IOutput[]>> {
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
@@ -20,12 +20,14 @@ export default class XeroGetTrackingCategoriesBatch extends ABatchNode {
 
         const response = await this.getSender().send<IResponse>(requestDto, [200]);
 
-        this.setItemsListToDto(dto, response.getJsonBody().TrackingCategories);
-        return dto;
+        return this.setItemsListToDto(dto, response.getJsonBody().TrackingCategories);
     }
 
-    protected setItemsListToDto(dto: BatchProcessDto, trackingCategories: TrackingCategory[]): void {
-        dto.setItemList(trackingCategories);
+    protected setItemsListToDto(
+        dto: BatchProcessDto,
+        trackingCategories: TrackingCategory[],
+    ): BatchProcessDto<unknown, IOutput[]> {
+        return dto.setItemList(trackingCategories);
     }
 
 }
