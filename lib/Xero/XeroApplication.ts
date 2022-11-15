@@ -14,7 +14,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import { BodyInit } from 'node-fetch';
 
 export const NAME = 'xero';
-export const XERO_TENANT_ID = 'Xero-tenant-id';
+export const XERO_TENANT_ID = 'Xero-Tenant-Id';
 export default class XeroApplication extends AOAuth2Application {
 
     public getName(): string {
@@ -54,7 +54,7 @@ export default class XeroApplication extends AOAuth2Application {
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            'Xero-Tenant-Id': id, // eslint-disable-line
+            [XERO_TENANT_ID]: id, // eslint-disable-line
             [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
         });
 
