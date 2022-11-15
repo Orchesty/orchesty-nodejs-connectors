@@ -54,7 +54,7 @@ export default class XeroApplication extends AOAuth2Application {
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [XERO_TENANT_ID]: id, // eslint-disable-line
+            [XERO_TENANT_ID]: id,
             [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
         });
 
