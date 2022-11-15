@@ -29,10 +29,24 @@ export default class DigitooAddRegisters extends AConnector {
 
 export interface IInput {
     registers: {
-        type: string;
+        type: IType;
         options: {
             label: string;
             value: string;
         }[];
     }[];
+}
+
+export enum IType {
+    VAT_CODE = 'vat_code',
+    REPORT_CODE = 'report_code',
+    ASSIGNMENT = 'assignment',
+    STOCK = 'stock',
+    COST_CENTER = 'cost_center',
+    CONTRACT = 'contract',
+    ACTIVITY = 'activity',
+    ACCOUNT_CODE = 'account_code',
+    ACCOUNTING_SEQUENCE = 'accounting_sequence',
+    EMPLOYEE = 'employee',
+    VEHICLE = 'vehicle',
 }
