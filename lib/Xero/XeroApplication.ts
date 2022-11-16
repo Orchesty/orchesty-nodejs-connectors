@@ -4,18 +4,29 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import { decode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BodyInit } from 'node-fetch';
 
 export const NAME = 'xero';
 export const XERO_TENANT_ID = 'Xero-Tenant-Id';
+export const XERO_CONNECTION_ID = 'xero-connection_id';
 export default class XeroApplication extends AOAuth2Application {
+
+    public constructor(provider: OAuth2Provider, private readonly curlSender: CurlSender) {
+        super(provider);
+    }
 
     public getName(): string {
         return NAME;
@@ -68,8 +79,7 @@ export default class XeroApplication extends AOAuth2Application {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
-            .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
-            .addField(new Field(FieldType.TEXT, XERO_TENANT_ID, 'Xero-tenant-id', null, true));
+            .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
 
         return new FormStack().addForm(form);
     }
@@ -79,7 +89,8 @@ export default class XeroApplication extends AOAuth2Application {
         return super.isAuthorized(applicationInstall)
             && authorizationForm?.[CLIENT_ID]
             && authorizationForm?.[CLIENT_SECRET]
-            && authorizationForm?.[XERO_TENANT_ID];
+            && authorizationForm?.[XERO_TENANT_ID]
+            && authorizationForm?.[XERO_CONNECTION_ID];
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -93,6 +104,55 @@ export default class XeroApplication extends AOAuth2Application {
             'accounting.transactions',
             'offline_access',
         ];
+    }
+
+    public async setAuthorizationToken(
+        applicationInstall: ApplicationInstall,
+        token: Record<string, string>,
+    ): Promise<void> {
+        await super.setAuthorizationToken(applicationInstall, token);
+
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+        if (!authorizationForm[XERO_TENANT_ID] || !authorizationForm[XERO_CONNECTION_ID]) {
+            try {
+                const parsedJWT = JSON.parse(
+                    decode(authorizationForm[TOKEN].accessToken.split('.')[1]),
+                ) as unknown as { authentication_event_id: string };
+
+                const requestDto = this.getRequestDto(
+                    new ProcessDto(),
+                    applicationInstall,
+                    HttpMethods.GET,
+                    `https://api.xero.com/connections?authEventId=${parsedJWT.authentication_event_id}`,
+                );
+                const resp = await this.curlSender.send<[{ tenantId: string; id: string }]>(requestDto, [200]);
+
+                const respData = resp.getJsonBody();
+
+                if (!respData.length) {
+                    throw Error(`Response returned none connection for specific authEventId=[${parsedJWT.authentication_event_id}]`);
+                }
+
+                if (respData.length > 1) {
+                    throw Error(`Response returned more then one connection for specific authEventId=[${parsedJWT.authentication_event_id}]`);
+                }
+
+                applicationInstall.addSettings(
+                    {
+                        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                            [XERO_TENANT_ID]: respData[0].tenantId,
+                            [XERO_CONNECTION_ID]: respData[0].id,
+                        },
+                    },
+                );
+            } catch (e) {
+                if (e instanceof Error) {
+                    logger.error(e.message, {}, true);
+                } else {
+                    throw e;
+                }
+            }
+        }
     }
 
     protected getScopesSeparator(): string {
