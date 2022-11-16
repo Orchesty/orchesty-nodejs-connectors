@@ -24,7 +24,7 @@ export default class XeroFindContactConnector extends AConnector {
         return this.setNewJsonData(dto, resp);
     }
 
-    private setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
         const data = resp.getJsonBody();
         if (resp.getResponseCode() === 404 || data.Contacts.length <= 0) {
             return dto.setNewJsonData<IOutput>({ contact: null });
