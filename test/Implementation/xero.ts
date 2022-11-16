@@ -30,7 +30,7 @@ export default async function init(): Promise<void> {
         },
     });
 
-    const app = new XeroApplication(oauth2Provider);
+    const app = new XeroApplication(oauth2Provider, sender);
 
     container.setApplication(app);
     const getAccounts = new XeroGetAccountsBatch();
