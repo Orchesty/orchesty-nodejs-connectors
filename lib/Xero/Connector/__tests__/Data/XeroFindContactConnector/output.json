@@ -1,0 +1,54 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "contact": {
+            "AccountsPayableTaxType": "OUTPUT2",
+            "AccountsReceivableTaxType": "INPUT2",
+            "Addresses": [
+                {
+                    "AddressLine1": "P O Box 123",
+                    "AddressType": "POBOX",
+                    "AttentionTo": "Andrea",
+                    "City": "Wellington",
+                    "PostalCode": "6011"
+                },
+                {
+                    "AddressType": "STREET"
+                }
+            ],
+            "BankAccountDetails": "45465844",
+            "CompanyNumber": "NumberBusiness1234",
+            "ContactID": "bd2270c3-8706-4c11-9cfb-000b551c3f51",
+            "ContactStatus": "ACTIVE",
+            "DefaultCurrency": "NZD",
+            "EmailAddress": "a.dutchess@abclimited.com",
+            "FirstName": "Andrea",
+            "IsCustomer": true,
+            "IsSupplier": false,
+            "LastName": "Dutchess",
+            "Name": "ABC Limited",
+            "Phones": [
+                {
+                    "PhoneAreaCode": "04",
+                    "PhoneCountryCode": "64",
+                    "PhoneNumber": "1111111",
+                    "PhoneType": "DEFAULT"
+                },
+                {
+                    "PhoneType": "FAX"
+                },
+                {
+                    "PhoneType": "MOBILE"
+                },
+                {
+                    "PhoneType": "DDI"
+                }
+            ],
+            "SkypeUserName": "skype.dutchess@abclimited.com",
+            "TaxNumber": "415465456454",
+            "UpdatedDateUTC": "/Date(1488391422280+0000)/"
+        }
+    }
+}
