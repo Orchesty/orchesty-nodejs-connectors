@@ -19,9 +19,9 @@ export default class DigitooAddRegisters extends AConnector {
             'api/registers',
             dto.getJsonData(),
         );
-        const res = await this.getSender().send(req, [200]);
+        await this.getSender().send(req, [200]);
 
-        dto.setNewJsonData(res.getJsonBody());
+        dto.setNewJsonData({});
         return dto;
     }
 
