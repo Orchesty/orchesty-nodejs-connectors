@@ -85,7 +85,7 @@ export default class XeroApplication extends AOAuth2Application {
         });
 
         if (data) {
-            if (typeof data === 'string') {
+            if (typeof data === 'string' || data instanceof FormData) {
                 request.setBody(data);
             } else {
                 request.setJsonBody(data);
