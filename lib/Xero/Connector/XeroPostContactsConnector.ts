@@ -19,7 +19,7 @@ export default class XeroPostContactsConnector extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'contacts',
-            JSON.stringify(dto.getJsonData()),
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 
