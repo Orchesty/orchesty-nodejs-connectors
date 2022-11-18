@@ -30,7 +30,7 @@ export default class XeroPostContactsConnector extends AConnector {
         return dto.setNewJsonData({ contact: resp.getJsonBody().Contacts.shift() ?? null });
     }
 
-    protected getCodeRange(): IRangeObject[] | number[] {
+    protected getCodeRange(): IRangeObject[] | number[] | undefined {
         return [200];
     }
 
