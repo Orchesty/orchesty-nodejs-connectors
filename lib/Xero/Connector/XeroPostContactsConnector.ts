@@ -1,6 +1,9 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
+import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { IContact } from './XeroFindContactConnector';
 
 export const NAME = 'xero-put-contacts-connector';
 
@@ -10,7 +13,7 @@ export default class XeroPostContactsConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IContact>): Promise<ProcessDto<IOutput>> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
@@ -18,48 +21,32 @@ export default class XeroPostContactsConnector extends AConnector {
             'contacts',
             JSON.stringify(dto.getJsonData()),
         );
-        const resp = await this.getSender().send(req, [200]);
+        const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 
-        return dto.setNewJsonData(resp.getJsonBody());
+        return this.setNewJsonData(dto, resp);
+    }
+
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
+        return dto.setNewJsonData({ contact: resp.getJsonBody().Contacts.shift() ?? null });
+    }
+
+    protected getCodeRange(): IRangeObject[] | number[] {
+        return [200];
     }
 
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IInput {
-    Name: string;
-    ContactID?: string;
-    ContactNumber?: string;
-    AccountNumber?: string;
-    ContactStatus?: string;
-    FirstName?: string;
-    LastName?: string;
-    CompanyNumber?: string;
-    EmailAddress?: string;
-    SkypeUserName?: string;
-    ContactPerson?: string;
-    Addresses?: {
-        AddressType?: string;
-        AddressLine1?: string;
-        City?: string;
-        PostalCode?: string;
-    }[];
-    BankAccountDetails?: string;
-    TaxNumber?: string;
-    AccountsReceivableTaxType?: string;
-    AccountsPayableTaxType?: string;
-    Phones?: unknown;
-    IsSupplier?: unknown;
-    IsCustomer?: unknown;
-    DefaultCurrency?: string;
-    XeroNetworkKey?: unknown;
-    SalesDefaultAccountCode?: unknown;
-    PurchasesDefaultAccountCode?: unknown;
-    SalesTrackingCategories?: unknown;
-    PurchasingTrackingCategories?: unknown;
-    TrackingCategoryName?: string;
-    TrackingOptionName?: string;
-    PaymentTerms?: unknown;
+export interface IOutput {
+    contact: IContact | null;
+}
+
+export interface IResponse {
+    Contacts: IContact[];
+    DateTimeUTC: string;
+    Id: string;
+    ProviderName: string;
+    Status: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
