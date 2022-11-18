@@ -1,14 +1,9 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { validate } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
-import Joi from 'joi';
 
 export const NAME = 'digitoo-get-document';
-
-const inputSchema = Joi.object({
-    documentId: Joi.string().required(),
-});
 
 export default class DigitooGetDocument extends AConnector {
 
@@ -16,9 +11,9 @@ export default class DigitooGetDocument extends AConnector {
         return NAME;
     }
 
-    @validate(inputSchema)
+    // TODO zjistit jestli nebude tady vadit ze prijde vic dat
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { documentId } = dto.getJsonData();
+        const { documentId } = this.getJsonData(dto) as IInput;
 
         const req = await this.getApplication().getRequestDto(
             dto,
@@ -28,6 +23,14 @@ export default class DigitooGetDocument extends AConnector {
         );
         const resp = await this.getSender().send(req, [200]);
 
+        return this.setNewJsonData(dto, resp) as ProcessDto<IOutput>;
+    }
+
+    protected getJsonData(dto: ProcessDto): unknown {
+        return dto.getJsonData();
+    }
+
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto): ProcessDto {
         return dto.setNewJsonData({ file: resp.getBody() });
     }
 

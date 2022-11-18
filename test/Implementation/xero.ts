@@ -9,7 +9,7 @@ import XeroGetTrackingCategoriesBatch from '../../lib/Xero/Batch/XeroGetTracking
 import XeroFileAssociation from '../../lib/Xero/Connector/XeroFileAssociation';
 import XeroFindContactConnector from '../../lib/Xero/Connector/XeroFindContactConnector';
 import XeroPostContactsConnector from '../../lib/Xero/Connector/XeroPostContactsConnector';
-import XeroPostInvoiceConnector from '../../lib/Xero/Connector/XeroPostInvoiceConnector';
+import XeroPutInvoiceConnector from '../../lib/Xero/Connector/XeroPutInvoiceConnector';
 import XeroUploadFile from '../../lib/Xero/Connector/XeroUploadFile';
 import XeroApplication, { NAME as XERO_APP, XERO_TENANT_ID } from '../../lib/Xero/XeroApplication';
 import {
@@ -55,7 +55,7 @@ export default async function init(): Promise<void> {
         .setSender(sender);
     container.setConnector(xeroPutContactsConnector);
 
-    const xeroPutInvoiceConnector = new XeroPostInvoiceConnector()
+    const xeroPutInvoiceConnector = new XeroPutInvoiceConnector()
         .setDb(db)
         .setApplication(app)
         .setSender(sender);
