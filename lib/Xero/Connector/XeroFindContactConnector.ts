@@ -48,35 +48,51 @@ export interface IOutput {
 }
 
 export interface IContact {
-    ContactID: string;
-    ContactStatus: string;
-    Name: string;
-    FirstName: string;
-    LastName: string;
-    CompanyNumber: string;
-    EmailAddress: string;
-    SkypeUserName: string;
-    BankAccountDetails: string;
-    TaxNumber: string;
-    AccountsReceivableTaxType: string;
-    AccountsPayableTaxType: string;
-    Addresses: {
-        AddressType: string;
-        AddressLine1: string;
-        City: string;
-        PostalCode: string;
-        AttentionTo: string;
-    }[];
-    Phones: {
-        PhoneType: string;
-        PhoneNumber: string;
-        PhoneAreaCode: string;
-        PhoneCountryCode: string;
-    }[];
     UpdatedDateUTC: string;
-    IsSupplier: boolean;
-    IsCustomer: boolean;
-    DefaultCurrency: string;
+    Name?: string;
+    ContactID?: string;
+    ContactNumber?: string;
+    AccountNumber?: string;
+    ContactStatus?: string;
+    FirstName?: string;
+    LastName?: string;
+    CompanyNumber?: string;
+    EmailAddress?: string;
+    SkypeUserName?: string;
+    ContactPerson?: string;
+    Addresses?: {
+        AddressType?: string;
+        AddressLine1?: string;
+        City?: string;
+        PostalCode?: string;
+        Country?: string;
+        Region?: string;
+    }[];
+    BankAccountDetails?: string;
+    TaxNumber?: string;
+    AccountsReceivableTaxType?: string;
+    AccountsPayableTaxType?: string;
+    IsSupplier?: unknown;
+    IsCustomer?: unknown;
+    DefaultCurrency?: string;
+    XeroNetworkKey?: unknown;
+    SalesDefaultAccountCode?: unknown;
+    PurchasesDefaultAccountCode?: unknown;
+    PurchasingTrackingCategories?: unknown;
+    TrackingCategoryName?: string;
+    TrackingOptionName?: string;
+    PaymentTerms?: unknown;
+    ContactGroups: unknown[];
+    ContactPersons: unknown[];
+    HasValidationErrors: boolean;
+    Phones?: {
+        PhoneAreaCode?: string;
+        PhoneCountryCode?: string;
+        PhoneNumber?: string;
+        PhoneType?: string;
+    }[];
+    PurchasesTrackingCategories?: unknown[];
+    SalesTrackingCategories?: unknown[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
