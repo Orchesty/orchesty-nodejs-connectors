@@ -6,6 +6,7 @@ import XeroGetAccountsBatch from '../../lib/Xero/Batch/XeroGetAccountsBatch';
 import XeroGetContactsBatch from '../../lib/Xero/Batch/XeroGetContactsBatch';
 import XeroGetTaxRatesBatch from '../../lib/Xero/Batch/XeroGetTaxRatesBatch';
 import XeroGetTrackingCategoriesBatch from '../../lib/Xero/Batch/XeroGetTrackingCategoriesBatch';
+import XeroFileAssociation from '../../lib/Xero/Connector/XeroFileAssociation';
 import XeroFindContactConnector from '../../lib/Xero/Connector/XeroFindContactConnector';
 import XeroPostContactsConnector from '../../lib/Xero/Connector/XeroPostContactsConnector';
 import XeroPostInvoiceConnector from '../../lib/Xero/Connector/XeroPostInvoiceConnector';
@@ -83,4 +84,10 @@ export default async function init(): Promise<void> {
         .setApplication(app)
         .setSender(sender);
     container.setConnector(xeroFindContactConnector);
+
+    const xeroFileAssociation = new XeroFileAssociation()
+        .setDb(db)
+        .setApplication(app)
+        .setSender(sender);
+    container.setConnector(xeroFileAssociation);
 }

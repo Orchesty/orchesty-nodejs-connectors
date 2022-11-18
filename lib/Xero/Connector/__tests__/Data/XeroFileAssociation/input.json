@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "FileId": "5364961b-6926-4847-a93e-84119545b359",
+        "ObjectId": "47c9e6be-c07e-4230-a05b-704059cb5c86",
+        "ObjectGroup": "BankTransaction"
+    }
+}

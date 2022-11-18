@@ -57,7 +57,7 @@ export default class XeroApplication extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         uri?: string,
-        data?: BodyInit | undefined,
+        data?: BodyInit,
     ): Promise<RequestDto> {
         const url = uri?.startsWith('http') ? uri : `https://api.xero.com/api.xro/2.0/${uri}`;
         const request = new RequestDto(url ?? '', method, dto);
@@ -85,7 +85,11 @@ export default class XeroApplication extends AOAuth2Application {
         });
 
         if (data) {
-            request.setBody(data);
+            if (typeof data === 'string') {
+                request.setBody(data);
+            } else {
+                request.setJsonBody(data);
+            }
         }
 
         return request;
