@@ -16,7 +16,7 @@ export default class XeroPostInvoiceConnector extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'invoices',
-            JSON.stringify(dto.getJsonData()),
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send(req, [200]);
 
