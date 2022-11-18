@@ -20,13 +20,13 @@ export default class XeroUploadFile extends AConnector {
     }
 
     @validate(inputSchema)
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const { file, fileName } = dto.getJsonData();
 
         const form = new FormData();
         form.append(fileName, file, fileName);
 
-        const req = await this.getApplication().getRequestDto(
+        const request = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
@@ -34,16 +34,18 @@ export default class XeroUploadFile extends AConnector {
             form,
         );
 
-        const headers = req.getHeaders() as Record<string, string>;
+        const headers = request.getHeaders() as Record<string, string>;
         delete headers?.[CommonHeaders.CONTENT_TYPE];
-        req.setHeaders(headers);
+        request.setHeaders(headers);
 
-        const resp = await this.getSender().send<IResponse>(req, [200]);
+        const response = await this.getSender().send<IResponse>(request, [200]);
 
-        return dto.setNewJsonData(resp.getJsonBody());
+        return dto.setNewJsonData(response.getJsonBody());
     }
 
 }
+
+export type IOutput = IResponse;
 
 export interface IInput {
     file: string;
