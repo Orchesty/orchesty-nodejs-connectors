@@ -13,14 +13,14 @@ const inputSchema = Joi.object({
     fileName: Joi.string().required(),
 });
 
-export default class XeroUploadFile extends AConnector {
+export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput = IOutput> extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
     @validate(inputSchema)
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+    public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<O>> {
         const { file, fileName } = dto.getJsonData();
 
         const form = new FormData();
@@ -38,7 +38,7 @@ export default class XeroUploadFile extends AConnector {
         delete headers?.[CommonHeaders.CONTENT_TYPE];
         request.setHeaders(headers);
 
-        const response = await this.getSender().send<IResponse>(request, [200]);
+        const response = await this.getSender().send<O>(request, [200]);
 
         return dto.setNewJsonData(response.getJsonBody());
     }
