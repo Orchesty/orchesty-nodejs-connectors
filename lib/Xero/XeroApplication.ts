@@ -71,6 +71,10 @@ export default class XeroApplication extends AOAuth2Application {
 
         if (expiresDate < nowDate - 5 * 1000) {
             await this.refreshAuthorization(applicationInstall);
+            const settings = applicationInstall.getSettings();
+            if (settings) {
+                await this.saveApplicationForms(applicationInstall, settings);
+            }
         }
 
         request.setHeaders({
