@@ -48,7 +48,7 @@ export interface IOutput {
 }
 
 export interface IContact {
-    UpdatedDateUTC: string;
+    UpdatedDateUTC?: string;
     Name?: string;
     ContactID?: string;
     ContactNumber?: string;
@@ -82,9 +82,9 @@ export interface IContact {
     TrackingCategoryName?: string;
     TrackingOptionName?: string;
     PaymentTerms?: unknown;
-    ContactGroups: unknown[];
-    ContactPersons: unknown[];
-    HasValidationErrors: boolean;
+    ContactGroups?: unknown[];
+    ContactPersons?: unknown[];
+    HasValidationErrors?: boolean;
     Phones?: {
         PhoneAreaCode?: string;
         PhoneCountryCode?: string;
