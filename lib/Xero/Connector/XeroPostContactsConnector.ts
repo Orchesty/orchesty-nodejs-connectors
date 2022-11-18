@@ -3,6 +3,9 @@ import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDt
 import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import {
+    IInput as IErrorOutput,
+} from '../../Digitoo/Connector/DigitooMarkAsExportErrored';
 import { IContact } from './XeroFindContactConnector';
 
 export const NAME = 'xero-put-contacts-connector';
@@ -13,20 +16,24 @@ export default class XeroPostContactsConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IContact>): Promise<ProcessDto<IOutput>> {
+    public async processAction(dto: ProcessDto<IContact>): Promise<ProcessDto<IErrorOutput | IOutput>> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'contacts',
-            dto.getJsonData(),
+            JSON.stringify(this.getJsonData(dto)),
         );
         const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 
         return this.setNewJsonData(dto, resp);
     }
 
-    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
+    protected getJsonData(dto: ProcessDto): unknown {
+        return dto.getJsonData();
+    }
+
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IErrorOutput | IOutput> {
         return dto.setNewJsonData({ contact: resp.getJsonBody().Contacts.shift() ?? null });
     }
 
