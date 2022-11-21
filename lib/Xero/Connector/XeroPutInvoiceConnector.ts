@@ -46,6 +46,7 @@ export interface IResponse {
 
 export interface IInvoice {
     Type?: string;
+    InvoiceID?: string;
     Contact?: {
         ContactID: string;
     };
