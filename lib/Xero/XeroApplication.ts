@@ -4,7 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import { EXPIRES, OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
@@ -52,30 +52,16 @@ export default class XeroApplication extends AOAuth2Application {
         return 'https://identity.xero.com/connect/token';
     }
 
-    public async getRequestDto(
+    public getRequestDto(
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         uri?: string,
         data?: BodyInit,
-    ): Promise<RequestDto> {
+    ): RequestDto {
         const url = uri?.startsWith('http') ? uri : `https://api.xero.com/api.xro/2.0/${uri}`;
         const request = new RequestDto(url ?? '', method, dto);
-        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        const id = authorizationForm[XERO_TENANT_ID];
-
-        const nowDate = new Date().getTime();
-        const expiresDate = new Date(
-            authorizationForm?.[TOKEN]?.[EXPIRES],
-        ).getTime();
-
-        if (expiresDate < nowDate - 5 * 1000) {
-            await this.refreshAuthorization(applicationInstall);
-            const settings = applicationInstall.getSettings();
-            if (settings) {
-                await this.saveApplicationForms(applicationInstall, settings);
-            }
-        }
+        const id = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[XERO_TENANT_ID];
 
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -138,7 +124,7 @@ export default class XeroApplication extends AOAuth2Application {
                     decode(authorizationForm[TOKEN].accessToken.split('.')[1]),
                 ) as unknown as { authentication_event_id: string };
 
-                const requestDto = await this.getRequestDto(
+                const requestDto = this.getRequestDto(
                     new ProcessDto(),
                     applicationInstall,
                     HttpMethods.GET,
