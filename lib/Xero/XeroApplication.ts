@@ -17,6 +17,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { decode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import FormData from 'form-data';
 import { BodyInit } from 'node-fetch';
 
 export const NAME = 'xero';
@@ -108,6 +109,7 @@ export default class XeroApplication extends AOAuth2Application {
             'openid',
             'accounting.transactions',
             'offline_access',
+            'files',
         ];
     }
 
