@@ -4,13 +4,13 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'xero-file-association';
 
-export default class XeroFileAssociation extends AConnector {
+export default class XeroFileAssociation<I extends IInput = IInput, O extends IOutput = IOutput> extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<O>> {
         const { FileId, ObjectGroup, ObjectId } = dto.getJsonData();
         const req = await this.getApplication()
             .getRequestDto(
@@ -25,9 +25,9 @@ export default class XeroFileAssociation extends AConnector {
                     /* eslint-enable @typescript-eslint/naming-convention */
                 },
             );
-        await this.getSender().send(req, [200]);
+        const response = await this.getSender().send<O>(req, [200]);
 
-        return dto.setNewJsonData({});
+        return dto.setNewJsonData(response.getJsonBody());
     }
 
 }
@@ -39,3 +39,11 @@ export interface IInput {
     ObjectGroup: string;
     /* eslint-enable @typescript-eslint/naming-convention */
 }
+
+interface IResponse extends IInput {
+    /* eslint-disable @typescript-eslint/naming-convention */
+    ObjectType: string;
+    /* eslint-enable @typescript-eslint/naming-convention */
+}
+
+export type IOutput = IResponse;
