@@ -49,7 +49,12 @@ lint:
 unit:
 	$(DCS) pnpm run test
 
+potato-unit:
+	$(DCS) pnpm run potato-test
+
 fasttest: lint unit
+
+potato-fasttest: lint potato-unit
 
 localtest:
 	pnpm run lint
@@ -59,3 +64,5 @@ generate-app-metadata:
 	pnpm run generate-app-metadata
 
 test: docker-up-force install fasttest docker-down-clean
+
+potato-test: docker-up-force install potato-fasttest docker-down-clean
