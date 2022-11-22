@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.myob.com/accountright//Contact/Employee?$top=100&$skip=0",
+    "http": "GET https://api.myob.com/accountright//Contact/Employee\\?\\$top=100&\\$skip=0",
     "code": 200,
     "body": [
         {

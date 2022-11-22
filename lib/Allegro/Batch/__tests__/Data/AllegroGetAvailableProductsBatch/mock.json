@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.test_environment/fulfillment/available-products?offset=0&limit=99",
+    "http": "GET https://api.test_environment/fulfillment/available-products\\?offset=0&limit=99",
     "code": 200,
     "body": {
         "products": [

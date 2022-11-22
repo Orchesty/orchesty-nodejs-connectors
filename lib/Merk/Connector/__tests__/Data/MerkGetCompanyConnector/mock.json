@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.merk.cz/company/?regno=29460875&vatno=CZ00014915&src_app=src_app&country_code=cz",
+    "http": "GET https://api.merk.cz/company/\\?regno=29460875&vatno=CZ00014915&src_app=src_app&country_code=cz",
     "code": 200,
     "body": [
         {

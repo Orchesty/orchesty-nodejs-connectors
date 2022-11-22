@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.personio.de/v1/auth?client_id=client_id&client_secret=client_secret",
+    "http": "GET https://api.personio.de/v1/auth\\?client_id=client_id&client_secret=client_secret",
     "code": 200,
     "body": {
         "success": true,

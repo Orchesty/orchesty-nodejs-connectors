@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.merk.cz/suggest/?regno=123&email=email.test@gmail.com&name=name&bank_account=bank_account&only_active=true&expand_regno=true&sort_by=name&country_code=cz",
+    "http": "GET https://api.merk.cz/suggest/\\?regno=123&email=email.test@gmail.com&name=name&bank_account=bank_account&only_active=true&expand_regno=true&sort_by=name&country_code=cz",
     "code": 200,
     "body": [
         {

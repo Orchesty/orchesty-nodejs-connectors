@@ -1,10 +1,5 @@
 {
-    "http": "POST https://server.cz/api_path/track?token=123456789",
-    "httpReplacement": {
-        "query": {
-            "token": "123456789"
-        }
-    },
+    "http": "POST https://server.cz/api_path/track\\?token=.*",
     "code": 200,
     "body": {
         "errorCode": 0,

@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.xero.com/api.xro/2.0/Contacts?page=1",
+    "http": "GET https://api.xero.com/api.xro/2.0/Contacts\\?page=1",
     "code": 200,
     "body": {
         "Contacts": [

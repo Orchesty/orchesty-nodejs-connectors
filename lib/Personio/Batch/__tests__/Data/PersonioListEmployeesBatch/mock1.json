@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.personio.de/v1/company/employees?limit=200&offset=0",
+    "http": "GET https://api.personio.de/v1/company/employees\\?limit=200&offset=0",
     "code": 200,
     "body": {
         "success": true,

@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.recruitee.com/c/83653/search/new/candidates?limit=100&page=2",
+    "http": "GET https://api.recruitee.com/c/83653/search/new/candidates\\?limit=100&page=2",
     "code": 200,
     "body": {
         "aggregations": null,

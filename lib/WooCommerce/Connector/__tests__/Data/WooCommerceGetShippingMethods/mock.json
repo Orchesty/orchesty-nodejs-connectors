@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream:lib/WooCommerce/Connector/__tests__/Data/WooCommerceGetShippingMethods/mock.json
     "http": "GET http://woocomerce.com/wp-json/wc/v3/shipping/zones?per_page=10000",
+=======
+    "http": "GET http://woocomerce.com/wp-json/wc/v3/shipping_methods\\?per_page=100&page=1",
+>>>>>>> Stashed changes:lib/WooCommerce/Batch/__tests__/Data/WooCommerceGetShippingMethods/mock.json
     "code": 200,
     "body": [
         {

@@ -1,5 +1,5 @@
 {
-    "http": "GET https://hb-6.workable.com/spi/v3/jobs?state=published",
+    "http": "GET https://hb-6.workable.com/spi/v3/jobs\\?state=published",
     "code": 200,
     "body": {
         "jobs": [
