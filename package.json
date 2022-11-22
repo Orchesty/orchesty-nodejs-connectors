@@ -9,6 +9,7 @@
     "scripts": {
         "oauth2": "ts-node test/oauth2AppTester.ts",
         "test": "jest",
+        "potato-test": "NODE_OPTIONS=\"--max-old-space-size=8000\" jest --run-in-band --forceExit",
         "coverage": "jest --coverage",
         "lint": "eslint lib test --ext .ts --fix",
         "lint-ci": "eslint lib --ext .ts",
