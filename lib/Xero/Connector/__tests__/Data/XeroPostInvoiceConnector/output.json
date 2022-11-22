@@ -1,7 +1,8 @@
 {
-    "http": "PUT https://api.xero.com/api.xro/2.0/invoices",
-    "code": 200,
-    "body": {
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
         "DateTimeUTC": "/Date(1667223496573)/",
         "Id": "620535c9-e500-4dac-be44-2b01450e0121",
         "Invoices": [
