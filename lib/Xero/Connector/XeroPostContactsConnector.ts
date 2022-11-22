@@ -8,7 +8,7 @@ import {
 } from '../../Digitoo/Connector/DigitooMarkAsExportErrored';
 import { IContact } from './XeroFindContactConnector';
 
-export const NAME = 'xero-put-contacts-connector';
+export const NAME = 'xero-post-contacts-connector';
 
 export default class XeroPostContactsConnector extends AConnector {
 
@@ -22,7 +22,7 @@ export default class XeroPostContactsConnector extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'contacts',
-            JSON.stringify(this.getJsonData(dto)),
+            this.getJsonData(dto),
         );
         const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 

@@ -8,7 +8,7 @@ specifiers:
   '@aws-sdk/client-ses': ^3.215.0
   '@cloudamqp/amqp-client': ^2.1.0
   '@hanaboso/eslint-plugin': ^1.0.6
-  '@orchesty/nodejs-sdk': ^3.2.7
+  '@orchesty/nodejs-sdk': ^3.2.8
   '@types/debug': ^4.1.7
   '@types/jest': ^29.2.3
   '@types/luxon': ^3.1.0
@@ -36,7 +36,7 @@ specifiers:
   pg-hstore: ^2.3.4
   readline-sync: ^1.4.10
   reflect-metadata: ^0.1.13
-  sequelize: ^6.25.7
+  sequelize: ^6.25.8
   sqlite3: ^5.1.2
   tedious: ^15.1.2
   ts-jest: ^29.0.3
@@ -44,7 +44,7 @@ specifiers:
   typescript: ^4.9.3
 
 dependencies:
-  '@orchesty/nodejs-sdk': 3.2.7
+  '@orchesty/nodejs-sdk': 3.2.8
   '@types/luxon': 3.1.0
   '@types/node-fetch': 2.6.2
   form-data: 4.0.0
@@ -73,7 +73,7 @@ optionalDependencies:
   oracledb: 5.5.0
   pg: 8.8.0
   pg-hstore: 2.3.4
-  sequelize: 6.25.7_637nmyg5hvlllmmatef3yb7o7m
+  sequelize: 6.25.8_637nmyg5hvlllmmatef3yb7o7m
   sqlite3: 5.1.2
   tedious: 15.1.2
 
@@ -2104,7 +2104,7 @@ packages:
       '@types/node': 18.11.9
       ansi-escapes: 4.3.2
       chalk: 4.1.2
-      ci-info: 3.6.1
+      ci-info: 3.6.2
       exit: 0.1.2
       graceful-fs: 4.2.10
       jest-changed-files: 29.2.0
@@ -2396,8 +2396,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk/3.2.7:
-    resolution: {integrity: sha512-JVHXnjBDHP1easRcM5SXvlKPd9DVWOKDa4zXmGbcvNUZclK6ZDwQ31LziOTYEccqsz39Xn+ByglNEcUwZgfUDw==}
+  /@orchesty/nodejs-sdk/3.2.8:
+    resolution: {integrity: sha512-lpEPL+a5uuw1UmLeFStX9C+jrO9k7Gn7DYjMacB6QX3ObJhE68rOeZNrUyuYlQFCX5VeDt4hUucWhlB82HTmdA==}
     dependencies:
       '@types/express': 4.17.14
       '@types/express-prometheus-middleware': 1.2.1
@@ -3380,8 +3380,8 @@ packages:
     dev: false
     optional: true
 
-  /ci-info/3.6.1:
-    resolution: {integrity: sha512-up5ggbaDqOqJ4UqLKZ2naVkyqSJQgJi5lwD6b6mM748ysrghDBX0bx/qJTUHzw7zu6Mq4gycviSF5hJnwceD8w==}
+  /ci-info/3.6.2:
+    resolution: {integrity: sha512-lVZdhvbEudris15CLytp2u6Y0p5EKfztae9Fqa189MfNmln9F33XuH69v5fvNfiRN5/0eAUz2yJL3mo+nhaRKg==}
     engines: {node: '>=8'}
     dev: true
 
@@ -3729,8 +3729,8 @@ packages:
     dev: false
     optional: true
 
-  /enhanced-resolve/5.10.0:
-    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
+  /enhanced-resolve/5.11.0:
+    resolution: {integrity: sha512-0Gcraf7gAJSQoPg+bTSXNhuzAYtXqLc4C011vb8S3B8XUSEkGYNBk20c68X9291VF4vvsCD8SPkr6Mza+DwU+g==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -3867,7 +3867,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4
-      enhanced-resolve: 5.10.0
+      enhanced-resolve: 5.11.0
       eslint: 8.28.0
       eslint-plugin-import: 2.26.0_vc54pluhgv7booofyyjouvuf74
       get-tsconfig: 4.2.0
@@ -5034,7 +5034,7 @@ packages:
       '@types/node': 18.11.9
       babel-jest: 29.3.1_@babel+core@7.20.2
       chalk: 4.1.2
-      ci-info: 3.6.1
+      ci-info: 3.6.2
       deepmerge: 4.2.2
       glob: 7.2.3
       graceful-fs: 4.2.10
@@ -5302,7 +5302,7 @@ packages:
       '@jest/types': 29.3.1
       '@types/node': 18.11.9
       chalk: 4.1.2
-      ci-info: 3.6.1
+      ci-info: 3.6.2
       graceful-fs: 4.2.10
       picomatch: 2.3.1
     dev: true
@@ -6730,8 +6730,8 @@ packages:
     dev: false
     optional: true
 
-  /sequelize/6.25.7_637nmyg5hvlllmmatef3yb7o7m:
-    resolution: {integrity: sha512-aH/zbsAFw8mlsmKIbd57Uo5FdRko3by53cumiiXARr0s2G79ME0LuJlS5H10I5WmRcYcvwp1MAfI9CKhCtULjw==}
+  /sequelize/6.25.8_637nmyg5hvlllmmatef3yb7o7m:
+    resolution: {integrity: sha512-GDjbN3P9KRjxL+ATNPMWU0RFAO3KviGzvowajqPCkvEdcEW9CFL4d0iDR/SFAf+JiQ7/2BQ4O3PBLBxNlnVNWw==}
     engines: {node: '>=10.0.0'}
     requiresBuild: true
     peerDependencies:

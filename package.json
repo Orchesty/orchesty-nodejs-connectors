@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "2.1.9",
+    "version": "2.1.10",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -20,7 +20,7 @@
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {
-        "@orchesty/nodejs-sdk": "^3.2.7",
+        "@orchesty/nodejs-sdk": "^3.2.8",
         "@types/luxon": "^3.1.0",
         "@types/node-fetch": "^2.6.2",
         "form-data": "^4.0.0",
@@ -49,7 +49,7 @@
         "oracledb": "^5.5.0",
         "pg": "^8.8.0",
         "pg-hstore": "^2.3.4",
-        "sequelize": "^6.25.7",
+        "sequelize": "^6.25.8",
         "sqlite3": "^5.1.2",
         "tedious": "^15.1.2"
     },
