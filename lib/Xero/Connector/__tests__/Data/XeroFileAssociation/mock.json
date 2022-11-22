@@ -1,5 +1,5 @@
 {
-  "http": "POST https://api.xero.com/api.xro/2.0/Files/5364961b-6926-4847-a93e-84119545b359/Associations",
+  "http": "POST https://api.xero.com/files.xro/1.0/Files/5364961b-6926-4847-a93e-84119545b359/Associations",
   "code": 200,
   "body": {}
 }
