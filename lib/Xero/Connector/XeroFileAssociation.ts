@@ -17,7 +17,7 @@ export default class XeroFileAssociation<I extends IInput = IInput, O extends IO
                 dto,
                 await this.getApplicationInstallFromProcess(dto),
                 HttpMethods.POST,
-                `Files/${FileId}/Associations`,
+                `https://api.xero.com/files.xro/1.0/Files/${FileId}/Associations`,
                 {
                     /* eslint-disable @typescript-eslint/naming-convention */
                     ObjectId,
