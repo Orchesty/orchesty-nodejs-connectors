@@ -4,9 +4,9 @@ import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/Resul
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
-export const NAME = 'xero-put-invoice-connector';
+export const NAME = 'xero-post-invoice-connector';
 
-export default class XeroPutInvoiceConnector extends AConnector {
+export default class XeroPostInvoiceConnector extends AConnector {
 
     public getName(): string {
         return NAME;
@@ -16,7 +16,7 @@ export default class XeroPutInvoiceConnector extends AConnector {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
-            HttpMethods.PUT,
+            HttpMethods.POST,
             'invoices',
             this.getJsonData(dto),
         );
