@@ -1,4 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { ResultCodeRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -15,12 +16,14 @@ const inputSchema = Joi.object({
 
 export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput = IOutput> extends AConnector {
 
+    protected codeRange?: ResultCodeRange[] = [200];
+
     public getName(): string {
         return NAME;
     }
 
     @validate(inputSchema)
-    public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<O>> {
+    public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<IErrorResponse | O>> {
         const { file, fileName } = dto.getJsonData();
 
         const form = new FormData();
@@ -38,7 +41,7 @@ export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput
         delete headers?.[CommonHeaders.CONTENT_TYPE];
         request.setHeaders(headers);
 
-        const response = await this.getSender().send<O>(request, [200]);
+        const response = await this.getSender().send<IErrorResponse | O>(request, this.codeRange);
 
         return dto.setNewJsonData(response.getJsonBody());
     }
@@ -69,5 +72,16 @@ export interface IResponse {
     FolderId: string;
     Id: string;
 }
-
 /* eslint-enable @typescript-eslint/naming-convention */
+
+export interface IErrorResponse {
+    /* eslint-disable @typescript-eslint/naming-convention */
+    ErrorNumber: number;
+    Type: string;
+    Message: string;
+    Elements:
+    {
+        ValidationErrors: { Message: string }[];
+    }[];
+    /* eslint-enable @typescript-eslint/naming-convention */
+}
