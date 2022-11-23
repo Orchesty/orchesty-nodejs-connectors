@@ -1,11 +1,16 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
+import { ResultCodeRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'digitoo-get-document';
 
 export default class DigitooGetDocument extends AConnector {
+
+    public constructor(private readonly codeRange: ResultCodeRange[] = [200]) {
+        super();
+    }
 
     public getName(): string {
         return NAME;
@@ -21,7 +26,7 @@ export default class DigitooGetDocument extends AConnector {
             HttpMethods.GET,
             `api/documents/${documentId}/file`,
         );
-        const resp = await this.getSender().send(req, [200]);
+        const resp = await this.getSender().send(req, this.codeRange);
 
         return this.setNewJsonData(dto, resp) as ProcessDto<IOutput>;
     }
