@@ -25,7 +25,7 @@ export const XERO_TENANT_ID = 'Xero-Tenant-Id';
 export const XERO_CONNECTION_ID = 'xero-connection_id';
 export default class XeroApplication extends AOAuth2Application {
 
-    public constructor(provider: OAuth2Provider, private readonly curlSender: CurlSender) {
+    public constructor(provider: OAuth2Provider, protected readonly curlSender: CurlSender) {
         super(provider);
     }
 
