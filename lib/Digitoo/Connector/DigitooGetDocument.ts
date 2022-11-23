@@ -8,9 +8,7 @@ export const NAME = 'digitoo-get-document';
 
 export default class DigitooGetDocument extends AConnector {
 
-    public constructor(private readonly codeRange: ResultCodeRange[] = [200]) {
-        super();
-    }
+    protected readonly codeRange?: ResultCodeRange[] = [200];
 
     public getName(): string {
         return NAME;
