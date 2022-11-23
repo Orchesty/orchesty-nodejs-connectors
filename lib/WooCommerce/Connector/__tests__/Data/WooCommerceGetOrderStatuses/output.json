@@ -1,0 +1,42 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "name": "Pending payment",
+            "slug": "pending",
+            "total": 7
+        },
+        {
+            "name": "Processing",
+            "slug": "processing",
+            "total": 2
+        },
+        {
+            "name": "On hold",
+            "slug": "on-hold",
+            "total": 1
+        },
+        {
+            "name": "Completed",
+            "slug": "completed",
+            "total": 3
+        },
+        {
+            "name": "Cancelled",
+            "slug": "cancelled",
+            "total": 0
+        },
+        {
+            "name": "Refunded",
+            "slug": "refunded",
+            "total": 0
+        },
+        {
+            "name": "Failed",
+            "slug": "failed",
+            "total": 0
+        }
+    ]
+}

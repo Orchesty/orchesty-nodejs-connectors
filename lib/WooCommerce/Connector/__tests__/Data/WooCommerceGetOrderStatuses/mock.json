@@ -1,0 +1,41 @@
+{
+    "http": "GET http://woocomerce.com/wp-json/wc/v3/reports/orders/totals?per_page=1000",
+    "code": 200,
+    "body": [
+        {
+            "slug": "pending",
+            "name": "Pending payment",
+            "total": 7
+        },
+        {
+            "slug": "processing",
+            "name": "Processing",
+            "total": 2
+        },
+        {
+            "slug": "on-hold",
+            "name": "On hold",
+            "total": 1
+        },
+        {
+            "slug": "completed",
+            "name": "Completed",
+            "total": 3
+        },
+        {
+            "slug": "cancelled",
+            "name": "Cancelled",
+            "total": 0
+        },
+        {
+            "slug": "refunded",
+            "name": "Refunded",
+            "total": 0
+        },
+        {
+            "slug": "failed",
+            "name": "Failed",
+            "total": 0
+        }
+    ]
+}
