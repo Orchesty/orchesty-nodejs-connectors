@@ -16,9 +16,7 @@ const inputSchema = Joi.object({
 
 export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput = IOutput> extends AConnector {
 
-    public constructor(private readonly codeRange: ResultCodeRange[] = [200]) {
-        super();
-    }
+    protected codeRange?: ResultCodeRange[] = [200];
 
     public getName(): string {
         return NAME;
