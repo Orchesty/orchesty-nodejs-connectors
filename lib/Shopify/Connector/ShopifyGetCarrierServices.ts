@@ -5,7 +5,7 @@ import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-shipping-methods';
 
-export default class ShopifyGetShippingMethods extends AConnector {
+export default class ShopifyGetCarrierServices extends AConnector {
 
     public getName(): string {
         return NAME;
