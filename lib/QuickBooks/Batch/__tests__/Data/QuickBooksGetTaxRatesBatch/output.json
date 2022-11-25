@@ -1,0 +1,19 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"RateValue\":7.1,\"AgencyRef\":{\"value\":\"1\"},\"domain\":\"QBO\",\"Name\":\"AZ State tax\",\"SyncToken\":\"0\",\"SpecialTaxType\":\"NONE\",\"DisplayType\":\"ReadOnly\",\"sparse\":false,\"Active\":true,\"MetaData\":{\"CreateTime\":\"2014-09-18T12:17:04-07:00\",\"LastUpdatedTime\":\"2014-09-18T12:17:04-07:00\"},\"Id\":\"1\",\"Description\":\"Sales Tax\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"RateValue\":8,\"AgencyRef\":{\"value\":\"2\"},\"domain\":\"QBO\",\"Name\":\"California\",\"SyncToken\":\"0\",\"SpecialTaxType\":\"NONE\",\"DisplayType\":\"ReadOnly\",\"sparse\":false,\"Active\":true,\"MetaData\":{\"CreateTime\":\"2014-09-18T12:17:04-07:00\",\"LastUpdatedTime\":\"2014-09-18T12:17:04-07:00\"},\"Id\":\"3\",\"Description\":\"Sales Tax\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"RateValue\":2,\"AgencyRef\":{\"value\":\"1\"},\"domain\":\"QBO\",\"Name\":\"Tucson City\",\"SyncToken\":\"0\",\"SpecialTaxType\":\"NONE\",\"DisplayType\":\"ReadOnly\",\"sparse\":false,\"Active\":true,\"MetaData\":{\"CreateTime\":\"2014-09-18T12:17:04-07:00\",\"LastUpdatedTime\":\"2014-09-18T12:17:04-07:00\"},\"Id\":\"2\",\"Description\":\"Sales Tax\"}",
+            "headers": {}
+        }
+    ]
+}
