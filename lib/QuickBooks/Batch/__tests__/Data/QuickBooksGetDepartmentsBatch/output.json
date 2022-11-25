@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"FullyQualifiedName\":\"Sales Department\",\"domain\":\"QBO\",\"Name\":\"Sales Department\",\"SyncToken\":\"0\",\"SubDepartment\":false,\"sparse\":false,\"Active\":false,\"Id\":\"1\",\"MetaData\":{\"CreateTime\":\"2013-08-13T11:49:31-07:00\",\"LastUpdatedTime\":\"2013-08-13T11:49:31-07:00\"}}",
+            "headers": {}
+        },
+        {
+            "body": "{\"FullyQualifiedName\":\"Support Department\",\"domain\":\"QBO\",\"Name\":\"Support Department\",\"SyncToken\":\"2\",\"SubDepartment\":false,\"sparse\":false,\"Active\":false,\"Id\":\"2\",\"MetaData\":{\"CreateTime\":\"2013-08-13T11:52:48-07:00\",\"LastUpdatedTime\":\"2013-08-13T11:58:58-07:00\"}}",
+            "headers": {}
+        }
+    ]
+}

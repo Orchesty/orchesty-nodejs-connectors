@@ -2,6 +2,7 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import QuickBooksGetDepartmentsBatch from '../../lib/QuickBooks/Batch/QuickBooksGetDepartmentsBatch';
 import QuickBooksGetTaxRatesBatch from '../../lib/QuickBooks/Batch/QuickBooksGetTaxRatesBatch';
 import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
@@ -54,4 +55,11 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(quickApp);
     container.setBatch(quickBooksGetTaxRatesBatch);
+
+    const quickBooksGetDepartmentsBatch = new QuickBooksGetDepartmentsBatch();
+    quickBooksGetDepartmentsBatch
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
+    container.setBatch(quickBooksGetDepartmentsBatch);
 }
