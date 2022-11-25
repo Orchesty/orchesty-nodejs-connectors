@@ -1,0 +1,121 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "admin_graphql_api_id": "gid://shopify/DeliveryZone/44570466",
+      "carrier_shipping_rate_providers": [
+        {
+          "carrier_service_id": 260046840,
+          "flat_modifier": "",
+          "id": 615128020,
+          "percent_modifier": null,
+          "service_filter": {
+            "*": "+"
+          },
+          "shipping_zone_id": 44570466
+        }
+      ],
+      "countries": [
+        {
+          "code": "CO",
+          "id": 359115488,
+          "name": "Colombia",
+          "provinces": [],
+          "shipping_zone_id": 44570466,
+          "tax": 0.15,
+          "tax_name": "VAT"
+        },
+        {
+          "code": "CA",
+          "id": 879921427,
+          "name": "Canada",
+          "provinces": [
+            {
+              "code": "QC",
+              "country_id": 879921427,
+              "id": 224293623,
+              "name": "Quebec",
+              "shipping_zone_id": 44570466,
+              "tax": 0.09,
+              "tax_name": "HST",
+              "tax_percentage": 9,
+              "tax_type": "compounded"
+            },
+            {
+              "code": "ON",
+              "country_id": 879921427,
+              "id": 702530425,
+              "name": "Ontario",
+              "shipping_zone_id": 44570466,
+              "tax": 0.08,
+              "tax_name": null,
+              "tax_percentage": 8,
+              "tax_type": null
+            }
+          ],
+          "shipping_zone_id": 44570466,
+          "tax": 0.05,
+          "tax_name": "GST"
+        },
+        {
+          "code": "US",
+          "id": 817138619,
+          "name": "United States",
+          "provinces": [
+            {
+              "code": "MA",
+              "country_id": 817138619,
+              "id": 9350860,
+              "name": "Massachusetts",
+              "shipping_zone_id": 44570466,
+              "tax": 0.065,
+              "tax_name": null,
+              "tax_percentage": 6.5,
+              "tax_type": null
+            },
+            {
+              "code": "NY",
+              "country_id": 817138619,
+              "id": 1013111685,
+              "name": "New York",
+              "shipping_zone_id": 44570466,
+              "tax": 0.04,
+              "tax_name": null,
+              "tax_percentage": 4,
+              "tax_type": null
+            }
+          ],
+          "shipping_zone_id": 44570466,
+          "tax": 0,
+          "tax_name": "Federal Tax"
+        }
+      ],
+      "id": 44570466,
+      "location_group_id": "gid://shopify/DeliveryLocationGroup/694323328",
+      "name": "Downtown Ottawa",
+      "price_based_shipping_rates": [
+        {
+          "id": 64051,
+          "max_order_subtotal": "450",
+          "min_order_subtotal": null,
+          "name": "Free Shipping",
+          "price": "0.00",
+          "shipping_zone_id": 44570466
+        }
+      ],
+      "profile_id": "gid://shopify/DeliveryProfile/690933842",
+      "weight_based_shipping_rates": [
+        {
+          "id": 522512552,
+          "name": "Free Under 5kg",
+          "price": "0.00",
+          "shipping_zone_id": 44570466,
+          "weight_high": 5,
+          "weight_low": 0
+        }
+      ]
+    }
+  ]
+}
