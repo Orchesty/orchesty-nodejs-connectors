@@ -15,7 +15,7 @@ export default class ShopifyGetShippingZones extends AConnector {
         const req = await this.getApplication()
             .getRequestDto(
                 dto,
-                await this.getApplicationInstallFromProcess(dto),
+                await this.getApplicationInstallFromProcess(dto, null),
                 HttpMethods.GET,
                 `admin/api/${API_VERSION}/shipping_zones.json`,
             );
