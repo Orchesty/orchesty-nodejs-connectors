@@ -1,0 +1,71 @@
+{
+    "http": "GET https://quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20TaxRate%20limit%201000",
+    "code": 200,
+    "body": {
+        "QueryResponse": {
+            "startPosition": 1,
+            "totalCount": 3,
+            "TaxRate": [
+                {
+                    "RateValue": 7.1,
+                    "AgencyRef": {
+                        "value": "1"
+                    },
+                    "domain": "QBO",
+                    "Name": "AZ State tax",
+                    "SyncToken": "0",
+                    "SpecialTaxType": "NONE",
+                    "DisplayType": "ReadOnly",
+                    "sparse": false,
+                    "Active": true,
+                    "MetaData": {
+                        "CreateTime": "2014-09-18T12:17:04-07:00",
+                        "LastUpdatedTime": "2014-09-18T12:17:04-07:00"
+                    },
+                    "Id": "1",
+                    "Description": "Sales Tax"
+                },
+                {
+                    "RateValue": 8,
+                    "AgencyRef": {
+                        "value": "2"
+                    },
+                    "domain": "QBO",
+                    "Name": "California",
+                    "SyncToken": "0",
+                    "SpecialTaxType": "NONE",
+                    "DisplayType": "ReadOnly",
+                    "sparse": false,
+                    "Active": true,
+                    "MetaData": {
+                        "CreateTime": "2014-09-18T12:17:04-07:00",
+                        "LastUpdatedTime": "2014-09-18T12:17:04-07:00"
+                    },
+                    "Id": "3",
+                    "Description": "Sales Tax"
+                },
+                {
+                    "RateValue": 2,
+                    "AgencyRef": {
+                        "value": "1"
+                    },
+                    "domain": "QBO",
+                    "Name": "Tucson City",
+                    "SyncToken": "0",
+                    "SpecialTaxType": "NONE",
+                    "DisplayType": "ReadOnly",
+                    "sparse": false,
+                    "Active": true,
+                    "MetaData": {
+                        "CreateTime": "2014-09-18T12:17:04-07:00",
+                        "LastUpdatedTime": "2014-09-18T12:17:04-07:00"
+                    },
+                    "Id": "2",
+                    "Description": "Sales Tax"
+                }
+            ],
+            "maxResults": 3
+        },
+        "time": "2015-07-27T13:32:06.76-07:00"
+    }
+}
