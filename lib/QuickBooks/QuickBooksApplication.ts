@@ -63,15 +63,16 @@ export default class QuickBooksApplication extends AOAuth2Application {
         url?: string,
         data?: BodyInit,
     ): Promise<RequestDto> | RequestDto {
+        // TODO pro testovani musi byt https://sandbox-quickbooks.api.intuit.com/v3/company/ jinak `https://quickbooks.api.intuit.com/v3/company/
         const request = new RequestDto(
-            `https://quickbooks.api.intuit.com/v3/company/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][REALM_ID]}${url}`,
+            `https://sandbox-quickbooks.api.intuit.com/v3/company/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][REALM_ID]}${url}`,
             method,
             dto,
             undefined,
             {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
-                [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
+                [CommonHeaders.AUTHORIZATION]: `bearer ${this.getAccessToken(applicationInstall)}`,
             },
         );
 
@@ -92,7 +93,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
         token: Record<string, string>,
     ): Promise<void> {
         await super.setAuthorizationToken(
-            applicationInstall.addSettings({ [REALM_ID]: token.realmId }),
+            applicationInstall.addSettings({ [CoreFormsEnum.AUTHORIZATION_FORM]: { [REALM_ID]: token.realmId } }),
             token,
         );
     }
