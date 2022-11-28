@@ -86,7 +86,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
         data?: BodyInit,
     ): Promise<RequestDto> | RequestDto {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        const environment = authorizationForm[ENVIRONMENT] === 'n' ? 'sandbox-' : '';
+        const environment = authorizationForm[ENVIRONMENT] === 'sandbox' ? 'sandbox-' : '';
         const request = new RequestDto(
             `https://${environment}quickbooks.api.intuit.com/v3/company/${authorizationForm[REALM_ID]}${url}`,
             method,
