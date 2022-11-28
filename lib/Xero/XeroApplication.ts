@@ -4,19 +4,25 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import {
+    OAuth2Provider,
+    REFRESH_TOKEN,
+} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+import Deleted from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Filters/Impl/Deleted';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
-import { decode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
+import { decode, encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { Request } from 'express';
 import FormData from 'form-data';
 import { BodyInit } from 'node-fetch';
 
@@ -25,7 +31,11 @@ export const XERO_TENANT_ID = 'Xero-Tenant-Id';
 export const XERO_CONNECTION_ID = 'xero-connection_id';
 export default class XeroApplication extends AOAuth2Application {
 
-    public constructor(provider: OAuth2Provider, protected readonly curlSender: CurlSender) {
+    public constructor(
+        provider: OAuth2Provider,
+        protected readonly curlSender: CurlSender,
+        protected readonly mongoService: MongoDbClient,
+    ) {
         super(provider);
     }
 
@@ -157,6 +167,42 @@ export default class XeroApplication extends AOAuth2Application {
                     logger.error(e.message, {}, true);
                 } else {
                     throw e;
+                }
+            }
+        }
+    }
+
+    public async syncAfterUninstallCallback(req: Request): Promise<void> {
+        const { user } = JSON.parse(req.body);
+        const appRepo = await this.mongoService.getApplicationRepository();
+        appRepo.disableFilter(Deleted.name);
+        const xeroApps = (await appRepo.findMany({ user, key: this.getName() }))
+            .sort((x, y) => x.getUpdated().getTime() - y.getUpdated().getTime());
+        appRepo.enableFilter(Deleted.name);
+
+        if (xeroApps?.length) {
+            const xeroApp = xeroApps[xeroApps.length - 1];
+            const authForm = xeroApp.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+
+            if (authForm[CLIENT_ID] && authForm[CLIENT_SECRET]) {
+                const requestDto = new RequestDto(
+                    'https://identity.xero.com/connect/revocation',
+                    HttpMethods.POST,
+                    new ProcessDto(),
+                );
+
+                requestDto.setHeaders({
+                    [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',
+                    [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${authForm[CLIENT_ID]}:${authForm[CLIENT_SECRET]}`)}`,
+                });
+
+                requestDto.setBody(`token=${authForm[TOKEN]?.[REFRESH_TOKEN]}`);
+
+                const response = await this.curlSender.send(requestDto);
+
+                if (response.getResponseCode() !== 200) {
+                    xeroApp.setDeleted(false);
+                    await appRepo.update(xeroApp);
                 }
             }
         }

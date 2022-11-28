@@ -1,5 +1,5 @@
 {
-    "http": "POST https://quickbooks.api.intuit.com/v3/company/123456789/item",
+    "http": "POST https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/item",
     "code": 200,
     "body": {
         "Item": {

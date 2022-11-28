@@ -16,12 +16,12 @@ export default class QuickBooksGetTaxRatesBatch extends ABatchNode {
                 dto,
                 await this.getApplicationInstallFromProcess(dto),
                 HttpMethods.GET,
-                encodeURI('/query?query=select * from TaxRate limit 1000'),
+                encodeURI('/query?query=select * from TaxRate maxresults 1000'),
             ),
             [200],
         )).getJsonBody();
 
-        this.setItemsListToDto(dto, response.QueryResponse.TaxRate);
+        this.setItemsListToDto(dto, response.QueryResponse.TaxRate || []);
 
         return dto;
     }
