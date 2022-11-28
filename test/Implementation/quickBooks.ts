@@ -30,7 +30,7 @@ export default async function init(): Promise<void> {
         },
     });
 
-    const quickApp = new QuickBooksApplication(oauth2Provider);
+    const quickApp = new QuickBooksApplication(oauth2Provider, db, sender);
     const quickBookCreateItemConnector = new QuickBooksCreateItemConnector();
     const quickBookUpdateItemConnector = new QuickBooksUpdateItemConnector();
 
