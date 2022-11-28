@@ -25,6 +25,7 @@ import { BodyInit } from 'node-fetch';
 
 export const NAME = 'quickbooks';
 export const REALM_ID = 'realm_id';
+export const ENVIRONMENT = 'environment';
 
 export default class QuickBooksApplication extends AOAuth2Application {
 
@@ -64,7 +65,9 @@ export default class QuickBooksApplication extends AOAuth2Application {
         return new FormStack().addForm(
             new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
                 .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
-                .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true)),
+                .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
+                .addField(new Field(FieldType.SELECT_BOX, ENVIRONMENT, 'Environment', undefined, true)
+                    .setChoices([{ sandbox: 'Sandbox' }, { production: 'Real' }])),
         );
     }
 
@@ -82,16 +85,17 @@ export default class QuickBooksApplication extends AOAuth2Application {
         url?: string,
         data?: BodyInit,
     ): Promise<RequestDto> | RequestDto {
-        // TODO pro testovani musi byt https://sandbox-quickbooks.api.intuit.com/v3/company/ jinak `https://quickbooks.api.intuit.com/v3/company/
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+        const environment = authorizationForm[ENVIRONMENT] === 'n' ? 'sandbox-' : '';
         const request = new RequestDto(
-            `https://sandbox-quickbooks.api.intuit.com/v3/company/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][REALM_ID]}${url}`,
+            `https://${environment}quickbooks.api.intuit.com/v3/company/${authorizationForm[REALM_ID]}${url}`,
             method,
             dto,
             undefined,
             {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
-                [CommonHeaders.AUTHORIZATION]: `bearer ${this.getAccessToken(applicationInstall)}`,
+                [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
             },
         );
 

@@ -6,7 +6,11 @@ import QuickBooksGetDepartmentsBatch from '../../lib/QuickBooks/Batch/QuickBooks
 import QuickBooksGetTaxRatesBatch from '../../lib/QuickBooks/Batch/QuickBooksGetTaxRatesBatch';
 import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
-import QuickBooksApplication, { NAME as QUICKBOOKS_APP, REALM_ID } from '../../lib/QuickBooks/QuickBooksApplication';
+import QuickBooksApplication, {
+    ENVIRONMENT,
+    NAME as QUICKBOOKS_APP,
+    REALM_ID,
+} from '../../lib/QuickBooks/QuickBooksApplication';
 import {
     appInstall,
     DEFAULT_ACCESS_TOKEN,
@@ -24,6 +28,7 @@ export default async function init(): Promise<void> {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
             [REALM_ID]: '123456789',
+            [ENVIRONMENT]: 'sandbox',
             [TOKEN]: {
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
