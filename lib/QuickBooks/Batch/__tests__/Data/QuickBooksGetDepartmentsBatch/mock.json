@@ -1,5 +1,5 @@
 {
-    "http": "GET https://quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20Department%20limit%201000",
+    "http": "GET https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20Department%20maxresults%201000",
     "code": 200,
     "body": {
         "QueryResponse": {
