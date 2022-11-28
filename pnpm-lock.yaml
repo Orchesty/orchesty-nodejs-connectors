@@ -10,6 +10,7 @@ specifiers:
   '@hanaboso/eslint-plugin': ^1.0.6
   '@orchesty/nodejs-sdk': ^3.2.8
   '@types/debug': ^4.1.7
+  '@types/express': ^4.17.14
   '@types/jest': ^29.2.3
   '@types/luxon': ^3.1.0
   '@types/node': ^18.11.9
@@ -20,6 +21,7 @@ specifiers:
   '@types/sqlite3': ^3.1.8
   '@types/tedious': ^4.0.9
   eslint: ^8.28.0
+  express: ^5.0.0-beta.1
   form-data: ^4.0.0
   jest: ^29.3.1
   joi: ^17.7.0
@@ -47,6 +49,7 @@ dependencies:
   '@orchesty/nodejs-sdk': 3.2.8
   '@types/luxon': 3.1.0
   '@types/node-fetch': 2.6.2
+  express: 5.0.0-beta.1
   form-data: 4.0.0
   joi: 17.7.0
   luxon: 3.1.0
@@ -80,6 +83,7 @@ optionalDependencies:
 devDependencies:
   '@hanaboso/eslint-plugin': 1.0.6_4f6uxrzmuwipl5rr3bcogf6k74
   '@types/debug': 4.1.7
+  '@types/express': 4.17.14
   '@types/jest': 29.2.3
   '@types/node': 18.11.9
   eslint: 8.28.0
@@ -2539,13 +2543,11 @@ packages:
     dependencies:
       '@types/connect': 3.4.35
       '@types/node': 18.11.9
-    dev: false
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
       '@types/node': 18.11.9
-    dev: false
 
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
@@ -2564,7 +2566,6 @@ packages:
       '@types/node': 18.11.9
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
-    dev: false
 
   /@types/express/4.17.14:
     resolution: {integrity: sha512-TEbt+vaPFQ+xpxFLFssxUDXj5cWCxZJjIcB7Yg0k0GMHGtgtQgpvx/MUQUeAkNbA9AAGrwkAsoeItdTgS7FMyg==}
@@ -2573,7 +2574,6 @@ packages:
       '@types/express-serve-static-core': 4.17.31
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.0
-    dev: false
 
   /@types/geojson/7946.0.10:
     resolution: {integrity: sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA==}
@@ -2627,7 +2627,6 @@ packages:
 
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
-    dev: false
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
@@ -2686,11 +2685,9 @@ packages:
 
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
-    dev: false
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
-    dev: false
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
@@ -2701,7 +2698,6 @@ packages:
     dependencies:
       '@types/mime': 3.0.1
       '@types/node': 18.11.9
-    dev: false
 
   /@types/simple-oauth2/4.1.1:
     resolution: {integrity: sha512-8jqhfUFb0FoCl2Od4czprB7ubM8/Fuo3tg+vQZ00zYtPcNLogGyDgm2DVfVvD3NYXK7AscKOXSaW33NHUWpNBg==}

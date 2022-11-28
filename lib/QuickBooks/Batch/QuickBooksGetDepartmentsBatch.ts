@@ -16,12 +16,12 @@ export default class QuickBooksGetDepartmentsBatch extends ABatchNode {
                 dto,
                 await this.getApplicationInstallFromProcess(dto),
                 HttpMethods.GET,
-                encodeURI('/query?query=select * from Department limit 1000'),
+                encodeURI('/query?query=select * from Department maxresults 1000'),
             ),
             [200],
         )).getJsonBody();
 
-        this.setItemsListToDto(dto, response.QueryResponse.Department);
+        this.setItemsListToDto(dto, response.QueryResponse.Department || []);
 
         return dto;
     }
