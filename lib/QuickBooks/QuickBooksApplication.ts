@@ -141,7 +141,6 @@ export default class QuickBooksApplication extends AOAuth2Application {
                 );
 
                 requestDto.setHeaders({
-                    [CommonHeaders.ACCEPT]: 'application/json',
                     [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',
                     [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${authForm[CLIENT_ID]}:${authForm[CLIENT_SECRET]}`)}`,
                 });
