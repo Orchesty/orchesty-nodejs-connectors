@@ -1,0 +1,112 @@
+{
+    "http": "GET https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20Customer%20where%20DisplayName%20=%20abc",
+    "code": 200,
+    "body": {
+        "QueryResponse": {
+            "Customer": [
+                {
+                    "domain": "QBO",
+                    "FamilyName": "Lauterbach",
+                    "DisplayName": "Amy's Bird Sanctuary",
+                    "DefaultTaxCodeRef": {
+                        "value": "2"
+                    },
+                    "PrimaryEmailAddr": {
+                        "Address": "Birds@Intuit.com"
+                    },
+                    "PreferredDeliveryMethod": "Print",
+                    "GivenName": "Amy",
+                    "FullyQualifiedName": "Amy's Bird Sanctuary",
+                    "BillWithParent": false,
+                    "Job": false,
+                    "BalanceWithJobs": 274.0,
+                    "PrimaryPhone": {
+                        "FreeFormNumber": "(650) 555-3311"
+                    },
+                    "Active": true,
+                    "MetaData": {
+                        "CreateTime": "2014-09-11T16:48:43-07:00",
+                        "LastUpdatedTime": "2015-07-01T10:14:15-07:00"
+                    },
+                    "BillAddr": {
+                        "City": "Bayshore",
+                        "Line1": "4581 Finch St.",
+                        "PostalCode": "94326",
+                        "Lat": "INVALID",
+                        "Long": "INVALID",
+                        "CountrySubDivisionCode": "CA",
+                        "Id": "2"
+                    },
+                    "MiddleName": "Michelle",
+                    "Notes": "Note added via Update operation.",
+                    "Taxable": true,
+                    "Balance": 274.0,
+                    "SyncToken": "5",
+                    "CompanyName": "Amy's Bird Sanctuary",
+                    "ShipAddr": {
+                        "City": "Bayshore",
+                        "Line1": "4581 Finch St.",
+                        "PostalCode": "94326",
+                        "Lat": "INVALID",
+                        "Long": "INVALID",
+                        "CountrySubDivisionCode": "CA",
+                        "Id": "109"
+                    },
+                    "PrintOnCheckName": "Amy's Bird Sanctuary",
+                    "sparse": false,
+                    "Id": "1"
+                },
+                {
+                    "domain": "QBO",
+                    "PrimaryEmailAddr": {
+                        "Address": "Consulting@intuit.com"
+                    },
+                    "DisplayName": "Weiskopf Consulting",
+                    "FamilyName": "Weiskopf",
+                    "PreferredDeliveryMethod": "Print",
+                    "GivenName": "Nicola",
+                    "FullyQualifiedName": "Weiskopf Consulting",
+                    "BillWithParent": false,
+                    "Job": false,
+                    "BalanceWithJobs": 390.0,
+                    "PrimaryPhone": {
+                        "FreeFormNumber": "(650) 555-1423"
+                    },
+                    "Active": true,
+                    "MetaData": {
+                        "CreateTime": "2014-09-11T17:29:04-07:00",
+                        "LastUpdatedTime": "2015-06-24T15:54:02-07:00"
+                    },
+                    "BillAddr": {
+                        "City": "Bayshore",
+                        "Line1": "45612 Main St.",
+                        "PostalCode": "94326",
+                        "Lat": "45.256574",
+                        "Long": "-66.0943698",
+                        "CountrySubDivisionCode": "CA",
+                        "Id": "30"
+                    },
+                    "Taxable": false,
+                    "Balance": 390.0,
+                    "SyncToken": "0",
+                    "CompanyName": "Weiskopf Consulting",
+                    "ShipAddr": {
+                        "City": "Bayshore",
+                        "Line1": "45612 Main St.",
+                        "PostalCode": "94326",
+                        "Lat": "45.256574",
+                        "Long": "-66.0943698",
+                        "CountrySubDivisionCode": "CA",
+                        "Id": "30"
+                    },
+                    "PrintOnCheckName": "Weiskopf Consulting",
+                    "sparse": false,
+                    "Id": "29"
+                }
+            ],
+            "startPosition": 1,
+            "maxResults": 6
+        },
+        "time": "2015-07-23T11:02:25.149-07:00"
+    }
+}

@@ -5,6 +5,7 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import QuickBooksGetDepartmentsBatch from '../../lib/QuickBooks/Batch/QuickBooksGetDepartmentsBatch';
 import QuickBooksGetTaxRatesBatch from '../../lib/QuickBooks/Batch/QuickBooksGetTaxRatesBatch';
 import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
+import QuickBooksFindCustomerConnector from '../../lib/QuickBooks/Connector/QuickBooksFindCustomerConnector';
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
 import QuickBooksApplication, {
     ENVIRONMENT,
@@ -67,4 +68,11 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(quickApp);
     container.setBatch(quickBooksGetDepartmentsBatch);
+
+    const quickBooksFindCustomerConnector = new QuickBooksFindCustomerConnector();
+    quickBooksFindCustomerConnector
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
+    container.setConnector(quickBooksFindCustomerConnector);
 }
