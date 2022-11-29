@@ -39,23 +39,7 @@ interface IResponse {
 }
 
 export interface IInput {
-    id: string;
-    title: string;
-    shortdesc: string;
-    longdesc: string;
-    priority: number;
-    barcode?: number;
-    price: number;
     rrp?: number;
-    media: [
-        {
-            url: string;
-            main: boolean;
-            switch: string;
-            energy_label: boolean;
-            information_list: boolean;
-        },
-    ];
     promotions?: [
         {
             price: number;
@@ -63,6 +47,11 @@ export interface IInput {
             to: string;
         },
     ];
+    barcode?: number;
+    parameters?: {
+        COLOR: string;
+        SIZE: string;
+    };
     labels?: [
         {
             label: string;
@@ -70,19 +59,11 @@ export interface IInput {
             to: string;
         },
     ];
-    parameters?: {
-        COLOR: string;
-        SIZE: string;
-    };
     dimensions?: {
         weight: number;
         width: number;
         length: number;
         height: number;
-    };
-    availability: {
-        status: string;
-        in_stock: number;
     };
     recommended?: string[];
     delivery_delay?: number;
@@ -90,7 +71,6 @@ export interface IInput {
     package_size?: string;
     mallbox_allowed?: boolean;
     category_id?: string;
-    vat: number;
     variants?: [
         {
             id: string;
@@ -149,6 +129,26 @@ export interface IInput {
     partner_title?: string;
     brand_id?: string;
     weee_fee?: number;
+    id: string;
+    title: string;
+    shortdesc: string;
+    longdesc: string;
+    priority: number;
+    price: number;
+    media: [
+        {
+            url: string;
+            main: boolean;
+            switch: string;
+            energy_label: boolean;
+            information_list: boolean;
+        },
+    ];
+    availability: {
+        status: string;
+        in_stock: number;
+    };
+    vat: number;
 }
 
 export type IOutput = IInput;

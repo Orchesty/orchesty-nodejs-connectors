@@ -47,10 +47,10 @@ export default class MondayCreateItemConnector extends AConnector {
 
 export interface IInput {
     item_name?: string;
-    board_id: number;
     group_id?: string;
     column_values?: string;
     create_labels_if_missing?: boolean;
+    board_id: number;
 }
 
 export interface IOutput {
@@ -59,14 +59,17 @@ export interface IOutput {
         assets_source?: 'all' | 'columns' | 'gallery';
     }[];
     board?: string;
+    created_at?: Date;
+    creator?: string;
+    group?: string;
+    error_code?: string;
+    status_code?: number;
+    error_message?: string;
+    creator_id: string;
+    id: string;
     column_values: {
         ids: string;
     }[];
-    created_at?: Date;
-    creator?: string;
-    creator_id: string;
-    group?: string;
-    id: string;
     name: string;
     parent_item: {
         assets?: string[];
@@ -74,11 +77,11 @@ export interface IOutput {
         column_values?: string[];
         created_at?: Date;
         creator?: string;
-        creator_id: string;
         group?: string;
         id?: string;
-        name: string;
         state?: string;
+        name: string;
+        creator_id: string;
         subscribers: string;
         updated_at: Date;
         updates: string;
@@ -91,7 +94,4 @@ export interface IOutput {
         page: number;
     };
     email: string;
-    error_code?: string;
-    status_code?: number;
-    error_message?: string;
 }

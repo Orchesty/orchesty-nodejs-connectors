@@ -91,7 +91,6 @@ export interface IOutput {
 
 export interface IInput {
     task: {
-        title: string;
         description?: string;
         dueTime?: string;
         assignee?: {
@@ -102,6 +101,7 @@ export interface IInput {
             entityType?: string;
             id?: number;
         };
+        title: string;
     };
 
 }

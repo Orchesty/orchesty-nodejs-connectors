@@ -164,6 +164,7 @@ export interface Config {
 }
 
 export interface ProductFull {
+    brand_name?: string;
     name: string;
     type: string;
     sku: string;
@@ -222,7 +223,6 @@ export interface ProductFull {
     open_graph_use_meta_description: boolean;
     open_graph_use_product_name: boolean;
     open_graph_use_image: boolean;
-    brand_name?: string;
     gtin: string;
     mpn: string;
     reviews_rating_sum: number;

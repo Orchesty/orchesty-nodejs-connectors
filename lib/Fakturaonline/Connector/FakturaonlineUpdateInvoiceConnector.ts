@@ -99,6 +99,7 @@ export interface IInput {
 export interface IOutput {
     public_url: string;
     invoice: {
+        locked?: boolean;
         buyer: {
             company_number: string;
             country_code: string;
@@ -146,7 +147,6 @@ export interface IOutput {
                 vat_rate: string;
             },
         ];
-        locked?: boolean;
         means_of_payment: string;
         number: string;
         paid: boolean;

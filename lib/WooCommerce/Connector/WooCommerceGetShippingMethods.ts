@@ -69,6 +69,7 @@ export interface IShippingZone {
 }
 
 export interface IShippingMethod {
+    shipping_zone_title?: string;
     instance_id: number;
     title: string;
     order: number;
@@ -76,7 +77,6 @@ export interface IShippingMethod {
     method_id: string;
     method_title: string;
     method_description: string;
-    shipping_zone_title?: string;
     settings: {
         title: {
             id: string;

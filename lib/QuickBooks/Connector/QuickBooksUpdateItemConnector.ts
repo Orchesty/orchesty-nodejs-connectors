@@ -27,17 +27,10 @@ export default class QuickBooksUpdateItemConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    Id: string;
-    SyncToken: string;
-    Name: string;
     Type?: string;
     QtyOnHand?: number;
     TrackQtyOnHand?: boolean;
     InvStartDate?: string;
-    IncomeAccountRef: {
-        name: string;
-        value: string;
-    };
     AssetAccountRef?: {
         name: string;
         value: string;
@@ -52,6 +45,13 @@ export interface IInput {
     UnitPrice?: number;
     PurchaseDesc?: string;
     Description?: string;
+    Id: string;
+    SyncToken: string;
+    Name: string;
+    IncomeAccountRef: {
+        name: string;
+        value: string;
+    };
 }
 
 export interface IOutput {

@@ -25,6 +25,9 @@ export default class ProductboardCreateNewFeatureConnector extends AConnector {
 
 export interface IInput {
     data: {
+        owner?: {
+            email: string;
+        };
         name: string;
         description: string;
         type: 'feature' | 'subfeature';
@@ -49,14 +52,15 @@ export interface IInput {
             endDate: string;
             granularity: string;
         };
-        owner?: {
-            email: string;
-        };
+
     };
 }
 
 export interface IOutput {
     data: {
+        owner?: {
+            email: string;
+        };
         id: string;
         name: string;
         description: string;
@@ -94,9 +98,6 @@ export interface IOutput {
             startDate: string;
             endDate: string;
             granularity: string;
-        };
-        owner?: {
-            email: string;
         };
     };
 }
