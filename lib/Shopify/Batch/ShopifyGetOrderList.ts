@@ -71,10 +71,10 @@ export type IOutput = IOrder;
 export interface IClientDetails {
     accept_language?: unknown;
     browser_height?: unknown;
-    browser_ip: string;
     browser_width?: unknown;
     session_hash?: unknown;
     user_agent?: unknown;
+    browser_ip: string;
 }
 
 export interface IPrice {
@@ -95,6 +95,7 @@ export interface ITaxLine {
 }
 
 export interface IBillingAddress {
+    compunknown?: unknown;
     first_name: string;
     address1: string;
     phone: string;
@@ -104,7 +105,6 @@ export interface IBillingAddress {
     country: string;
     last_name: string;
     address2: string;
-    compunknown?: unknown;
     latitude: number;
     longitude: number;
     name: string;
@@ -113,11 +113,11 @@ export interface IBillingAddress {
 }
 
 export interface IDefaultAddress {
-    id: number;
-    customer_id: number;
     first_name?: unknown;
     last_name?: unknown;
     compunknown?: unknown;
+    id: number;
+    customer_id: number;
     address1: string;
     address2: string;
     city: string;
@@ -133,6 +133,9 @@ export interface IDefaultAddress {
 }
 
 export interface ICustomer {
+    note?: unknown;
+    multipass_identifier?: unknown;
+    marketing_opt_in_level?: unknown;
     id: number;
     email: string;
     accepts_marketing: boolean;
@@ -144,16 +147,13 @@ export interface ICustomer {
     state: string;
     total_spent: string;
     last_order_id: number;
-    note?: unknown;
     verified_email: boolean;
-    multipass_identifier?: unknown;
     tax_exempt: boolean;
     phone: string;
     tags: string;
     last_order_name: string;
     currency: string;
     accepts_marketing_updated_at: Date;
-    marketing_opt_in_level?: unknown;
     tax_exemptions: unknown[];
     admin_graphql_api_id: string;
     default_address: IDefaultAddress;
@@ -176,11 +176,12 @@ export interface IDiscountAllocation {
 }
 
 export interface ILineItem {
+    fulfillment_status?: unknown;
+    vendor?: unknown;
     id: number;
     admin_graphql_api_id: string;
     fulfillable_quantity: number;
     fulfillment_service: string;
-    fulfillment_status?: unknown;
     gift_card: boolean;
     grams: number;
     name: string;
@@ -202,12 +203,12 @@ export interface ILineItem {
     variant_id: number;
     variant_inventory_management: string;
     variant_title: string;
-    vendor?: unknown;
     tax_lines: ITaxLine[];
     discount_allocations: IDiscountAllocation[];
 }
 
 export interface IFulfillment {
+    shipment_status?: unknown;
     id: number;
     admin_graphql_api_id: string;
     created_at: Date;
@@ -219,7 +220,6 @@ export interface IFulfillment {
         authorization: string;
     };
     service: string;
-    shipment_status?: unknown;
     status: string;
     tracking_compunknown: string;
     tracking_number: string;
@@ -239,18 +239,19 @@ export interface IPaymentDetails {
 }
 
 export interface ITransaction {
+    device_id?: unknown;
+    error_code?: unknown;
+    location_id?: unknown;
+    message?: unknown;
+    user_id?: unknown;
     id: number;
     admin_graphql_api_id: string;
     amount: string;
     authorization: string;
     created_at: Date;
     currency: string;
-    device_id?: unknown;
-    error_code?: unknown;
     gateway: string;
     kind: string;
-    location_id?: unknown;
-    message?: unknown;
     order_id: number;
     parent_id: number;
     processed_at: Date;
@@ -258,7 +259,6 @@ export interface ITransaction {
     source_name: string;
     status: string;
     test: boolean;
-    user_id?: unknown;
 }
 
 export interface IRefundLineItem {
@@ -275,6 +275,7 @@ export interface IRefundLineItem {
 }
 
 export interface IShippingAddress {
+    compunknown?: unknown;
     first_name: string;
     address1: string;
     phone: string;
@@ -284,7 +285,6 @@ export interface IShippingAddress {
     country: string;
     last_name: string;
     address2: string;
-    compunknown?: unknown;
     latitude: number;
     longitude: number;
     name: string;
@@ -293,16 +293,16 @@ export interface IShippingAddress {
 }
 
 export interface IShippingLine {
-    id: number;
     carrier_identifier?: unknown;
-    code: string;
     delivery_category?: unknown;
+    phone?: unknown;
+    requested_fulfillment_service_id?: unknown;
+    id: number;
+    code: string;
     discounted_price: string;
     discounted_price_set: IPriceSet;
-    phone?: unknown;
     price: string;
     price_set: IPriceSet;
-    requested_fulfillment_service_id?: unknown;
     source: string;
     title: string;
     tax_lines: unknown[];
@@ -310,24 +310,29 @@ export interface IShippingLine {
 }
 
 export interface IOrder {
-    id: number;
-    admin_graphql_api_id: string;
     app_id?: unknown;
-    browser_ip: string;
-    buyer_accepts_marketing: boolean;
     cancel_reason?: unknown;
     cancelled_at?: unknown;
+    closed_at?: unknown;
+    customer_locale?: unknown;
+    device_id?: unknown;
+    fulfillment_status?: unknown;
+    location_id?: unknown;
+    note?: unknown;
+    source_url?: unknown;
+    user_id?: unknown;
+    id: number;
+    admin_graphql_api_id: string;
+    browser_ip: string;
+    buyer_accepts_marketing: boolean;
     cart_token: string;
     checkout_id: number;
     checkout_token: string;
     client_details: IClientDetails;
-    closed_at?: unknown;
     confirmed: boolean;
     contact_email: string;
     created_at: Date;
     currency: string;
-    customer_locale?: unknown;
-    device_id?: unknown;
     discount_codes: {
         code: string;
         amount: string;
@@ -335,13 +340,10 @@ export interface IOrder {
     }[];
     email: string;
     financial_status: string;
-    fulfillment_status?: unknown;
     gateway: string;
     landing_site: string;
     landing_site_ref: string;
-    location_id?: unknown;
     name: string;
-    note?: unknown;
     note_attributes: {
         name: string;
         value: string;
@@ -358,7 +360,6 @@ export interface IOrder {
     referring_site: string;
     source_identifier: string;
     source_name: string;
-    source_url?: unknown;
     subtotal_price: string;
     subtotal_price_set: IPriceSet;
     tags: string;
@@ -379,7 +380,6 @@ export interface IOrder {
     total_tip_received: string;
     total_weight: number;
     updated_at: Date;
-    user_id?: unknown;
     billing_address: IBillingAddress;
     customer: ICustomer;
     discount_applications: IDiscountApplication[];

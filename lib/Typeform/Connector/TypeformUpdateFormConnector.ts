@@ -27,7 +27,6 @@ export default class TypeformUpdateFormConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
-    form_id: string;
     cui_settings?: {
         avatar?: string;
     };
@@ -94,8 +93,6 @@ export interface IInput {
             }[];
         };
         ref?: string;
-        title: string;
-        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
         validations?: {
             required?: boolean;
             max_length?: number;
@@ -110,9 +107,13 @@ export interface IInput {
             placement?: string;
             type?: string;
         };
+        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
+        title: string;
     }[];
     hidden?: string[];
     logic?: {
+        ref?: string;
+        type: string;
         actions: {
             action: string;
             condition: {
@@ -136,8 +137,6 @@ export interface IInput {
                 };
             };
         }[];
-        ref?: string;
-        type: string;
     }[];
     settings?: {
         facebook_pixel?: string;
@@ -226,4 +225,5 @@ export interface IInput {
     workspace: {
         href?: string;
     };
+    form_id: string;
 }

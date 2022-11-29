@@ -28,14 +28,15 @@ export default class ActivateCampaignCreateAccountConnector extends AConnector {
 
 export interface IInput {
     account: {
-        name: string;
         accountUrl?: string;
         owner?: number;
         fields?: {
+            fieldCurrency?: string;
             customFieldId: number;
             fieldValue: number;
-            fieldCurrency?: string;
+
         }[];
+        name: string;
     };
 }
 

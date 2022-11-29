@@ -29,17 +29,17 @@ export default class PipedriveUpdateLeadConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    id: string;
     title?: string;
     person_id?: number;
     organization_id?: number;
     label_ids?: string[];
     owner_id?: number;
-    is_archived: boolean;
     value?: unknown;
     expected_close_date?: Date;
     visible_to?: 1 | 3 | 5 | 7;
     was_seen?: boolean;
+    id: string;
+    is_archived: boolean;
 }
 
 export interface IOutput {

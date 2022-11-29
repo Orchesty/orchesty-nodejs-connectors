@@ -146,6 +146,7 @@ export interface IOutput {
 }
 
 export interface IVariant {
+    image?: string;
     code: string;
     ean: string;
     stock: string;
@@ -163,7 +164,6 @@ export interface IVariant {
         fromDate: string;
         toDate: string;
     };
-    image?: string;
     parameters: {
         paramName: string;
         paramIndex: string;

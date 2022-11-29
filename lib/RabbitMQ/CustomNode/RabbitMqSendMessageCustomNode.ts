@@ -21,6 +21,6 @@ export default class RabbitMqSendMessageCustomNode extends ACommonNode {
 }
 
 export interface IInput {
-    queue: string;
     queueParams?: IQueueArguments;
+    queue: string;
 }

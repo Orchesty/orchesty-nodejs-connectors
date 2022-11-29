@@ -53,18 +53,18 @@ export interface IInput {
 
 export interface IOutput {
     archived?: boolean;
-    color: string;
     deleted?: boolean;
-    id: string;
     items?: {
         Ids?: number;
         limit?: number;
         page?: number;
         newest_first?: boolean;
     }[];
-    position: string;
-    title: string;
     error_code?: string;
     status_code?: number;
     error_message?: string;
+    id: string;
+    position: string;
+    color: string;
+    title: string;
 }

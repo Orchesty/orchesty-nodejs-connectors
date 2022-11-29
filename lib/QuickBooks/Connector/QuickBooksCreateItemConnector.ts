@@ -27,20 +27,20 @@ export default class QuickBooksCreateItemConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    Name: number;
     Type?: string;
     QtyOnHand?: string;
     TrackQtyOnHand?: true;
     InvStartDate?: string;
-    IncomeAccountRef: {
-        name: string;
-        value: string;
-    };
     AssetAccountRef?: {
         name: string;
         value: string;
     };
     ExpenseAccountRef?: {
+        name: string;
+        value: string;
+    };
+    Name: number;
+    IncomeAccountRef: {
         name: string;
         value: string;
     };

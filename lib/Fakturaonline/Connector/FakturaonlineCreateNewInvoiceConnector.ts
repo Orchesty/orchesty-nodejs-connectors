@@ -98,49 +98,50 @@ export interface IInput {
 }
 
 export interface IOutput {
+    locked?: boolean;
     public_url: string;
     invoice: {
-        already_paid_note: null;
+        already_paid_note: unknown;
         buyer: {
-            bank_account_name: null;
-            bank_account_number: null;
-            city: null;
+            bank_account_name: unknown;
+            bank_account_number: unknown;
+            city: unknown;
             company_number: string;
             country_code: string;
-            iban: null;
+            iban: unknown;
             id: number;
-            name: null;
-            postcode: null;
+            name: unknown;
+            postcode: unknown;
             show_iban: boolean;
-            street: null;
-            swift: null;
-            tax_number: null;
-            vat_number: null;
-            vat_payer: null;
+            street: unknown;
+            swift: unknown;
+            tax_number: unknown;
+            vat_number: unknown;
+            vat_payer: unknown;
         };
-        constant_symbol: null;
-        contact_id: null;
+        constant_symbol: unknown;
+        contact_id: unknown;
         created_at: string;
-        credit_noted_invoice_id: null;
+        credit_noted_invoice_id: unknown;
         currency: string;
-        delivery_on: null;
+        delivery_on: unknown;
         design: string;
         due_in_api: string;
         due_on: string;
         eet: {
-            uuid_zpravy: null;
-            bkp: null;
-            dat_prij: null;
-            fik: null;
             locked?: boolean;
-            should_be_registered?: null;
+            should_be_registered?: unknown;
+            uuid_zpravy: unknown;
+            bkp: unknown;
+            dat_prij: unknown;
+            fik: unknown;
         };
         eet_invoice: boolean;
         eet_state: string;
-        foot_note: null;
+        foot_note: unknown;
         id: number;
         is_accessible: boolean;
-        issued_by: null;
+        issued_by: unknown;
         issued_on: string;
         kind: string;
         language: string;
@@ -151,7 +152,7 @@ export interface IOutput {
                 invoice_id: number;
                 price: string;
                 quantity: string;
-                unit_type: null;
+                unit_type: unknown;
                 vat_rate: string;
             },
             {
@@ -160,7 +161,7 @@ export interface IOutput {
                 invoice_id: number;
                 price: string;
                 quantity: string;
-                unit_type: null;
+                unit_type: unknown;
                 vat_rate: string;
             },
             {
@@ -169,64 +170,64 @@ export interface IOutput {
                 invoice_id: number;
                 price: string;
                 quantity: string;
-                unit_type: null;
+                unit_type: unknown;
                 vat_rate: string;
             },
         ];
-        locked?: boolean;
+
         logo: {
-            filename: null;
+            filename: unknown;
             thumb: {
-                filename: null;
-                thumb: null;
-                url: null;
+                filename: unknown;
+                thumb: unknown;
+                url: unknown;
             };
-            url: null;
+            url: unknown;
         };
-        logo_id: null;
+        logo_id: unknown;
         means_of_payment: string;
-        note: null;
+        note: unknown;
         number: string;
         paid: boolean;
-        paid_at: null;
+        paid_at: unknown;
         payment_symbol: string;
-        registration_number: null;
+        registration_number: unknown;
         rounding_type: string;
         seller: {
-            bank_account_name: null;
-            bank_account_number: null;
-            city: null;
+            bank_account_name: unknown;
+            bank_account_number: unknown;
+            city: unknown;
             company_number: string;
             country_code: string;
-            iban: null;
+            iban: unknown;
             id: number;
             name: string;
-            postcode: null;
+            postcode: unknown;
             show_iban: boolean;
-            street: null;
-            swift: null;
-            tax_number: null;
-            vat_number: null;
-            vat_payer: null;
+            street: unknown;
+            swift: unknown;
+            tax_number: unknown;
+            vat_number: unknown;
+            vat_payer: unknown;
         };
         seller_company_id: string;
-        seller_id: null;
-        settlement_method: null;
+        seller_id: unknown;
+        settlement_method: unknown;
         show_qr_code: boolean;
         site: string;
         stamp: {
-            filename: null;
+            filename: unknown;
             thumb: {
-                filename: null;
-                thumb: null;
-                url: null;
+                filename: unknown;
+                thumb: unknown;
+                url: unknown;
             };
-            url: null;
+            url: unknown;
         };
-        stamp_id: null;
-        state: null;
+        stamp_id: unknown;
+        state: unknown;
         stateful_invoice: boolean;
-        submitted_at: null;
+        submitted_at: unknown;
         subscription_id: number;
         tax_point_on: string;
         total_float: number;

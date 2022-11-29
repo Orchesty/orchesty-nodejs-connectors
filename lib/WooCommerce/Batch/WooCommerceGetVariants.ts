@@ -44,6 +44,11 @@ export interface IOutput {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IVariant {
+    date_on_sale_from?: Date;
+    date_on_sale_from_gmt?: Date;
+    date_on_sale_to?: Date;
+    date_on_sale_to_gmt?: Date;
+    stock_quantity?: number;
     id: number;
     date_created: Date;
     date_created_gmt: Date;
@@ -55,10 +60,6 @@ export interface IVariant {
     price: string;
     regular_price: string;
     sale_price: string;
-    date_on_sale_from?: Date;
-    date_on_sale_from_gmt?: Date;
-    date_on_sale_to?: Date;
-    date_on_sale_to_gmt?: Date;
     on_sale: boolean;
     status: string;
     purchasable: boolean;
@@ -70,7 +71,6 @@ export interface IVariant {
     tax_status: string;
     tax_class: string;
     manage_stock: boolean;
-    stock_quantity?: number;
     stock_status: string;
     backorders: string;
     backorders_allowed: boolean;

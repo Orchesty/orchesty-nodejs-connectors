@@ -41,8 +41,6 @@ export interface IOutput {
 
 export interface IInput {
     user: {
-        name: string;
-        email: string;
         custom_role_id?: number;
         identities?: [
             {
@@ -55,6 +53,8 @@ export interface IInput {
         };
         role?: string;
     };
+    name: string;
+    email: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

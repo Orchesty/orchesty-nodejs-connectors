@@ -63,6 +63,11 @@ export interface IAttribute {
 }
 
 export interface IOutput {
+    stock_quantity?: number;
+    date_on_sale_from?: Date;
+    date_on_sale_from_gmt?: Date;
+    date_on_sale_to?: Date;
+    date_on_sale_to_gmt?: Date;
     id: number;
     name: string;
     slug: string;
@@ -81,10 +86,6 @@ export interface IOutput {
     price: string;
     regular_price: string;
     sale_price: string;
-    date_on_sale_from?: Date;
-    date_on_sale_from_gmt?: Date;
-    date_on_sale_to?: Date;
-    date_on_sale_to_gmt?: Date;
     price_html: string;
     on_sale: boolean;
     purchasable: boolean;
@@ -99,7 +100,6 @@ export interface IOutput {
     tax_status: string;
     tax_class: string;
     manage_stock: boolean;
-    stock_quantity?: number;
     stock_status: string;
     backorders: string;
     backorders_allowed: boolean;
