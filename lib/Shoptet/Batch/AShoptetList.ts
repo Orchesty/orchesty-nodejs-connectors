@@ -83,6 +83,6 @@ export interface IPaging {
 }
 
 export interface ICursor {
-    page: number;
     dateFrom?: string;
+    page: number;
 }

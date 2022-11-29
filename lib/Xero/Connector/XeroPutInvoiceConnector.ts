@@ -82,21 +82,6 @@ export interface IInvoice {
 }
 
 export interface IInput {
-    Type: string;
-    Contact: unknown;
-    LineItems: {
-        Description?: string;
-        Quantity?: unknown;
-        UnitAmount?: unknown;
-        ItemCode?: unknown;
-        AccountCode?: unknown;
-        LineItemId?: unknown;
-        TaxType?: unknown;
-        LineAmount?: unknown;
-        DiscountRate?: unknown;
-        DiscountAmount?: unknown;
-        Tracking?: unknown;
-    }[];
     Date?: string;
     DueDate?: string;
     LineAmountTypes?: string;
@@ -112,6 +97,21 @@ export interface IInput {
     PlannedPaymentDate?: string;
     DateString?: string;
     DueDateString?: string;
+    Type: string;
+    Contact: unknown;
+    LineItems: {
+        Description?: string;
+        Quantity?: unknown;
+        UnitAmount?: unknown;
+        ItemCode?: unknown;
+        AccountCode?: unknown;
+        LineItemId?: unknown;
+        TaxType?: unknown;
+        LineAmount?: unknown;
+        DiscountRate?: unknown;
+        DiscountAmount?: unknown;
+        Tracking?: unknown;
+    }[];
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

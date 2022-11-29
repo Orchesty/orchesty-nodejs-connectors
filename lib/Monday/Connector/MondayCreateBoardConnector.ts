@@ -47,13 +47,13 @@ export default class MondayCreateBoardConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
-    board_name: string;
-    board_kind: 'board_kind' | 'public' | 'share';
     folder_id?: number;
     workspace_id?: number;
     template_id?: number;
     board_owner_ids?: number[];
     board_subscriber_ids?: number[];
+    board_name: string;
+    board_kind: 'board_kind' | 'public' | 'share';
 }
 
 export interface IOutput {
@@ -68,30 +68,19 @@ export interface IOutput {
         to?: Date;
     }[];
     board_folder_id?: number;
-    board_kind: 'board_kind' | 'public' | 'share';
     columns?: {
         ids?: string[];
     }[];
     name?: string;
     description?: string;
-    groups: {
-        ids: string[];
-    }[];
-    id: string;
     items?: {
         ids?: number[];
         limit?: number;
         page?: number;
         newest_first?: boolean;
     };
-    owner: string;
-    owners: string[];
-    permissions: 'assignee' | 'collaborators' | 'everyone' | 'owners';
     pos?: string;
-    state: 'active' | 'all' | 'archived' | 'deleted';
-    subscribers: string[];
     tags?: string[];
-    top_group: string[];
     type?: string;
     updated_at?: Date;
     updates?: {
@@ -107,4 +96,15 @@ export interface IOutput {
     error_code?: string;
     status_code?: number;
     error_message?: string;
+    id: string;
+    groups: {
+        ids: string[];
+    }[];
+    board_kind: 'board_kind' | 'public' | 'share';
+    owner: string;
+    owners: string[];
+    permissions: 'assignee' | 'collaborators' | 'everyone' | 'owners';
+    state: 'active' | 'all' | 'archived' | 'deleted';
+    subscribers: string[];
+    top_group: string[];
 }

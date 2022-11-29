@@ -48,7 +48,6 @@ interface IResponse {
 
 export interface IInput {
     account: {
-        name: string;
         owner?: {
             entityType?: string;
             id?: number;
@@ -84,6 +83,7 @@ export interface IInput {
         customFields?: {
             Number_of_Employees?: string;
         };
+        name: string;
     };
 }
 
