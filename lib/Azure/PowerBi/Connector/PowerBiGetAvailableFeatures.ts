@@ -1,27 +1,30 @@
-import ProcessDto from 'pipes-nodejs-sdk/dist/lib/Utils/ProcessDto';
-import OnRepeatException from 'pipes-nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import { PipelineRequest } from '@azure/core-rest-pipeline';
-import APowerBiObjectConnector from './APowerBiObjectConnector';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import PowerBiApplication from '../PowerBiApplication';
+import APowerBiObjectConnector from './APowerBiObjectConnector';
 
 export default class PowerBiGetAvailableFeatures extends APowerBiObjectConnector {
-  protected _getCustomId = (): string => 'get-available-features';
 
-  async processAction(_dto: ProcessDto): Promise<ProcessDto> {
-    const dto = _dto;
+    public async processAction(_dto: ProcessDto): Promise<ProcessDto> {
+        const dto = _dto;
 
-    const applicationInstall = await this._getApplicationInstallFromHeaders(dto);
-    const application = this._application as PowerBiApplication;
-    const client = application.getClient(applicationInstall);
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const application = this.getApplication<PowerBiApplication>();
+        const client = application.getClient(applicationInstall);
 
-    try {
-      const request = new PipelineRequest();
-      request
-        .client.sendRequest();
-    } catch (e) {
-      throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
+        try {
+            await client.sendRequest({
+                agent: '',
+            });
+        } catch (e) {
+            throw new OnRepeatException(60, 10, (e as Error)?.message ?? 'Unknown error.');
+        }
+
+        return dto;
     }
 
-    return dto;
-  }
+    protected getCustomId(): string {
+        return 'get-available-features';
+    }
+
 }

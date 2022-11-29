@@ -19,7 +19,7 @@ export default abstract class AAzureApplication extends ABasicApplication {
         return 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
     }
 
-    public getSettingsForm(): FormStack {
+    public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
             .addField(new Field(FieldType.TEXT, TENANT_ID, 'Tenant key', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client key', undefined, true))
