@@ -1,0 +1,59 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "customer": {
+            "Active": true,
+            "Balance": 274,
+            "BalanceWithJobs": 274,
+            "BillAddr": {
+                "City": "Bayshore",
+                "CountrySubDivisionCode": "CA",
+                "Id": "2",
+                "Lat": "INVALID",
+                "Line1": "4581 Finch St.",
+                "Long": "INVALID",
+                "PostalCode": "94326"
+            },
+            "BillWithParent": false,
+            "CompanyName": "Amy's Bird Sanctuary",
+            "DefaultTaxCodeRef": {
+                "value": "2"
+            },
+            "DisplayName": "Amy's Bird Sanctuary",
+            "FamilyName": "Lauterbach",
+            "FullyQualifiedName": "Amy's Bird Sanctuary",
+            "GivenName": "Amy",
+            "Id": "1",
+            "Job": false,
+            "MetaData": {
+                "CreateTime": "2014-09-11T16:48:43-07:00",
+                "LastUpdatedTime": "2015-07-01T10:14:15-07:00"
+            },
+            "MiddleName": "Michelle",
+            "Notes": "Note added via Update operation.",
+            "PreferredDeliveryMethod": "Print",
+            "PrimaryEmailAddr": {
+                "Address": "Birds@Intuit.com"
+            },
+            "PrimaryPhone": {
+                "FreeFormNumber": "(650) 555-3311"
+            },
+            "PrintOnCheckName": "Amy's Bird Sanctuary",
+            "ShipAddr": {
+                "City": "Bayshore",
+                "CountrySubDivisionCode": "CA",
+                "Id": "109",
+                "Lat": "INVALID",
+                "Line1": "4581 Finch St.",
+                "Long": "INVALID",
+                "PostalCode": "94326"
+            },
+            "SyncToken": "5",
+            "Taxable": true,
+            "domain": "QBO",
+            "sparse": false
+        }
+    }
+}
