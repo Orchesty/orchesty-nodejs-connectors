@@ -13,7 +13,7 @@ export default class PowerBiGetAvailableFeatures extends APowerBiObjectConnector
         const client = application.getClient(applicationInstall);
 
         try {
-            await client.sendRequest({
+            await client sendRequest({
                 agent: '',
             });
         } catch (e) {
