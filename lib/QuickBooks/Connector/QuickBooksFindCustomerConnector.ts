@@ -23,10 +23,6 @@ export default class QuickBooksFindCustomerConnector extends AConnector {
             [200, 404],
         );
 
-        return this.setNewJsonData(dto, resp);
-    }
-
-    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
         const data = resp.getJsonBody();
         if (resp.getResponseCode() === 404 || data.QueryResponse.Customer.length <= 0) {
             return dto.setNewJsonData<IOutput>({ customer: null });
@@ -37,7 +33,7 @@ export default class QuickBooksFindCustomerConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponse {
+export interface IResponse {
     QueryResponse: {
         Customer: ICustomer[];
         startPosition: number;
