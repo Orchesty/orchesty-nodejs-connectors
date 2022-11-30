@@ -1,0 +1,81 @@
+{
+    "http": "POST https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/invoice",
+    "code": 200,
+    "body": {
+        "Invoice": {
+            "DocNumber": "1069",
+            "SyncToken": "0",
+            "domain": "QBO",
+            "Balance": 100.0,
+            "BillAddr": {
+                "City": "Bayshore",
+                "Line1": "4581 Finch St.",
+                "PostalCode": "94326",
+                "Lat": "INVALID",
+                "Long": "INVALID",
+                "CountrySubDivisionCode": "CA",
+                "Id": "2"
+            },
+            "TxnDate": "2015-07-24",
+            "TotalAmt": 100.0,
+            "CustomerRef": {
+                "name": "Amy's Bird Sanctuary",
+                "value": "1"
+            },
+            "ShipAddr": {
+                "City": "Bayshore",
+                "Line1": "4581 Finch St.",
+                "PostalCode": "94326",
+                "Lat": "INVALID",
+                "Long": "INVALID",
+                "CountrySubDivisionCode": "CA",
+                "Id": "109"
+            },
+            "LinkedTxn": [],
+            "DueDate": "2015-08-23",
+            "PrintStatus": "NeedToPrint",
+            "Deposit": 0,
+            "sparse": false,
+            "EmailStatus": "NotSet",
+            "Line": [
+                {
+                    "LineNum": 1,
+                    "Amount": 100.0,
+                    "SalesItemLineDetail": {
+                        "TaxCodeRef": {
+                            "value": "NON"
+                        },
+                        "ItemRef": {
+                            "name": "Services",
+                            "value": "1"
+                        }
+                    },
+                    "Id": "1",
+                    "DetailType": "SalesItemLineDetail"
+                },
+                {
+                    "DetailType": "SubTotalLineDetail",
+                    "Amount": 100.0,
+                    "SubTotalLineDetail": {}
+                }
+            ],
+            "ApplyTaxAfterDiscount": false,
+            "CustomField": [
+                {
+                    "DefinitionId": "1",
+                    "Type": "StringType",
+                    "Name": "Crew #"
+                }
+            ],
+            "Id": "238",
+            "TxnTaxDetail": {
+                "TotalTax": 0
+            },
+            "MetaData": {
+                "CreateTime": "2015-07-24T10:33:39-07:00",
+                "LastUpdatedTime": "2015-07-24T10:33:39-07:00"
+            }
+        },
+        "time": "2015-07-24T10:33:39.11-07:00"
+    }
+}

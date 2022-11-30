@@ -1,0 +1,22 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "Line": [
+            {
+                "DetailType": "SalesItemLineDetail",
+                "Amount": 100.0,
+                "SalesItemLineDetail": {
+                    "ItemRef": {
+                        "name": "Services",
+                        "value": "1"
+                    }
+                }
+            }
+        ],
+        "CustomerRef": {
+            "value": "1"
+        }
+    }
+}
