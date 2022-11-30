@@ -26,7 +26,7 @@ export default class QuickBooksCreateCustomerConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponse {
+export interface IResponse {
     Customer: ICustomer;
 }
 
