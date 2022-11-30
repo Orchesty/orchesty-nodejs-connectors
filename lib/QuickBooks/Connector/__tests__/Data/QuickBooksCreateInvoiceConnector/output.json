@@ -1,0 +1,82 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "Invoice": {
+            "ApplyTaxAfterDiscount": false,
+            "Balance": 100,
+            "BillAddr": {
+                "City": "Bayshore",
+                "CountrySubDivisionCode": "CA",
+                "Id": "2",
+                "Lat": "INVALID",
+                "Line1": "4581 Finch St.",
+                "Long": "INVALID",
+                "PostalCode": "94326"
+            },
+            "CustomField": [
+                {
+                    "DefinitionId": "1",
+                    "Name": "Crew #",
+                    "Type": "StringType"
+                }
+            ],
+            "CustomerRef": {
+                "name": "Amy's Bird Sanctuary",
+                "value": "1"
+            },
+            "Deposit": 0,
+            "DocNumber": "1069",
+            "DueDate": "2015-08-23",
+            "EmailStatus": "NotSet",
+            "Id": "238",
+            "Line": [
+                {
+                    "Amount": 100,
+                    "DetailType": "SalesItemLineDetail",
+                    "Id": "1",
+                    "LineNum": 1,
+                    "SalesItemLineDetail": {
+                        "ItemRef": {
+                            "name": "Services",
+                            "value": "1"
+                        },
+                        "TaxCodeRef": {
+                            "value": "NON"
+                        }
+                    }
+                },
+                {
+                    "Amount": 100,
+                    "DetailType": "SubTotalLineDetail",
+                    "SubTotalLineDetail": {}
+                }
+            ],
+            "LinkedTxn": [],
+            "MetaData": {
+                "CreateTime": "2015-07-24T10:33:39-07:00",
+                "LastUpdatedTime": "2015-07-24T10:33:39-07:00"
+            },
+            "PrintStatus": "NeedToPrint",
+            "ShipAddr": {
+                "City": "Bayshore",
+                "CountrySubDivisionCode": "CA",
+                "Id": "109",
+                "Lat": "INVALID",
+                "Line1": "4581 Finch St.",
+                "Long": "INVALID",
+                "PostalCode": "94326"
+            },
+            "SyncToken": "0",
+            "TotalAmt": 100,
+            "TxnDate": "2015-07-24",
+            "TxnTaxDetail": {
+                "TotalTax": 0
+            },
+            "domain": "QBO",
+            "sparse": false
+        },
+        "time": "2015-07-24T10:33:39.11-07:00"
+    }
+}

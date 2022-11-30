@@ -1,4 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ICustomer } from './QuickBooksFindCustomerConnector';
@@ -11,16 +12,20 @@ export default class QuickBooksCreateCustomerConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<ICustomer>> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             '/customer',
         );
-        const resp = await this.getSender().send<IResponse>(req, [200]);
+        const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 
-        return dto.setNewJsonData(resp.getJsonBody().Customer);
+        return dto.setNewJsonData(resp.getJsonBody());
+    }
+
+    protected getCodeRange(): IRangeObject[] | number[] | undefined {
+        return [200];
     }
 
 }
