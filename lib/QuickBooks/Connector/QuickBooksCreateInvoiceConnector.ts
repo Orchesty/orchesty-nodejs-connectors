@@ -26,7 +26,7 @@ export default class QuickBooksCreateInvoiceConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IOutput {
+export interface IOutput {
     Invoice: {
         DocNumber: string;
         SyncToken: string;
@@ -101,14 +101,14 @@ export interface IInput {
         DetailType: string;
         Amount: number;
         SalesItemLineDetail: {
-            ItemRef: {
-                name: string;
+            ItemRef?: {
+                name?: string;
                 value: string;
             };
         };
     }[];
     CustomerRef: {
-        name: string;
+        name?: string;
         value: string;
     };
 }
