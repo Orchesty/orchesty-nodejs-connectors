@@ -73,6 +73,8 @@ export interface IOutput {
             tax: number;
         }[];
         line_items: {
+            vat_code?: string;
+            cost_center?: string;
             description: string;
             quantity: number;
             unit_base: number;
