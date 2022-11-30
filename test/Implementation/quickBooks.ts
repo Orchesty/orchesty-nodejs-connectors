@@ -4,6 +4,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import QuickBooksGetDepartmentsBatch from '../../lib/QuickBooks/Batch/QuickBooksGetDepartmentsBatch';
 import QuickBooksGetTaxRatesBatch from '../../lib/QuickBooks/Batch/QuickBooksGetTaxRatesBatch';
+import QuickBooksCreateCustomerConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateCustomerConnector';
 import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
 import QuickBooksFindCustomerConnector from '../../lib/QuickBooks/Connector/QuickBooksFindCustomerConnector';
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
@@ -69,10 +70,15 @@ export default async function init(): Promise<void> {
         .setApplication(quickApp);
     container.setBatch(quickBooksGetDepartmentsBatch);
 
-    const quickBooksFindCustomerConnector = new QuickBooksFindCustomerConnector();
-    quickBooksFindCustomerConnector
+    const quickBooksFindCustomerConnector = new QuickBooksFindCustomerConnector()
         .setSender(sender)
         .setDb(db)
         .setApplication(quickApp);
     container.setConnector(quickBooksFindCustomerConnector);
+
+    const quickBooksCreateCustomerConnector = new QuickBooksCreateCustomerConnector()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
+    container.setConnector(quickBooksCreateCustomerConnector);
 }
