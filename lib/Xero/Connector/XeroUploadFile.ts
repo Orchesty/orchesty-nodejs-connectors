@@ -27,7 +27,7 @@ export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput
         const { file, fileName } = dto.getJsonData();
 
         const form = new FormData();
-        form.append(fileName, file, fileName);
+        form.append(fileName, Buffer.from(file, 'base64'), fileName);
 
         const request = await this.getApplication().getRequestDto(
             dto,
