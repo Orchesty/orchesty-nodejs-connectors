@@ -49,7 +49,7 @@ export default class QuickBooksUploadAttachmentConnector<I extends IInput = IInp
 
         const form = new FormData();
         form.append('file_metadata_01', JSON.stringify(metadata), { contentType: 'application/json' });
-        form.append('file_content_01', file, FileName);
+        form.append('file_content_01', Buffer.from(file, 'base64'), FileName);
 
         const request = await this.getApplication().getRequestDto(
             dto,

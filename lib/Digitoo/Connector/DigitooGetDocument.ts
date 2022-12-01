@@ -34,7 +34,7 @@ export default class DigitooGetDocument extends AConnector {
     }
 
     protected setNewJsonData(dto: ProcessDto, resp: ResponseDto): ProcessDto {
-        return dto.setNewJsonData({ file: resp.getBody() });
+        return dto.setNewJsonData({ file: resp.getBuffer().toString('base64') });
     }
 
 }
