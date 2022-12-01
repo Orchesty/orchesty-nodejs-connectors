@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "AttachableRef": [
+            {
+                "EntityRef": {
+                    "type": "Invoice",
+                    "value": "238"
+                }
+            }
+        ],
+        "FileName": "invoice.pdf",
+        "file": "[file]"
+    }
+}
