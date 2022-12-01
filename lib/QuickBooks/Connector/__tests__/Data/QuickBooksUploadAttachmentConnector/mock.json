@@ -1,0 +1,36 @@
+{
+    "http": "POST https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/upload",
+    "code": 200,
+    "body": {
+        "AttachableResponse": [
+            {
+                "Attachable": {
+                    "SyncToken": "0",
+                    "domain": "QBO",
+                    "FileAccessUri": "...",
+                    "ThumbnailFileAccessUri": "...",
+                    "AttachableRef": [
+                        {
+                            "IncludeOnSend": false,
+                            "EntityRef": {
+                                "type": "Invoice",
+                                "value": "95"
+                            }
+                        }
+                    ],
+                    "TempDownloadUri": "https://...",
+                    "MetaData": {
+                        "CreateTime": "2015-11-16T10:59:02-08:00",
+                        "LastUpdatedTime": "2015-11-16T10:59:02-08:00"
+                    },
+                    "sparse": false,
+                    "ContentType": "image/jpeg",
+                    "FileName": "receipt_nov15.jpg",
+                    "Id": "100000000004190865",
+                    "Size": 1594261
+                }
+            }
+        ],
+        "time": "2015-11-16T10:58:58.100-08:00"
+    }
+}

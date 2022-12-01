@@ -1,0 +1,37 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "AttachableResponse": [
+            {
+                "Attachable": {
+                    "AttachableRef": [
+                        {
+                            "EntityRef": {
+                                "type": "Invoice",
+                                "value": "95"
+                            },
+                            "IncludeOnSend": false
+                        }
+                    ],
+                    "ContentType": "image/jpeg",
+                    "FileAccessUri": "...",
+                    "FileName": "receipt_nov15.jpg",
+                    "Id": "100000000004190865",
+                    "MetaData": {
+                        "CreateTime": "2015-11-16T10:59:02-08:00",
+                        "LastUpdatedTime": "2015-11-16T10:59:02-08:00"
+                    },
+                    "Size": 1594261,
+                    "SyncToken": "0",
+                    "TempDownloadUri": "https://...",
+                    "ThumbnailFileAccessUri": "...",
+                    "domain": "QBO",
+                    "sparse": false
+                }
+            }
+        ],
+        "time": "2015-11-16T10:58:58.100-08:00"
+    }
+}

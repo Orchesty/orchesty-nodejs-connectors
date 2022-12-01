@@ -9,6 +9,7 @@ import QuickBooksCreateInvoiceConnector from '../../lib/QuickBooks/Connector/Qui
 import QuickBooksCreateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksCreateItemConnector';
 import QuickBooksFindCustomerConnector from '../../lib/QuickBooks/Connector/QuickBooksFindCustomerConnector';
 import QuickBooksUpdateItemConnector from '../../lib/QuickBooks/Connector/QuickBooksUpdateItemConnector';
+import QuickBooksUploadAttachmentConnector from '../../lib/QuickBooks/Connector/QuickBooksUploadAttachmentConnector';
 import QuickBooksApplication, {
     ENVIRONMENT,
     NAME as QUICKBOOKS_APP,
@@ -88,4 +89,10 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(quickApp);
     container.setConnector(quickBooksCreateInvoiceConnector);
+
+    const quickBooksUploadAttachmentConnector = new QuickBooksUploadAttachmentConnector()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(quickApp);
+    container.setConnector(quickBooksUploadAttachmentConnector);
 }
