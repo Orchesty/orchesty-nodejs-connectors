@@ -36,7 +36,7 @@ export default class QuickBooksUploadAttachmentConnector<I extends IInput = IInp
         return NAME;
     }
 
-    @validate(inputSchema)
+    // @validate(inputSchema)
     public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<O>> {
         const { FileName, file, ...data } = dto.getJsonData();
         const metadata = {
@@ -48,6 +48,7 @@ export default class QuickBooksUploadAttachmentConnector<I extends IInput = IInp
         };
 
         const form = new FormData();
+
         form.append('file_metadata_01', JSON.stringify(metadata), { contentType: 'application/json' });
         form.append('file_content_01', Buffer.from(file, 'base64'), FileName);
 
