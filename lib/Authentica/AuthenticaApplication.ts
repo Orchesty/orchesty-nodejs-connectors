@@ -15,7 +15,6 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'authentica';
-export const BASE_URL = 'https://app.authentica.cz/api';
 const AUTHENTICA_SHOP_ID = 'authentica-shop-id';
 const CACHE_KEY = 'authentica_cache_key';
 const LOCK_KEY = 'authentica_lock_key';
@@ -70,7 +69,7 @@ export default class AuthenticaApplication extends ABasicApplication {
             [CommonHeaders.AUTHORIZATION]: await this.getAccessToken(dto, applicationInstall),
         };
 
-        const req = new RequestDto(`${BASE_URL}/applinth/${url}`, method, dto);
+        const req = new RequestDto(`${this.getBaseUrl()}/applinth/${url}`, method, dto);
         req.setHeaders(headers);
 
         if (data) {
@@ -80,8 +79,12 @@ export default class AuthenticaApplication extends ABasicApplication {
         return req;
     }
 
+    protected getBaseUrl(): string {
+        return 'https://app.authentica.cz/api';
+    }
+
     protected async getAccessToken(processDto: AProcessDto, applicationInstall: ApplicationInstall): Promise<string> {
-        const url = `${BASE_URL}/token`;
+        const url = `${this.getBaseUrl()}/token`;
 
         const clientId = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID];
         const clientSecret = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET];
