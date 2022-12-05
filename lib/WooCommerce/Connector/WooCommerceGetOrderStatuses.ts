@@ -13,7 +13,7 @@ export default class WooCommerceGetOrderStatuses extends AConnector {
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IResponse[]>> {
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.GET,
             'wp-json/wc/v3/reports/orders/totals?per_page=1000',
         );
