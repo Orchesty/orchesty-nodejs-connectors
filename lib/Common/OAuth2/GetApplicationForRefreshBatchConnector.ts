@@ -10,18 +10,22 @@ export default class GetApplicationForRefreshBatchConnector extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto<IOutput>> {
         const date = DateTimeUtils.getUtcDate();
         date.setMinutes(date.getMinutes() + 5);
 
         const repository = await this.getDbClient().getApplicationRepository();
 
-        const applications = await repository.findMany({ expires: { $lte: date } });
+        const applications = await repository.findMany({ expires: { $lte: date }, enabled: true });
         applications.forEach((app) => {
-            dto.addItem({}, app.getUser());
+            dto.addItem({ app: app.getName() }, app.getUser());
         });
 
-        return dto;
+        return dto as BatchProcessDto<IOutput>;
     }
 
+}
+
+export interface IOutput {
+    app: string;
 }

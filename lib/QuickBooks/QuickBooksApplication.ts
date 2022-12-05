@@ -21,6 +21,7 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Request } from 'express';
+import FormData from 'form-data';
 import { BodyInit } from 'node-fetch';
 
 export const NAME = 'quickbooks';
@@ -100,7 +101,11 @@ export default class QuickBooksApplication extends AOAuth2Application {
         );
 
         if (data) {
-            request.setJsonBody(data);
+            if (typeof data === 'string' || data instanceof FormData) {
+                request.setBody(data);
+            } else {
+                request.setJsonBody(data);
+            }
         }
 
         return request;
