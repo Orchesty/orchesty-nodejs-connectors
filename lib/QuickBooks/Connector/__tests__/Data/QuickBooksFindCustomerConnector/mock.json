@@ -1,5 +1,5 @@
 {
-    "http": "GET https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20Customer%20where%20DisplayName%20=%20abc",
+    "http": "GET https://sandbox-quickbooks.api.intuit.com/v3/company/123456789/query?query=select%20*%20from%20Customer%20where%20DisplayName%20=%20'abc'",
     "code": 200,
     "body": {
         "QueryResponse": {

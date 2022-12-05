@@ -17,7 +17,7 @@ export default class XeroFindContactConnector extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `contacts?where=Name="${contactName}"`,
+            encodeURI(`contacts?where=Name="${contactName}"`),
         );
         const resp = await this.getSender().send<IResponse>(req, [200, 404]);
 

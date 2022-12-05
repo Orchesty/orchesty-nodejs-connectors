@@ -3,29 +3,9 @@ import { ResultCodeRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/Re
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { validate } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import FormData from 'form-data';
-import Joi from 'joi';
 
 export const NAME = 'quick-books-upload-attachment-connector';
-
-/* eslint-disable @typescript-eslint/naming-convention */
-const inputSchema = Joi.object({
-    ContentType: Joi.string(),
-    AttachableRef: Joi.array().items(
-        Joi.object({
-            EntityRef: Joi.object({
-                type: Joi.string().required(),
-                value: Joi.string().required(),
-            }).required(),
-        }).required(),
-    )
-        .required(),
-    FileName: Joi.string().required(),
-    file: Joi.string().required(),
-});
-
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export default class QuickBooksUploadAttachmentConnector<I extends IInput = IInput,
     O extends IOutput = IOutput> extends AConnector {
@@ -36,7 +16,6 @@ export default class QuickBooksUploadAttachmentConnector<I extends IInput = IInp
         return NAME;
     }
 
-    // @validate(inputSchema)
     public async processAction(dto: ProcessDto<I>): Promise<ProcessDto<O>> {
         const { FileName, file, ...data } = dto.getJsonData();
         const metadata = {
