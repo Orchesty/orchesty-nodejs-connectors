@@ -17,13 +17,13 @@ export default class QuickBooksFindCustomerConnector extends AConnector {
                 dto,
                 await this.getApplicationInstallFromProcess(dto),
                 HttpMethods.GET,
-                encodeURI(`/query?query=select * from Customer where DisplayName = ${contactName}`),
+                encodeURI(`/query?query=select * from Customer where DisplayName = '${contactName}'`),
             ),
             [200, 404],
         );
 
         const data = resp.getJsonBody();
-        if (resp.getResponseCode() === 404 || data.QueryResponse.Customer.length <= 0) {
+        if (resp.getResponseCode() === 404 || data.QueryResponse.Customer === undefined) {
             return dto.setNewJsonData<IOutput>({ customer: null });
         }
         return dto.setNewJsonData<IOutput>({ customer: data.QueryResponse.Customer.shift() ?? null });
