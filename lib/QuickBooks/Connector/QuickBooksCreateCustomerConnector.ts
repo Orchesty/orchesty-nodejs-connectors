@@ -12,12 +12,13 @@ export default class QuickBooksCreateCustomerConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IErroredOutput | IResponse>> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             '/customer',
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send<IResponse>(req, this.getCodeRange());
 
@@ -37,6 +38,13 @@ export interface IResponse {
 
 export interface IInput {
     DisplayName: string;
+}
+export interface IErroredOutput {
+    Fault: {
+        Error: {
+            Detail: string;
+        }[];
+    };
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
