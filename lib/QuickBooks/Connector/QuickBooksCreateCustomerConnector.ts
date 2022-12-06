@@ -39,10 +39,19 @@ export interface IResponse {
 export interface IInput {
     DisplayName: string;
 }
+
 export interface IErroredOutput {
     Fault: {
         Error: {
             Detail: string;
+        }[];
+    };
+}
+
+export interface ILowerCaseErroredOutput {
+    fault: {
+        error: {
+            detail: string;
         }[];
     };
 }
