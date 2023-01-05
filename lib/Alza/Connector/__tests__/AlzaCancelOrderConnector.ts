@@ -6,9 +6,9 @@ import { NAME as ALZA_CANCEL_ORDER_CONNECTOR } from '../AlzaCancelOrderConnector
 let tester: NodeTester;
 
 describe('Tests for AlzaCancelOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

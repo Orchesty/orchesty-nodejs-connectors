@@ -6,9 +6,9 @@ import { NAME as WIX_UPDATE_PRODUCT_CONNECTOR } from '../WixUpdateProductConnect
 let tester: NodeTester;
 
 describe('Tests for WixUpdateProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

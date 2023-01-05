@@ -6,9 +6,9 @@ import { NAME as PAYPAL_CREATE_ORDER_CONNECTOR } from '../PaypalCreateOrderConne
 let tester: NodeTester;
 
 describe('Tests for PaypalCreateOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

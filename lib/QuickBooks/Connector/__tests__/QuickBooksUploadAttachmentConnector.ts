@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_UPLOAD_ATTACHMENT_CONNECTOR } from '../QuickBooksUp
 let tester: NodeTester;
 
 describe('Tests for QuickBooksUploadAttachmentConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -6,8 +6,8 @@ import KatanaApplication, { API_KEY, NAME as KATANA_APP } from '../../lib/Katana
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(KATANA_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(KATANA_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },

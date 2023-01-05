@@ -6,9 +6,9 @@ import { NAME as GO_BALIK_ORDER_LIST_CONNECTOR } from '../GObalikOrderListConnec
 let tester: NodeTester;
 
 describe('Tests for GObalikOrderListConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

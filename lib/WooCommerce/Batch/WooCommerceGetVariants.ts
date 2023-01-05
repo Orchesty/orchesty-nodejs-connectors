@@ -22,7 +22,7 @@ export default class WooCommerceGetVariants extends ABatchNode {
         );
 
         const res = await this.getSender().send<IVariant[]>(requestDto, [200, 404]);
-        const totalPages = res.getHeaders().get('x-wp-totalpages');
+        const totalPages = res.getHeaders()['x-wp-totalpages'];
         if (Number(totalPages) > Number(pageNumber)) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         }
@@ -44,11 +44,6 @@ export interface IOutput {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IVariant {
-    date_on_sale_from?: Date;
-    date_on_sale_from_gmt?: Date;
-    date_on_sale_to?: Date;
-    date_on_sale_to_gmt?: Date;
-    stock_quantity?: number;
     id: number;
     date_created: Date;
     date_created_gmt: Date;
@@ -111,6 +106,11 @@ export interface IVariant {
             href: string;
         }[];
     };
+    date_on_sale_from?: Date;
+    date_on_sale_from_gmt?: Date;
+    date_on_sale_to?: Date;
+    date_on_sale_to_gmt?: Date;
+    stock_quantity?: number;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

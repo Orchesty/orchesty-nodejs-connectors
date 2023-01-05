@@ -27,12 +27,12 @@ export default class BulkGateGetTransactionSMSConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
+    number: string;
+    text: string;
     sender_id?: string;
     sender_id_value?: string;
     country?: string;
     unicode?: boolean;
-    number: string;
-    text: string;
 }
 
 export interface IOutput {

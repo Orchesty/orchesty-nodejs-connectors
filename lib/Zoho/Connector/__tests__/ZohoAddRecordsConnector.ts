@@ -6,9 +6,9 @@ import { NAME as ZOHO_ADD_RECORDS_CONNECTOR } from '../ZohoAddRecordsConnector';
 let tester: NodeTester;
 
 describe('Tests for ZohoAddRecordsConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

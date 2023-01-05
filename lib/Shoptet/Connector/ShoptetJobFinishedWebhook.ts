@@ -18,15 +18,15 @@ export default class ShoptetJobFinishedWebhook extends AShoptetConnector {
             return dto;
         }
 
-        const repo = await this.getDbClient().getApplicationRepository();
-        const appInstall = await repo.findOne({ 'nonEncryptedSettings.eshopId': data.eshopId.toString() }); // eslint-disable-line
+        const repo = this.getDbClient().getApplicationRepository();
+        const appInstall = await repo.findOne({ nonEncrypt: { eshopId: data.eshopId.toString() }, enabled: null });
         if (!appInstall) {
             dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, `Shoptet with eshopId [${data.eshopId}] is not installed.`);
 
             return dto;
         }
         dto.setUser(appInstall.getUser());
-        const response = await this.doRequest(`api/system/jobs/${data.eventInstance}`, dto) as IResponse;
+        const response = await this.doRequest(`api/system/jobs/${data.eventInstance}`, dto, undefined, appInstall) as IResponse;
 
         const { job } = response.data;
         if (job.endpoint === '/api/products/snapshot') {

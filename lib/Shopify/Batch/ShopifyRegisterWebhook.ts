@@ -24,7 +24,7 @@ export default class ShopifyRegisterWebhook extends ABatchNode {
 
         if (webhooks.length > 0) {
             const appInstall = await this.getApplicationInstallFromProcess(dto);
-            const repo = await this.getDbClient().getRepository(Webhook);
+            const repo = this.getDbClient().getRepository(Webhook);
 
             const token = this.getRandomToken();
             const requestDto = app.getRequestDto(

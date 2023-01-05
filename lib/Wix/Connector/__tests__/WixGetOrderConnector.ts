@@ -6,9 +6,9 @@ import { NAME as WIX_GET_ORDER_CONNECTOR } from '../WixGetOrderConnector';
 let tester: NodeTester;
 
 describe('Tests for WixGetOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -23,8 +23,7 @@ export default class IDokladCreateNewContactConnector extends AConnector {
             dto.getData(),
         );
 
-        const response = await this.getSender().send(request, [200, 201], 10);
-        this.evaluateStatusCode(response, dto);
+        const response = await this.getSender().send(request, { success: '200-201' }, 10);
         dto.setData(response.getBody());
 
         return dto;

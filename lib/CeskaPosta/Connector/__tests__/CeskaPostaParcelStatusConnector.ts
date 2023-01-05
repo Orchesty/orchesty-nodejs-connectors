@@ -6,9 +6,9 @@ import { NAME as CESKA_POSTA_PARCEL_STATUS_CONNECTOR } from '../CeskaPostaParcel
 let tester: NodeTester;
 
 describe('Tests for CeskaPostaParcelStatusConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

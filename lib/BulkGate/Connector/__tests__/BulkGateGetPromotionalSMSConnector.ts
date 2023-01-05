@@ -6,9 +6,9 @@ import { NAME as BULK_GATE_GET_PROMOTIONAL_SMS_CONNECTOR } from '../BulkGateGetP
 let tester: NodeTester;
 
 describe('Tests for BulkGateGetPromotionalSMSConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

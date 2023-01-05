@@ -22,6 +22,7 @@ export default class MailchimpCreateContactConnector extends AConnector {
                 `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/members/`,
                 dto.getData(),
             ),
+            { success: '200-201' },
         );
 
         const json = output.getJsonBody() as { type: unknown; detail: unknown; instance: unknown };
@@ -29,8 +30,6 @@ export default class MailchimpCreateContactConnector extends AConnector {
         delete json.type;
         delete json.detail;
         delete json.instance;
-
-        this.evaluateStatusCode(output, dto);
 
         dto.setJsonData(json);
 

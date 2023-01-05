@@ -6,9 +6,9 @@ import { NAME as GIT_HUB_GET_REPOSITORY_CONNECTOR } from '../GitHubGetRepository
 let tester: NodeTester;
 
 describe('Tests for GitHubGetRepositoryConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

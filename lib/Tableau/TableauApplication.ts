@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -13,7 +13,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
-import { Headers } from 'node-fetch';
 
 export const NAME = 'tableau';
 export const BASE_URL = 'https://replace_me.online.tableau.com/api/3.14/';
@@ -71,7 +70,7 @@ export default class TableauApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(
                 FieldType.TEXT,
                 PREFIX_SITE,
@@ -113,9 +112,9 @@ export default class TableauApplication extends ABasicApplication {
     private async getOrRefreshToken(applicationInstall: ApplicationInstall, dto: AProcessDto): Promise<string> {
         let appInstall = applicationInstall;
         const expires = appInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[EXPIRES];
-        if (!expires || expires > new Date()) {
+        if (!expires || new Date(expires) < new Date()) {
             appInstall = await this.setSettings(appInstall, dto);
-            await (await this.dbClient.getApplicationRepository()).upsert(appInstall);
+            await this.dbClient.getApplicationRepository().update(appInstall);
         }
 
         return appInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN];
@@ -125,10 +124,6 @@ export default class TableauApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         processDto: AProcessDto,
     ): Promise<{ token: string; siteId: string }> {
-        const headers = new Headers({
-            [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-        });
         const form = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM];
         checkParams(form, [TOKEN_NAME, TOKEN_SECRET, PREFIX_SITE]);
         const data = {
@@ -146,7 +141,10 @@ export default class TableauApplication extends ABasicApplication {
             HttpMethods.POST,
             processDto,
             JSON.stringify(data),
-            headers,
+            {
+                [CommonHeaders.ACCEPT]: JSON_TYPE,
+                [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+            },
         );
 
         const resp = await this.sender.send(request);

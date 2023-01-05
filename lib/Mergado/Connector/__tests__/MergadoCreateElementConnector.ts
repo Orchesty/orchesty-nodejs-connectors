@@ -6,9 +6,9 @@ import { NAME as MERGADO_CREATE_ELEMENT_CONNECTOR } from '../MergadoCreateElemen
 let tester: NodeTester;
 
 describe('Tests for MergadoCreateElementConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

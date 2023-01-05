@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -15,7 +15,6 @@ import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Tran
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 
 export const WOOCOMMERCE_URL = 'woocommerceUrl';
 
@@ -44,7 +43,7 @@ export default class WooCommerceApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods | string,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const base64 = encode(
@@ -74,7 +73,7 @@ export default class WooCommerceApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
             .addField(new Field(FieldType.URL, WOOCOMMERCE_URL, 'Url', undefined, true));

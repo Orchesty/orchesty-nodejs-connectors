@@ -72,24 +72,24 @@ export interface WeightBasedShippingRate {
 
 export interface PriceBasedShippingRate {
     /* eslint-disable @typescript-eslint/naming-convention */
-    min_order_subtotal?: unknown;
     id: number;
     name: string;
     price: string;
     shipping_zone_id: number;
     max_order_subtotal: string;
+    min_order_subtotal?: unknown;
     /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export interface CarrierShippingRateProvider {
     /* eslint-disable @typescript-eslint/naming-convention */
-    percent_modifier?: unknown;
     id: number;
     carrier_service_id: number;
     flat_modifier: string;
     service_filter: unknown;
-    /* eslint-enable @typescript-eslint/naming-convention */
     shipping_zone_id: number;
+    percent_modifier?: unknown;
+    /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export interface ShippingZone {

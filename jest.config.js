@@ -5,4 +5,5 @@ module.exports = {
   roots: ["<rootDir>/lib/"],
   setupFiles: ["<rootDir>/.jest/testEnvs.ts"],
   setupFilesAfterEnv: ["<rootDir>/.jest/testLifecycle.ts"],
+  globalSetup: '<rootDir>/.jest/globalSetup.ts',
 };

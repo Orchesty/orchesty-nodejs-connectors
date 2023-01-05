@@ -146,7 +146,6 @@ export interface IOutput {
 }
 
 export interface IVariant {
-    image?: string;
     code: string;
     ean: string;
     stock: string;
@@ -210,4 +209,5 @@ export interface IVariant {
         maximalSearchCPC: string;
         hidden: boolean;
     };
+    image?: string;
 }

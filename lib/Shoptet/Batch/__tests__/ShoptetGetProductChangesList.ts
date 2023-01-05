@@ -1,7 +1,8 @@
-import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { mockDate, restoreDate } from '../../../../.jest/testLifecycle';
-import init from '../../../../test/Implementation/shoptet';
+import { init, mock } from '../../../../test/Implementation/shoptet';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as SHOPTET_GET_PRODUCT_CHANGES_LIST } from '../ShoptetGetProductChangesList';
 
@@ -13,19 +14,28 @@ describe('Tests for ShoptetGetProductChangesList', () => {
         await init();
     });
 
+    beforeEach(() => {
+        mockOnce([
+            { request: {
+                method: HttpMethods.POST,
+                url: /http:\/\/127\.0\.0\.40\/document\/ApplicationInstall.*/ },
+            response: {},
+            },
+        ]);
+    });
+
     it('process - ok', async () => {
         mockDate();
+        mock(2);
         await tester.testBatch(SHOPTET_GET_PRODUCT_CHANGES_LIST);
         restoreDate();
     });
 
     it('process - with after', async () => {
-        const repository = container.getRepository(ApplicationInstall);
-        const app = await repository.findOne({ key: 'shoptet' });
-        if (app) {
-            app?.addNonEncryptedSettings({ lastRunListProductChanges: '2017-03-23T17:03:12Z' });
-            await repository.update(app);
-        }
+        await new Promise((r) => {
+            setTimeout(r, 2000);
+        });
+        mock(2, { lastRunListProductChanges: '2000-12-02T11:12:58Z' });
         await tester.testBatch(SHOPTET_GET_PRODUCT_CHANGES_LIST, 'with-after');
     });
 });

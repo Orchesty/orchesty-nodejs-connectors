@@ -6,9 +6,9 @@ import { NAME as MONDAY_CREATE_ITEM_CONNECTOR } from '../MondayCreateItemConnect
 let tester: NodeTester;
 
 describe('Tests for MondayCreateItemConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

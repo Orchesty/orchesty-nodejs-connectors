@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_CREATE_CUSTOMER_CONNECTOR } from '../QuickBooksCrea
 let tester: NodeTester;
 
 describe('Tests for QuickBooksCreateCustomerConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

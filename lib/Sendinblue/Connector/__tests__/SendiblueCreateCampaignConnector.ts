@@ -6,9 +6,9 @@ import { NAME as SENDIBLUE_CREATE_CAMPAIGN_CONNECTOR } from '../SendiblueCreateC
 let tester: NodeTester;
 
 describe('Tests for SendiblueCreateCampaignConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

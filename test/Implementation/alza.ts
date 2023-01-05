@@ -9,8 +9,8 @@ import AlzaTrackAndTraceConnector from '../../lib/Alza/Connector/AlzaTrackAndTra
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(ALZA_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(ALZA_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,

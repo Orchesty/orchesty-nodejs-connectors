@@ -52,6 +52,10 @@ export interface IInput {
 }
 
 export interface IOutput {
+    id: string;
+    position: string;
+    color: string;
+    title: string;
     archived?: boolean;
     deleted?: boolean;
     items?: {
@@ -63,8 +67,4 @@ export interface IOutput {
     error_code?: string;
     status_code?: number;
     error_message?: string;
-    id: string;
-    position: string;
-    color: string;
-    title: string;
 }

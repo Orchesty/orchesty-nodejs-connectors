@@ -52,7 +52,7 @@ export default class ShopifyGetOrderList extends ABatchNode {
 
     private async writeLastTimeRun(appInstall: ApplicationInstall): Promise<void> {
         appInstall.addNonEncryptedSettings({ [LAST_RUN_KEY]: new Date() });
-        await (await this.getDbClient().getApplicationRepository()).update(appInstall);
+        await this.getDbClient().getApplicationRepository().update(appInstall);
     }
 
 }
@@ -69,12 +69,13 @@ export type IOutput = IOrder;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IClientDetails {
+    browser_ip: string;
     accept_language?: unknown;
     browser_height?: unknown;
     browser_width?: unknown;
     session_hash?: unknown;
     user_agent?: unknown;
-    browser_ip: string;
+
 }
 
 export interface IPrice {
@@ -95,7 +96,6 @@ export interface ITaxLine {
 }
 
 export interface IBillingAddress {
-    compunknown?: unknown;
     first_name: string;
     address1: string;
     phone: string;
@@ -110,12 +110,10 @@ export interface IBillingAddress {
     name: string;
     country_code: string;
     province_code: string;
+    compunknown?: unknown;
 }
 
 export interface IDefaultAddress {
-    first_name?: unknown;
-    last_name?: unknown;
-    compunknown?: unknown;
     id: number;
     customer_id: number;
     address1: string;
@@ -130,12 +128,12 @@ export interface IDefaultAddress {
     country_code: string;
     country_name: string;
     default: boolean;
+    first_name?: unknown;
+    last_name?: unknown;
+    compunknown?: unknown;
 }
 
 export interface ICustomer {
-    note?: unknown;
-    multipass_identifier?: unknown;
-    marketing_opt_in_level?: unknown;
     id: number;
     email: string;
     accepts_marketing: boolean;
@@ -157,6 +155,9 @@ export interface ICustomer {
     tax_exemptions: unknown[];
     admin_graphql_api_id: string;
     default_address: IDefaultAddress;
+    note?: unknown;
+    multipass_identifier?: unknown;
+    marketing_opt_in_level?: unknown;
 }
 
 export interface IDiscountApplication {
@@ -176,8 +177,6 @@ export interface IDiscountAllocation {
 }
 
 export interface ILineItem {
-    fulfillment_status?: unknown;
-    vendor?: unknown;
     id: number;
     admin_graphql_api_id: string;
     fulfillable_quantity: number;
@@ -205,10 +204,11 @@ export interface ILineItem {
     variant_title: string;
     tax_lines: ITaxLine[];
     discount_allocations: IDiscountAllocation[];
+    fulfillment_status?: unknown;
+    vendor?: unknown;
 }
 
 export interface IFulfillment {
-    shipment_status?: unknown;
     id: number;
     admin_graphql_api_id: string;
     created_at: Date;
@@ -228,22 +228,19 @@ export interface IFulfillment {
     tracking_urls: string[];
     updated_at: Date;
     line_items: ILineItem[];
+    shipment_status?: unknown;
 }
 
 export interface IPaymentDetails {
+    credit_card_number: string;
+    credit_card_compunknown: string;
     credit_card_bin?: unknown;
     avs_result_code?: unknown;
     cvv_result_code?: unknown;
-    credit_card_number: string;
-    credit_card_compunknown: string;
+
 }
 
 export interface ITransaction {
-    device_id?: unknown;
-    error_code?: unknown;
-    location_id?: unknown;
-    message?: unknown;
-    user_id?: unknown;
     id: number;
     admin_graphql_api_id: string;
     amount: string;
@@ -259,6 +256,11 @@ export interface ITransaction {
     source_name: string;
     status: string;
     test: boolean;
+    device_id?: unknown;
+    error_code?: unknown;
+    location_id?: unknown;
+    message?: unknown;
+    user_id?: unknown;
 }
 
 export interface IRefundLineItem {
@@ -275,7 +277,6 @@ export interface IRefundLineItem {
 }
 
 export interface IShippingAddress {
-    compunknown?: unknown;
     first_name: string;
     address1: string;
     phone: string;
@@ -290,13 +291,10 @@ export interface IShippingAddress {
     name: string;
     country_code: string;
     province_code: string;
+    compunknown?: unknown;
 }
 
 export interface IShippingLine {
-    carrier_identifier?: unknown;
-    delivery_category?: unknown;
-    phone?: unknown;
-    requested_fulfillment_service_id?: unknown;
     id: number;
     code: string;
     discounted_price: string;
@@ -307,20 +305,13 @@ export interface IShippingLine {
     title: string;
     tax_lines: unknown[];
     discount_allocations: unknown[];
+    carrier_identifier?: unknown;
+    delivery_category?: unknown;
+    phone?: unknown;
+    requested_fulfillment_service_id?: unknown;
 }
 
 export interface IOrder {
-    app_id?: unknown;
-    cancel_reason?: unknown;
-    cancelled_at?: unknown;
-    closed_at?: unknown;
-    customer_locale?: unknown;
-    device_id?: unknown;
-    fulfillment_status?: unknown;
-    location_id?: unknown;
-    note?: unknown;
-    source_url?: unknown;
-    user_id?: unknown;
     id: number;
     admin_graphql_api_id: string;
     browser_ip: string;
@@ -401,4 +392,15 @@ export interface IOrder {
     }[];
     shipping_address: IShippingAddress;
     shipping_lines: IShippingLine[];
+    app_id?: unknown;
+    cancel_reason?: unknown;
+    cancelled_at?: unknown;
+    closed_at?: unknown;
+    customer_locale?: unknown;
+    device_id?: unknown;
+    fulfillment_status?: unknown;
+    location_id?: unknown;
+    note?: unknown;
+    source_url?: unknown;
+    user_id?: unknown;
 }

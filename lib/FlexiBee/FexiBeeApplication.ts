@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -17,7 +17,6 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit, Headers } from 'node-fetch';
 
 export const CANNOT_GET_BODY = 'Cannot get body from response.';
 export const TOKEN_NOT_SUCCESS = 'Token is not succeed returned';
@@ -75,23 +74,23 @@ export default class FlexiBeeApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> {
-        let headers = new Headers();
+        let headers;
         if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH] === AUTH_JSON) {
-            headers = new Headers({
+            headers = {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
                 [X_AUTH_SESSION_ID]: await this.getApiToken(applicationInstall, dto),
-            });
+            };
         } else if (applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH] === AUTH_HTTP) {
-            headers = new Headers({
+            headers = {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
                 [CommonHeaders.AUTHORIZATION]: `Basic 
         ${encode(`${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:
         ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`)}`,
-            });
+            };
         }
 
         return new RequestDto(url ?? '', method, dto, data, headers);
@@ -101,7 +100,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
         const authTypeField = new Field(FieldType.SELECT_BOX, AUTH, 'Authorize type', null, true);
         authTypeField.setChoices([AUTH_HTTP, AUTH_JSON]);
 
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', null, true))
             .addField(new Field(FieldType.URL, FLEXIBEE_URL, 'Flexibee URL', null, true))
             .addField(authTypeField);
@@ -150,7 +149,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
                     },
                 },
             );
-            const repository = await this.dbClient.getApplicationRepository();
+            const repository = this.dbClient.getApplicationRepository();
             await repository.insert(applicationInstall);
         }
 
@@ -160,8 +159,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
     private async getApiTokenFromSettings(
         applicationInstall: ApplicationInstall,
     ): Promise<IToken | null> {
-        const repository = await this.dbClient.getApplicationRepository();
-        await repository.findById(applicationInstall.getObjectId());
+        const repository = this.dbClient.getApplicationRepository();
+        await repository.findById(applicationInstall.getId());
         const token = applicationInstall.getSettings()[CLIENT_SETTINGS] ?? [];
 
         const date = DateTimeUtils.getUtcDate();

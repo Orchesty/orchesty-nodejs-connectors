@@ -7,8 +7,8 @@ import GObalikApplication, { NAME as GOBALIK_APP } from '../../lib/GObalik/GObal
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(GOBALIK_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(GOBALIK_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,

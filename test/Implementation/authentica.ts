@@ -14,7 +14,20 @@ import {
     cacheService, container, db, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<ApplicationInstall> {
+export function mock(): ApplicationInstall {
+    return appInstall(
+        AUTHENTICA,
+        DEFAULT_USER,
+        {
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                [CLIENT_ID]: DEFAULT_CLIENT_ID,
+                [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+            },
+        },
+    );
+}
+
+export function init(): void {
     const authenticaApplication = new AuthenticaApplication(cacheService);
     container.setApplication(authenticaApplication);
 
@@ -47,16 +60,4 @@ export default async function init(): Promise<ApplicationInstall> {
         .setDb(db)
         .setApplication(authenticaApplication);
     container.setBatch(authenticaGetStock);
-
-    return appInstall(
-        AUTHENTICA,
-        DEFAULT_USER,
-        {
-            [CoreFormsEnum.AUTHORIZATION_FORM]: {
-                [CLIENT_ID]: DEFAULT_CLIENT_ID,
-                // eslint-disable-next-line max-len
-                [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
-            },
-        },
-    );
 }

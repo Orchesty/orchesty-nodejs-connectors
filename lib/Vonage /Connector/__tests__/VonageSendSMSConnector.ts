@@ -6,9 +6,9 @@ import { NAME as VONAGE_SEND_SMS_CONNECTOR } from '../VonageSendSMSConnector';
 let tester: NodeTester;
 
 describe('Tests for VonageSendSMSConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -6,9 +6,9 @@ import { NAME as TYPEFORM_CREATE_FORM_CONNECTOR } from '../TypeformCreateFormCon
 let tester: NodeTester;
 
 describe('Tests for TypeformCreateFormConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

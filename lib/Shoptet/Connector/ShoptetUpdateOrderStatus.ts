@@ -1,5 +1,4 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BASE_URL } from '../ABaseShoptet';
@@ -28,7 +27,7 @@ export default class ShoptetUpdateOrderStatus extends AConnector {
         );
         await this.getSender().send(
             requestDto,
-            [200, createFailRange(422)],
+            { success: 200, stopAndFail: 422 },
         );
 
         return dto;

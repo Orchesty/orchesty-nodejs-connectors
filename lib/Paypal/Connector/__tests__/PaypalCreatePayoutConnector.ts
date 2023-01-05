@@ -6,9 +6,9 @@ import { NAME as PAYPAL_CREATE_PAYOUT_CONNECTOR } from '../PaypalCreatePayoutCon
 let tester: NodeTester;
 
 describe('Tests for PaypalCreatePayoutConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

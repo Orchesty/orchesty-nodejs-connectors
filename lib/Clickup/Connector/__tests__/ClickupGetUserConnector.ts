@@ -6,9 +6,9 @@ import { NAME as CLICKUP_GET_USER_CONNECTOR } from '../ClickupGetUserConnector';
 let tester: NodeTester;
 
 describe('Tests for ClickupGetUserConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

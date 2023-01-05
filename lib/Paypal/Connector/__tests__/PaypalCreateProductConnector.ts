@@ -6,9 +6,9 @@ import { NAME as PAYPAL_CREATE_PRODUCT_CONNECTOR } from '../PaypalCreateProductC
 let tester: NodeTester;
 
 describe('Tests for PaypalCreateProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

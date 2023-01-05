@@ -1,7 +1,7 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
+import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
-import Deleted from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Filters/Impl/Deleted';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ShopifyApplication from '../ShopifyApplication';
@@ -19,15 +19,12 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const app = this.getApplication<ShopifyApplication>();
 
-        const appRepo = await this.getDbClient().getApplicationRepository();
-        appRepo.disableFilter(Deleted.name);
-        const appInstall = await this.getApplicationInstallFromProcess(dto, null);
-        appRepo.enableFilter(Deleted.name);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
 
-        const repo = await this.getDbClient().getRepository(Webhook);
+        const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
 
         repo.clearCache();
-        const webhooks = await repo.findMany({ user: appInstall.getUser(), application: app.getName() });
+        const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
 
         if (webhooks && webhooks.length > 0) {
             const webhookId = webhooks[0].getWebhookId();

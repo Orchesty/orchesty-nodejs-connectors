@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_UPDATE_ITEM_CONNECTOR } from '../QuickBooksUpdateIt
 let tester: NodeTester;
 
 describe('Tests for QuickBooksUpdateItemConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

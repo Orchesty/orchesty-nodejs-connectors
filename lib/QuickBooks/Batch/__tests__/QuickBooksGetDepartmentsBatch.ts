@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_GET_DEPARTMENTS_BATCH } from '../QuickBooksGetDepar
 let tester: NodeTester;
 
 describe('Tests for QuickBooksGetDepartmentsBatch', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

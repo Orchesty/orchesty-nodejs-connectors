@@ -4,8 +4,8 @@ import VonageApplication, { API_KEY, API_SECRET, NAME } from '../../lib/Vonage /
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(NAME, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(NAME, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api_Key',
             [API_SECRET]: 'Api_secret',

@@ -6,8 +6,8 @@ import MondayApplication, { API_KEY, NAME as MONDAY_APP } from '../../lib/Monday
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(MONDAY_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(MONDAY_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },

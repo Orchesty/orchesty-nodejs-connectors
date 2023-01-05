@@ -46,14 +46,44 @@ export default class MondayCreateItemConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
+    board_id: number;
     item_name?: string;
     group_id?: string;
     column_values?: string;
     create_labels_if_missing?: boolean;
-    board_id: number;
 }
 
 export interface IOutput {
+
+    creator_id: string;
+    id: string;
+    column_values: {
+        ids: string;
+    }[];
+    name: string;
+    parent_item: {
+        name: string;
+        creator_id: string;
+        subscribers: string;
+        updated_at: Date;
+        updates: string;
+        assets?: string[];
+        board?: string;
+        column_values?: string[];
+        created_at?: Date;
+        creator?: string;
+        group?: string;
+        id?: string;
+        state?: string;
+    };
+    state: 'active' | 'all' | 'archived' | 'deleted';
+    subscribers: string[];
+    updated_at: Date;
+    updates: {
+        limit: number;
+        page: number;
+    };
+    email: string;
     assets?: {
         column_ids?: string;
         assets_source?: 'all' | 'columns' | 'gallery';
@@ -65,33 +95,4 @@ export interface IOutput {
     error_code?: string;
     status_code?: number;
     error_message?: string;
-    creator_id: string;
-    id: string;
-    column_values: {
-        ids: string;
-    }[];
-    name: string;
-    parent_item: {
-        assets?: string[];
-        board?: string;
-        column_values?: string[];
-        created_at?: Date;
-        creator?: string;
-        group?: string;
-        id?: string;
-        state?: string;
-        name: string;
-        creator_id: string;
-        subscribers: string;
-        updated_at: Date;
-        updates: string;
-    };
-    state: 'active' | 'all' | 'archived' | 'deleted';
-    subscribers: string[];
-    updated_at: Date;
-    updates: {
-        limit: number;
-        page: number;
-    };
-    email: string;
 }

@@ -6,9 +6,9 @@ import { NAME as TWITTER_DELETE_TWEET_CONNECTOR } from '../TwitterDeleteTweetCon
 let tester: NodeTester;
 
 describe('Tests for TwitterDeleteTweetConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

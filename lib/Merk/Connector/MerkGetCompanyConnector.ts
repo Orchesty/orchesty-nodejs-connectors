@@ -22,6 +22,7 @@ export default class MerkGetCompanyConnector extends AConnector {
             HttpMethods.GET,
             `company/?regno=${regno}&vatno=${vatno}&src_app=${src_app}&country_code=${country_code}`,
         );
+
         const resp = await this.getSender().send<IOutput>(req, [200]);
 
         return dto.setNewJsonData(resp.getJsonBody());

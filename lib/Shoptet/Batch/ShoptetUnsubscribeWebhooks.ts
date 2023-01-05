@@ -1,4 +1,5 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
+import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -18,8 +19,8 @@ export default class ShoptetUnsubscribeWebhooks extends ABatchNode {
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const app = this.getApplication();
         const appInstall = await this.getApplicationInstallFromProcess(dto, null);
-        const repo = await this.getDbClient().getRepository(Webhook);
-        const webhook = await repo.findOne({ user: appInstall.getUser(), application: appInstall.getName() });
+        const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
+        const webhook = await repo.findOne({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
 
         if (webhook) {
             const url = `${BASE_URL}/${WEBHOOKS_ENDPOINT}/${webhook.getWebhookId()}`;

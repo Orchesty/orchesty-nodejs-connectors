@@ -6,9 +6,9 @@ import { NAME as CESKA_POSTA_PARCEL_PRINTING_CONNECTOR } from '../CeskaPostaParc
 let tester: NodeTester;
 
 describe('Tests for CeskaPostaParcelPrintingConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

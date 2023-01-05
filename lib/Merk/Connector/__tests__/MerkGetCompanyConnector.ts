@@ -6,9 +6,9 @@ import { NAME as MERK_GET_COMPANY_CONNECTOR } from '../MerkGetCompanyConnector';
 let tester: NodeTester;
 
 describe('Tests for MerkGetCompanyConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

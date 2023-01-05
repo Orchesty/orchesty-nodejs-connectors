@@ -6,9 +6,9 @@ import { NAME as RECRUITEE_GET_OFFERS_BATCH } from '../RecruiteeGetOffersBatch';
 let tester: NodeTester;
 
 describe('Tests for RecruiteeGetOffersBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -6,9 +6,9 @@ import { NAME as SHOPIFY_ABSOLUTE_UPDATE_STOCK } from '../ShopifyAbsoluteUpdateS
 let tester: NodeTester;
 
 describe('Tests for ShopifyAbsoluteUpdateStock', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

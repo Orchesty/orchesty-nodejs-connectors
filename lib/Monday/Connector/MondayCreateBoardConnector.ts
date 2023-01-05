@@ -47,16 +47,27 @@ export default class MondayCreateBoardConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
+    board_name: string;
+    board_kind: 'board_kind' | 'public' | 'share';
     folder_id?: number;
     workspace_id?: number;
     template_id?: number;
     board_owner_ids?: number[];
     board_subscriber_ids?: number[];
-    board_name: string;
-    board_kind: 'board_kind' | 'public' | 'share';
 }
 
 export interface IOutput {
+    id: string;
+    groups: {
+        ids: string[];
+    }[];
+    board_kind: 'board_kind' | 'public' | 'share';
+    owner: string;
+    owners: string[];
+    permissions: 'assignee' | 'collaborators' | 'everyone' | 'owners';
+    state: 'active' | 'all' | 'archived' | 'deleted';
+    subscribers: string[];
+    top_group: string[];
     activity_logs?: {
         limit?: number;
         page?: number;
@@ -96,15 +107,4 @@ export interface IOutput {
     error_code?: string;
     status_code?: number;
     error_message?: string;
-    id: string;
-    groups: {
-        ids: string[];
-    }[];
-    board_kind: 'board_kind' | 'public' | 'share';
-    owner: string;
-    owners: string[];
-    permissions: 'assignee' | 'collaborators' | 'everyone' | 'owners';
-    state: 'active' | 'all' | 'archived' | 'deleted';
-    subscribers: string[];
-    top_group: string[];
 }

@@ -6,9 +6,9 @@ import { NAME as GREEN_HOUSE_ADD_CANDIDATE_CONNECTOR } from '../GreenHouseAddCan
 let tester: NodeTester;
 
 describe('Tests for GreenHouseAddCandidateConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

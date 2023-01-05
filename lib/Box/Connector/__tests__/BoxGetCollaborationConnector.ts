@@ -6,9 +6,9 @@ import { NAME as BOX_GET_COLLABORATION_CONNECTOR } from '../BoxGetCollaborationC
 let tester: NodeTester;
 
 describe('Tests for BoxGetCollaborationConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

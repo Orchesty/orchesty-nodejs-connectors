@@ -6,9 +6,9 @@ import { NAME as G_OBALIK_CREATE_ORDER_CONNECTOR } from '../GObalikCreateOrderCo
 let tester: NodeTester;
 
 describe('Tests for GObalikCreateOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

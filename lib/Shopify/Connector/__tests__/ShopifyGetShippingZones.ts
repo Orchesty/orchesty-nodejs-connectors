@@ -6,9 +6,9 @@ import { NAME as SHOPIFY_GET_SHIPPING_ZONES } from '../ShopifyGetShippingZones';
 let tester: NodeTester;
 
 describe('Tests for ShopifyGetShippingZones', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

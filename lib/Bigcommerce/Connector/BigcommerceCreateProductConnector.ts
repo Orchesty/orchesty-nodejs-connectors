@@ -164,7 +164,6 @@ export interface Config {
 }
 
 export interface ProductFull {
-    brand_name?: string;
     name: string;
     type: string;
     sku: string;
@@ -351,6 +350,7 @@ export interface ProductFull {
         calculated_price: number;
         calculated_weight: number;
     }[];
+    brand_name?: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

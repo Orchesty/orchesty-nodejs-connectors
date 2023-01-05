@@ -6,9 +6,9 @@ import { NAME as MALL_GET_ORDER_DETAIL_CONNECTOR } from '../MallGetOrderDetailCo
 let tester: NodeTester;
 
 describe('Tests for MallGetOrderDetailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -32,7 +32,7 @@ export default class HubSpotAddEmailToListConnector extends AConnector {
 }
 
 export interface IInput {
+    listId: number;
     emails?: string[];
     vids?: number[];
-    listId: number;
 }

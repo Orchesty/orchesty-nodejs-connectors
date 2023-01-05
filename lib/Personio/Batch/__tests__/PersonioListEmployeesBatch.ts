@@ -6,9 +6,9 @@ import { NAME as PERSONIO_LIST_EMPLOYEES_BATCH } from '../PersonioListEmployeesB
 let tester: NodeTester;
 
 describe('Tests for PersonioListEmployeesBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

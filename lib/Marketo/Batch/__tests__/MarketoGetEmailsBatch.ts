@@ -6,9 +6,9 @@ import { NAME as MARKETO_GET_EMAILS_BATCH } from '../MarketoGetEmailsBatch';
 let tester: NodeTester;
 
 describe('Tests for MarketoGetEmailsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

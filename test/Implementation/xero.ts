@@ -20,8 +20,8 @@ import {
     container, db, oauth2Provider, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(XERO_APP, DEFAULT_USER, {
+export function mock(): void {
+    appInstall(XERO_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
@@ -32,8 +32,10 @@ export default async function init(): Promise<void> {
             },
         },
     });
+}
 
-    const app = new XeroApplication(oauth2Provider, sender, db);
+export function init(): void {
+    const app = new XeroApplication(oauth2Provider, db, sender);
 
     container.setApplication(app);
     const getAccounts = new XeroGetAccountsBatch();

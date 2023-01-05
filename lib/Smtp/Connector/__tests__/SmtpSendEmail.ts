@@ -6,9 +6,9 @@ import { NAME as SMTP_SEND_EMAIL } from '../SmtpSendEmail';
 let tester: NodeTester;
 
 describe('Tests for SmtpSendEmail', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

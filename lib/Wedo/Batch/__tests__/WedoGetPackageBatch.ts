@@ -6,9 +6,9 @@ import { NAME as WEDO_GET_PACKAGE_BATCH } from '../WedoGetPackageBatch';
 let tester: NodeTester;
 
 describe('Tests for WedoGetPackageConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

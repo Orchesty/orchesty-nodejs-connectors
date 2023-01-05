@@ -6,9 +6,9 @@ import { NAME as DIGITOO_DOCUMENTS_BY_STATUS_BATCH } from '../DigitooDocumentsBy
 let tester: NodeTester;
 
 describe('Tests for DigitooDocumentsByStatusBatch', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

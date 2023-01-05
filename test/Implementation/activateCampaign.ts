@@ -8,8 +8,8 @@ import ActivateCampaignCreateAccountConnector
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(ACTIVATECAMPAIGN_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(ACTIVATECAMPAIGN_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [APPLICATION_KEY]: 'token',
             [SUBDOMAIN]: 'subdomain',

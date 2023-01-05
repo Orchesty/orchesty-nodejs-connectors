@@ -28,12 +28,12 @@ export default class WooCommerceGetOrders extends ABatchNode {
         );
 
         const res = await this.getSender().send<IResponseJson[]>(requestDto, [200, 404]);
-        const totalPages = res.getHeaders().get('x-wp-totalpages');
+        const totalPages = res.getHeaders()['x-wp-totalpages'];
         if (Number(totalPages) > Number(pageNumber)) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else {
             appInstall.setNonEncryptedSettings({ orderLastRun: DateTime.now() });
-            const repo = await this.getDbClient().getApplicationRepository();
+            const repo = this.getDbClient().getApplicationRepository();
             await repo.update(appInstall);
         }
         this.setItemsListToDto(dto, res.getJsonBody());
