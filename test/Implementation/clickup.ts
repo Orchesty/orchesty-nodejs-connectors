@@ -8,8 +8,8 @@ import ClickupGetUserConnector from '../../lib/Clickup/Connector/ClickupGetUserC
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(CLICKUP_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(CLICKUP_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: {
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,

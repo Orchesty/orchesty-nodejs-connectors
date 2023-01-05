@@ -6,9 +6,9 @@ import { NAME as MONDAY_CREATE_GROUP_CONNECTOR } from '../MondayCreateGroupConne
 let tester: NodeTester;
 
 describe('Tests for MondayCreateGroupConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

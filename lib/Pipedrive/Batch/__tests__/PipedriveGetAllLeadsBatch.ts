@@ -6,9 +6,9 @@ import { NAME as PIPEDRIVE_GET_ALL_LEADS_BATCH } from '../PipedriveGetAllLeadsBa
 let tester: NodeTester;
 
 describe('Tests for PipedriveGetAllLeadsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

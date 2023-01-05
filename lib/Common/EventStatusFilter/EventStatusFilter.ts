@@ -39,6 +39,6 @@ export interface IInput {
 }
 
 export interface IStatusMessageContent {
-    trashId?: string;
     body: string;
+    trashId?: string;
 }

@@ -14,9 +14,9 @@ export default class GetApplicationForRefreshBatchConnector extends ABatchNode {
         const date = DateTimeUtils.getUtcDate();
         date.setMinutes(date.getMinutes() + 5);
 
-        const repository = await this.getDbClient().getApplicationRepository();
+        const repository = this.getDbClient().getApplicationRepository();
 
-        const applications = await repository.findMany({ expires: { $lte: date }, enabled: true });
+        const applications = await repository.findMany({ expires: date.getTime(), enabled: true });
         applications.forEach((app) => {
             dto.addItem({ app: app.getName() }, app.getUser());
         });

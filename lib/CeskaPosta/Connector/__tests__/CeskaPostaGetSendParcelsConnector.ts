@@ -6,9 +6,9 @@ import { NAME as CESKA_POSTA_GET_SEND_PARCELS_CONNECTOR } from '../CeskaPostaGet
 let tester: NodeTester;
 
 describe('Tests for CeskaPostaGetSendParcelsConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

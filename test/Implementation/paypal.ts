@@ -7,8 +7,8 @@ import PaypalApplication, { NAME as PAYPAL_APP } from '../../lib/Paypal/PaypalAp
 import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(PAYPAL_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(PAYPAL_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,

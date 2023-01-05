@@ -26,10 +26,15 @@ export default class TypeformCreateFormConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
+    workspace: {
+        href?: string;
+    };
     cui_settings?: {
         avatar?: string;
     };
     fields?: {
+        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
+        title: string;
         attachment?: {
             href?: string;
             properties?: {
@@ -106,12 +111,9 @@ export interface IInput {
             placement?: string;
             type?: string;
         };
-        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
-        title: string;
     }[];
     hidden?: string[];
     logic?: {
-        ref?: string;
         actions: {
             action: string;
             condition: {
@@ -136,6 +138,7 @@ export interface IInput {
             };
         }[];
         type: string;
+        ref?: string;
     }[];
     settings?: {
         facebook_pixel?: string;
@@ -178,6 +181,7 @@ export interface IInput {
         show_typeform_branding?: boolean;
     };
     thankyou_screens?: {
+        title: string;
         attachment?: {
             href?: string;
             type?: 'branching' | 'classification_branching' | 'classification' | 'form' | 'quiz' | 'score_branching' | 'score';
@@ -191,7 +195,6 @@ export interface IInput {
             show_button?: boolean;
         };
         ref?: string;
-        title: string;
     }[];
     theme?: {
         href?: string;
@@ -205,6 +208,7 @@ export interface IInput {
         score?: number;
     };
     welcome_screens?: {
+        title: string;
         layout?: {
             attachment?: {
                 href?: string;
@@ -219,9 +223,6 @@ export interface IInput {
             show_button?: boolean;
         };
         ref?: string;
-        title: string;
     }[];
-    workspace: {
-        href?: string;
-    };
+
 }

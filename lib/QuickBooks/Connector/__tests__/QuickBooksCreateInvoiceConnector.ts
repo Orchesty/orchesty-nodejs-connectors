@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_CREATE_INVOICE_CONNECTOR } from '../QuickBooksCreat
 let tester: NodeTester;
 
 describe('Tests for QuickBooksCreateInvoiceConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

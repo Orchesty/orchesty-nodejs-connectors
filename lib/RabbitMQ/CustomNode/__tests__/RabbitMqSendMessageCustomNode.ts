@@ -6,9 +6,9 @@ import { NAME as SEND_MESSAGE_CUSTOM_NODE } from '../RabbitMqSendMessageCustomNo
 let tester: NodeTester;
 
 describe('Tests for RabbitMqSendMessageCustomNode', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

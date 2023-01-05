@@ -26,6 +26,7 @@ export default class TwitterPostATweetConnector extends AConnector {
 /* eslint-disable @typescript-eslint/naming-convention */
 
 export interface IInput {
+    text: string;
     direct_message_deep_link?: string;
     for_super_followers_only?: boolean;
     geo?: {
@@ -44,7 +45,6 @@ export interface IInput {
         in_reply_to_tweet_id: string;
     };
     reply_settings?: string;
-    text: string;
 }
 
 export interface IOutput {

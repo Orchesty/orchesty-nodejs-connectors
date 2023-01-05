@@ -5,8 +5,8 @@ import MerkApplication, { API_KEY, NAME as MERK_APP } from '../../lib/Merk/MerkA
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(MERK_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(MERK_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'Api key',
         },

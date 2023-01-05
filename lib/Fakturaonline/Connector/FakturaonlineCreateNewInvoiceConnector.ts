@@ -98,7 +98,7 @@ export interface IInput {
 }
 
 export interface IOutput {
-    locked?: boolean;
+
     public_url: string;
     invoice: {
         already_paid_note: unknown;
@@ -129,12 +129,12 @@ export interface IOutput {
         due_in_api: string;
         due_on: string;
         eet: {
-            locked?: boolean;
-            should_be_registered?: unknown;
             uuid_zpravy: unknown;
             bkp: unknown;
             dat_prij: unknown;
             fik: unknown;
+            locked?: boolean;
+            should_be_registered?: unknown;
         };
         eet_invoice: boolean;
         eet_state: string;
@@ -237,6 +237,7 @@ export interface IOutput {
         vat_totals_currency_conversion: boolean;
     };
     invoice_id: number;
+    locked?: boolean;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

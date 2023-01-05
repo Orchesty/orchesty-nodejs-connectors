@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_GET_TAX_RATES_BATCH } from '../QuickBooksGetTaxRate
 let tester: NodeTester;
 
 describe('Tests for QuickBooksGetTaxRatesBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

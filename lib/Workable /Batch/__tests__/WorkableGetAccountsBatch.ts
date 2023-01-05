@@ -6,9 +6,9 @@ import { NAME as WORKABLE_GET_ACCOUNTS_BATCH } from '../WorkableGetAccountsBatch
 let tester: NodeTester;
 
 describe('Tests for WorkableGetAccountsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

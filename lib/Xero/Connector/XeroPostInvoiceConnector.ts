@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
-import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
+import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
@@ -33,8 +33,8 @@ export default class XeroPostInvoiceConnector extends AConnector {
         return dto.setNewJsonData(resp.getJsonBody());
     }
 
-    protected getCodeRange(): IRangeObject[] | number[] | undefined {
-        return [200];
+    protected getCodeRange(): IResultRanges | StatusRange {
+        return { success: 200 };
     }
 
 }
@@ -82,21 +82,6 @@ export interface IInvoice {
 }
 
 export interface IInput {
-    Date?: string;
-    DueDate?: string;
-    LineAmountTypes?: string;
-    InvoiceNumber?: unknown;
-    Reference?: unknown;
-    BrandingThemeID?: string;
-    Url?: string;
-    CurrencyCode?: string;
-    CurrencyRate?: string;
-    Status?: string;
-    SendToContact?: string;
-    ExpectedPaymentDate?: string;
-    PlannedPaymentDate?: string;
-    DateString?: string;
-    DueDateString?: string;
     Type: string;
     Contact: unknown;
     LineItems: {
@@ -112,6 +97,21 @@ export interface IInput {
         DiscountAmount?: unknown;
         Tracking?: unknown;
     }[];
+    Date?: string;
+    DueDate?: string;
+    LineAmountTypes?: string;
+    InvoiceNumber?: unknown;
+    Reference?: unknown;
+    BrandingThemeID?: string;
+    Url?: string;
+    CurrencyCode?: string;
+    CurrencyRate?: string;
+    Status?: string;
+    SendToContact?: string;
+    ExpectedPaymentDate?: string;
+    PlannedPaymentDate?: string;
+    DateString?: string;
+    DueDateString?: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

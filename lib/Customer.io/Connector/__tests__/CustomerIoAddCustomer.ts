@@ -6,9 +6,9 @@ import { NAME as CUSTOMER_IO_ADD_CUSTOMER } from '../CustomerIoAddCustomer';
 let tester: NodeTester;
 
 describe('Tests for CustomerIoAddCustomer', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

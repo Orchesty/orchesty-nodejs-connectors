@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -9,7 +9,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit, Headers } from 'node-fetch';
 import { BASE_URL } from './HubSpotApplication';
 
 export default class HubSpotApplicationBasic extends ABasicApplication {
@@ -35,19 +34,23 @@ export default class HubSpotApplicationBasic extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): RequestDto {
-        const headers = new Headers({
-            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-            [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.AUTHORIZATION]: `Bearer ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN]}`,
-        });
-
-        return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
+        return new RequestDto(
+            url ?? BASE_URL,
+            method,
+            dto,
+            data,
+            {
+                [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+                [CommonHeaders.ACCEPT]: JSON_TYPE,
+                [CommonHeaders.AUTHORIZATION]: `Bearer ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN]}`,
+            },
+        );
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, TOKEN, 'Token', null, true));
 
         return new FormStack().addForm(form);

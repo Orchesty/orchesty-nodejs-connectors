@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -10,7 +10,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit, Headers } from 'node-fetch';
 
 export default abstract class AGoogle extends AOAuth2Application {
 
@@ -29,17 +28,22 @@ export default abstract class AGoogle extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
-        const headers = new Headers({
-            [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
-        });
-        return new RequestDto(url ?? this.getBaseUrl(), method, dto, data, headers);
+        return new RequestDto(
+            url ?? this.getBaseUrl(),
+            method,
+            dto,
+            data,
+            {
+                [CommonHeaders.ACCEPT]: JSON_TYPE,
+                [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getAccessToken(applicationInstall)}`,
+            },
+        );
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
 

@@ -6,9 +6,9 @@ import { NAME as DIGITOO_ADD_REGISTERS } from '../DigitooAddRegisters';
 let tester: NodeTester;
 
 describe('Tests for DigitooAddRegisters', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

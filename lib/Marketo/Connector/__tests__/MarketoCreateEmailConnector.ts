@@ -6,9 +6,9 @@ import { NAME as MARKETO_CREATE_EMAIL_CONNECTOR } from '../MarketoCreateEmailCon
 let tester: NodeTester;
 
 describe('Tests for MarketoCreateEmailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

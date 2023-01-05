@@ -14,8 +14,8 @@ import {
 } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(DIGITOO_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(DIGITOO_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: {
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,

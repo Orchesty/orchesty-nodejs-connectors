@@ -8,8 +8,8 @@ import {
 
 export const connectionUrl = 'smtps://username:password@smtp.example.com/?pool=true';
 
-export default async function init(): Promise<void> {
-    await appInstall(NAME, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(NAME, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CONNECTION_URL]: connectionUrl,
         },

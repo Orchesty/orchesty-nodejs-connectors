@@ -6,9 +6,9 @@ import { NAME as ONESIGNAL_VIEW_APPS_BATCH } from '../OnesignalViewAppsBatch';
 let tester: NodeTester;
 
 describe('Tests for OnesignalViewAppsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

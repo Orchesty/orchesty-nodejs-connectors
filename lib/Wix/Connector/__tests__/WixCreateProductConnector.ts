@@ -6,9 +6,9 @@ import { NAME as WIX_CREATE_PRODUCT_CONNECTOR } from '../WixCreateProductConnect
 let tester: NodeTester;
 
 describe('Tests for WixCreateProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

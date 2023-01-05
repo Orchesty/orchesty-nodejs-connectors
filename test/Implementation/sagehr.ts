@@ -5,8 +5,8 @@ import SageHrApplication, { API_KEY, NAME as SAGEHR_APP, SUBDOMAIN } from '../..
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(SAGEHR_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(SAGEHR_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [SUBDOMAIN]: 'companydomain',
             [API_KEY]: 'Api key',

@@ -24,9 +24,9 @@ export default class MailchimpTagContactConnector extends AConnector {
                     `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/segments/${applicationInstall.getSettings()[SEGMENT_ID]}/members`,
                     dto.getData(),
                 ),
+            { success: '200-201' },
         );
         const json = output.getJsonBody();
-        this.evaluateStatusCode(output, dto);
 
         dto.setJsonData(json);
 

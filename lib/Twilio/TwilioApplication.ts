@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -14,7 +14,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit, Headers } from 'node-fetch';
 
 export const BASE_URL = 'https://api.twilio.com/2010-04-01';
 
@@ -41,22 +40,26 @@ export default class TwilioApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         const userName = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
         const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
-        const headers = new Headers({
-            [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-            [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userName}:${password}`)}`,
-        });
-
-        return new RequestDto(url ?? BASE_URL, method, dto, data, headers);
+        return new RequestDto(
+            url ?? BASE_URL,
+            method,
+            dto,
+            data,
+            {
+                [CommonHeaders.ACCEPT]: JSON_TYPE,
+                [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+                [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${userName}:${password}`)}`,
+            },
+        );
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'ACCOUNT SID', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'AUTH TOKEN', undefined, true));
 

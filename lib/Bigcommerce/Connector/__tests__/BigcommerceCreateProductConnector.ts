@@ -6,9 +6,9 @@ import { NAME as BIGCOMMERCE_CREATE_PRODUCT_CONNECTOR } from '../BigcommerceCrea
 let tester: NodeTester;
 
 describe('Tests for BigcommerceCreateProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

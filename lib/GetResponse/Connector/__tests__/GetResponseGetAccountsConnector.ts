@@ -6,9 +6,9 @@ import { NAME as GET_RESPONSE_GET_ACCOUNTS_CONNECTOR } from '../GetResponseGetAc
 let tester: NodeTester;
 
 describe('Tests for GetResponseGetAccountsConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

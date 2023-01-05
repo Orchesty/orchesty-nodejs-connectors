@@ -6,9 +6,9 @@ import { NAME as CLICKUP_CREATE_SPACE_CONNECTOR } from '../ClickupCreateSpaceCon
 let tester: NodeTester;
 
 describe('Tests for ClickupCreateSpaceConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

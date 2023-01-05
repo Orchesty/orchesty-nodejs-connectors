@@ -7,8 +7,8 @@ import PipedriveApplication, { NAME as PIPEDRIVE_APP, SUBDOMAIN } from '../../li
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [SUBDOMAIN]: 'company',
             [TOKEN]: DEFAULT_ACCESS_TOKEN,

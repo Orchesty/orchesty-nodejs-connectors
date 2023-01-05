@@ -1,5 +1,5 @@
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
@@ -18,7 +18,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { BodyInit } from 'node-fetch';
 
 export const MAILCHIMP_URL = 'https://login.mailchimp.com/oauth2/authorize';
 export const MAILCHIMP_DATACENTER_URL = 'https://login.mailchimp.com';
@@ -58,7 +57,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): RequestDto {
         const request = new RequestDto(url ?? '', method, dto);
         request.setHeaders({
@@ -80,7 +79,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
             .addField(new Field(FieldType.TEXT, AUDIENCE_ID, 'Audience Id', undefined, true));

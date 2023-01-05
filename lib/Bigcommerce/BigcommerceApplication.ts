@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -10,7 +10,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { Headers } from 'node-fetch';
 
 const BASE_URL = 'https://api.bigcommerce.com/stores';
 export const STORE_HASH = 'store_hash';
@@ -51,11 +50,11 @@ export default class BigcommerceApplication extends AOAuth2Application {
     ): Promise<RequestDto> | RequestDto {
         const url = `${BASE_URL}/${_url}`;
         const req = new RequestDto(url, method, dto);
-        req.setHeaders(new Headers({
+        req.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.AUTHORIZATION]: `OAuth ${this.getAccessToken(applicationInstall)}`,
-        }));
+        });
 
         if (data) {
             req.setJsonBody(data);
@@ -64,7 +63,7 @@ export default class BigcommerceApplication extends AOAuth2Application {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
             .addField(new Field(FieldType.TEXT, STORE_HASH, 'Store hash', null, true));

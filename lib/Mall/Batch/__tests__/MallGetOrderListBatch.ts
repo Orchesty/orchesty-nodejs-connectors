@@ -6,9 +6,9 @@ import { NAME as MALL_GET_ORDER_LIST_BATCH } from '../MallGetOrderListBatch';
 let tester: NodeTester;
 
 describe('Tests for MallGetOrderListBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

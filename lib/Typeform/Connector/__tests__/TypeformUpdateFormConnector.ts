@@ -6,9 +6,9 @@ import { NAME as TYPEFORM_UPDATE_FORM_CONNECTOR } from '../TypeformUpdateFormCon
 let tester: NodeTester;
 
 describe('Tests for TypeformUpdateFormConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

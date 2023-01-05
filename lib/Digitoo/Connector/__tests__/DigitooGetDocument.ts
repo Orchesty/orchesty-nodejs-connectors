@@ -6,9 +6,9 @@ import { NAME as DIGITOO_GET_DOCUMENT } from '../DigitooGetDocument';
 let tester: NodeTester;
 
 describe('Tests for DigitooGetDocument', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

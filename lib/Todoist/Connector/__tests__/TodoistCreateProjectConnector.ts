@@ -6,9 +6,9 @@ import { NAME as TODOIST_CREATE_PROJECT_CONNECTOR } from '../TodoistCreateProjec
 let tester: NodeTester;
 
 describe('Tests for TodoistCreateProjectConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

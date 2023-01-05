@@ -7,8 +7,8 @@ import {
     container, db, oauth2Provider, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(ONEDRIVE_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(ONEDRIVE_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: DEFAULT_ACCESS_TOKEN,
             [CLIENT_ID]: CLIENT_ID,

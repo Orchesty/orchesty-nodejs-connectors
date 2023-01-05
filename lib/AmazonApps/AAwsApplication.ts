@@ -2,7 +2,6 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
-import { BodyInit } from 'node-fetch';
 
 export const KEY = 'Key';
 export const SECRET = 'secret';
@@ -47,7 +46,7 @@ export default abstract class AAwsApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: string,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
         /* eslint-enable @typescript-eslint/no-unused-vars */
     ): Promise<RequestDto> | RequestDto {
         throw new Error(`Method [${this.getRequestDto.name}] is not supported! Use getConnection method instead!`);

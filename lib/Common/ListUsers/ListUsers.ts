@@ -33,11 +33,10 @@ export default class ListUsers extends ABatchNode {
     }
 
     protected async getUsers(dto: BatchProcessDto, body: unknown): Promise<BatchProcessDto> {
-        const repo = await this.getDbClient().getApplicationRepository();
+        const repo = this.getDbClient().getApplicationRepository();
         const appInstalls = await repo.findMany(
             {
-                key: this.getApplication().getName(),
-                user: { $ne: '' },
+                names: [this.getApplication().getName()],
                 enabled: true,
             },
         );
@@ -52,7 +51,7 @@ export default class ListUsers extends ABatchNode {
         const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
         const allAppInstalls = await repo.findMany(
             {
-                key: { $in: headerApplications },
+                names: headerApplications,
                 enabled: true,
             },
         );
@@ -72,7 +71,7 @@ export default class ListUsers extends ABatchNode {
     }
 
     protected async getUser(dto: BatchProcessDto, user: string, body: unknown): Promise<BatchProcessDto> {
-        const repo = await this.getDbClient().getApplicationRepository();
+        const repo = this.getDbClient().getApplicationRepository();
         const appInstall = await repo.findByNameAndUser(this.getApplication().getName(), user);
         if (!appInstall) {
             dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, `User [${user}] has not been found.`);
@@ -82,8 +81,8 @@ export default class ListUsers extends ABatchNode {
         const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
         const allAppInstalls = await repo.findMany(
             {
-                key: { $in: headerApplications },
-                user,
+                names: headerApplications,
+                users: [user],
                 enabled: true,
             },
         );

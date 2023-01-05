@@ -6,9 +6,9 @@ import { NAME as FAKTURAONLINE_GET_INVOICE_CONNECTOR } from '../FakturaonlineGet
 let tester: NodeTester;
 
 describe('Tests for FakturaonlineGetInvoiceConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

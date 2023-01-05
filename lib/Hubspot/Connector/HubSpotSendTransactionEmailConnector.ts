@@ -30,14 +30,14 @@ export default class HubSpotSendTransactionEmailConnector extends AConnector {
 }
 
 export interface IInput {
-    cc?: string[];
-    bcc?: string[];
-    contactProperties?: Record<string, string>;
     emailId: number;
     message: {
+        to: string;
         from?: string;
         sendId?: string;
         replyTo?: string[];
-        to: string;
     };
+    cc?: string[];
+    bcc?: string[];
+    contactProperties?: Record<string, string>;
 }

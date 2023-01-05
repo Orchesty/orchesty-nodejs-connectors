@@ -6,9 +6,9 @@ import { NAME as SALESFORCE_UPDATE_RECORD_CONNECTOR } from '../SalesForceUpdateR
 let tester: NodeTester;
 
 describe('Tests for SalesForceUpdateRecord', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -6,9 +6,9 @@ import { NAME as MONDAY_CREATE_BOARD } from '../MondayCreateBoardConnector';
 let tester: NodeTester;
 
 describe('Tests for MondayCreateBoardConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

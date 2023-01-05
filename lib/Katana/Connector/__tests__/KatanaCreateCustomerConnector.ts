@@ -6,9 +6,9 @@ import { NAME as KATANA_CREATE_CUSTOMER_CONNECTOR } from '../KatanaCreateCustome
 let tester: NodeTester;
 
 describe('Tests for KatanaCreateCustomerConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

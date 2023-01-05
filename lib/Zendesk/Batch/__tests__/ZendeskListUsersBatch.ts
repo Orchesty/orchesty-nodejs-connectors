@@ -6,9 +6,9 @@ import { NAME as ZENDESK_LIST_USERS_BATCH } from '../ZendeskListUsersBatch';
 let tester: NodeTester;
 
 describe('Tests for ZendeskListUsersBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

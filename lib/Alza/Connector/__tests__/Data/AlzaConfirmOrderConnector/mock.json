@@ -1,10 +1,6 @@
 {
-    "http": "POST https://server.cz/api_path/order/order123/confirm?token=123456789",
-    "httpReplacement": {
-        "query": {
-            "token": "123456789"
-        }
-    },
+    "http": "POST https:\\/\\/server\\.cz\\/api_path\\/order\\/order123\\/confirm\\?token=.*",
+    "useRegexp": true,
     "code": 200,
     "body": {
         "errorCode": 0,

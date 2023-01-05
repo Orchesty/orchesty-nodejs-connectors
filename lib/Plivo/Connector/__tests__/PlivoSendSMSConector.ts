@@ -6,9 +6,9 @@ import { NAME as PLIVO_SEND_SMS_CONECTOR } from '../PlivoSendSMSConector';
 let tester: NodeTester;
 
 describe('Tests for PlivoSendSMSConector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

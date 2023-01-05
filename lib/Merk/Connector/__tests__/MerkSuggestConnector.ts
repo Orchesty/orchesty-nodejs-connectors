@@ -6,9 +6,9 @@ import { NAME as MERK_SUGGEST_CONNECTOR } from '../MerkSuggestConnector';
 let tester: NodeTester;
 
 describe('Tests for MerkSuggestConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

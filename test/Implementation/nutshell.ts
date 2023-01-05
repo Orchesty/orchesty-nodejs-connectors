@@ -8,8 +8,8 @@ import NutshellApplication, { NAME as NUTSHELL_APP } from '../../lib/Nutshell/Nu
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(NUTSHELL_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(NUTSHELL_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,

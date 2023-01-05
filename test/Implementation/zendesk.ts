@@ -17,8 +17,8 @@ import {
     container, db, oauth2Provider, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(ZENDESK_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(ZENDESK_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_USER,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,

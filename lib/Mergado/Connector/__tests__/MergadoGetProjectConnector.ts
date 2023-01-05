@@ -6,9 +6,9 @@ import { NAME as MERGADO_GET_PROJECT_CONNECTOR } from '../MergadoGetProjectConne
 let tester: NodeTester;
 
 describe('Tests for MergadoGetProjectConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

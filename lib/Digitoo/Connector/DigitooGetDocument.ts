@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
-import { ResultCodeRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
+import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
@@ -8,7 +8,7 @@ export const NAME = 'digitoo-get-document';
 
 export default class DigitooGetDocument extends AConnector {
 
-    protected readonly codeRange?: ResultCodeRange[] = [200];
+    protected readonly codeRange?: IResultRanges | StatusRange = { success: 200 };
 
     public getName(): string {
         return NAME;

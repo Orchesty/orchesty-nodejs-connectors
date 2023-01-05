@@ -7,8 +7,8 @@ import GitHubApplication, { NAME as GITHUB_APP } from '../../lib/GitHub/GitHubAp
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(GITHUB_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(GITHUB_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: DEFAULT_ACCESS_TOKEN,
         },

@@ -6,9 +6,9 @@ import { NAME as INTERCOM_CREATE_CONTACT_CONNECTOR } from '../IntercomCreateCont
 let tester: NodeTester;
 
 describe('Tests for IntercomCreateContactConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

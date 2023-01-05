@@ -14,8 +14,8 @@ import {
     container, db, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(
+export default function init(): void {
+    appInstall(
         NAME,
         DEFAULT_USER,
         {

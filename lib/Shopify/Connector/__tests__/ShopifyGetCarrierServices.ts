@@ -6,9 +6,9 @@ import { NAME as SHOPIFY_GET_CARRIER_SERVICES } from '../ShopifyGetCarrierServic
 let tester: NodeTester;
 
 describe('Tests for ShopifyGetCarrierServices', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

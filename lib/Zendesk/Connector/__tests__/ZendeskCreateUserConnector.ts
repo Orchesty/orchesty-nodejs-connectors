@@ -6,9 +6,9 @@ import { NAME as ZENDESK_CREATE_USER_CONNECTOR } from '../ZendeskCreateUserConne
 let tester: NodeTester;
 
 describe('Tests for ZendeskCreateUserConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

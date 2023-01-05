@@ -89,8 +89,7 @@ export default class FlexiBeeCreateNewContactConnector extends AConnector {
             HttpMethods.PUT,
             application.getUrl(applicationInstall, `admin/zalozeni-firmy?${url}`),
         );
-        const response = await this.getSender().send(request);
-        this.evaluateStatusCode(response, dto);
+        const response = await this.getSender().send(request, { success: '200-201' });
         dto.setData(response.getBody());
 
         return dto;

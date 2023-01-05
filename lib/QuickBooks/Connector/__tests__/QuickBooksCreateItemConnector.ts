@@ -6,9 +6,9 @@ import { NAME as QUICK_BOOKS_CREATE_ITEM_CONNECTOR } from '../QuickBooksCreateIt
 let tester: NodeTester;
 
 describe('Tests for QuickBooksCreateAnItemConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

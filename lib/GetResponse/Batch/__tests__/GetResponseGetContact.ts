@@ -6,9 +6,9 @@ import { NAME as GET_RESPONSE_GET_CONTACT } from '../GetResponseGetContact';
 let tester: NodeTester;
 
 describe('Tests for GetResponseGetContact', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

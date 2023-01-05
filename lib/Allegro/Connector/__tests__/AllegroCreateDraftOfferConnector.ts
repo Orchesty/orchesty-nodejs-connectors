@@ -6,9 +6,9 @@ import { NAME as ALLEGRO_CREATE_DRAFT_OFFER_CONNECTOR } from '../AllegroCreateDr
 let tester: NodeTester;
 
 describe('Tests for AllegroCreateDraftOfferConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

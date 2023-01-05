@@ -1,28 +1,35 @@
-import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/woocommerce';
+import { init, mock } from '../../../../test/Implementation/woocommerce';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as WOOCOMMERCE_APP } from '../../WooCommerceApplication';
 import { NAME as WOO_COMMERCE_GET_PRODUCTS } from '../WooCommerceGetProducts';
 
 let tester: NodeTester;
 
 describe('Tests for WooCommerceGetProducts', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
+    });
+
+    beforeEach(() => {
+        mockOnce([
+            { request: {
+                method: HttpMethods.POST,
+                url: /http:\/\/127\.0\.0\.40\/document\/ApplicationInstall.*/ },
+            response: {},
+            },
+        ]);
     });
 
     it('process - ok', async () => {
+        mock();
         await tester.testBatch(WOO_COMMERCE_GET_PRODUCTS);
     });
 
     it('process - with after', async () => {
-        const repository = container.getRepository(ApplicationInstall);
-        const app = await repository.findOne({ key: WOOCOMMERCE_APP });
-        app?.addNonEncryptedSettings({ productLastRun: '2022-09-22T08:21:27.000Z' });
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        await repository.update(app!);
+        mock({ productLastRun: '2022-09-22T08:21:27.000Z' });
         await tester.testBatch(WOO_COMMERCE_GET_PRODUCTS, 'withAfter');
     });
 });

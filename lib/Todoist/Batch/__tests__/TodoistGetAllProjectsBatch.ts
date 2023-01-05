@@ -6,9 +6,9 @@ import { NAME as TODOIST_GET_ALL_PROJECTS_BATCH } from '../TodoistGetAllProjects
 let tester: NodeTester;
 
 describe('Tests for TodoistGetAllProjectsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

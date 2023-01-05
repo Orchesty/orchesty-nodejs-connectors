@@ -6,9 +6,9 @@ import { NAME as MALL_PUT_PRODUCT_CONNECTOR } from '../MallPutProductConnector';
 let tester: NodeTester;
 
 describe('Tests for MallPutProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

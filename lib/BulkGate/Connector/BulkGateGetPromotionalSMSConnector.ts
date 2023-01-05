@@ -27,13 +27,13 @@ export default class BulkGateGetPromotionalSMSConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
+    number: string;
+    text: string;
     unicode?: boolean;
     sender_id?: string;
     sender_id_value?: string;
     country?: string;
     schedule?: string;
-    number: string;
-    text: string;
 }
 
 export interface IOutputItem {

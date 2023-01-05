@@ -4,8 +4,8 @@ import RabbitMqApplication, { DSN, NAME as RABBIT_MQ } from '../../lib/RabbitMQ/
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(RABBIT_MQ, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(RABBIT_MQ, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [DSN]: `amqp://guest:guest@${process.env.RABBITMQ_HOST}:5672`,
         },

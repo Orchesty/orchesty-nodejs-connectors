@@ -7,8 +7,8 @@ import GreenHouseApplication, { NAME as GREENHOUS_APP, USERNAME } from '../../li
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(GREENHOUS_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(GREENHOUS_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USERNAME]: DEFAULT_USER,
             [PASSWORD]: DEFAULT_PASSWORD,

@@ -6,9 +6,9 @@ import { NAME as ALLEGRO_GET_USERS_ORDER_LIST_BATCH } from '../AllegroGetUsersOr
 let tester: NodeTester;
 
 describe('Tests for AllegroGetUsersOrderListBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

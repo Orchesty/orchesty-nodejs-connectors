@@ -6,9 +6,9 @@ import { NAME as SAGE_HR_GET_PROJECTS_BATCH } from '../SageHrGetProjectsBatch';
 let tester: NodeTester;
 
 describe('Tests for SageHrGetProjectsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -41,6 +41,26 @@ interface IResponse {
 }
 
 export interface IInput {
+    id: string;
+    title: string;
+    shortdesc: string;
+    longdesc: string;
+    priority: number;
+    price: number;
+    media: [
+        {
+            url: string;
+            main: boolean;
+            switch: string;
+            energy_label: boolean;
+            information_list: boolean;
+        },
+    ];
+    availability: {
+        status: string;
+        in_stock: number;
+    };
+    vat: number;
     barcode?: number;
     rrp?: number;
     promotions?: [
@@ -131,26 +151,6 @@ export interface IInput {
     partner_title?: string;
     brand_id?: string;
     weee_fee?: number;
-    id: string;
-    title: string;
-    shortdesc: string;
-    longdesc: string;
-    priority: number;
-    price: number;
-    media: [
-        {
-            url: string;
-            main: boolean;
-            switch: string;
-            energy_label: boolean;
-            information_list: boolean;
-        },
-    ];
-    availability: {
-        status: string;
-        in_stock: number;
-    };
-    vat: number;
 }
 
 export type IOutput = IInput;

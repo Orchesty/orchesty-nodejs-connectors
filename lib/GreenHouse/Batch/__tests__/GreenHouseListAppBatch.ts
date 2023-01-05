@@ -6,9 +6,9 @@ import { NAME as GREEN_HOUSE_LIST_APP_BATCH } from '../GreenHouseListAppBatch';
 let tester: NodeTester;
 
 describe('Tests for GreenHouseListAppBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

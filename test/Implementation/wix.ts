@@ -16,8 +16,8 @@ import {
 } from '../DataProvider';
 import { container, db, oauth2Provider, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(WIX_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(WIX_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,

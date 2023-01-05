@@ -1,10 +1,6 @@
 {
-    "http": "DELETE https://server.cz/api_path/order/order123?token=123456789",
-    "httpReplacement": {
-        "query": {
-            "token": "123456789"
-        }
-    },
+    "http": "DELETE https:\\/\\/server\\.cz\\/api_path\\/order\\/order123\\?token=.*",
+    "useRegexp": true,
     "code": 200,
     "body": {
         "errorCode": 0,

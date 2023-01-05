@@ -1,4 +1,3 @@
-import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { BASE_URL } from '../ABaseShoptet';
@@ -22,7 +21,7 @@ export default class ShoptetGetEshopInfo extends AShoptetConnector {
             .getRequestDto(dto, appInstall, HttpMethods.GET, url);
         const resp = await this.getSender().send<IResponse>(
             requestDto.setTimeout(5000),
-            [200, createFailRange(422)],
+            { success: 200, stopAndFail: 422 },
         );
 
         return dto.setNewJsonData(resp.getJsonBody().data);

@@ -6,9 +6,9 @@ import { NAME as WIX_CREATE_ORDER_CONNECTOR } from '../WixCreateOrderConnector';
 let tester: NodeTester;
 
 describe('Tests for WixCreateOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

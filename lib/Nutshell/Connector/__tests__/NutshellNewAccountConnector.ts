@@ -6,9 +6,9 @@ import { NAME as NUTSHELL_NEW_ACCOUNT_CONNECTOR } from '../NutshellNewAccountCon
 let tester: NodeTester;
 
 describe('Tests for NutshellNewAccountConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

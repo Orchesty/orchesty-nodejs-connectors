@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -14,7 +14,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 
 const HOST_URL = 'prefix_url';
 export const ISSUE_TYPE_FROM = 'issue_type_from';
@@ -45,7 +44,7 @@ export default class JiraApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         const password = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PASSWORD];
         const user = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[USER];
@@ -66,7 +65,7 @@ export default class JiraApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, HOST_URL, 'Atlassian url', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));

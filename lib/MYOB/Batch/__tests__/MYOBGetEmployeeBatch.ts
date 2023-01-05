@@ -6,9 +6,9 @@ import { NAME as MYOB_GET_EMPLOYEE_BATCH } from '../MYOBGetEmployeeBatch';
 let tester: NodeTester;
 
 describe('Tests for MYOBGetEmployeeBatch', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

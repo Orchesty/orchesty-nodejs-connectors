@@ -6,9 +6,9 @@ import { NAME as BOX_LIST_TASKS_BATCH } from '../BoxListTasksBatch';
 let tester: NodeTester;
 
 describe('Tests for BoxListTasksBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

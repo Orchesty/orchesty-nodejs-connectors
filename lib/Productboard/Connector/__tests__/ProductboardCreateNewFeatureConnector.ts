@@ -6,9 +6,9 @@ import { NAME as PRODUCTBOARD_CREATE_NEW_FEATURE_CONNECTOR } from '../Productboa
 let tester: NodeTester;
 
 describe('Tests for ProductboardCreateNewFeatureConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

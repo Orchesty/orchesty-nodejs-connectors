@@ -6,9 +6,9 @@ import { NAME as ALLEGRO_GET_ORDER_DETAIL_CONNECTOR } from '../AllegroGetOrderDe
 let tester: NodeTester;
 
 describe('Tests for AllegroGetOrderDetailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

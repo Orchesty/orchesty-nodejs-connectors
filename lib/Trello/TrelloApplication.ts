@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -9,7 +9,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { BodyInit } from 'node-fetch';
 
 const BASE_URL = 'https://api.trello.com';
 const API_KEY = 'apiKey';
@@ -37,7 +36,7 @@ export default class TrelloApplication extends ABasicApplication {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         const token = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN];
         const apiKey = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[API_KEY];
@@ -63,7 +62,7 @@ export default class TrelloApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, TOKEN, 'Bot token', undefined, true))
             .addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
 

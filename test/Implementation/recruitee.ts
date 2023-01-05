@@ -7,8 +7,8 @@ RecruiteeApplication, { API_TOKEN, NAME as RECRUITEE_APP, YOUR_COMPANY }
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(RECRUITEE_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(RECRUITEE_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
             [YOUR_COMPANY]: 'your_company',

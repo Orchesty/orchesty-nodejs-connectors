@@ -1,6 +1,6 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
-import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
+import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import {
@@ -37,8 +37,8 @@ export default class XeroPostContactsConnector extends AConnector {
         return dto.setNewJsonData({ contact: resp.getJsonBody().Contacts.shift() ?? null });
     }
 
-    protected getCodeRange(): IRangeObject[] | number[] | undefined {
-        return [200];
+    protected getCodeRange(): IResultRanges | StatusRange {
+        return { success: 200 };
     }
 
 }
