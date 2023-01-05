@@ -13,27 +13,15 @@ services:
             # Envs for tests are load from .jest/testEnvs.js
             JEST_DOCKER: 1
             APP_ENV: 'debug'
-            CRYPT_SECRET: 'ThisIsNotSoSecret'
             BACKEND_URL: 'https://127.0.0.1'
-            UDP_LOGGER_DSN: 'logstash:5005'
-            METRICS_DSN: 'mongodb://mongo:27017/metrics'
-            MONGODB_DSN: 'mongodb://mongo:27017/node-sdk'
+            STARTING_POINT_URL: 'https://sp.orchesty.com'
+            WORKER_API_HOST: 'http://127.0.0.40'
         command: sleep infinity
-
-    mongo:
-        image: mongo:latest
-        ports:
-            - ${DEV_IP}:27017:27017
 
     redis:
         image: redis:alpine
         ports:
             - ${DEV_IP}:6379:6379
-
-    logstash:
-        image: mendhak/udp-listener
-        ports:
-            - ${DEV_IP}:5005:5005
 
     rabbitmq:
         image: rabbitmq:3-management-alpine

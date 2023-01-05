@@ -6,9 +6,9 @@ import { NAME as FAKTURAONLINE_UPDATE_INVOICE_CONNECTOR } from '../Fakturaonline
 let tester: NodeTester;
 
 describe('Tests for FakturaonlineUpdateInvoiceConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

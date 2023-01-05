@@ -26,12 +26,12 @@ export default class WooCommerceGetProducts extends ABatchNode {
         );
 
         const res = await this.getSender().send<IOutput[]>(requestDto, [200, 404]);
-        const totalPages = res.getHeaders().get('x-wp-totalpages');
+        const totalPages = res.getHeaders()['x-wp-totalpages'];
         if (Number(totalPages) > Number(pageNumber)) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else {
             appInstall.setNonEncryptedSettings({ productLastRun: DateTime.now() });
-            const repo = await this.getDbClient().getApplicationRepository();
+            const repo = this.getDbClient().getApplicationRepository();
             await repo.update(appInstall);
         }
         dto.setItemList(res.getJsonBody());
@@ -63,11 +63,6 @@ export interface IAttribute {
 }
 
 export interface IOutput {
-    stock_quantity?: number;
-    date_on_sale_from?: Date;
-    date_on_sale_from_gmt?: Date;
-    date_on_sale_to?: Date;
-    date_on_sale_to_gmt?: Date;
     id: number;
     name: string;
     slug: string;
@@ -144,6 +139,11 @@ export interface IOutput {
             href: string;
         }[];
     };
+    stock_quantity?: number;
+    date_on_sale_from?: Date;
+    date_on_sale_from_gmt?: Date;
+    date_on_sale_to?: Date;
+    date_on_sale_to_gmt?: Date;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

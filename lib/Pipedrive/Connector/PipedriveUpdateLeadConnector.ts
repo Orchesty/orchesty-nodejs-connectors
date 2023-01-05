@@ -29,6 +29,8 @@ export default class PipedriveUpdateLeadConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
+    id: string;
+    is_archived: boolean;
     title?: string;
     person_id?: number;
     organization_id?: number;
@@ -38,8 +40,6 @@ export interface IInput {
     expected_close_date?: Date;
     visible_to?: 1 | 3 | 5 | 7;
     was_seen?: boolean;
-    id: string;
-    is_archived: boolean;
 }
 
 export interface IOutput {

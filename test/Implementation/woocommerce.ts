@@ -1,4 +1,8 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import {
+    ApplicationInstall,
+    IApplicationSettings,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrders';
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
@@ -16,8 +20,8 @@ import {
     container, db, sender,
 } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(
+export function mock(extraNonEncryptedSettings?: IApplicationSettings): ApplicationInstall {
+    return appInstall(
         NAME,
         DEFAULT_USER,
         {
@@ -27,8 +31,10 @@ export default async function init(): Promise<void> {
                 [WOOCOMMERCE_URL]: 'http://woocomerce.com',
             },
         },
+        extraNonEncryptedSettings,
     );
-
+}
+export function init(): void {
     const app = new WooCommerceApplication();
     container.setApplication(app);
 

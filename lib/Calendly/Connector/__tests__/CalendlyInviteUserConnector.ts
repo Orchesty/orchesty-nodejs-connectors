@@ -6,9 +6,9 @@ import { NAME as CALENDLY_INVITE_USER_CONNECTOR } from '../CalendlyInviteUserCon
 let tester: NodeTester;
 
 describe('Tests for CalendlyInviteUserConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

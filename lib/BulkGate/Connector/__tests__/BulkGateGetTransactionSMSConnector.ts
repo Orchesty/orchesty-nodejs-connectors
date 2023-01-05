@@ -6,9 +6,9 @@ import { NAME as BULK_GATE_GET_TRANSACTION_SMS_CONNECTOR } from '../BulkGateGetT
 let tester: NodeTester;
 
 describe('Tests for BulkGateGetTransactionSMSConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

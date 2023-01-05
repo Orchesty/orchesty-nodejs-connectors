@@ -6,8 +6,8 @@ import { NAME as ONESIGNAL_CREATE_APP_CONNECTOR } from '../OnesignalCreateAppCon
 let tester: NodeTester;
 
 describe('Tests for OnesignalCreateAppConnector', () => {
-    beforeEach(async () => {
-        await init();
+    beforeEach(() => {
+        init();
         tester = new NodeTester(container, __filename);
     });
 

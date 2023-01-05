@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -12,7 +12,6 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import Deleted from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Filters/Impl/Deleted';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -22,7 +21,6 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Request } from 'express';
 import FormData from 'form-data';
-import { BodyInit } from 'node-fetch';
 
 export const NAME = 'quickbooks';
 export const REALM_ID = 'realm_id';
@@ -64,7 +62,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
 
     public getFormStack(): FormStack {
         return new FormStack().addForm(
-            new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+            new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
                 .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', undefined, true))
                 .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
                 .addField(new Field(FieldType.SELECT_BOX, ENVIRONMENT, 'Environment', undefined, true)
@@ -84,7 +82,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         const environment = authorizationForm[ENVIRONMENT] === 'sandbox' ? 'sandbox-' : '';
@@ -128,11 +126,11 @@ export default class QuickBooksApplication extends AOAuth2Application {
 
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
         const { user } = JSON.parse(req.body);
-        const appRepo = await this.mongoService.getApplicationRepository();
-        appRepo.disableFilter(Deleted.name);
-        const quickbooksApps = (await appRepo.findMany({ user, key: this.getName() }))
+        const appRepo = this.mongoService.getApplicationRepository();
+        const quickbooksApps = (await appRepo.findMany(
+            { users: [user], names: [this.getName()], enabled: null, deleted: true },
+        ))
             .sort((x, y) => x.getUpdated().getTime() - y.getUpdated().getTime());
-        appRepo.enableFilter(Deleted.name);
 
         if (quickbooksApps?.length) {
             const quickbooksApp = quickbooksApps[quickbooksApps.length - 1];
@@ -155,7 +153,6 @@ export default class QuickBooksApplication extends AOAuth2Application {
                 const response = await this.curlSender.send(requestDto);
 
                 if (response.getResponseCode() !== 200) {
-                    quickbooksApp.setDeleted(false);
                     await appRepo.update(quickbooksApp);
                 }
             }

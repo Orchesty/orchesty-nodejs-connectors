@@ -51,10 +51,10 @@ export default class AuthenticaGetStock extends ABatchNode {
 interface IResponse {
     data: IOutput[];
     links: {
-        prev?: string | null;
-        next?: string | null;
         first: string;
         last: string;
+        prev?: string | null;
+        next?: string | null;
     };
     meta: {
         totalPages: number;

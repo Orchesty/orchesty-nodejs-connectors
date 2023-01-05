@@ -6,9 +6,9 @@ import { NAME as INTERCOM_LIST_ALL_CONTACTS_BATCH } from '../IntercomListAllCont
 let tester: NodeTester;
 
 describe('Tests for IntercomListAllContactsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

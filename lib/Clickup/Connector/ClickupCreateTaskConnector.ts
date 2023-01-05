@@ -30,6 +30,11 @@ export default class ClickupCreateTaskConnector extends AConnector {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
+    listId: number;
+    name: string;
+    description: string;
+    status: string;
+    priority: number;
     assignees?: number[];
     tags?: string[];
     due_date?: number;
@@ -43,11 +48,6 @@ export interface IInput {
         id: string;
         value: number;
     }[];
-    listId: number;
-    name: string;
-    description: string;
-    status: string;
-    priority: number;
 }
 
 export interface IOutput {

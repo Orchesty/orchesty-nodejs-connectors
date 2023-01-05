@@ -6,9 +6,9 @@ import { NAME as DIGITOO_MARK_AS_EXPORTED } from '../DigitooMarkAsExported';
 let tester: NodeTester;
 
 describe('Tests for DigitooMarkAsExported', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

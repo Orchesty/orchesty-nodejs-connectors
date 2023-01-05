@@ -1,4 +1,8 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import {
+    ApplicationInstall,
+    IApplicationSettings,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
@@ -36,19 +40,31 @@ class ImplPluginShoptetApplication extends APluginShoptetApplication {
 
 }
 
-export default async function init(): Promise<void> {
-    await appInstall(
-        NAME,
-        DEFAULT_USER,
-        {
-            [CoreFormsEnum.AUTHORIZATION_FORM]: {
-                [TOKEN]: DEFAULT_ACCESS_TOKEN,
+export function mock(callCount = 1, extraNonEncryptedSettings?: IApplicationSettings): ApplicationInstall {
+    let applicationInstall: ApplicationInstall = new ApplicationInstall();
+    let count = callCount;
+    if (count < 1) {
+        count = 1;
+    }
+    for (let i = 0; i < count; i++) {
+        applicationInstall = appInstall(
+            NAME,
+            DEFAULT_USER,
+            {
+                [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                    [TOKEN]: DEFAULT_ACCESS_TOKEN,
+                },
             },
-        },
-        {
-            eshopId: '222651',
-        },
-    );
+            {
+                eshopId: '222651',
+                ...extraNonEncryptedSettings,
+            },
+        );
+    }
+    return applicationInstall;
+}
+
+export async function init(): Promise<void> {
     const implPluginShoptetApplication = new ImplPluginShoptetApplication(
         cacheService,
         container.get(CoreServices.TOPOLOGY_RUNNER),

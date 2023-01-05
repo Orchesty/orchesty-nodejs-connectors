@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -14,7 +14,6 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
-import Deleted from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Filters/Impl/Deleted';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -24,7 +23,6 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Request } from 'express';
 import FormData from 'form-data';
-import { BodyInit } from 'node-fetch';
 
 export const NAME = 'xero';
 export const XERO_TENANT_ID = 'Xero-Tenant-Id';
@@ -33,8 +31,8 @@ export default class XeroApplication extends AOAuth2Application {
 
     public constructor(
         provider: OAuth2Provider,
-        protected readonly curlSender: CurlSender,
         protected readonly mongoService: MongoDbClient,
+        protected readonly curlSender: CurlSender,
     ) {
         super(provider);
     }
@@ -68,7 +66,7 @@ export default class XeroApplication extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         uri?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): RequestDto {
         const url = uri?.startsWith('http') ? uri : `https://api.xero.com/api.xro/2.0/${uri}`;
         const request = new RequestDto(url ?? '', method, dto);
@@ -93,7 +91,7 @@ export default class XeroApplication extends AOAuth2Application {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true));
 
@@ -174,11 +172,11 @@ export default class XeroApplication extends AOAuth2Application {
 
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
         const { user } = JSON.parse(req.body);
-        const appRepo = await this.mongoService.getApplicationRepository();
-        appRepo.disableFilter(Deleted.name);
-        const xeroApps = (await appRepo.findMany({ user, key: this.getName() }))
+        const appRepo = this.mongoService.getApplicationRepository();
+        const xeroApps = (await appRepo.findMany(
+            { users: [user], names: [this.getName()], enabled: null, deleted: true },
+        ))
             .sort((x, y) => x.getUpdated().getTime() - y.getUpdated().getTime());
-        appRepo.enableFilter(Deleted.name);
 
         if (xeroApps?.length) {
             const xeroApp = xeroApps[xeroApps.length - 1];
@@ -201,7 +199,8 @@ export default class XeroApplication extends AOAuth2Application {
                 const response = await this.curlSender.send(requestDto);
 
                 if (response.getResponseCode() !== 200) {
-                    xeroApp.setDeleted(false);
+                    // TODO
+                    // xeroApp.setDeleted(false);
                     await appRepo.update(xeroApp);
                 }
             }

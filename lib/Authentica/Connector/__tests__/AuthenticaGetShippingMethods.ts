@@ -1,7 +1,7 @@
 import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/authentica';
+import { init, mock } from '../../../../test/Implementation/authentica';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as AUTHENTICA_GET_SHIPPING_METHODS } from '../AuthenticaGetShippingMethods';
 
@@ -9,13 +9,14 @@ let tester: NodeTester;
 let redis: Redis;
 
 describe('Tests for AuthenticaGetShippingMethods', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
         redis = container.get(CoreServices.REDIS);
-        await init();
+        init();
     });
 
     beforeEach(async () => {
+        mock();
         await redis.remove('authentica_cache_key');
     });
 

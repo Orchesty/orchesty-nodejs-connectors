@@ -18,13 +18,18 @@ export default class RefreshOAuth2TokenNode extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const { app } = dto.getJsonData();
-        const repo = await this.getDbClient().getApplicationRepository();
-        const applicationInstall = await repo.findOne({ key: app, user: dto.getUser(), enabled: true });
+        const repo = this.getDbClient().getApplicationRepository();
+
+        const user = dto.getUser();
+
+        const applicationInstall = await repo.findOne({
+            names: [app], users: user ? [user] : undefined, enabled: true,
+        });
 
         if (applicationInstall) {
             const application = this.container.getApplication(app) as IOAuth2Application;
             await application.refreshAuthorization(applicationInstall);
-            await (await this.getDbClient().getApplicationRepository()).update(applicationInstall);
+            await this.getDbClient().getApplicationRepository().update(applicationInstall);
         }
 
         return dto;

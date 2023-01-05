@@ -6,9 +6,9 @@ import { NAME as GIT_HUB_GET_APP_CONNECTOR } from '../GitHubGetAppConnector';
 let tester: NodeTester;
 
 describe('Tests for GitHubGetAppConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

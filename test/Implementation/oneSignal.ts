@@ -5,8 +5,8 @@ import OnesignalApplication, { NAME as ONESIGNAL_APP, REST_API_KEY } from '../..
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(ONESIGNAL_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(ONESIGNAL_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [REST_API_KEY]: 'Api key',
         },

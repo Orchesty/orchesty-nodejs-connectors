@@ -6,9 +6,9 @@ import { NAME as MARKETO_GET_FILES_BATCH } from '../MarketoGetFilesBatch';
 let tester: NodeTester;
 
 describe('Tests for MarketoGetFilesBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -10,8 +10,8 @@ import CeskaPostaParcelStatusConnector from '../../lib/CeskaPosta/Connector/Cesk
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_TOKEN]: DEFAULT_ACCESS_TOKEN,
             [SECRET_KEY]: 'secret key',

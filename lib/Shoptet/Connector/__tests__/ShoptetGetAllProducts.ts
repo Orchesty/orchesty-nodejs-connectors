@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/shoptet';
+import { init, mock } from '../../../../test/Implementation/shoptet';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as SHOPTET_GET_ALL_PRODUCTS } from '../ShoptetGetAllProducts';
 
@@ -12,6 +12,7 @@ describe('Tests for ShoptetGetAllProducts', () => {
     });
 
     it('process - ok', async () => {
+        mock();
         await tester.testConnector(SHOPTET_GET_ALL_PRODUCTS);
     });
 });

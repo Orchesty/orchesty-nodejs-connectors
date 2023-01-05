@@ -6,9 +6,9 @@ import { NAME as SAGE_HR_LIST_EMPLOYEES_BATCH } from '../SageHrListEmployeesBatc
 let tester: NodeTester;
 
 describe('Tests for SageHrListEmployeesBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

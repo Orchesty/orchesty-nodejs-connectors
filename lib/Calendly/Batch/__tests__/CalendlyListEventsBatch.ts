@@ -6,9 +6,9 @@ import { NAME as CALENDLY_LIST_EVENTS_BATCH } from '../CalendlyListEventsBatch';
 let tester: NodeTester;
 
 describe('Tests for CalendlyListEventsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

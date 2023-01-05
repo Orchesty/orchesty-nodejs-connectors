@@ -9,8 +9,8 @@ import BulkGateGetTransactionSMSConnector from '../../lib/BulkGate/Connector/Bul
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(BULKGATE_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(BULKGATE_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [APPLICATION_TOKEN]: 'application token',
             [APPLICATION_ID]: 'application id',

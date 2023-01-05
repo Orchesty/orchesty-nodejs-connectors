@@ -6,9 +6,9 @@ import { NAME as PIPEDRIVE_UPDATE_LEAD_CONNECTOR } from '../PipedriveUpdateLeadC
 let tester: NodeTester;
 
 describe('Tests for PipedriveUpdateLeadConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

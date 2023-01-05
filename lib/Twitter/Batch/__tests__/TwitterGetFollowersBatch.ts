@@ -6,9 +6,9 @@ import { NAME as TWITTER_GET_FOLLOWERS_BATCH } from '../TwitterGetFollowersBatch
 let tester: NodeTester;
 
 describe('Tests for TwitterGetFollowersBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

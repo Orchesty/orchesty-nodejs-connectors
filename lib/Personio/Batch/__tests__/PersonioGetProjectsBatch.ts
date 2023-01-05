@@ -6,9 +6,9 @@ import { NAME as PERSONIO_GET_PROJECTS_BATCH } from '../PersonioGetProjectsBatch
 let tester: NodeTester;
 
 describe('Tests for PersonioGetProjectsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

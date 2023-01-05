@@ -6,9 +6,9 @@ import { NAME as ONE_DRIVE_UPLOAD_FILE_CONNECTOR } from '../OneDriveUploadFileCo
 let tester: NodeTester;
 
 describe('Tests for OneDriveUploadFileConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

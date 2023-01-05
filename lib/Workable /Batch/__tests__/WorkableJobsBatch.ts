@@ -6,9 +6,9 @@ import { NAME as WORKABLE_JOBS_BATCH } from '../WorkableJobsBatch';
 let tester: NodeTester;
 
 describe('Tests for WorkableJobsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

@@ -38,7 +38,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
             WOOCOMMERCE_REGISTER_WEBHOOK_ENDPOINT,
             JSON.stringify({ create: body }),
         );
-        const repo = await this.getDbClient().getRepository(Webhook);
+        const repo = this.getDbClient().getRepository(Webhook);
         const res = await this.getSender().send<IResponseJson>(requestDto, [200]);
         const respBody = res.getJsonBody();
 

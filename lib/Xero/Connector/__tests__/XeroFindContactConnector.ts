@@ -1,14 +1,18 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/xero';
+import { init, mock } from '../../../../test/Implementation/xero';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as XERO_FIND_CONTACT_CONNECTOR } from '../XeroFindContactConnector';
 
 let tester: NodeTester;
 
 describe('Tests for XeroFindContactConnector', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
+    });
+
+    beforeEach(() => {
+        mock();
     });
 
     it('process - ok', async () => {

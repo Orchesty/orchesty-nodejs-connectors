@@ -52,7 +52,7 @@ export default class ShopifyGetProductsList extends ABatchNode {
 
     private async writeLastTimeRun(appInstall: ApplicationInstall): Promise<void> {
         appInstall.addNonEncryptedSettings({ [LAST_RUN_KEY]: new Date() });
-        await (await this.getDbClient().getApplicationRepository()).update(appInstall);
+        await this.getDbClient().getApplicationRepository().update(appInstall);
     }
 
 }

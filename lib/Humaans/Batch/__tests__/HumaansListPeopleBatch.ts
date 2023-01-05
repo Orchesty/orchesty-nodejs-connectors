@@ -6,9 +6,9 @@ import { NAME as HUMAANS_LIST_PEOPLE_BATCH } from '../HumaansListPeopleBatch';
 let tester: NodeTester;
 
 describe('Tests for HumaansListPeopleBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

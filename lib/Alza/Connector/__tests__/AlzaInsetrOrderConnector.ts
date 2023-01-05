@@ -6,9 +6,9 @@ import { NAME as ALZA_INSETR_ORDER_CONNECTOR } from '../AlzaInsetrOrderConnector
 let tester: NodeTester;
 
 describe('Tests for AlzaInsetrOrderConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

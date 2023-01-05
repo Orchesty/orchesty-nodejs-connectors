@@ -1,5 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import { IRangeObject } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
+import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { ICustomer } from './QuickBooksFindCustomerConnector';
@@ -25,7 +25,7 @@ export default class QuickBooksCreateCustomerConnector extends AConnector {
         return dto.setNewJsonData(resp.getJsonBody());
     }
 
-    protected getCodeRange(): IRangeObject[] | number[] | undefined {
+    protected getCodeRange(): IResultRanges | StatusRange {
         return [200];
     }
 

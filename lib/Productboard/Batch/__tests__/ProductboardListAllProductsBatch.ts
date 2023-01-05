@@ -6,9 +6,9 @@ import { NAME as PRODUCTBOARD_LIST_ALL_PRODUCTS_BATCH } from '../ProductboardLis
 let tester: NodeTester;
 
 describe('Tests for ProductboardListAllProductsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

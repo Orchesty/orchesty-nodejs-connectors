@@ -1,7 +1,7 @@
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import init from '../../../test/Implementation/authentica';
+import { init, mock } from '../../../test/Implementation/authentica';
 import { container, redis } from '../../../test/TestAbstract';
 import AuthenticaApplication, { NAME as Authentica } from '../AuthenticaApplication';
 
@@ -9,12 +9,13 @@ let app: AuthenticaApplication;
 let appInstall: ApplicationInstall;
 
 describe('Tests for AuthenticaApplication', () => {
-    beforeAll(async () => {
-        appInstall = await init();
+    beforeAll(() => {
+        init();
         app = container.getApplication(Authentica) as AuthenticaApplication;
     });
 
     beforeEach(async () => {
+        appInstall = mock();
         await redis.remove('authentica_cache_key');
     });
 

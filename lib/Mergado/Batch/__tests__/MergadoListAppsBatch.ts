@@ -6,9 +6,9 @@ import { NAME as MERGADO_LIST_APPS_BATCH } from '../MergadoListAppsBatch';
 let tester: NodeTester;
 
 describe('Tests for MergadoListAppsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

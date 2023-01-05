@@ -10,8 +10,8 @@ import FakturaonlineApplication, {
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(FAKTURAONLINE_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [API_KEY]: 'api_key',
         },

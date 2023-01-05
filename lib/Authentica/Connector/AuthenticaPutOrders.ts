@@ -1,5 +1,4 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import { createFailRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
@@ -22,7 +21,7 @@ export default class AuthenticaPutOrders extends AConnector {
             orders,
         );
 
-        await this.getSender().send<IResponse>(requestDto, [createFailRange(300, 499)]);
+        await this.getSender().send<IResponse>(requestDto, { success: 200, stopAndFail: '300-499' });
 
         dto.setNewJsonData(orders);
 

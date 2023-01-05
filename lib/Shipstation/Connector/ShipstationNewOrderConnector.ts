@@ -26,9 +26,8 @@ export default class ShipstationNewOrderConnector extends AConnector {
                 HttpMethods.GET,
                 url,
             ),
+            { success: '200-201' },
         );
-
-        this.evaluateStatusCode(output, dto);
 
         return dto.setNewJsonData(output.getBody());
     }

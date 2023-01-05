@@ -6,9 +6,9 @@ import { NAME as ALLEGRO_PROPOSE_PRODUCT_CONNECTOR } from '../AllegroProposeProd
 let tester: NodeTester;
 
 describe('Tests for AllegroProposeProductConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

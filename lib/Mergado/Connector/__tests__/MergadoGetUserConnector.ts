@@ -6,9 +6,9 @@ import { NAME as MERGADO_GET_USER_CONNECTOR } from '../MergadoGetUserConnector';
 let tester: NodeTester;
 
 describe('Tests for MergadoGetUserConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

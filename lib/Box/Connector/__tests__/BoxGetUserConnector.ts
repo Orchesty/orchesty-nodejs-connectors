@@ -6,9 +6,9 @@ import { NAME as BOX_GET_USER_CONNECTOR } from '../BoxGetUserConnector';
 let tester: NodeTester;
 
 describe('Tests for BoxGetUserConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

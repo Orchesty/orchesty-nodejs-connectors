@@ -6,9 +6,9 @@ import { NAME as SENDINBLUE_SEND_EMAIL_CONNECTOR } from '../SendinblueSendEmailC
 let tester: NodeTester;
 
 describe('Tests for SendinblueSendEmailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

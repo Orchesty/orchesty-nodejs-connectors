@@ -34,8 +34,7 @@ export default abstract class AFakturoidConnector extends AConnector {
         }
 
         const requestDto = app.getRequestDto(dto, applicationInstall, this.method, url, body);
-        const response = await this.getSender().send(requestDto);
-        this.evaluateStatusCode(response, dto);
+        const response = await this.getSender().send(requestDto, { success: '200-201' });
         dto.setData(response.getBody());
 
         return dto;

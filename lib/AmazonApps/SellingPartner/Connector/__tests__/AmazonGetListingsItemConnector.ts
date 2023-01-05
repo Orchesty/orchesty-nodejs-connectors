@@ -6,9 +6,9 @@ import { NAME as AMAZON_GET_LISTINGS_ITEM_CONNECTOR } from '../AmazonGetListings
 let tester: NodeTester;
 
 describe('Tests for AmazonGetListingsItemConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

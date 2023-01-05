@@ -6,9 +6,9 @@ import { NAME as CLICKUP_CREATE_TASK_CONNECTOR } from '../ClickupCreateTaskConne
 let tester: NodeTester;
 
 describe('Tests for ClickupCreateTaskConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

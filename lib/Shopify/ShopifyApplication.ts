@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import {
     ApplicationInstall,
     IApplicationSettings,
@@ -16,7 +16,6 @@ import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Tran
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { Headers } from 'node-fetch';
 
 export const NAME = 'shopify';
 export const API_VERSION = '2022-07';
@@ -99,15 +98,15 @@ export default class ShopifyApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
             .addField(new Field(FieldType.TEXT, SHOPIFY_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
-    public getNextPageFromHeaders(headers: Headers): string | undefined {
-        const linkHeaders = headers.get('Link');
+    public getNextPageFromHeaders(headers: Record<string, unknown>): string | undefined {
+        const linkHeaders = headers.Link as string;
 
         if (linkHeaders) {
             const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('rel=next'));

@@ -6,9 +6,9 @@ import { NAME as SHOPIFY_CREATE_FULFILLMENT } from '../ShopifyCreateFulfillment'
 let tester: NodeTester;
 
 describe('Tests for ShopifyCreateFulfillment', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

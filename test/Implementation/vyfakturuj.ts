@@ -5,8 +5,8 @@ import VyfakturujApplication, { API_KEY, NAME as VYFAKTURUJ_APP, USER_EMAIL } fr
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(VYFAKTURUJ_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER_EMAIL]: 'info@examle.com',
             [API_KEY]: 'Api key',

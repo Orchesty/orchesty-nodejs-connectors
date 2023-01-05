@@ -69,7 +69,6 @@ export interface IShippingZone {
 }
 
 export interface IShippingMethod {
-    shipping_zone_title?: string;
     instance_id: number;
     title: string;
     order: number;
@@ -126,6 +125,7 @@ export interface IShippingMethod {
             href: string;
         }[];
     };
+    shipping_zone_title?: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

@@ -6,9 +6,9 @@ import { NAME as GO_BALIK_ORDER_DETAIL_CONNECTOR } from '../GObalikOrderDetailCo
 let tester: NodeTester;
 
 describe('Tests for GObalikOrderDetailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

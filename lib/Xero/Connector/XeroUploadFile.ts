@@ -1,5 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import { ResultCodeRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
+import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -16,7 +16,7 @@ const inputSchema = Joi.object({
 
 export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput = IOutput> extends AConnector {
 
-    protected codeRange?: ResultCodeRange[] = [200];
+    protected codeRange?: IResultRanges | StatusRange = { success: 200 };
 
     public getName(): string {
         return NAME;
@@ -37,7 +37,7 @@ export default class XeroUploadFile<I extends IInput = IInput, O extends IOutput
             form,
         );
 
-        const headers = request.getHeaders() as Record<string, string>;
+        const headers = request.getHeaders();
         delete headers?.[CommonHeaders.CONTENT_TYPE];
         request.setHeaders(headers);
 

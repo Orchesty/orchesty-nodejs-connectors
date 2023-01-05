@@ -1,6 +1,5 @@
-import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
-import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
-import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { DEFAULT_USER } from '../../../../test/DataProvider';
 import init from '../../../../test/Implementation/shopify';
@@ -10,22 +9,34 @@ import { NAME as SHOPIFY_UNREGISTER_WEBHOOK } from '../ShopifyUnregisterWebhook'
 let tester: NodeTester;
 
 describe('Tests for ShopifyUnregisterWebhook', () => {
-    beforeAll(async () => {
+    beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {
-        const mongoService = container.get<MongoDbClient>(CoreServices.MONGO);
-        const repo = await mongoService.getRepository(Webhook);
-        await repo.upsert(new Webhook()
-            .setWebhookId('4455555555')
-            .setUser(DEFAULT_USER)
-            .setNode('testNode')
-            .setToken('testToken')
-            .setApplication('shopify')
-            .setTopology('testTopology')
-            .setName('orders/create'));
+        mockOnce([
+            {
+                request: { url: /http:\/\/127.0.0.40\/document\/Webhook.*/, method: HttpMethods.GET },
+                response: {
+                    body: [{
+                        name: 'orders/create',
+                        user: DEFAULT_USER,
+                        token: 'testToken',
+                        node: 'testNode',
+                        topology: 'testTopology',
+                        application: 'shopify',
+                        webhookId: '4455555555',
+                        unsubscribeFailed: false,
+                    }],
+                },
+            },
+            {
+                request: { url: /http:\/\/127.0.0.40\/document\/Webhook.*/, method: HttpMethods.DELETE },
+                response: {
+                },
+            },
+        ]);
         await tester.testBatch(SHOPIFY_UNREGISTER_WEBHOOK);
     });
 });

@@ -11,8 +11,8 @@ import MallApplication, { NAME as MALL_APP } from '../../lib/Mall/MallApplicatio
 import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
-export default async function init(): Promise<void> {
-    await appInstall(MALL_APP, DEFAULT_USER, {
+export default function init(): void {
+    appInstall(MALL_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
         },

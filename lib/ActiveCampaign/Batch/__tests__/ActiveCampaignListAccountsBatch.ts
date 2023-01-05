@@ -6,9 +6,9 @@ import { NAME as ACTIVE_CAMPAIGN_LIST_ACCOUNTS_BATCH } from '../ActiveCampaignLi
 let tester: NodeTester;
 
 describe('Tests for ActiveCampaignListAccountsBatch', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {

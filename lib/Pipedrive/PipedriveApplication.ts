@@ -1,5 +1,5 @@
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
@@ -15,7 +15,6 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { BodyInit } from 'node-fetch';
 
 export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
@@ -55,7 +54,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         _url?: string,
-        data?: BodyInit,
+        data?: unknown,
     ): RequestDto {
         const subdomain = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
         let url = `https://${subdomain}.pipedrive.com/api/v1`;
@@ -74,7 +73,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Authorization settings')
+        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, TOKEN, 'API token', undefined, true))
             .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', undefined, true));
 

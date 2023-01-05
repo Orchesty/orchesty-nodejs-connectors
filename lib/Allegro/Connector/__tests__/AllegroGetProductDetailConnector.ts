@@ -6,9 +6,9 @@ import { NAME as ALLEGRO_GET_PRODUCT_DETAIL_CONNECTOR } from '../AllegroGetProdu
 let tester: NodeTester;
 
 describe('Tests for AllegroGetProductDetailConnector', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
         tester = new NodeTester(container, __filename, true);
-        await init();
+        init();
     });
 
     it('process - ok', async () => {
