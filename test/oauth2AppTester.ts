@@ -22,4 +22,6 @@ container.setApplication(new TodoistApplication(oauth2Provider));
 container.setApplication(new XeroApplication(oauth2Provider, db, sender));
 container.setApplication(new TypeformApplication(oauth2Provider));
 container.setApplication(new OneDriveApplication(oauth2Provider));
+
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 runCli(container, {}).then().catch();
