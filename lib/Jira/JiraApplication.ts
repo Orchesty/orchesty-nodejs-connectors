@@ -21,10 +21,12 @@ export const BUG_TYPE = 'bug_type';
 export const TASK_TYPE = 'task_type';
 export const STORY_TYPE = 'story_type';
 
+export const NAME = 'jira';
+
 export default class JiraApplication extends ABasicApplication {
 
     public getName(): string {
-        return 'jira';
+        return NAME;
     }
 
     public getPublicName(): string {
@@ -48,12 +50,13 @@ export default class JiraApplication extends ABasicApplication {
     ): Promise<RequestDto> | RequestDto {
         const password = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PASSWORD];
         const user = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[USER];
+        const baseUrl = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL] ?? '';
 
         if (!password || !user) {
             throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
         }
         return new RequestDto(
-            `${applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL]}${url}`,
+            `${baseUrl}${url}`,
             method,
             _dto,
             data,
