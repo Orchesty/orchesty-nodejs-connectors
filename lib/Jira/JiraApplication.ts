@@ -42,7 +42,7 @@ export default class JiraApplication extends ABasicApplication {
     }
 
     public getRequestDto(
-        _dto: AProcessDto,
+        dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
@@ -52,23 +52,18 @@ export default class JiraApplication extends ABasicApplication {
         const user = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[USER];
         const baseUrl = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL] ?? '';
 
-        if (!password || !user) {
-            throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
+        if (!this.isAuthorized(applicationInstall)) {
+            throw new Error(`Application [${this.getPublicName()}] doesn't have host url, user name or password!`);
         }
-        return new RequestDto(
-            `${baseUrl}${url}`,
-            method,
-            _dto,
-            data,
-            {
-                [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-                [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
-            },
-        );
+        const headers = {
+            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+            [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
+        };
+        return new RequestDto(`${baseUrl}${url}`, method, dto, data, headers);
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
+        const authForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, HOST_URL, 'Atlassian url', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
@@ -79,13 +74,8 @@ export default class JiraApplication extends ABasicApplication {
             .addField(new Field(FieldType.NUMBER, STORY_TYPE, 'Story type id', undefined, true));
 
         return new FormStack()
-            .addForm(form)
+            .addForm(authForm)
             .addForm(issueTypesForm);
-    }
-
-    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[HOST_URL] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD];
     }
 
 }
