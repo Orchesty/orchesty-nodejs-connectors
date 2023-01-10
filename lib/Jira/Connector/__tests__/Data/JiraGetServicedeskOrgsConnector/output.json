@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data":[
+      {
+        "id": "1",
+        "name": "Charlie Cakes Franchises",
+        "_links": {
+          "self": "https://your-domain.atlassian.net/rest/servicedeskapi/organization/1"
+        }
+      }
+    ] 
+}
+

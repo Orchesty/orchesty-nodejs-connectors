@@ -6,6 +6,7 @@ import {
 // import JiraCreateNewIssueConnector
 //     from '../../lib/Jira/Connector/JiraCreateNewIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
+import JiraGetServicedeskOrgsConnector from '../../lib/Jira/Connector/JiraGetServicedeskOrgsConnector';
 import JiraGetUpdatedWorklogIdsConnector from '../../lib/Jira/Connector/JiraGetUpdatedWorklogIdsConnector';
 import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
 import JiraApplication, {
@@ -45,4 +46,8 @@ export default function init(): void {
     const createGetWorklogs = new JiraGetWorklogsConnector();
     createGetWorklogs.setSender(sender).setDb(db).setApplication(app);
     container.setConnector(createGetWorklogs);
+
+    const createGetServicedeskOrgs = new JiraGetServicedeskOrgsConnector();
+    createGetServicedeskOrgs.setSender(sender).setDb(db).setApplication(app);
+    container.setConnector(createGetServicedeskOrgs);
 }
