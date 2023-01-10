@@ -28,6 +28,7 @@ export default class ListUsers extends ABatchNode {
                 key: this.getApplication().getName(),
                 user: { $ne: '' },
                 enabled: true,
+                deleted: true,
             },
         );
         if (!appInstalls || appInstalls.length < 1) {
