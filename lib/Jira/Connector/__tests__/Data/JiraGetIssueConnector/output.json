@@ -2,7 +2,7 @@
     "headers": {
         "user": "TestUser"
     },
-    "data":{
+    "data": {
         "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations,customfield_10600.requestTypePractice",
         "fields": {
             "aggregateprogress": {
@@ -331,4 +331,3 @@
         "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37106"
     } 
 }
-

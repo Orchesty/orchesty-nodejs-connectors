@@ -3,37 +3,36 @@ import {
     PASSWORD,
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-// import JiraCreateNewIssueConnector
-//     from '../../lib/Jira/Connector/JiraCreateNewIssueConnector';
+import JiraCreateIssueConnector from '../../lib/Jira/Connector/JiraCreateIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
 import JiraGetServicedeskOrgsConnector from '../../lib/Jira/Connector/JiraGetServicedeskOrgsConnector';
 import JiraGetUpdatedWorklogIdsConnector from '../../lib/Jira/Connector/JiraGetUpdatedWorklogIdsConnector';
 import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
-import JiraApplication, {
-    NAME as JIRA_APP,
-} from '../../lib/Jira/JiraApplication';
+import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, NAME as JIRA_APP, TASK_TYPE } from '../../lib/Jira/JiraApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(JIRA_APP, DEFAULT_USER, {
-        // TODO test authorization form
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [USER]: 'info@examle.com',
             [PASSWORD]: 'api_key',
+        },
+        [ISSUE_TYPE_FROM]: {
+            [BUG_TYPE]: 0,
+            [TASK_TYPE]: 1,
         },
     });
 
     const app = new JiraApplication();
     container.setApplication(app);
 
-    // TODO test if connector JiraCreateNewIssueConnector actually works
-    // const createNewIssue = new JiraCreateNewIssueConnector();
-    // createNewIssue
-    //     .setSender(sender)
-    //     .setDb(db)
-    //     .setApplication(app);
-    // container.setConnector(createNewIssue);
+    const createIssue = new JiraCreateIssueConnector();
+    createIssue
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(app);
+    container.setConnector(createIssue);
 
     const createGetIssue = new JiraGetIssueConnector();
     createGetIssue.setSender(sender).setDb(db).setApplication(app);
