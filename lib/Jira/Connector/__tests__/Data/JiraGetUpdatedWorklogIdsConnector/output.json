@@ -1,0 +1,13 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "worklogIds": [
+            17777,
+            17778,
+            17779
+        ]
+    }
+}
+

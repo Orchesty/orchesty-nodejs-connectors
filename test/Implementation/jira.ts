@@ -6,6 +6,8 @@ import {
 // import JiraCreateNewIssueConnector
 //     from '../../lib/Jira/Connector/JiraCreateNewIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
+import JiraGetUpdatedWorklogIdsConnector from '../../lib/Jira/Connector/JiraGetUpdatedWorklogIdsConnector';
+import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
 import JiraApplication, {
     NAME as JIRA_APP,
 } from '../../lib/Jira/JiraApplication';
@@ -26,14 +28,21 @@ export default function init(): void {
 
     // TODO test if connector JiraCreateNewIssueConnector actually works
     // const createNewIssue = new JiraCreateNewIssueConnector();
-    const createGetIssue = new JiraGetIssueConnector();
-
     // createNewIssue
     //     .setSender(sender)
     //     .setDb(db)
     //     .setApplication(app);
     // container.setConnector(createNewIssue);
 
+    const createGetIssue = new JiraGetIssueConnector();
     createGetIssue.setSender(sender).setDb(db).setApplication(app);
     container.setConnector(createGetIssue);
+
+    const createGetUpdatedWorklogIds = new JiraGetUpdatedWorklogIdsConnector();
+    createGetUpdatedWorklogIds.setSender(sender).setDb(db).setApplication(app);
+    container.setConnector(createGetUpdatedWorklogIds);
+
+    const createGetWorklogs = new JiraGetWorklogsConnector();
+    createGetWorklogs.setSender(sender).setDb(db).setApplication(app);
+    container.setConnector(createGetWorklogs);
 }
