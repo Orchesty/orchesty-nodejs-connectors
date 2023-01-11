@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "user": "TestUser",
+    "cursor": "50"
+  },
+  "data":[
+    {
+      "body": "{\"id\":\"51\",\"name\":\"Lorem Ipsum\",\"_links\":{\"self\":\"https://your-domain.atlassian.net/rest/servicedeskapi/organization/51\"}}",
+      "headers": {}
+    }
+  ] 
+}
+

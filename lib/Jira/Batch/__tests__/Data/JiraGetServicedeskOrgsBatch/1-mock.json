@@ -1,12 +1,12 @@
 {
-  "http": "GET /rest/servicedeskapi/organization?limit=100",
+  "http": "GET /rest/servicedeskapi/organization?limit=50&start=50",
   "code": 200,
   "body": {
     "_expands": [],
     "size": 1,
-    "start": 1,
-    "limit": 1,
-    "isLastPage": false,
+    "start": 50,
+    "limit": 50,
+    "isLastPage": true,
     "_links": {
       "base": "https://your-domain.atlassian.net/rest/servicedeskapi",
       "context": "context",
@@ -15,10 +15,10 @@
     },
     "values": [
       {
-        "id": "1",
-        "name": "Charlie Cakes Franchises",
+        "id": "51",
+        "name": "Lorem Ipsum",
         "_links": {
-          "self": "https://your-domain.atlassian.net/rest/servicedeskapi/organization/1"
+          "self": "https://your-domain.atlassian.net/rest/servicedeskapi/organization/51"
         }
       }
     ]

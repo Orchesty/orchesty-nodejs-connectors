@@ -3,10 +3,10 @@ import {
     PASSWORD,
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import JiraGetServicedeskOrgsBatch from '../../lib/Jira/Batch/JiraGetServicedeskOrgsBatch';
 import JiraGetUpdatedWorklogIdsBatch from '../../lib/Jira/Batch/JiraGetUpdatedWorklogIdsBatch';
 import JiraCreateIssueConnector from '../../lib/Jira/Connector/JiraCreateIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
-import JiraGetServicedeskOrgsConnector from '../../lib/Jira/Connector/JiraGetServicedeskOrgsConnector';
 import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
 import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, NAME as JIRA_APP, TASK_TYPE } from '../../lib/Jira/JiraApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
@@ -43,7 +43,7 @@ export default function init(): void {
     createGetWorklogs.setSender(sender).setDb(db).setApplication(app);
     container.setConnector(createGetWorklogs);
 
-    const createGetServicedeskOrgs = new JiraGetServicedeskOrgsConnector();
+    const createGetServicedeskOrgs = new JiraGetServicedeskOrgsBatch();
     createGetServicedeskOrgs.setSender(sender).setDb(db).setApplication(app);
-    container.setConnector(createGetServicedeskOrgs);
+    container.setBatch(createGetServicedeskOrgs);
 }

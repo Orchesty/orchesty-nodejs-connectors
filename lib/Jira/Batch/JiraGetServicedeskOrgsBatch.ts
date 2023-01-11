@@ -1,30 +1,36 @@
-import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
 export const JIRA_GET_SERVICEDESK_ORGS_ENDPOINT = '/rest/servicedeskapi/organization';
 
 export const NAME = 'jira-get-servicedesk-orgs';
 
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 50;
 
-export default class JiraGetServicedeskOrgsConnector extends AConnector {
+export default class JiraGetServicedeskOrgsBatch extends ABatchNode {
 
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const start = dto.getBatchCursor('0');
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const request = await this.getApplication().getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,
-            `${JIRA_GET_SERVICEDESK_ORGS_ENDPOINT}?limit=${PAGE_SIZE}`,
+            `${JIRA_GET_SERVICEDESK_ORGS_ENDPOINT}?limit=${PAGE_SIZE}&start=${start}`,
         );
         const response = await this.getSender().send<IOutput>(request);
         const responseData = response.getJsonBody();
-        return dto.setJsonData(responseData.values);
+        dto.setItemList(responseData.values);
+
+        if (!responseData.isLastPage) {
+            dto.setBatchCursor((Number(start) + PAGE_SIZE).toString());
+        }
+        return dto;
     }
 
 }
