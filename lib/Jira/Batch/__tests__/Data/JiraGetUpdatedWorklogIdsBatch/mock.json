@@ -2,8 +2,9 @@
   "http": "GET /rest/api/3/worklog/updated?since=1673279240445",
   "code": 200,
   "body": {
-    "lastPage": true,
-    "self": "https://hanaboso.atlassian.net/rest/api/3/worklog/updated?since=1673279240445",
+    "lastPage": false,
+    "self": "/rest/api/3/worklog/updated?since=1673279240445",
+    "nextPage": "/rest/api/3/worklog/updated?since=1673285060521",
     "since": 1673279240445,
     "until": 1673285060520,
     "values": [

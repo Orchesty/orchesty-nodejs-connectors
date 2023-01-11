@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "cursor": "/rest/api/3/worklog/updated?since=1673285060521",
+        "result-code": "1010",
+        "result-message": "Message will be used as a iterator with cursor [/rest/api/3/worklog/updated?since=1673285060521]. Data will be send to follower(s)."
+    },
+    "data": [ 
+        { "body": "17777", "headers": {} },
+        { "body": "17778", "headers": {} },
+        { "body": "17779", "headers": {} }
+    ]
+}
+

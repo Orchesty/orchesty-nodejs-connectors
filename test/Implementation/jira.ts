@@ -3,10 +3,10 @@ import {
     PASSWORD,
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import JiraGetUpdatedWorklogIdsBatch from '../../lib/Jira/Batch/JiraGetUpdatedWorklogIdsBatch';
 import JiraCreateIssueConnector from '../../lib/Jira/Connector/JiraCreateIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
 import JiraGetServicedeskOrgsConnector from '../../lib/Jira/Connector/JiraGetServicedeskOrgsConnector';
-import JiraGetUpdatedWorklogIdsConnector from '../../lib/Jira/Connector/JiraGetUpdatedWorklogIdsConnector';
 import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
 import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, NAME as JIRA_APP, TASK_TYPE } from '../../lib/Jira/JiraApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
@@ -28,19 +28,16 @@ export default function init(): void {
     container.setApplication(app);
 
     const createIssue = new JiraCreateIssueConnector();
-    createIssue
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
+    createIssue.setSender(sender).setDb(db).setApplication(app);
     container.setConnector(createIssue);
 
     const createGetIssue = new JiraGetIssueConnector();
     createGetIssue.setSender(sender).setDb(db).setApplication(app);
     container.setConnector(createGetIssue);
 
-    const createGetUpdatedWorklogIds = new JiraGetUpdatedWorklogIdsConnector();
+    const createGetUpdatedWorklogIds = new JiraGetUpdatedWorklogIdsBatch();
     createGetUpdatedWorklogIds.setSender(sender).setDb(db).setApplication(app);
-    container.setConnector(createGetUpdatedWorklogIds);
+    container.setBatch(createGetUpdatedWorklogIds);
 
     const createGetWorklogs = new JiraGetWorklogsConnector();
     createGetWorklogs.setSender(sender).setDb(db).setApplication(app);
