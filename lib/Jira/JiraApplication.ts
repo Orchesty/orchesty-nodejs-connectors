@@ -78,4 +78,9 @@ export default class JiraApplication extends ABasicApplication {
             .addForm(issueTypesForm);
     }
 
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+        return authorizationForm?.[HOST_URL] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD];
+    }
+
 }
