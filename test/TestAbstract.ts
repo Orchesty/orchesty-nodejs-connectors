@@ -18,10 +18,6 @@ export let cacheService: CacheService;
 
 let initiated = false;
 
-export async function closeConnection(): Promise<void> {
-    await container.get<Redis>(CoreServices.REDIS).close();
-}
-
 export function prepare(): void {
     if (initiated) {
         return;

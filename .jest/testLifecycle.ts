@@ -14,7 +14,6 @@ beforeAll(() => {
 })
 
 afterAll(async () => {
-  // await dropCollection(ApplicationInstall.getCollection()).then(closeConnection)
 })
 
 jest.mock('nodemailer', () => ({
