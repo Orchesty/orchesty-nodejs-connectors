@@ -19,15 +19,12 @@ export default class JiraGetWorklogsConnector extends AConnector {
         if (!ids) {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Connector is missing required data: "ids".');
         } else {
-            const requestData = {
-                ids,
-            };
             const request = await this.getApplication().getRequestDto(
                 dto,
                 appInstall,
                 HttpMethods.POST,
                 `${JIRA_GET_WORKLOGS_ENDPOINT}`,
-                requestData,
+                { ids },
             );
             const response = await this.getSender().send<IOutput>(request);
             dto.setData(response.getBody());
