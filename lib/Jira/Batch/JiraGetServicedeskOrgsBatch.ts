@@ -23,7 +23,7 @@ export default class JiraGetServicedeskOrgsBatch extends ABatchNode {
             HttpMethods.GET,
             `${JIRA_GET_SERVICEDESK_ORGS_ENDPOINT}?limit=${PAGE_SIZE}&start=${start}`,
         );
-        const response = await this.getSender().send<IOutput>(request);
+        const response = await this.getSender().send<IResponse>(request);
         const responseData = response.getJsonBody();
         dto.setItemList(responseData.values);
 
@@ -35,29 +35,25 @@ export default class JiraGetServicedeskOrgsBatch extends ABatchNode {
 
 }
 
-export interface IOutput {
+interface IResponse {
     _expands: unknown[];
     size: number;
     start: number;
     limit: number;
     isLastPage: boolean;
-    _links: Links;
-    values: Value[];
+    _links: {
+        base: string;
+        context: string;
+        next: string;
+        prev: string;
+    };
+    values: IOutput[];
 }
 
-export interface Links {
-    base: string;
-    context: string;
-    next: string;
-    prev: string;
-}
-
-export interface Value {
+export interface IOutput {
     id: string;
     name: string;
-    _links: ValueLinks;
-}
-
-export interface ValueLinks {
-    self: string;
+    _links: {
+        self: string;
+    };
 }
