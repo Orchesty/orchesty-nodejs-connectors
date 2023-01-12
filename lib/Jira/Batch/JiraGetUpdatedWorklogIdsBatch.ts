@@ -14,7 +14,7 @@ export default class JiraGetUpdatedWorklogIdsBatch extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto<IInput, IOutput>> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         let { since } = dto.getJsonData();
         if (!since || since < 0) {
@@ -23,7 +23,7 @@ export default class JiraGetUpdatedWorklogIdsBatch extends ABatchNode {
         const url = `${JIRA_GET_UPDATED_WORKLOG_IDS_ENDPOINT}?since=${since}`;
         const nextUrl = dto.getBatchCursor(url);
         const request = await this.getApplication().getRequestDto(dto, appInstall, HttpMethods.GET, nextUrl);
-        const response = await this.getSender().send<IOutput>(request);
+        const response = await this.getSender().send<IResponse>(request);
 
         const responseData = response.getJsonBody();
         const worklogIds = responseData.values.map((item) => item.worklogId);
@@ -44,16 +44,16 @@ export interface IInput {
     since: number;
 }
 
-interface IOutput {
+interface IResponse {
     lastPage: boolean;
     self: string;
     since: number;
     until: number;
-    values: Value[];
+    values: IOutput[];
     nextPage: string;
 }
 
-interface Value {
+interface IOutput {
     properties: [];
     updatedTime: number;
     worklogId: number;

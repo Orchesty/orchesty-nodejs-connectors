@@ -14,7 +14,7 @@ export default class JiraGetServicedeskOrgsBatch extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto<unknown, IOutput>> {
         const start = dto.getBatchCursor('0');
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const request = await this.getApplication().getRequestDto(
