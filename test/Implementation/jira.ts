@@ -8,13 +8,14 @@ import JiraGetUpdatedWorklogIdsBatch from '../../lib/Jira/Batch/JiraGetUpdatedWo
 import JiraCreateIssueConnector from '../../lib/Jira/Connector/JiraCreateIssueConnector';
 import JiraGetIssueConnector from '../../lib/Jira/Connector/JiraGetIssueConnector';
 import JiraGetWorklogsConnector from '../../lib/Jira/Connector/JiraGetWorklogsConnector';
-import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, NAME as JIRA_APP, TASK_TYPE } from '../../lib/Jira/JiraApplication';
+import JiraApplication, { BUG_TYPE, HOST_URL, ISSUE_TYPE_FROM, NAME as JIRA_APP, TASK_TYPE } from '../../lib/Jira/JiraApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(JIRA_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [HOST_URL]: 'https://example.atlassian.net',
             [USER]: 'info@examle.com',
             [PASSWORD]: 'api_key',
         },

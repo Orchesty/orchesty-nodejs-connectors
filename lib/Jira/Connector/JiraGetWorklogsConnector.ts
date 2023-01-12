@@ -16,7 +16,7 @@ export default class JiraGetWorklogsConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { ids } = dto.getJsonData();
-        if (ids === undefined || ids === null) {
+        if (!ids) {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Connector is missing required data: "ids".');
         } else {
             const requestData = {

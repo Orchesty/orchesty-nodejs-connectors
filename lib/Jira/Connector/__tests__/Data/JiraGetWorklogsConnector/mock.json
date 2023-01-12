@@ -1,5 +1,5 @@
 {
-  "http": "POST /rest/api/3/worklog/list",
+  "http": "POST https://example.atlassian.net/rest/api/3/worklog/list",
   "code": 200,
   "body":[
     {
@@ -14,13 +14,13 @@
           "48x48": "https://secure.gravatar.com/avatar/test-id?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Fdefault-avatar-6.png"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=test-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=test-id",
         "timeZone": "Europe/Prague"
       },
       "created": "2023-01-09T16:48:18.283+0100",
       "id": "17778",
       "issueId": "37074",
-      "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37074/worklog/17778",
+      "self": "https://example.atlassian.net/rest/api/3/issue/37074/worklog/17778",
       "started": "2023-01-09T16:43:12.836+0100",
       "timeSpent": "5m",
       "timeSpentSeconds": 300,
@@ -35,7 +35,7 @@
           "48x48": "https://secure.gravatar.com/avatar/test-id?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Fdefault-avatar-6.png"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=test-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=test-id",
         "timeZone": "Europe/Prague"
       },
       "updated": "2023-01-09T16:48:18.283+0100"
@@ -52,7 +52,7 @@
           "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:test-id/3d9b31ed-4c79-4844-b636-a8fe5f339084/48"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=557058%3Atest-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Atest-id",
         "timeZone": "Europe/Prague"
       },
       "comment": {
@@ -61,7 +61,7 @@
             "content": [
               {
                 "attrs": {
-                  "url": "https://hanaboso.atlassian.net/wiki/spaces/BM/pages/3261366449/Shipping"
+                  "url": "https://example.atlassian.net/wiki/spaces/BM/pages/3261366449/Shipping"
                 },
                 "type": "inlineCard"
               }
@@ -75,7 +75,7 @@
       "created": "2023-01-09T18:24:04.149+0100",
       "id": "17779",
       "issueId": "37129",
-      "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37129/worklog/17779",
+      "self": "https://example.atlassian.net/rest/api/3/issue/37129/worklog/17779",
       "started": "2023-01-09T16:23:55.925+0100",
       "timeSpent": "2h",
       "timeSpentSeconds": 7200,
@@ -90,7 +90,7 @@
           "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:test-id/3d9b31ed-4c79-4844-b636-a8fe5f339084/48"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=557058%3Atest-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Atest-id",
         "timeZone": "Europe/Prague"
       },
       "updated": "2023-01-09T18:24:20.520+0100"
@@ -107,13 +107,13 @@
           "48x48": "https://secure.gravatar.com/avatar/test-id?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Fdefault-avatar-6.png"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=test-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=test-id",
         "timeZone": "Europe/Prague"
       },
       "created": "2023-01-09T16:47:20.445+0100",
       "id": "17777",
       "issueId": "37074",
-      "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37074/worklog/17777",
+      "self": "https://example.atlassian.net/rest/api/3/issue/37074/worklog/17777",
       "started": "2023-01-09T16:07:14.478+0100",
       "timeSpent": "40m",
       "timeSpentSeconds": 2400,
@@ -128,7 +128,7 @@
           "48x48": "https://secure.gravatar.com/avatar/test-id?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Fdefault-avatar-6.png"
         },
         "displayName": "Example User",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=test-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=test-id",
         "timeZone": "Europe/Prague"
       },
       "updated": "2023-01-09T16:47:20.445+0100"

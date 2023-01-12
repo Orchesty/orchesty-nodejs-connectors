@@ -15,7 +15,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
-const HOST_URL = 'prefix_url';
+export const HOST_URL = 'prefix_url';
 export const ISSUE_TYPE_FROM = 'issue_type_from';
 export const BUG_TYPE = 'bug_type';
 export const TASK_TYPE = 'task_type';
@@ -50,7 +50,7 @@ export default class JiraApplication extends ABasicApplication {
     ): Promise<RequestDto> | RequestDto {
         const password = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PASSWORD];
         const user = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[USER];
-        const baseUrl = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL] ?? '';
+        const baseUrl = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL];
 
         if (!this.isAuthorized(applicationInstall)) {
             throw new Error(`Application [${this.getPublicName()}] doesn't have host url, user name or password!`);

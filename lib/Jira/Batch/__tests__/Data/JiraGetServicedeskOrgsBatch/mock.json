@@ -1,5 +1,5 @@
 {
-  "http": "GET /rest/servicedeskapi/organization?limit=50&start=0",
+  "http": "GET https://example.atlassian.net/rest/servicedeskapi/organization?limit=50&start=0",
   "code": 200,
   "body": {
     "_expands": [],

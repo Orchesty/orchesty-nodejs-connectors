@@ -1,6 +1,8 @@
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { HOST_URL } from '../JiraApplication';
 
 export const JIRA_GET_UPDATED_WORKLOG_IDS_ENDPOINT = '/rest/api/3/worklog/updated';
 
@@ -28,7 +30,10 @@ export default class JiraGetUpdatedWorklogIdsBatch extends ABatchNode {
         dto.setItemList(worklogIds);
 
         if (!responseData.lastPage) {
-            dto.setBatchCursor(responseData.nextPage);
+            // Use only path as the url since base is added to all request urls in the application
+            const baseUrl = appInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL];
+            const nextPageUrl = responseData.nextPage.replace(baseUrl, '');
+            dto.setBatchCursor(nextPageUrl);
         }
         return dto;
     }

@@ -1,5 +1,5 @@
 {
-  "http": "GET /rest/api/3/issue/PIP-1",
+  "http": "GET https://example.atlassian.net/rest/api/3/issue/PIP-1",
   "code": 200,
   "body": {
     "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations,customfield_10600.requestTypePractice",
@@ -23,14 +23,14 @@
         },
         "displayName": "Example Name",
         "emailAddress": "example@example.com",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=example-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=example-id",
         "timeZone": "Europe/Prague"
       },
       "attachment": [],
       "comment": {
         "comments": [],
         "maxResults": 0,
-        "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37106/comment",
+        "self": "https://example.atlassian.net/rest/api/3/issue/37106/comment",
         "startAt": 0,
         "total": 0
       },
@@ -47,7 +47,7 @@
           "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/48"
         },
         "displayName": "Example Creator",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
         "timeZone": "Europe/Prague"
       },
       "customfield_10000": null,
@@ -235,19 +235,19 @@
         "avatarId": 10500,
         "description": "A small, distinct piece of work.",
         "hierarchyLevel": 0,
-        "iconUrl": "https://hanaboso.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10500?size=medium",
+        "iconUrl": "https://example.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10500?size=medium",
         "id": "10002",
         "name": "Task",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/issuetype/10002",
+        "self": "https://example.atlassian.net/rest/api/3/issuetype/10002",
         "subtask": false
       },
       "labels": [],
       "lastViewed": "2023-01-05T21:43:56.768+0100",
       "priority": {
-        "iconUrl": "https://hanaboso.atlassian.net/images/icons/priorities/major.svg",
+        "iconUrl": "https://example.atlassian.net/images/icons/priorities/major.svg",
         "id": "3",
         "name": "Medium",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/priority/3"
+        "self": "https://example.atlassian.net/rest/api/3/priority/3"
       },
       "progress": {
         "progress": 0,
@@ -255,16 +255,16 @@
       },
       "project": {
         "avatarUrls": {
-          "16x16": "https://hanaboso.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=xsmall",
-          "24x24": "https://hanaboso.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=small",
-          "32x32": "https://hanaboso.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=medium",
-          "48x48": "https://hanaboso.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201"
+          "16x16": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=xsmall",
+          "24x24": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=small",
+          "32x32": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=medium",
+          "48x48": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201"
         },
         "id": "11300",
         "key": "PIP",
         "name": "Pipes",
         "projectTypeKey": "software",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/project/11300",
+        "self": "https://example.atlassian.net/rest/api/3/project/11300",
         "simplified": false
       },
       "reporter": {
@@ -278,7 +278,7 @@
           "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/48"
         },
         "displayName": "Example Reporter",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
         "timeZone": "Europe/Prague"
       },
       "resolution": null,
@@ -286,16 +286,16 @@
       "security": null,
       "status": {
         "description": "",
-        "iconUrl": "https://hanaboso.atlassian.net/",
+        "iconUrl": "https://example.atlassian.net/",
         "id": "10000",
         "name": "To Do",
-        "self": "https://hanaboso.atlassian.net/rest/api/3/status/10000",
+        "self": "https://example.atlassian.net/rest/api/3/status/10000",
         "statusCategory": {
           "colorName": "blue-gray",
           "id": 2,
           "key": "new",
           "name": "To Do",
-          "self": "https://hanaboso.atlassian.net/rest/api/3/statuscategory/2"
+          "self": "https://example.atlassian.net/rest/api/3/statuscategory/2"
         }
       },
       "statuscategorychangedate": "2023-01-05T13:32:58.605+0100",
@@ -309,12 +309,12 @@
       "versions": [],
       "votes": {
         "hasVoted": false,
-        "self": "https://hanaboso.atlassian.net/rest/api/3/issue/PIP-1528/votes",
+        "self": "https://example.atlassian.net/rest/api/3/issue/PIP-1528/votes",
         "votes": 0
       },
       "watches": {
         "isWatching": false,
-        "self": "https://hanaboso.atlassian.net/rest/api/3/issue/PIP-1528/watchers",
+        "self": "https://example.atlassian.net/rest/api/3/issue/PIP-1528/watchers",
         "watchCount": 1
       },
       "worklog": {
@@ -327,6 +327,6 @@
     },
     "id": "37106",
     "key": "PIP-1528",
-    "self": "https://hanaboso.atlassian.net/rest/api/3/issue/37106"
+    "self": "https://example.atlassian.net/rest/api/3/issue/37106"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "http": "POST /rest/api/3/issue",
+  "http": "POST https://example.atlassian.net/rest/api/3/issue",
   "code": 201,
   "body": {
     "id": "10000",
