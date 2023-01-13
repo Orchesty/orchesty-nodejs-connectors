@@ -16,19 +16,20 @@ export default class JiraGetIssueConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { id } = dto.getJsonData();
-        if (id === undefined || id === null) {
+
+        if (!id) {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Connector is missing required data: "id".');
-        } else {
-            const request = await this.getApplication().getRequestDto(
-                dto,
-                appInstall,
-                HttpMethods.GET,
-                `${JIRA_GET_ISSUE_ENDPOINT}/${id}`,
-            );
-            const response = await this.getSender().send(request);
-            dto.setData(response.getBody());
+            return dto;
         }
-        return dto;
+
+        const request = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `${JIRA_GET_ISSUE_ENDPOINT}/${id}`,
+        );
+        const response = await this.getSender().send(request);
+        return dto.setData(response.getBody());
     }
 
 }

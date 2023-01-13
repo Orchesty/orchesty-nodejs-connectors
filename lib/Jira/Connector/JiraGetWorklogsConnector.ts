@@ -16,20 +16,21 @@ export default class JiraGetWorklogsConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { ids } = dto.getJsonData();
+
         if (!ids) {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, 'Connector is missing required data: "ids".');
-        } else {
-            const request = await this.getApplication().getRequestDto(
-                dto,
-                appInstall,
-                HttpMethods.POST,
-                `${JIRA_GET_WORKLOGS_ENDPOINT}`,
-                { ids },
-            );
-            const response = await this.getSender().send<IOutput>(request);
-            dto.setData(response.getBody());
+            return dto;
         }
-        return dto;
+
+        const request = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.POST,
+            `${JIRA_GET_WORKLOGS_ENDPOINT}`,
+            { ids },
+        );
+        const response = await this.getSender().send<IOutput>(request);
+        return dto.setData(response.getBody());
     }
 
 }
