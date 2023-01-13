@@ -1,0 +1,37 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "ean": "1234_pink",
+            "englishName": null,
+            "height": null,
+            "heightUnit": null,
+            "length": null,
+            "lengthUnit": null,
+            "name": "Iphone Black",
+            "productId": "921728736",
+            "sku": "1111",
+            "weight": 1.25,
+            "weightUnit": "lb",
+            "width": null,
+            "widthUnit": null
+        },
+        {
+            "ean": "1234_pink",
+            "englishName": null,
+            "height": null,
+            "heightUnit": null,
+            "length": null,
+            "lengthUnit": null,
+            "name": "Iphone Black",
+            "productId": "921728737",
+            "sku": "2222",
+            "weight": 1.25,
+            "weightUnit": "lb",
+            "width": null,
+            "widthUnit": null
+        }
+    ]
+}
