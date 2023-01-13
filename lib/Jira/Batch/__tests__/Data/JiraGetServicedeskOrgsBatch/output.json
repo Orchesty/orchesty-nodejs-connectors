@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "user": "TestUser",
+    "cursor": "50",
+    "result-code": "1010",
+    "result-message": "Message will be used as a iterator with cursor [50]. Data will be send to follower(s)."
+  },
+  "data":[
+    {
+      "body": "{\"id\":\"1\",\"name\":\"Charlie Cakes Franchises\",\"_links\":{\"self\":\"https://your-domain.atlassian.net/rest/servicedeskapi/organization/1\"}}",
+      "headers": {}
+    }
+  ] 
+}
+

@@ -15,16 +15,18 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
-const HOST_URL = 'prefix_url';
+export const HOST_URL = 'prefix_url';
 export const ISSUE_TYPE_FROM = 'issue_type_from';
 export const BUG_TYPE = 'bug_type';
 export const TASK_TYPE = 'task_type';
 export const STORY_TYPE = 'story_type';
 
+export const NAME = 'jira';
+
 export default class JiraApplication extends ABasicApplication {
 
     public getName(): string {
-        return 'jira';
+        return NAME;
     }
 
     public getPublicName(): string {
@@ -40,7 +42,7 @@ export default class JiraApplication extends ABasicApplication {
     }
 
     public getRequestDto(
-        _dto: AProcessDto,
+        dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
         url?: string,
@@ -48,24 +50,20 @@ export default class JiraApplication extends ABasicApplication {
     ): Promise<RequestDto> | RequestDto {
         const password = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PASSWORD];
         const user = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[USER];
+        const baseUrl = applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL];
 
-        if (!password || !user) {
-            throw new Error(`Application [${this.getPublicName()}] doesn't have user name, password or both!`);
+        if (!this.isAuthorized(applicationInstall)) {
+            throw new Error(`Application [${this.getPublicName()}] doesn't have host url, user name or password!`);
         }
-        return new RequestDto(
-            `${applicationInstall.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[HOST_URL]}${url}`,
-            method,
-            _dto,
-            data,
-            {
-                [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-                [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
-            },
-        );
+        const headers = {
+            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+            [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
+        };
+        return new RequestDto(`${baseUrl}${url}`, method, dto, data, headers);
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
+        const authForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, HOST_URL, 'Atlassian url', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Token', undefined, true));
@@ -76,7 +74,7 @@ export default class JiraApplication extends ABasicApplication {
             .addField(new Field(FieldType.NUMBER, STORY_TYPE, 'Story type id', undefined, true));
 
         return new FormStack()
-            .addForm(form)
+            .addForm(authForm)
             .addForm(issueTypesForm);
     }
 

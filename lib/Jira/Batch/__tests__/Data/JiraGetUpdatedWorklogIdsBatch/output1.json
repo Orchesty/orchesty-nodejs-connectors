@@ -1,0 +1,13 @@
+{
+    "headers": {
+        "cursor": "/rest/api/3/worklog/updated?since=1673285060521",
+        "user": "TestUser"
+    },
+    "data": [ 
+        {
+            "body": "[20521,20522,20523]",
+            "headers": {}
+        }
+    ]
+}
+
