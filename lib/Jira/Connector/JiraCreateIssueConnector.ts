@@ -5,12 +5,14 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { checkParams } from '@orchesty/nodejs-sdk/dist/lib/Utils/Validations';
 import JiraApplication, { BUG_TYPE, ISSUE_TYPE_FROM, STORY_TYPE, TASK_TYPE } from '../JiraApplication';
 
-const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/2/issue';
+const JIRA_CREATE_ISSUE_ENDPOINT = '/rest/api/3/issue';
+
+export const NAME = 'jira-create-issue';
 
 export default class JiraCreateIssueConnector extends AConnector {
 
     public getName(): string {
-        return 'jira-create-issue';
+        return NAME;
     }
 
     public async processAction(dto: ProcessDto<IJiraIssue>): Promise<ProcessDto> {

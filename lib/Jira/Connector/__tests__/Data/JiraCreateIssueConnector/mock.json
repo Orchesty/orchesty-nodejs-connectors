@@ -1,0 +1,16 @@
+{
+  "http": "POST https://example.atlassian.net/rest/api/3/issue",
+  "code": 201,
+  "body": {
+    "id": "10000",
+    "key": "ED-24",
+    "self": "https://your-domain.atlassian.net/rest/api/3/issue/10000",
+    "transition": {
+      "status": 200,
+      "errorCollection": {
+        "errorMessages": [],
+        "errors": {}
+      }
+    }
+  }
+}

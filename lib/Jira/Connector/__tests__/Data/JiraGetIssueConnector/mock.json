@@ -1,0 +1,332 @@
+{
+  "http": "GET https://example.atlassian.net/rest/api/3/issue/PIP-1",
+  "code": 200,
+  "body": {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations,customfield_10600.requestTypePractice",
+    "fields": {
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "aggregatetimeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "aggregatetimespent": null,
+      "assignee": {
+        "accountId": "example-id",
+        "accountType": "atlassian",
+        "active": true,
+        "avatarUrls": {
+          "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/example-id/testtesttest/16",
+          "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/example-id/testtesttest/24",
+          "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/example-id/testtesttest/32",
+          "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/example-id/testtesttest/48"
+        },
+        "displayName": "Example Name",
+        "emailAddress": "example@example.com",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=example-id",
+        "timeZone": "Europe/Prague"
+      },
+      "attachment": [],
+      "comment": {
+        "comments": [],
+        "maxResults": 0,
+        "self": "https://example.atlassian.net/rest/api/3/issue/37106/comment",
+        "startAt": 0,
+        "total": 0
+      },
+      "components": [],
+      "created": "2023-01-05T13:32:58.038+0100",
+      "creator": {
+        "accountId": "557058:example-id",
+        "accountType": "atlassian",
+        "active": true,
+        "avatarUrls": {
+          "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/16",
+          "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/24",
+          "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/32",
+          "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/48"
+        },
+        "displayName": "Example Creator",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
+        "timeZone": "Europe/Prague"
+      },
+      "customfield_10000": null,
+      "customfield_10001": null,
+      "customfield_10003": null,
+      "customfield_10004": null,
+      "customfield_10005": null,
+      "customfield_10007": [
+        {
+          "boardId": 26,
+          "endDate": "2022-10-26T09:43:00.000Z",
+          "goal": "",
+          "id": 227,
+          "name": "Orchesty 7",
+          "startDate": "2022-10-19T09:43:59.134Z",
+          "state": "active"
+        }
+      ],
+      "customfield_10009": null,
+      "customfield_10012": "0|i01ln2:",
+      "customfield_10100": null,
+      "customfield_10200": {
+        "hasEpicLinkFieldDependency": false,
+        "nonEditableReason": {
+          "message": "The Parent Link is only available to Jira Premium users.",
+          "reason": "PLUGIN_LICENSE_ERROR"
+        },
+        "showField": false
+      },
+      "customfield_10400": null,
+      "customfield_10500": null,
+      "customfield_10600": null,
+      "customfield_10700": null,
+      "customfield_10701": [],
+      "customfield_10702": null,
+      "customfield_10703": null,
+      "customfield_10704": null,
+      "customfield_10705": null,
+      "customfield_10706": null,
+      "customfield_10707": null,
+      "customfield_10708": null,
+      "customfield_10709": null,
+      "customfield_10710": null,
+      "customfield_10711": null,
+      "customfield_10712": null,
+      "customfield_10713": null,
+      "customfield_10714": null,
+      "customfield_10715": null,
+      "customfield_10716": null,
+      "customfield_10717": null,
+      "customfield_10718": null,
+      "customfield_10719": null,
+      "customfield_10720": null,
+      "customfield_10721": null,
+      "customfield_10722": null,
+      "customfield_10723": null,
+      "customfield_10724": null,
+      "customfield_10725": null,
+      "customfield_10726": null,
+      "customfield_10729": null,
+      "customfield_10730": null,
+      "customfield_10731": null,
+      "customfield_10732": null,
+      "customfield_10733": null,
+      "customfield_10734": null,
+      "customfield_10735": null,
+      "customfield_10736": null,
+      "customfield_10737": [],
+      "customfield_10738": null,
+      "customfield_10739": null,
+      "customfield_10740": null,
+      "customfield_10741": null,
+      "customfield_10742": null,
+      "customfield_10743": null,
+      "customfield_10744": null,
+      "customfield_10745": null,
+      "customfield_10746": null,
+      "customfield_10747": null,
+      "description": {
+        "content": [
+          {
+            "content": [
+              {
+                "text": "Get IDs of updated worklogs",
+                "type": "text"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "attrs": {
+                  "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-worklogs/#api-rest-api-3-worklog-updated-get"
+                },
+                "type": "inlineCard"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "text": "Get worklogs",
+                "type": "text"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "attrs": {
+                  "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-worklogs/#api-rest-api-3-worklog-list-post"
+                },
+                "type": "inlineCard"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "content": [
+                  {
+                    "content": [
+                      {
+                        "text": "obsahuje issueId",
+                        "type": "text"
+                      }
+                    ],
+                    "type": "paragraph"
+                  }
+                ],
+                "type": "listItem"
+              }
+            ],
+            "type": "bulletList"
+          },
+          {
+            "content": [
+              {
+                "text": "Get issue",
+                "type": "text"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "attrs": {
+                  "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-issueidorkey-get"
+                },
+                "type": "inlineCard"
+              }
+            ],
+            "type": "paragraph"
+          },
+          {
+            "content": [
+              {
+                "text": "Service desk: Get organizations",
+                "type": "text"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "attrs": {
+                  "url": "https://developer.atlassian.com/cloud/jira/service-desk/rest/api-group-organization/#api-rest-servicedeskapi-organization-get"
+                },
+                "type": "inlineCard"
+              }
+            ],
+            "type": "paragraph"
+          }
+        ],
+        "type": "doc",
+        "version": 1
+      },
+      "duedate": null,
+      "environment": null,
+      "fixVersions": [],
+      "issuelinks": [],
+      "issuerestriction": {
+        "issuerestrictions": {},
+        "shouldDisplay": false
+      },
+      "issuetype": {
+        "avatarId": 10500,
+        "description": "A small, distinct piece of work.",
+        "hierarchyLevel": 0,
+        "iconUrl": "https://example.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10500?size=medium",
+        "id": "10002",
+        "name": "Task",
+        "self": "https://example.atlassian.net/rest/api/3/issuetype/10002",
+        "subtask": false
+      },
+      "labels": [],
+      "lastViewed": "2023-01-05T21:43:56.768+0100",
+      "priority": {
+        "iconUrl": "https://example.atlassian.net/images/icons/priorities/major.svg",
+        "id": "3",
+        "name": "Medium",
+        "self": "https://example.atlassian.net/rest/api/3/priority/3"
+      },
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "project": {
+        "avatarUrls": {
+          "16x16": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=xsmall",
+          "24x24": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=small",
+          "32x32": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201?size=medium",
+          "48x48": "https://example.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10201"
+        },
+        "id": "11300",
+        "key": "PIP",
+        "name": "Pipes",
+        "projectTypeKey": "software",
+        "self": "https://example.atlassian.net/rest/api/3/project/11300",
+        "simplified": false
+      },
+      "reporter": {
+        "accountId": "557058:example-id",
+        "accountType": "atlassian",
+        "active": true,
+        "avatarUrls": {
+          "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/16",
+          "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/24",
+          "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/32",
+          "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/557058:example-id/testtesttest/48"
+        },
+        "displayName": "Example Reporter",
+        "self": "https://example.atlassian.net/rest/api/3/user?accountId=557058%3Aexample-id",
+        "timeZone": "Europe/Prague"
+      },
+      "resolution": null,
+      "resolutiondate": null,
+      "security": null,
+      "status": {
+        "description": "",
+        "iconUrl": "https://example.atlassian.net/",
+        "id": "10000",
+        "name": "To Do",
+        "self": "https://example.atlassian.net/rest/api/3/status/10000",
+        "statusCategory": {
+          "colorName": "blue-gray",
+          "id": 2,
+          "key": "new",
+          "name": "To Do",
+          "self": "https://example.atlassian.net/rest/api/3/statuscategory/2"
+        }
+      },
+      "statuscategorychangedate": "2023-01-05T13:32:58.605+0100",
+      "subtasks": [],
+      "summary": "Jira konektory",
+      "timeestimate": null,
+      "timeoriginalestimate": null,
+      "timespent": null,
+      "timetracking": {},
+      "updated": "2023-01-05T13:34:00.775+0100",
+      "versions": [],
+      "votes": {
+        "hasVoted": false,
+        "self": "https://example.atlassian.net/rest/api/3/issue/PIP-1528/votes",
+        "votes": 0
+      },
+      "watches": {
+        "isWatching": false,
+        "self": "https://example.atlassian.net/rest/api/3/issue/PIP-1528/watchers",
+        "watchCount": 1
+      },
+      "worklog": {
+        "maxResults": 20,
+        "startAt": 0,
+        "total": 0,
+        "worklogs": []
+      },
+      "workratio": -1
+    },
+    "id": "37106",
+    "key": "PIP-1528",
+    "self": "https://example.atlassian.net/rest/api/3/issue/37106"
+  }
+}
