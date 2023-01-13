@@ -1,0 +1,26 @@
+{
+  "http": "GET https://example.atlassian.net/rest/servicedeskapi/organization?limit=50&start=50",
+  "code": 200,
+  "body": {
+    "_expands": [],
+    "size": 1,
+    "start": 50,
+    "limit": 50,
+    "isLastPage": true,
+    "_links": {
+      "base": "https://your-domain.atlassian.net/rest/servicedeskapi",
+      "context": "context",
+      "next": "https://your-domain.atlassian.net/rest/servicedeskapi/organization?start=2&limit=1",
+      "prev": "https://your-domain.atlassian.net/rest/servicedeskapi/organization?start=0&limit=1"
+    },
+    "values": [
+      {
+        "id": "51",
+        "name": "Lorem Ipsum",
+        "_links": {
+          "self": "https://your-domain.atlassian.net/rest/servicedeskapi/organization/51"
+        }
+      }
+    ]
+  }
+}

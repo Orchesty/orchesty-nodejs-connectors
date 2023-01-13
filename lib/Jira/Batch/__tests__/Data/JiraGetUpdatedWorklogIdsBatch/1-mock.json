@@ -1,0 +1,27 @@
+{
+  "http": "GET https://example.atlassian.net/rest/api/3/worklog/updated?since=1673285060521",
+  "code": 200,
+  "body": {
+    "lastPage": true,
+    "self": "https://example.atlassian.net/rest/api/3/worklog/updated?since=1673285060521",
+    "since": 1673285060521,
+    "until": 1673285060523,
+    "values": [
+      {
+        "properties": [],
+        "updatedTime": 1673285060521,
+        "worklogId": 20521
+      },
+      {
+        "properties": [],
+        "updatedTime": 1673285060522,
+        "worklogId": 20522
+      },
+      {
+        "properties": [],
+        "updatedTime": 1673285060523,
+        "worklogId": 20523
+      }
+    ]
+  }
+}
