@@ -1,0 +1,24 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "result-code": "1006",
+        "result-message": "SKU in woocommerce is missing [ProductId=921728736, Id=447654529]"
+    },
+    "data": [
+        {
+            "ean": "1234_pink",
+            "englishName": null,
+            "height": null,
+            "heightUnit": null,
+            "length": null,
+            "lengthUnit": null,
+            "name": "Iphone Black",
+            "productId": "921728736",
+            "id": "447654529",
+            "weight": 1.25,
+            "weightUnit": "lb",
+            "width": null,
+            "widthUnit": null
+        }
+    ]
+}

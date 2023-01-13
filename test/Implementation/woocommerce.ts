@@ -8,6 +8,7 @@ import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrde
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
+import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
@@ -68,6 +69,12 @@ export function init(): void {
         .setDb(db)
         .setSender(sender);
     container.setConnector(wooCommerceUpdateOrder);
+
+    const wooCommerceGetProductVariant = new WooCommerceGetProductVariant()
+        .setApplication(app)
+        .setDb(db)
+        .setSender(sender);
+    container.setConnector(wooCommerceGetProductVariant);
 
     const wooCommerceGetOrderStatuses = new WooCommerceGetOrderStatuses();
     wooCommerceGetOrderStatuses
