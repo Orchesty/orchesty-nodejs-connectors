@@ -6,4 +6,8 @@ export default abstract class APowerBiObjectConnector extends AAzureObjectConnec
         return `azure-${this.getCustomId()}`;
     }
 
+    protected getBaseUrl(organization: string): string {
+        return `https://api.powerbi.com/v1.0/${organization}`;
+    }
+
 }
