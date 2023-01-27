@@ -51,14 +51,16 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
             properties: {
                 title: name,
             },
-            sheets: {
-                properties: {
-                    title: `Sheet ${name} #1`,
+            sheets: [
+                {
+                    properties: {
+                        title: `Sheet ${name} #1`,
+                    },
+                    data: [
+                        this.parseData(dataGrid),
+                    ],
                 },
-                data: [
-                    this.parseData(dataGrid),
-                ],
-            },
+            ],
         };
 
         const request = await application.getRequestDto(
@@ -66,7 +68,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
             applicationInstall,
             HttpMethods.POST,
             GOOGLE_SHEET_CREATE_SPREADSHEET,
-            JSON.stringify(data),
+            data,
         );
 
         const response = await this.getSender().send(request, [200]);
