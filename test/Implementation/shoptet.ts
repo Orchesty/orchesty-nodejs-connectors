@@ -20,9 +20,7 @@ import ShoptetJobFinishedWebhook from '../../lib/Shoptet/Connector/ShoptetJobFin
 import ShoptetUpdateStockMovements from '../../lib/Shoptet/Connector/ShoptetUpdateStockMovements';
 import APluginShoptetApplication from '../../lib/Shoptet/PluginShoptetApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
-import {
-    cacheService, container, db, sender,
-} from '../TestAbstract';
+import { cacheService, container, db, sender } from '../TestAbstract';
 
 const NAME = 'shoptet';
 
@@ -65,10 +63,7 @@ export function mock(callCount = 1, extraNonEncryptedSettings?: IApplicationSett
 }
 
 export async function init(): Promise<void> {
-    const implPluginShoptetApplication = new ImplPluginShoptetApplication(
-        cacheService,
-        container.get(CoreServices.TOPOLOGY_RUNNER),
-    );
+    const implPluginShoptetApplication = new ImplPluginShoptetApplication(cacheService);
 
     const cacheKey = `${NAME}ApiKey_TestUser`;
 

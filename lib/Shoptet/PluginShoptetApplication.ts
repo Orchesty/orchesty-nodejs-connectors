@@ -3,7 +3,6 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
-import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
@@ -18,8 +17,8 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
 
     protected shoptetLocker = 'locker_shoptet';
 
-    public constructor(private readonly cache: CacheService, runner: TopologyRunner) {
-        super(runner);
+    public constructor(private readonly cache: CacheService) {
+        super();
     }
 
     public getName(): string {
