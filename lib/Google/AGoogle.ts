@@ -31,7 +31,7 @@ export default abstract class AGoogle extends AOAuth2Application {
         data?: unknown,
     ): Promise<RequestDto> | RequestDto {
         return new RequestDto(
-            url ?? this.getBaseUrl(),
+            !url?.startsWith('http') ? `${this.getBaseUrl()}${url}` : url,
             method,
             dto,
             data,
