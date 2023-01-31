@@ -5,67 +5,115 @@
         "data": [
             {
                 "id": 1,
-                "title": "Česká pošta - Balík do ruky"
+                "title": "Česká pošta - Balík do ruky",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 2,
-                "title": "Česká pošta - Balík na poštu"
+                "title": "Česká pošta - Balík na poštu",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 3,
-                "title": "Česká pošta - Balík do balíkovny"
+                "title": "Česká pošta - Balík do balíkovny",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 4,
-                "title": "Česká pošta - Doporučená zásilka Ekonomická"
+                "title": "Česká pošta - Doporučená zásilka Ekonomická",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 5,
-                "title": "Česká pošta - RR Doporučená zásilka do zahraničí Prioritní"
+                "title": "Česká pošta - RR Doporučená zásilka do zahraničí Prioritní",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 6,
-                "title": "Česká pošta - EMS Expresní přeprava do zahraničí"
+                "title": "Česká pošta - EMS Expresní přeprava do zahraničí",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 7,
-                "title": "Česká pošta - Obchodní balík do zahraničí"
+                "title": "Česká pošta - Obchodní balík do zahraničí",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 8,
-                "title": "DPD - DPD Classic"
+                "title": "DPD - DPD Classic",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 9,
-                "title": "DPD - DPD Private"
+                "title": "DPD - DPD Private",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 10,
-                "title": "GLS - Business Parcel"
+                "title": "GLS - Business Parcel",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 11,
-                "title": "FedEx - International Priority"
+                "title": "FedEx - International Priority",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 12,
-                "title": "FedEx - International Economy"
+                "title": "FedEx - International Economy",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 13,
-                "title": "Zásilkovna - Výdejní místa Česká republika"
+                "title": "Zásilkovna - Výdejní místa Česká republika",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 14,
-                "title": "Zásilkovna - Výdejní místa Slovenská republika"
+                "title": "Zásilkovna - Výdejní místa Slovenská republika",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 15,
-                "title": "Zásilkovna - Výdejní místa Maďarsko"
+                "title": "Zásilkovna - Výdejní místa Maďarsko",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 16,
-                "title": "Zásilkovna - Výdejní místa Polsko"
+                "title": "Zásilkovna - Výdejní místa Polsko",
+                "type": "Balikobot",
+                "shipper": "shipper",
+                "serviceType": "serviceType"
             },
             {
                 "id": 17,
