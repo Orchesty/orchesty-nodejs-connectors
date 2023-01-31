@@ -31,6 +31,9 @@ export default class AuthenticaGetShippingMethods extends AConnector {
 export interface IOutputItem {
     id: string;
     title: string;
+    type: string;
+    shipper: string;
+    serviceType: string;
 }
 
 interface IResponse {
