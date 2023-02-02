@@ -1,0 +1,101 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "SHOP": {
+            "SHOPITEM": [
+                {
+                    "ACCESSORY": "CD456",
+                    "CATEGORYTEXT": "Elektronika | Mobilní telefony",
+                    "DELIVERY": [
+                        {
+                            "DELIVERY_ID": "CESKA_POSTA",
+                            "DELIVERY_PRICE": 120,
+                            "DELIVERY_PRICE_COD": 120
+                        },
+                        {
+                            "DELIVERY_ID": "PPL",
+                            "DELIVERY_PRICE": 90,
+                            "DELIVERY_PRICE_COD": 120
+                        }
+                    ],
+                    "DELIVERY_DATE": 2,
+                    "DESCRIPTION": "Klasický s plným dotykovým uživatelským rozhraním",
+                    "EAN": 6417182041488,
+                    "EXTENDED_WARRANTY": {
+                        "DESC": "Záruka na 36 měsíců",
+                        "VAL": 36
+                    },
+                    "GIFT": "Pouzdro zdarma",
+                    "HEUREKA_CPC": "5,8",
+                    "IMGURL": "http://obchod.cz/mobily/nokia-5800-xpressmusic/obrazek.jpg",
+                    "IMGURL_ALTERNATIVE": "http://obchod.cz/mobily/nokia-5800-xpressmusic/obrazek2.jpg",
+                    "ITEMGROUP_ID": "EF789",
+                    "ITEM_ID": "AB123",
+                    "MANUFACTURER": "NOKIA",
+                    "PARAM": {
+                        "PARAM_NAME": "Barva",
+                        "VAL": "černá"
+                    },
+                    "PRICE_VAT": 6000,
+                    "PRODUCT": "Nokia 5800 XpressMusic",
+                    "PRODUCTNAME": "Nokia 5800 XpressMusic",
+                    "PRODUCTNO": "RM-559394",
+                    "SALES_VOUCHER": {
+                        "CODE": "SLEVA20",
+                        "DESC": "Sleva 20% po zadání kódu do 31.12.2021!"
+                    },
+                    "SPECIAL_SERVICE": "Aplikace ochranné fólie",
+                    "URL": "http://obchod.cz/mobily/nokia-5800-xpressmusic",
+                    "VIDEO_URL": "http://www.youtube.com/watch?v=KjR759oWF7w"
+                },
+                {
+                    "ACCESSORY": "CD456",
+                    "CATEGORYTEXT": "Elektronika | Mobilní telefony",
+                    "DELIVERY": [
+                        {
+                            "DELIVERY_ID": "CESKA_POSTA",
+                            "DELIVERY_PRICE": 120,
+                            "DELIVERY_PRICE_COD": 120
+                        },
+                        {
+                            "DELIVERY_ID": "PPL",
+                            "DELIVERY_PRICE": 90,
+                            "DELIVERY_PRICE_COD": 120
+                        }
+                    ],
+                    "DELIVERY_DATE": 2,
+                    "DESCRIPTION": "Klasický s plným dotykovým uživatelským rozhraním",
+                    "EAN": 6417182041488,
+                    "EXTENDED_WARRANTY": {
+                        "DESC": "Záruka na 36 měsíců",
+                        "VAL": 36
+                    },
+                    "GIFT": "Pouzdro zdarma",
+                    "HEUREKA_CPC": "5,8",
+                    "IMGURL": "http://obchod.cz/mobily/nokia-5800-xpressmusic/obrazek.jpg",
+                    "IMGURL_ALTERNATIVE": "http://obchod.cz/mobily/nokia-5800-xpressmusic/obrazek2.jpg",
+                    "ITEMGROUP_ID": "EF789",
+                    "ITEM_ID": "A123",
+                    "MANUFACTURER": "NOKIA",
+                    "PARAM": {
+                        "PARAM_NAME": "Barva",
+                        "VAL": "černá"
+                    },
+                    "PRICE_VAT": 6000,
+                    "PRODUCT": "Nokia 5800 XpressMusic",
+                    "PRODUCTNAME": "Nokia 5800 XpressMusic",
+                    "PRODUCTNO": "RM-559394",
+                    "SALES_VOUCHER": {
+                        "CODE": "SLEVA20",
+                        "DESC": "Sleva 20% po zadání kódu do 31.12.2021!"
+                    },
+                    "SPECIAL_SERVICE": "Aplikace ochranné fólie",
+                    "URL": "http://obchod.cz/mobily/nokia-5800-xpressmusic",
+                    "VIDEO_URL": "http://www.youtube.com/watch?v=KjR759oWF7w"
+                }
+            ]
+        }
+    }
+}

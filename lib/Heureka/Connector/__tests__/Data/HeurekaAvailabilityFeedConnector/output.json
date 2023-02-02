@@ -1,0 +1,53 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "item_list": {
+            "item": [
+                {
+                    "delivery_time": {
+                        "orderDeadline": "2011-09-10 12:00",
+                        "value": "2011-09-11 13:00"
+                    },
+                    "depot": [
+                        {
+                            "id": "434",
+                            "stock_quantity": 2
+                        },
+                        {
+                            "id": "437",
+                            "pickup_time": {
+                                "orderDeadline": "2011-09-10 12:00",
+                                "value": "2011-09-11 18:00"
+                            }
+                        }
+                    ],
+                    "id": "536234275543",
+                    "stock_quantity": 13
+                },
+                {
+                    "delivery_time": {
+                        "orderDeadline": "2011-09-10 12:00",
+                        "value": "2011-09-11 13:00"
+                    },
+                    "depot": [
+                        {
+                            "id": "435",
+                            "stock_quantity": 8
+                        },
+                        {
+                            "id": "438",
+                            "pickup_time": {
+                                "orderDeadline": "2011-09-10 12:00",
+                                "value": "2011-09-11 18:00"
+                            }
+                        }
+                    ],
+                    "id": "536234275547",
+                    "stock_quantity": 15
+                }
+            ]
+        }
+    }
+}
