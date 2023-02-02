@@ -73,6 +73,10 @@ export interface IOutput {
             tax: number;
         }[];
         line_items: {
+            vat_code?: string;
+            cost_center?: string;
+            contract?: string;
+            assignment?: string;
             description: string;
             quantity: number;
             unit_base: number;
@@ -81,10 +85,6 @@ export interface IOutput {
             total_tax: number;
             total_incl_tax: number;
             report_code: string;
-            vat_code?: string;
-            cost_center?: string;
-            contract?: string;
-            assignment?: string;
         }[];
         report_code: string;
         payment_type: string;
