@@ -12,7 +12,7 @@ export default class XeroGetAccountsBatch extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const url = 'Accounts';
+        const url = this.getAccountsUrl();
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,
@@ -22,21 +22,34 @@ export default class XeroGetAccountsBatch extends ABatchNode {
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const response = resp.getJsonBody();
 
-        dto.setItemList(response.Accounts ?? []);
+        this.setItemsListToDto(dto, response.Accounts ?? []);
         dto.removeBatchCursor();
 
         return dto;
+    }
+
+    protected getAccountsUrl(): string {
+        return 'Accounts';
+    }
+
+    protected setItemsListToDto(
+        dto: BatchProcessDto,
+        accounts: IAccount[],
+    ): BatchProcessDto<unknown, IOutput[]> {
+        return dto.setItemList(accounts);
     }
 
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+export type IOutput = IAccount;
+
 interface IResponse {
-    Accounts: IOutput[];
+    Accounts: IAccount[];
 }
 
-export interface IOutput {
+export interface IAccount {
     Code: string;
     Name: string;
     Type: string;
