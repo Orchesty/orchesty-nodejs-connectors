@@ -84,6 +84,7 @@ export interface IOutput {
             vat_code?: string;
             cost_center?: string;
             contract?: string;
+            assignment?: string;
         }[];
         report_code: string;
         payment_type: string;
