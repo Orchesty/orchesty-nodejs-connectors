@@ -73,8 +73,7 @@ export interface IOutput {
     updated_at: string;
     deleted_at: null;
     emails: string[];
-    placements:
-    {
+    placements: {
         disqualified: boolean;
         disqualified_at: null;
         disqualified_by: null;

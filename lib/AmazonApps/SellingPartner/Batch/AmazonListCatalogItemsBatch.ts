@@ -47,8 +47,7 @@ export interface IOutput {
             SellerSKU: string;
         };
     };
-    AttributeSets:
-    {
+    AttributeSets: {
         Actor: string[];
         Artist: string[];
         AspectRatio: string;
@@ -69,8 +68,7 @@ export interface IOutput {
             Units: string;
         };
         CpuType: string;
-        Creator:
-        {
+        Creator: {
             value: string;
             Role: string;
         }[];
@@ -126,8 +124,7 @@ export interface IOutput {
         IssuesPerYear: string;
         ItemPartNumber: string;
         Label: string;
-        Languages:
-        {
+        Languages: {
             Name: string;
             Type: string;
             AudioFormat: string;
@@ -244,8 +241,7 @@ export interface IOutput {
             CurrencyCode: string;
         };
     }[];
-    Relationships:
-    {
+    Relationships: {
         Identifiers: {
             MarketplaceASIN: {
                 MarketplaceId: string;
@@ -306,8 +302,7 @@ export interface IOutput {
             };
         };
     }[];
-    SalesRankings:
-    {
+    SalesRankings: {
         ProductCategoryId: string;
         Rank: number;
     }[];
@@ -318,8 +313,7 @@ interface IResponse {
     payload: {
         Items: IOutput[];
     };
-    errors:
-    {
+    errors: {
         code: string;
         message: string;
         details: string;

@@ -80,31 +80,26 @@ export interface IOutput {
         lines: [];
         text: string;
     };
-    bank_accounts:
-    {
+    bank_accounts: {
         account_number: string;
         bank_code: string;
     }[];
-    phones:
-    {
+    phones: {
         score: string;
         acc: string;
         number: string;
     }[];
-    mobiles:
-    {
+    mobiles: {
         score: string;
         acc: string;
         number: string;
     }[];
-    emails:
-    {
+    emails: {
         score: string;
         acc: string;
         email: string;
     }[];
-    webs:
-    {
+    webs: {
         score: string;
         acc: string;
         url: string;
@@ -113,8 +108,7 @@ export interface IOutput {
         id: string;
         text: string;
     };
-    secondary_industries:
-    {
+    secondary_industries: {
         id: string;
         text: string;
     }[];
@@ -142,15 +136,13 @@ export interface IOutput {
     is_unreliable_vatpayer: boolean;
     unreliable_vatpayer_since: string;
     vzp_debt: string;
-    insolvency_cases:
-    {
+    insolvency_cases: {
         stamp: string;
         status: number;
         ws_id: string;
         court_file_nr: string;
     }[];
-    sk_insolvency_cases:
-    {
+    sk_insolvency_cases: {
         stamp: string;
         status: number;
         type_id: number;
@@ -188,8 +180,7 @@ export interface IOutput {
     active_licenses_count: number;
     body: {
         average_age: number;
-        persons:
-        {
+        persons: {
             country_code: string;
             first_name: string;
             last_name: string;
@@ -216,8 +207,7 @@ export interface IOutput {
             };
         }[];
     };
-    esi:
-    {
+    esi: {
         project_name: string;
         status_id: number;
         esi_program: string;
@@ -229,8 +219,7 @@ export interface IOutput {
         expected_end_date_of_the_operation: string;
         union_cofinancing_rate: number;
     }[];
-    government_grants:
-    {
+    government_grants: {
         grant_id: string;
         beneficiary_id: string;
         case_id: string;
@@ -241,8 +230,7 @@ export interface IOutput {
         amount_requested: number;
         amount_granted: number;
     }[];
-    trademarks:
-    {
+    trademarks: {
         wording: string;
         reproduction: string;
         stamp_application: string;
@@ -260,8 +248,7 @@ export interface IOutput {
     twitter: [];
     facebook: [];
     linkedin: [];
-    acting_manner:
-    {
+    acting_manner: {
         manner_text: string;
         start_date: string;
     }[];

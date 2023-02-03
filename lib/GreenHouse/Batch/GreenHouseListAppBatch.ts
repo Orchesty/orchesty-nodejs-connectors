@@ -56,8 +56,7 @@ export interface IOutput {
     };
     rejection_reason: null;
     rejection_details: null;
-    jobs:
-    {
+    jobs: {
         id: number;
         name: string;
     }[];
@@ -67,8 +66,7 @@ export interface IOutput {
         id: number;
         name: string;
     };
-    answers:
-    {
+    answers: {
         question: string;
         answer: string;
     }[];
@@ -89,8 +87,7 @@ export interface IOutput {
             value: string;
         };
     };
-    attachments:
-    {
+    attachments: {
         filename: string;
         url: string;
         type: string;

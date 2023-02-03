@@ -37,48 +37,40 @@ export interface IInput {
     company: string;
     title: string;
     is_private: boolean;
-    phone_numbers:
-    {
+    phone_numbers: {
         value: string;
         type: string;
     }[];
-    addresses:
-    {
+    addresses: {
         value: string;
         type: string;
     }[];
-    email_addresses:
-    {
+    email_addresses: {
         value: string;
         type: string;
     }[];
-    website_addresses:
-    {
+    website_addresses: {
         value: string;
         type: string;
     }[];
-    social_media_addresses:
-    {
+    social_media_addresses: {
         value: string;
     }[];
-    educations:
-    {
+    educations: {
         school_id: number;
         discipline_id: number;
         degree_id: number;
         start_date: string;
         end_date: string;
     }[];
-    employments:
-    {
+    employments: {
         company_name: string;
         title: string;
         start_date: string;
         end_date: string;
     }[];
     tags: string[];
-    applications:
-    {
+    applications: {
         job_id: number;
     }[];
 }
@@ -96,36 +88,30 @@ export interface IOutput {
     photo_url: null;
     attachments: [];
     application_ids: number[];
-    phone_numbers:
-    {
+    phone_numbers: {
         value: string;
         type: string;
     }[];
-    addresses:
-    {
+    addresses: {
         value: string;
         type: string;
     }[];
-    email_addresses:
-    {
+    email_addresses: {
         value: string;
         type: string;
     }[];
-    website_addresses:
-    {
+    website_addresses: {
         value: string;
         type: string;
     }[];
-    social_media_addresses:
-    {
+    social_media_addresses: {
         value: string;
     }[];
     recruiter: null;
     coordinator: null;
     can_email: boolean;
     tags: string[];
-    applications:
-    {
+    applications: {
         id: number;
         candidate_id: number;
         prospect: boolean;
@@ -139,8 +125,7 @@ export interface IOutput {
         credited_to: null;
         rejection_reason: null;
         rejection_details: null;
-        jobs:
-        {
+        jobs: {
             id: number;
             name: string;
         }[];
@@ -160,15 +145,13 @@ export interface IOutput {
         };
         attachments: [];
     }[];
-    educations:
-    {
+    educations: {
         id: number;
         school_name: string;
         discipline: string;
         degree: string;
     }[];
-    employments:
-    {
+    employments: {
         id: number;
         company_name: string;
         title: string;

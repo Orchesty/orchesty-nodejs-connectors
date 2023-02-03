@@ -232,8 +232,7 @@ interface IInput {
         zaokrouhleniSazbaDPH_ID: string;
         obchodnik_ID: string;
         celkovaCastkaDual: number;
-        polozky:
-        {
+        polozky: {
             requestPropertiesList: string[];
             isNew: true;
             hidden: true;

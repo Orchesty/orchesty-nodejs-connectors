@@ -44,8 +44,7 @@ export interface IOutput {
     last_activity: string;
     is_private: boolean;
     photo_url: null;
-    attachments:
-    {
+    attachments: {
         filename: string;
         url: string;
         type: string;
@@ -55,18 +54,15 @@ export interface IOutput {
         value: string;
         type: string;
     }[];
-    addresses:
-    {
+    addresses: {
         value: string;
         type: string;
     }[];
-    email_addresses:
-    {
+    email_addresses: {
         value: string;
         type: string;
     }[];
-    website_addresses:
-    {
+    website_addresses: {
         value: string;
         type: string;
     }[];
@@ -81,8 +77,7 @@ export interface IOutput {
     coordinator: null;
     can_email: boolean;
     tags: string[];
-    applications:
-    {
+    applications: {
         id: number;
         candidate_id: number;
         prospect: boolean;
@@ -105,8 +100,7 @@ export interface IOutput {
         };
         rejection_reason: null;
         rejection_details: null;
-        jobs:
-        {
+        jobs: {
             id: number;
             name: string;
         }[];
@@ -130,15 +124,13 @@ export interface IOutput {
                 name: string;
             };
         };
-        attachments:
-        {
+        attachments: {
             filename: string;
             url: string;
             type: string;
         }[];
     }[];
-    educations:
-    {
+    educations: {
         id: number;
         school_name: string;
         degree: string;
@@ -146,8 +138,7 @@ export interface IOutput {
         start_date: string;
         end_date: string;
     }[];
-    employments:
-    {
+    employments: {
         id: number;
         company_name: string;
         title: string;

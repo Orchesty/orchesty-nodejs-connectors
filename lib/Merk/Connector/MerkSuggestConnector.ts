@@ -83,31 +83,26 @@ export interface IOutput {
         lines: [];
         text: string;
     };
-    bank_accounts:
-    {
+    bank_accounts: {
         account_number: string;
         bank_code: string;
     }[];
-    phones:
-    {
+    phones: {
         score: string;
         acc: string;
         number: string;
     }[];
-    mobiles:
-    {
+    mobiles: {
         score: string;
         acc: string;
         number: string;
     }[];
-    emails:
-    {
+    emails: {
         score: string;
         acc: string;
         email: string;
     }[];
-    webs:
-    {
+    webs: {
         score: string;
         acc: string;
         url: string;
@@ -116,8 +111,7 @@ export interface IOutput {
         id: string;
         text: string;
     };
-    secondary_industries:
-    {
+    secondary_industries: {
         id: string;
         text: string;
     }[];
@@ -145,15 +139,13 @@ export interface IOutput {
     is_unreliable_vatpayer: boolean;
     unreliable_vatpayer_since: string;
     vzp_debt: string;
-    insolvency_cases:
-    {
+    insolvency_cases: {
         stamp: string;
         status: number;
         ws_id: string;
         court_file_nr: string;
     }[];
-    sk_insolvency_cases:
-    {
+    sk_insolvency_cases: {
         stamp: string;
         status: number;
         type_id: number;

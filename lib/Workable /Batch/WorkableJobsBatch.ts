@@ -56,8 +56,7 @@ interface IOutput {
     code: string;
     state: string;
     department: string;
-    department_hierarchy:
-    {
+    department_hierarchy: {
         id: number;
         name: string;
     }[];

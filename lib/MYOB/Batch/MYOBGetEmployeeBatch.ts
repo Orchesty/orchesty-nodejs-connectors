@@ -42,8 +42,7 @@ interface IOutput {
     IsIndividual: boolean;
     DisplayID: string;
     IsActive: boolean;
-    Addresses:
-    {
+    Addresses: {
         Location: number;
         Street: string;
         City: string;
@@ -60,8 +59,7 @@ interface IOutput {
         Salutation: string;
     }[];
     Notes: string;
-    Identifiers:
-    {
+    Identifiers: {
         Label: string;
         Value: string;
     }[];
@@ -94,10 +92,8 @@ interface IOutput {
         URI: string;
     };
     TimeBillingDetails: {
-        EmployeeBillingRateExcludingTax:
-        number;
-        CostPerHour:
-        number;
+        EmployeeBillingRateExcludingTax: number;
+        CostPerHour: number;
     };
     LastModified: string;
     PhotoURI: string;

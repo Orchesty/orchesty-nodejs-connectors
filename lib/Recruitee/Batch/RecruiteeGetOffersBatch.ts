@@ -79,8 +79,7 @@ export interface IOutput {
             requirements: string;
         };
     };
-    open_questions:
-    {
+    open_questions: {
         id: number;
         kind: string;
         required: boolean;

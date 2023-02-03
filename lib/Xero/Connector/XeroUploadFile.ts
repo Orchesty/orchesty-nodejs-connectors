@@ -79,8 +79,7 @@ export interface IErrorResponse {
     ErrorNumber: number;
     Type: string;
     Message: string;
-    Elements:
-    {
+    Elements: {
         ValidationErrors: { Message: string }[];
     }[];
     /* eslint-enable @typescript-eslint/naming-convention */
