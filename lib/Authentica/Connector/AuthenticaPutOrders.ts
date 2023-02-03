@@ -65,6 +65,7 @@ export interface IOrder {
         unitPrice: number | null;
     }[];
     variableSymbol: string | null;
+    packagingType: string | null;
 }
 
 interface IResponse {
