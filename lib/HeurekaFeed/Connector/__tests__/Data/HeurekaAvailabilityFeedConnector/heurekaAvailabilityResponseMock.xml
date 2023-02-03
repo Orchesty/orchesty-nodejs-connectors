@@ -1,0 +1,22 @@
+<item_list>
+    <item id="536234275543">
+        <stock_quantity>13</stock_quantity>
+        <delivery_time orderDeadline="2011-09-10 12:00">2011-09-11 13:00</delivery_time>
+        <depot id="434">
+            <stock_quantity>2</stock_quantity>
+        </depot>
+        <depot id="437">
+            <pickup_time orderDeadline="2011-09-10 12:00">2011-09-11 18:00</pickup_time>
+        </depot>
+    </item>
+    <item id="536234275547">
+        <stock_quantity>15</stock_quantity>
+        <delivery_time orderDeadline="2011-09-10 12:00">2011-09-11 13:00</delivery_time>
+        <depot id="435">
+            <stock_quantity>8</stock_quantity>
+        </depot>
+        <depot id="438">
+            <pickup_time orderDeadline="2011-09-10 12:00">2011-09-11 18:00</pickup_time>
+        </depot>
+    </item>
+</item_list>
