@@ -1,19 +1,23 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
-import HeurekaAvailabilityFeedConnector from '../../lib/Heureka/Connector/HeurekaAvailabilityFeedConnector';
-import HeurekaProductFeedConnector from '../../lib/Heureka/Connector/HeurekaProductFeedConnector';
-import HeurekaApplication, { AVAILABILITY_FEED_URL, NAME, PRODUCT_FEED_URL } from '../../lib/Heureka/HeurekaApplication';
+import HeurekaAvailabilityFeedConnector from '../../lib/HeurekaFeed/Connector/HeurekaAvailabilityFeedConnector';
+import HeurekaProductFeedConnector from '../../lib/HeurekaFeed/Connector/HeurekaProductFeedConnector';
+import HeurekaFeedApplication, {
+    AVAILABILITY_FEED_URL,
+    NAME,
+    PRODUCT_FEED_URL,
+    SETTINGS,
+} from '../../lib/HeurekaFeed/HeurekaFeedApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(NAME, DEFAULT_USER, {
-        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+        [SETTINGS]: {
             [PRODUCT_FEED_URL]: 'https://path.to/xml',
             [AVAILABILITY_FEED_URL]: 'https://path.to/xml',
         },
     });
 
-    const app = new HeurekaApplication();
+    const app = new HeurekaFeedApplication();
     container.setApplication(app);
 
     const heurekaProductFeedConnector = new HeurekaProductFeedConnector();

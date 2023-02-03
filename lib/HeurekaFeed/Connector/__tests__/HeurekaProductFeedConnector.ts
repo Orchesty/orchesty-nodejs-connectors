@@ -2,7 +2,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { readFileSync } from 'fs';
-import init from '../../../../test/Implementation/heureka';
+import init from '../../../../test/Implementation/heurekaFeed';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as HEUREKA_PRODUCT_FEED_CONNECTOR } from '../HeurekaProductFeedConnector';
 

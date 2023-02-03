@@ -1,9 +1,8 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { XMLParser } from 'fast-xml-parser';
-import { AVAILABILITY_FEED_URL } from '../HeurekaApplication';
+import { AVAILABILITY_FEED_URL, SETTINGS } from '../HeurekaFeedApplication';
 
 export const NAME = 'heureka-availability-feed-connector';
 
@@ -18,9 +17,9 @@ export default class HeurekaAvailabilityFeedConnector extends AConnector {
         const req = await this.getApplication()
             .getRequestDto(
                 dto,
-                await this.getApplicationInstallFromProcess(dto),
+                appInstall,
                 HttpMethods.GET,
-                appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AVAILABILITY_FEED_URL],
+                appInstall.getSettings()[SETTINGS][AVAILABILITY_FEED_URL],
             );
         const resp = await this.getSender()
             .send(req, [200]);
