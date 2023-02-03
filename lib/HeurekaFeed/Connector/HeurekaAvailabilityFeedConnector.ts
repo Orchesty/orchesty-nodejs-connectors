@@ -37,29 +37,29 @@ export interface IOutput {
     item_list: IList[];
 }
 
-interface IList {
+export interface IList {
     item: IItem[];
 }
 
-interface IItem {
+export interface IItem {
     stock_quantity: number;
     delivery_time: IDeliveryTime;
     depot: IDepot[];
     id: string;
 }
 
-interface IDeliveryTime {
+export interface IDeliveryTime {
     value?: string;
     orderDeadline?: string;
 }
 
-interface IDepot {
+export interface IDepot {
     stock_quantity?: string;
     id?: string;
     pickup_time?: IPickupTime;
 }
 
-interface IPickupTime {
+export interface IPickupTime {
     value?: string;
     orderDeadline?: string;
 }

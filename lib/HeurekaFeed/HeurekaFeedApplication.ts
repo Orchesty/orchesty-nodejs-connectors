@@ -1,4 +1,3 @@
-import { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -22,11 +21,11 @@ export default class HeurekaFeedApplication extends ABasicApplication {
     }
 
     public getPublicName(): string {
-        return 'Heureka';
+        return 'Heureka feed';
     }
 
     public getDescription(): string {
-        return 'Heureka description';
+        return 'Heureka feed description';
     }
 
     public getFormStack(): FormStack {

@@ -33,11 +33,11 @@ export default class HeurekaProductFeedConnector extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IOutput {
+export interface IOutput {
     SHOPITEM: IShopItem[];
 }
 
-interface IShopItem {
+export interface IShopItem {
     ITEM_ID: string;
     PRODUCTNAME: string;
     PRODUCT: string;
@@ -64,23 +64,23 @@ interface IShopItem {
 
 }
 
-interface IParam {
+export interface IParam {
     PARAM_NAME: string;
     VAL: string;
 }
 
-interface IDelivery {
+export interface IDelivery {
     DELIVERY_ID: string;
     DELIVERY_PRICE: string;
     DELIVERY_PRICE_COD: string;
 }
 
-interface IExtendedWarranty {
+export interface IExtendedWarranty {
     VAL: number;
     DESC: string;
 }
 
-interface ISalesVoucher {
+export interface ISalesVoucher {
     CODE: string;
     DESC: string;
 }
