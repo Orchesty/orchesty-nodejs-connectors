@@ -1,5 +1,6 @@
 import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import ShopifyGetFulfillments from '../../lib/Shopify/Batch/ShopifyGetFulfillments';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
 import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsoluteUpdateStock';
@@ -62,4 +63,10 @@ export default async function init(): Promise<void> {
         .setDb(db)
         .setApplication(shopifyApplication);
     container.setConnector(shopifyCreateFulfillment);
+
+    const shopifyGetFulfillments = new ShopifyGetFulfillments()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setBatch(shopifyGetFulfillments);
 }
