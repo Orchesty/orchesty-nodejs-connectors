@@ -1,5 +1,6 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import ShopifyGetFulfillments from '../../lib/Shopify/Batch/ShopifyGetFulfillments';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
 import ShopifyRegisterWebhook from '../../lib/Shopify/Batch/ShopifyRegisterWebhook';
@@ -76,4 +77,10 @@ export default function init(): void {
         .setSender(sender)
         .setDb(db);
     container.setBatch(shopifyUnregisterWebhook);
+
+    const shopifyGetFulfillments = new ShopifyGetFulfillments()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setBatch(shopifyGetFulfillments);
 }
