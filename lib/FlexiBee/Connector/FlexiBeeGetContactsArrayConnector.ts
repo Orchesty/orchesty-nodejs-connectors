@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import FlexiBeeApplication from '../FexiBeeApplication';
 
 export default class FlexiBeeGetContactsArrayConnector extends AConnector {
@@ -19,7 +20,7 @@ export default class FlexiBeeGetContactsArrayConnector extends AConnector {
             HttpMethods.GET,
             application.getUrl(applicationInstall, 'kontakt.json'),
         );
-        const response = await this.getSender().send(request);
+        const response = await this.getSender().send(request, commonResponseCodeRange());
         this.evaluateStatusCode(response, dto);
         dto.setData(response.getBody());
 

@@ -2,6 +2,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import FlexiBeeApplication from '../FexiBeeApplication';
 
 export const NAME = 'flexibee-create-new-contact';
@@ -89,7 +90,7 @@ export default class FlexiBeeCreateNewContactConnector extends AConnector {
             HttpMethods.PUT,
             application.getUrl(applicationInstall, `admin/zalozeni-firmy?${url}`),
         );
-        const response = await this.getSender().send(request);
+        const response = await this.getSender().send(request, commonResponseCodeRange());
         this.evaluateStatusCode(response, dto);
         dto.setData(response.getBody());
 
