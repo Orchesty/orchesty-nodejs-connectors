@@ -2,6 +2,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import ShipstationApplication from '../ShipstationApplication';
 
 export default class ShipstationNewOrderConnector extends AConnector {
@@ -19,14 +20,12 @@ export default class ShipstationNewOrderConnector extends AConnector {
             return dto;
         }
 
-        const output = await this.getSender().send(
-            this.getApplication<ShipstationApplication>().getRequestDto(
-                dto,
-                applicationInstall,
-                HttpMethods.GET,
-                url,
-            ),
-        );
+        const output = await this.getSender().send(this.getApplication<ShipstationApplication>().getRequestDto(
+            dto,
+            applicationInstall,
+            HttpMethods.GET,
+            url,
+        ), commonResponseCodeRange());
 
         this.evaluateStatusCode(output, dto);
 
