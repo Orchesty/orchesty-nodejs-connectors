@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-absolute-update-stock';
@@ -27,7 +28,7 @@ export default class ShopifyAbsoluteUpdateStock extends AConnector {
             JSON.stringify(data),
         );
 
-        await this.getSender().send(requestDto);
+        await this.getSender().send(requestDto, commonResponseCodeRange());
         return dto;
     }
 

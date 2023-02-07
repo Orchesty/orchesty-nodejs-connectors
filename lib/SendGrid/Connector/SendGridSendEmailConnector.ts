@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import SendGridApplication, { BASE_URL } from '../SendGridApplication';
 
 interface IInput {
@@ -51,7 +52,7 @@ export default class SendGridSendEmailConnector extends AConnector {
         const request = await this.getApplication<SendGridApplication>()
             .getRequestDto(dto, applicationInstall, HttpMethods.POST, url, JSON.stringify(body));
 
-        const response = await this.getSender().send(request);
+        const response = await this.getSender().send(request, commonResponseCodeRange());
         if (!this.evaluateStatusCode(response, dto)) {
             return dto;
         }
