@@ -3,6 +3,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import FakturoidApplication, { ACCOUNT, BASE_ACCOUNTS, BASE_URL } from '../FakturoidApplication';
 
 export default abstract class AFakturoidConnector extends AConnector {
@@ -34,7 +35,7 @@ export default abstract class AFakturoidConnector extends AConnector {
         }
 
         const requestDto = app.getRequestDto(dto, applicationInstall, this.method, url, body);
-        const response = await this.getSender().send(requestDto);
+        const response = await this.getSender().send(requestDto, commonResponseCodeRange());
         this.evaluateStatusCode(response, dto);
         dto.setData(response.getBody());
 

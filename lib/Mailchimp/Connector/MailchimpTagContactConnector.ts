@@ -2,6 +2,7 @@ import { AUTHORIZATION_FORM } from '@orchesty/nodejs-sdk/dist/lib/Application/Ba
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { commonResponseCodeRange } from '../../Common/CommonResponseCodeRanges';
 import { API_KEYPOINT, AUDIENCE_ID, SEGMENT_ID } from '../MailchimpApplication';
 
 export default class MailchimpTagContactConnector extends AConnector {
@@ -14,17 +15,15 @@ export default class MailchimpTagContactConnector extends AConnector {
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const apiEndpoint = applicationInstall.getSettings()[API_KEYPOINT];
 
-        const output = await this.getSender().send(
-            await this.getApplication()
-                .getRequestDto(
-                    dto,
-                    applicationInstall,
-                    HttpMethods.POST,
-                    // eslint-disable-next-line max-len
-                    `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/segments/${applicationInstall.getSettings()[SEGMENT_ID]}/members`,
-                    dto.getData(),
-                ),
-        );
+        const output = await this.getSender().send(await this.getApplication()
+            .getRequestDto(
+                dto,
+                applicationInstall,
+                HttpMethods.POST,
+                // eslint-disable-next-line max-len
+                `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[AUTHORIZATION_FORM][AUDIENCE_ID]}/segments/${applicationInstall.getSettings()[SEGMENT_ID]}/members`,
+                dto.getData(),
+            ), commonResponseCodeRange());
         const json = output.getJsonBody();
         this.evaluateStatusCode(output, dto);
 
