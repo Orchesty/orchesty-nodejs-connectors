@@ -1,4 +1,3 @@
-import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { init, mock } from '../../../../test/Implementation/authentica';
@@ -11,7 +10,7 @@ let redis: Redis;
 describe('Tests for AuthenticaGetOrderStatus', () => {
     beforeAll(() => {
         tester = new NodeTester(container, __filename);
-        redis = container.get(CoreServices.REDIS);
+        redis = container.get(Redis);
         init();
     });
 

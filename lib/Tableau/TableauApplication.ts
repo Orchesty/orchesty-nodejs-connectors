@@ -6,7 +6,7 @@ import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { EXPIRES } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Client';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -28,7 +28,7 @@ export const TOKEN = 'token';
 
 export default class TableauApplication extends ABasicApplication {
 
-    public constructor(private readonly sender: CurlSender, private readonly dbClient: MongoDbClient) {
+    public constructor(private readonly sender: CurlSender, private readonly dbClient: DatabaseClient) {
         super();
     }
 

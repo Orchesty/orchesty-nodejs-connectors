@@ -9,7 +9,7 @@ import {
     PASSWORD,
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Client';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -49,7 +49,7 @@ interface IToken {
 
 export default class FlexiBeeApplication extends ABasicApplication {
 
-    public constructor(private readonly sender: CurlSender, private readonly dbClient: MongoDbClient) {
+    public constructor(private readonly sender: CurlSender, private readonly dbClient: DatabaseClient) {
         super();
     }
 
