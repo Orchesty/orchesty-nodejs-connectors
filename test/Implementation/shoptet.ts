@@ -5,7 +5,6 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import CoreServices from '@orchesty/nodejs-sdk/dist/lib/DIContainer/CoreServices';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import ShoptetGetOrderChangesList from '../../lib/Shoptet/Batch/ShoptetGetOrderChangesList';
 import ShoptetGetProductChangesList from '../../lib/Shoptet/Batch/ShoptetGetProductChangesList';
@@ -67,7 +66,7 @@ export async function init(): Promise<void> {
 
     const cacheKey = `${NAME}ApiKey_TestUser`;
 
-    const redisService = container.get<Redis>(CoreServices.REDIS);
+    const redisService = container.get(Redis);
     await redisService.set(
         cacheKey,
         // eslint-disable-next-line @typescript-eslint/naming-convention

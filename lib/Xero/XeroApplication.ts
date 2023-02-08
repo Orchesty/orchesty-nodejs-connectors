@@ -13,7 +13,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
-import MongoDbClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Mongodb/Client';
+import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Client';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -31,7 +31,7 @@ export default class XeroApplication extends AOAuth2Application {
 
     public constructor(
         provider: OAuth2Provider,
-        protected readonly mongoService: MongoDbClient,
+        protected readonly mongoService: DatabaseClient,
         protected readonly curlSender: CurlSender,
     ) {
         super(provider);
