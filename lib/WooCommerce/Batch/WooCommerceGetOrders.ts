@@ -160,11 +160,16 @@ export interface ILineItems {
         total: string;
         subtotal: string;
     }[];
-    meta_data: [];
+    meta_data: IMetaData[];
     sku: string;
     price: number;
 }
 
 export type IResponseJson = IOrdersJson;
+
+export interface IMetaData {
+    display_key: string;
+    display_value: string;
+}
 
 /* eslint-enable @typescript-eslint/naming-convention */
