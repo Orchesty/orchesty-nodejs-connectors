@@ -1,0 +1,36 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "invoiceType": "issuedInvoice",
+        "invoiceNumber": "FAK0008",
+        "dueDate": "2023-02-01",
+        "taxDate": "2023-02-22",
+        "accountingDate": "2023-02-10",
+        "createdAt": "2023-02-01",
+        "text": "Testovaci fakturaa",
+        "paymentType": "cash",
+        "partnerIdentity": {
+            "company": "Firma ABC s.r.o.",
+            "name": "Jmeno",
+            "city": "Jihlava",
+            "street": "Jarní 12",
+            "zip": "586 01",
+            "dic": "CZ12345678",
+            "ico": "123123123"
+        },
+        "invoiceItems": [
+            {
+                "text": "Potraviny (sazba 21 %)",
+                "note": "Vzorová položka.",
+                "quantity": 1,
+                "payVat": false,
+                "unitPrice": 1000,
+                "price": 1000,
+                "rateVAT": "high",
+                "priceVat": 1250
+            }
+        ]
+    }
+}

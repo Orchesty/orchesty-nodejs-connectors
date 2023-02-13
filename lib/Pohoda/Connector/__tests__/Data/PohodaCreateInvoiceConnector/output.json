@@ -1,0 +1,51 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "responsePack": {
+            "responsePackItem": {
+                "invoiceResponse": {
+                    "importDetails": {
+                        "detail": [
+                            {
+                                "state": "warning",
+                                "errno": 603,
+                                "note": "Hodnota prvku musela b�t upravena.",
+                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
+                                "valueProduced": "3Fv"
+                            },
+                            {
+                                "state": "warning",
+                                "errno": 603,
+                                "note": "Hodnota prvku musela b�t upravena.",
+                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
+                                "valueProduced": "UD"
+                            },
+                            {
+                                "state": "warning",
+                                "errno": 603,
+                                "note": "Nezn�m� ��et",
+                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
+                                "valueProduced": "KB"
+                            }
+                        ]
+                    },
+                    "producedDetails": {
+                        "id": 114,
+                        "number": "FAK0008",
+                        "actionType": "add",
+                        "itemDetails": {
+                            "item": {
+                                "actionType": "add",
+                                "producedItem": {
+                                    "id": 230
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
