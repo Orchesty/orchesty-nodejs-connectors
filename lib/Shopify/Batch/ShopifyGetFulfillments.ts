@@ -18,7 +18,7 @@ export default class ShopifyGetFulfillments extends ABatchNode {
             dto,
             await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.GET,
-            `admin/api/${API_VERSION}/${id}/fulfillment_orders.json`,
+            `admin/api/${API_VERSION}/orders/${id}/fulfillment_orders.json`,
         );
         const resp = await this.getSender().send<IOutput>(req);
 
