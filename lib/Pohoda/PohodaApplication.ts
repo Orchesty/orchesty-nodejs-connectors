@@ -50,7 +50,7 @@ export default class PohodaApplication extends ABasicApplication {
         const request = new RequestDto(`${baseUrl}/${url}`, method, dto);
 
         request.setHeaders({
-            [CommonHeaders.CONTENT_TYPE]: 'text/xml',
+            [CommonHeaders.CONTENT_TYPE]: 'text/xml; charset=windows-1250',
             [CommonHeaders.ACCEPT]: 'text/xml',
             'STW-Authorization': `Basic ${token}`,
         });

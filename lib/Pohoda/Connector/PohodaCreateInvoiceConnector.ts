@@ -15,10 +15,10 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const xmlData = this.createXml(dto.getJsonData());
-
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const companyId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][COMPANY_ID];
+        const xmlData = this.createXml(dto.getJsonData(), companyId);
+
         const req = await this.getApplication().getRequestDto(
             dto,
             appInstall,
@@ -26,72 +26,82 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
             'xml',
             xmlData,
         );
+
         const resp = await this.getSender().send(req, [200]);
 
-        const parser = new XMLParser();
+        const parser = new XMLParser({ ignoreAttributes: false, parseAttributeValue: true });
         const responseJson = parser.parse(resp.getBody()) as IOutput;
 
-        // todo check for pohoda validation error
-        const error = this.checkResponseForErrors(responseJson);
+        const errorMessage = this.checkResponseForErrors(responseJson);
 
-        if (error) {
-            dto.setStopProcess(ResultCode.STOP_AND_FAILED, error.note);
+        if (errorMessage) {
+            dto.setStopProcess(ResultCode.STOP_AND_FAILED, errorMessage);
         }
 
         return dto.setNewJsonData<IOutput>(responseJson);
     }
 
-    private createXml(input: IInput): string {
-        const builder = new XMLBuilder({});
-
-        // todo prepend ico - companyId
-        // <?xml version="1.0" encoding="Windows-1250"?>
-        // <dat:dataPack xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" version="2.0" id="Usr1" application="POHODA" ico="12345678" note="Nova faktura">
-        //   <dat:dataPackItem version="2.0" id="Usr1">
-
-        // todo append
-        // </dat:dataPackItem>
-        // </dat:dataPack>
+    private createXml(input: IInput, companyId: string): string {
+        const builder = new XMLBuilder({ attributeNamePrefix: '@_', ignoreAttributes: false });
 
         /* eslint-disable @typescript-eslint/naming-convention */
-        const invoiceItems = input.invoiceItems.map((item) => ({
-            'inv:text': item.text,
-            'inv:note': item.note,
-            'inv:quantity': item.quantity,
-            'inv:payVAT': item.payVat,
-            'inv:homeCurrency': {
-                'typ:unitPrice': item.unitPrice,
-                'typ:price': item.price,
-                'typ:priceVat': item.priceVat,
+        const invoiceItems = input.invoiceItems?.map((item) => ({
+            'inv:invoiceItem': {
+                'inv:text': item.text,
+                'inv:note': item.note,
+                'inv:quantity': item.quantity,
+                'inv:payVAT': item.payVat,
+                'inv:rateVAT': item.rateVat,
+                'inv:homeCurrency': {
+                    'typ:unitPrice': item.unitPrice,
+                    'typ:price': item.price,
+                    'typ:priceVAT': item.priceVat,
+                },
             },
-        }));
+        })) || [];
 
         const invoice = {
-            'inv:invoice': {
-                'inv:invoiceHeader': {
-                    'inv:invoiceType': input.invoiceType,
-                    'inv:number': {
-                        'typ:numberRequested': input.invoiceNumber,
-                    },
-                    'inv:date': input.createdAt,
-                    'inv:dateDue': input.dueDate,
-                    'inv:dateTax': input.taxDate,
-                    'inv:dateAccounting': input.accountingDate,
-                    'inv:text': input.text,
-                    'inv:paymentType': {
-                        'typ:paymentType': input.paymentType,
-                    },
-                    'inv:partnerIdentity': {
-                        'typ:address': {
-                            'typ:company': input.partnerIdentity.company,
-                            'typ:city': input.partnerIdentity.city,
-                            'typ:street': input.partnerIdentity.street,
-                            'typ:zip': input.partnerIdentity.zip,
-                            'typ:dic': input.partnerIdentity.dic,
+            '?xml': { '@_version': '1.0', '@_encoding': 'Windows-1250' },
+            'dat:dataPack': {
+                '@_xmlns:dat': 'http://www.stormware.cz/schema/version_2/data.xsd',
+                '@_xmlns:typ': 'http://www.stormware.cz/schema/version_2/type.xsd',
+                '@_xmlns:inv': 'http://www.stormware.cz/schema/version_2/invoice.xsd',
+                '@_version': '2.0',
+                '@_id': 'Usr1',
+                '@_application': 'POHODA',
+                '@_note': 'New invoice',
+                '@_ico': companyId,
+                'dat:dataPackItem': {
+                    '@_version': '2.0',
+                    '@_id': 'Usr1',
+                    'inv:invoice': {
+                        '@_version': '2.0',
+                        'inv:invoiceHeader': {
+                            'inv:invoiceType': input.invoiceType,
+                            'inv:number': {
+                                'typ:numberRequested': input.invoiceNumber,
+                            },
+                            'inv:date': input.createdAt,
+                            'inv:dateDue': input.dueDate,
+                            'inv:dateTax': input.taxDate,
+                            'inv:dateAccounting': input.accountingDate,
+                            'inv:text': input.text,
+                            'inv:paymentType': {
+                                'typ:paymentType': input.paymentType,
+                            },
+                            'inv:partnerIdentity': {
+                                'typ:address': {
+                                    'typ:company': input.partnerIdentity.company,
+                                    'typ:city': input.partnerIdentity.city,
+                                    'typ:street': input.partnerIdentity.street,
+                                    'typ:zip': input.partnerIdentity.zip,
+                                    'typ:dic': input.partnerIdentity.dic,
+                                },
+                            },
                         },
+                        'inv:invoiceDetail': invoiceItems,
                     },
                 },
-                'inv:invoiceDetail': invoiceItems,
             },
         };
         /* eslint-enable @typescript-eslint/naming-convention */
@@ -99,12 +109,18 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         return builder.build(invoice);
     }
 
-    private checkResponseForErrors(response: IOutput): IResponseImportDetail | null {
-        const responseItems = response.responsePack.responsePackItem.invoiceResponse.importDetails.detail;
+    private checkResponseForErrors(response: IOutput): string | null {
+        const responseStatus = response['rsp:responsePack']['rsp:responsePackItem'];
+
+        if (responseStatus['@_state'] === 'error') {
+            return responseStatus['@_note'] as string;
+        }
+
+        const responseItems = responseStatus['inv:invoiceResponse']['rdc:importDetails']['rdc:detail'];
 
         for (const responseItem of responseItems) {
-            if (responseItem.state === 'error') {
-                return responseItem;
+            if (responseItem['rdc:state'] === 'error') {
+                return responseItem['rdc:note'];
             }
         }
 
@@ -130,7 +146,7 @@ interface IInvoiceItem {
     payVat: boolean;
     unitPrice: number;
     price: number;
-    rateVAT: 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
+    rateVat: 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
     priceVat?: number;
 }
 
@@ -147,37 +163,40 @@ export interface IInput {
     invoiceItems: IInvoiceItem[];
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 interface IResponseImportDetail {
-    state: 'error' | 'warning';
-    errno: number;
-    note: string;
+    'rdc:state': 'error' | 'warning';
+    'rdc:errno': number;
+    'rdc:note': string;
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    XPath: string;
-    valueProduced?: string;
-    valueRequested?: string;
+    'rdc:XPath': string;
+    'rdc:valueProduced'?: string;
+    'rdc:valueRequested'?: string;
 }
 
 export interface IOutput {
-    responsePack: {
-        responsePackItem: {
-            invoiceResponse: {
-                importDetails: {
-                    detail: IResponseImportDetail[];
+    'rsp:responsePack': {
+        'rsp:responsePackItem': {
+            'inv:invoiceResponse': {
+                'rdc:importDetails': {
+                    'rdc:detail': IResponseImportDetail[];
                 };
-                producedDetails: {
-                    id: string;
-                    number: string;
-                    actionType: string;
-                    itemDetails: {
-                        item: {
-                            actionType: string;
-                            producedItem: {
-                                id: string;
+                'rdc:producedDetails': {
+                    'rdc:id': string;
+                    'rdc:number': string;
+                    'rdc:actionType': string;
+                    'rdc:itemDetails': {
+                        'rdc:item': {
+                            'rdc:actionType': string;
+                            'rdc:producedItem': {
+                                'rdc:id': string;
                             };
                         };
                     };
                 };
             };
+            '@_state': string;
+            '@_note'?: string;
         };
     };
 }

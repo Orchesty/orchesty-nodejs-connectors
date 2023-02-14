@@ -3,46 +3,124 @@
         "user": "TestUser"
     },
     "data": {
-        "responsePack": {
-            "responsePackItem": {
-                "invoiceResponse": {
-                    "importDetails": {
-                        "detail": [
+        "?xml": {
+            "@_encoding": "Windows-1250",
+            "@_version": 1
+        },
+        "rsp:responsePack": {
+            "@_ico": 12345678,
+            "@_id": "Usr1",
+            "@_key": "908ba96e-887a-428b-805e-f2e53dac82bb",
+            "@_note": "New invoice",
+            "@_programVersion": "13302.6 (18.1.2023)",
+            "@_state": "ok",
+            "@_version": 2,
+            "@_xmlns:acp": "http://www.stormware.cz/schema/version_2/actionPrice.xsd",
+            "@_xmlns:act": "http://www.stormware.cz/schema/version_2/accountancy.xsd",
+            "@_xmlns:acu": "http://www.stormware.cz/schema/version_2/accountingunit.xsd",
+            "@_xmlns:acv": "http://www.stormware.cz/schema/version_2/activity.xsd",
+            "@_xmlns:adb": "http://www.stormware.cz/schema/version_2/addressbook.xsd",
+            "@_xmlns:afp": "http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd",
+            "@_xmlns:arch": "http://www.stormware.cz/schema/version_2/archive.xsd",
+            "@_xmlns:asv": "http://www.stormware.cz/schema/version_2/accountingSalesVouchers.xsd",
+            "@_xmlns:bal": "http://www.stormware.cz/schema/version_2/balance.xsd",
+            "@_xmlns:bka": "http://www.stormware.cz/schema/version_2/bankAccount.xsd",
+            "@_xmlns:bnk": "http://www.stormware.cz/schema/version_2/bank.xsd",
+            "@_xmlns:cen": "http://www.stormware.cz/schema/version_2/centre.xsd",
+            "@_xmlns:con": "http://www.stormware.cz/schema/version_2/contract.xsd",
+            "@_xmlns:csh": "http://www.stormware.cz/schema/version_2/cashRegister.xsd",
+            "@_xmlns:ctg": "http://www.stormware.cz/schema/version_2/category.xsd",
+            "@_xmlns:enq": "http://www.stormware.cz/schema/version_2/enquiry.xsd",
+            "@_xmlns:est": "http://www.stormware.cz/schema/version_2/establishment.xsd",
+            "@_xmlns:ftr": "http://www.stormware.cz/schema/version_2/filter.xsd",
+            "@_xmlns:gdp": "http://www.stormware.cz/schema/version_2/GDPR.xsd",
+            "@_xmlns:grs": "http://www.stormware.cz/schema/version_2/groupStocks.xsd",
+            "@_xmlns:idp": "http://www.stormware.cz/schema/version_2/individualPrice.xsd",
+            "@_xmlns:ilt": "http://www.stormware.cz/schema/version_2/inventoryLists.xsd",
+            "@_xmlns:int": "http://www.stormware.cz/schema/version_2/intDoc.xsd",
+            "@_xmlns:inv": "http://www.stormware.cz/schema/version_2/invoice.xsd",
+            "@_xmlns:ipm": "http://www.stormware.cz/schema/version_2/intParam.xsd",
+            "@_xmlns:isd": "http://www.stormware.cz/schema/version_2/isdoc.xsd",
+            "@_xmlns:lAcv": "http://www.stormware.cz/schema/version_2/list_activity.xsd",
+            "@_xmlns:lAdb": "http://www.stormware.cz/schema/version_2/list_addBook.xsd",
+            "@_xmlns:lCen": "http://www.stormware.cz/schema/version_2/list_centre.xsd",
+            "@_xmlns:lCon": "http://www.stormware.cz/schema/version_2/list_contract.xsd",
+            "@_xmlns:lStk": "http://www.stormware.cz/schema/version_2/list_stock.xsd",
+            "@_xmlns:lst": "http://www.stormware.cz/schema/version_2/list.xsd",
+            "@_xmlns:lwl": "http://www.stormware.cz/schema/version_2/liquidationWithoutLink.xsd",
+            "@_xmlns:mKasa": "http://www.stormware.cz/schema/version_2/mKasa.xsd",
+            "@_xmlns:mov": "http://www.stormware.cz/schema/version_2/movement.xsd",
+            "@_xmlns:nms": "http://www.stormware.cz/schema/version_2/numericalSeries.xsd",
+            "@_xmlns:ofr": "http://www.stormware.cz/schema/version_2/offer.xsd",
+            "@_xmlns:ord": "http://www.stormware.cz/schema/version_2/order.xsd",
+            "@_xmlns:pay": "http://www.stormware.cz/schema/version_2/payment.xsd",
+            "@_xmlns:pre": "http://www.stormware.cz/schema/version_2/prevodka.xsd",
+            "@_xmlns:pri": "http://www.stormware.cz/schema/version_2/prijemka.xsd",
+            "@_xmlns:prm": "http://www.stormware.cz/schema/version_2/parameter.xsd",
+            "@_xmlns:prn": "http://www.stormware.cz/schema/version_2/print.xsd",
+            "@_xmlns:pro": "http://www.stormware.cz/schema/version_2/prodejka.xsd",
+            "@_xmlns:rdc": "http://www.stormware.cz/schema/version_2/documentresponse.xsd",
+            "@_xmlns:rec": "http://www.stormware.cz/schema/version_2/recyclingContrib.xsd",
+            "@_xmlns:req": "http://www.stormware.cz/schema/version_2/productRequirement.xsd",
+            "@_xmlns:rgn": "http://www.stormware.cz/schema/version_2/registrationNumber.xsd",
+            "@_xmlns:rsp": "http://www.stormware.cz/schema/version_2/response.xsd",
+            "@_xmlns:rul": "http://www.stormware.cz/schema/version_2/rulesPairing.xsd",
+            "@_xmlns:sEET": "http://www.stormware.cz/schema/version_2/sendEET.xsd",
+            "@_xmlns:srv": "http://www.stormware.cz/schema/version_2/service.xsd",
+            "@_xmlns:stk": "http://www.stormware.cz/schema/version_2/stock.xsd",
+            "@_xmlns:sto": "http://www.stormware.cz/schema/version_2/store.xsd",
+            "@_xmlns:str": "http://www.stormware.cz/schema/version_2/storage.xsd",
+            "@_xmlns:sup": "http://www.stormware.cz/schema/version_2/supplier.xsd",
+            "@_xmlns:typ": "http://www.stormware.cz/schema/version_2/type.xsd",
+            "@_xmlns:vat": "http://www.stormware.cz/schema/version_2/classificationVAT.xsd",
+            "@_xmlns:vch": "http://www.stormware.cz/schema/version_2/voucher.xsd",
+            "@_xmlns:vyd": "http://www.stormware.cz/schema/version_2/vydejka.xsd",
+            "@_xmlns:vyr": "http://www.stormware.cz/schema/version_2/vyroba.xsd",
+            "rsp:responsePackItem": {
+                "@_id": "Usr1",
+                "@_state": "ok",
+                "@_version": 2,
+                "inv:invoiceResponse": {
+                    "@_state": "ok",
+                    "@_version": 2,
+                    "rdc:importDetails": {
+                        "rdc:detail": [
                             {
-                                "state": "warning",
-                                "errno": 603,
-                                "note": "Hodnota prvku musela b�t upravena.",
-                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
-                                "valueProduced": "3Fv"
+                                "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
+                                "rdc:errno": 603,
+                                "rdc:note": "Hodnota prvku musela b�t upravena.",
+                                "rdc:state": "warning",
+                                "rdc:valueProduced": "3Fv"
                             },
                             {
-                                "state": "warning",
-                                "errno": 603,
-                                "note": "Hodnota prvku musela b�t upravena.",
-                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
-                                "valueProduced": "UD"
+                                "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
+                                "rdc:errno": 603,
+                                "rdc:note": "Hodnota prvku musela b�t upravena.",
+                                "rdc:state": "warning",
+                                "rdc:valueProduced": "UD"
                             },
                             {
-                                "state": "warning",
-                                "errno": 603,
-                                "note": "Nezn�m� ��et",
-                                "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
-                                "valueProduced": "KB"
+                                "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
+                                "rdc:errno": 603,
+                                "rdc:note": "Nezn�m� ��et",
+                                "rdc:state": "warning",
+                                "rdc:valueProduced": "KB"
                             }
                         ]
                     },
-                    "producedDetails": {
-                        "id": 114,
-                        "number": "FAK0008",
-                        "actionType": "add",
-                        "itemDetails": {
-                            "item": {
-                                "actionType": "add",
-                                "producedItem": {
-                                    "id": 230
+                    "rdc:producedDetails": {
+                        "rdc:actionType": "add",
+                        "rdc:id": 114,
+                        "rdc:itemDetails": {
+                            "@_type": "FApol",
+                            "rdc:item": {
+                                "rdc:actionType": "add",
+                                "rdc:producedItem": {
+                                    "rdc:id": 230
                                 }
                             }
-                        }
+                        },
+                        "rdc:number": "FAK0008"
                     }
                 }
             }
