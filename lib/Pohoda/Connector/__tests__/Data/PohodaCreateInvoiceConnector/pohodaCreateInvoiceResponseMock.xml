@@ -6,21 +6,21 @@
                 <rdc:detail>
                     <rdc:state>warning</rdc:state>
                     <rdc:errno>603</rdc:errno>
-                    <rdc:note>Hodnota prvku musela bï¿½t upravena.</rdc:note>
+                    <rdc:note>Hodnota prvku musela být upravena.</rdc:note>
                     <rdc:XPath>/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting</rdc:XPath>
                     <rdc:valueProduced>3Fv</rdc:valueProduced>
                 </rdc:detail>
                 <rdc:detail>
                     <rdc:state>warning</rdc:state>
                     <rdc:errno>603</rdc:errno>
-                    <rdc:note>Hodnota prvku musela bï¿½t upravena.</rdc:note>
+                    <rdc:note>Hodnota prvku musela být upravena.</rdc:note>
                     <rdc:XPath>/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT</rdc:XPath>
                     <rdc:valueProduced>UD</rdc:valueProduced>
                 </rdc:detail>
                 <rdc:detail>
                     <rdc:state>warning</rdc:state>
                     <rdc:errno>603</rdc:errno>
-                    <rdc:note>Neznï¿½mï¿½ ï¿½ï¿½et</rdc:note>
+                    <rdc:note>Neznámý úèet</rdc:note>
                     <rdc:XPath>/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account</rdc:XPath>
                     <rdc:valueProduced>KB</rdc:valueProduced>
                 </rdc:detail>

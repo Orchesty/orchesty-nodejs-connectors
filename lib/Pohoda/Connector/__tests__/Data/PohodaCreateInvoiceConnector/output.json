@@ -88,21 +88,21 @@
                             {
                                 "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
                                 "rdc:errno": 603,
-                                "rdc:note": "Hodnota prvku musela b�t upravena.",
+                                "rdc:note": "Hodnota prvku musela být upravena.",
                                 "rdc:state": "warning",
                                 "rdc:valueProduced": "3Fv"
                             },
                             {
                                 "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
                                 "rdc:errno": 603,
-                                "rdc:note": "Hodnota prvku musela b�t upravena.",
+                                "rdc:note": "Hodnota prvku musela být upravena.",
                                 "rdc:state": "warning",
                                 "rdc:valueProduced": "UD"
                             },
                             {
                                 "rdc:XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
                                 "rdc:errno": 603,
-                                "rdc:note": "Nezn�m� ��et",
+                                "rdc:note": "Neznámý účet",
                                 "rdc:state": "warning",
                                 "rdc:valueProduced": "KB"
                             }

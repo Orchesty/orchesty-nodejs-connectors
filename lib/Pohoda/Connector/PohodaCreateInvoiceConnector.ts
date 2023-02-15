@@ -10,6 +10,8 @@ export const NAME = 'pohoda-create-invoice-conector';
 
 export default class PohodaCreateInvoiceConnector extends AConnector {
 
+    private readonly windowsTextDecoder = new TextDecoder('windows-1250');
+
     public getName(): string {
         return NAME;
     }
@@ -30,7 +32,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         const resp = await this.getSender().send(req, [200]);
 
         const parser = new XMLParser({ ignoreAttributes: false, parseAttributeValue: true });
-        const responseJson = parser.parse(resp.getBody()) as IOutput;
+        const responseJson = parser.parse(this.convertResponseToUtf8(resp.getBuffer())) as IOutput;
 
         const errorMessage = this.checkResponseForErrors(responseJson);
 
@@ -61,7 +63,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         })) || [];
 
         const invoice = {
-            '?xml': { '@_version': '1.0', '@_encoding': 'Windows-1250' },
+            '?xml': { '@_version': '1.0', '@_encoding': 'utf-8' },
             'dat:dataPack': {
                 '@_xmlns:dat': 'http://www.stormware.cz/schema/version_2/data.xsd',
                 '@_xmlns:typ': 'http://www.stormware.cz/schema/version_2/type.xsd',
@@ -116,7 +118,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
             return responseStatus['@_note'] as string;
         }
 
-        const responseItems = responseStatus['inv:invoiceResponse']['rdc:importDetails']['rdc:detail'];
+        const responseItems = (responseStatus['inv:invoiceResponse'] as IInvoiceResponse)['rdc:importDetails']['rdc:detail'];
 
         for (const responseItem of responseItems) {
             if (responseItem['rdc:state'] === 'error') {
@@ -127,7 +129,15 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         return null;
     }
 
+    private convertResponseToUtf8(bufferedText: Buffer): string {
+        return this.windowsTextDecoder.decode(bufferedText);
+    }
+
 }
+
+type PohodaVatRate = 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
+type PohodaInvoiceType = 'issuedInvoice' | 'receivedInvoice';
+type PohodaPaymentType = 'advance' | 'cash' | 'cheque' | 'compensation' | 'creditcard' | 'delivery' | 'draft' | 'encashment' | 'postal';
 
 interface PartnerIdentity {
     company: string;
@@ -146,19 +156,19 @@ interface IInvoiceItem {
     payVat: boolean;
     unitPrice: number;
     price: number;
-    rateVat: 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
+    rateVat: PohodaVatRate;
     priceVat?: number;
 }
 
 export interface IInput {
-    invoiceType: 'issuedInvoice' | 'receivedInvoice';
+    invoiceType: PohodaInvoiceType;
     invoiceNumber: string;
     dueDate: string;
     taxDate: string;
     accountingDate: string;
     createdAt: string;
     text: string;
-    paymentType: 'cash';
+    paymentType: PohodaPaymentType;
     partnerIdentity: PartnerIdentity;
     invoiceItems: IInvoiceItem[];
 }
@@ -168,33 +178,34 @@ interface IResponseImportDetail {
     'rdc:state': 'error' | 'warning';
     'rdc:errno': number;
     'rdc:note': string;
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     'rdc:XPath': string;
     'rdc:valueProduced'?: string;
     'rdc:valueRequested'?: string;
 }
 
+interface IInvoiceResponse {
+    'rdc:importDetails': {
+        'rdc:detail': IResponseImportDetail[];
+    };
+    'rdc:producedDetails': {
+        'rdc:id': string;
+        'rdc:number': string;
+        'rdc:actionType': string;
+        'rdc:itemDetails': {
+            'rdc:item': {
+                'rdc:actionType': string;
+                'rdc:producedItem': {
+                    'rdc:id': string;
+                };
+            };
+        };
+    };
+}
+
 export interface IOutput {
     'rsp:responsePack': {
         'rsp:responsePackItem': {
-            'inv:invoiceResponse': {
-                'rdc:importDetails': {
-                    'rdc:detail': IResponseImportDetail[];
-                };
-                'rdc:producedDetails': {
-                    'rdc:id': string;
-                    'rdc:number': string;
-                    'rdc:actionType': string;
-                    'rdc:itemDetails': {
-                        'rdc:item': {
-                            'rdc:actionType': string;
-                            'rdc:producedItem': {
-                                'rdc:id': string;
-                            };
-                        };
-                    };
-                };
-            };
+            'inv:invoiceResponse'?: IInvoiceResponse;
             '@_state': string;
             '@_note'?: string;
         };
