@@ -5,6 +5,8 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 import { COMPANY_ID } from '../PohodaApplication';
+import { PohodaInvoicePaymentType, PohodaInvoiceType, PohodaInvoiceVatRate } from '../Types/Invoice';
+import { PohodaResponseState } from '../Types/Response';
 
 export const NAME = 'pohoda-create-invoice-conector';
 
@@ -135,10 +137,6 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
 
 }
 
-type PohodaVatRate = 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
-type PohodaInvoiceType = 'issuedInvoice' | 'receivedInvoice';
-type PohodaPaymentType = 'advance' | 'cash' | 'cheque' | 'compensation' | 'creditcard' | 'delivery' | 'draft' | 'encashment' | 'postal';
-
 interface PartnerIdentity {
     company: string;
     name: string;
@@ -156,7 +154,7 @@ interface IInvoiceItem {
     payVat: boolean;
     unitPrice: number;
     price: number;
-    rateVat: PohodaVatRate;
+    rateVat: PohodaInvoiceVatRate;
     priceVat?: number;
 }
 
@@ -168,14 +166,14 @@ export interface IInput {
     accountingDate: string;
     createdAt: string;
     text: string;
-    paymentType: PohodaPaymentType;
+    paymentType: PohodaInvoicePaymentType;
     partnerIdentity: PartnerIdentity;
     invoiceItems: IInvoiceItem[];
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IResponseImportDetail {
-    state: 'error' | 'warning';
+    state: PohodaResponseState;
     errno: number;
     note: string;
     XPath: string;
@@ -206,7 +204,7 @@ interface IResponse {
     responsePack: {
         responsePackItem: {
             invoiceResponse?: IOutput;
-            state: string;
+            state: PohodaResponseState;
             note?: string;
         };
     };
