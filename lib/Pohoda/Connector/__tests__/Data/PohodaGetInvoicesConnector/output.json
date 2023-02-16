@@ -3,9 +3,5 @@
         "user": "TestUser"
     },
     "data": {
-        "?xml": {
-            "@_encoding": "Windows-1250",
-            "@_version": 1
-        }
     }
 }

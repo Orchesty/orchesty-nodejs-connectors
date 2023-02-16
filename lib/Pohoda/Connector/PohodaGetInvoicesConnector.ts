@@ -2,10 +2,12 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import { COMPANY_ID } from '../PohodaApplication';
+import { hasResponseErrorMessage } from '../Service/pohodaService';
+import { convertPohodaResponseToUtf8, xmlBuilder, xmlParser } from '../Service/xmlService';
 import { PohodaInvoiceType } from '../Types/Invoice';
-import { PohodaResponseState } from '../Types/Response';
-import { convertPohodaResponseToUtf8, xmlBuilder, xmlParser } from '../xmlHelper';
+import { IResponse, PohodaResponseState } from '../Types/Response';
 
 export const NAME = 'pohoda-get-invoices-conector';
 
@@ -31,13 +33,40 @@ export default class PohodaGetInvoicesConnector extends AConnector {
 
         const resp = await this.getSender().send(req, [200]);
 
-        const responseJson = xmlParser.parse(convertPohodaResponseToUtf8(resp.getBuffer())) as IOutput;
+        const responseJson = xmlParser.parse(convertPohodaResponseToUtf8(resp.getBuffer())) as IResponse;
 
-        return dto.setNewJsonData<IOutput>(responseJson);
+        const errorMessage = hasResponseErrorMessage(responseJson);
+
+        if (errorMessage) {
+            dto.setStopProcess(ResultCode.STOP_AND_FAILED, errorMessage);
+        }
+
+        return dto.setNewJsonData<IOutput>(responseJson.responsePack.responsePackItem.listStock as IOutput);
     }
 
     private getXmlData(companyId: string, application: string, filter: RequestFilter = {}): string {
         /* eslint-disable @typescript-eslint/naming-convention */
+
+        const requestFilter: Record<string, unknown> = {};
+
+        if (filter.dateLastChange) requestFilter['ftr:lastChanges'] = `${filter.dateLastChange}T00:00:00`;
+
+        if (filter.dateRangeFrom) requestFilter['ftr:dateFrom'] = filter.dateRangeFrom;
+
+        if (filter.dateRangeTo) requestFilter['ftr:dateTill'] = filter.dateRangeTo;
+
+        if (filter.companyName) {
+            requestFilter['ftr:selectedCompanys'] = {
+                'ftr:company': filter.companyName,
+            };
+        }
+
+        if (filter.companyId) {
+            requestFilter['ftr:selectedIco'] = {
+                'ftr:ico': filter.companyId,
+            };
+        }
+
         const xml = {
             '?xml': { '@_version': '1.0', '@_encoding': 'utf-8' },
             'dat:dataPack': {
@@ -58,17 +87,7 @@ export default class PohodaGetInvoicesConnector extends AConnector {
                         '@_invoiceType': 'issuedInvoice',
                         '@_invoiceVersion': '2.0',
                         'lst:requestInvoice': {
-                            'ftr:filter': {
-                                'ftr:lastChanges': filter.dateLastChange,
-                                'ftr:dateFrom': filter.dateRangeFrom,
-                                'ftr:dateTill': filter.dateRangeTo,
-                                'ftr:selectedCompanys': {
-                                    'ftr:company': filter.companyName,
-                                },
-                                'ftr:selectedIco': {
-                                    'ftr:ico': filter.companyId,
-                                },
-                            },
+                            'ftr:filter': requestFilter,
                         },
                     },
                 },
@@ -82,7 +101,6 @@ export default class PohodaGetInvoicesConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 interface RequestFilter {
     dateRangeFrom?: string;
     dateRangeTo?: string;
@@ -97,96 +115,96 @@ export interface IInput {
 }
 // todo check types
 interface IListInvoiceItem {
-    '@_version': string;
-    'invoiceHeader': {
-        'id': number;
-        'invoiceType': PohodaInvoiceType;
-        'number': {
-            'numberRequested': number;
+    version: string;
+    invoiceHeader: {
+        id: number;
+        invoiceType: PohodaInvoiceType;
+        number: {
+            numberRequested: number;
         };
-        'symVar': number;
-        'date': string;
-        'dateTax': string;
-        'dateAccounting': string;
-        'dateDue': string;
-        'accounting': {
-            'id': number;
-            'ids': string;
-            'accountingType': string;
+        symVar: number;
+        date: string;
+        dateTax: string;
+        dateAccounting: string;
+        dateDue: string;
+        accounting: {
+            id: number;
+            ids: string;
+            accountingType: string;
         };
-        'classificationVAT': {
-            'id': number;
-            'ids': string;
-            'classificationVATType': string;
+        classificationVAT: {
+            id: number;
+            ids: string;
+            classificationVATType: string;
         };
-        'text': string;
-        'partnerIdentity': {
-            'id': number;
-            'address': {
-                'company': string;
-                'name': string;
-                'city': string;
-                'street': string;
-                'zip': string;
-                'ico': string;
-                'did': string;
+        text: string;
+        partnerIdentity: {
+            id: number;
+            address: {
+                company: string;
+                name: string;
+                city: string;
+                street: string;
+                zip: string;
+                ico: string;
+                did: string;
             };
-            'shipToAddress': {
-                'company'?: string;
-                'name'?: string;
-                'city'?: string;
-                'street'?: string;
-            };
-        };
-        'myIdentity': {
-            'address': {
-                'company': string;
-                'surname': string;
-                'name': string;
-                'city': string;
-                'street': string;
-                'number': string;
-                'zip': string;
-                'ico': string;
-                'dic': string;
-                'phone': string;
-                'mobilPhone': string;
-                'fax': string;
-                'email': string;
-                'www': string;
+            shipToAddress: {
+                company?: string;
+                name?: string;
+                city?: string;
+                street?: string;
             };
         };
-        'priceLevel': {
-            'id': number;
-            'ids': string;
+        myIdentity: {
+            address: {
+                company: string;
+                surname: string;
+                name: string;
+                city: string;
+                street: string;
+                number: string;
+                zip: string;
+                ico: string;
+                dic: string;
+                phone: string;
+                mobilPhone: string;
+                fax: string;
+                email: string;
+                www: string;
+            };
         };
-        'paymentType': {
-            'id': number;
-            'ids': string;
-            'paymentType': string;
+        priceLevel: {
+            id: number;
+            ids: string;
         };
-        'account': {
-            'id': number;
-            'ids': string;
+        paymentType: {
+            id: number;
+            ids: string;
+            paymentType: string;
         };
-        'symConst': number;
-        'liquidation': {
-            'amountHome': number;
+        account: {
+            id: number;
+            ids: string;
+        };
+        symConst: number;
+        liquidation: {
+            amountHome: number;
         };
     };
-    'invoiceSummary': {
-        'roundingDocument': string;
-        'roundingVAT': string;
-        'homeCurrency': {
-            'priceNone': number;
-            'priceLow': number;
-            'priceLowVAT': number;
-            'priceLowSum': number;
-            'priceHigh': number;
-            'priceHighVAT': number;
-            'priceHighSum': number;
-            'round': {
-                'priceRound': number;
+    invoiceSummary: {
+        roundingDocument: string;
+        roundingVAT: string;
+        homeCurrency: {
+            priceNone: number;
+            priceLow: number;
+            priceLowVAT: number;
+            priceLowSum: number;
+            priceHigh: number;
+            priceHighVAT: number;
+            priceHighSum: number;
+            round: {
+                priceRound: number;
             };
         };
     };
@@ -194,22 +212,9 @@ interface IListInvoiceItem {
 }
 
 export interface IOutput {
-    '?xml': { '@_version': string; '@_encoding': string };
-    'rsp:responsePack': {
-        '@_id': string;
-        '@_state': PohodaResponseState;
-        '@_version': string;
-        'rsp:responsePackItem': {
-            '@_state': PohodaResponseState;
-            '@_version': string;
-            '@_note'?: string;
-            'lStk:listStock'?: {
-                '@_dateTimeStamp': string;
-                '@_dateValidFrom': string;
-                '@_state': PohodaResponseState;
-                '@_version': string;
-                'lst:invoice': IListInvoiceItem[];
-            };
-        };
-    };
+    dateTimeStamp: string;
+    dateValidFrom: string;
+    state: PohodaResponseState;
+    version: string;
+    invoice: IListInvoiceItem[];
 }
