@@ -15,7 +15,7 @@ export interface IResponse<IOutput = unknown> {
             state: PohodaResponseState;
             version: string;
             note?: string;
-            listStock?: IOutput;
+            listInvoice?: IOutput;
             invoiceResponse?: IOutput;
         };
     };

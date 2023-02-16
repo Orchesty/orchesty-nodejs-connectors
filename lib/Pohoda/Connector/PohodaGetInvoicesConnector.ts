@@ -6,7 +6,7 @@ import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import { COMPANY_ID } from '../PohodaApplication';
 import { hasResponseErrorMessage } from '../Service/pohodaService';
 import { convertPohodaResponseToUtf8, xmlBuilder, xmlParser } from '../Service/xmlService';
-import { PohodaInvoiceType } from '../Types/Invoice';
+import { IListInvoiceItem } from '../Types/Invoice';
 import { IResponse, PohodaResponseState } from '../Types/Response';
 
 export const NAME = 'pohoda-get-invoices-conector';
@@ -41,12 +41,11 @@ export default class PohodaGetInvoicesConnector extends AConnector {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, errorMessage);
         }
 
-        return dto.setNewJsonData<IOutput>(responseJson.responsePack.responsePackItem.listStock as IOutput);
+        return dto.setNewJsonData<IOutput>(responseJson.responsePack.responsePackItem.listInvoice as IOutput);
     }
 
     private getXmlData(companyId: string, application: string, filter: RequestFilter = {}): string {
-        /* eslint-disable @typescript-eslint/naming-convention */
-
+    /* eslint-disable @typescript-eslint/naming-convention */
         const requestFilter: Record<string, unknown> = {};
 
         if (filter.dateLastChange) requestFilter['ftr:lastChanges'] = `${filter.dateLastChange}T00:00:00`;
@@ -112,103 +111,6 @@ interface RequestFilter {
 export interface IInput {
     application: string;
     filter?: RequestFilter;
-}
-// todo check types
-interface IListInvoiceItem {
-    version: string;
-    invoiceHeader: {
-        id: number;
-        invoiceType: PohodaInvoiceType;
-        number: {
-            numberRequested: number;
-        };
-        symVar: number;
-        date: string;
-        dateTax: string;
-        dateAccounting: string;
-        dateDue: string;
-        accounting: {
-            id: number;
-            ids: string;
-            accountingType: string;
-        };
-        classificationVAT: {
-            id: number;
-            ids: string;
-            classificationVATType: string;
-        };
-        text: string;
-        partnerIdentity: {
-            id: number;
-            address: {
-                company: string;
-                name: string;
-                city: string;
-                street: string;
-                zip: string;
-                ico: string;
-                did: string;
-            };
-            shipToAddress: {
-                company?: string;
-                name?: string;
-                city?: string;
-                street?: string;
-            };
-        };
-        myIdentity: {
-            address: {
-                company: string;
-                surname: string;
-                name: string;
-                city: string;
-                street: string;
-                number: string;
-                zip: string;
-                ico: string;
-                dic: string;
-                phone: string;
-                mobilPhone: string;
-                fax: string;
-                email: string;
-                www: string;
-            };
-        };
-        priceLevel: {
-            id: number;
-            ids: string;
-        };
-        paymentType: {
-            id: number;
-            ids: string;
-            paymentType: string;
-        };
-        account: {
-            id: number;
-            ids: string;
-        };
-        symConst: number;
-        liquidation: {
-            amountHome: number;
-        };
-    };
-    invoiceSummary: {
-        roundingDocument: string;
-        roundingVAT: string;
-        homeCurrency: {
-            priceNone: number;
-            priceLow: number;
-            priceLowVAT: number;
-            priceLowSum: number;
-            priceHigh: number;
-            priceHighVAT: number;
-            priceHighSum: number;
-            round: {
-                priceRound: number;
-            };
-        };
-    };
-
 }
 
 export interface IOutput {

@@ -5,8 +5,8 @@
     "data": {
         "application": "StwTest",
         "filter": {
-            "dateFrom": "2011-01-10",
-            "dateTill": "2019-01-31",
+            "dateRangeFrom": "2011-01-10",
+            "dateRangeTo": "2019-01-31",
             "dateLastChange": "2013-04-29"
         }
     }
