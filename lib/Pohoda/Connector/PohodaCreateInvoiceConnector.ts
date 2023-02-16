@@ -31,8 +31,8 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
 
         const resp = await this.getSender().send(req, [200]);
 
-        const parser = new XMLParser({ ignoreAttributes: false, parseAttributeValue: true });
-        const responseJson = parser.parse(this.convertResponseToUtf8(resp.getBuffer())) as IOutput;
+        const parser = new XMLParser({ ignoreAttributes: false, parseAttributeValue: true, removeNSPrefix: true, attributeNamePrefix: '' });
+        const responseJson = parser.parse(this.convertResponseToUtf8(resp.getBuffer())) as IResponse;
 
         const errorMessage = this.checkResponseForErrors(responseJson);
 
@@ -40,7 +40,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
             dto.setStopProcess(ResultCode.STOP_AND_FAILED, errorMessage);
         }
 
-        return dto.setNewJsonData<IOutput>(responseJson);
+        return dto.setNewJsonData<IOutput>(responseJson.responsePack.responsePackItem.invoiceResponse as IOutput);
     }
 
     private createXml(input: IInput, companyId: string): string {
@@ -111,18 +111,18 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         return builder.build(invoice);
     }
 
-    private checkResponseForErrors(response: IOutput): string | null {
-        const responseStatus = response['rsp:responsePack']['rsp:responsePackItem'];
+    private checkResponseForErrors(response: IResponse): string | null {
+        const responseStatus = response.responsePack.responsePackItem;
 
-        if (responseStatus['@_state'] === 'error') {
-            return responseStatus['@_note'] as string;
+        if (responseStatus.state === 'error') {
+            return responseStatus.note as string;
         }
 
-        const responseItems = (responseStatus['inv:invoiceResponse'] as IInvoiceResponse)['rdc:importDetails']['rdc:detail'];
+        const responseItems = (responseStatus.invoiceResponse as IOutput).importDetails.detail;
 
         for (const responseItem of responseItems) {
-            if (responseItem['rdc:state'] === 'error') {
-                return responseItem['rdc:note'];
+            if (responseItem.state === 'error') {
+                return responseItem.note;
             }
         }
 
@@ -175,39 +175,39 @@ export interface IInput {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 interface IResponseImportDetail {
-    'rdc:state': 'error' | 'warning';
-    'rdc:errno': number;
-    'rdc:note': string;
-    'rdc:XPath': string;
-    'rdc:valueProduced'?: string;
-    'rdc:valueRequested'?: string;
+    state: 'error' | 'warning';
+    errno: number;
+    note: string;
+    XPath: string;
+    valueProduced?: string;
+    valueRequested?: string;
 }
 
-interface IInvoiceResponse {
-    'rdc:importDetails': {
-        'rdc:detail': IResponseImportDetail[];
+export interface IOutput {
+    importDetails: {
+        detail: IResponseImportDetail[];
     };
-    'rdc:producedDetails': {
-        'rdc:id': string;
-        'rdc:number': string;
-        'rdc:actionType': string;
-        'rdc:itemDetails': {
-            'rdc:item': {
-                'rdc:actionType': string;
-                'rdc:producedItem': {
-                    'rdc:id': string;
+    producedDetails: {
+        id: string;
+        number: string;
+        actionType: string;
+        itemDetails: {
+            item: {
+                actionType: string;
+                producedItem: {
+                    id: string;
                 };
             };
         };
     };
 }
 
-export interface IOutput {
-    'rsp:responsePack': {
-        'rsp:responsePackItem': {
-            'inv:invoiceResponse'?: IInvoiceResponse;
-            '@_state': string;
-            '@_note'?: string;
+interface IResponse {
+    responsePack: {
+        responsePackItem: {
+            invoiceResponse?: IOutput;
+            state: string;
+            note?: string;
         };
     };
 }
