@@ -19,7 +19,7 @@ export default class WooCommerceUpdateOrder extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,
             `wp-json/wc/v3/orders/${id}`,
-            { status },
+            JSON.stringify({ status }),
         );
 
         return dto.setNewJsonData((await this.getSender().send<IOutput>(requestDto, [200])).getJsonBody());
