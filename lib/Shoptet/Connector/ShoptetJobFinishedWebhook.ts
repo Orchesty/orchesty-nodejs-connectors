@@ -19,7 +19,7 @@ export default class ShoptetJobFinishedWebhook extends AShoptetConnector {
         }
 
         const repo = this.getDbClient().getApplicationRepository();
-        const appInstall = await repo.findOne({ nonEncrypt: { eshopId: data.eshopId.toString() }, enabled: null });
+        const appInstall = await repo.findOne({ nonEncrypted: { eshopId: data.eshopId.toString() }, enabled: null });
         if (!appInstall) {
             dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, `Shoptet with eshopId [${data.eshopId}] is not installed.`);
 
