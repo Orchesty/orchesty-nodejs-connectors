@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="Windows-1250"?>
+<rsp:responsePack version="2.0" id="001" state="ok" programVersion="13302.6 (18.1.2023)" ico="12345678" key="908ba96e-887a-428b-805e-f2e53dac82bb" note="Požadavek na export výběru faktur" xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd" xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd" xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd" xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd" xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd" xmlns:lCen="http://www.stormware.cz/schema/version_2/list_centre.xsd" xmlns:lAcv="http://www.stormware.cz/schema/version_2/list_activity.xsd" xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" xmlns:vch="http://www.stormware.cz/schema/version_2/voucher.xsd" xmlns:int="http://www.stormware.cz/schema/version_2/intDoc.xsd" xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd" xmlns:ord="http://www.stormware.cz/schema/version_2/order.xsd" xmlns:ofr="http://www.stormware.cz/schema/version_2/offer.xsd" xmlns:enq="http://www.stormware.cz/schema/version_2/enquiry.xsd" xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd" xmlns:pri="http://www.stormware.cz/schema/version_2/prijemka.xsd" xmlns:bal="http://www.stormware.cz/schema/version_2/balance.xsd" xmlns:pre="http://www.stormware.cz/schema/version_2/prevodka.xsd" xmlns:vyr="http://www.stormware.cz/schema/version_2/vyroba.xsd" xmlns:pro="http://www.stormware.cz/schema/version_2/prodejka.xsd" xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd" xmlns:adb="http://www.stormware.cz/schema/version_2/addressbook.xsd" xmlns:prm="http://www.stormware.cz/schema/version_2/parameter.xsd" xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd" xmlns:ctg="http://www.stormware.cz/schema/version_2/category.xsd" xmlns:ipm="http://www.stormware.cz/schema/version_2/intParam.xsd" xmlns:str="http://www.stormware.cz/schema/version_2/storage.xsd" xmlns:idp="http://www.stormware.cz/schema/version_2/individualPrice.xsd" xmlns:sup="http://www.stormware.cz/schema/version_2/supplier.xsd" xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd" xmlns:isd="http://www.stormware.cz/schema/version_2/isdoc.xsd" xmlns:sEET="http://www.stormware.cz/schema/version_2/sendEET.xsd" xmlns:act="http://www.stormware.cz/schema/version_2/accountancy.xsd" xmlns:bnk="http://www.stormware.cz/schema/version_2/bank.xsd" xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd" xmlns:grs="http://www.stormware.cz/schema/version_2/groupStocks.xsd" xmlns:acp="http://www.stormware.cz/schema/version_2/actionPrice.xsd" xmlns:csh="http://www.stormware.cz/schema/version_2/cashRegister.xsd" xmlns:bka="http://www.stormware.cz/schema/version_2/bankAccount.xsd" xmlns:ilt="http://www.stormware.cz/schema/version_2/inventoryLists.xsd" xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd" xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd" xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd" xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd" xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd" xmlns:cen="http://www.stormware.cz/schema/version_2/centre.xsd" xmlns:acv="http://www.stormware.cz/schema/version_2/activity.xsd" xmlns:afp="http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd" xmlns:vat="http://www.stormware.cz/schema/version_2/classificationVAT.xsd" xmlns:rgn="http://www.stormware.cz/schema/version_2/registrationNumber.xsd" xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd" xmlns:asv="http://www.stormware.cz/schema/version_2/accountingSalesVouchers.xsd" xmlns:arch="http://www.stormware.cz/schema/version_2/archive.xsd" xmlns:req="http://www.stormware.cz/schema/version_2/productRequirement.xsd" xmlns:mov="http://www.stormware.cz/schema/version_2/movement.xsd" xmlns:rec="http://www.stormware.cz/schema/version_2/recyclingContrib.xsd" xmlns:srv="http://www.stormware.cz/schema/version_2/service.xsd" xmlns:rul="http://www.stormware.cz/schema/version_2/rulesPairing.xsd" xmlns:lwl="http://www.stormware.cz/schema/version_2/liquidationWithoutLink.xsd">
+    <rsp:responsePackItem version="2.0" id="li1" state="ok">
+        <lst:listInvoice version="2.0" dateTimeStamp="2023-02-16T09:53:56" dateValidFrom="2023-02-16" state="ok">
+            <lst:invoice version="2.0">
+                <inv:invoiceHeader>
+                    <inv:id>106</inv:id>
+                    <inv:invoiceType>issuedInvoice</inv:invoiceType>
+                    <inv:number>
+                        <typ:numberRequested>FAK0001</typ:numberRequested>
+                    </inv:number>
+                    <inv:symVar>1234</inv:symVar>
+                    <inv:date>2016-12-06</inv:date>
+                    <inv:dateTax>2016-12-06</inv:dateTax>
+                    <inv:dateAccounting>2016-12-06</inv:dateAccounting>
+                    <inv:dateDue>2016-12-20</inv:dateDue>
+                    <inv:accounting>
+                        <typ:id>17</typ:id>
+                        <typ:ids>3Fv</typ:ids>
+                    </inv:accounting>
+                    <inv:classificationVAT>
+                        <typ:id>165</typ:id>
+                        <typ:ids>UD</typ:ids>
+                    </inv:classificationVAT>
+                    <inv:text>Fakturujeme Vám dle Vaší objednávky.</inv:text>
+                    <inv:partnerIdentity>
+                        <typ:address>
+                            <typ:company>Firma ABC s.r.o.</typ:company>
+                            <typ:city>Jihlava</typ:city>
+                            <typ:street>Jarní 12</typ:street>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:dic>CZ12345678</typ:dic>
+                        </typ:address>
+                    </inv:partnerIdentity>
+                    <inv:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák  </typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </inv:myIdentity>
+                    <inv:paymentType>
+                        <typ:id>2</typ:id>
+                        <typ:ids>Hotově</typ:ids>
+                        <typ:paymentType>cash</typ:paymentType>
+                    </inv:paymentType>
+                    <inv:account>
+                        <typ:id>2</typ:id>
+                        <typ:ids>KB</typ:ids>
+                        <typ:accountNo>19-4660550217</typ:accountNo>
+                    </inv:account>
+                    <inv:symConst>0308</inv:symConst>
+                    <inv:liquidation>
+                        <typ:amountHome>1210</typ:amountHome>
+                    </inv:liquidation>
+                    <inv:lock1>false</inv:lock1>
+                    <inv:lock2>false</inv:lock2>
+                    <inv:markRecord>true</inv:markRecord>
+                </inv:invoiceHeader>
+                <inv:invoiceDetail>
+                    <inv:invoiceItem>
+                        <inv:id>223</inv:id>
+                        <inv:text>Potraviny (sazba 21 %)</inv:text>
+                        <inv:quantity>1.0</inv:quantity>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:payVAT>false</inv:payVAT>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>1000</typ:unitPrice>
+                            <typ:price>1000</typ:price>
+                            <typ:priceVAT>210</typ:priceVAT>
+                            <typ:priceSum>1210</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:note>Vzorová položka.</inv:note>
+                        <inv:guarantee>0</inv:guarantee>
+                        <inv:guaranteeType>none</inv:guaranteeType>
+                        <inv:PDP>false</inv:PDP>
+                    </inv:invoiceItem>
+                </inv:invoiceDetail>
+                <inv:invoiceSummary>
+                    <inv:roundingDocument>none</inv:roundingDocument>
+                    <inv:roundingVAT>none</inv:roundingVAT>
+                    <inv:typeCalculateVATInclusivePrice>VATOriginalMethod</inv:typeCalculateVATInclusivePrice>
+                    <inv:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>1000</typ:priceHigh>
+                        <typ:priceHighVAT>210</typ:priceHighVAT>
+                        <typ:priceHighSum>1210</typ:priceHighSum>
+                        <typ:price3>0</typ:price3>
+                        <typ:price3VAT>0</typ:price3VAT>
+                        <typ:price3Sum>0</typ:price3Sum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </inv:homeCurrency>
+                </inv:invoiceSummary>
+            </lst:invoice>
+        </lst:listInvoice>
+    </rsp:responsePackItem>
+</rsp:responsePack>

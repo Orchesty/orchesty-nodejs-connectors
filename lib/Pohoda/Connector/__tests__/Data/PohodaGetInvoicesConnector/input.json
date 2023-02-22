@@ -1,0 +1,13 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "application": "StwTest",
+        "filter": {
+            "dateRangeFrom": "2011-01-10",
+            "dateRangeTo": "2019-01-31",
+            "dateLastChange": "2013-04-29"
+        }
+    }
+}
