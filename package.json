@@ -81,5 +81,8 @@
     },
     "pnpm": {
         "overrides": {}
+    },
+    "engines": {
+        "node": ">=19"
     }
 }
