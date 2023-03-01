@@ -11,12 +11,13 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
+export const NAME = 'i-doklad';
 export const BASE_URL = 'https://api.idoklad.cz/v3';
 
 export default class IDokladApplication extends AOAuth2Application {
 
     public getName(): string {
-        return 'i-doklad';
+        return NAME;
     }
 
     public getPublicName(): string {
