@@ -8,7 +8,7 @@ const GOOGLE_SHEET_CREATE_SPREADSHEET = '/v4/spreadsheets';
 
 interface IGoogleSheetSpreadsheet {
     name: string;
-    dataGrid: string;
+    data: string[][];
 }
 
 interface ISheet {
@@ -36,12 +36,12 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
     public async processAction(dto: ProcessDto<IGoogleSheetSpreadsheet>): Promise<ProcessDto> {
         checkParams(
             dto.getJsonData(),
-            ['name', 'dataGrid'],
+            ['name', 'data'],
         );
 
         const {
             name,
-            dataGrid,
+            data: innerData,
         } = dto.getJsonData();
 
         const application = this.getApplication<GoogleSheetApplication>();
@@ -56,9 +56,7 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
                     properties: {
                         title: `Sheet ${name} #1`,
                     },
-                    data: [
-                        this.parseData(dataGrid),
-                    ],
+                    data: this.parseData(innerData),
                 },
             ],
         };
@@ -77,13 +75,14 @@ export default class GoogleDriveUploadFileConnector extends AConnector {
         return dto;
     }
 
-    private parseData(dataGrid: string): ISheet {
-        const rows = dataGrid.split('\n');
-        return { rowData: rows.map((row) => this.getValues(row.split(','))) };
-    }
-
-    private getValues(dataInRow: string[]): IRowData {
-        return { values: dataInRow.map((value) => ({ userEnteredValue: { stringValue: value } })) };
+    private parseData(data: string[][]): ISheet {
+        return {
+            rowData: data.map((item) => ({
+                values: item.map((value) => ({
+                    userEnteredValue: { stringValue: value },
+                })),
+            })),
+        };
     }
 
 }
