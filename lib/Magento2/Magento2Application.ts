@@ -12,6 +12,7 @@ import {
 import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
+import { defaultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
@@ -97,7 +98,7 @@ export default class Magento2Application extends ABasicApplication {
                         dataToStore: dtoBody,
                     };
                 },
-                [200],
+                defaultRanges,
             );
         } catch (e) {
             if (e instanceof Error) {
