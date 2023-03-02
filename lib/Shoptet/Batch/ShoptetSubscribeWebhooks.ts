@@ -43,7 +43,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
 
             const respBody = res.getJsonBody();
 
-            await Promise.all(respBody.data.webhooks.map((webhook) => {
+            await Promise.all(respBody.data.webhooks.map(async (webhook) => {
                 const located = whData.find((value) => value.event === webhook.event);
                 if (located) {
                     const wb = new Webhook()

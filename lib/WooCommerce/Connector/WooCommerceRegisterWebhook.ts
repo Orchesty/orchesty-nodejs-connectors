@@ -43,7 +43,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
         const respBody = res.getJsonBody();
 
         await Promise.all(
-            respBody.create.map((webhook) => {
+            respBody.create.map(async (webhook) => {
                 const located = whData.find((value) => value.topic === webhook.topic);
                 if (located) {
                     const wb = new Webhook()
