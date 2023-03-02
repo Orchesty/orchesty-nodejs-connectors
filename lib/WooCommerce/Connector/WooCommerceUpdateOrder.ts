@@ -12,14 +12,14 @@ export default class WooCommerceUpdateOrder extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { id, status } = dto.getJsonData();
+        const { id, ...data } = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,
             `wp-json/wc/v3/orders/${id}`,
-            JSON.stringify({ status }),
+            JSON.stringify(data),
         );
 
         return dto.setNewJsonData((await this.getSender().send<IOutput>(requestDto, [200])).getJsonBody());
@@ -29,5 +29,4 @@ export default class WooCommerceUpdateOrder extends AConnector {
 
 export interface IInput {
     id: number;
-    status: string;
 }
