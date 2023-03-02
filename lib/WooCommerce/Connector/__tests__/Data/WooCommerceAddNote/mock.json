@@ -1,5 +1,5 @@
 {
-    "http": "PUT http://woocomerce.com/wp-json/wc/v3/orders/1/notes",
+    "http": "POST http://woocomerce.com/wp-json/wc/v3/orders/1/notes",
     "code": 200,
     "body": {
         "id": 727,

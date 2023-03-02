@@ -17,7 +17,7 @@ export default class WooCommerceAddNote extends AConnector {
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
-            HttpMethods.PUT,
+            HttpMethods.POST,
             `wp-json/wc/v3/orders/${id}/notes`,
             JSON.stringify(data),
         );
