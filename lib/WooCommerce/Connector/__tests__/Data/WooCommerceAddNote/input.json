@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 1,
+        "author": "system",
+        "note": "Neco",
+        "customer_note": true
+    }
+}

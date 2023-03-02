@@ -1,0 +1,23 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "_links": {
+            "collection": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/orders"
+                }
+            ],
+            "self": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/orders/727"
+                }
+            ]
+        },
+        "author": "system",
+        "customer_note": true,
+        "id": 727,
+        "note": "Neco"
+    }
+}

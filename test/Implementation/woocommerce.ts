@@ -7,6 +7,7 @@ import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrders';
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
+import WooCommerceAddNote from '../../lib/WooCommerce/Connector/WooCommerceAddNote';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
@@ -82,4 +83,11 @@ export function init(): void {
         .setDb(db)
         .setSender(sender);
     container.setConnector(wooCommerceGetOrderStatuses);
+
+    const wooCommerceAddNote = new WooCommerceAddNote();
+    wooCommerceAddNote
+        .setApplication(app)
+        .setDb(db)
+        .setSender(sender);
+    container.setConnector(wooCommerceAddNote);
 }
