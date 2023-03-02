@@ -1,0 +1,22 @@
+{
+    "http": "PUT http://woocomerce.com/wp-json/wc/v3/orders/1/notes",
+    "code": 200,
+    "body": {
+        "id": 727,
+        "author": "system",
+        "note": "Neco",
+        "customer_note": true,
+        "_links": {
+            "self": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/orders/727"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/orders"
+                }
+            ]
+        }
+    }
+}
