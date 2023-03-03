@@ -1,0 +1,35 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "carrier": "bg_speedy",
+            "weightInKg": 1,
+            "sender": {
+                "firstname": "neco",
+                "lastname": "neco",
+                "city": "Hradec Králové",
+                "zipCode": "50004",
+                "street": "neco",
+                "streetNumber": "21",
+                "email": "neco@neco.cz",
+                "phone": "+420777777777",
+                "country": "cz"
+            },
+            "recipient": {
+                "firstname": "neco",
+                "lastname": "neco",
+                "city": "Kiten",
+                "zipCode": "8183",
+                "street": "neco",
+                "streetNumber": "21",
+                "email": "neco@neco.cz",
+                "phone": "+420777777777",
+                "country": "bg"
+            },
+            "carrierPickupDate": "2023-03-03",
+            "orderNumber": "1"
+        }
+    }
+}
