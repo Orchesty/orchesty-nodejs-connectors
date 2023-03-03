@@ -17,10 +17,14 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'expedico';
 
-// TODO upravit
-const BASE_URL = 'https://dev.expedico.eu/api/v2/';
-
 export default class ExpedicoApplication extends ABasicApplication {
+
+    protected baseUrl;
+
+    public constructor(isDev = false) {
+        super();
+        this.baseUrl = isDev ? 'https://dev.expedico.eu/api/v2/' : 'https://expedico.eu/api/v2/';
+    }
 
     public getName(): string {
         return NAME;
@@ -49,7 +53,7 @@ export default class ExpedicoApplication extends ABasicApplication {
         url?: string,
         data?: unknown,
     ): RequestDto {
-        const request = new RequestDto(`${BASE_URL}${url}`, method, dto);
+        const request = new RequestDto(`${this.baseUrl}${url}`, method, dto);
         const user = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
         const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
