@@ -1,5 +1,5 @@
 {
-    "http": "POST /parcels",
+    "http": "POST https://dev.expedico.eu/api/v2/parcels",
     "code": 201,
     "body": {},
     "headers": {

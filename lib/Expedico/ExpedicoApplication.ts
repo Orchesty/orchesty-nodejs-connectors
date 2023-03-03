@@ -17,6 +17,8 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'expedico';
 
+const BASE_URL = 'https://dev.expedico.eu/api/v2/';
+
 export default class ExpedicoApplication extends ABasicApplication {
 
     public getName(): string {
@@ -46,7 +48,7 @@ export default class ExpedicoApplication extends ABasicApplication {
         url?: string,
         data?: unknown,
     ): RequestDto {
-        const request = new RequestDto(url ?? '', method, dto);
+        const request = new RequestDto(`${BASE_URL}${url}`, method, dto);
         const user = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
         const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
 
