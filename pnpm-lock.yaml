@@ -1414,8 +1414,8 @@ packages:
       '@azure/core-auth': 1.4.0
       '@azure/core-rest-pipeline': 1.10.2
       '@azure/core-tracing': 1.0.1
-      '@azure/core-util': 1.1.1
-      '@azure/logger': 1.0.3
+      '@azure/core-util': 1.2.0
+      '@azure/logger': 1.0.4
       tslib: 2.5.0
     transitivePeerDependencies:
       - supports-color
@@ -1439,7 +1439,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
-      '@azure/logger': 1.0.3
+      '@azure/logger': 1.0.4
       tslib: 2.5.0
     dev: false
     optional: true
@@ -1459,8 +1459,8 @@ packages:
       '@azure/abort-controller': 1.1.0
       '@azure/core-auth': 1.4.0
       '@azure/core-tracing': 1.0.1
-      '@azure/core-util': 1.1.1
-      '@azure/logger': 1.0.3
+      '@azure/core-util': 1.2.0
+      '@azure/logger': 1.0.4
       form-data: 4.0.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
@@ -1479,9 +1479,9 @@ packages:
     dev: false
     optional: true
 
-  /@azure/core-util/1.1.1:
-    resolution: {integrity: sha512-A4TBYVQCtHOigFb2ETiiKFDocBoI1Zk2Ui1KpI42aJSIDexF7DHQFpnjonltXAIU/ceH+1fsZAWWgvX6/AKzog==}
-    engines: {node: '>=12.0.0'}
+  /@azure/core-util/1.2.0:
+    resolution: {integrity: sha512-ffGIw+Qs8bNKNLxz5UPkz4/VBM/EZY07mPve1ZYFqYUdPwFqRj0RPk0U7LZMOfT7GCck9YjuT1Rfp1PApNl1ng==}
+    engines: {node: '>=14.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
       tslib: 2.5.0
@@ -1497,8 +1497,8 @@ packages:
       '@azure/core-client': 1.7.2
       '@azure/core-rest-pipeline': 1.10.2
       '@azure/core-tracing': 1.0.1
-      '@azure/core-util': 1.1.1
-      '@azure/logger': 1.0.3
+      '@azure/core-util': 1.2.0
+      '@azure/logger': 1.0.4
       '@azure/msal-browser': 2.33.0
       '@azure/msal-common': 7.6.0
       '@azure/msal-node': 1.15.0
@@ -1523,8 +1523,8 @@ packages:
       '@azure/core-client': 1.7.2
       '@azure/core-rest-pipeline': 1.10.2
       '@azure/core-tracing': 1.0.1
-      '@azure/core-util': 1.1.1
-      '@azure/logger': 1.0.3
+      '@azure/core-util': 1.2.0
+      '@azure/logger': 1.0.4
       '@azure/msal-browser': 2.33.0
       '@azure/msal-common': 9.1.1
       '@azure/msal-node': 1.15.0
@@ -1551,17 +1551,17 @@ packages:
       '@azure/core-paging': 1.5.0
       '@azure/core-rest-pipeline': 1.10.2
       '@azure/core-tracing': 1.0.1
-      '@azure/core-util': 1.1.1
-      '@azure/logger': 1.0.3
+      '@azure/core-util': 1.2.0
+      '@azure/logger': 1.0.4
       tslib: 2.5.0
     transitivePeerDependencies:
       - supports-color
     dev: false
     optional: true
 
-  /@azure/logger/1.0.3:
-    resolution: {integrity: sha512-aK4s3Xxjrx3daZr3VylxejK3vG5ExXck5WOHDJ8in/k9AqlfIyFMMT1uG7u8mNjX+QRILTIn0/Xgschfh/dQ9g==}
-    engines: {node: '>=12.0.0'}
+  /@azure/logger/1.0.4:
+    resolution: {integrity: sha512-ustrPY8MryhloQj7OWGe+HrYx+aoiOxzbXTtgblbV3xwCqpzUK36phH3XNHQKj3EPonyFUuDTfR3qFhTEAuZEg==}
+    engines: {node: '>=14.0.0'}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -2680,8 +2680,8 @@ packages:
       '@types/node': 18.14.5
     dev: true
 
-  /@types/validator/13.7.12:
-    resolution: {integrity: sha512-YVtyAPqpefU+Mm/qqnOANW6IkqKpCSrarcyV269C8MA8Ux0dbkEuQwM/4CjL47kVEM2LgBef/ETfkH+c6+moFA==}
+  /@types/validator/13.7.13:
+    resolution: {integrity: sha512-EMfHccxNKXaSxTK6DN0En9WsXa7uR4w3LQtx31f6Z2JjG5hJQeVX5zUYMZoatjZgnoQmRcT94WnNWwi0BzQW6Q==}
     dev: false
     optional: true
 
@@ -3207,8 +3207,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001458
-      electron-to-chromium: 1.4.315
+      caniuse-lite: 1.0.30001460
+      electron-to-chromium: 1.4.317
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -3306,8 +3306,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001458:
-    resolution: {integrity: sha512-lQ1VlUUq5q9ro9X+5gOEyH7i3vm+AYVT1WDCVB69XOZ17KZRhnZ9J0Sqz7wTHQaLBJccNCHq8/Ww5LlOIZbB0w==}
+  /caniuse-lite/1.0.30001460:
+    resolution: {integrity: sha512-Bud7abqjvEjipUkpLs4D7gR0l8hBYBHoa+tGtKJHvT2AYzLp1z7EmVkUT4ERpVUfca8S2HGIVs883D8pUH1ZzQ==}
     dev: true
 
   /chalk/2.4.2:
@@ -3649,8 +3649,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.315:
-    resolution: {integrity: sha512-ndBQYz3Eyy3rASjjQ9poMJGoAlsZ/aZnq6GBsGL4w/4sWIAwiUHVSsMuADbxa8WJw7pZ0oxLpGbtoDt4vRTdCg==}
+  /electron-to-chromium/1.4.317:
+    resolution: {integrity: sha512-JhCRm9v30FMNzQSsjl4kXaygU+qHBD0Yh7mKxyjmF0V8VwYVB6qpBRX28GyAucrM9wDCpSUctT6FpMUQxbyKuA==}
     dev: true
 
   /emittery/0.13.1:
@@ -6691,7 +6691,7 @@ packages:
         optional: true
     dependencies:
       '@types/debug': 4.1.7
-      '@types/validator': 13.7.12
+      '@types/validator': 13.7.13
       debug: 4.3.4
       dottie: 2.0.3
       inflection: 1.13.4
