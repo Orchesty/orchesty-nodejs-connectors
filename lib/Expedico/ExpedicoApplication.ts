@@ -17,6 +17,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'expedico';
 
+// TODO upravit
 const BASE_URL = 'https://dev.expedico.eu/api/v2/';
 
 export default class ExpedicoApplication extends ABasicApplication {
