@@ -17,7 +17,6 @@ export default class ExpedicoCreateParcel extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
-            // TODO rich kde se bude nastavovat base URL, bude to ve formulari?
             'parcels',
             JSON.stringify(data),
         );
