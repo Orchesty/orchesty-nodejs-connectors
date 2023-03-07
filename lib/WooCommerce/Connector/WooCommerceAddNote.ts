@@ -25,7 +25,7 @@ export default class WooCommerceAddNote extends AConnector {
         return dto.setNewJsonData((await this.getSender().send<IOutput>(requestDto, [200])).getJsonBody());
     }
 
-    private getJsonData(dto: ProcessDto<IInput>): IInput {
+    protected getJsonData(dto: ProcessDto<IInput>): IInput {
         return dto.getJsonData();
     }
 

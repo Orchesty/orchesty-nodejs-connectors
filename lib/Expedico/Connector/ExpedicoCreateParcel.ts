@@ -30,7 +30,7 @@ export default class ExpedicoCreateParcel extends AConnector {
         } as IOutput);
     }
 
-    private getJsonData(dto: ProcessDto<IInput>): IInput {
+    protected getJsonData(dto: ProcessDto<IInput>): IInput {
         return dto.getJsonData();
     }
 
