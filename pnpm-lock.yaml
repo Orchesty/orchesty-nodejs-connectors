@@ -1499,9 +1499,9 @@ packages:
       '@azure/core-tracing': 1.0.1
       '@azure/core-util': 1.2.0
       '@azure/logger': 1.0.4
-      '@azure/msal-browser': 2.33.0
+      '@azure/msal-browser': 2.34.0
       '@azure/msal-common': 7.6.0
-      '@azure/msal-node': 1.15.0
+      '@azure/msal-node': 1.16.0
       events: 3.3.0
       jws: 4.0.0
       open: 8.4.2
@@ -1525,9 +1525,9 @@ packages:
       '@azure/core-tracing': 1.0.1
       '@azure/core-util': 1.2.0
       '@azure/logger': 1.0.4
-      '@azure/msal-browser': 2.33.0
+      '@azure/msal-browser': 2.34.0
       '@azure/msal-common': 9.1.1
-      '@azure/msal-node': 1.15.0
+      '@azure/msal-node': 1.16.0
       events: 3.3.0
       jws: 4.0.0
       open: 8.4.2
@@ -1567,16 +1567,16 @@ packages:
     dev: false
     optional: true
 
-  /@azure/msal-browser/2.33.0:
-    resolution: {integrity: sha512-c7CVh1tfUfxiWkEIhoIb11hL4PGo4hz0M+gMy34ATagAKdLK7qyEu/5AXJWAf5lz5eE+vQhm7+LKiuETrcXXGw==}
+  /@azure/msal-browser/2.34.0:
+    resolution: {integrity: sha512-stoXdlfAtyVIMOp1lS5PorgO5f66MGRi3Q1FBlXhVZFTsTfAWrNdSOx1m/PXWHskWE9aXO+NEzXVOoWmDNnvNA==}
     engines: {node: '>=0.8.0'}
     dependencies:
-      '@azure/msal-common': 10.0.0
+      '@azure/msal-common': 11.0.0
     dev: false
     optional: true
 
-  /@azure/msal-common/10.0.0:
-    resolution: {integrity: sha512-/LghpT93jsZLy55QzTsRZWMx6R1Mjc1Aktwps8sKSGE3WbrGwbSsh2uhDlpl6FMcKChYjJ0ochThWwwOodrQNg==}
+  /@azure/msal-common/11.0.0:
+    resolution: {integrity: sha512-SZH8ObQ3Hq5v3ogVGBYJp1nNW7p+MtM4PH4wfNadBP9wf7K0beQHF9iOtRcjPOkwZf+ZD49oXqw91LndIkdk8g==}
     engines: {node: '>=0.8.0'}
     dev: false
     optional: true
@@ -1593,11 +1593,11 @@ packages:
     dev: false
     optional: true
 
-  /@azure/msal-node/1.15.0:
-    resolution: {integrity: sha512-fwC5M0c8pxOAzmScPbpx7j28YVTDebUaizlVF7bR0xvlU0r3VWW5OobCcr9ybqKS6wGyO7u4EhXJS9rjRWAuwA==}
+  /@azure/msal-node/1.16.0:
+    resolution: {integrity: sha512-eGXPp65i++mAIvziafbCH970TCeECB6iaQP7aRzZEjtU238cW4zKm40U8YxkiCn9rR1G2VeMHENB5h6WRk7ZCQ==}
     engines: {node: 10 || 12 || 14 || 16 || 18}
     dependencies:
-      '@azure/msal-common': 10.0.0
+      '@azure/msal-common': 11.0.0
       jsonwebtoken: 9.0.0
       uuid: 8.3.2
     dev: false
@@ -3208,7 +3208,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001462
-      electron-to-chromium: 1.4.322
+      electron-to-chromium: 1.4.324
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -3655,8 +3655,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.322:
-    resolution: {integrity: sha512-KovjizNC9XB7dno/2GjxX8VS0SlfPpCjtyoKft+bCO+UfD8bFy16hY4Sh9s0h9BDxbRH2U0zX5VBjpM1LTcNlg==}
+  /electron-to-chromium/1.4.324:
+    resolution: {integrity: sha512-m+eBs/kh3TXnCuqDF6aHLLRwLK2U471JAbZ1KYigf0TM96fZglxv0/ZFBvyIxnLKsIWUoDiVnHTA2mhYz1fqdA==}
     dev: true
 
   /emittery/0.13.1:
