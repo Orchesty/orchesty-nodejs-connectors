@@ -54,17 +54,7 @@ export interface IInput {
         weightInKg: number;
         sender?: IAddress;
         senderId: number;
-        recipient: {
-            firstname: string;
-            lastname: string;
-            city: string;
-            zipCode: string;
-            street: string;
-            streetNumber: string;
-            email: string;
-            phone: string;
-            country: string;
-        };
+        recipient: IAddress;
         carrierPickupDate: string;
         orderNumber: string;
     };
