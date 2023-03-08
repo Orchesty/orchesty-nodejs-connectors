@@ -1,0 +1,65 @@
+{
+    "http": "GET https://expedico.eu/api/v2/carriers",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "attributes": {
+                    "labelEn": "HU DPD",
+                    "sys": "hu_dpd"
+                },
+                "id": "131",
+                "links": {
+                    "self": "/api/v2/carriers/131"
+                },
+                "relationships": {
+                    "countries": {
+                        "links": {
+                            "related": "/api/v2/countries?filter[carrier_id]=131"
+                        }
+                    }
+                },
+                "type": "carriers"
+            },
+            {
+                "attributes": {
+                    "labelEn": "HU Express One",
+                    "sys": "hu_expressone"
+                },
+                "id": "132",
+                "links": {
+                    "self": "/api/v2/carriers/132"
+                },
+                "relationships": {
+                    "countries": {
+                        "links": {
+                            "related": "/api/v2/countries?filter[carrier_id]=132"
+                        }
+                    }
+                },
+                "type": "carriers"
+            },
+            {
+                "attributes": {
+                    "labelEn": "BG Speedy",
+                    "sys": "bg_speedy"
+                },
+                "id": "133",
+                "links": {
+                    "self": "/api/v2/carriers/133"
+                },
+                "relationships": {
+                    "countries": {
+                        "links": {
+                            "related": "/api/v2/countries?filter[carrier_id]=133"
+                        }
+                    }
+                },
+                "type": "carriers"
+            }
+        ],
+        "jsonapi": {
+            "version": "1.0"
+        }
+    }
+}
