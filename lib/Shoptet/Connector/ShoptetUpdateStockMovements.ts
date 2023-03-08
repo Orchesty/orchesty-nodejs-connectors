@@ -32,7 +32,8 @@ export interface IInput {
     stockId: string;
     data: {
         productCode: string;
-        quantity: number;
+        quantity?: number;
+        amountChange?: number;
     }[];
 }
 
