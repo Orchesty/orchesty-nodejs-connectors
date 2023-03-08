@@ -53,6 +53,7 @@ export interface IInput {
         carrier: string;
         weightInKg: number;
         sender: IAddress;
+        senderId: number;
         recipient: {
             firstname: string;
             lastname: string;
