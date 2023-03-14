@@ -11,7 +11,7 @@ export default class ExpedicoCreateParcel extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const data = this.getJsonData(dto);
+        const data = dto.getData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
@@ -21,24 +21,21 @@ export default class ExpedicoCreateParcel extends AConnector {
             JSON.stringify(data),
         );
 
-        return this.setJsonData(dto, (await this.getSender().send(requestDto, [201])).getHeaders());
+        return this.setJsonData(dto, (await this.getSender().send(requestDto, [201])).getHeaders(), dto.getJsonData());
     }
 
-    protected setJsonData(dto: ProcessDto, data: Record<string, unknown>): ProcessDto<IOutput> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected setJsonData(dto: ProcessDto, response: Record<string, unknown>, data: IInput): ProcessDto<IOutput> {
         const { id,
             'carrier-barcode': carrierBarcode,
             'carrier-tracking-code': carrierTrackingCode,
-        } = data;
+        } = response;
 
         return dto.setNewJsonData({
             id,
             carrierBarcode,
             carrierTrackingCode,
         } as IOutput);
-    }
-
-    protected getJsonData(dto: ProcessDto<IInput>): IInput {
-        return dto.getJsonData();
     }
 
 }

@@ -12,7 +12,7 @@ export default class WooCommerceAddNote extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { id, ...data } = this.getJsonData(dto);
+        const { id, ...data } = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
@@ -23,10 +23,6 @@ export default class WooCommerceAddNote extends AConnector {
         );
 
         return dto.setNewJsonData((await this.getSender().send<IOutput>(requestDto, [200])).getJsonBody());
-    }
-
-    protected getJsonData(dto: ProcessDto<IInput>): IInput {
-        return dto.getJsonData();
     }
 
 }
