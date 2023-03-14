@@ -21,7 +21,14 @@ export default class ExpedicoCreateParcel extends AConnector {
             JSON.stringify(data),
         );
 
-        const { id, 'carrier-barcode': carrierBarcode, 'carrier-tracking-code': carrierTrackingCode } = (await this.getSender().send(requestDto, [201])).getHeaders();
+        return this.setJsonData(dto, (await this.getSender().send(requestDto, [201])).getHeaders());
+    }
+
+    protected setJsonData(dto: ProcessDto, data: Record<string, unknown>): ProcessDto<IOutput> {
+        const { id,
+            'carrier-barcode': carrierBarcode,
+            'carrier-tracking-code': carrierTrackingCode,
+        } = data;
 
         return dto.setNewJsonData({
             id,
