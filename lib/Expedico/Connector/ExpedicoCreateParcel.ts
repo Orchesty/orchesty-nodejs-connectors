@@ -11,7 +11,7 @@ export default class ExpedicoCreateParcel extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const data = dto.getData();
+        const data = this.getJsonData(dto);
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
@@ -36,6 +36,10 @@ export default class ExpedicoCreateParcel extends AConnector {
             carrierBarcode,
             carrierTrackingCode,
         } as IOutput);
+    }
+
+    protected getJsonData(dto: ProcessDto<IInput>): IInput {
+        return dto.getJsonData();
     }
 
 }
