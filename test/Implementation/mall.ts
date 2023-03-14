@@ -17,6 +17,11 @@ export default function init(): void {
             [CLIENT_ID]: DEFAULT_CLIENT_ID,
         },
     });
+    appInstall(MALL_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [CLIENT_ID]: DEFAULT_CLIENT_ID,
+        },
+    });
 
     const app = new MallApplication();
     container.setApplication(app);

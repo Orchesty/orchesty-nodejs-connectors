@@ -14,6 +14,12 @@ export default function init(): void {
             [TOKEN]: DEFAULT_ACCESS_TOKEN,
         },
     });
+    appInstall(PIPEDRIVE_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [SUBDOMAIN]: 'company',
+            [TOKEN]: DEFAULT_ACCESS_TOKEN,
+        },
+    });
 
     const app = new PipedriveApplication();
     const getAllLeads = new PipedriveGetAllLeadsBatch();

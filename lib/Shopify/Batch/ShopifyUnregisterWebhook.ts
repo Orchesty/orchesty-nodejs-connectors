@@ -22,8 +22,6 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
 
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-
-        repo.clearCache();
         const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
 
         if (webhooks && webhooks.length > 0) {

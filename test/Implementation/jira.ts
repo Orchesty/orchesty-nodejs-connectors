@@ -24,6 +24,28 @@ export default function init(): void {
             [TASK_TYPE]: 1,
         },
     });
+    appInstall(JIRA_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [HOST_URL]: 'https://example.atlassian.net',
+            [USER]: 'info@examle.com',
+            [PASSWORD]: 'api_key',
+        },
+        [ISSUE_TYPE_FROM]: {
+            [BUG_TYPE]: 0,
+            [TASK_TYPE]: 1,
+        },
+    });
+    appInstall(JIRA_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [HOST_URL]: 'https://example.atlassian.net',
+            [USER]: 'info@examle.com',
+            [PASSWORD]: 'api_key',
+        },
+        [ISSUE_TYPE_FROM]: {
+            [BUG_TYPE]: 0,
+            [TASK_TYPE]: 1,
+        },
+    });
 
     const app = new JiraApplication();
     container.setApplication(app);

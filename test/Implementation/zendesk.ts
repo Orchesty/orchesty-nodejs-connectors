@@ -28,6 +28,16 @@ export default function init(): void {
             },
         },
     });
+    appInstall(ZENDESK_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [CLIENT_ID]: DEFAULT_USER,
+            [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+            [SUBDOMAIN]: 'hbtest8393',
+            [TOKEN]: {
+                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+            },
+        },
+    });
     const app = new ZendeskApplication(oauth2Provider);
     container.setApplication(app);
 

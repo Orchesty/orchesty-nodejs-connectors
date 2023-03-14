@@ -22,6 +22,13 @@ export default function init(): void {
             },
         },
     });
+    appInstall(DIGITOO_APP, DEFAULT_USER, {
+        [CoreFormsEnum.AUTHORIZATION_FORM]: {
+            [TOKEN]: {
+                [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+            },
+        },
+    });
 
     const app = new DigitooApplication();
     container.setApplication(app);

@@ -12,7 +12,7 @@ describe('Tests for ShoptetGetAllOrders', () => {
     });
 
     it('process - ok', async () => {
-        mock();
+        mock(2);
         await tester.testConnector(SHOPTET_GET_ALL_ORDERS);
     });
 });
