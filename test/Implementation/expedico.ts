@@ -1,4 +1,5 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import ExpedicoGetTrackingInfo from '../../lib/Expedico/Batch/ExpedicoGetTrackingInfo';
 import ExpedicoCreateParcel from '../../lib/Expedico/Connector/ExpedicoCreateParcel';
 import ExpedicoGetCarriers from '../../lib/Expedico/Connector/ExpedicoGetCarriers';
 import ExpedicoApplication from '../../lib/Expedico/ExpedicoApplication';
@@ -13,7 +14,7 @@ export default function init(): void {
         },
     });
 
-    const app = new ExpedicoApplication();
+    const app = new ExpedicoApplication(false);
     container.setApplication(app);
 
     const expedicoCreateParcel = new ExpedicoCreateParcel()
@@ -27,4 +28,6 @@ export default function init(): void {
         .setDb(db)
         .setApplication(app);
     container.setConnector(expedicoGetCarriers);
+
+    container.setNode(new ExpedicoGetTrackingInfo(), app);
 }
