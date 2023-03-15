@@ -1,5 +1,5 @@
 {
-  "http": "POST https://dev.expedico.eu/api/v2/parcels_tracking",
+  "http": "POST https://expedico.eu/api/v2/parcels_tracking",
   "code": 200,
   "body": {
     "data": {

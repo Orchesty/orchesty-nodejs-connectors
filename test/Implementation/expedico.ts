@@ -14,7 +14,7 @@ export default function init(): void {
         },
     });
 
-    const app = new ExpedicoApplication(true);
+    const app = new ExpedicoApplication(false);
     container.setApplication(app);
 
     const expedicoCreateParcel = new ExpedicoCreateParcel()
