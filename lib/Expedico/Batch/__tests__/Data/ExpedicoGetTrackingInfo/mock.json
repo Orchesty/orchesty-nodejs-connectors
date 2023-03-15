@@ -1,0 +1,52 @@
+{
+  "http": "POST https://dev.expedico.eu/api/v2/parcels_tracking",
+  "code": 200,
+  "body": {
+    "data": {
+      "1225955070094": {
+        "parcelStatusId": 200,
+        "trackingHistory": [
+          {
+            "attributes": {
+              "dateTime": "2023-03-08T10:16:27Z",
+              "parcelId": 1225955070094,
+              "parcelStatusId": 200,
+              "statusDescription": null,
+              "trackingCode": "62091150493"
+            },
+            "relationships": {
+              "packet": {
+                "links": {
+                  "related": "/api/v2/parcels/1225955070094"
+                }
+              }
+            },
+            "type": "parcel_events"
+          }
+        ]
+      },
+      "1225955070095": {
+        "parcelStatusId": 200,
+        "trackingHistory": [
+          {
+            "attributes": {
+              "dateTime": "2023-03-08T10:16:27Z",
+              "parcelId": 1225955070095,
+              "parcelStatusId": 200,
+              "statusDescription": null,
+              "trackingCode": "62091150493"
+            },
+            "relationships": {
+              "packet": {
+                "links": {
+                  "related": "/api/v2/parcels/1225955070094"
+                }
+              }
+            },
+            "type": "parcel_events"
+          }
+        ]
+      }
+    }
+  }
+}

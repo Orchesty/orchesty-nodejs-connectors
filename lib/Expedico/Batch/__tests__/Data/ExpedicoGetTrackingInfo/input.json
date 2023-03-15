@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "defaultUser"
+    },
+    "data": {
+        "parcelIds": [
+            1,
+            2
+        ]
+    }
+}
