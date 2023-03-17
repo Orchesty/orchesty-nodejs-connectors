@@ -59,7 +59,7 @@ export default class ExpedicoApplication extends ABasicApplication {
 
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
-            [CommonHeaders.ACCEPT]: JSON_TYPE,
+            [CommonHeaders.ACCEPT]: '*/*',
             [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
         });
 
