@@ -18,7 +18,7 @@ export default class ExpedicoCreateParcel extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'parcels',
-            JSON.stringify(data),
+            data,
         );
 
         return this.setJsonData(dto, (await this.getSender().send(requestDto, [201])).getHeaders(), dto.getJsonData());
