@@ -211,7 +211,8 @@ export default class XeroApplication extends AOAuth2Application {
         return ScopeSeparatorEnum.SPACE;
     }
 
-    protected getProviderCustomOptions(): Record<string, unknown> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected getProviderCustomOptions(applicationInstall: ApplicationInstall): Record<string, unknown> {
         return {
             options: {
                 authorizationMethod: 'header',

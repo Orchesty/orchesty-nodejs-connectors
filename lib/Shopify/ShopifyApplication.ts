@@ -1,15 +1,13 @@
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
-import {
-    ApplicationInstall,
-    IApplicationSettings,
-} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
-import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
+import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -18,17 +16,17 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'shopify';
-export const API_VERSION = '2022-07';
+export const API_VERSION = '2023-01';
 
 const API_KEY_HEADER = 'X-Shopify-Access-Token';
 const PREMIUM_PLAN = 'premium';
 const SHOPIFY_URL = 'shopifyUrl';
 const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
 
-export default class ShopifyApplication extends ABasicApplication {
+export default class ShopifyApplication extends AOAuth2Application {
 
-    public constructor(private readonly curlSender: CurlSender) {
-        super();
+    public constructor(private readonly curlSender: CurlSender, provider: OAuth2Provider) {
+        super(provider);
     }
 
     public getWebhookSubscriptions(): WebhookSubscription[] {
@@ -58,9 +56,8 @@ export default class ShopifyApplication extends ABasicApplication {
         url?: string,
         data?: string,
     ): RequestDto {
-        const settings = applicationInstall.getSettings();
         const headers = {
-            [API_KEY_HEADER]: settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN],
+            [API_KEY_HEADER]: this.getAccessToken(applicationInstall),
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
@@ -72,34 +69,25 @@ export default class ShopifyApplication extends ABasicApplication {
         return new RequestDto(urlx, parseHttpMethod(method), dto, data, headers);
     }
 
-    public async saveApplicationForms(applicationInstall: ApplicationInstall, settings: IApplicationSettings):
-    Promise<ApplicationInstall> {
-        const appInstall = await super.saveApplicationForms(applicationInstall, settings);
-        try {
-            await this.checkShopPlan(applicationInstall);
-        } catch (e) {
-            logger.error((e as { message?: string })?.message ?? 'Unknown error.', {}, true);
-        }
-
-        return appInstall;
-    }
-
     public getDecoratedUrl(app: ApplicationInstall): string {
         return app
             .getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[SHOPIFY_URL] ?? '';
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
-        const settings = applicationInstall.getSettings();
-        return !!(settings?.[CoreFormsEnum.AUTHORIZATION_FORM]
-          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[TOKEN]
-          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[SHOPIFY_URL]
-          && settings?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[PREMIUM_PLAN] !== undefined);
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+
+        return super.isAuthorized(applicationInstall)
+            && authorizationForm?.[CLIENT_ID]
+            && authorizationForm?.[CLIENT_SECRET]
+            && authorizationForm?.[SHOPIFY_URL]
+            && authorizationForm?.[PREMIUM_PLAN] !== undefined;
     }
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-            .addField(new Field(FieldType.TEXT, TOKEN, 'Admin API access token', undefined, true))
+            .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, true))
+            .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, true))
             .addField(new Field(FieldType.TEXT, SHOPIFY_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);
@@ -120,6 +108,56 @@ export default class ShopifyApplication extends ABasicApplication {
         return undefined;
     }
 
+    // This URL is dynamically replaced in getProviderCustomOptions method
+    public getAuthUrl(): string {
+        return 'https://xyz.myshopify.com/admin/oauth/authorize';
+    }
+
+    // This URL is dynamically replaced in getProviderCustomOptions method
+    public getTokenUrl(): string {
+        return 'https://xyz.myshopify.com/admin/oauth/access_token';
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public getScopes(applicationInstall: ApplicationInstall): string[] {
+        return [
+            'read_orders',
+            'write_orders',
+            'read_fulfillments',
+            'write_fulfillments',
+            'read_assigned_fulfillment_orders',
+            'write_assigned_fulfillment_orders',
+            'read_merchant_managed_fulfillment_orders',
+            'write_merchant_managed_fulfillment_orders',
+        ];
+    }
+
+    public async setAuthorizationToken(
+        applicationInstall: ApplicationInstall,
+        token: Record<string, string>,
+    ): Promise<void> {
+        await super.setAuthorizationToken(applicationInstall, token);
+        await this.checkShopPlan(applicationInstall);
+    }
+
+    protected getProviderCustomOptions(applicationInstall: ApplicationInstall): Record<string, unknown> {
+        const url = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SHOPIFY_URL];
+        const authorizeUrl = new URL(`${url}/admin/oauth/authorize`);
+        const tokenUrl = new URL(`${url}/admin/oauth/access_token`);
+
+        return {
+            auth: {
+                authorizeHost: authorizeUrl.origin,
+                authorizePath: authorizeUrl.pathname,
+                tokenHost: tokenUrl.origin,
+                tokenPath: tokenUrl.pathname,
+            },
+            options: {
+                authorizationMethod: 'body',
+            },
+        };
+    }
+
     private async checkShopPlan(applicationInstall: ApplicationInstall): Promise<void> {
         const requestDto = this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.GET, SHOP_INFO_URL);
 
@@ -132,14 +170,7 @@ export default class ShopifyApplication extends ABasicApplication {
             premium = true;
         }
 
-        this.setPremium(applicationInstall, premium);
-    }
-
-    private setPremium(applicationInstall: ApplicationInstall, premium: boolean): ApplicationInstall {
-        const settings = applicationInstall.getSettings();
-        settings[PREMIUM_PLAN] = premium;
-
-        return applicationInstall.addSettings(settings);
+        applicationInstall.addSettings({ [CoreFormsEnum.AUTHORIZATION_FORM]: { [PREMIUM_PLAN]: premium } });
     }
 
 }
