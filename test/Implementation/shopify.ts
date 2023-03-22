@@ -1,5 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
-import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import ShopifyGetFulfillments from '../../lib/Shopify/Batch/ShopifyGetFulfillments';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
@@ -10,10 +12,14 @@ import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateF
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyApplication, { NAME } from '../../lib/Shopify/ShopifyApplication';
-import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import {
-    container, db, sender,
-} from '../TestAbstract';
+    appInstall,
+    DEFAULT_ACCESS_TOKEN,
+    DEFAULT_CLIENT_ID,
+    DEFAULT_CLIENT_SECRET,
+    DEFAULT_USER,
+} from '../DataProvider';
+import { container, db, oauth2Provider, sender } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(
@@ -21,13 +27,16 @@ export default function init(): void {
         DEFAULT_USER,
         {
             [CoreFormsEnum.AUTHORIZATION_FORM]: {
-                [USER]: DEFAULT_USER,
-                [PASSWORD]: DEFAULT_PASSWORD,
-                shopifyUrl: 'https://kube.myshopify.com',
+                [CLIENT_ID]: DEFAULT_CLIENT_ID,
+                [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
+                [TOKEN]: {
+                    [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
+                },
+                shopifyUrl: 'https://xyz.myshopify.com',
             },
         },
     );
-    const shopifyApplication = new ShopifyApplication(sender);
+    const shopifyApplication = new ShopifyApplication(sender, oauth2Provider);
     container.setApplication(shopifyApplication);
 
     const shopifyGetProductsList = new ShopifyGetProductsList()
