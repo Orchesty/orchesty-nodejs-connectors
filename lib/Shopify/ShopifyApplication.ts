@@ -20,12 +20,12 @@ export const API_VERSION = '2023-01';
 
 const API_KEY_HEADER = 'X-Shopify-Access-Token';
 const PREMIUM_PLAN = 'premium';
-const SHOPIFY_URL = 'shopifyUrl';
 const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
+export const SHOPIFY_URL = 'shopifyUrl';
 
 export default class ShopifyApplication extends AOAuth2Application {
 
-    public constructor(private readonly curlSender: CurlSender, provider: OAuth2Provider) {
+    public constructor(protected readonly curlSender: CurlSender, provider: OAuth2Provider) {
         super(provider);
     }
 
@@ -54,7 +54,7 @@ export default class ShopifyApplication extends AOAuth2Application {
         applicationInstall: ApplicationInstall,
         method: HttpMethods | string,
         url?: string,
-        data?: string,
+        data?: unknown,
     ): RequestDto {
         const headers = {
             [API_KEY_HEADER]: this.getAccessToken(applicationInstall),
@@ -123,6 +123,8 @@ export default class ShopifyApplication extends AOAuth2Application {
         return [
             'read_orders',
             'write_orders',
+            'read_shipping',
+            'write_shipping',
             'read_fulfillments',
             'write_fulfillments',
             'read_assigned_fulfillment_orders',

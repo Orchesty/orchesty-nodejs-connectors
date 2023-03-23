@@ -11,6 +11,7 @@ import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsol
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
+import ShopifyUpdateOrder from '../../lib/Shopify/Connector/ShopifyUpdateOrder';
 import ShopifyApplication, { NAME } from '../../lib/Shopify/ShopifyApplication';
 import {
     appInstall,
@@ -92,4 +93,10 @@ export default function init(): void {
         .setSender(sender)
         .setDb(db);
     container.setBatch(shopifyGetFulfillments);
+
+    const shopifyUpdateOrder = new ShopifyUpdateOrder()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setConnector(shopifyUpdateOrder);
 }
