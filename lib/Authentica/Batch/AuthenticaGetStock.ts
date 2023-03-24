@@ -65,6 +65,7 @@ interface IResponse {
 export interface IOutput {
     sku: string;
     productId: string;
+    timestamp: string;
     inStock?: string;
     inStockDelta?: string;
 }
