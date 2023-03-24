@@ -6,7 +6,8 @@
             {
                 "sku": "01-006",
                 "inStock": "23",
-                "productId": "1"
+                "productId": "1",
+                "timestamp": "2023-01-25T00:00:00.000Z"
             }
         ],
         "links": {
