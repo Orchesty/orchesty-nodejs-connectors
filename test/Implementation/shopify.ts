@@ -2,6 +2,7 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import ShopifyGetFulfillmentOrders from '../../lib/Shopify/Batch/ShopifyGetFulfillmentOrders';
 import ShopifyGetFulfillments from '../../lib/Shopify/Batch/ShopifyGetFulfillments';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
@@ -9,6 +10,7 @@ import ShopifyRegisterWebhook from '../../lib/Shopify/Batch/ShopifyRegisterWebho
 import ShopifyUnregisterWebhook from '../../lib/Shopify/Batch/ShopifyUnregisterWebhook';
 import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsoluteUpdateStock';
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
+import ShopifyCreateFulfillmentEvent from '../../lib/Shopify/Connector/ShopifyCreateFulfillmentEvent';
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyUpdateOrder from '../../lib/Shopify/Connector/ShopifyUpdateOrder';
@@ -99,4 +101,16 @@ export default function init(): void {
         .setSender(sender)
         .setDb(db);
     container.setConnector(shopifyUpdateOrder);
+
+    const shopifyGetFulfillmentOrders = new ShopifyGetFulfillmentOrders()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setBatch(shopifyGetFulfillmentOrders);
+
+    const shopifyCreateFulfillmentEvent = new ShopifyCreateFulfillmentEvent()
+        .setApplication(shopifyApplication)
+        .setSender(sender)
+        .setDb(db);
+    container.setConnector(shopifyCreateFulfillmentEvent);
 }

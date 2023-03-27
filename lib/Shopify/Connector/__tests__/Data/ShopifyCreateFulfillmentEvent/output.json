@@ -1,0 +1,25 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "address1": null,
+        "admin_graphql_api_id": "gid://shopify/FulfillmentEvent/26258833146173",
+        "city": null,
+        "country": null,
+        "created_at": "2023-03-24T09:33:15-04:00",
+        "estimated_delivery_at": null,
+        "fulfillment_id": 1,
+        "happened_at": "2023-03-24T09:33:15-04:00",
+        "id": 26258833146173,
+        "latitude": null,
+        "longitude": null,
+        "message": null,
+        "order_id": 2,
+        "province": null,
+        "shop_id": 73612198205,
+        "status": "confirmed",
+        "updated_at": "2023-03-24T09:33:15-04:00",
+        "zip": null
+    }
+}
