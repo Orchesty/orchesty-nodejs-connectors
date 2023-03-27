@@ -1,0 +1,76 @@
+{
+    "http": "GET https://xyz.myshopify.com/admin/api/2023-01/fulfillment_orders/1/fulfillments.json",
+    "code": 200,
+    "body": {
+        "fulfillments": [
+            {
+                "id": 4707088859453,
+                "order_id": 5315108372797,
+                "status": "success",
+                "created_at": "2023-03-27T05:40:06-04:00",
+                "service": "manual",
+                "updated_at": "2023-03-27T05:41:43-04:00",
+                "tracking_company": null,
+                "shipment_status": "confirmed",
+                "location_id": 80625697085,
+                "origin_address": null,
+                "line_items": [
+                    {
+                        "id": 13845773320509,
+                        "variant_id": 44852318699837,
+                        "title": "The Collection Snowboard: Hydrogen",
+                        "quantity": 1,
+                        "sku": "",
+                        "variant_title": null,
+                        "vendor": "Hydrogen Vendor",
+                        "fulfillment_service": "manual",
+                        "product_id": 8189620748605,
+                        "requires_shipping": true,
+                        "taxable": true,
+                        "gift_card": false,
+                        "name": "The Collection Snowboard: Hydrogen",
+                        "variant_inventory_management": "shopify",
+                        "properties": [],
+                        "product_exists": true,
+                        "fulfillable_quantity": 0,
+                        "grams": 0,
+                        "price": "600.00",
+                        "total_discount": "0.00",
+                        "fulfillment_status": "fulfilled",
+                        "price_set": {
+                            "shop_money": {
+                                "amount": "600.00",
+                                "currency_code": "CZK"
+                            },
+                            "presentment_money": {
+                                "amount": "600.00",
+                                "currency_code": "CZK"
+                            }
+                        },
+                        "total_discount_set": {
+                            "shop_money": {
+                                "amount": "0.00",
+                                "currency_code": "CZK"
+                            },
+                            "presentment_money": {
+                                "amount": "0.00",
+                                "currency_code": "CZK"
+                            }
+                        },
+                        "discount_allocations": [],
+                        "duties": [],
+                        "admin_graphql_api_id": "gid:\/\/shopify\/LineItem\/13845773320509",
+                        "tax_lines": []
+                    }
+                ],
+                "tracking_number": null,
+                "tracking_numbers": [],
+                "tracking_url": null,
+                "tracking_urls": [],
+                "receipt": {},
+                "name": "#1031.1",
+                "admin_graphql_api_id": "gid:\/\/shopify\/Fulfillment\/4707088859453"
+            }
+        ]
+    }
+}

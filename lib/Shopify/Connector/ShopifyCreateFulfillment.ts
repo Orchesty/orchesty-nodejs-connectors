@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { IOutput as IBaseOutput } from '../Batch/ShopifyGetFulfillmentOrders';
 import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-create-fulfillment';
@@ -13,7 +14,7 @@ export default class ShopifyCreateFulfillment extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const app = this.getApplication<ShopifyApplication>();
         const data = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
@@ -27,15 +28,21 @@ export default class ShopifyCreateFulfillment extends AConnector {
             url,
             JSON.stringify(data),
         );
-        await this.getSender().send(requestDto);
+        const { fulfillment } = (await this.getSender().send<IResponse>(requestDto)).getJsonBody();
 
-        return dto;
+        return dto.setNewJsonData({ ...fulfillment });
     }
 
 }
 
 export interface IInput {
     fulfillment: IFulfillment;
+}
+
+export type IOutput = IBaseOutput;
+
+export interface IResponse {
+    fulfillment: IOutput;
 }
 
 export interface IFulfillment {
