@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 1,
+        "orderId": 2,
+        "status": "confirmed"
+    }
+}
