@@ -163,6 +163,7 @@ export interface ILineItems {
     meta_data: IMetaData[];
     sku: string;
     price: number;
+    authentica_price: number;
 }
 
 export type IResponseJson = IOrdersJson;
