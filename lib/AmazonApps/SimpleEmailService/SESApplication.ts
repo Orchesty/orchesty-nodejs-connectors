@@ -56,19 +56,15 @@ export default class SESApplication extends AAwsApplication {
         const endpoint = settings[ENDPOINT];
 
         return new SESClient(
-            [
-                {
-                    /* eslint-disable @typescript-eslint/naming-convention */
-                    [CREDENTIALS]: {
-                        KEY: settings[KEY],
-                        SECRET: settings[SECRET],
-                    },
-                    [REGION]: settings[REGION],
-                    [VERSION]: LATEST,
-                    [ENDPOINT]: endpoint ? settings[ENDPOINT] : [],
+            {
+                [CREDENTIALS]: {
+                    accessKeyId: settings[KEY],
+                    secretAccessKey: settings[SECRET],
                 },
-                /* eslint-enable @typescript-eslint/naming-convention */
-            ],
+                [REGION]: settings[REGION],
+                [VERSION]: LATEST,
+                [ENDPOINT]: endpoint ? settings[ENDPOINT] : [],
+            },
         );
     }
 

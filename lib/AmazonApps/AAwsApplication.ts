@@ -6,7 +6,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 export const KEY = 'Key';
 export const SECRET = 'secret';
 export const REGION = 'region';
-export const VERSION = 'version';
+export const VERSION = 'apiVersion';
 export const ENDPOINT = 'endpoint';
 export const CREDENTIALS = 'credentials';
 /* eslint-disable @typescript-eslint/naming-convention */

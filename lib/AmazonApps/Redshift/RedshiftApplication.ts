@@ -66,23 +66,17 @@ export default class RedshiftApplication extends AAwsApplication {
     public getRedshiftClient(applicationInstall: ApplicationInstall): RedshiftClient {
         const settings = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
 
-        return new RedshiftClient([
-            /* eslint-disable @typescript-eslint/naming-convention */
+        return new RedshiftClient(
             {
                 [CREDENTIALS]: {
-                    KEY: settings[KEY],
-                    SECRET: settings[SECRET],
+                    accessKeyId: settings[KEY],
+                    secretAccessKey: settings[SECRET],
                 },
+                [REGION]: settings[REGION],
+                [VERSION]: LATEST,
             },
-            {
-                [REGION]:
-                    settings[REGION],
-            },
-            {
-                [VERSION]:
-                LATEST,
-            },
-        ]);
+
+        );
     }
 
     public async saveApplicationForms(
@@ -104,12 +98,14 @@ export default class RedshiftApplication extends AAwsApplication {
 
         return applicationInstall.setSettings(
             {
+                /* eslint-disable @typescript-eslint/naming-convention */
                 CLUSTER_IDENTIFIER: cluster.ClusterIdentifier,
                 MASTER_USER: cluster.MasterUsername,
                 DB_PASSWORD: applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][DB_PASSWORD],
                 DBNAME: cluster.DBName,
                 HOST: cluster.Endpoint?.Address,
                 PORT: cluster.Endpoint?.Port,
+                /* eslint-enable @typescript-eslint/naming-convention */
             },
         );
     }

@@ -37,7 +37,21 @@ export default class JiraCreateIssueConnector extends AConnector {
                     key: projectKey,
                 },
                 summary,
-                description,
+                description: {
+                    type: 'doc',
+                    version: 1,
+                    content: [
+                        {
+                            type: 'paragraph',
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: description,
+                                },
+                            ],
+                        },
+                    ],
+                },
                 issuetype: {
                     id: this.getIssueTypeId(applicationInstall, issueType),
                 },
