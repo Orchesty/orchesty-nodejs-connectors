@@ -33,7 +33,7 @@ export interface IInput {
         avatar?: string;
     };
     fields?: {
-        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
+        type: 'date' | 'dropdown' | 'email' | 'file_upload' | 'group' | 'legal' | 'long_text' | 'matrix' | 'multiple_choice' | 'number' | 'opinion_scale' | 'payment' | 'phone_number' | 'picture_choice' | 'ranking' | 'rating' | 'short_text' | 'statement' | 'website' | 'yes_no';
         title: string;
         attachment?: {
             href?: string;
