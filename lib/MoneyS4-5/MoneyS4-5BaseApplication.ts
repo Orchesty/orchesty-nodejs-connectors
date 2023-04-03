@@ -17,9 +17,9 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 const NAME = 'moneys5';
 const BASE_URL = 'https://{host}/';
 const AUTH_TOKEN_URL = 'connect/token';
-const MONEYS5_URL = 'moneys5Url';
+const MONEYS_URL = 'moneys5Url';
 
-export default class MoneyS5Application extends ABasicApplication {
+export default class MoneyS45BaseApplication extends ABasicApplication {
 
     public constructor(
         private readonly cache: CacheService,
@@ -110,21 +110,21 @@ export default class MoneyS5Application extends ABasicApplication {
     }
 
     public getDecoratedUrl(app: ApplicationInstall): string {
-        return app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[MONEYS5_URL] ?? '';
+        return app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[MONEYS_URL] ?? '';
     }
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client ID', undefined, true))
             .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secter', undefined, true))
-            .addField(new Field(FieldType.TEXT, MONEYS5_URL, 'Url', undefined, true));
+            .addField(new Field(FieldType.TEXT, MONEYS_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);
     }
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[MONEYS5_URL];
+        return authorizationForm?.[CLIENT_ID] && authorizationForm?.[CLIENT_SECRET] && authorizationForm?.[MONEYS_URL];
     }
 
 }
