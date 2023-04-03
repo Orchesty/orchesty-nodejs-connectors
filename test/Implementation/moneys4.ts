@@ -1,4 +1,5 @@
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
+import MoneyS4CreateCompany from '../../lib/MoneyS4/Connector/MoneyS4CreateCompany';
 import MoneyS4GetCompanies from '../../lib/MoneyS4/Connector/MoneyS4GetCompanies';
 import MoneyS4Application, { NAME } from '../../lib/MoneyS4/MoneyS4Application';
 import { cacheService, container } from '../TestAbstract';
@@ -18,4 +19,5 @@ export default async function init(): Promise<void> {
     container.setApplication(app);
 
     container.setNode(new MoneyS4GetCompanies(), app);
+    container.setNode(new MoneyS4CreateCompany(), app);
 }
