@@ -5,7 +5,7 @@ import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../../../../test
 import init from '../../../../test/Implementation/moneys4';
 import { container } from '../../../../test/TestAbstract';
 import { NAME } from '../../MoneyS4Application';
-import { NAME as MONEY_S4_CREATE_COMPANY } from '../MoneyS4CreateCompany';
+import { NAME as MONEY_S4_5_CREATE_COMPANY } from '../MoneyS4-5CreateCompany';
 
 let tester: NodeTester;
 
@@ -24,6 +24,6 @@ describe('Tests for MoneyS4CreateCompany', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(MONEY_S4_CREATE_COMPANY);
+        await tester.testConnector(MONEY_S4_5_CREATE_COMPANY);
     });
 });

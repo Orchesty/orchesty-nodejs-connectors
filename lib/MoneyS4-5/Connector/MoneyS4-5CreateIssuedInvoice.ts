@@ -1,21 +1,21 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import MoneyS4Application from '../MoneyS4Application';
-import { IResponse } from './MoneyS4CreateCompany';
+import MoneyS45BaseApplication from '../MoneyS4-5BaseApplication';
+import { IResponse } from './MoneyS4-5CreateCompany';
 
 const MONEYS4_CREATE_ISSUED_INVOICE = 'v2.0/IssuedInvoice';
 
 export const NAME = 'moneys4-create-issued-invoice';
 
-export default class MoneyS4CreateIssuedInvoice extends AConnector {
+export default class MoneyS45CreateIssuedInvoice extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
-        const app = this.getApplication<MoneyS4Application>();
+        const app = this.getApplication<MoneyS45BaseApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await app.getRequestDto(
             dto,

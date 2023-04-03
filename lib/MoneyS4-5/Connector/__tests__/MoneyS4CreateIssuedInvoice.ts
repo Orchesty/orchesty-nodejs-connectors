@@ -5,11 +5,11 @@ import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../../../../test
 import init from '../../../../test/Implementation/moneys4';
 import { container } from '../../../../test/TestAbstract';
 import { NAME } from '../../MoneyS4Application';
-import { NAME as MONEY_S4_GET_COMPANIES } from '../MoneyS4GetCompanies';
+import { NAME as MONEY_S4_5_CREATE_ISSUED_INVOICE } from '../MoneyS4-5CreateIssuedInvoice';
 
 let tester: NodeTester;
 
-describe('Tests for MoneyS4GetCompanies', () => {
+describe('Tests for MoneyS4CreateIssuedInvoice', () => {
     beforeAll(async () => {
         tester = new NodeTester(container, __filename);
         await init();
@@ -24,10 +24,6 @@ describe('Tests for MoneyS4GetCompanies', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(MONEY_S4_GET_COMPANIES);
-    });
-
-    it('process - with filter', async () => {
-        await tester.testConnector(MONEY_S4_GET_COMPANIES, 'filter');
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE);
     });
 });
