@@ -1,4 +1,4 @@
-import MoneyS45BaseApplication from '../MoneyS4-5/MoneyS4-5BaseApplication';
+import MoneyS45BaseApplication from './MoneyS4-5BaseApplication';
 
 export const NAME = 'moneys4';
 
