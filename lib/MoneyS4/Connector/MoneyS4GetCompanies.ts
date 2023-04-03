@@ -28,7 +28,7 @@ export default class MoneyS4GetCompanies extends AConnector {
     ): Promise<void> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
-        const response = await this.getSender().send(requestDto, [200, 404]);
+        const response = await this.getSender().send(requestDto, 200);
         dto.setJsonData(response.getJsonBody());
     }
 
