@@ -75,7 +75,7 @@ export default class MoneyS5Application extends ABasicApplication {
     ): Promise<string> {
         try {
             const cacheKey = `${
-                NAME
+                this.getName()
             }ApiKey_${applicationInstall.getUser()}`;
             const headers = {
                 [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',

@@ -1,0 +1,14 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "filters": [
+            {
+                "PropertyName": "ico",
+                "Operation": 1,
+                "ExpectedValue": "CZ123456789"
+            }
+        ]
+    }
+}
