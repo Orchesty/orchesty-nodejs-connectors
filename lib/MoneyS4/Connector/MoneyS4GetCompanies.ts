@@ -47,7 +47,8 @@ export interface IInput {
 /* eslint-enable @typescript-eslint/naming-convention */
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IResponse {
+export type IResponse = IResponseJson[];
+export interface IResponseJson {
     attachmentsList?: {
         name?: string;
         id?: string;
@@ -198,4 +199,3 @@ export interface IResponse {
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
-[];
