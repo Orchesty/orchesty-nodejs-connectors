@@ -1,27 +1,27 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import MoneyS5Application from '../MoneyS5Application';
+import MoneyS45BaseApplication from '../MoneyS4-5BaseApplication';
 
 const MONEYS5_CREATE_ORDER_ENDPOINT = 'v2.0/ReceivedOrder';
 
 export const NAME = 'moneys5-create-order';
 
-export default class MoneyS5CreateOrder extends AConnector {
+export default class MoneyS45CreateOrder extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        const app = this.getApplication<MoneyS5Application>();
+        const app = this.getApplication<MoneyS45BaseApplication>();
         await this.doRequest(app, MONEYS5_CREATE_ORDER_ENDPOINT, dto);
 
         return dto;
     }
 
     private async doRequest(
-        app: MoneyS5Application,
+        app: MoneyS45BaseApplication,
         url: string,
         dto: ProcessDto,
     ): Promise<void> {

@@ -2,14 +2,14 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../../../../test/DataProvider';
-import init from '../../../../test/Implementation/moneys4';
+import init from '../../../../test/Implementation/moneys4-5';
 import { container } from '../../../../test/TestAbstract';
 import { NAME } from '../../MoneyS4Application';
-import { NAME as MONEY_S4_CREATE_COMPANY } from '../MoneyS4CreateCompany';
+import { NAME as MONEY_S4_5_GET_COMPANIES } from '../MoneyS4-5GetCompanies';
 
 let tester: NodeTester;
 
-describe('Tests for MoneyS4CreateCompany', () => {
+describe('Tests for MoneyS4GetCompanies', () => {
     beforeAll(async () => {
         tester = new NodeTester(container, __filename);
         await init();
@@ -24,6 +24,10 @@ describe('Tests for MoneyS4CreateCompany', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(MONEY_S4_CREATE_COMPANY);
+        await tester.testConnector(MONEY_S4_5_GET_COMPANIES);
+    });
+
+    it('process - with filter', async () => {
+        await tester.testConnector(MONEY_S4_5_GET_COMPANIES, 'filter');
     });
 });
