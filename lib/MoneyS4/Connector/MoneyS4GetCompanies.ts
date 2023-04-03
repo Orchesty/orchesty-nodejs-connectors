@@ -13,23 +13,14 @@ export default class MoneyS4GetCompanies extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const app = this.getApplication<MoneyS4Application>();
         const { filters } = dto.getJsonData();
-        await this.doRequest(app, `${MONEYS4_GET_COMPANIES}${filters ? `/Filters=${JSON.stringify(filters)}` : ''}`, dto);
 
-        return dto;
-    }
-
-    private async doRequest(
-        app: MoneyS4Application,
-        url: string,
-        dto: ProcessDto,
-    ): Promise<void> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
-        const response = await this.getSender().send(requestDto, 200);
-        dto.setJsonData(response.getJsonBody());
+        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? `/Filters=${JSON.stringify(filters)}` : ''}`);
+        const response = await this.getSender().send<IResponse>(requestDto, 200);
+        return dto.setNewJsonData(response.getJsonBody());
     }
 
 }
