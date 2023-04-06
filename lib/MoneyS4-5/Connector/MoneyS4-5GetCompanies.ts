@@ -20,7 +20,11 @@ export default class MoneyS45GetCompanies extends AConnector {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? `/Filters=${JSON.stringify(filters)}` : ''}`);
         const response = await this.getSender().send<IResponse>(requestDto, 200);
-        return dto.setNewJsonData(response.getJsonBody());
+        return this.setJsonData<IResponse>(dto, response.getJsonBody());
+    }
+
+    protected setJsonData<T>(dto: ProcessDto, response: T): ProcessDto<T> {
+        return dto.setNewJsonData(response);
     }
 
 }
