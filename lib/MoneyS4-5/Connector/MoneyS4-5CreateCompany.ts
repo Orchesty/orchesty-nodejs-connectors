@@ -22,10 +22,18 @@ export default class MoneyS45CreateCompany extends AConnector {
             appInstall,
             HttpMethods.POST,
             MONEYS4_CREATE_COMPANY,
-            JSON.stringify(dto.getJsonData()),
+            JSON.stringify(this.getJsonData(dto)),
         );
         const response = await this.getSender().send<IResponse>(requestDto, 200);
-        return dto.setNewJsonData(response.getJsonBody());
+        return this.setJsonData<IResponse>(dto, response.getJsonBody());
+    }
+
+    protected getJsonData<T>(dto: ProcessDto<T>): T {
+        return dto.getJsonData();
+    }
+
+    protected setJsonData<T>(dto: ProcessDto, response: T): ProcessDto<T> {
+        return dto.setNewJsonData(response);
     }
 
 }
