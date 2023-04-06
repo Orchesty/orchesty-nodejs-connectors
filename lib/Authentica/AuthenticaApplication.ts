@@ -1,4 +1,4 @@
-import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
@@ -43,7 +43,7 @@ export default class AuthenticaApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const settingsForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, 'Settings');
+        const settingsForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM));
         const clientId = new Field(FieldType.TEXT, CLIENT_ID, 'Client id');
         const clientSecret = new Field(FieldType.PASSWORD, CLIENT_SECRET, 'Client secret');
 
