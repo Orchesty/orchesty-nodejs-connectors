@@ -30,8 +30,9 @@ export default class MoneyS45CreateIssuedInvoice extends AConnector {
 
 }
 
+export type IInput = IInvoice[];
 /* eslint-disable @typescript-eslint/naming-convention */
-export type IInput = {
+export interface IInvoice {
     isNew?: boolean;
     hidden?: boolean;
     id?: string;
@@ -421,6 +422,5 @@ export type IInput = {
             vyberDodavekPrebranim?: boolean;
         };
     }[];
-}[];
-
+}
 /* eslint-enable @typescript-eslint/naming-convention */
