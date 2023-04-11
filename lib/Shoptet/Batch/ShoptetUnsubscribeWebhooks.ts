@@ -4,6 +4,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { StatusCodes } from 'http-status-codes';
 import { BASE_URL } from '../ABaseShoptet';
 
 export const NAME = 'shoptet-unsubscribe-webhooks';
@@ -26,7 +27,7 @@ export default class ShoptetUnsubscribeWebhooks extends ABatchNode {
             const url = `${BASE_URL}/${WEBHOOKS_ENDPOINT}/${webhook.getWebhookId()}`;
             const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.DELETE, url);
             const res = await this.getSender().send(requestDto);
-            if (res.getResponseCode() !== 200 && res.getResponseCode() !== 404) {
+            if (res.getResponseCode() !== StatusCodes.OK && res.getResponseCode() !== StatusCodes.NOT_FOUND) {
                 webhook.setUnsubscribeFailed(true);
                 await repo.update(webhook);
                 throw new OnRepeatException(300, 12, res.getBody());

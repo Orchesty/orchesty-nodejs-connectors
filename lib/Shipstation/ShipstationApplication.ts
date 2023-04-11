@@ -20,6 +20,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
@@ -121,7 +122,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     }
 
     public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 200;
+        return dto.getResponseCode() === StatusCodes.OK;
     }
 
     private getToken(applicationInstall: ApplicationInstall): string {

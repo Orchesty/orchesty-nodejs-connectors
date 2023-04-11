@@ -1,6 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 export const NAME = 'quick-books-find-customer-connector';
 
@@ -23,7 +24,7 @@ export default class QuickBooksFindCustomerConnector extends AConnector {
         );
 
         const data = resp.getJsonBody();
-        if (resp.getResponseCode() === 404 || data.QueryResponse.Customer === undefined) {
+        if (resp.getResponseCode() === StatusCodes.NOT_FOUND || data.QueryResponse.Customer === undefined) {
             return dto.setNewJsonData<IOutput>({ customer: null });
         }
         return dto.setNewJsonData<IOutput>({ customer: data.QueryResponse.Customer.shift() ?? null });

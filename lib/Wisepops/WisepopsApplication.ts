@@ -14,6 +14,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 const API_KEY = 'api_key';
 const WISEPOPS_URL = 'https://app.wisepops.com/api1/hooks';
@@ -116,7 +117,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     }
 
     public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 200;
+        return dto.getResponseCode() === StatusCodes.OK;
     }
 
 }

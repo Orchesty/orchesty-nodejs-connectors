@@ -18,6 +18,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 export const MAILCHIMP_URL = 'https://login.mailchimp.com/oauth2/authorize';
 export const MAILCHIMP_DATACENTER_URL = 'https://login.mailchimp.com';
@@ -161,7 +162,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     }
 
     public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 204;
+        return dto.getResponseCode() === StatusCodes.NO_CONTENT;
     }
 
     public async getApiEndpoint(applicationInstall: ApplicationInstall): Promise<string> {

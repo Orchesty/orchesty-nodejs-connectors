@@ -21,7 +21,11 @@ export default class ExpedicoCreateParcel extends AConnector {
             data,
         );
 
-        return this.setJsonData(dto, (await this.getSender().send(requestDto, [201])).getHeaders(), dto.getJsonData());
+        return this.setJsonData(
+            dto,
+            (await this.getSender().send(requestDto, { success: 201, stopAndFail: 422 })).getHeaders(),
+            dto.getJsonData(),
+        );
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

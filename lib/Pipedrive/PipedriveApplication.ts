@@ -15,6 +15,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 export const PIPEDRIVE_URL = 'https://api.pipedrive.com';
 export const ADDED = 'added';
@@ -139,7 +140,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
     }
 
     public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 200;
+        return dto.getResponseCode() === StatusCodes.OK;
     }
 
     private getToken(

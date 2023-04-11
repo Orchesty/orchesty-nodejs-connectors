@@ -23,6 +23,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Request } from 'express';
 import FormData from 'form-data';
+import { StatusCodes } from 'http-status-codes';
 
 export const NAME = 'xero';
 export const XERO_TENANT_ID = 'Xero-Tenant-Id';
@@ -198,7 +199,7 @@ export default class XeroApplication extends AOAuth2Application {
 
                 const response = await this.curlSender.send(requestDto);
 
-                if (response.getResponseCode() !== 200) {
+                if (response.getResponseCode() !== StatusCodes.OK) {
                     // TODO
                     // xeroApp.setDeleted(false);
                     await appRepo.update(xeroApp);

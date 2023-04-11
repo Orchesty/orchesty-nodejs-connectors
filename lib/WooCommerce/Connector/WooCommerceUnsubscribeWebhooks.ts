@@ -4,6 +4,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 import WooCommerceApplication from '../WooCommerceApplication';
 
 const BATCH_UPDATE_WEBHOOKS = 'wp-json/wc/v3/webhooks/batch';
@@ -37,7 +38,7 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
                 JSON.stringify({ delete: webhooksIds }),
             );
             const res = await this.getSender().send<IResponseJson>(requestDto);
-            if (res.getResponseCode() !== 200 && res.getResponseCode() !== 404) {
+            if (res.getResponseCode() !== StatusCodes.OK && res.getResponseCode() !== StatusCodes.NOT_FOUND) {
                 await Promise.all(
                     webhooks.map(async (wantedDelete) => {
                         wantedDelete.setUnsubscribeFailed(true);

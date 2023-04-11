@@ -4,6 +4,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { StatusCodes } from 'http-status-codes';
 import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-unregister-webhook';
@@ -33,7 +34,7 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
                 SHOPIFY_UNREGISTER_WEBHOOK_ENDPOINT.replace('{id}', webhookId),
             );
             const res = await this.getSender().send(requestDto);
-            if (res.getResponseCode() !== 200 && res.getResponseCode() !== 404) {
+            if (res.getResponseCode() !== StatusCodes.OK && res.getResponseCode() !== StatusCodes.NOT_FOUND) {
                 webhooks[0].setUnsubscribeFailed(true);
                 await repo.update(webhooks[0]);
                 throw new OnRepeatException(60, 10, res.getBody());

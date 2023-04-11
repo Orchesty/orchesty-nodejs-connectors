@@ -8,16 +8,14 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
-import {
-    ABasicApplication,
-    TOKEN,
-} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { ABasicApplication, TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { StatusCodes } from 'http-status-codes';
 
 export const NAME = 'git-hub';
 
@@ -135,7 +133,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         applicationInstall: ApplicationInstall,
     ): string {
-        if (dto.getResponseCode() !== 201) {
+        if (dto.getResponseCode() !== StatusCodes.CREATED) {
             throw new Error((dto.getJsonBody() as { message: string }).message);
         }
 
@@ -143,7 +141,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
     }
 
     public processWebhookUnsubscribeResponse(dto: ResponseDto): boolean {
-        return dto.getResponseCode() === 204;
+        return dto.getResponseCode() === StatusCodes.NO_CONTENT;
     }
 
 }

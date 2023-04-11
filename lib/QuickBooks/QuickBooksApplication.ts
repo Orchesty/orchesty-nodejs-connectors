@@ -21,6 +21,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { Request } from 'express';
 import FormData from 'form-data';
+import { StatusCodes } from 'http-status-codes';
 
 export const NAME = 'quickbooks';
 export const REALM_ID = 'realm_id';
@@ -152,7 +153,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
 
                 const response = await this.curlSender.send(requestDto);
 
-                if (response.getResponseCode() !== 200) {
+                if (response.getResponseCode() !== StatusCodes.OK) {
                     await appRepo.update(quickbooksApp);
                 }
             }
