@@ -13,13 +13,11 @@ import { defaultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/Resu
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import FormData from 'form-data';
 
-const NAME = 'moneys5';
-const BASE_URL = 'https://{host}/';
-const AUTH_TOKEN_URL = 'connect/token';
-const MONEYS_URL = 'moneys5Url';
+export const MONEYS_URL = 'moneys5Url';
 
-export default class MoneyS45BaseApplication extends ABasicApplication {
+export default abstract class MoneyS45BaseApplication extends ABasicApplication {
 
     public constructor(
         private readonly cache: CacheService,
@@ -29,18 +27,6 @@ export default class MoneyS45BaseApplication extends ABasicApplication {
 
     public getDescription(): string {
         return 'Enterprise ERP system for companies that need solution with data stored in SQL Server';
-    }
-
-    public getName(): string {
-        return NAME;
-    }
-
-    public getPublicName(): string {
-        return 'MoneyS5';
-    }
-
-    public getLogo(): string {
-        return 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZyc3R2YV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNGQzRDMDI7fQo8L3N0eWxlPgo8Zz4KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iNTguMywzOC42IDc5LjIsMjEuMSA2MS42LDAuMiA0MC43LDE3LjcgMTkuOCwzNS4zIDM3LjQsNTYuMiAJIi8+Cgk8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjYyLjYsNDMuOCA0MS43LDYxLjQgMjAuOCw3OC45IDM4LjQsOTkuOCA1OS4zLDgyLjMgODAuMiw2NC43IAkiLz4KPC9nPgo8L3N2Zz4K';
     }
 
     public async getRequestDto(
@@ -55,13 +41,8 @@ export default class MoneyS45BaseApplication extends ABasicApplication {
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
 
-        let urlx = url ?? '';
-        if (!urlx.startsWith('http')) {
-            urlx = `${this.getDecoratedUrl(applicationInstall)}/${urlx}`;
-        }
-
         return new RequestDto(
-            urlx,
+            `${this.getDecoratedUrl(applicationInstall)}/${url}`,
             parseHttpMethod(method),
             dto,
             data,
@@ -81,11 +62,17 @@ export default class MoneyS45BaseApplication extends ABasicApplication {
                 [CommonHeaders.CONTENT_TYPE]: 'application/x-www-form-urlencoded',
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
             };
+
+            const form = new FormData();
+            form.append('grant_type', 'client_credentials');
+            form.append('client_id', applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID]);
+            form.append('client_secret', applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET]);
+
             const requestDto = new RequestDto(
-                `${BASE_URL}${AUTH_TOKEN_URL}`,
+                `${this.getDecoratedUrl(applicationInstall)}'/connect/token'}`,
                 HttpMethods.GET,
                 processDto,
-                undefined,
+                form,
                 headers,
             );
             return await this.cache.entry(
@@ -95,7 +82,7 @@ export default class MoneyS45BaseApplication extends ABasicApplication {
                 async (dto) => {
                     const dtoBody = dto.getJsonBody() as IResponseJson;
                     return {
-                        expire: Number(dtoBody.expires_in),
+                        expire: Number(dtoBody.expires_in) - 120,
                         dataToStore: dtoBody.access_token,
                     };
                 },
@@ -116,7 +103,7 @@ export default class MoneyS45BaseApplication extends ABasicApplication {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client ID', undefined, true))
-            .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secter', undefined, true))
+            .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', undefined, true))
             .addField(new Field(FieldType.TEXT, MONEYS_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);

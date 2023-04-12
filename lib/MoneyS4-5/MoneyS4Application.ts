@@ -8,4 +8,8 @@ export default class MoneyS4Application extends MoneyS45BaseApplication {
         return NAME;
     }
 
+    public getPublicName(): string {
+        return 'Money S4';
+    }
+
 }

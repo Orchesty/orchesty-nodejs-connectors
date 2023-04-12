@@ -1,5 +1,5 @@
 {
-    "http": "GET /v2.0/Company",
+    "http": "GET https://example-money.com/v2.0/Company",
     "code": 200,
     "body": [
         {
