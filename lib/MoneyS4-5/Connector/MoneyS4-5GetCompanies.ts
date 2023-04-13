@@ -18,7 +18,7 @@ export default class MoneyS45GetCompanies extends AConnector {
         const { filters } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? `/Filters=${JSON.stringify(filters)}` : ''}`);
+        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? this.prepareFilters(filters) : ''}`);
         const response = await this.getSender().send<IResponse>(requestDto, 200);
         return this.setJsonData<IResponse>(dto, response.getJsonBody());
     }
@@ -27,16 +27,27 @@ export default class MoneyS45GetCompanies extends AConnector {
         return dto.setNewJsonData(response);
     }
 
+    private prepareFilters(filters: IFilter[]): string {
+        const outputFilters: string[] = [];
+
+        filters.forEach((filter) => {
+            outputFilters.push(`${filter.PropertyName}~${filter.Operation}~${filter.ExpectedValue}`);
+        });
+
+        return `?filter=${outputFilters.join('&')}`;
+    }
+
 }
 
-// TODO rich doplnit az se otestuje
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    filters?: {
-        PropertyName: string;
-        Operation: number;
-        ExpectedValue: number | string;
-    }[];
+    filters?: IFilter[];
+}
+
+interface IFilter {
+    PropertyName: string;
+    Operation: string;
+    ExpectedValue: number | string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
