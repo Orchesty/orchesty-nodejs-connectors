@@ -1,5 +1,5 @@
 {
-    "http": "GET https://example-money.com/v2.0/Company/Filters=[{\"PropertyName\":\"ico\",\"Operation\":1,\"ExpectedValue\":\"CZ123456789\"}]",
+    "http": "GET https://example-money.com/v2.0/Company?filter=ICO~eq~123456789",
     "code": 200,
     "body": [
         {
