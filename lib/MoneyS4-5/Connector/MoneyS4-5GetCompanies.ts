@@ -34,7 +34,7 @@ export default class MoneyS45GetCompanies extends AConnector {
             outputFilters.push(`${filter.PropertyName}~${filter.Operation}~${filter.ExpectedValue}`);
         });
 
-        return `?filter=${outputFilters.join('&')}`;
+        return `?filter=${outputFilters.join('#')}`;
     }
 
 }
