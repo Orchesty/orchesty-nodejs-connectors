@@ -5,9 +5,9 @@
     "data": {
         "filters": [
             {
-                "PropertyName": "ico",
-                "Operation": 1,
-                "ExpectedValue": "CZ123456789"
+                "PropertyName": "ICO",
+                "Operation": "eq",
+                "ExpectedValue": "123456789"
             }
         ]
     }
