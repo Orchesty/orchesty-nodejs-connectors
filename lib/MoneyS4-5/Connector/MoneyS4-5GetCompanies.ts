@@ -18,7 +18,7 @@ export default class MoneyS45GetCompanies extends AConnector {
         const { filters } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? `/Filters=${JSON.stringify(filters)}` : ''}`);
+        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, `${MONEYS4_GET_COMPANIES}${filters ? this.prepareFilters(filters) : ''}`);
         const response = await this.getSender().send<IResponse>(requestDto, 200);
         return this.setJsonData<IResponse>(dto, response.getJsonBody());
     }
@@ -27,170 +27,157 @@ export default class MoneyS45GetCompanies extends AConnector {
         return dto.setNewJsonData(response);
     }
 
+    private prepareFilters(filters: IFilter[]): string {
+        const outputFilters: string[] = [];
+
+        filters.forEach((filter) => {
+            outputFilters.push(`${filter.PropertyName}~${filter.Operation}~${filter.ExpectedValue}`);
+        });
+
+        return `?filter=${outputFilters.join('#')}`;
+    }
+
 }
 
-// TODO rich doplnit az se otestuje
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
-    filters?: {
-        PropertyName: string;
-        Operation: number;
-        ExpectedValue: number | string;
-    }[];
+    filters?: IFilter[];
+}
+
+interface IFilter {
+    PropertyName: string;
+    Operation: string;
+    ExpectedValue: number | string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export type IResponse = IResponseJson[];
-export interface IResponseJson {
-    attachmentsList?: {
-        name?: string;
-        id?: string;
-    }[];
-    isNew?: boolean;
-    hidden?: boolean;
-    id?: string;
-    parent_ID?: string;
-    root_ID?: string;
-    group_ID?: string;
-    deleted?: boolean;
-    locked?: boolean;
-    create_ID?: string;
-    create_Date?: string;
-    modify_ID?: string;
-    modify_Date?: string;
-    ciselnaRada_ID?: string;
-    cisloS3?: number;
-    cisloZRady?: number;
-    datumPosty?: string;
-    dic?: string;
-    email?: string;
-    fyzickaOsoba?: boolean;
-    hlavniOsoba_ID?: string;
-    hlavniUcet_ID?: string;
-    hodnotaKreditu?: number;
-    hodnotaSlevy?: number;
-    ico?: string;
-    kod?: string;
-    kodDanovehoUradu?: string;
-    nadrazenaFirma_ID?: string;
-    nazev?: string;
-    posilatPostu?: boolean;
-    posledniCisloOsoby?: number;
-    pouzivatKredit?: boolean;
-    poznamka?: string;
-    prevzitBankovniSpojeni?: boolean;
-    prevzitObchodniPodminky?: boolean;
-    prevzitObchodniUdaje?: boolean;
-    specifickySymbol?: string;
-    splatnostPohledavek?: number;
-    splatnostZavazku?: number;
-    spojeni?: string;
-    tel1Cislo?: string;
-    tel1Klapka?: string;
-    tel1MistniCislo?: string;
-    tel1Predvolba?: string;
-    tel1Typ?: number;
-    tel2Cislo?: string;
-    tel2Klapka?: string;
-    tel2MistniCislo?: string;
-    tel2Predvolba?: string;
-    tel2Typ?: number;
-    tel3Cislo?: string;
-    tel3Klapka?: string;
-    tel3MistniCislo?: string;
-    tel3Predvolba?: string;
-    tel3Typ?: number;
-    tel4Cislo?: string;
-    tel4Klapka?: string;
-    tel4MistniCislo?: string;
-    tel4Predvolba?: string;
-    tel4Typ?: number;
-    variabilniSymbol?: string;
-    vlastniSleva?: boolean;
-    vlastniSplatnostPohledavek?: boolean;
-    vlastniSplatnostZavazku?: boolean;
-    www?: string;
-    zprava?: string;
-    faktMisto?: string;
-    faktNazev?: string;
-    faktPsc?: string;
-    faktStat?: string;
-    faktUlice?: string;
-    obchMisto?: string;
-    obchNazev?: string;
-    obchPsc?: string;
-    obchStat?: string;
-    obchUlice?: string;
-    provMisto?: string;
-    provNazev?: string;
-    provPsc?: string;
-    provStat?: string;
-    provUlice?: string;
-    faktStat_ID?: string;
-    obchStat_ID?: string;
-    provStat_ID?: string;
-    faktPsc_ID?: string;
-    obchPsc_ID?: string;
-    odlisnaAdresaProvozovny?: boolean;
-    odlisnaFakturacniAdresa?: boolean;
-    provPsc_ID?: string;
-    uvadetNaDokladech?: boolean;
-    platceDPH?: boolean;
-    tel1PredvolbaStat?: string;
-    tel2PredvolbaStat?: string;
-    tel3PredvolbaStat?: string;
-    tel4PredvolbaStat?: string;
-    icdph?: string;
-    tel1StatID?: string;
-    tel2StatID?: string;
-    tel3StatID?: string;
-    tel4StatID?: string;
-    zpusobVyberuCeny?: number;
-    primarniUcetPohledavky_ID?: string;
-    primarniUcetZavazky_ID?: string;
-    primarniUcetPrijataZaloha_ID?: string;
-    primarniUcetPoskytnutaZaloha_ID?: string;
-    mojeFirmabankovniSpojeni_ID?: string;
-    zpusobDopravy_ID?: string;
-    zpusobPlatby_ID?: string;
-    ekoKomKlient?: boolean;
-    datumKontrolyDleIC?: string;
-    datumKontolyDIC?: string;
-    datovaSchrankaID?: string;
-    datovaSchrankaNazev?: string;
-    datumUkonceniCinnosti?: string;
-    cinnostUkoncena?: boolean;
-    vcetnePodrizenych?: boolean;
-    faxCislo?: string;
-    faxKlapka?: string;
-    faxMistniCislo?: string;
-    faxPredvolba?: string;
-    faxPredvolbaStat?: string;
-    faxStatID?: string;
-    attachments?: boolean;
-    logo_ID?: string;
-    gpsLat?: number;
-    gpsLong?: number;
-    kraj_ID?: string;
-    region_ID?: string;
-    datovaSchrankaSpojeni_ID?: string;
-    emailSpojeni_ID?: string;
-    faxSpojeni_ID?: string;
-    telefonSpojeni1_ID?: string;
-    telefonSpojeni2_ID?: string;
-    telefonSpojeni3_ID?: string;
-    telefonSpojeni4_ID?: string;
-    wwwSpojeni_ID?: string;
-    prenestNazev?: boolean;
-    obchodniPodminkyDistributorLihu?: boolean;
-    obchodniPodminkyDistributorLihuRegistracniCislo?: string;
-    datumPosledniKontrolyPlatceDPH?: string;
-    stavPlatceDPHVracenyWS_Stav?: number;
-    posledniStavZHistorieRegistru_Id?: string;
-    uctyNactenyZRegistruDPH?: boolean;
-    stavPlatceDPHComputed?: number;
+export interface IResponse {
+    PageCount: number;
+    RowCount: number;
+    Data: ICompany[];
+    Status: number;
+    Message: string;
+    StackTrace: string;
+}
+
+export interface ICompany {
+    CiselnaRada_ID: string;
+    CisloS3: number;
+    CisloZRady: number;
+    DatumPosty: string;
+    DIC: string;
+    Email: string;
+    FyzickaOsoba: boolean;
+    HlavniUcet_ID: string;
+    HodnotaKreditu: number;
+    HodnotaSlevy: number;
+    ICO: string;
+    Kod: string;
+    KodDanovehoUradu: string;
+    Nazev: string;
+    PosilatPostu: boolean;
+    PosledniCisloOsoby: number;
+    PouzivatKredit: boolean;
+    Poznamka: string;
+    PrevzitBankovniSpojeni: boolean;
+    PrevzitObchodniPodminky: boolean;
+    PrevzitObchodniUdaje: boolean;
+    SpecifickySymbol: string;
+    SplatnostPohledavek: number;
+    SplatnostZavazku: number;
+    Spojeni: string;
+    Tel1Cislo: string;
+    Tel1Klapka: string;
+    Tel1MistniCislo: string;
+    Tel1Predvolba: string;
+    Tel1Typ: number;
+    Tel2Cislo: string;
+    Tel2Klapka: string;
+    Tel2MistniCislo: string;
+    Tel2Predvolba: string;
+    Tel2Typ: number;
+    Tel3Cislo: string;
+    Tel3Klapka: string;
+    Tel3MistniCislo: string;
+    Tel3Predvolba: string;
+    Tel3Typ: number;
+    Tel4Cislo: string;
+    Tel4Klapka: string;
+    Tel4MistniCislo: string;
+    Tel4Predvolba: string;
+    Tel4Typ: number;
+    VariabilniSymbol: string;
+    VlastniSleva: boolean;
+    VlastniSplatnostPohledavek: boolean;
+    VlastniSplatnostZavazku: boolean;
+    WWW: string;
+    Zprava: string;
+    FaktMisto: string;
+    FaktNazev: string;
+    FaktPsc: string;
+    FaktStat: string;
+    FaktUlice: string;
+    ObchMisto: string;
+    ObchNazev: string;
+    ObchPsc: string;
+    ObchStat: string;
+    ObchUlice: string;
+    ProvMisto: string;
+    ProvNazev: string;
+    ProvPsc: string;
+    ProvStat: string;
+    ProvUlice: string;
+    FaktStat_ID: string;
+    ObchStat_ID: string;
+    ProvStat_ID: string;
+    OdlisnaAdresaProvozovny: boolean;
+    OdlisnaFakturacniAdresa: boolean;
+    UvadetNaDokladech: boolean;
+    PlatceDPH: boolean;
+    Tel1PredvolbaStat: string;
+    Tel2PredvolbaStat: string;
+    Tel3PredvolbaStat: string;
+    Tel4PredvolbaStat: string;
+    ICDPH: string;
+    ZpusobVyberuCeny: number;
+    EkoKomKlient: boolean;
+    DatumKontrolyDleIC: string;
+    DatumKontolyDIC: string;
+    DatovaSchrankaID: string;
+    DatovaSchrankaNazev: string;
+    DatumUkonceniCinnosti: string;
+    CinnostUkoncena: boolean;
+    VcetnePodrizenych: boolean;
+    FaxCislo: string;
+    FaxKlapka: string;
+    FaxMistniCislo: string;
+    FaxPredvolba: string;
+    FaxPredvolbaStat: string;
+    Attachments: boolean;
+    GpsLat: number;
+    GpsLong: number;
+    EmailSpojeni_ID: string;
+    FaxSpojeni_ID: string;
+    TelefonSpojeni1_ID: string;
+    TelefonSpojeni2_ID: string;
+    PrenestNazev: boolean;
+    ObchodniPodminkyDistributorLihu: boolean;
+    ObchodniPodminkyDistributorLihuRegistracniCislo: string;
+    DatumPosledniKontrolyPlatceDPH: string;
+    StavPlatceDPHVracenyWS_Stav: number;
+    UctyNactenyZRegistruDPH: boolean;
+    StavPlatceDPHComputed: number;
+    AttachmentsList: unknown[];
+    IsNew: boolean;
+    Hidden: boolean;
+    ID: string;
+    Group_ID: string;
+    Deleted: boolean;
+    Locked: boolean;
+    Create_ID: string;
+    Create_Date: string;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
