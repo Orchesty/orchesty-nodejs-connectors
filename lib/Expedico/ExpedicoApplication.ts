@@ -35,7 +35,7 @@ export default class ExpedicoApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Single point for your ecommerce parcel delivery, returns handling and fulfillment services in Europe.';
+        return 'Single point for your ecommerce parcel delivery, returns handling and fulfillment services in Europe';
     }
 
     public getFormStack(): FormStack {

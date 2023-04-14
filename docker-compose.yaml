@@ -16,6 +16,7 @@ services:
             BACKEND_URL: 'https://127.0.0.1'
             STARTING_POINT_URL: 'https://sp.orchesty.com'
             WORKER_API_HOST: 'http://127.0.0.40'
+            CRYPT_SECRET: 'ThisIsNotSoSecret'
         command: sleep infinity
 
     redis:

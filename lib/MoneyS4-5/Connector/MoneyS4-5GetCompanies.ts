@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import MoneyS45BaseApplication from '../MoneyS4-5BaseApplication';
+import MoneyS45Base from '../MoneyS45Base';
 
 const MONEYS4_GET_COMPANIES = 'v2.0/Company';
 
@@ -14,7 +14,7 @@ export default class MoneyS45GetCompanies extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
-        const app = this.getApplication<MoneyS45BaseApplication>();
+        const app = this.getApplication<MoneyS45Base>();
         const { filters } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);

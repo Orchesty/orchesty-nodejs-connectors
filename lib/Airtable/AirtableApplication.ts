@@ -17,7 +17,7 @@ export const TABLE_NAME = 'table_name';
 export default class AirtableApplication extends ABasicApplication {
 
     public getDescription(): string {
-        return 'Cloud-based system for organization and collaboration. It works on the principle of creating individual Projects, to which you add Topics and in them you create Spreadsheets';
+        return 'Airtable is a low-code platform for building collaborative apps. Customize your workflow, collaborate, and achieve ambitious outcomes';
     }
 
     public getName(): string {

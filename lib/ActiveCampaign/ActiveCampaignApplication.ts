@@ -25,7 +25,7 @@ export default class ActiveCampaignApplication extends ABasicApplication {
     }
 
     public getDescription(): string {
-        return 'Cloud software platform for small-to-mid-sized businesses. The company offers software for customer experience automation';
+        return 'Cloud software platform for small-to-mid-sized businesses. The company offers software for customer experience automation (CXA), which combines the transactional email, email marketing, marketing automation, sales automation, and CRM categories';
     }
 
     public getLogo(): string {

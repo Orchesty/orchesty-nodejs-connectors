@@ -1,8 +1,8 @@
-import MoneyS45BaseApplication from './MoneyS4-5BaseApplication';
+import MoneyS45Base from './MoneyS45Base';
 
 export const NAME = 'moneys5';
 
-export default class MoneyS5Application extends MoneyS45BaseApplication {
+export default class MoneyS5Application extends MoneyS45Base {
 
     public getName(): string {
         return NAME;
@@ -10,6 +10,10 @@ export default class MoneyS5Application extends MoneyS45BaseApplication {
 
     public getPublicName(): string {
         return 'Money S5';
+    }
+
+    public getDescription(): string {
+        return 'Comprehensive tailor-made information system Money ERP, which helps to optimize and automate business processes';
     }
 
     public getLogo(): string {

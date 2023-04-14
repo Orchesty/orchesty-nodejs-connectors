@@ -12,7 +12,7 @@ import AAwsApplication, {
 export default class RDSApplication extends AAwsApplication {
 
     public getDescription(): string {
-        return 'Web service that makes it easier to set up, operate, and scale a relational database in the cloud';
+        return 'Distributed relational database service by Amazon Web Services. It is a web service running "in the cloud" designed to simplify the setup, operation, and scaling of a relational database for use in applications';
     }
 
     public getName(): string {

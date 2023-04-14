@@ -1,6 +1,6 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
-import VonageSendSMSConnector from '../../lib/Vonage /Connector/VonageSendSMSConnector';
-import VonageApplication, { API_KEY, API_SECRET, NAME } from '../../lib/Vonage /VonageApplication';
+import VonageSendSMSConnector from '../../lib/Vonage/Connector/VonageSendSMSConnector';
+import VonageApplication, { API_KEY, API_SECRET, NAME } from '../../lib/Vonage/VonageApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container, db, sender } from '../TestAbstract';
 

@@ -5,8 +5,8 @@ import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import MoneyS45CreateCompany from '../../lib/MoneyS4-5/Connector/MoneyS4-5CreateCompany';
 import MoneyS45CreateIssuedInvoice from '../../lib/MoneyS4-5/Connector/MoneyS4-5CreateIssuedInvoice';
 import MoneyS45GetCompanies from '../../lib/MoneyS4-5/Connector/MoneyS4-5GetCompanies';
-import { MONEYS_URL } from '../../lib/MoneyS4-5/MoneyS4-5BaseApplication';
 import MoneyS4Application, { NAME } from '../../lib/MoneyS4-5/MoneyS4Application';
+import { MONEYS_URL } from '../../lib/MoneyS4-5/MoneyS45Base';
 import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
 import { cacheService, container } from '../TestAbstract';
 

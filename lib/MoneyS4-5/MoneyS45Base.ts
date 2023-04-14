@@ -17,16 +17,12 @@ import FormData from 'form-data';
 
 export const MONEYS_URL = 'moneys5Url';
 
-export default abstract class MoneyS45BaseApplication extends ABasicApplication {
+export default abstract class MoneyS45Base extends ABasicApplication {
 
     public constructor(
         private readonly cache: CacheService,
     ) {
         super();
-    }
-
-    public getDescription(): string {
-        return 'Enterprise ERP system for companies that need solution with data stored in SQL Server';
     }
 
     public async getRequestDto(
