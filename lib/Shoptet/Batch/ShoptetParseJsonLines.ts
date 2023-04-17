@@ -36,7 +36,7 @@ export default class ShoptetParseJsonLines extends ABatchNode {
         const data = Zlib.gunzipSync(response.getBuffer()).toString().split('\n');
 
         do {
-            const slicedData = data.splice(0, 100);
+            const slicedData = data.splice(0, 50);
 
             const batchItem: unknown[] = [];
             slicedData.forEach((jsonLine) => {
