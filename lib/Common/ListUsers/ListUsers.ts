@@ -1,6 +1,9 @@
 import { GROUP_TIME, GROUP_VALUE, TIME, USE_LIMIT, VALUE } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import {
+    IApplicationInstallQueryFilter,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstallRepository';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
@@ -48,13 +51,7 @@ export default class ListUsers extends ABatchNode {
             return dto;
         }
 
-        const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
-        const allAppInstalls = await repo.findMany(
-            {
-                names: headerApplications,
-                enabled: true,
-            },
-        );
+        const allAppInstalls = await repo.findMany(this.getFilterForLimiter(dto));
 
         appInstalls.forEach((appInstall) => {
             const user = appInstall.getUser();
@@ -78,14 +75,7 @@ export default class ListUsers extends ABatchNode {
             return dto;
         }
 
-        const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
-        const allAppInstalls = await repo.findMany(
-            {
-                names: headerApplications,
-                users: [user],
-                enabled: true,
-            },
-        );
+        const allAppInstalls = await repo.findMany(this.getFilterForLimiter(dto, user));
 
         const limiterKeys = allAppInstalls
             .filter((userAppInstall) => userAppInstall.getUser() === user)
@@ -126,6 +116,23 @@ export default class ListUsers extends ABatchNode {
         }
 
         return getLimiterKey(key, time, value);
+    }
+
+    private getFilterForLimiter(dto: BatchProcessDto, user?: string): IApplicationInstallQueryFilter {
+        const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
+        const filter: IApplicationInstallQueryFilter = {
+            enabled: true,
+        };
+
+        if (headerApplications && headerApplications[0] !== '') {
+            filter.names = headerApplications;
+        }
+
+        if (user) {
+            filter.users = [user];
+        }
+
+        return filter;
     }
 
 }
