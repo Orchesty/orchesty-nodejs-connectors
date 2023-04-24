@@ -63,12 +63,14 @@ export interface IAddress {
 export interface IInput {
     data: {
         carrier: string;
+        orderNumber: string;
         weightInKg: number;
-        sender?: IAddress;
         senderId: number;
         recipient: IAddress;
         carrierPickupDate: string;
-        orderNumber: string;
+        sender?: IAddress;
+        currency?: string;
+        codAmount?: number;
     };
 }
 
