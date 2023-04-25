@@ -1,10 +1,14 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
+import { IResultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'expedico-create-parcel';
 
 export default class ExpedicoCreateParcel extends AConnector {
+
+    protected errorCodes: IResultRanges = { success: 201, stopAndFail: 422 };
 
     public getName(): string {
         return NAME;
@@ -23,17 +27,17 @@ export default class ExpedicoCreateParcel extends AConnector {
 
         return this.setJsonData(
             dto,
-            (await this.getSender().send(requestDto, { success: 201, stopAndFail: 422 })).getHeaders(),
+            await this.getSender().send(requestDto, this.errorCodes),
             dto.getJsonData(),
         );
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    protected setJsonData(dto: ProcessDto, response: Record<string, unknown>, data: IInput): ProcessDto<IOutput> {
+    protected setJsonData(dto: ProcessDto, response: ResponseDto, data: IInput): ProcessDto<IOutput> {
         const { id,
             'carrier-barcode': carrierBarcode,
             'carrier-tracking-code': carrierTrackingCode,
-        } = response;
+        } = response.getHeaders();
 
         return dto.setNewJsonData({
             id,
