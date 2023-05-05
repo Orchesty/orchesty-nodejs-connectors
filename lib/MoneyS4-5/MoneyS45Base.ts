@@ -13,7 +13,6 @@ import { defaultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/Resu
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import FormData from 'form-data';
 
 export const MONEYS_URL = 'moneys5Url';
 
@@ -33,7 +32,7 @@ export default abstract class MoneyS45Base extends ABasicApplication {
         data?: string,
     ): Promise<RequestDto> {
         const headers = {
-            [CommonHeaders.AUTHORIZATION]: await this.getApiToken(applicationInstall, dto),
+            [CommonHeaders.AUTHORIZATION]: `Bearer ${await this.getApiToken(applicationInstall, dto)}`,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
 
@@ -59,16 +58,15 @@ export default abstract class MoneyS45Base extends ABasicApplication {
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
             };
 
-            const form = new FormData();
-            form.append('grant_type', 'client_credentials');
-            form.append('client_id', applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID]);
-            form.append('client_secret', applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET]);
+            const clientId = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_ID];
+            const clientSecret = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][CLIENT_SECRET];
+            const body = `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`;
 
             const requestDto = new RequestDto(
-                `${this.getDecoratedUrl(applicationInstall)}'/connect/token'}`,
-                HttpMethods.GET,
+                `${this.getDecoratedUrl(applicationInstall)}/connect/token`,
+                HttpMethods.POST,
                 processDto,
-                form,
+                body,
                 headers,
             );
             return await this.cache.entry(
