@@ -1,0 +1,5 @@
+{
+    "http": "POST https://example-money.com/v2.0/IssuedInvoice",
+    "code": 500,
+    "body": "One or more errors occurred. (Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.)\nHodnota pole Číslo dokladu je duplicitní s jiným záznamem."
+}

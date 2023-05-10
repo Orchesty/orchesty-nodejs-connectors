@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "result-code": "1003",
+        "result-message": "\"One or more errors occurred. (Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.)\\nHodnota pole Číslo dokladu je duplicitní s jiným záznamem.\"",
+        "user": "TestUser"
+    },
+    "data": {
+        "body": "\"One or more errors occurred. (Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.)\\nHodnota pole Číslo dokladu je duplicitní s jiným záznamem.\""
+    }
+}
