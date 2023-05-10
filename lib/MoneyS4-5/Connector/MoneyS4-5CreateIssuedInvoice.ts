@@ -1,6 +1,9 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { StatusCodes } from 'http-status-codes';
 import MoneyS45Base from '../MoneyS45Base';
 import { IResponse } from './MoneyS4-5CreateCompany';
 
@@ -14,7 +17,7 @@ export default class MoneyS45CreateIssuedInvoice extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse | { body: string }>> {
         const app = this.getApplication<MoneyS45Base>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await app.getRequestDto(
@@ -24,7 +27,16 @@ export default class MoneyS45CreateIssuedInvoice extends AConnector {
             MONEYS4_CREATE_ISSUED_INVOICE,
             JSON.stringify(dto.getJsonData()),
         );
-        const response = await this.getSender().send<IResponse>(requestDto, 200);
+        const response = await this.getSender().send<IResponse>(requestDto, [200, 500]);
+
+        if (response.getResponseCode() === StatusCodes.INTERNAL_SERVER_ERROR) {
+            if (response.getBody().includes('Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.')) {
+                dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.');
+                return dto.setNewJsonData({ body: response.getBody() });
+            }
+            throw new OnRepeatException(60, 10, response.getBody());
+        }
+
         return dto.setNewJsonData(response.getJsonBody());
     }
 
