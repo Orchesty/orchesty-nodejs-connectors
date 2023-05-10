@@ -30,8 +30,8 @@ export default class MoneyS45CreateIssuedInvoice extends AConnector {
         const response = await this.getSender().send<IResponse>(requestDto, [200, 500]);
 
         if (response.getResponseCode() === StatusCodes.INTERNAL_SERVER_ERROR) {
-            if (response.getBody().includes('Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.')) {
-                dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.');
+            if (response.getBody().includes('duplicit')) {
+                dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, response.getBody());
                 return dto.setNewJsonData({ body: response.getBody() });
             }
             throw new OnRepeatException(60, 10, response.getBody());
