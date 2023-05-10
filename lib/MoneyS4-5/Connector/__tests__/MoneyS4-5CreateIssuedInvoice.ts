@@ -1,3 +1,4 @@
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { init, moneyAppInstall } from '../../../../test/Implementation/moneys4-5';
 import { container } from '../../../../test/TestAbstract';
@@ -17,5 +18,13 @@ describe('Tests for MoneyS4CreateIssuedInvoice', () => {
 
     it('process - ok', async () => {
         await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE);
+    });
+
+    it('process - 500 skip', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'skip');
+    });
+
+    it('process - 500 repeat', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'repeat', OnRepeatException);
     });
 });
