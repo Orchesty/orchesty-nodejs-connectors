@@ -24,7 +24,7 @@ describe('Tests for AuthenticaApplication', () => {
     });
 
     it('should get public name', () => {
-        expect(app.getPublicName()).toEqual('Fulfillment by Authentica');
+        expect(app.getPublicName()).toEqual('Authentica Fulfillment');
     });
 
     it('should get requestDto', async () => {
