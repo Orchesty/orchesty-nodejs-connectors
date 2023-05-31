@@ -15,4 +15,9 @@ describe('Tests for ShoptetUpdateStockMovements', () => {
         mock();
         await tester.testConnector(SHOPTET_UPDATE_STOCK_MOVEMENTS);
     });
+
+    it('process - do not continue', async () => {
+        mock();
+        await tester.testConnector(SHOPTET_UPDATE_STOCK_MOVEMENTS, 'empty');
+    });
 });
