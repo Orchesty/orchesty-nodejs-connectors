@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "result-code": "1003",
+        "result-message": "Missing product in shoptet!",
+        "user": "TestUser"
+    },
+    "data": {
+        "data": null,
+        "errors": [
+            {
+                "errorCode": "unknown-product",
+                "instance": "b5c1a2a6-d8f9-11ed-9bd6-12c7713c50b3",
+                "message": "Product \"b5c1a2a6-d8f9-11ed-9bd6-12c7713c50b3\" does not exist. Skipped."
+            }
+        ]
+    }
+}
