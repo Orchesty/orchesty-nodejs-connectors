@@ -11,7 +11,7 @@ specifiers:
   '@azure/identity': ^3.2.2
   '@cloudamqp/amqp-client': ^2.1.1
   '@hanaboso/eslint-plugin': ^1.0.8
-  '@orchesty/nodejs-sdk': ^4.2.27
+  '@orchesty/nodejs-sdk': ^4.2.28
   '@types/debug': ^4.1.8
   '@types/express': ^4.17.17
   '@types/jest': ^29.5.1
@@ -49,7 +49,7 @@ specifiers:
   typescript: ^5.0.4
 
 dependencies:
-  '@orchesty/nodejs-sdk': 4.2.27
+  '@orchesty/nodejs-sdk': 4.2.28
   axios: 1.4.0
   express: 5.0.0-beta.1
   form-data: 4.0.0
@@ -2404,8 +2404,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk/4.2.27:
-    resolution: {integrity: sha512-/wTPhb+BR9ZiUwEtRJoMmrsO9vXLWQCuTwlzA3Undd7hnZT5xkVDcVUXXlr1xgTD0KpMrtm1CzIvZ6KUJJyN6A==}
+  /@orchesty/nodejs-sdk/4.2.28:
+    resolution: {integrity: sha512-A9pcCrYiy70B2HLaS06o2DvV0583LnhcRviaCN4OW6wDTZ5SxxRyFgGsEjc84ft/vbROcgG+m3Jo58JxGVfUEA==}
     dependencies:
       async-mutex: 0.4.0
       axios: 1.4.0
