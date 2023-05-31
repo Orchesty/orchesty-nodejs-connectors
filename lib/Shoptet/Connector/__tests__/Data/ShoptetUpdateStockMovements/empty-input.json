@@ -1,0 +1,14 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "stockId": "1",
+    "data": [
+      {
+        "productCode": "1",
+        "quantity": 1
+      }
+    ]
+  }
+}
