@@ -8,6 +8,7 @@ import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrde
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
 import WooCommerceAddNote from '../../lib/WooCommerce/Connector/WooCommerceAddNote';
+import WooCommerceGetOrderNotes from '../../lib/WooCommerce/Connector/WooCommerceGetOrderNotes';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
@@ -90,4 +91,6 @@ export function init(): void {
         .setDb(db)
         .setSender(sender);
     container.setConnector(wooCommerceAddNote);
+
+    container.setNode(new WooCommerceGetOrderNotes(), app);
 }

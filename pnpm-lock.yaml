@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@aws-sdk/client-lambda': ^3.342.0
-  '@aws-sdk/client-rds': ^3.342.0
+  '@aws-sdk/client-rds': ^3.343.0
   '@aws-sdk/client-redshift': ^3.342.0
   '@aws-sdk/client-s3': ^3.342.0
   '@aws-sdk/client-ses': ^3.342.0
@@ -14,7 +14,7 @@ specifiers:
   '@orchesty/nodejs-sdk': ^4.2.28
   '@types/debug': ^4.1.8
   '@types/express': ^4.17.17
-  '@types/jest': ^29.5.1
+  '@types/jest': ^29.5.2
   '@types/luxon': ^3.3.0
   '@types/node': ^18.16.16
   '@types/nodemailer': ^6.4.8
@@ -60,7 +60,7 @@ dependencies:
 
 optionalDependencies:
   '@aws-sdk/client-lambda': 3.342.0
-  '@aws-sdk/client-rds': 3.342.0
+  '@aws-sdk/client-rds': 3.343.0
   '@aws-sdk/client-redshift': 3.342.0
   '@aws-sdk/client-s3': 3.342.0
   '@aws-sdk/client-ses': 3.342.0
@@ -83,7 +83,7 @@ devDependencies:
   '@hanaboso/eslint-plugin': 1.0.8_tobmchb5uviuq5lwsinkw5fvje
   '@types/debug': 4.1.8
   '@types/express': 4.17.17
-  '@types/jest': 29.5.1
+  '@types/jest': 29.5.2
   '@types/luxon': 3.3.0
   '@types/node': 18.16.16
   '@types/nodemailer': 6.4.8
@@ -253,8 +253,8 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/client-rds/3.342.0:
-    resolution: {integrity: sha512-ZQyPI37gxas0oOnPS48ykkfU6PufbBD0YOYHKVEFpXOPL4SRa0U7p2Ss/andqp2RnF1RCSD7YKp15rbP8QUZsA==}
+  /@aws-sdk/client-rds/3.343.0:
+    resolution: {integrity: sha512-9soIcuOHZh0glPrPqwndqvyDYnlvHDRDtNByeLBw9VLd17jBsTVxeVynzK7N5rKGE8EJ6uJB/06ClXrWtzaJXA==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
@@ -2614,8 +2614,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.5.1:
-    resolution: {integrity: sha512-tEuVcHrpaixS36w7hpsfLBLpjtMRJUE09/MHXn923LOVojDwyC14cWcfc0rDs0VEfUyYmt/+iX1kxxp+gZMcaQ==}
+  /@types/jest/29.5.2:
+    resolution: {integrity: sha512-mSoZVJF5YzGVCk+FsDxzDuH7s+SCkzrgKZzf0Z0T2WudhBUPoF6ktoTPC4R0ZoCPCV5xUvuU6ias5NvxcBcMMg==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
@@ -2672,8 +2672,8 @@ packages:
       pg-types: 4.0.1
     dev: true
 
-  /@types/prettier/2.7.2:
-    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
+  /@types/prettier/2.7.3:
+    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: true
 
   /@types/qs/6.9.7:
@@ -3264,7 +3264,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001492
-      electron-to-chromium: 1.4.414
+      electron-to-chromium: 1.4.416
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11_browserslist@4.21.7
     dev: true
@@ -3738,8 +3738,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.414:
-    resolution: {integrity: sha512-RRuCvP6ekngVh2SAJaOKT/hxqc9JAsK+Pe0hP5tGQIfonU2Zy9gMGdJ+mBdyl/vNucMG6gkXYtuM4H/1giws5w==}
+  /electron-to-chromium/1.4.416:
+    resolution: {integrity: sha512-AUYh0XDTb2vrj0rj82jb3P9hHSyzQNdTPYWZIhPdCOui7/vpme7+HTE07BE5jwuqg/34TZ8ktlRz6GImJ4IXjA==}
     dev: true
 
   /emittery/0.13.1:
@@ -5400,7 +5400,7 @@ packages:
       '@jest/transform': 29.5.0
       '@jest/types': 29.5.0
       '@types/babel__traverse': 7.20.0
-      '@types/prettier': 2.7.2
+      '@types/prettier': 2.7.3
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.22.1
       chalk: 4.1.2
       expect: 29.5.0

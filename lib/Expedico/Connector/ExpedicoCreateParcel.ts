@@ -69,12 +69,12 @@ export interface IInput {
 }
 
 export interface IData {
-    carrier: string;
     orderNumber: string;
     weightInKg: number;
     senderId: number;
     recipient: IAddress;
     carrierPickupDate: string;
+    carrier?: string;
     sender?: IAddress;
     currency?: string;
     codAmount?: number;
