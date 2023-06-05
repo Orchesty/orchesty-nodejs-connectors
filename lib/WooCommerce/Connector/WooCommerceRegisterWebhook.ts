@@ -1,8 +1,10 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 import crypto from 'crypto';
 import WooCommerceApplication from '../WooCommerceApplication';
 
@@ -39,28 +41,38 @@ export default class WooCommerceRegisterWebhook extends AConnector {
             JSON.stringify({ create: body }),
         );
         const repo = this.getDbClient().getRepository(Webhook);
-        const res = await this.getSender().send<IResponseJson>(requestDto, [200]);
-        const respBody = res.getJsonBody();
 
-        await Promise.all(
-            respBody.create.map(async (webhook) => {
-                const located = whData.find((value) => value.topic === webhook.topic);
-                if (located) {
-                    const wb = new Webhook()
-                        .setWebhookId(webhook.id.toString())
-                        .setUser(appInstall.getUser())
-                        .setNode(located.node)
-                        .setToken(located.token)
-                        .setApplication(app.getName())
-                        .setTopology(located.topology)
-                        .setName(webhook.topic);
+        let res;
+        try {
+            res = await this.getSender().send<IResponseJson>(requestDto, [200]);
+            const respBody = res.getJsonBody();
 
-                    return repo.insert(wb);
-                }
+            await Promise.all(
+                respBody.create.map(async (webhook) => {
+                    const located = whData.find((value) => value.topic === webhook.topic);
+                    if (located) {
+                        const wb = new Webhook()
+                            .setWebhookId(webhook.id.toString())
+                            .setUser(appInstall.getUser())
+                            .setNode(located.node)
+                            .setToken(located.token)
+                            .setApplication(app.getName())
+                            .setTopology(located.topology)
+                            .setName(webhook.topic);
 
-                return undefined;
-            }),
-        );
+                        return repo.insert(wb);
+                    }
+
+                    return undefined;
+                }),
+            );
+        } catch (e) {
+            appInstall.setEnabled(false);
+            await this.getDbClient().getRepository(ApplicationInstall).update(appInstall);
+
+            dto.setStopProcess(ResultCode.STOP_AND_FAILED, res?.getBody() ?? 'Webhook could not be registered!');
+        }
+
         return dto;
     }
 
