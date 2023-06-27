@@ -1,3 +1,4 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
@@ -18,7 +19,12 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
     public async processAction(dto: ProcessDto): Promise<ProcessDto> {
         const app = this.getApplication<WooCommerceApplication>();
 
-        const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
+        let appInstall: ApplicationInstall;
+        try {
+            appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
+        } catch (e) {
+            appInstall = await this.getApplicationInstallFromProcess(dto, null, false);
+        }
 
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
         const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
