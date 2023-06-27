@@ -21,6 +21,7 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
+import { NAME } from '../GitHub/GitHubApplication';
 
 export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
@@ -80,7 +81,7 @@ export default class ShipstationApplication extends ABasicApplication implements
         subscription: WebhookSubscription,
         url: string,
     ): RequestDto {
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         return this.getRequestDto(
             request,
             applicationInstall,
@@ -104,7 +105,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     }
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         return this.getRequestDto(
             request,
             applicationInstall,

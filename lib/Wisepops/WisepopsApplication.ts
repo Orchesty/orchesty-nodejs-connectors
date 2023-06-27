@@ -15,6 +15,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
+import { NAME } from '../GitHub/GitHubApplication';
 
 const API_KEY = 'api_key';
 const WISEPOPS_URL = 'https://app.wisepops.com/api1/hooks';
@@ -78,7 +79,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
         subscription: WebhookSubscription,
         url: string,
     ): RequestDto {
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         return this.getRequestDto(
             request,
             applicationInstall,
@@ -99,7 +100,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     }
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         return this.getRequestDto(
             request,
             applicationInstall,

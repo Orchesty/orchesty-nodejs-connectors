@@ -18,6 +18,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
+import { NAME } from '../GitHub/GitHubApplication';
 
 export const APP_ID = 'app_id';
 export const BASE_URL = 'https://api.hubapi.com';
@@ -116,14 +117,25 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
             enabled: false,
         });
 
-        return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.POST, hubspotUrl, body);
+        return this.getRequestDto(
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            applicationInstall,
+            HttpMethods.POST,
+            hubspotUrl,
+            body,
+        );
     }
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
         const url = `${BASE_URL}/webhooks/v1/${applicationInstall
             .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${webhook.getWebhookId()}`;
 
-        return this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.DELETE, url);
+        return this.getRequestDto(
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            applicationInstall,
+            HttpMethods.DELETE,
+            url,
+        );
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

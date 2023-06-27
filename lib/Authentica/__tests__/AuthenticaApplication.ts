@@ -3,6 +3,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { init, mock } from '../../../test/Implementation/authentica';
 import { container, redis } from '../../../test/TestAbstract';
+import { NAME } from '../../GitHub/GitHubApplication';
 import AuthenticaApplication, { NAME as Authentica } from '../AuthenticaApplication';
 
 let app: AuthenticaApplication;
@@ -42,7 +43,7 @@ describe('Tests for AuthenticaApplication', () => {
         );
 
         const requestDto = await app.getRequestDto(
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, Authentica, crypto.randomUUID()),
             appInstall,
             HttpMethods.GET,
             'orders',

@@ -87,7 +87,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
         url: string,
     ): RequestDto {
         return this.getRequestDto(
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
             applicationInstall,
             HttpMethods.POST,
             `${PIPEDRIVE_URL}/v1/webhooks`,
@@ -124,7 +124,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
         webhook: Webhook,
     ): RequestDto {
         return this.getRequestDto(
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
             applicationInstall,
             HttpMethods.DELETE,
             `${PIPEDRIVE_URL}/v1/webhooks/${webhook.getWebhookId()}`,

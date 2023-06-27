@@ -83,7 +83,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
         subscription: WebhookSubscription,
         url: string,
     ): RequestDto {
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         const { owner, record } = subscription.getParameters();
         return this.getRequestDto(
             request,
@@ -119,7 +119,7 @@ export default class GitHubApplication extends ABasicApplication implements IWeb
 
         const { record, owner } = webhookSubscription.getParameters();
 
-        const request = new ProcessDto();
+        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
         return this.getRequestDto(
             request,
             applicationInstall,

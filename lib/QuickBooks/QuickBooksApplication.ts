@@ -141,7 +141,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
                 const requestDto = new RequestDto(
                     'https://developer.api.intuit.com/v2/oauth2/tokens/revoke',
                     HttpMethods.POST,
-                    new ProcessDto(),
+                    ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
                 );
 
                 requestDto.setHeaders({

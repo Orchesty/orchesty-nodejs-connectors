@@ -136,7 +136,7 @@ export default class XeroApplication extends AOAuth2Application {
                 ) as unknown as { authentication_event_id: string };
 
                 const requestDto = this.getRequestDto(
-                    new ProcessDto(),
+                    ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
                     applicationInstall,
                     HttpMethods.GET,
                     `https://api.xero.com/connections?authEventId=${parsedJWT.authentication_event_id}`,
@@ -187,7 +187,7 @@ export default class XeroApplication extends AOAuth2Application {
                 const requestDto = new RequestDto(
                     'https://identity.xero.com/connect/revocation',
                     HttpMethods.POST,
-                    new ProcessDto(),
+                    ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
                 );
 
                 requestDto.setHeaders({

@@ -161,7 +161,12 @@ export default class ShopifyApplication extends AOAuth2Application {
     }
 
     private async checkShopPlan(applicationInstall: ApplicationInstall): Promise<void> {
-        const requestDto = this.getRequestDto(new ProcessDto(), applicationInstall, HttpMethods.GET, SHOP_INFO_URL);
+        const requestDto = this.getRequestDto(
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            applicationInstall,
+            HttpMethods.GET,
+            SHOP_INFO_URL,
+        );
 
         // eslint-disable-next-line @typescript-eslint/naming-convention
         const res = await this.curlSender.send<{ shop: { plan_name: string } }>(requestDto, [200, 404]);

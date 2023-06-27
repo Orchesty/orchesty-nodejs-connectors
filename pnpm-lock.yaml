@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@orchesty/nodejs-sdk':
-    specifier: ^4.2.28
-    version: 4.2.28
+    specifier: ^4.2.29
+    version: 4.2.29
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -2440,8 +2440,8 @@ packages:
     dev: false
     optional: true
 
-  /@orchesty/nodejs-sdk@4.2.28:
-    resolution: {integrity: sha512-A9pcCrYiy70B2HLaS06o2DvV0583LnhcRviaCN4OW6wDTZ5SxxRyFgGsEjc84ft/vbROcgG+m3Jo58JxGVfUEA==}
+  /@orchesty/nodejs-sdk@4.2.29:
+    resolution: {integrity: sha512-dsO3t73Glu7A9aLeHA4z7GdmEgqsGNIAbMIABxgFGQLNT1pXLA/wQbjRAfj/UKEFCxDgNSbaSXuBEsTFxXxZ2Q==}
     dependencies:
       async-mutex: 0.4.0
       axios: 1.4.0
@@ -3954,7 +3954,7 @@ packages:
       eslint: 8.43.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.60.1)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.60.1)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
-      get-tsconfig: 4.6.0
+      get-tsconfig: 4.6.1
       globby: 13.2.0
       is-core-module: 2.12.1
       is-glob: 4.0.3
@@ -4541,8 +4541,8 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
 
-  /get-tsconfig@4.6.0:
-    resolution: {integrity: sha512-lgbo68hHTQnFddybKbbs/RDRJnJT5YyGy2kQzVwbq+g67X73i+5MVTval34QxGkOe9X5Ujf1UYpCaphLyltjEg==}
+  /get-tsconfig@4.6.1:
+    resolution: {integrity: sha512-03KhXlcmM2U7gjZlQmsJBJQhf4uUjmpnfXvVeM6YZE+IcKqhdp/1mViZ+C1MaaIfjlfpZpSpDR5sWC6TR03DmA==}
     dependencies:
       resolve-pkg-maps: 1.0.0
     dev: true

@@ -19,6 +19,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
+import { NAME } from '../GitHub/GitHubApplication';
 
 export const MAILCHIMP_URL = 'https://login.mailchimp.com/oauth2/authorize';
 export const MAILCHIMP_DATACENTER_URL = 'https://login.mailchimp.com';
@@ -118,7 +119,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         url: string,
     ): RequestDto {
         return this.getRequestDto(
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
             applicationInstall,
             HttpMethods.POST,
             `${applicationInstall.getSettings()[API_KEYPOINT]}
@@ -145,7 +146,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         webhook: Webhook,
     ): RequestDto {
         return this.getRequestDto(
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
             applicationInstall,
             HttpMethods.DELETE,
             // eslint-disable-next-line max-len
@@ -168,7 +169,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     public async getApiEndpoint(applicationInstall: ApplicationInstall): Promise<string> {
         const output = await this.sender.send(
             this.getRequestDto(
-                new ProcessDto(),
+                ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
                 applicationInstall,
                 HttpMethods.GET,
                 '%s/oauth2/metadata',
