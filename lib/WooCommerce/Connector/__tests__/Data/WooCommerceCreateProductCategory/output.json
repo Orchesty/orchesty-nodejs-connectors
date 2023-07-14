@@ -1,0 +1,37 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 9,
+        "name": "Clothing",
+        "slug": "clothing",
+        "parent": 0,
+        "description": "",
+        "display": "default",
+        "image": {
+            "id": 730,
+            "date_created": "2017-03-23T00:01:07",
+            "date_created_gmt": "2017-03-23T03:01:07",
+            "date_modified": "2017-03-23T00:01:07",
+            "date_modified_gmt": "2017-03-23T03:01:07",
+            "src": "https://example.com/wp-content/uploads/2017/03/T_2_front.jpg",
+            "name": "",
+            "alt": ""
+        },
+        "menu_order": 0,
+        "count": 36,
+        "_links": {
+            "self": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/products/categories/9"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/products/categories"
+                }
+            ]
+        }
+    }
+}
