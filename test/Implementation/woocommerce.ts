@@ -8,11 +8,14 @@ import WooCommerceGetOrders from '../../lib/WooCommerce/Batch/WooCommerceGetOrde
 import WooCommerceGetProducts from '../../lib/WooCommerce/Batch/WooCommerceGetProducts';
 import WooCommerceGetVariants from '../../lib/WooCommerce/Batch/WooCommerceGetVariants';
 import WooCommerceAddNote from '../../lib/WooCommerce/Connector/WooCommerceAddNote';
+import WooCommerceCreateProduct from '../../lib/WooCommerce/Connector/WooCommerceCreateProduct';
+import WooCommerceCreateProductCategory from '../../lib/WooCommerce/Connector/WooCommerceCreateProductCategory';
 import WooCommerceGetOrderNotes from '../../lib/WooCommerce/Connector/WooCommerceGetOrderNotes';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
+import WooCommerceUpdateProduct from '../../lib/WooCommerce/Connector/WooCommerceUpdateProduct';
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
 import {
     appInstall,
@@ -93,4 +96,7 @@ export function init(): void {
     container.setConnector(wooCommerceAddNote);
 
     container.setNode(new WooCommerceGetOrderNotes(), app);
+    container.setNode(new WooCommerceCreateProduct(), app);
+    container.setNode(new WooCommerceUpdateProduct(), app);
+    container.setNode(new WooCommerceCreateProductCategory(), app);
 }
