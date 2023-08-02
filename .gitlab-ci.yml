@@ -7,8 +7,6 @@ stages:
 
 before_script:
     - export REPO_ROOT=$(pwd)
-    - eval $(ssh-agent)
-    - ssh-add ~/.ssh/bob_the_builder_hanaboso
 
 test:
     stage: test

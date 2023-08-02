@@ -1,5 +1,4 @@
 import { prepare } from '../test/TestAbstract';
-import nodemailer from 'nodemailer';
 import {
   createLoggerMockedServer,
   createMetricsMockedServer,

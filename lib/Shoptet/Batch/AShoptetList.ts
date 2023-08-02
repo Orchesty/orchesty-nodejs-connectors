@@ -1,3 +1,4 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -17,6 +18,7 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
     public async processAction(dto: BatchProcessDto<{ from: string }>): Promise<BatchProcessDto> {
         const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
+        await this.saveInProgress(appInstall);
         const { page, dateFrom } = JSON.parse(dto.getBatchCursor('{ "page": 1, "dateFrom": null }')) as ICursor;
 
         let querySeparator = '?';
@@ -55,16 +57,22 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
         );
         const paginator = this.processResult(res, dto);
 
-        if (page === 1) {
-            appInstall.addNonEncryptedSettings({ [this.lastRunKey]: new Date() });
-            await this.getDbClient().getApplicationRepository().update(appInstall);
-        }
-
         if (paginator.pageCount > page) {
             dto.setBatchCursor(JSON.stringify({ page: page + 1, dateFrom: creationTimeFrom }));
+        } else {
+            await this.saveLastRunKey(appInstall);
         }
 
         return dto;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected async saveInProgress(appInstall: ApplicationInstall): Promise<void> {}
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected async saveLastRunKey(appInstall: ApplicationInstall): Promise<void> {
+        appInstall.addNonEncryptedSettings({ [this.lastRunKey]: new Date() });
+        await this.getDbClient().getApplicationRepository().update(appInstall);
     }
 
     protected getDefaultLastRun(): string {
