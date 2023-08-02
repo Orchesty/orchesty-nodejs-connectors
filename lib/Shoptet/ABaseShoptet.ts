@@ -3,6 +3,8 @@ import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/T
 
 export const BASE_URL = 'https://api.myshoptet.com';
 
+export const IN_PROGRESS_KEY = 'inProgress';
+
 export default abstract class ABaseShoptet extends ABasicApplication {
 
     protected abstract authorizationHeader: string;

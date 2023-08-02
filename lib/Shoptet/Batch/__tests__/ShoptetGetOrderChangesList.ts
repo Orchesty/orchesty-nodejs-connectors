@@ -31,6 +31,7 @@ describe('Tests for ShoptetGetOrderChangesList', () => {
         restoreDate();
     });
 
+    // TODO rich vyresit proc to nefunguje pri spusteni vice testu
     it('process - with after', async () => {
         await new Promise((r) => {
             setTimeout(r, 2000);
