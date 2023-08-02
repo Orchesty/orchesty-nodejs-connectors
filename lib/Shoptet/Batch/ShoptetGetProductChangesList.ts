@@ -2,7 +2,7 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
-import { IN_PROGRESS_KEY } from '../ABaseShoptet';
+import { PRODUCTS_IN_PROGRESS_KEY } from '../ABaseShoptet';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
 import AShoptetList, { IPaging } from './AShoptetList';
 
@@ -41,7 +41,7 @@ export default class ShoptetGetProductChangesList extends AShoptetList<IResponse
     }
 
     protected async saveInProgress(appInstall: ApplicationInstall): Promise<void> {
-        appInstall.addNonEncryptedSettings({ [IN_PROGRESS_KEY]: new Date() });
+        appInstall.addNonEncryptedSettings({ [PRODUCTS_IN_PROGRESS_KEY]: Date.now() });
         await this.getDbClient().getApplicationRepository().update(appInstall);
     }
 
@@ -49,7 +49,7 @@ export default class ShoptetGetProductChangesList extends AShoptetList<IResponse
         const encryptedSettings = appInstall.getNonEncryptedSettings();
 
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-        delete encryptedSettings[IN_PROGRESS_KEY];
+        delete encryptedSettings[PRODUCTS_IN_PROGRESS_KEY];
         encryptedSettings[this.lastRunKey] = new Date();
 
         appInstall.setNonEncryptedSettings(encryptedSettings);
