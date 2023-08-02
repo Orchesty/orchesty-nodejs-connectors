@@ -26,16 +26,13 @@ describe('Tests for ShoptetGetOrderChangesList', () => {
 
     it('process - ok', async () => {
         mockDate();
-        mock(2);
+        mock(1);
         await tester.testBatch(SHOPTET_GET_ORDER_CHANGES_LIST);
         restoreDate();
     });
 
     it('process - with after', async () => {
-        await new Promise((r) => {
-            setTimeout(r, 2000);
-        });
-        mock(2, { lastRunListOrderChanges: '2017-03-23T17:03:12Z' });
+        mock(1, { lastRunListOrderChanges: '2017-03-23T17:03:12Z' });
         await tester.testBatch(SHOPTET_GET_ORDER_CHANGES_LIST, 'with-after');
     });
 });
