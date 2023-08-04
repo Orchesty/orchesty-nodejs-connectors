@@ -90,8 +90,7 @@ export default class Magento2Application extends ABasicApplication {
             return await this.cache.entry(
                 cacheKey,
                 requestDto,
-                // eslint-disable-next-line @typescript-eslint/require-await
-                async (dto) => {
+                (dto) => {
                     const dtoBody = dto.getBody();
                     return {
                         expire: 4 * 3600 - 30,

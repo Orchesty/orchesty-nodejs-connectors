@@ -72,8 +72,7 @@ export default abstract class MoneyS45Base extends ABasicApplication {
             return await this.cache.entry(
                 cacheKey,
                 requestDto,
-                // eslint-disable-next-line @typescript-eslint/require-await
-                async (dto) => {
+                (dto) => {
                     const dtoBody = dto.getJsonBody() as IResponseJson;
                     return {
                         expire: Number(dtoBody.expires_in) - 120,

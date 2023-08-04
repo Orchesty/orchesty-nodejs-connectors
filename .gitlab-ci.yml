@@ -7,6 +7,8 @@ stages:
 
 before_script:
     - export REPO_ROOT=$(pwd)
+    - eval $(ssh-agent)
+    - ssh-add ~/.ssh/bob_the_builder_hanaboso
 
 test:
     stage: test
@@ -19,7 +21,7 @@ mirror:
     stage: mirror
     when: manual
     script:
-        - "curl -X POST -F token=${MIRROR_TOKEN} -F ref=master -F variables\\[REPO\\]=hanaboso-pipes-nodejs-connectors https://gitlab.hanaboso.net/api/v4/projects/38/trigger/pipeline"
+        - "curl -X POST --fail -F token=${MIRROR_TOKEN} -F ref=master -F variables\\[REPO\\]=hanaboso-nodejs-connectors https://gitlab.hanaboso.net/api/v4/projects/131/trigger/pipeline"
 
 cleanup:
     stage: cleanup

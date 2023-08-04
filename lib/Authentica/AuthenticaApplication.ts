@@ -111,8 +111,7 @@ export default class AuthenticaApplication extends ABasicApplication {
         return `Bearer ${storedAccessToken.access_token}`;
     }
 
-    // eslint-disable-next-line @typescript-eslint/require-await
-    protected async accessCallBack(res: ResponseDto): Promise<ICacheCallback<IAccessToken>> {
+    protected accessCallBack(res: ResponseDto): ICacheCallback<IAccessToken> {
         const token = res.getJsonBody() as IAccessToken;
         return {
             dataToStore: token,

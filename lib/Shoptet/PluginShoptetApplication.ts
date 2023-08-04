@@ -84,8 +84,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
                 cacheKey,
                 lockKey,
                 requestDto,
-                // eslint-disable-next-line @typescript-eslint/require-await
-                async (dto): Promise<ICacheCallback<string>> => {
+                (dto): ICacheCallback<string> => {
                     const dtoBody = dto.getJsonBody() as {
                         /* eslint-disable @typescript-eslint/naming-convention */
                         expires_in: number;
