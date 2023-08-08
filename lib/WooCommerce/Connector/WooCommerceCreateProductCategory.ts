@@ -1,4 +1,5 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { IResultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -21,6 +22,10 @@ export default class WooCommerceCreateProductCategory extends AConnector {
         );
         const resp = await this.getSender().send<IResponse>(req, this.getCodeRanges());
 
+        return this.setNewJsonData(dto, resp) as ProcessDto<IOutput>;
+    }
+
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto): ProcessDto {
         return dto.setNewJsonData(resp.getJsonBody());
     }
 
