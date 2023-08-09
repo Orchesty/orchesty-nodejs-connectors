@@ -2,7 +2,8 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import { API_VERSION } from '../ABaseShopify';
+import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-order-list';
 
@@ -28,7 +29,7 @@ export default class ShopifyGetOrderList extends ABatchNode {
             url = `${url}${separatorChar}created_at_min=${from}`;
         }
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
+        const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
         const res = await this.getSender().send<IResponse>(requestDto);
         const nextPageLink = app.getNextPageFromHeaders(res.getHeaders());

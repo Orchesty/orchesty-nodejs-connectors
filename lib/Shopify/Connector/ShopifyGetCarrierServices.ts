@@ -1,7 +1,8 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import { API_VERSION } from '../ABaseShopify';
+import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-shipping-methods';
 
@@ -15,7 +16,7 @@ export default class ShopifyGetCarrierServices extends AConnector {
         const app = this.getApplication<ShopifyApplication>();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto, null);
-        const requestDto = app.getRequestDto(
+        const requestDto = await app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,

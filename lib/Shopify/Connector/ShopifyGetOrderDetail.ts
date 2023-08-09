@@ -1,8 +1,9 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { API_VERSION } from '../ABaseShopify';
 import { IOutput as IInput } from '../Batch/ShopifyGetOrderList';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-get-order-detail';
 
@@ -31,7 +32,7 @@ export default class ShopifyGetOrderDetail extends AConnector {
         dto: ProcessDto,
     ): Promise<IResponseJson> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = app.getRequestDto(
+        const requestDto = await app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,

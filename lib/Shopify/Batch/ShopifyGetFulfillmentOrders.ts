@@ -2,7 +2,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import ABaseShopify, { API_VERSION } from '../ABaseShopify';
 
 export const NAME = 'shopify-get-fulfillment-orders';
 
@@ -16,7 +16,7 @@ export default class ShopifyGetFulfillmentOrders extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const { id } = dto.getJsonData();
-        const requestDto = this.getApplication<ShopifyApplication>().getRequestDto(
+        const requestDto = this.getApplication<ABaseShopify>().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,

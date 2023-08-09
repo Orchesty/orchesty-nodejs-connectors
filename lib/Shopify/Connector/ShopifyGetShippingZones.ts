@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { API_VERSION } from '../ShopifyApplication';
+import { API_VERSION } from '../ABaseShopify';
 
 export const NAME = 'shopify-get-shipping-zones';
 

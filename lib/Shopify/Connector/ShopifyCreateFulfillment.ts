@@ -1,8 +1,8 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import ABaseShopify, { API_VERSION } from '../ABaseShopify';
 import { IOutput as IBaseOutput } from '../Batch/ShopifyGetFulfillmentOrders';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
 
 export const NAME = 'shopify-create-fulfillment';
 
@@ -15,7 +15,7 @@ export default class ShopifyCreateFulfillment extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const app = this.getApplication<ShopifyApplication>();
+        const app = this.getApplication<ABaseShopify>();
         const data = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const decoratedUrl = app.getDecoratedUrl(appInstall);

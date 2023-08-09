@@ -1,7 +1,8 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import { API_VERSION } from '../ABaseShopify';
+import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-create-fulfillment-event';
 
@@ -15,7 +16,7 @@ export default class ShopifyCreateFulfillmentEvent extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const { id, orderId, ...data } = dto.getJsonData();
-        const requestDto = this.getApplication<ShopifyApplication>().getRequestDto(
+        const requestDto = await this.getApplication<ShopifyApplication>().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,

@@ -27,7 +27,7 @@ export default class ShopifyUnregisterWebhook extends ABatchNode {
 
         if (webhooks && webhooks.length > 0) {
             const webhookId = webhooks[0].getWebhookId();
-            const requestDto = app.getRequestDto(
+            const requestDto = await app.getRequestDto(
                 dto,
                 appInstall,
                 HttpMethods.DELETE,

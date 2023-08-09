@@ -1,8 +1,9 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { API_VERSION } from '../ABaseShopify';
 import { IOrder } from '../Batch/ShopifyGetOrderList';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-update-order';
 
@@ -16,7 +17,7 @@ export default class ShopifyUpdateOrder extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const { id, ...data } = dto.getJsonData();
-        const requestDto = this.getApplication<ShopifyApplication>().getRequestDto(
+        const requestDto = await this.getApplication<ShopifyApplication>().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,

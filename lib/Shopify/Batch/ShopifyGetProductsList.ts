@@ -2,7 +2,7 @@ import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Da
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import ShopifyApplication, { API_VERSION } from '../ShopifyApplication';
+import ABaseShopify, { API_VERSION } from '../ABaseShopify';
 
 export const NAME = 'shopify-get-products-list';
 
@@ -31,7 +31,7 @@ export default class ShopifyGetProductsList extends ABatchNode {
             url = `${url}${separatorChar}created_at_min=${creationTimeFrom}`;
         }
 
-        const app = this.getApplication<ShopifyApplication>();
+        const app = this.getApplication<ABaseShopify>();
         const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
         const res = await this.getSender().send<IResponseJson>(requestDto);
