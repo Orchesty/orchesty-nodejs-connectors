@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "inventory_item_id": "abc",
+        "available": 10
+    }
+}
