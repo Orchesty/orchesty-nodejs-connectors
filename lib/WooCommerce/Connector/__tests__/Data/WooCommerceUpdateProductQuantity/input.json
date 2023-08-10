@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "productId": "1",
+        "update": [
+            {
+                "id": "1",
+                "stock_quantity": 23,
+                "stock_status": "instock"
+            },
+            {
+                "id": "2",
+                "stock_quantity": 22,
+                "stock_status": "instock"
+            }
+        ]
+    }
+}
