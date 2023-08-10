@@ -5,10 +5,13 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import DataStorageManager from '@orchesty/nodejs-sdk/dist/lib/Storage/DataStore/DataStorageManager';
+import FileSystem from '@orchesty/nodejs-sdk/dist/lib/Storage/File/FileSystem';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import ShoptetGetOrderChangesList from '../../lib/Shoptet/Batch/ShoptetGetOrderChangesList';
 import ShoptetGetProductChangesList from '../../lib/Shoptet/Batch/ShoptetGetProductChangesList';
 import ShoptetParseJsonLines from '../../lib/Shoptet/Batch/ShoptetParseJsonLines';
+import ShoptetProductDetailWithSet from '../../lib/Shoptet/Batch/ShoptetProductDetailWithSet';
 import ShoptetGetAllOrders from '../../lib/Shoptet/Connector/ShoptetGetAllOrders';
 import ShoptetGetAllProducts from '../../lib/Shoptet/Connector/ShoptetGetAllProducts';
 import ShoptetGetEshopInfo from '../../lib/Shoptet/Connector/ShoptetGetEshopInfo';
@@ -73,6 +76,9 @@ export async function init(): Promise<void> {
         JSON.stringify({ expires_in: 55, access_token: 'testToken' }),
         10,
     );
+
+    const dataStorageManager = new DataStorageManager(new FileSystem());
+    container.set(dataStorageManager);
 
     const shoptetGetAllOrders = new ShoptetGetAllOrders()
         .setSender(sender)
@@ -139,4 +145,6 @@ export async function init(): Promise<void> {
         .setDb(db)
         .setSender(sender);
     container.setConnector(shoptetUpdateStockMovements);
+
+    container.setNode(new ShoptetProductDetailWithSet(dataStorageManager), implPluginShoptetApplication);
 }
