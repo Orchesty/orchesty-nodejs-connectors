@@ -13,6 +13,7 @@ import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsol
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyCreateFulfillmentEvent from '../../lib/Shopify/Connector/ShopifyCreateFulfillmentEvent';
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
+import ShopifyGetInventoryLocation from '../../lib/Shopify/Connector/ShopifyGetInventoryLocation';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyUpdateOrder from '../../lib/Shopify/Connector/ShopifyUpdateOrder';
 import ShopifyApplication from '../../lib/Shopify/ShopifyApplication';
@@ -114,4 +115,6 @@ export default function init(): void {
         .setSender(sender)
         .setDb(db);
     container.setConnector(shopifyCreateFulfillmentEvent);
+
+    container.setNode(new ShopifyGetInventoryLocation(), shopifyApplication);
 }

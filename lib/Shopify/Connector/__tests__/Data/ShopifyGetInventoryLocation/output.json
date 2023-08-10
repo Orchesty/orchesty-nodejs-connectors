@@ -1,0 +1,28 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "active": true,
+            "address1": "Avenue De Petit Lancy 19",
+            "address2": "",
+            "admin_graphql_api_id": "gid://shopify/Location/14873067586",
+            "city": "Petit Lancy",
+            "country": "CH",
+            "country_code": "CH",
+            "country_name": "Switzerland",
+            "created_at": "2019-02-03T20:46:33+01:00",
+            "id": 14873067586,
+            "legacy": false,
+            "localized_country_name": "Switzerland",
+            "localized_province_name": null,
+            "name": "FRANK Functional Foods CENTRAL",
+            "phone": "+41799624532",
+            "province": "",
+            "province_code": null,
+            "updated_at": "2020-11-24T23:27:59+01:00",
+            "zip": "1213"
+        }
+    ]
+}
