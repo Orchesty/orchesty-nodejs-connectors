@@ -1,0 +1,214 @@
+{
+    "http": "GET https://api.myshoptet.com/api/products/937be4fd-7481-11e8-8216-002590dad85g?include=setItems",
+    "code": 200,
+    "body": {
+        "data": {
+            "guid": "bffa3b98-d968-11e0-b04f-57a43310b768",
+            "type": "product",
+            "brand": {
+                "code": "pelle",
+                "name": "Pelle"
+            },
+            "visibility": "normal",
+            "creationTime": "2015-08-01T09:02:27+0200",
+            "changeTime": "2016-08-01T09:02:27+0200",
+            "shortDescription": "A high quality jacket, although its fairly bold design is not to everyone's taste, it has its fans, so you can find it in our offer too. For kids, why not.",
+            "description": "<p>As it is often the case with jackets for kids, the emphasis is primarily on durability and quality workmanship. It is clear that it will be put through its paces, which the manufacturer has borne in mind. As previously stated, the manufacturer could also afford a less conservative design for a kids product, combining bold colours with a company logo on the front and back.</p>\\n\\n<ul>\\n\\t<li>Body - 60% Nylon, 40% wool</li>\\n<li>Inside - 100% Polyester</li>\\n</ul>",
+            "metaDescription": "Pelle 1978. A high quality jacket, although its fairly bold design is not to everyone's taste, it has its fans, so you can find it in our offer too. For kids, why not.",
+            "name": "Pelle 1978",
+            "supplier": {
+                "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+                "name": "Dodavatel s.r.o"
+            },
+            "defaultCategory": {
+                "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+                "name": "Hodinky"
+            },
+            "url": "https://www.domena-eshopu.cz/hodinky/citizen-chronograph-eco-drive/",
+            "variants": [
+                {
+                    "code": "0035",
+                    "ean": "4010355051486",
+                    "stock": "1.000",
+                    "minStockSupply": "null",
+                    "unit": "ks",
+                    "weight": "null",
+                    "visible": true,
+                    "price": "850.00",
+                    "commonPrice": "900.00",
+                    "includingVat": true,
+                    "vatRate": "21.00",
+                    "currencyCode": "CZK",
+                    "actionPrice": {
+                        "price": "189.00",
+                        "fromDate": "2018-02-15",
+                        "toDate": "2018-02-25"
+                    },
+                    "image": null,
+                    "parameters": [
+                        {
+                            "paramName": "Colour",
+                            "paramIndex": "barva",
+                            "paramValue": "červená",
+                            "rawValue": "cervena",
+                            "color": "fffeee",
+                            "image": "null",
+                            "valuePriority": 1
+                        }
+                    ],
+                    "name": "Colour: Red, size: 50 cm, shape: Square",
+                    "manufacturerCode": "OKI",
+                    "pluCode": "0828",
+                    "isbn": "99921-58-10-7",
+                    "serialNo": "B412",
+                    "mpn": "H2G2-42",
+                    "measureUnit": {
+                        "packagingUnitId": 22,
+                        "packagingUnitName": "g",
+                        "packagingAmount": "64",
+                        "measureUnitId": -16,
+                        "measureUnitName": "kg",
+                        "measureAmount": "1",
+                        "measurePrice": "3937.5"
+                    },
+                    "availability": {
+                        "id": -1,
+                        "name": "Skladem"
+                    },
+                    "availabilityWhenSoldOut": {
+                        "id": -5,
+                        "name": "Na dotaz"
+                    },
+                    "negativeStockAllowed": "yes-global",
+                    "recyclingFee": {
+                        "id": 1,
+                        "category": "Hrnky",
+                        "fee": "50.00",
+                        "currency": "EUR"
+                    },
+                    "amountDecimalPlaces": 0,
+                    "heurekaCPC": "0.0",
+                    "zboziCZ": {
+                        "maximalCPC": "0.0",
+                        "maximalSearchCPC": "0.0",
+                        "hidden": false
+                    }
+                }
+            ],
+            "internalNote": "Note",
+            "images": [
+                {
+                    "name": "100.jpg",
+                    "seoName": "100_purple-apple.jpg",
+                    "cdnName": "100_purple-apple.jpg?59393c3a",
+                    "priority": 1,
+                    "description": "Fresh purple apple for Snow White",
+                    "changeTime": "2018-04-19T09:49:21+0200"
+                }
+            ],
+            "categories": [
+                {
+                    "guid": "1b02cb8e-d7b5-11e0-9a5c-feab5ed617ed",
+                    "name": "Watches",
+                    "parentGuid": "2a648227-d7b1-11e0-9a5c-feab5ed617ed"
+                }
+            ],
+            "flags": [
+                {
+                    "code": "action",
+                    "title": "Action",
+                    "dateFrom": "2020-01-01",
+                    "dateTo": "2020-01-30"
+                }
+            ],
+            "descriptiveParameters": [
+                {
+                    "name": "Material",
+                    "value": "flannel",
+                    "description": "Material the shirt is made of",
+                    "priority": 1
+                }
+            ],
+            "surchargeParameters": [
+                {
+                    "code": "potisk",
+                    "name": "S potiskem",
+                    "displayName": "Příplatek za potisk",
+                    "description": "Ozdobný potisk",
+                    "priority": 1,
+                    "required": true,
+                    "currency": "CZK",
+                    "includingVat": true,
+                    "values": [
+                        {
+                            "valueIndex": "zlaty",
+                            "description": "Zlatý",
+                            "price": "50.00",
+                            "priority": 1,
+                            "visible": true
+                        }
+                    ]
+                }
+            ],
+            "setItems": [
+                {
+                    "guid": "934c504e-7481-11e8-8216-002590dad85e",
+                    "code": "154",
+                    "amount": "1.000"
+                }
+            ],
+            "filteringParameters": [
+                {
+                    "code": "material",
+                    "name": "Material",
+                    "displayName": "Material of product",
+                    "description": "Material of product",
+                    "priority": 1,
+                    "googleMapping": {
+                        "value": "google:color",
+                        "description": "Color"
+                    },
+                    "values": [
+                        {
+                            "valueIndex": "ag",
+                            "name": "Gold",
+                            "priority": 1,
+                            "color": "#34ff34",
+                            "image": "https://www.domena-eshopu.cz/user/parameters/100.jpg"
+                        }
+                    ]
+                }
+            ],
+            "warranty": {
+                "id": -1,
+                "inMonths": 12,
+                "description": "Tři roky"
+            },
+            "additionalName": "+ free gift",
+            "xmlFeedName": "our-feed.xml",
+            "metaTitle": "Nice product title",
+            "adult": false,
+            "atypicalBilling": false,
+            "atypicalShipping": false,
+            "allowIPlatba": true,
+            "allowOnlinePayments": true,
+            "sizeIdName": "adidas - man - shoes (ID 142)",
+            "voteAverageScore": "2.6",
+            "voteCount": 16,
+            "gifts": [
+                {
+                    "code": "0008",
+                    "priority": 1
+                }
+            ]
+        },
+        "errors": [
+            {
+                "errorCode": "",
+                "message": "",
+                "instance": ""
+            }
+        ]
+    }
+}
+
