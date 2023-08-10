@@ -32,8 +32,6 @@ export default class ShoptetProductDetailWithSet extends ABatchNode {
         }, {});
         const setProducts = data.items.filter(({ itemType }) => itemType === PRODUCT_SET);
 
-        // TODO rich zkontrolovat aby nikde nebyla Auth
-        // TODO pri inicializaci zkouknout jeslti ostatni connectory maji plugin appku
         const app = this.getApplication<PluginShoptetApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const item = setProducts[pageNumber];
