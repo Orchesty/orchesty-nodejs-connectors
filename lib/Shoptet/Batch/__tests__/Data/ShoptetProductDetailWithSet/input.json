@@ -1,0 +1,195 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "code": "2017000092",
+        "externalCode": "1234",
+        "creationTime": "2017-12-12T22:08:01+0100",
+        "changeTime": "2018-02-12T22:08:01+0100",
+        "email": "customer@someemail.com",
+        "phone": "+420604600444",
+        "birthDate": "1990-05-05",
+        "clientCode": "201869742",
+        "companyId": "123456",
+        "vatId": "CZ123456789",
+        "taxId": "123456",
+        "vatPayer": true,
+        "customerGuid": "747fb32d-73bc-11e8-8216-002590dad85e",
+        "addressesEqual": true,
+        "cashDeskOrder": false,
+        "stockId": 1,
+        "paid": true,
+        "adminUrl": "https://www.domena-eshopu.cz/admin/objednavky-detail?id=2",
+        "onlinePaymentLink": "https://www.domena-eshopu.cz/api/pay/payu/redir?paymentCode=xyz123",
+        "language": "cs",
+        "referer": "https://google.com",
+        "billingMethod": {
+            "name": "Cash",
+            "id": 3
+        },
+        "billingAddress": {
+            "company": "Shoptet",
+            "fullName": "John Doe",
+            "street": "French",
+            "houseNumber": "28",
+            "city": "Praha 2",
+            "district": "null",
+            "additional": "null",
+            "zip": "120 00",
+            "countryCode": "CZ",
+            "regionName": "null",
+            "regionShortcut": "null"
+        },
+        "deliveryAddress": {
+            "company": "Shoptet",
+            "fullName": "John Doe",
+            "street": "French",
+            "houseNumber": "28",
+            "city": "Praha 2",
+            "district": "null",
+            "additional": "null",
+            "zip": "120 00",
+            "countryCode": "CZ",
+            "regionName": "null",
+            "regionShortcut": "null"
+        },
+        "status": {
+            "id": -1,
+            "name": "Processing"
+        },
+        "price": {
+            "vat": "42.00",
+            "toPay": "242.00",
+            "currencyCode": "CZK",
+            "withVat": "242.00",
+            "withoutVat": "200.00",
+            "exchangeRate": "1.04568087"
+        },
+        "paymentMethod": {
+            "guid": "b57f91bb-e920-11e0-baa3-7dc668b75ca8",
+            "name": "Cash"
+        },
+        "shipping": {
+            "guid": "3d499cae-3af3-11e3-ab60-ac162d8a2454",
+            "name": "PPL"
+        },
+        "clientIPAddress": "213.46.237.24",
+        "paymentMethods": [
+            {
+                "paymentMethod": {
+                    "name": "Cash",
+                    "guid": "b57f91bb-e920-11e0-baa3-7dc668b75ca8"
+                },
+                "itemId": 1
+            }
+        ],
+        "shippings": [
+            {
+                "shipping": {
+                    "name": "PPL",
+                    "guid": "b57f91bb-e920-11e0-baa3-7dc668b75ca8"
+                },
+                "itemId": 1
+            }
+        ],
+        "items": [
+            {
+                "productGuid": "937be4fd-7481-11e8-8216-002590dad85e",
+                "code": "40/ZEL",
+                "itemType": "product-set",
+                "name": "Complete  + Addition to the name",
+                "variantName": "null",
+                "brand": "Test",
+                "supplierName": "Dodavatel s.r.o",
+                "remark": "null",
+                "weight": "2.5",
+                "additionalField": "null",
+                "amount": "1.000",
+                "amountUnit": "ks",
+                "amountCompleted": "1.000",
+                "priceRatio": "1.0000",
+                "itemPrice": {
+                    "withVat": "121.00",
+                    "withoutVat": "100.00",
+                    "vat": "21.00",
+                    "vatRate": "21.00"
+                },
+                "buyPrice": {
+                    "withVat": "121.00",
+                    "withoutVat": "100.00",
+                    "vat": "21.00",
+                    "vatRate": "21.00"
+                },
+                "recyclingFee": {
+                    "category": "shoes",
+                    "fee": "123.00"
+                },
+                "status": {
+                    "id": -1,
+                    "name": "Pending"
+                },
+                "displayPrices": [
+                    {
+                        "withVat": "242.00",
+                        "withoutVat": "200.00",
+                        "vat": "42.00",
+                        "vatRate": "15.00"
+                    }
+                ],
+                "mainImage": {
+                    "name": "100.jpg",
+                    "seoName": "100_purple-apple.jpg",
+                    "cdnName": "100_purple-apple.jpg?59393c3a",
+                    "priority": 1,
+                    "description": "Fresh purple apple for Snow White",
+                    "changeTime": "2018-04-19T09:49:21+0200"
+                },
+                "stockLocation": "H6/M11/R13",
+                "surchargeParameters": [
+                    {
+                        "parameterName": {
+                            "code": "priplatek",
+                            "name": "Příplatek"
+                        },
+                        "parameterValue": {
+                            "valueIndex": "fotka-s-ni",
+                            "description": "Fotka s ní",
+                            "price": "1000.00"
+                        }
+                    }
+                ],
+                "surchargeParametersTexts": [],
+                "itemId": 1,
+                "warrantyDescription": "2 years"
+            }
+        ],
+        "notes": {
+            "customerRemark": "Better in green",
+            "eshopRemark": "Transport from Pilsen",
+            "trackingNumber": "DR123456",
+            "trackingUrl": "http://www.ppl.cz/main2.aspx?cls=Package&idSearch=DR123456",
+            "additionalFields": [
+                {
+                    "index": 1,
+                    "label": "1st field",
+                    "text": "forwarder ID"
+                }
+            ]
+        },
+        "shippingDetails": {
+            "branchId": "4",
+            "name": "Hradec Králové, Square of 5th May 888",
+            "note": "The office is located in Square of 5th May 888, near to John Doe's Garages.",
+            "place": "Creator",
+            "street": "Square of 5th May 888",
+            "city": "Hradec Králové",
+            "zipCode": "50002",
+            "countryCode": "cz",
+            "link": "https://www.ulozenka.cz/pobocky/4/hradec-kralove-nam-5-kvetna-888",
+            "latitude": "50.213673",
+            "longitude": "15.825294",
+            "carrierId": 3060
+        }
+    }
+}

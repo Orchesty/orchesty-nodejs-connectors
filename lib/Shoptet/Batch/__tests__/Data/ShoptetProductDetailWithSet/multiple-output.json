@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "cursor": "1",
+        "process-id": "process111",
+        "result-code": "1010",
+        "result-message": "Message will be used as a iterator with cursor [1]. Data will be send to follower(s).",
+        "user": "TestUser"
+    },
+    "data": []
+}
+
