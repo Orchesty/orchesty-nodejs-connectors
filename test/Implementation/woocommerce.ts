@@ -16,6 +16,7 @@ import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCom
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
 import WooCommerceUpdateProduct from '../../lib/WooCommerce/Connector/WooCommerceUpdateProduct';
+import WooCommerceUpdateProductQuantity from '../../lib/WooCommerce/Connector/WooCommerceUpdateProductQuantity';
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
 import {
     appInstall,
@@ -99,4 +100,5 @@ export function init(): void {
     container.setNode(new WooCommerceCreateProduct(), app);
     container.setNode(new WooCommerceUpdateProduct(), app);
     container.setNode(new WooCommerceCreateProductCategory(), app);
+    container.setNode(new WooCommerceUpdateProductQuantity(), app);
 }
