@@ -1,0 +1,6 @@
+{
+    "http": "GET https://api.myshoptet.com/api/products/937be4fd-7481-11e8-8216-002590dad85e?include=setItems",
+    "code": 200,
+    "body": {}
+}
+
