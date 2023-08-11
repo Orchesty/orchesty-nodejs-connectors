@@ -1,5 +1,5 @@
 {
-  "http": "GET https://supply.do//items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*&filter[ecommerce][_eq]=TestUser&filter[date][_gte]=1970-01-01T00:00:00.000Z&sort=-date",
+  "http": "GET https://supply.do//items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*&filter[ecommerce][_eq]=TestUser&filter[date][_gte]=1970-01-01T00:00:00.000Z&sort=-date&limit=1000&offset=0&meta=filter_count",
   "code": 200,
   "body": {
     "data": [
@@ -28,6 +28,10 @@
           }
         }
       }
-    ]
+    ],
+    "meta": {
+      "total_count": 0,
+      "filter_count": 0
+    }
   }
 }
