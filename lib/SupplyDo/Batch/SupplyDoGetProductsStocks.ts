@@ -4,7 +4,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import { IProduct } from '../Connector/SupplyDoUpsertProduct';
 
 export const NAME = 'supply-do-get-products-stocks';
-export const LAST_RUN_KEY = 'lastRunListProducts';
+export const LAST_RUN_KEY = 'lastRunListProductStocks';
 
 export default class SupplyDoGetProductsStocks extends ABatchNode {
 
@@ -15,15 +15,29 @@ export default class SupplyDoGetProductsStocks extends ABatchNode {
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
+        const limit = 1000;
+        const page = Number(dto.getBatchCursor('0'));
 
         const ecommerce = dto.getUser();
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[ecommerce][_eq]=${ecommerce}&filter[updated_at][_gte]=${lastRun}`,
+            'items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*'
+            + `&fields[]=product_batch.*&filter[ecommerce][_eq]=${ecommerce}&filter[updated_at][_gte]=${lastRun}`
+            + `&limit=${limit}&offset=${page * limit}&meta=filter_count`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
+        const { meta } = resp.getJsonBody();
+
+        if (meta.filter_count && meta.filter_count > limit * (page + 1)) {
+            dto.setBatchCursor(String(page + 1));
+        } else {
+            appInstall.addNonEncryptedSettings({
+                [LAST_RUN_KEY]: new Date().toISOString(),
+            });
+            await this.getDbClient().getApplicationRepository().update(appInstall);
+        }
 
         return dto.setItemList(resp.getJsonBody().data);
     }
@@ -63,7 +77,6 @@ export interface IOutput {
 export interface IResponse {
     data: IOutput[];
     meta: {
-        total_count?: number;
         filter_count?: number;
     };
 }
