@@ -21,7 +21,7 @@ export default class SupplyDoGetProductsStocks extends ABatchNode {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[eccommerce][_eq]=${ecommerce}&filter[updated_at][_gte]=${lastRun}`,
+            `items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[ecommerce][_eq]=${ecommerce}&filter[updated_at][_gte]=${lastRun}`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
