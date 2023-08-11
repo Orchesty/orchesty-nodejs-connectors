@@ -1,0 +1,45 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": [
+            {
+                "customer": {
+                    "address": 0,
+                    "ecommerce": 0,
+                    "email": "string",
+                    "id": 0,
+                    "name": "string",
+                    "phone": "string"
+                },
+                "ecommerce": 0,
+                "external_id": "string",
+                "history": [
+                    {
+                        "date": "2023-08-11T05:57:45.292Z",
+                        "type": "accepted"
+                    }
+                ],
+                "payment_type": "cash_on_delivery",
+                "products": [
+                    {
+                        "price": {
+                            "amount": 0,
+                            "currency": "string"
+                        },
+                        "product": 0,
+                        "product_batch": 0,
+                        "quantity": 0
+                    }
+                ],
+                "transport": {
+                    "carrier": 0,
+                    "ecommerce": 0,
+                    "id": 0,
+                    "tracking_number": "string"
+                }
+            }
+        ]
+    }
+}
