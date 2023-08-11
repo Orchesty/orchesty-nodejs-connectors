@@ -1,0 +1,62 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": [
+            {
+                "ecommerce": 0,
+                "id": 0,
+                "product_batch": {
+                    "expiresAt": "string",
+                    "external_id": "string",
+                    "id": 0,
+                    "name": "string",
+                    "product": {
+                        "alt_ean": "string",
+                        "color": "string",
+                        "country_of_origin": "string",
+                        "ean": "string",
+                        "eta_days": 2,
+                        "external_id": "string",
+                        "height_cm": 12,
+                        "length_cm": 21,
+                        "name": "string",
+                        "purchase_price": {
+                            "amount": 1,
+                            "currency": "string"
+                        },
+                        "sd": false,
+                        "selling_price": {
+                            "amount": 12,
+                            "currency": "string"
+                        },
+                        "tags": "string",
+                        "weight_grams": 21,
+                        "width_cm": 12
+                    }
+                },
+                "purchase_order_status": "draft",
+                "quantity": 0,
+                "updated_at": "string",
+                "warehouse": {
+                    "address": {
+                        "city": "string",
+                        "country": "string",
+                        "name": "string",
+                        "street": "string",
+                        "street_number": "string"
+                    },
+                    "country": "string",
+                    "ecommerce": 0,
+                    "id": 1,
+                    "name": "string"
+                }
+            }
+        ],
+        "meta": {
+            "filter_count": 0,
+            "total_count": 0
+        }
+    }
+}
