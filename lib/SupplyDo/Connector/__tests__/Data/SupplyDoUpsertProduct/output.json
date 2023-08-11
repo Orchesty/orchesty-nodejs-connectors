@@ -1,4 +1,65 @@
 {
-    "headers": {},
-    "data": {}
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": [
+            {
+                "brand": {
+                    "image": "string",
+                    "name": "string"
+                },
+                "ecommerce": 0,
+                "product": {
+                    "alt_ean": "string",
+                    "color": "string",
+                    "country_of_origin": "string",
+                    "ean": "string",
+                    "eta_days": 0,
+                    "external_id": "string",
+                    "height_cm": 0,
+                    "length_cm": 0,
+                    "name": "string",
+                    "purchase_price": {
+                        "amount": 0,
+                        "currency": "string"
+                    },
+                    "sd": true,
+                    "selling_price": {
+                        "amount": 0,
+                        "currency": "string"
+                    },
+                    "tags": "string",
+                    "weight_grams": 0,
+                    "width_cm": 0
+                },
+                "product_batch": {
+                    "expiresAt": "2023-08-11T05:25:15.331Z",
+                    "external_id": "string",
+                    "name": "string"
+                },
+                "supplier": {
+                    "address": {
+                        "city": "string",
+                        "country": "string",
+                        "name": "string",
+                        "street": "string",
+                        "street_number": "string"
+                    },
+                    "currency": "string",
+                    "discount": 0,
+                    "email": "string",
+                    "eta_days": "string",
+                    "ico": "string",
+                    "main_assortment": "string",
+                    "moq": "string",
+                    "name": "string",
+                    "payment_type": "cash_on_delivery",
+                    "phone": "string",
+                    "purchase_style": "string",
+                    "tags": "string"
+                }
+            }
+        ]
+    }
 }
