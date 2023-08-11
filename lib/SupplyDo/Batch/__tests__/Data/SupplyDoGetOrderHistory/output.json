@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"date\":\"2023-08-10T12:00:00\",\"id\":7,\"type\":\"accepted\",\"selling_order\":{\"customer\":4,\"id\":\"7754a1f1-91fe-4c7c-a568-8f7ff84b8c25\",\"payment_type\":\"cash_on_delivery\",\"external_id\":\"order3\",\"ecommerce\":1,\"history\":[7],\"products\":[4,5],\"transport\":{\"carrier\":4,\"id\":6,\"tracking_number\":\"ZZZZZ123\",\"ecommerce\":1}}}",
+            "headers": {}
+        }
+    ]
+}
