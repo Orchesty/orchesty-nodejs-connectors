@@ -4,7 +4,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import { IProduct } from '../Connector/SupplyDoUpsertProduct';
 
 export const NAME = 'supply-do-get-products-stocks';
-export const LAST_RUN_KEY = 'lastRunListOrderChanges';
+export const LAST_RUN_KEY = 'lastRunListProducts';
 
 export default class SupplyDoGetProductsStocks extends ABatchNode {
 
