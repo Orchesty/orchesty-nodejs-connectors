@@ -1,4 +1,5 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';
 import SupplyDoUpsertProduct from '../../lib/SupplyDo/Connector/SupplyDoUpsertProduct';
 import SupplyDoApplication, {
     BASE_URL,
@@ -24,4 +25,5 @@ export function init(): void {
     const supplyDoApplication = new SupplyDoApplication();
 
     container.setNode(new SupplyDoUpsertProduct(), supplyDoApplication);
+    container.setNode(new SupplyDoUpsertOrders(), supplyDoApplication);
 }
