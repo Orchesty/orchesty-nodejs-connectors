@@ -13,6 +13,6 @@ describe('Tests for SupplyDoGetProductsStocks', () => {
     it('process - ok', async () => {
         init();
         mock();
-        await tester.testConnector(SUPPLY_DO_GET_PRODUCTS_STOCKS);
+        await tester.testBatch(SUPPLY_DO_GET_PRODUCTS_STOCKS);
     });
 });
