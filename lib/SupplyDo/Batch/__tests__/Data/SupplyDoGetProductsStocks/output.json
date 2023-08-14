@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":0,\"product_batch\":{\"id\":0,\"name\":\"string\",\"product\":{\"external_id\":\"string\",\"ean\":\"string\",\"name\":\"string\",\"purchase_price\":{\"amount\":1,\"currency\":\"string\"},\"alt_ean\":\"string\",\"color\":\"string\",\"eta_days\":2,\"height_cm\":12,\"length_cm\":21,\"country_of_origin\":\"string\",\"sd\":false,\"selling_price\":{\"amount\":12,\"currency\":\"string\"},\"tags\":\"string\",\"weight_grams\":21,\"width_cm\":12},\"expiresAt\":\"string\",\"external_id\":\"string\"},\"purchase_order_status\":\"draft\",\"quantity\":0,\"updated_at\":\"string\",\"ecommerce\":0,\"warehouse\":{\"address\":{\"city\":\"string\",\"country\":\"string\",\"street\":\"string\",\"street_number\":\"string\",\"name\":\"string\"},\"country\":\"string\",\"id\":1,\"name\":\"string\",\"ecommerce\":0}}",
+            "headers": {}
+        }
+    ]
+}
