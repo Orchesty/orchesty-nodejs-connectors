@@ -1,0 +1,14 @@
+{
+  "http": "GET https://supply.do//items/carrier?filter[ecommerce][_eq]=TestUser",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": 4,
+        "image": "ceeb6b0f-a760-4863-9caa-1e0802ea4320",
+        "name": "GLS",
+        "ecommerce": 1
+      }
+    ]
+  }
+}
