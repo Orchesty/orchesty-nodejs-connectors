@@ -1,0 +1,37 @@
+{
+  "http": "GET https://supply.do//items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*&filter[ecommerce][_eq]=TestUser&filter[date][_gte]=1970-01-01T00:00:00.000Z&sort=-date&limit=1000&offset=0&meta=filter_count",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "date": "2023-08-10T12:00:00",
+        "id": 7,
+        "type": "accepted",
+        "selling_order": {
+          "customer": 4,
+          "id": "7754a1f1-91fe-4c7c-a568-8f7ff84b8c25",
+          "payment_type": "cash_on_delivery",
+          "external_id": "order3",
+          "ecommerce": 1,
+          "history": [
+            7
+          ],
+          "products": [
+            4,
+            5
+          ],
+          "transport": {
+            "carrier": 4,
+            "id": 6,
+            "tracking_number": "ZZZZZ123",
+            "ecommerce": 1
+          }
+        }
+      }
+    ],
+    "meta": {
+      "total_count": 0,
+      "filter_count": 0
+    }
+  }
+}
