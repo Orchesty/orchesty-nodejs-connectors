@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": [
+            {
+                "ecommerce": 1,
+                "id": 4,
+                "image": "ceeb6b0f-a760-4863-9caa-1e0802ea4320",
+                "name": "GLS"
+            }
+        ]
+    }
+}
