@@ -1,0 +1,61 @@
+{
+  "http": "GET https://supply.do//items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[ecommerce][_eq]=TestUser&filter[updated_at][_gte]=1970-01-01T00:00:00.000Z&limit=1000&offset=0&meta=filter_count",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": 0,
+        "product_batch": {
+          "id": 0,
+          "name": "string",
+          "product": {
+            "external_id": "string",
+            "ean": "string",
+            "name": "string",
+            "purchase_price": {
+              "amount": 1,
+              "currency": "string"
+            },
+            "alt_ean": "string",
+            "color": "string",
+            "eta_days": 2,
+            "height_cm": 12,
+            "length_cm": 21,
+            "country_of_origin": "string",
+            "sd": false,
+            "selling_price": {
+              "amount": 12,
+              "currency": "string"
+            },
+            "tags": "string",
+            "weight_grams": 21,
+            "width_cm": 12
+          },
+          "expiresAt": "string",
+          "external_id": "string"
+        },
+        "purchase_order_status": "draft",
+        "quantity": 0,
+        "updated_at": "string",
+        "ecommerce": 0,
+        "warehouse": {
+          "address": {
+            "city": "string",
+            "country": "string",
+            "street": "string",
+            "street_number": "string",
+            "name": "string"
+          },
+          "country": "string",
+          "id": 1,
+          "name": "string",
+          "ecommerce": 0
+        }
+      }
+    ],
+    "meta": {
+      "total_count": 0,
+      "filter_count": 0
+    }
+  }
+}
