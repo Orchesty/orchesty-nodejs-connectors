@@ -66,3 +66,90 @@ interface IResponseJson {
         id: string;
     }[];
 }
+
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IOutput {
+    id: number;
+    title: string;
+    body_html: string;
+    vendor: string;
+    product_type: string;
+    created_at: string;
+    handle: string;
+    updated_at: string;
+    published_at: string;
+    published_scope: string;
+    tags: string;
+    admin_graphql_api_id: string;
+    variants: {
+        id: number;
+        product_id: number;
+        title: string;
+        price: string;
+        sku: string;
+        position: number;
+        inventory_policy: string;
+        compare_at_price?: unknown;
+        fulfillment_service: string;
+        inventory_management: string;
+        option1: string;
+        option2?: unknown;
+        option3?: unknown;
+        created_at: string;
+        updated_at: string;
+        taxable: boolean;
+        barcode: string;
+        grams: number;
+        image_id: number;
+        weight: number;
+        weight_unit: string;
+        inventory_item_id: number;
+        inventory_quantity: number;
+        old_inventory_quantity: number;
+        presentment_prices: {
+            price: {
+                amount: string;
+                currency_code: string;
+            };
+            compare_at_price?: unknown;
+        }[];
+        requires_shipping: boolean;
+        admin_graphql_api_id: string;
+    }[];
+    options: {
+        id: number;
+        product_id: number;
+        name: string;
+        position: number;
+        values: string[];
+    }[];
+    images: {
+        id: number;
+        product_id: number;
+        position: number;
+        created_at: string;
+        updated_at: string;
+        alt?: unknown;
+        width: number;
+        height: number;
+        src: string;
+        variant_ids: unknown[];
+        admin_graphql_api_id: string;
+    }[];
+    image: {
+        id: number;
+        product_id: number;
+        position: number;
+        created_at: string;
+        updated_at: string;
+        alt?: unknown;
+        width: number;
+        height: number;
+        src: string;
+        variant_ids: unknown[];
+        admin_graphql_api_id: string;
+    };
+    template_suffix?: unknown;
+}
+
+/* eslint-enable @typescript-eslint/naming-convention */
