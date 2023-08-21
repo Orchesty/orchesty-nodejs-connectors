@@ -69,6 +69,7 @@ export interface IOrder {
         message: string;
         packagingInstructionType: string;
     }[];
+    application: string;
 }
 
 interface IResponse {
