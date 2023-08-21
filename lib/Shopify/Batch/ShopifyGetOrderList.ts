@@ -393,6 +393,16 @@ export interface IOrder {
     }[];
     shipping_address: IShippingAddress;
     shipping_lines: IShippingLine[];
+    current_total_price_set: {
+        shop_money: {
+            currency_code: string;
+            amount: string;
+        };
+        presentment_money: {
+            currency_code: string;
+            amount: string;
+        };
+    };
     app_id?: unknown;
     cancel_reason?: unknown;
     cancelled_at?: unknown;

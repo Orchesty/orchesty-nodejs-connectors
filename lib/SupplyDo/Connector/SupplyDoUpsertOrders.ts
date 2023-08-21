@@ -33,19 +33,23 @@ export interface IInput {
     ecommerce: number;
     external_id: string;
     customer: {
-        address: number;
-        id: number;
         name: string;
-        ecommerce: number;
-        email?: string;
-        phone?: string;
+        email: string;
+        phone: string;
+        address: {
+            city: string;
+            country: string;
+            name: string;
+            street: string;
+            street_number: string;
+        };
     };
     payment_type: string;
-    transport?: {
-        id: number;
+    transport: {
         tracking_number: string;
-        ecommerce: number;
-        carrier?: number;
+        carrier: number;
+        ecommerce?: number;
+        id?: number;
     };
     history?: {
         date: string;
@@ -57,7 +61,7 @@ export interface IInput {
             currency: string;
         };
         quantity: number;
-        product: number;
+        product: string;
         product_batch?: number;
     }[];
 }
