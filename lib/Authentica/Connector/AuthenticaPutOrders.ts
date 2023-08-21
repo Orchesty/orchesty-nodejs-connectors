@@ -64,12 +64,12 @@ export interface IOrder {
         unitPrice: number | null;
     }[];
     variableSymbol: string | null;
+    application: string;
     packagingType?: string;
     packagingInstructions?: {
         message: string;
         packagingInstructionType: string;
     }[];
-    application: string;
 }
 
 interface IResponse {
