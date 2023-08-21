@@ -63,7 +63,7 @@ export interface IOutput {
             street: string;
             street_number: string;
             name?: string;
-        }w
+        };
         country: string;
         id: number;
         name: string;
