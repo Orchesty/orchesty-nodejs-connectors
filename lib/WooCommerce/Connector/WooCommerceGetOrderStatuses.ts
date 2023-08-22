@@ -24,7 +24,7 @@ export default class WooCommerceGetOrderStatuses extends AConnector {
 
 }
 
-interface IResponse {
+export interface IResponse {
     slug: string;
     name: string;
 }
