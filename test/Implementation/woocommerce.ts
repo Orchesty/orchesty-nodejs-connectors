@@ -12,6 +12,7 @@ import WooCommerceCreateProduct from '../../lib/WooCommerce/Connector/WooCommerc
 import WooCommerceCreateProductCategory from '../../lib/WooCommerce/Connector/WooCommerceCreateProductCategory';
 import WooCommerceGetOrderNotes from '../../lib/WooCommerce/Connector/WooCommerceGetOrderNotes';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
+import WooCommerceGetPaymentGateways from '../../lib/WooCommerce/Connector/WooCommerceGetPaymentGateways';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
@@ -101,4 +102,5 @@ export function init(): void {
     container.setNode(new WooCommerceUpdateProduct(), app);
     container.setNode(new WooCommerceCreateProductCategory(), app);
     container.setNode(new WooCommerceUpdateProductQuantity(), app);
+    container.setNode(new WooCommerceGetPaymentGateways(), app);
 }
