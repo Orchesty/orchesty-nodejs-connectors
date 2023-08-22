@@ -12,9 +12,7 @@ import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import { Mixin } from 'ts-mixer';
-import ABaseShopify, { SHOPIFY_URL } from './ABaseShopify';
-
-const PREMIUM_PLAN = 'premium';
+import ABaseShopify, { PREMIUM_PLAN, SHOPIFY_URL } from './ABaseShopify';
 
 export default class ShopifyApplication extends Mixin(AOAuth2Application, ABaseShopify) {
 

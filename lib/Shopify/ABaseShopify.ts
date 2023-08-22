@@ -14,11 +14,11 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'shopify';
 export const API_VERSION = '2023-01';
+export const SHOPIFY_URL = 'shopifyUrl';
+export const PREMIUM_PLAN = 'premium';
 
 const API_KEY_HEADER = 'X-Shopify-Access-Token';
-const PREMIUM_PLAN = 'premium';
 const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
-export const SHOPIFY_URL = 'shopifyUrl';
 
 export default abstract class ABaseShopify extends ABasicApplication {
 
