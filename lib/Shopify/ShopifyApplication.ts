@@ -5,7 +5,9 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
+import AuthorizationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/AuthorizationTypeEnum';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
@@ -18,6 +20,10 @@ export default class ShopifyApplication extends Mixin(AOAuth2Application, ABaseS
 
     public constructor(protected readonly curlSender: CurlSender, provider: OAuth2Provider) {
         super(provider);
+    }
+
+    public getAuthorizationType(): AuthorizationTypeEnum {
+        return AuthorizationTypeEnum.OAUTH2;
     }
 
     public getWebhookSubscriptions(): WebhookSubscription[] {
@@ -82,6 +88,10 @@ export default class ShopifyApplication extends Mixin(AOAuth2Application, ABaseS
     ): Promise<void> {
         await super.setAuthorizationToken(applicationInstall, token);
         await this.checkShopPlan(applicationInstall);
+    }
+
+    protected getTokenForRequest(appInstall: ApplicationInstall): string {
+        return appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN].accessToken;
     }
 
     protected getProviderCustomOptions(applicationInstall: ApplicationInstall): Record<string, unknown> {

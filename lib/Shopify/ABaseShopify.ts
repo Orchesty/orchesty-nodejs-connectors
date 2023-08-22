@@ -49,9 +49,8 @@ export default abstract class ABaseShopify extends ABasicApplication {
         url?: string,
         data?: string,
     ): RequestDto {
-        const settings = applicationInstall.getSettings();
         const headers = {
-            [API_KEY_HEADER]: settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN],
+            [API_KEY_HEADER]: this.getTokenForRequest(applicationInstall),
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
         };
@@ -102,6 +101,10 @@ export default abstract class ABaseShopify extends ABasicApplication {
             return undefined;
         }
         return undefined;
+    }
+
+    protected getTokenForRequest(appInstall: ApplicationInstall): string {
+        return appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
     }
 
     protected async checkShopPlan(applicationInstall: ApplicationInstall): Promise<void> {
