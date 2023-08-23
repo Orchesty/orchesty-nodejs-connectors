@@ -1,0 +1,30 @@
+{
+  "http": "GET http://woocomerce.com/wp-json/wc/v3/settings/general/woocommerce_allowed_countries",
+  "code": 200,
+  "body": {
+    "id": "woocommerce_allowed_countries",
+    "label": "Oblast(i) prodeje",
+    "description": "Tato volba umožňuje omezit země, ve kterých jste ochotni prodávat.",
+    "type": "select",
+    "default": "all",
+    "options": {
+      "all": "Prodávat do všech zemí",
+      "all_except": "Prodávat do všech zemí kromě&hellip;",
+      "specific": "Prodávat do vybraných zemí"
+    },
+    "tip": "Tato volba umožňuje omezit země, ve kterých jste ochotni prodávat.",
+    "value": "all",
+    "_links": {
+      "self": [
+        {
+          "href": "http://127.0.0.10/wp-json/wc/v3/settings/general/woocommerce_allowed_countries"
+        }
+      ],
+      "collection": [
+        {
+          "href": "http://127.0.0.10/wp-json/wc/v3/settings/general"
+        }
+      ]
+    }
+  }
+}
