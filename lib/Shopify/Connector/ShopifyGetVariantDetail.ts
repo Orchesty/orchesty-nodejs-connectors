@@ -35,7 +35,7 @@ export default class ShopifyGetVariantDetail extends AConnector {
             HttpMethods.GET,
             DETAIL_ORDER_ENDPOINT.replace('{id}', id.toString()),
         );
-        const res = await this.getSender().send<IResponseJson>(requestDto, [200, 404]);
+        const res = await this.getSender().send<IResponseJson>(requestDto, [200]);
 
         return res.getJsonBody();
     }
