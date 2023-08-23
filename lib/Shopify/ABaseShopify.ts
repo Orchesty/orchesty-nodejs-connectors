@@ -16,6 +16,7 @@ export const NAME = 'shopify';
 export const API_VERSION = '2023-01';
 export const SHOPIFY_URL = 'shopifyUrl';
 export const PREMIUM_PLAN = 'premium';
+export const CURRENCY = 'currency';
 
 const API_KEY_HEADER = 'X-Shopify-Access-Token';
 const SHOP_INFO_URL = `admin/api/${API_VERSION}/shop.json`;
@@ -115,16 +116,23 @@ export default abstract class ABaseShopify extends ABasicApplication {
             SHOP_INFO_URL,
         );
 
+        const res = await this.curlSender
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        const res = await this.curlSender.send<{ shop: { plan_name: string } }>(requestDto, [200, 404]);
+            .send<{ shop: { plan_name: string; currency: string } }>(requestDto, [200, 404]);
 
         const { shop } = res.getJsonBody();
         let premium = false;
-        if (shop.plan_name !== 'basic') {
+        if (shop.plan_name !== 'plus') {
             premium = true;
         }
 
-        applicationInstall.addSettings({ [CoreFormsEnum.AUTHORIZATION_FORM]: { [PREMIUM_PLAN]: premium } });
+        applicationInstall.addSettings(
+            { [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                [PREMIUM_PLAN]: premium,
+                [CURRENCY]: shop.currency,
+            },
+            },
+        );
     }
 
 }
