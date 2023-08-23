@@ -68,16 +68,6 @@ export interface IProduct {
     external_id: string;
     ean: string;
     name: string;
-    purchase_price: {
-        amount: number;
-        currency: string;
-    };
-    alt_ean: string;
-    color: string;
-    eta_days: number;
-    height_cm: number;
-    length_cm: number;
-    country_of_origin: string;
     sd: boolean;
     selling_price: {
         amount: number;
@@ -85,6 +75,16 @@ export interface IProduct {
     };
     tags: string[];
     weight_grams: number;
-    width_cm: number;
+    purchase_price?: {
+        amount: number;
+        currency: string;
+    };
+    alt_ean?: string;
+    color?: string;
+    eta_days?: number;
+    height_cm?: number;
+    length_cm?: number;
+    country_of_origin?: string;
+    width_cm?: number;
 }
 /* eslint-enable @typescript-eslint/naming-convention */
