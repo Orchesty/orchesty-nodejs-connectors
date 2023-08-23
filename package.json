@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.46",
+    "version": "3.0.47",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -39,7 +39,7 @@
         "@azure/arm-powerbiembedded": "^2.0.2",
         "@azure/core-rest-pipeline": "^1.12.0",
         "@azure/identity": "^3.3.0",
-        "@cloudamqp/amqp-client": "^3.0.0",
+        "@cloudamqp/amqp-client": "^3.1.0",
         "fast-xml-parser": "^4.2.7",
         "mariadb": "^3.2.0",
         "mysql2": "^3.6.0",

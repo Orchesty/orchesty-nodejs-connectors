@@ -72,6 +72,7 @@ export default class ShopifyApplication extends Mixin(AOAuth2Application, ABaseS
             'write_assigned_fulfillment_orders',
             'write_assigned_fulfillment_orders',
             'write_fulfillments',
+            'write_inventory',
             'write_merchant_managed_fulfillment_orders',
             'write_orders',
             'write_products',
