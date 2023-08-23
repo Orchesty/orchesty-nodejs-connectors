@@ -18,13 +18,12 @@ export default class ShopifyGetVariantDetail extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const app = this.getApplication<ShopifyApplication>();
         const { id } = dto.getJsonData();
+        const { variant } = await this.doRequest(app, id, dto);
 
-        return this.setDtoData(dto, await this.doRequest(app, id, dto));
+        return this.setDtoData(dto, variant);
     }
 
-    protected setDtoData(dto: ProcessDto, response: IResponseJson): ProcessDto {
-        const { variant } = response;
-
+    protected setDtoData(dto: ProcessDto, variant: IVariantJson): ProcessDto {
         return dto.setNewJsonData({ ...variant });
     }
 
