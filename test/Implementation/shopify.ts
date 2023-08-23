@@ -15,6 +15,7 @@ import ShopifyCreateFulfillmentEvent from '../../lib/Shopify/Connector/ShopifyCr
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
 import ShopifyGetInventoryLocation from '../../lib/Shopify/Connector/ShopifyGetInventoryLocation';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
+import ShopifyGetVariantDetail from '../../lib/Shopify/Connector/ShopifyGetVariantDetail';
 import ShopifyUpdateOrder from '../../lib/Shopify/Connector/ShopifyUpdateOrder';
 import ShopifyApplication from '../../lib/Shopify/ShopifyApplication';
 import {
@@ -117,4 +118,5 @@ export default function init(): void {
     container.setConnector(shopifyCreateFulfillmentEvent);
 
     container.setNode(new ShopifyGetInventoryLocation(), shopifyApplication);
+    container.setNode(new ShopifyGetVariantDetail(), shopifyApplication);
 }
