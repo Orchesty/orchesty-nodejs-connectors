@@ -14,6 +14,7 @@ import WooCommerceGetOrderNotes from '../../lib/WooCommerce/Connector/WooCommerc
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
 import WooCommerceGetPaymentGateways from '../../lib/WooCommerce/Connector/WooCommerceGetPaymentGateways';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
+import WooCommerceGetSettingsGeneral from '../../lib/WooCommerce/Connector/WooCommerceGetSettingsGeneral';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
 import WooCommerceUpdateProduct from '../../lib/WooCommerce/Connector/WooCommerceUpdateProduct';
@@ -103,4 +104,5 @@ export function init(): void {
     container.setNode(new WooCommerceCreateProductCategory(), app);
     container.setNode(new WooCommerceUpdateProductQuantity(), app);
     container.setNode(new WooCommerceGetPaymentGateways(), app);
+    container.setNode(new WooCommerceGetSettingsGeneral(), app);
 }
