@@ -47,4 +47,5 @@ export interface ISetting {
             href: string;
         }[];
     };
+    options?: Record<string, string>;
 }
