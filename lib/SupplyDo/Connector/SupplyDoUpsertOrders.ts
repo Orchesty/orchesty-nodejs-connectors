@@ -46,8 +46,8 @@ export interface IInput {
     };
     payment_type: string;
     transport: {
-        tracking_number: string;
         carrier: number;
+        tracking_number?: string;
         ecommerce?: number;
         id?: number;
     };
