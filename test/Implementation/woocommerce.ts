@@ -13,12 +13,14 @@ import WooCommerceCreateProductCategory from '../../lib/WooCommerce/Connector/Wo
 import WooCommerceGetOrderNotes from '../../lib/WooCommerce/Connector/WooCommerceGetOrderNotes';
 import WooCommerceGetOrderStatuses from '../../lib/WooCommerce/Connector/WooCommerceGetOrderStatuses';
 import WooCommerceGetPaymentGateways from '../../lib/WooCommerce/Connector/WooCommerceGetPaymentGateways';
+import WooCommerceGetProductsBySku from '../../lib/WooCommerce/Connector/WooCommerceGetProductsBySku';
 import WooCommerceGetProductVariant from '../../lib/WooCommerce/Connector/WooCommerceGetProductVariant';
 import WooCommerceGetSettingsGeneral from '../../lib/WooCommerce/Connector/WooCommerceGetSettingsGeneral';
 import WooCommerceGetShippingMethods from '../../lib/WooCommerce/Connector/WooCommerceGetShippingMethods';
 import WooCommerceUpdateOrder from '../../lib/WooCommerce/Connector/WooCommerceUpdateOrder';
 import WooCommerceUpdateProduct from '../../lib/WooCommerce/Connector/WooCommerceUpdateProduct';
 import WooCommerceUpdateProductQuantity from '../../lib/WooCommerce/Connector/WooCommerceUpdateProductQuantity';
+import WooCommerceUpdateProductVariant from '../../lib/WooCommerce/Connector/WooCommerceUpdateProductVariant';
 import WooCommerceApplication, { NAME, WOOCOMMERCE_URL } from '../../lib/WooCommerce/WooCommerceApplication';
 import {
     appInstall,
@@ -105,4 +107,6 @@ export function init(): void {
     container.setNode(new WooCommerceUpdateProductQuantity(), app);
     container.setNode(new WooCommerceGetPaymentGateways(), app);
     container.setNode(new WooCommerceGetSettingsGeneral(), app);
+    container.setNode(new WooCommerceUpdateProductVariant(), app);
+    container.setNode(new WooCommerceGetProductsBySku(), app);
 }
