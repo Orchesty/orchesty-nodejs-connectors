@@ -1,0 +1,126 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "_links": {
+            "collection": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/products"
+                }
+            ],
+            "self": [
+                {
+                    "href": "https://example.com/wp-json/wc/v3/products/794"
+                }
+            ]
+        },
+        "attributes": [],
+        "average_rating": "0.00",
+        "backordered": false,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "button_text": "",
+        "catalog_visibility": "visible",
+        "categories": [
+            {
+                "id": 9,
+                "name": "Clothing",
+                "slug": "clothing"
+            },
+            {
+                "id": 14,
+                "name": "T-shirts",
+                "slug": "t-shirts"
+            }
+        ],
+        "cross_sell_ids": [],
+        "date_created": "2017-03-23T17:01:14",
+        "date_created_gmt": "2017-03-23T20:01:14",
+        "date_modified": "2017-03-23T17:01:14",
+        "date_modified_gmt": "2017-03-23T20:01:14",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "default_attributes": [],
+        "description": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>\n",
+        "dimensions": {
+            "height": "",
+            "length": "",
+            "width": ""
+        },
+        "download_expiry": -1,
+        "download_limit": -1,
+        "downloadable": false,
+        "downloads": [],
+        "external_url": "",
+        "featured": false,
+        "grouped_products": [],
+        "id": 794,
+        "images": [
+            {
+                "alt": "",
+                "date_created": "2017-03-23T14:01:13",
+                "date_created_gmt": "2017-03-23T20:01:13",
+                "date_modified": "2017-03-23T14:01:13",
+                "date_modified_gmt": "2017-03-23T20:01:13",
+                "id": 792,
+                "name": "",
+                "src": "https://example.com/wp-content/uploads/2017/03/T_2_front-4.jpg"
+            },
+            {
+                "alt": "",
+                "date_created": "2017-03-23T14:01:14",
+                "date_created_gmt": "2017-03-23T20:01:14",
+                "date_modified": "2017-03-23T14:01:14",
+                "date_modified_gmt": "2017-03-23T20:01:14",
+                "id": 793,
+                "name": "",
+                "src": "https://example.com/wp-content/uploads/2017/03/T_2_back-2.jpg"
+            }
+        ],
+        "manage_stock": true,
+        "menu_order": 0,
+        "meta_data": [],
+        "name": "Premium Quality",
+        "on_sale": false,
+        "parent_id": 0,
+        "permalink": "https://example.com/product/premium-quality-19/",
+        "price": "21.99",
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>21.99</span>",
+        "purchasable": true,
+        "purchase_note": "",
+        "rating_count": 0,
+        "regular_price": "21.99",
+        "related_ids": [
+            53,
+            40,
+            56,
+            479,
+            99
+        ],
+        "reviews_allowed": true,
+        "sale_price": "",
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "short_description": "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>\n",
+        "sku": "",
+        "slug": "premium-quality-19",
+        "sold_individually": false,
+        "status": "publish",
+        "stock_quantity": 12,
+        "stock_status": "instock",
+        "tags": [],
+        "tax_class": "",
+        "tax_status": "taxable",
+        "total_sales": 0,
+        "type": "simple",
+        "upsell_ids": [],
+        "variations": [],
+        "virtual": false,
+        "weight": ""
+    }
+}
