@@ -33,7 +33,11 @@ export default class WooCommerceGetProductsBySku extends AConnector {
             return dto;
         }
 
-        return dto.setNewJsonData(responseData[0]);
+        return this.setNewJsonData(dto, responseData[0]);
+    }
+
+    protected setNewJsonData(dto: ProcessDto, resp: IOutput): ProcessDto<IOutput> {
+        return dto.setNewJsonData(resp);
     }
 
 }
