@@ -28,7 +28,7 @@ export default class WooCommerceUpdateProductVariant extends AConnector {
 
 }
 
-interface IInput extends Partial<IVariant> {
+export interface IInput extends Partial<IVariant> {
     id: number;
     productId: number;
 }
