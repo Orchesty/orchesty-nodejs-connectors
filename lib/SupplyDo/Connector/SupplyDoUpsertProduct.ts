@@ -16,6 +16,7 @@ export default class SupplyDoUpsertProduct extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'hanaboso/items/product',
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 

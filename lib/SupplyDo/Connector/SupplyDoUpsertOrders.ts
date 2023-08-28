@@ -16,6 +16,7 @@ export default class SupplyDoUpsertOrders extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'hanaboso/items/selling_order',
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
