@@ -23,9 +23,10 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
             'items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*'
-            + `&filter[ecommerce][_eq]=${ecommerce}&filter[date][_gte]=${lastRun}&sort=-date`
+            + `&filter[selling_order][ecommerce][_eq]=${ecommerce}&filter[date][_gte]=${lastRun}&sort=-date`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
         );
+
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { meta } = resp.getJsonBody();
 
