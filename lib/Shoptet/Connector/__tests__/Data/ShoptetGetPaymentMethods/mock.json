@@ -1,0 +1,36 @@
+{
+  "http": "GET https://api.myshoptet.com/api/payment-methods",
+  "code": 200,
+  "body": {
+    "data": {
+      "paymentMethods": [
+        {
+          "guid": "d538520e-e920-11e0-baa3-7dc668b75ca8",
+          "name": "Cash on delivery",
+          "description": "This is the test description",
+          "submethod": "apple-pay",
+          "paymentType": {
+            "id": 2,
+            "code": "paysec",
+            "name": "PaySec"
+          },
+          "visible": true,
+          "priority": 1,
+          "wholesale": true,
+          "logoUrl": "https://www.folly.cz/user/system/cms/img/twistoTextLogo.png",
+          "eetEligible": true
+        }
+      ],
+      "wholesaleActive": true,
+      "defaultRetailMethod": "6df78fa2-05b0-11e9-925b-0800273dc42e",
+      "defaultWholesaleMethod": "b57f91bb-e920-11e0-baa3-7dc668b75ca8"
+    },
+    "errors": [
+      {
+        "errorCode": "",
+        "message": "",
+        "instance": ""
+      }
+    ]
+  }
+}

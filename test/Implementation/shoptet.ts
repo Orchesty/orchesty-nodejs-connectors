@@ -16,19 +16,28 @@ import ShoptetGetAllOrders from '../../lib/Shoptet/Connector/ShoptetGetAllOrders
 import ShoptetGetAllProducts from '../../lib/Shoptet/Connector/ShoptetGetAllProducts';
 import ShoptetGetEshopInfo from '../../lib/Shoptet/Connector/ShoptetGetEshopInfo';
 import ShoptetGetListOfStocks from '../../lib/Shoptet/Connector/ShoptetGetListOfStocks';
+import ShoptetGetPaymentMethods from '../../lib/Shoptet/Connector/ShoptetGetPaymentMethods';
 import ShoptetGetProductDetail from '../../lib/Shoptet/Connector/ShoptetGetProductDetail';
 import ShoptetGetShippingMethods from '../../lib/Shoptet/Connector/ShoptetGetShippingMethods';
 import ShoptetJobFinishedWebhook from '../../lib/Shoptet/Connector/ShoptetJobFinishedWebhook';
 import ShoptetUpdateStockMovements from '../../lib/Shoptet/Connector/ShoptetUpdateStockMovements';
 import APluginShoptetApplication from '../../lib/Shoptet/PluginShoptetApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
-import { cacheService, container, db, sender } from '../TestAbstract';
+import { cacheService, container, db, oauth2Provider, sender, topologyRunner } from '../TestAbstract';
 
 const NAME = 'shoptet';
 
 class ImplPluginShoptetApplication extends APluginShoptetApplication {
 
     protected shoptetHost = 'www.test.cz';
+
+    protected defaultAppName = 'Default app';
+
+    protected shoptetClientId = 'clientId';
+
+    protected shoptetClientSecret = 'clientSecret';
+
+    protected shoptetOAuth2RedirectUrl = 'redirectUrl';
 
     public getName(): string {
         return NAME;
@@ -65,7 +74,13 @@ export function mock(callCount = 1, extraNonEncryptedSettings?: IApplicationSett
 }
 
 export async function init(): Promise<void> {
-    const implPluginShoptetApplication = new ImplPluginShoptetApplication(cacheService);
+    const implPluginShoptetApplication = new ImplPluginShoptetApplication(
+        db,
+        cacheService,
+        sender,
+        oauth2Provider,
+        topologyRunner,
+    );
 
     const cacheKey = `${NAME}ApiKey_TestUser`;
 
@@ -147,4 +162,5 @@ export async function init(): Promise<void> {
     container.setConnector(shoptetUpdateStockMovements);
 
     container.setNode(new ShoptetProductDetailWithSet(dataStorageManager), implPluginShoptetApplication);
+    container.setNode(new ShoptetGetPaymentMethods(), implPluginShoptetApplication);
 }

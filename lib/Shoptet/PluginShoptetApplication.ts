@@ -1,24 +1,65 @@
+import {
+    GROUP_TIME,
+    GROUP_VALUE,
+    TIME,
+    USE_LIMIT,
+    VALUE,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Base/AApplication';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
+import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
+import OAuth2Dto from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/Dto/OAuth2Dto';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import CacheService, { ICacheCallback } from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
+import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Client';
+import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunner';
+import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { defaultRanges } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
 import { HttpMethods, parseHttpMethod } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import { ACCESS_TOKEN } from '../Workable/WorkableApplication';
 import ABaseShoptet, { BASE_URL } from './ABaseShoptet';
+
+export const NAME = 'shoptet';
+export const ESHOP_ID = 'eshopId';
+export const PIN = 'pin';
+export const APPLINTH_EVENT_INSTALL = 'applinth_enduser_app_install';
+export const APPLINTH_EVENT_UNINSTALL = 'applinth_enduser_app_uninstall';
 
 export default abstract class PluginShoptetApplication extends ABaseShoptet {
 
     protected abstract shoptetHost: string;
 
+    protected abstract shoptetClientId: string;
+
+    protected abstract shoptetClientSecret: string;
+
+    protected abstract shoptetOAuth2RedirectUrl: string;
+
+    protected abstract defaultAppName: string;
+
     protected authorizationHeader = 'Shoptet-Access-Token';
 
     protected shoptetLocker = 'locker_shoptet';
 
-    public constructor(private readonly cache: CacheService) {
+    protected isInstallable = false;
+
+    public constructor(
+        private readonly db: DatabaseClient,
+        private readonly cache: CacheService,
+        private readonly sender: CurlSender,
+        private readonly oauth2Provider: OAuth2Provider,
+        private readonly topologyRunner: TopologyRunner,
+    ) {
         super();
     }
 
@@ -110,4 +151,175 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         }
     }
 
+    public async syncInstall(request: Request): Promise<unknown> {
+        const { code } = JSON.parse(String(request.body));
+        const newAppInstall = new ApplicationInstall().setName(this.getName()).setSettings({
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                [CLIENT_ID]: this.shoptetClientId,
+                [CLIENT_SECRET]: this.shoptetClientSecret,
+            },
+        });
+
+        const token = await this.getAccessToken(newAppInstall, code);
+        const { eshopId } = token.others;
+
+        const appInstallRepo = this.db.getApplicationRepository();
+        let appInstall;
+        try {
+            appInstall = await this.getApplicationInstall(eshopId);
+        } catch (e) {
+            // Ignore not installed applications
+        }
+        const settings = {
+            [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                [TOKEN]: token[ACCESS_TOKEN],
+            },
+            [CoreFormsEnum.LIMITER_FORM]: {
+                [USE_LIMIT]: true,
+                [VALUE]: '3',
+                [TIME]: '1',
+                [GROUP_VALUE]: '50',
+                [GROUP_TIME]: '1',
+            },
+        };
+
+        if (appInstall) {
+            appInstall.addSettings(settings);
+            await appInstallRepo.update(appInstall);
+        } else {
+            newAppInstall
+                .addSettings(settings)
+                .addNonEncryptedSettings({ [ESHOP_ID]: eshopId.toString() });
+            await appInstallRepo.insert(newAppInstall);
+        }
+
+        return { [ESHOP_ID]: eshopId };
+    }
+
+    public async syncWebhook(request: Request): Promise<unknown> {
+        const { event, eshopId } = JSON.parse(String(request.body));
+
+        const appInstall = await this.getApplicationInstall(eshopId);
+        const user = appInstall.getUser();
+        const appInstallRepo = this.db.getApplicationRepository();
+        const whRepo = this.db.getRepository(Webhook) as WebhookRepository;
+        switch (event) {
+            case 'addon:uninstall':
+                await this.sendInstallUninstallWebhook(APPLINTH_EVENT_UNINSTALL, user);
+                await whRepo.removeMany({ apps: [this.getName()], users: [user] });
+                await appInstallRepo.remove(appInstall);
+                break;
+            case 'addon:suspend':
+                appInstall.setEnabled(false);
+                await appInstallRepo.update(appInstall);
+                break;
+            case 'addon:approve':
+                appInstall.setEnabled(true);
+                await appInstallRepo.update(appInstall);
+                break;
+            default:
+                throw new Error(`This event[${event}] is not allowed`);
+        }
+
+        return {};
+    }
+
+    public async syncForm(request: Request): Promise<unknown> {
+        const { eshopId } = JSON.parse(String(request.body));
+
+        const appInstall = await this.getApplicationInstall(eshopId);
+
+        return { [PIN]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PIN] ?? '' };
+    }
+
+    public async syncSaveForm(request: Request): Promise<unknown> {
+        const { eshopId, pin } = JSON.parse(String(request.body));
+
+        const appInstallRepo = this.db.getApplicationRepository();
+        const defaultApp = await appInstallRepo.findOne(
+            { names: [this.defaultAppName], enabled: null, nonEncrypted: { [PIN]: pin } },
+        );
+
+        if (!defaultApp) {
+            throw new Error(`${this.defaultAppName} application with this pin has not been found.`);
+        }
+
+        const appInstall = await this.getApplicationInstall(eshopId);
+
+        if (appInstall.getUser() !== defaultApp.getUser()) {
+            await this.sendInstallUninstallWebhook(APPLINTH_EVENT_INSTALL, defaultApp.getUser());
+        }
+
+        appInstall.setUser(defaultApp.getUser());
+        await appInstallRepo.update(appInstall);
+        await this.saveApplicationForms(appInstall, { [CoreFormsEnum.AUTHORIZATION_FORM]: { [PIN]: pin } });
+        await appInstallRepo.update(appInstall);
+
+        return { [PIN]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PIN] ?? '' };
+    }
+
+    protected async sendInstallUninstallWebhook(event: string, user: string): Promise<unknown> {
+        if (!user) {
+            return Promise.resolve();
+        }
+
+        const requestDto = new RequestDto(
+            `${orchestyOptions.backend}/api/usage-stats/emit-event`,
+            HttpMethods.POST,
+            new ProcessDto(),
+            JSON.stringify({
+                event,
+                aid: this.getName(),
+                euid: user,
+            }),
+        );
+
+        return this.sender.send(requestDto);
+    }
+
+    protected async getApplicationInstall(eshopId: number): Promise<ApplicationInstall> {
+        const appInstallRepo = this.db.getApplicationRepository();
+
+        const appInstall = await appInstallRepo.findOne(
+            { names: [this.getName()], enabled: null, nonEncrypted: { [ESHOP_ID]: eshopId.toString() } },
+        );
+        if (appInstall) {
+            return appInstall;
+        }
+        throw new Error(`Application with this eshopId[eshopId=${eshopId}] does not exist`);
+    }
+
+    protected async getAccessToken(appInstall: ApplicationInstall, code: string): Promise<IAccessToken> {
+        const oauthUrl = `${this.shoptetHost}/action/ApiOAuthServer/token`;
+        const oAuth2Dto = new OAuth2Dto(appInstall, oauthUrl, oauthUrl);
+        oAuth2Dto.setRedirectUrl(this.shoptetOAuth2RedirectUrl);
+
+        return await this.oauth2Provider.getAccessToken(
+            oAuth2Dto,
+            code,
+            ['api'],
+            ScopeSeparatorEnum.COMMA,
+            {},
+        ) as IAccessToken;
+    }
+
+    protected async startTopology(
+        topology: string,
+        node: string,
+        user: string,
+        data?: Record<string, unknown>,
+    ): Promise<void> {
+        await this.topologyRunner.runByName(data ?? {}, topology, node, new ProcessDto(), user);
+    }
+
+}
+
+export interface IAccessToken {
+    [ACCESS_TOKEN]: string;
+    others: {
+        scope: string;
+        eshopId: number;
+        eshopUrl: string;
+        contactEmail: string;
+    };
 }
