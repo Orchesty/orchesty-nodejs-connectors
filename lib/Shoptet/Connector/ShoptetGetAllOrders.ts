@@ -17,7 +17,7 @@ export default class ShoptetGetAllOrders extends AShoptetConnector {
         let url = 'api/orders/snapshot?include=shippingDetails';
 
         const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
-            appInstall.getNonEncryptedSettings().lastRunAllOrders,
+            appInstall.getNonEncryptedSettings().lastRunListOrderChanges,
         );
 
         if (creationTimeFrom) {
@@ -25,6 +25,9 @@ export default class ShoptetGetAllOrders extends AShoptetConnector {
         }
 
         const response = await this.doRequest(url, dto) as IResponse;
+
+        appInstall.addNonEncryptedSettings({ lastRunListOrderChanges: new Date() });
+        await this.getDbClient().getApplicationRepository().update(appInstall);
 
         return dto.setNewJsonData(response.data);
     }
