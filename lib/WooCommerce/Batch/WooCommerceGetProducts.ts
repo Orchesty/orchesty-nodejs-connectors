@@ -63,7 +63,7 @@ export interface IAttribute {
 }
 
 export interface IOutput {
-    id?: number;
+    id: number;
     name?: string;
     slug?: string;
     permalink?: string;
