@@ -36,4 +36,5 @@ export interface IOutput {
     duration: number;
     start: string;
     id: number;
+    project_id: number;
 }
