@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "startDate": "2023-12-01",
+        "endDate": "2023-12-31"
+    }
+}

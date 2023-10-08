@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 1,
+        "authorAccountId": "123456:01234567-89ab-cdef-0123-456789abcdef",
+        "description": "Investigating a problem with our external database system",
+        "startDate": "2019-08-24",
+        "startTime": "20:06:00",
+        "issueId": 124,
+        "billableSeconds": 3600,
+        "timeSpentSeconds": 3600
+    }
+}

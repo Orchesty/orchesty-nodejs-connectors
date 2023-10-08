@@ -1,0 +1,32 @@
+{
+    "http": "POST https://api.tempo.io/4/worklogs",
+    "code": 200,
+    "body": {
+        "attributes": {
+            "self": "https://api.tempo.io/[...]",
+            "values": [
+                {
+                    "key": "_COLOR_",
+                    "value": "green"
+                }
+            ]
+        },
+        "author": {
+            "accountId": "123456:01234567-89ab-cdef-0123-456789abcdef",
+            "self": "https://api.tempo.io/[...]"
+        },
+        "billableSeconds": 100201,
+        "createdAt": "2017-02-06T16:41:41Z",
+        "description": "Investigating a problem with our external database system",
+        "issue": {
+            "id": 124,
+            "self": "https://api.tempo.io/[...]"
+        },
+        "self": "https://api.tempo.io/[...]",
+        "startDate": "2019-08-24",
+        "startTime": "20:06:00",
+        "tempoWorklogId": 126,
+        "timeSpentSeconds": 3600,
+        "updatedAt": "2017-02-06T16:41:41Z"
+    }
+}
