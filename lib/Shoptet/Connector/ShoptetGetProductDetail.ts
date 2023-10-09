@@ -58,6 +58,9 @@ export interface IOutput {
     url: string;
     variants: IVariant[];
     internalNote: string;
+    image: {
+        cdnPath: string;
+    };
     images: {
         name: string;
         seoName: string;

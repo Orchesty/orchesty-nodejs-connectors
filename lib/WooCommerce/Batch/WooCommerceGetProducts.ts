@@ -43,12 +43,12 @@ export default class WooCommerceGetProducts extends ABatchNode {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IImage {
+    src: string;
     id?: number;
     date_created?: Date;
     date_created_gmt?: Date;
     date_modified?: Date;
     date_modified_gmt?: Date;
-    src?: string;
     name?: string;
     alt?: string;
 }
@@ -64,6 +64,12 @@ export interface IAttribute {
 
 export interface IOutput {
     id: number;
+    categories: {
+        id: number;
+        name: string;
+        slug: string;
+    }[];
+    images: IImage[];
     name?: string;
     slug?: string;
     permalink?: string;
@@ -118,13 +124,7 @@ export interface IOutput {
     cross_sell_ids?: number[];
     parent_id?: number;
     purchase_note?: string;
-    categories?: {
-        id?: number;
-        name?: string;
-        slug?: string;
-    }[];
     tags?: undefined[];
-    images?: IImage[];
     attributes?: IAttribute[];
     default_attributes?: IAttribute[];
     variations?: number[];
