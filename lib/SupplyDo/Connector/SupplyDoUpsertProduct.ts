@@ -87,5 +87,7 @@ export interface IProduct {
     length_cm?: number;
     country_of_origin?: string;
     width_cm?: number;
+    image?: string;
+    category?: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */

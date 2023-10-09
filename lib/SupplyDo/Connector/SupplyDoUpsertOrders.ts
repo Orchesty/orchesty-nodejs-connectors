@@ -52,6 +52,7 @@ export interface IInput {
         ecommerce?: number;
         id?: number;
     };
+    order_number?: string;
     history?: {
         date: string;
         type: string;
