@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "company": 0,
+            "id": 0,
+            "name": "string",
+            "url": "string",
+            "active": true,
+            "installed": true,
+            "type": "shopify",
+            "countries": "string"
+        }
+    }
+}

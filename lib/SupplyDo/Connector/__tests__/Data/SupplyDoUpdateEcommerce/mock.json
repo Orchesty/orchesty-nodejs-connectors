@@ -1,0 +1,16 @@
+{
+    "http": "PATCH https://supply.do/items/ecommerce/TestUser",
+    "code": 200,
+    "body": {
+        "data": {
+            "company": 0,
+            "id": 0,
+            "name": "string",
+            "url": "string",
+            "active": true,
+            "installed": true,
+            "type": "shopify",
+            "countries": "string"
+        }
+    }
+}

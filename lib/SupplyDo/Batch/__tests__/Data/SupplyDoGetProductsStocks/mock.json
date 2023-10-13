@@ -1,5 +1,5 @@
 {
-  "http": "GET https://supply.do//items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[ecommerce][_eq]=TestUser&filter[updated_at][_gte]=1970-01-01T00:00:00.000Z&limit=1000&offset=0&meta=filter_count",
+  "http": "GET https://supply.do/items/product_batch_warehouse?fields[]=*&fields[]=product_batch.product.*&fields[]=warehouse.*&fields[]=product_batch.*&filter[ecommerce][_eq]=TestUser&filter[updated_at][_gte]=1970-01-01T00:00:00.000Z&limit=1000&offset=0&meta=filter_count",
   "code": 200,
   "body": {
     "data": [

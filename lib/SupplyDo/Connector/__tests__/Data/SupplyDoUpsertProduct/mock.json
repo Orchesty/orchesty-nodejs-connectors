@@ -1,5 +1,5 @@
 {
-    "http": "POST https://supply.do//hanaboso/items/product",
+    "http": "POST https://supply.do/hanaboso/items/product",
     "code": 200,
     "body": {
         "data": [

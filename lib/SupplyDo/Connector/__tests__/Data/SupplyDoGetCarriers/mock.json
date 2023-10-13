@@ -1,5 +1,5 @@
 {
-  "http": "GET https://supply.do//items/carrier?filter[ecommerce][_eq]=TestUser",
+  "http": "GET https://supply.do/items/carrier?filter[ecommerce][_eq]=TestUser",
   "code": 200,
   "body": {
     "data": [
