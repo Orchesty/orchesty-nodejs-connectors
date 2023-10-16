@@ -13,9 +13,9 @@ services:
             # Envs for tests are load from .jest/testEnvs.js
             JEST_DOCKER: 1
             APP_ENV: 'debug'
-            BACKEND_URL: 'https://127.0.0.1'
+            BACKEND_URL: https://${DEV_IP}
             STARTING_POINT_URL: 'https://sp.orchesty.com'
-            WORKER_API_HOST: 'http://127.0.0.40'
+            WORKER_API_HOST: https://${DEV_IP}
             CRYPT_SECRET: 'ThisIsNotSoSecret'
         command: sleep infinity
 

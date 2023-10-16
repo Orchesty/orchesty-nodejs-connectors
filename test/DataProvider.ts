@@ -4,6 +4,7 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
+import { devIp } from '../.jest/testEnvs';
 
 export const DEFAULT_USER = 'TestUser';
 export const DEFAULT_CLIENT_ID = 'ClientId';
@@ -27,7 +28,7 @@ export function appInstall(
     mockOnce([
         {
             request: {
-                method: HttpMethods.GET, url: /http:\/\/127.0.0.40\/document\/ApplicationInstall.*/,
+                method: HttpMethods.GET, url: new RegExp(`http:\\/\\/${devIp}\\/document\\/ApplicationInstall.*`),
             },
             response: {
                 code: 200,

@@ -1,6 +1,7 @@
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import { devIp } from '../../../../.jest/testEnvs';
 import { DEFAULT_USER } from '../../../../test/DataProvider';
 import init from '../../../../test/Implementation/shopify';
 import { container } from '../../../../test/TestAbstract';
@@ -17,7 +18,10 @@ describe('Tests for ShopifyUnregisterWebhook', () => {
     it('process - ok', async () => {
         mockOnce([
             {
-                request: { url: /http:\/\/127.0.0.40\/document\/Webhook.*/, method: HttpMethods.GET },
+                request: {
+                    url: new RegExp(`http:\\/\\/${devIp}\\/document\\/Webhook.*`),
+                    method: HttpMethods.GET,
+                },
                 response: {
                     body: [{
                         name: 'orders/create',
@@ -32,7 +36,10 @@ describe('Tests for ShopifyUnregisterWebhook', () => {
                 },
             },
             {
-                request: { url: /http:\/\/127.0.0.40\/document\/Webhook.*/, method: HttpMethods.DELETE },
+                request: {
+                    url: new RegExp(`http:\\/\\/${devIp}\\/document\\/Webhook.*`),
+                    method: HttpMethods.DELETE,
+                },
                 response: {
                 },
             },
