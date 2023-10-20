@@ -1,4 +1,5 @@
 import {
+    Cluster,
     DescribeClustersCommand,
     DescribeClustersCommandInput,
     RedshiftClient,
@@ -94,7 +95,7 @@ export default class RedshiftApplication extends AAwsApplication {
             throw new Error('Login into application was unsuccessful.');
         }
 
-        const cluster = response.Clusters[0];
+        const cluster = response.Clusters.shift() as Cluster;
 
         return applicationInstall.setSettings(
             {

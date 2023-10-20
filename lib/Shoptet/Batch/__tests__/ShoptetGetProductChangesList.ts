@@ -1,6 +1,7 @@
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import { devIp } from '../../../../.jest/testEnvs';
 import { mockDate, restoreDate } from '../../../../.jest/testLifecycle';
 import { init, mock } from '../../../../test/Implementation/shoptet';
 import { container } from '../../../../test/TestAbstract';
@@ -18,7 +19,8 @@ describe('Tests for ShoptetGetProductChangesList', () => {
         mockOnce([
             { request: {
                 method: HttpMethods.POST,
-                url: /http:\/\/127\.0\.0\.40\/document\/ApplicationInstall.*/ },
+                url: new RegExp(`http:\\/\\/${devIp}\\/document\\/ApplicationInstall.*`),
+            },
             response: {},
             },
         ]);

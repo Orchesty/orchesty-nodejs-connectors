@@ -3,6 +3,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { DateTime } from 'luxon';
 import ShoptetPremiumApplication from '../ShoptetPremiumApplication';
 
 export default abstract class AShoptetList<ResponseData> extends ABatchNode {
@@ -12,6 +13,8 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
     protected abstract fromParamKey: string;
 
     protected abstract lastRunKey: string;
+
+    protected lastRunOffset = 60; // seconds
 
     protected abstract processResult(responseDto: ResponseDto<ResponseData>, batchProcessDto: BatchProcessDto): IPaging;
 
@@ -28,9 +31,16 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
 
         let url = `${this.endpoint}${querySeparator}itemsPerPage=100`;
 
-        let creationTimeFrom = dateFrom ?? (from || ShoptetPremiumApplication.shoptetDateISO(
-            appInstall.getNonEncryptedSettings()[this.lastRunKey],
-        ));
+        let creationTimeFrom = dateFrom ?? from;
+        if (!creationTimeFrom) {
+            const lastRun = appInstall.getNonEncryptedSettings()[this.lastRunKey];
+            if (lastRun) {
+                const lastRunWithOffset = DateTime.fromISO(lastRun).minus({ second: this.lastRunOffset }).toISO();
+                if (lastRunWithOffset) {
+                    creationTimeFrom = ShoptetPremiumApplication.shoptetDateISO(lastRunWithOffset);
+                }
+            }
+        }
 
         if (!creationTimeFrom) {
             creationTimeFrom = this.getDefaultLastRun();
