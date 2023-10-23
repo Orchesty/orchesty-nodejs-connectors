@@ -266,7 +266,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         const requestDto = new RequestDto(
             `${orchestyOptions.backend}/api/usage-stats/emit-event`,
             HttpMethods.POST,
-            new ProcessDto(),
+            ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
             JSON.stringify({
                 event,
                 aid: this.getName(),
@@ -309,7 +309,13 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         user: string,
         data?: Record<string, unknown>,
     ): Promise<void> {
-        await this.topologyRunner.runByName(data ?? {}, topology, node, new ProcessDto(), user);
+        await this.topologyRunner.runByName(
+            data ?? {},
+            topology,
+            node,
+            ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
+            user,
+        );
     }
 
 }
