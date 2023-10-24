@@ -19,7 +19,6 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { Request } from 'express';
 import FormData from 'form-data';
 import { StatusCodes } from 'http-status-codes';
 
@@ -126,7 +125,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
     }
 
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
-        const { user } = JSON.parse(req.body);
+        const { user } = JSON.parse(String(req.body));
         const appRepo = this.mongoService.getApplicationRepository();
         const quickbooksApps = (await appRepo.findMany(
             { users: [user], names: [this.getName()], enabled: null, deleted: true },
