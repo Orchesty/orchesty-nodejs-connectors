@@ -15,7 +15,7 @@ export default class WooCommerceGetSettingsGeneral extends AConnector {
 
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.GET,
             `wp-json/wc/v3/settings/general/${id ?? ''}`,
         );
