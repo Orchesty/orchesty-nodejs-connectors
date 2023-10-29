@@ -18,7 +18,7 @@ export default class WorklogsListBatch extends ABatchNode {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `/worklogs?from=${data.startDate}&to=${data.endDate}`,
+            `/worklogs?limit=999&from=${data.startDate}&to=${data.endDate}`,
         );
         const resp = await this.getSender().send<IResponse>(req);
 

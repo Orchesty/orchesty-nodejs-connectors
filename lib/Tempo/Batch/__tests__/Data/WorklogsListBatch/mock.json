@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.tempo.io/4/worklogs?from=2023-12-01&to=2023-12-31",
+    "http": "GET https://api.tempo.io/4/worklogs?limit=999&from=2023-12-01&to=2023-12-31",
     "code": 200,
     "body": {
         "metadata": {
