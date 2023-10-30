@@ -29,6 +29,8 @@ export interface IInput {
     type: string;
     data: {
         topologyId: string;
+        topologyName: string;
+        topologyVersion: string;
         correlationId: string;
         processId: string;
         user: string;
