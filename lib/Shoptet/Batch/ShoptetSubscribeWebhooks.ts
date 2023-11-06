@@ -22,18 +22,20 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
         const app = this.getApplication<ABaseShoptet>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        const dbWh = await repo.findOne({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
-        if (!dbWh) {
-            const whData = app.getWebhookSubscriptions().map((sub) => ({
-                event: sub.getName(),
-                token: this.getRandomToken(),
-                node: sub.getNode(),
-                topology: sub.getTopology(),
-            }));
+        const registered = await repo.findMany({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
+        const all = app.getWebhookSubscriptions().map((sub) => ({
+            event: sub.getName(),
+            token: this.getRandomToken(),
+            node: sub.getNode(),
+            topology: sub.getTopology(),
+        }));
+
+        const unregistered = all.filter((wh) => !registered.find((reg) => reg.getName() === wh.event));
+        if (unregistered.length) {
             const body = {
-                data: app.getWebhookSubscriptions().map((sub, index) => ({
-                    event: whData[index].event,
-                    url: TopologyRunner.getWebhookUrl(whData[index].topology, whData[index].node, whData[index].token),
+                data: unregistered.map(({ event, topology, node, token }) => ({
+                    event,
+                    url: TopologyRunner.getWebhookUrl(topology, node, token),
                 })),
             };
 
@@ -44,7 +46,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
             const respBody = res.getJsonBody();
 
             await Promise.all(respBody.data.webhooks.map(async (webhook) => {
-                const located = whData.find((value) => value.event === webhook.event);
+                const located = unregistered.find((value) => value.event === webhook.event);
                 if (located) {
                     const wb = new Webhook()
                         .setWebhookId(webhook.id.toString())
