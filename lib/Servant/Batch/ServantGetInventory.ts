@@ -1,7 +1,7 @@
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ABaseServantSoapBatch from './ABaseServantSoapBatch';
 
-export const NAME = 'get-inventory';
+export const NAME = 'servant-get-inventory';
 
 export default class ServantGetInventory extends ABaseServantSoapBatch {
 

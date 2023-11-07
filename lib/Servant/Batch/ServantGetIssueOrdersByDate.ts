@@ -1,7 +1,7 @@
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ABaseServantSoapBatch from './ABaseServantSoapBatch';
 
-export const NAME = 'get-issue-orders-by-date';
+export const NAME = 'servant-get-issue-orders-by-date';
 export const LAST_RUN_KEY = 'lastRunListOrders';
 
 export default class ServantGetIssueOrdersByDate extends ABaseServantSoapBatch {
