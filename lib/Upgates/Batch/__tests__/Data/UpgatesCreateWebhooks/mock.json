@@ -1,0 +1,14 @@
+{
+  "http": "POST https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/webhooks",
+  "code": 200,
+  "body": {
+    "webhook": {
+      "id": 0,
+      "active_yn": false,
+      "name": "",
+      "url": "",
+      "event": ""
+    }
+  }
+}
+

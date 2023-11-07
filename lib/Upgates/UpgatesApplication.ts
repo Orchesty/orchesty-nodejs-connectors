@@ -4,6 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import {
     ABasicApplication,
     PASSWORD,
@@ -17,7 +18,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'upgates';
 
-const UPGATES_URL = 'upgatesUrl';
+export const UPGATES_URL = 'upgatesUrl';
 
 export default class UpgatesApplication extends ABasicApplication {
 
@@ -78,6 +79,10 @@ export default class UpgatesApplication extends ABasicApplication {
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return authorizationForm?.[USER] && authorizationForm?.[PASSWORD] && authorizationForm?.[UPGATES_URL];
+    }
+
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [];
     }
 
 }
