@@ -1,7 +1,7 @@
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ABaseServantSoapConnector from './ABaseServantSoapConnector';
 
-export const NAME = 'import-products';
+export const NAME = 'servant-import-products';
 
 export default class ServantImportProducts extends ABaseServantSoapConnector {
 
@@ -32,7 +32,7 @@ export interface IImportProduct {
     activities: IImportProductActivity[];
 }
 
-interface IImportItemId {
+export interface IImportItemId {
     code: string;
     attributes: string[];
 }
@@ -71,12 +71,12 @@ interface IImportProductActivity {
     activity: IImportActivity;
 }
 
-interface IImportItemIdDetails {
+export interface IImportItemIdDetails {
     expiration: Date;
     batch: string;
 }
 
-interface IImportActivity {
+export interface IImportActivity {
     checkExpiration: boolean;
     checkBatch: boolean;
     checkSerialNumbers: boolean;
