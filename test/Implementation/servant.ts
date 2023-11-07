@@ -1,10 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import GetIssueOrdersByDate from '../../lib/Servant/Batch/GetIssueOrdersByDate';
-import ServantApplication, {
-    BASE_URL,
-    NAME as SERVANT_NAME,
-} from '../../lib/Servant/ServantApplication';
+import ServantApplication, { BASE_URL, NAME as SERVANT_NAME } from '../../lib/Servant/ServantApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container } from '../TestAbstract';
 
