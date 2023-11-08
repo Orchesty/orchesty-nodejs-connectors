@@ -8,7 +8,7 @@ import { NAME as WOO_COMMERCE_GET_ORDERS } from '../WooCommerceGetOrders';
 
 let tester: NodeTester;
 
-describe('Tests for WooCommerceGetProducts', () => {
+describe('Tests for WooCommerceGetOrders', () => {
     beforeAll(() => {
         tester = new NodeTester(container, __filename);
         init();

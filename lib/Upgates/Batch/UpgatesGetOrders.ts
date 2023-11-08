@@ -1,33 +1,43 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import UpgatesApplication from '../UpgatesApplication';
+import { DateTime } from 'luxon';
+import UpgatesApplication, { NAME as BASE_NAME } from '../UpgatesApplication';
+
+export const NAME = `${BASE_NAME.toLowerCase()}-get-orders`;
 
 const LIST_PAGE_ENDPOINT = 'api/v2/orders';
 
 export default class UpgatesGetOrders extends ABatchNode {
 
     public getName(): string {
-        return 'upgates-get-orders';
+        return NAME;
     }
 
     public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const app = this.getApplication<UpgatesApplication>();
-        const {
-            from,
-            to,
-        } = dto.getJsonData();
-        const pageNumber = dto.getBatchCursor('0');
-        let url = `${LIST_PAGE_ENDPOINT}?page${pageNumber}`;
-        if (from) {
-            url = `${url}&creation_time_from=${from}`;
-        }
-        if (to) {
-            url = `${url}&creation_time_to=${to}`;
-        }
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
+        const { from, to, orderNumber } = dto.getJsonData();
+        const pageNumber = dto.getBatchCursor('0');
+
+        let url = LIST_PAGE_ENDPOINT;
+
+        if (orderNumber) {
+            url = `${LIST_PAGE_ENDPOINT}/${orderNumber}`;
+        } else {
+            url = `${LIST_PAGE_ENDPOINT}?page=${pageNumber}`;
+
+            const lastRun = from || app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().orderLastRun);
+            if (lastRun) {
+                url = `${url}&creation_time_from=${lastRun}`;
+            }
+            if (to) {
+                url = `${url}&creation_time_to=${to}`;
+            }
+        }
+
+        const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
         const res = await this.getSender().send<IResponseJson>(requestDto);
 
         const {
@@ -39,6 +49,10 @@ export default class UpgatesGetOrders extends ABatchNode {
         // eslint-disable-next-line @typescript-eslint/naming-convention
         if (Number(pageNumber) < number_of_pages) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
+        } else if (!orderNumber) {
+            appInstall.setNonEncryptedSettings({ orderLastRun: DateTime.now() });
+            const repo = this.getDbClient().getApplicationRepository();
+            await repo.update(appInstall);
         }
         dto.setItemList(orders);
 
@@ -50,6 +64,7 @@ export default class UpgatesGetOrders extends ABatchNode {
 interface IInput {
     from: string;
     to: string;
+    orderNumber: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */

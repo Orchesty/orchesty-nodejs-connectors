@@ -1,6 +1,7 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { DateTime } from 'luxon';
 import UpgatesApplication from '../UpgatesApplication';
 
 const LIST_PAGE_ENDPOINT = 'api/v2/products';
@@ -13,11 +14,25 @@ export default class UpgatesGetProducts extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const app = this.getApplication<UpgatesApplication>();
-        const pageNumber = dto.getBatchCursor('0');
-        const url = `${LIST_PAGE_ENDPOINT}?page${pageNumber}`;
         const appInstall = await this.getApplicationInstallFromProcess(dto);
+
+        const { productId } = dto.getJsonData();
+        const pageNumber = dto.getBatchCursor('0');
+
+        let url = LIST_PAGE_ENDPOINT;
+
+        if (productId) {
+            url = `${url}?product_id=${productId}`;
+        } else {
+            url = `${url}?page=${pageNumber}`;
+
+            const lastRun = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().productLastRun);
+            if (lastRun) {
+                url = `${url}&last_update_time_from=${lastRun}`;
+            }
+        }
         const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
         const res = await this.getSender().send<IResponseJson>(requestDto);
@@ -25,6 +40,10 @@ export default class UpgatesGetProducts extends ABatchNode {
 
         if (Number(pageNumber) < number_of_pages) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
+        } else if (!productId) {
+            appInstall.setNonEncryptedSettings({ productLastRun: DateTime.now() });
+            const repo = this.getDbClient().getApplicationRepository();
+            await repo.update(appInstall);
         }
 
         dto.setItemList(products);
@@ -164,6 +183,10 @@ interface IProductVariantMeta {
 interface IProductVariantMetaValues {
     language: string;
     value: string;
+}
+
+interface IInput {
+    productId: string;
 }
 
 enum AvailabilityTypeEnum {

@@ -5,6 +5,8 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import UpgatesCreateWebhooks from '../../lib/Upgates/Batch/UpgatesCreateWebhooks';
+import UpgatesGetOrders from '../../lib/Upgates/Batch/UpgatesGetOrders';
+import UpgatesGetProducts from '../../lib/Upgates/Batch/UpgatesGetProducts';
 import UpgatesDeleteWebhooks from '../../lib/Upgates/Connector/UpgatesDeleteWebhooks';
 import UpgatesApplication, { NAME, UPGATES_URL } from '../../lib/Upgates/UpgatesApplication';
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
@@ -25,10 +27,12 @@ export function mock(extraNonEncryptedSettings?: IApplicationSettings): Applicat
     );
 }
 
-export default function init(): void {
+export function init(): void {
     const upgatesApplication = new UpgatesApplication();
     container.setApplication(upgatesApplication);
 
     container.setNode(new UpgatesCreateWebhooks(), upgatesApplication);
     container.setNode(new UpgatesDeleteWebhooks(), upgatesApplication);
+    container.setNode(new UpgatesGetOrders(), upgatesApplication);
+    container.setNode(new UpgatesGetProducts(), upgatesApplication);
 }
