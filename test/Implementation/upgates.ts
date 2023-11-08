@@ -1,12 +1,17 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import {
+    ApplicationInstall,
+    IApplicationSettings,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import UpgatesCreateWebhooks from '../../lib/Upgates/Batch/UpgatesCreateWebhooks';
+import UpgatesDeleteWebhooks from '../../lib/Upgates/Connector/UpgatesDeleteWebhooks';
 import UpgatesApplication, { NAME, UPGATES_URL } from '../../lib/Upgates/UpgatesApplication';
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
 import { container } from '../TestAbstract';
 
-export default function init(): void {
-    appInstall(
+export function mock(extraNonEncryptedSettings?: IApplicationSettings): ApplicationInstall {
+    return appInstall(
         NAME,
         DEFAULT_USER,
         {
@@ -16,9 +21,14 @@ export default function init(): void {
                 [UPGATES_URL]: 'https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com',
             },
         },
+        extraNonEncryptedSettings,
     );
+}
+
+export default function init(): void {
     const upgatesApplication = new UpgatesApplication();
     container.setApplication(upgatesApplication);
 
     container.setNode(new UpgatesCreateWebhooks(), upgatesApplication);
+    container.setNode(new UpgatesDeleteWebhooks(), upgatesApplication);
 }
