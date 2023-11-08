@@ -81,6 +81,10 @@ export default class UpgatesApplication extends ABasicApplication {
         return authorizationForm?.[USER] && authorizationForm?.[PASSWORD] && authorizationForm?.[UPGATES_URL];
     }
 
+    public getIsoDateFromDate(date?: string): string {
+        return date ? new Date(date).toISOString() : '';
+    }
+
     public getWebhookSubscriptions(): WebhookSubscription[] {
         return [];
     }

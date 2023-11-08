@@ -1,0 +1,191 @@
+{
+    "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/orders?page=0",
+    "code": 200,
+    "body": {
+        "current_page": 0,
+        "current_page_items": 0,
+        "number_of_pages": 0,
+        "number_of_items": 0,
+        "orders": [
+            {
+                "order_number": "",
+                "case_number": "",
+                "external_order_number": "",
+                "language_id": "",
+                "currency_id": "",
+                "default_currency_rate": "",
+                "prices_with_vat_yn": false,
+                "status_id": 0,
+                "status": "",
+                "paid_date": "",
+                "tracking_code": "",
+                "tracking_url": "",
+                "resolved_yn": false,
+                "oss_yn": false,
+                "internal_note": "",
+                "last_update_time": "",
+                "creation_time": "",
+                "variable_symbol": "",
+                "total_weight": 0,
+                "order_total": 0,
+                "order_total_before_round": 0,
+                "order_total_rest": 0,
+                "invoice_number": "",
+                "origin": "admin",
+                "admin_url": "",
+                "customer": {
+                    "email": "",
+                    "phone": "",
+                    "code": "",
+                    "customer_id": 0,
+                    "customer_pricelist_id": "",
+                    "pricelist_name": "",
+                    "pricelist_percent": "",
+                    "firstname_invoice": "",
+                    "surname_invoice": "",
+                    "street_invoice": "",
+                    "city_invoice": "",
+                    "state_invoice": "",
+                    "zip_invoice": "",
+                    "country_id_invoice": "",
+                    "postal_yn": false,
+                    "firstname_postal": "",
+                    "surname_postal": "",
+                    "street_postal": "",
+                    "city_postal": "",
+                    "state_postal": "",
+                    "zip_postal": "",
+                    "country_id_postal": "",
+                    "company_postal": "",
+                    "company_yn": false,
+                    "company": "",
+                    "ico": "",
+                    "dic": "",
+                    "vat_payer_yn": false,
+                    "customer_note": "",
+                    "agreements": [
+                        {
+                            "name": "",
+                            "valid_to": "",
+                            "status": false
+                        }
+                    ]
+                },
+                "products": [
+                    {
+                        "product_id": 0,
+                        "option_set_id": 0,
+                        "code": "",
+                        "code_supplier": "",
+                        "supplier": "",
+                        "ean": "",
+                        "title": "",
+                        "adult_yn": false,
+                        "quantity": 0,
+                        "unit": "",
+                        "length": "",
+                        "length_unit": "",
+                        "price_per_unit": 0,
+                        "price": 0,
+                        "price_with_vat": 0,
+                        "price_without_vat": 0,
+                        "vat": 0,
+                        "buy_price": 0,
+                        "recycling_fee": 0,
+                        "weight": 0,
+                        "availability": "",
+                        "invoice_info": "",
+                        "parameters": [
+                            {
+                                "name": "",
+                                "value": ""
+                            }
+                        ],
+                        "configurations": [
+                            {
+                                "name": "",
+                                "values": [
+                                    {
+                                        "value": "",
+                                        "operation": "",
+                                        "cena": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "categories": [
+                            {
+                                "category_id": 0,
+                                "code": ""
+                            }
+                        ],
+                        "image_url": ""
+                    }
+                ],
+                "discount_voucher": {
+                    "code": "",
+                    "type": "percent",
+                    "amount": 0,
+                    "discounts": [
+                        {
+                            "price": 0,
+                            "vat": 0
+                        }
+                    ]
+                },
+                "quantity_discount": {
+                    "type": "percent",
+                    "amount": 0,
+                    "discounts": [
+                        {
+                            "price": 0,
+                            "vat": 0
+                        }
+                    ]
+                },
+                "loyalty_points": {
+                    "one_point_for": 0,
+                    "amount": 0,
+                    "discounts": [
+                        {
+                            "price": 0,
+                            "vat": 0
+                        }
+                    ]
+                },
+                "shipment": {
+                    "id": 0,
+                    "code": "",
+                    "name": "",
+                    "price": 0,
+                    "vat": 0,
+                    "affiliate_id": "",
+                    "type": "",
+                    "packeta_carrier_id": 0
+                },
+                "payment": {
+                    "id": 0,
+                    "code": "",
+                    "name": "",
+                    "price": 0,
+                    "vat": 0,
+                    "eet_yn": false,
+                    "type": ""
+                },
+                "metas": [
+                    {
+                        "key": "",
+                        "type": "",
+                        "value": "",
+                        "values": [
+                            {
+                                "language": "",
+                                "value": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

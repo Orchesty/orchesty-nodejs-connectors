@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/upgates';
+import { init } from '../../../../test/Implementation/upgates';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as UPGATES_CREATE_WEBHOOKS } from '../UpgatesCreateWebhooks';
 

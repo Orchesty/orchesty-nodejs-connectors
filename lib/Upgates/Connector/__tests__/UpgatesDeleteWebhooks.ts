@@ -3,7 +3,7 @@ import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { devIp } from '../../../../.jest/testEnvs';
 import { DEFAULT_USER } from '../../../../test/DataProvider';
-import init, { mock } from '../../../../test/Implementation/upgates';
+import { init, mock } from '../../../../test/Implementation/upgates';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as UPGATES_DELETE_WEBHOOKS } from '../UpgatesDeleteWebhooks';
 
