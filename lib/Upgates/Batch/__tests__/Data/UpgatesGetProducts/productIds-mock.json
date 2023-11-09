@@ -1,0 +1,146 @@
+{
+    "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/products?product_ids=1;2",
+    "code": 200,
+    "body": {
+        "current_page": 0,
+        "current_page_items": 0,
+        "number_of_pages": 0,
+        "number_of_items": 0,
+        "products": [
+            {
+                "code": "",
+                "code_supplier": "",
+                "supplier": "",
+                "ean": "",
+                "product_id": 0,
+                "active_yn": false,
+                "archived_yn": false,
+                "replacement_product_code": "",
+                "can_add_to_basket_yn": false,
+                "adult_yn": false,
+                "descriptions": [
+                    {
+                        "language": "",
+                        "title": "",
+                        "short_description": "",
+                        "long_description": "",
+                        "url": "",
+                        "seo_title": "",
+                        "seo_description": "",
+                        "seo_url": "",
+                        "unit": ""
+                    }
+                ],
+                "manufacturer": "",
+                "stock": 0,
+                "stock_position": "",
+                "availability": "",
+                "availability_type": "OnRequest",
+                "weight": 0,
+                "shipment_group": "",
+                "images": [
+                    {
+                        "url": "",
+                        "main_yn": false,
+                        "list_yn": false,
+                        "position": 0,
+                        "titles": [{}, "language", "title"]
+                    }
+                ],
+                "categories": [
+                    {
+                        "category_id": 0,
+                        "code": "",
+                        "main_yn": false,
+                        "position": 0,
+                        "name": ""
+                    }
+                ],
+                "groups": [],
+                "prices": [
+                    {
+                        "language": "",
+                        "currency": "",
+                        "pricelists": [
+                            {
+                                "name": "",
+                                "price_original": 0,
+                                "product_discount": 0,
+                                "product_discount_real`": "",
+                                "price_sale": 0,
+                                "price_with_vat`": "",
+                                "price_without_vat`": ""
+                            }
+                        ],
+                        "price_purchase": 0,
+                        "price_common": 0,
+                        "recycling_fee": 0
+                    }
+                ],
+                "vats": {},
+                "variants": [
+                    {
+                        "code": "",
+                        "code_supplier": "",
+                        "ean": "",
+                        "variant_id": 0,
+                        "active_yn": false,
+                        "can_add_to_basket_yn": false,
+                        "stock": 0,
+                        "stock_position": "",
+                        "availability": "",
+                        "availability_type": "OnRequest",
+                        "weight": "",
+                        "image": "",
+                        "prices": [
+                            {
+                                "language": "",
+                                "currency": "",
+                                "pricelists": [
+                                    {
+                                        "name": "",
+                                        "price_original": 0,
+                                        "product_discount": 0,
+                                        "product_discount_real`": "",
+                                        "price_sale": 0,
+                                        "price_with_vat`": "",
+                                        "price_without_vat`": ""
+                                    }
+                                ],
+                                "price_purchase": 0,
+                                "price_common": 0
+                            }
+                        ],
+                        "metas": [
+                            {
+                                "key": "",
+                                "type": "radio",
+                                "value": "",
+                                "values": [
+                                    {
+                                        "language": "",
+                                        "value": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "metas": [
+                    {
+                        "key": "",
+                        "type": "radio",
+                        "value": "",
+                        "values": [
+                            {
+                                "language": "",
+                                "value": ""
+                            }
+                        ]
+                    }
+                ],
+                "admin_url": ""
+            }
+        ]
+    }
+}

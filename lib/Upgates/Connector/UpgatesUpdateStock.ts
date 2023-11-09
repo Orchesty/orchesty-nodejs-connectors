@@ -36,7 +36,7 @@ export default class UpgatesUpdateStock extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IInput {
+export interface IInput {
     data: IUpdateStock;
 }
 

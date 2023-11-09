@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "productIds": "1;2"
+    }
+}

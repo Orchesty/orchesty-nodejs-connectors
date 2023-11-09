@@ -23,7 +23,7 @@ export default class ServantImportIssue extends ABaseServantSoapConnector {
 
 export interface IInput {
     warehouse: string;
-    products: IImportIssue;
+    issue: IImportIssue;
     files: IImportFile[];
 }
 
