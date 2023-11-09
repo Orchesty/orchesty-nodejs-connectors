@@ -53,8 +53,8 @@ optionalDependencies:
     specifier: ^1.12.2
     version: 1.12.2
   '@azure/identity':
-    specifier: ^3.4.0
-    version: 3.4.0
+    specifier: ^4.0.0
+    version: 4.0.0
   '@cloudamqp/amqp-client':
     specifier: ^3.1.1
     version: 3.1.1
@@ -1208,9 +1208,9 @@ packages:
     dev: false
     optional: true
 
-  /@azure/identity@3.4.0:
-    resolution: {integrity: sha512-PZ42Fkp0vNQYLbmEn0ryd9ejOdFH30rLAaQfDkZsiU/rtZjfymGi5fqG7jOaT6RgpPYsTbnhj6asPbgF6dhUCw==}
-    engines: {node: '>=14.0.0'}
+  /@azure/identity@4.0.0:
+    resolution: {integrity: sha512-gtPYxIL0kI39Dw4t3HvlbfhOdXqKD2MqDgynlklF0j728j51dcKgRo6FLX0QzpBw/1gGfLxjMXqq3nKOSQ2lmA==}
+    engines: {node: '>=18.0.0'}
     requiresBuild: true
     dependencies:
       '@azure/abort-controller': 1.1.0
@@ -1221,14 +1221,12 @@ packages:
       '@azure/core-util': 1.6.1
       '@azure/logger': 1.0.4
       '@azure/msal-browser': 3.5.0
-      '@azure/msal-common': 13.3.1
       '@azure/msal-node': 2.5.1
       events: 3.3.0
       jws: 4.0.0
       open: 8.4.2
       stoppable: 1.1.0
       tslib: 2.6.2
-      uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
     dev: false
