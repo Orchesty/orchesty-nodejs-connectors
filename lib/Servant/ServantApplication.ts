@@ -76,25 +76,25 @@ export default class ServantApplication extends ABasicApplication {
         return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BASE_URL];
     }
 
-    protected getShippingMethods(): IChoice[] {
-        return [
-            { id: 'GLS', title: 'GLS' },
-            { id: 'CP', title: 'Česká Pošta' },
-            { id: 'FOFR', title: 'FOFR' },
-            { id: 'TOPT', title: 'TOPTRANS' },
-            { id: 'GEIS', title: 'Geis' },
-            { id: 'ZAS', title: 'Zásilkovna' },
-            { id: 'DPD', title: 'DPD' },
-            { id: 'IND', title: 'Individuální doprava' },
-            { id: 'OSB', title: 'Osobní odběr' },
-            { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
-        ];
-    }
+}
 
-    protected getOrderStatuses(): IChoice[] {
-        return [];
-    }
+export function getShippingMethods(): IChoice[] {
+    return [
+        { id: 'GLS', title: 'GLS' },
+        { id: 'CP', title: 'Česká Pošta' },
+        { id: 'FOFR', title: 'FOFR' },
+        { id: 'TOPT', title: 'TOPTRANS' },
+        { id: 'GEIS', title: 'Geis' },
+        { id: 'ZAS', title: 'Zásilkovna' },
+        { id: 'DPD', title: 'DPD' },
+        { id: 'IND', title: 'Individuální doprava' },
+        { id: 'OSB', title: 'Osobní odběr' },
+        { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
+    ];
+}
 
+export function getOrderStatuses(): IChoice[] {
+    return [];
 }
 
 export interface IChoice {

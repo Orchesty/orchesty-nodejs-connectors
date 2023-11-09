@@ -25,4 +25,9 @@ describe('Tests for UpgatesGetProducts', () => {
         mock();
         await tester.testBatch(UPGATES_GET_PRODUCTS, 'productId');
     });
+
+    it('process - productIds', async () => {
+        mock();
+        await tester.testBatch(UPGATES_GET_PRODUCTS, 'productIds');
+    });
 });

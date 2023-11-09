@@ -18,17 +18,19 @@ export default class UpgatesGetProducts extends ABatchNode {
         const app = this.getApplication<UpgatesApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        const { productId } = dto.getJsonData();
+        const { from, productId, productIds } = dto.getJsonData();
         const pageNumber = dto.getBatchCursor('0');
 
         let url = LIST_PAGE_ENDPOINT;
 
-        if (productId) {
+        if (productIds) {
+            url = `${url}?product_ids=${productIds}`;
+        } else if (productId) {
             url = `${url}?product_id=${productId}`;
         } else {
             url = `${url}?page=${pageNumber}`;
 
-            const lastRun = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().productLastRun);
+            const lastRun = from ?? app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().productLastRun);
             if (lastRun) {
                 url = `${url}&last_update_time_from=${lastRun}`;
             }
@@ -59,7 +61,7 @@ interface IResponseJson extends IProductJson {
     number_of_items: number;
 }
 
-interface IProductJson {
+export interface IProductJson {
     products: {
         code: string;
         code_supplier: string;
@@ -185,8 +187,10 @@ interface IProductVariantMetaValues {
     value: string;
 }
 
-interface IInput {
-    productId: string;
+export interface IInput {
+    from?: string;
+    productId?: string;
+    productIds?: string;
 }
 
 enum AvailabilityTypeEnum {

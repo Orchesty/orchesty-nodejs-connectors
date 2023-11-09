@@ -25,4 +25,9 @@ describe('Tests for UpgatesGetOrders', () => {
         mock();
         await tester.testBatch(UPGATES_GET_ORDERS, 'orderNumber');
     });
+
+    it('process - orderNumbers', async () => {
+        mock();
+        await tester.testBatch(UPGATES_GET_ORDERS, 'orderNumbers');
+    });
 });
