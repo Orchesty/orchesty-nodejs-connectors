@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "states": [
+            {
+                "color": "",
+                "id": 0,
+                "names": {},
+                "type": "Received"
+            }
+        ]
+    }
+}

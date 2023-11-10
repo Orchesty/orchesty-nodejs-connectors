@@ -62,40 +62,42 @@ interface IResponseJson extends IProductJson {
 }
 
 export interface IProductJson {
-    products: {
-        code: string;
-        code_supplier: string;
-        ean: string;
-        product_id: number;
-        active_yn: boolean;
-        archived_yn: boolean;
-        replacement_product_code: string;
-        can_add_to_basket_yn: boolean;
-        adult_yn: boolean;
-        descriptions: IProductDescription[];
-        manufacturer: string;
-        stock: number;
-        stock_position: number;
-        availability: string;
-        availability_type: AvailabilityTypeEnum;
-        weight: number;
-        shipment_group: string;
-        images: IProductImage[];
-        categories: IProductCategories;
-        groups: number[];
-        prices: IProductPrice[];
-        vats: Record<string, number>;
-        parameters: IProductParameters[];
-        labels: IProductLabel[];
-        variants: IProductVariant[];
-        related: string[];
-        accessories: string[];
-        alternative: string[];
-        gifts: string[];
-        sets: string[];
-        metas: IProductVariantMeta[];
-        admin_url: string;
-    }[];
+    products: IProduct[];
+}
+
+export interface IProduct {
+    code: string;
+    code_supplier: string;
+    ean: string;
+    product_id: number;
+    active_yn: boolean;
+    archived_yn: boolean;
+    replacement_product_code: string;
+    can_add_to_basket_yn: boolean;
+    adult_yn: boolean;
+    descriptions: IProductDescription[];
+    manufacturer: string;
+    stock: number;
+    stock_position: number;
+    availability: string;
+    availability_type: AvailabilityTypeEnum;
+    weight: number;
+    shipment_group: string;
+    images: IProductImage[];
+    categories: IProductCategories;
+    groups: number[];
+    prices: IProductPrice[];
+    vats: Record<string, number>;
+    parameters: IProductParameters[];
+    labels: IProductLabel[];
+    variants: IProductVariant[];
+    related: string[];
+    accessories: string[];
+    alternative: string[];
+    gifts: string[];
+    sets: string[];
+    metas: IProductVariantMeta[];
+    admin_url: string;
 }
 
 interface IProductDescription {
