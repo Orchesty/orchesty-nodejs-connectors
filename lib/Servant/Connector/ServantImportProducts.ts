@@ -27,27 +27,27 @@ export interface IInput {
 
 export interface IImportProduct {
     id: IImportItemId;
-    details: IImportProductItemDetails;
     eans: IImportProductEan[];
-    activities: IImportProductActivity[];
+    activities?: IImportProductActivity[];
+    details?: IImportProductItemDetails;
 }
 
 export interface IImportItemId {
     code: string;
-    attributes: string[];
+    attributes?: string[];
 }
 
 interface IImportProductItemDetails {
-    name: string;
-    shortName: string;
-    description: string;
-    unit: string;
-    type: string;
-    group: string;
-    note: string;
-    notePrint: string;
-    fifo: boolean;
-    supplierCode: string;
+    name?: string;
+    shortName?: string;
+    description?: string;
+    unit?: string;
+    type?: string;
+    group?: string;
+    note?: string;
+    notePrint?: string;
+    fifo?: boolean;
+    supplierCode?: string;
 }
 
 interface IImportProductEan {
@@ -57,13 +57,13 @@ interface IImportProductEan {
     countToPlacement: number;
     expandability: number;
     weight: number;
-    dimension: {
+    velocity: number;
+    primary: boolean;
+    dimension?: {
         x: number;
         y: number;
         z: number;
     };
-    velocity: number;
-    primary: boolean;
 }
 
 interface IImportProductActivity {
