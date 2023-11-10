@@ -1,0 +1,43 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "current_page": 0,
+        "current_page_items": 0,
+        "number_of_items": 0,
+        "number_of_pages": 0,
+        "payments": [
+            {
+                "active_yn": false,
+                "code": "",
+                "descriptions": [
+                    {
+                        "description": "",
+                        "free_from": 0,
+                        "language_id": "",
+                        "name": "",
+                        "price": 0,
+                        "price_type": "fixed"
+                    }
+                ],
+                "id": "",
+                "image_url": "",
+                "metas": [
+                    {
+                        "key": "",
+                        "type": "radio",
+                        "value": "",
+                        "values": [
+                            {
+                                "language": "",
+                                "value": ""
+                            }
+                        ]
+                    }
+                ],
+                "type": "cash"
+            }
+        ]
+    }
+}

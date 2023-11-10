@@ -1,0 +1,42 @@
+{
+  "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/payments",
+  "code": 200,
+  "body": {
+    "current_page": 0,
+    "current_page_items": 0,
+    "number_of_pages": 0,
+    "number_of_items": 0,
+    "payments": [
+      {
+        "id": "",
+        "code": "",
+        "image_url": "",
+        "type": "cash",
+        "active_yn": false,
+        "descriptions": [
+          {
+            "language_id": "",
+            "name": "",
+            "description": "",
+            "price": 0,
+            "price_type": "fixed",
+            "free_from": 0
+          }
+        ],
+        "metas": [
+          {
+            "key": "",
+            "type": "radio",
+            "value": "",
+            "values": [
+              {
+                "language": "",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

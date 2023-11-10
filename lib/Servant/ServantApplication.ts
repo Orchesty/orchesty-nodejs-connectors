@@ -97,6 +97,13 @@ export function getOrderStatuses(): IChoice[] {
     return [];
 }
 
+export function getPayments(): IChoice[] {
+    return [{
+        id: 'DOB',
+        title: 'Dobírka',
+    }];
+}
+
 export interface IChoice {
     id: string;
     title: string;

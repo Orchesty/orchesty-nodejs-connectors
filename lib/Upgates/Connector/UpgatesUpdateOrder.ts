@@ -41,19 +41,19 @@ export interface IInput {
 }
 
 interface IUpdateOrders {
-    send_emails_yn: boolean;
     orders: IUpdate[];
+    send_emails_yn?: boolean;
 }
 
 interface IUpdate {
     order_number: string;
-    status: string;
-    status_id: number;
-    paid_date: Date;
-    tracking_code: string;
-    resolved_yn: boolean;
-    internal_note: string;
-    metas: Record<string, string>[];
+    status?: string;
+    status_id?: number;
+    paid_date?: Date;
+    tracking_code?: string;
+    resolved_yn?: boolean;
+    internal_note?: string;
+    metas?: Record<string, string>[];
 }
 
 interface IResponseJson {
