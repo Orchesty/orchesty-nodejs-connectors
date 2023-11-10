@@ -1,0 +1,59 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "current_page": 0,
+        "current_page_items": 0,
+        "number_of_items": 0,
+        "number_of_pages": 0,
+        "shipments": [
+            {
+                "active_yn": false,
+                "affiliates_types": [
+                    "balikovna",
+                    "balikobox",
+                    "naPostu",
+                    "dpdBox",
+                    "pickupPoint",
+                    "parcelBox",
+                    "parcelShop",
+                    "wedoBox",
+                    "wedoPoint",
+                    "zasilkovna",
+                    "ulozenka",
+                    "depo",
+                    "custom"
+                ],
+                "code": "",
+                "descriptions": [
+                    {
+                        "description": "",
+                        "free_from": 0,
+                        "language_id": "",
+                        "name": "",
+                        "price": 0
+                    }
+                ],
+                "id": "",
+                "image_url": "",
+                "internal_note": "",
+                "metas": [
+                    {
+                        "key": "",
+                        "type": "radio",
+                        "value": "",
+                        "values": [
+                            {
+                                "language": "",
+                                "value": ""
+                            }
+                        ]
+                    }
+                ],
+                "tracking_url": "",
+                "type": "custom"
+            }
+        ]
+    }
+}

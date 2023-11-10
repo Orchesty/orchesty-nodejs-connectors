@@ -1,0 +1,58 @@
+{
+  "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/shipments",
+  "code": 200,
+  "body": {
+    "current_page": 0,
+    "current_page_items": 0,
+    "number_of_pages": 0,
+    "number_of_items": 0,
+    "shipments": [
+      {
+        "id": "",
+        "code": "",
+        "image_url": "",
+        "type": "custom",
+        "active_yn": false,
+        "affiliates_types": [
+          "balikovna",
+          "balikobox",
+          "naPostu",
+          "dpdBox",
+          "pickupPoint",
+          "parcelBox",
+          "parcelShop",
+          "wedoBox",
+          "wedoPoint",
+          "zasilkovna",
+          "ulozenka",
+          "depo",
+          "custom"
+        ],
+        "tracking_url": "",
+        "internal_note": "",
+        "descriptions": [
+          {
+            "language_id": "",
+            "name": "",
+            "description": "",
+            "price": 0,
+            "free_from": 0
+          }
+        ],
+        "metas": [
+          {
+            "key": "",
+            "type": "radio",
+            "value": "",
+            "values": [
+              {
+                "language": "",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
