@@ -104,6 +104,17 @@ export function getPayments(): IChoice[] {
     }];
 }
 
+export function getWarehouses(): IChoice[] {
+    return [
+        { id: 'HU2', title: 'Humpolec - Lnářská' },
+        { id: 'PE2', title: 'Humpolec - Pelhřimovská' },
+        { id: 'BR2', title: 'Brunka' },
+        { id: 'SV2', title: 'Svémyslice' },
+        { id: 'PH2', title: 'Praha' },
+        { id: 'HU2', title: 'Humpolec' },
+    ];
+}
+
 export interface IChoice {
     id: string;
     title: string;
