@@ -1,8 +1,10 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import AuthenticaApplication, { NAME as AUTHENTICA } from '../../lib/Authentica/AuthenticaApplication';
 import AuthenticaGetStock from '../../lib/Authentica/Batch/AuthenticaGetStock';
+import AuthenticaGetStockAvailable from '../../lib/Authentica/Batch/AuthenticaGetStockAvailable';
 import AuthenticaGetOrderStatus from '../../lib/Authentica/Connector/AuthenticaGetOrderStatus';
 import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/AuthenticaGetShippingMethods';
 import AuthenticaPutOrders from '../../lib/Authentica/Connector/AuthenticaPutOrders';
@@ -24,6 +26,23 @@ export function mock(): ApplicationInstall {
                 [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
             },
         },
+    );
+}
+
+export async function regiterApiKey(): Promise<void> {
+    const redis = container.get(Redis);
+    await redis.remove('authentica_cache_key');
+    await redis.set(
+        'authentica_cache_key',
+        JSON.stringify({
+            expiration: 1759965308,
+            /* eslint-disable @typescript-eslint/naming-convention */
+            access_token: 'testAccessToken',
+            refresh_token: 'testRefreshToken',
+            refresh_token_expiration: 1759965308,
+            /* eslint-enable @typescript-eslint/naming-convention */
+        }),
+        4,
     );
 }
 
@@ -60,4 +79,10 @@ export function init(): void {
         .setDb(db)
         .setApplication(authenticaApplication);
     container.setBatch(authenticaGetStock);
+
+    const authenticaGetStockAvailable = new AuthenticaGetStockAvailable()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(authenticaApplication);
+    container.setBatch(authenticaGetStockAvailable);
 }
