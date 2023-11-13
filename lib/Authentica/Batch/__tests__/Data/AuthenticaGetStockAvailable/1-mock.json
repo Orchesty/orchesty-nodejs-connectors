@@ -1,0 +1,20 @@
+{
+    "http": "GET https://app.authentica.cz/api/applinth/stock/available?page=2&limit=100",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "sku": "02-006",
+                "inStock": 3,
+                "productId": "2"
+            }
+        ],
+        "links": {
+            "first": "https://app.authentica.cz/api/applinth/stock/available?page=1&limit=100",
+            "last": "https://app.authentica.cz/api/applinth/stock/available?page=2&limit=100"
+        },
+        "meta": {
+            "totalPages": 2
+        }
+    }
+}

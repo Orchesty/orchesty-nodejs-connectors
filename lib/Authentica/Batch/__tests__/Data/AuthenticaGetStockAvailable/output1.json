@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "cursor": "2"
+    },
+    "data": [
+        {
+            "body": "{\"sku\":\"02-006\",\"inStock\":3,\"productId\":\"2\"}",
+            "headers": {}
+        }
+    ]
+}

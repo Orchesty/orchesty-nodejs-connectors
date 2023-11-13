@@ -1,26 +1,22 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { init, mock, regiterApiKey } from '../../../../test/Implementation/authentica';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as AUTHENTICA_GET_STOCK } from '../AuthenticaGetStock';
+import { NAME } from '../AuthenticaGetStockAvailable';
 
 let tester: NodeTester;
 
-describe('Tests for AuthenticaGetStock', () => {
+describe('Test AuthenticaGetStockAvailable', () => {
     beforeAll(() => {
-        init();
         tester = new NodeTester(container, __filename);
+        init();
     });
 
     beforeEach(async () => {
-        await regiterApiKey();
         mock();
+        await regiterApiKey();
     });
 
-    it('process - ok', async () => {
-        await tester.testBatch(AUTHENTICA_GET_STOCK);
-    });
-
-    it('process - nok', async () => {
-        await tester.testBatch(AUTHENTICA_GET_STOCK, 'nok');
+    it('process', async () => {
+        await tester.testBatch(NAME);
     });
 });

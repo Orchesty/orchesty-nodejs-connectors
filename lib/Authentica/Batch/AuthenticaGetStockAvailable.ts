@@ -1,0 +1,59 @@
+import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
+import { StatusCodes } from 'http-status-codes';
+
+export const NAME = 'authentica-get-stock-available';
+
+export default class AuthenticaGetStockAvailable extends ABatchNode {
+
+    public getName(): string {
+        return NAME;
+    }
+
+    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+        const page = dto.getBatchCursor('1');
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            appInstall,
+            HttpMethods.GET,
+            `stock/available?page=${page}&limit=100`,
+        );
+        const resp = await this.getSender().send<IResponse>(req, [200]);
+
+        if (resp.getResponseCode() === StatusCodes.NO_CONTENT) {
+            dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, 'Empty body!');
+            return dto;
+        }
+
+        const response = resp.getJsonBody();
+
+        this.setItemsListToDto(dto, response.data ?? []);
+
+        if (Number(page) < response.meta.totalPages) {
+            dto.setBatchCursor((Number(page) + 1).toString());
+        }
+
+        return dto;
+    }
+
+    protected setItemsListToDto(dto: BatchProcessDto, responseBody: IOutput[]): void {
+        dto.setItemList(responseBody);
+    }
+
+}
+
+interface IResponse {
+    data: IOutput[];
+    meta: {
+        totalPages: number;
+    };
+}
+
+export interface IOutput {
+    sku: string;
+    productId: string;
+    inStock: number;
+}
