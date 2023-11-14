@@ -34,6 +34,7 @@ export default abstract class ASqlNode extends ANode {
             if (e instanceof ConnectionError) {
                 logger.error(e.message, dto, false, e);
                 switch (e.message) {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
                     case SqlErrorEnum.TOO_MANY_CONNECTIONS:
                         throw new OnRepeatException(60, 10, e.message);
                     default:

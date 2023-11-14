@@ -183,12 +183,16 @@ export interface IOrder {
         }[];
     };
     shipment: {
+        id: number;
+        code: string;
         name: string;
         price: string;
         vat: string;
         affiliate_id: string;
     };
     payment: {
+        id: number;
+        code: string;
         name: string;
         price: string;
         vat: string;

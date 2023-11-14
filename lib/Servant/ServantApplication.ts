@@ -15,6 +15,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const NAME = 'servant';
 export const BASE_URL = 'baseUrl';
+export const COD_PAYMENT = 'DOB';
 
 export default class ServantApplication extends ABasicApplication {
 
@@ -99,7 +100,7 @@ export function getOrderStatuses(): IChoice[] {
 
 export function getPayments(): IChoice[] {
     return [{
-        id: 'DOB',
+        id: COD_PAYMENT,
         title: 'Dobírka',
     }];
 }
