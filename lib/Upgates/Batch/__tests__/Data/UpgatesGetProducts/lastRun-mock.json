@@ -1,5 +1,5 @@
 {
-    "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/products?page=0&last_update_time_from=2022-09-22T08:21:27.000Z",
+    "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/products?page=1&last_update_time_from=2022-09-22T08:21:27",
     "code": 200,
     "body": {
         "current_page": 0,

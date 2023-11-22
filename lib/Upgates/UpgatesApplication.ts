@@ -82,7 +82,7 @@ export default class UpgatesApplication extends ABasicApplication {
     }
 
     public getIsoDateFromDate(date?: string): string {
-        return date ? new Date(date).toISOString() : '';
+        return date ? new Date(date).toISOString().split('.')[0] : '';
     }
 
     public getWebhookSubscriptions(): WebhookSubscription[] {

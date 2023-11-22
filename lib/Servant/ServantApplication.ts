@@ -79,23 +79,17 @@ export default class ServantApplication extends ABasicApplication {
 
 }
 
-export function getShippingMethods(): IChoice[] {
-    return [
-        { id: 'GLS', title: 'GLS' },
-        { id: 'CP', title: 'Česká Pošta' },
-        { id: 'FOFR', title: 'FOFR' },
-        { id: 'TOPT', title: 'TOPTRANS' },
-        { id: 'GEIS', title: 'Geis' },
-        { id: 'ZAS', title: 'Zásilkovna' },
-        { id: 'DPD', title: 'DPD' },
-        { id: 'IND', title: 'Individuální doprava' },
-        { id: 'OSB', title: 'Osobní odběr' },
-        { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
-    ];
-}
-
 export function getOrderStatuses(): IChoice[] {
-    return [];
+    return [
+        { id: 'entered', title: 'Vytvořeno' },
+        { id: 'packaged', title: 'Zabaleno' },
+        { id: 'loaded', title: 'Naloženo' },
+        { id: 'dispatch', title: 'Odesláno' },
+        { id: 'transportEntered', title: 'Předány informace dopravci' },
+        { id: 'transportPicked', title: 'Předáno dopravci' },
+        { id: 'transportCarrier', title: 'V přepravě' },
+        { id: 'transportDelivered', title: 'Doručeno' },
+    ];
 }
 
 export function getPayments(): IChoice[] {

@@ -24,7 +24,9 @@ export interface IOutput {
     item: IItem;
     count: number;
     group: string;
-    eans: IEan[];
+    eans: {
+        items: IEan[];
+    };
     movement: Date;
 }
 

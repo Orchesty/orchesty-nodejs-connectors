@@ -19,7 +19,7 @@ export default class UpgatesGetProducts extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
         const { from, productId, productIds } = dto.getJsonData();
-        const pageNumber = dto.getBatchCursor('0');
+        const pageNumber = dto.getBatchCursor('1');
 
         let url = LIST_PAGE_ENDPOINT;
 
