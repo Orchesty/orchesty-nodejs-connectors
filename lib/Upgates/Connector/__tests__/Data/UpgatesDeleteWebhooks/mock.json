@@ -1,20 +1,14 @@
 {
-  "http": "DELETE https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/webhooks?ids=1",
-  "code": 200,
-  "body": {
-    "webhooks": [
-      {
-        "id": "1",
-        "deleted_yn": false,
-        "messages": [
-          {
-            "object": "",
-            "property": "",
-            "message": ""
-          }
-        ]
-      }
+    "http": "DELETE https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/webhooks?ids=1",
+    "code": 200,
+    "body": [
+        {
+            "id": "1",
+            "deleted": false,
+            "messages": [
+                "message"
+            ]
+        }
     ]
-  }
 }
 

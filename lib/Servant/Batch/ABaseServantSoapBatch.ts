@@ -2,6 +2,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import * as soap from 'soap';
+import { log } from '../Connector/ABaseServantSoapConnector';
 import ServantApplication from '../ServantApplication';
 
 export default abstract class ABaseSoapBatch extends ABatchNode {
@@ -21,25 +22,36 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
             const lastRun = await appInstall.getNonEncryptedSettings()[lastRunKey] ?? new Date(0).toISOString();
             body = {
                 ...body,
-                from: lastRun,
-                to: new Date().toISOString(),
+                interval: {
+                    from: lastRun,
+                    to: new Date().toISOString(),
+                },
             };
         }
 
         const url = app.getBaseUrl(appInstall);
 
+        let resolve: CallableFunction;
+        let reject: CallableFunction;
+        const promise = new Promise((res, rej) => {
+            resolve = res;
+            reject = rej;
+        });
+
         soap.createClient(url, (err, client) => {
             if (err) {
-                throw new OnRepeatException(60, 10, (err as Error).message);
+                reject(new OnRepeatException(60, 10, (err as Error).message));
             } else {
                 // eslint-disable-next-line @typescript-eslint/dot-notation
                 client[methodName]({
                     ...app.prepareArgs(appInstall),
                     ...body,
-                }, async (er: unknown, result: IResult & T): Promise<BatchProcessDto> => {
+                }, async (er: unknown, res: IResult & T): Promise<void> => {
                     if (er) {
-                        throw new OnRepeatException(60, 10, (err as Error).message);
+                        reject(new OnRepeatException(60, 10, (er as Error).message));
                     }
+
+                    const data = log(dto, res, resultKey);
 
                     if (lastRunKey) {
                         appInstall.addNonEncryptedSettings({
@@ -48,12 +60,12 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
                         await this.getDbClient().getApplicationRepository().update(appInstall);
                     }
 
-                    return dto.setItemList(result[resultKey as unknown as number] as T);
+                    resolve(dto.setItemList(data ?? []));
                 });
             }
         });
 
-        return dto;
+        return await promise as BatchProcessDto<T>;
     }
 
 }

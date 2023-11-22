@@ -1,8 +1,29 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import * as soap from 'soap';
 import ServantApplication from '../ServantApplication';
+
+export function log<T>(dto: BatchProcessDto | ProcessDto, res: IResult & T, resultKey: string): T {
+    const data = (res as never)[resultKey] as T;
+    const { result } = res;
+
+    if (result.resultCode === 1 || result.resultCode === 2) {
+        logger.error(
+            `Request process failed. Message: [${dto.getHeader(result.resultString) ?? ''}]`,
+            dto,
+        );
+    } else {
+        logger.info(
+            `Request successfully processed. Message: [${JSON.stringify(data) ?? ''}]`,
+            dto,
+        );
+    }
+
+    return data;
+}
 
 export default abstract class ABaseServantSoapConnector extends AConnector {
 
@@ -11,31 +32,41 @@ export default abstract class ABaseServantSoapConnector extends AConnector {
         methodName: string,
         resultKey: string,
         args: object | null,
+        forForm = false,
     ): Promise<ProcessDto<T>> {
         const app = this.getApplication<ServantApplication>();
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, forForm ? null : true);
 
         const url = app.getBaseUrl(appInstall);
 
+        let resolve: CallableFunction;
+        let reject: CallableFunction;
+        const promise = new Promise((res, rej) => {
+            resolve = res;
+            reject = rej;
+        });
+
         soap.createClient(url, (err, client) => {
             if (err) {
-                throw new OnRepeatException(60, 10, (err as Error).message);
+                reject(new OnRepeatException(60, 10, (err as Error).message));
             } else {
                 // eslint-disable-next-line @typescript-eslint/dot-notation
                 client[methodName]({
                     ...app.prepareArgs(appInstall),
                     ...args,
-                }, (er: unknown, result: IResult & T): ProcessDto => {
+                }, (er: unknown, res: IResult & T): void => {
                     if (er) {
-                        throw new OnRepeatException(60, 10, (err as Error).message);
+                        reject(new OnRepeatException(60, 10, (er as Error).message));
                     }
 
-                    return dto.setNewJsonData<T>((result as never)[resultKey] as T);
+                    const data = log(dto, res, resultKey);
+
+                    resolve(dto.setNewJsonData<T>(data));
                 });
             }
         });
 
-        return dto as ProcessDto<T>;
+        return await promise as ProcessDto<T>;
     }
 
 }
