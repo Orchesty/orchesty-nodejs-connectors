@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.78",
+    "version": "3.0.79",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -56,7 +56,7 @@
         "@types/debug": "^4.1.12",
         "@types/jest": "^29.5.10",
         "@types/luxon": "^3.3.5",
-        "@types/node": "^20.9.4",
+        "@types/node": "^20.10.0",
         "@types/nodemailer": "^6.4.14",
         "@types/oracledb": "^6.0.4",
         "@types/pg": "^8.10.9",

@@ -169,7 +169,7 @@ interface IProductVariant {
     stock_position: string;
     availability: string;
     availability_type: AvailabilityTypeEnum;
-    weight: string;
+    weight: number;
     image: string;
     prices: IProductPrice[];
     parameters: IProductParameters[];

@@ -27,7 +27,9 @@ export interface IInput {
 
 export interface IImportProduct {
     id: IImportItemId;
-    eans: IImportProductEan[];
+    eans: {
+        items: IImportProductEan[];
+    };
     activities?: IImportProductActivity[];
     details?: IImportProductItemDetails;
 }
@@ -72,7 +74,7 @@ interface IImportProductActivity {
 }
 
 export interface IImportItemIdDetails {
-    expiration: Date;
+    expiration: string;
     batch: string;
 }
 

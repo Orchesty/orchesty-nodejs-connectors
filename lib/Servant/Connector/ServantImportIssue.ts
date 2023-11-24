@@ -31,7 +31,9 @@ export interface IImportIssue {
     partner: IImportPartner;
     details: IImportDetails;
     delivery: IImportDelivery;
-    items: IImportItem[];
+    items: {
+        items: IImportItem[];
+    };
     // eslint-disable-next-line @typescript-eslint/naming-convention
     Activities: IImportActivity[];
 }
@@ -65,12 +67,12 @@ interface IImportDetails {
 }
 
 interface IImportDelivery {
-    dispatch: Date;
-    delivery: Date;
+    dispatch: string;
+    delivery: string;
     leaveCustomsArea: boolean;
     currency: string;
     insurancePrice: number;
-    paymentMethod: string;
+    paymantMethod: string;
     price: number;
     variableSymbol: string;
 }
