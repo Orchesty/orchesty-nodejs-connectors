@@ -110,6 +110,21 @@ export function getWarehouses(): IChoice[] {
     ];
 }
 
+export function getShippingMethods(): IChoice[] {
+    return [
+        { id: 'GLS', title: 'GLS' },
+        { id: 'CP', title: 'Česká Pošta' },
+        { id: 'FOFR', title: 'FOFR' },
+        { id: 'TOPT', title: 'TOPTRANS' },
+        { id: 'GEIS', title: 'Geis' },
+        { id: 'ZAS', title: 'Zásilkovna' },
+        { id: 'DPD', title: 'DPD' },
+        { id: 'IND', title: 'Individuální doprava' },
+        { id: 'OSB', title: 'Osobní odběr' },
+        { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
+    ];
+}
+
 export interface IChoice {
     id: string;
     title: string;

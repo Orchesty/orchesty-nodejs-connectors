@@ -100,7 +100,7 @@ export interface IProduct {
     admin_url: string;
 }
 
-interface IProductDescription {
+export interface IProductDescription {
     language: string;
     title: string;
     short_description: string;
