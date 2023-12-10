@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"customer\":0,\"id\":\"string\",\"payment_type\":\"cash_on_delivery\",\"transport\":0,\"external_id\":\"string\",\"ecommerce\":0,\"order_number\":\"string\",\"selling_order_history\":[0,{\"date\":\"2023-12-07T14:21:00.423Z\",\"id\":0,\"selling_order\":\"string\",\"type\":\"new\"}],\"selling_order_product\":[0,{\"id\":0,\"price\":0,\"quantity\":0,\"selling_order\":\"string\",\"product_batch\":0,\"warehouse\":0,\"reclamation_product\":[0,{\"id\":0,\"quantity\":0,\"reclamation\":\"string\",\"selling_order_product\":0}],\"return_product\":[0,{\"id\":0,\"quantity\":0,\"return\":\"string\",\"selling_order_product\":0}]}]}",
+            "headers": {}
+        }
+    ]
+}

@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import SupplyDoGetOrderHistory from '../../lib/SupplyDo/Batch/SupplyDoGetOrderHistory';
 import SupplyDoGetProductsStocks from '../../lib/SupplyDo/Batch/SupplyDoGetProductsStocks';
+import SupplyDoGetSellingOrders from '../../lib/SupplyDo/Batch/SupplyDoGetSellingOrders';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
 import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';
@@ -10,10 +11,7 @@ import SupplyDoApplication, {
     BEARER_TOKEN,
     NAME as SUPPLY_DO_APP,
 } from '../../lib/SupplyDo/SupplyDoApplication';
-import {
-    appInstall,
-    DEFAULT_USER,
-} from '../DataProvider';
+import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container } from '../TestAbstract';
 
 export function mock(): void {
@@ -34,4 +32,5 @@ export function init(): void {
     container.setNode(new SupplyDoGetOrderHistory(), supplyDoApplication);
     container.setNode(new SupplyDoGetCarriers(), supplyDoApplication);
     container.setNode(new SupplyDoUpdateEcommerce(), supplyDoApplication);
+    container.setNode(new SupplyDoGetSellingOrders(), supplyDoApplication);
 }
