@@ -7,6 +7,7 @@ import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarrier
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
 import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';
 import SupplyDoUpsertProduct from '../../lib/SupplyDo/Connector/SupplyDoUpsertProduct';
+import SupplyDoUpsertProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoUpsertProductBatchWarehouse';
 import SupplyDoApplication, {
     BASE_URL,
     BEARER_TOKEN,
@@ -35,4 +36,5 @@ export function init(): void {
     container.setNode(new SupplyDoUpdateEcommerce(), supplyDoApplication);
     container.setNode(new SupplyDoGetSellingOrders(), supplyDoApplication);
     container.setNode(new SupplyDoGetProducts(), supplyDoApplication);
+    container.setNode(new SupplyDoUpsertProductBatchWarehouse(), supplyDoApplication);
 }
