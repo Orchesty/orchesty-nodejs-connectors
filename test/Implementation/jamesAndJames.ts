@@ -1,5 +1,6 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import JamesAndJamesCreateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateOrder';
+import JamesAndJamesUpdateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateOrder';
 import JamesAndJamesApplication, {
     BASE_URL,
     BEARER_TOKEN,
@@ -21,4 +22,5 @@ export function init(): void {
     const jamesAndJamesApplication = new JamesAndJamesApplication();
 
     container.setNode(new JamesAndJamesCreateOrder(), jamesAndJamesApplication);
+    container.setNode(new JamesAndJamesUpdateOrder(), jamesAndJamesApplication);
 }

@@ -1,0 +1,84 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "allow_saturday": true,
+            "billing_contact": {
+                "address_line_1": "string",
+                "address_line_2": "string",
+                "city": "string",
+                "company": "string",
+                "country": "string",
+                "county": "string",
+                "email": "string",
+                "name": "string",
+                "phone": "string",
+                "postcode": "string"
+            },
+            "callback_url": "string",
+            "currency_code": "string",
+            "date_despatched": "2019-08-24T14:15:22Z",
+            "date_labelled": "2019-08-24T14:15:22Z",
+            "date_placed": "2019-08-24T14:15:22Z",
+            "days_before_bbe": 0,
+            "fulfilment_status": "string",
+            "id": 0,
+            "incoterm": "string",
+            "items": [
+                {
+                    "batch_id": 0,
+                    "customisation_data": "string",
+                    "days_before_bbe": 0,
+                    "id": 0,
+                    "line_reference": "string",
+                    "price": 0,
+                    "product_id": 0,
+                    "quantity": 0
+                }
+            ],
+            "no_signature": true,
+            "postage_cost": 0,
+            "postage_speed": 0,
+            "reference": "string",
+            "shipping_contact": {
+                "address_line_1": "string",
+                "address_line_2": "string",
+                "city": "string",
+                "company": "string",
+                "country": "string",
+                "county": "string",
+                "email": "string",
+                "name": "string",
+                "phone": "string",
+                "postcode": "string"
+            },
+            "shipping_info": {
+                "branded_tracking_link": "string",
+                "carrier_name": "string",
+                "service_name": "string",
+                "tracking_events": [
+                    {
+                        "date_created": "2019-08-24T14:15:22Z",
+                        "domain": "string",
+                        "status": "string",
+                        "title": "string"
+                    }
+                ],
+                "tracking_events_updated_at": "2019-08-24T14:15:22Z",
+                "tracking_links": null,
+                "tracking_numbers": [
+                    "string"
+                ]
+            },
+            "signed_for": true,
+            "status": "string",
+            "tissue_wrap": true,
+            "total_value": 0,
+            "tracked": true,
+            "type": "string",
+            "warehouse_id": 0
+        }
+    }
+}
