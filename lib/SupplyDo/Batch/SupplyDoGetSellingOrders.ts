@@ -54,12 +54,37 @@ export interface IResponse {
         external_id: string;
         ecommerce: number;
         order_number: string;
-        selling_order_history: number[];
-        selling_order_product: number[];
+        selling_order_history: {
+            date: string;
+            id: number;
+            selling_order: string;
+            type: string;
+        }[];
+        selling_order_product: {
+            id: number;
+            price: number;
+            quantity: number;
+            selling_order: string;
+            product_batch: number;
+            warehouse: number;
+            reclamation_product: {
+                id: number;
+                quantity: number;
+                reclamation: string;
+                selling_order_product: number;
+            }[];
+            return_product: {
+                id: number;
+                quantity: number;
+                return: string;
+                selling_order_product: number;
+            }[];
+        }[];
     }[];
     meta: {
         total_count: number;
         filter_count: number;
     };
 }
+
 /* eslint-enable @typescript-eslint/naming-convention */
