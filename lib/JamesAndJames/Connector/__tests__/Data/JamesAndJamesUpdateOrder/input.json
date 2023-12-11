@@ -1,0 +1,57 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "order": {
+            "reference": "string",
+            "date_placed": "2019-08-24T14:15:22Z",
+            "postage_speed": 3,
+            "allow_saturday": true,
+            "signed_for": true,
+            "no_signature": true,
+            "tracked": true,
+            "postage_cost": 0,
+            "total_value": 0,
+            "currency_code": "str",
+            "tissue_wrap": true,
+            "days_before_bbe": 0,
+            "callback_url": "http://example.com",
+            "warehouse_id": 0,
+            "shipping_contact": {
+                "name": "string",
+                "company": "string",
+                "email": "user@example.com",
+                "phone": "string",
+                "address_line_1": "string",
+                "address_line_2": "string",
+                "city": "string",
+                "county": "string",
+                "country": "string",
+                "postcode": "string"
+            },
+            "billing_contact": {
+                "name": "string",
+                "company": "string",
+                "email": "user@example.com",
+                "phone": "string",
+                "address_line_1": "string",
+                "address_line_2": "string",
+                "city": "string",
+                "county": "string",
+                "country": "string",
+                "postcode": "string"
+            },
+            "items": [
+                {
+                    "product_id": 0,
+                    "quantity": 1,
+                    "price": 0,
+                    "line_reference": "string",
+                    "days_before_bbe": 0,
+                    "customisation_data": "string"
+                }
+            ]
+        }
+    }
+}
