@@ -1,0 +1,83 @@
+{
+  "http": "POST https://controlport.co.uk/api/v2//order",
+  "code": 200,
+  "body": {
+    "data": {
+      "id": 0,
+      "type": "string",
+      "status": "string",
+      "fulfilment_status": "string",
+      "incoterm": "string",
+      "reference": "string",
+      "date_placed": "2019-08-24T14:15:22Z",
+      "postage_speed": 0,
+      "allow_saturday": true,
+      "signed_for": true,
+      "no_signature": true,
+      "tracked": true,
+      "postage_cost": 0,
+      "currency_code": "string",
+      "tissue_wrap": true,
+      "days_before_bbe": 0,
+      "callback_url": "string",
+      "warehouse_id": 0,
+      "shipping_contact": {
+        "name": "string",
+        "company": "string",
+        "email": "string",
+        "phone": "string",
+        "address_line_1": "string",
+        "address_line_2": "string",
+        "city": "string",
+        "county": "string",
+        "country": "string",
+        "postcode": "string"
+      },
+      "billing_contact": {
+        "name": "string",
+        "company": "string",
+        "email": "string",
+        "phone": "string",
+        "address_line_1": "string",
+        "address_line_2": "string",
+        "city": "string",
+        "county": "string",
+        "country": "string",
+        "postcode": "string"
+      },
+      "total_value": 0,
+      "date_labelled": "2019-08-24T14:15:22Z",
+      "date_despatched": "2019-08-24T14:15:22Z",
+      "shipping_info": {
+        "carrier_name": "string",
+        "service_name": "string",
+        "tracking_numbers": [
+          "string"
+        ],
+        "tracking_links": null,
+        "branded_tracking_link": "string",
+        "tracking_events": [
+          {
+            "title": "string",
+            "date_created": "2019-08-24T14:15:22Z",
+            "status": "string",
+            "domain": "string"
+          }
+        ],
+        "tracking_events_updated_at": "2019-08-24T14:15:22Z"
+      },
+      "items": [
+        {
+          "id": 0,
+          "product_id": 0,
+          "quantity": 0,
+          "price": 0,
+          "line_reference": "string",
+          "days_before_bbe": 0,
+          "customisation_data": "string",
+          "batch_id": 0
+        }
+      ]
+    }
+  }
+}
