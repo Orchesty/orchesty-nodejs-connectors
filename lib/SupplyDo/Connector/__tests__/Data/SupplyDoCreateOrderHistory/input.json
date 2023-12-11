@@ -1,0 +1,13 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "date": "2023-12-08T09:20:57.785Z",
+            "id": 0,
+            "selling_order": "string",
+            "type": "new"
+        }
+    ]
+}

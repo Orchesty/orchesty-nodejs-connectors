@@ -2,9 +2,9 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
-export const NAME = 'supply-do-upsert-product-batch-warehouse';
+export const NAME = 'supply-do-create-product-batch-warehouse';
 
-export default class SupplyDoUpsertProductBatchWarehouse extends AConnector {
+export default class SupplyDoCreateProductBatchWarehouse extends AConnector {
 
     public getName(): string {
         return NAME;

@@ -3,11 +3,12 @@ import SupplyDoGetOrderHistory from '../../lib/SupplyDo/Batch/SupplyDoGetOrderHi
 import SupplyDoGetProducts from '../../lib/SupplyDo/Batch/SupplyDoGetProducts';
 import SupplyDoGetProductsStocks from '../../lib/SupplyDo/Batch/SupplyDoGetProductsStocks';
 import SupplyDoGetSellingOrders from '../../lib/SupplyDo/Batch/SupplyDoGetSellingOrders';
+import SupplyDoCreateOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreateOrderHistory';
+import SupplyDoCreateProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoCreateProductBatchWarehouse';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
 import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';
 import SupplyDoUpsertProduct from '../../lib/SupplyDo/Connector/SupplyDoUpsertProduct';
-import SupplyDoUpsertProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoUpsertProductBatchWarehouse';
 import SupplyDoApplication, {
     BASE_URL,
     BEARER_TOKEN,
@@ -36,5 +37,6 @@ export function init(): void {
     container.setNode(new SupplyDoUpdateEcommerce(), supplyDoApplication);
     container.setNode(new SupplyDoGetSellingOrders(), supplyDoApplication);
     container.setNode(new SupplyDoGetProducts(), supplyDoApplication);
-    container.setNode(new SupplyDoUpsertProductBatchWarehouse(), supplyDoApplication);
+    container.setNode(new SupplyDoCreateProductBatchWarehouse(), supplyDoApplication);
+    container.setNode(new SupplyDoCreateOrderHistory(), supplyDoApplication);
 }
