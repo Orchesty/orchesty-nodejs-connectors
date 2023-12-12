@@ -1,0 +1,21 @@
+{
+  "http": "POST https://controlport.co.uk/api/v2//product",
+  "code": 200,
+  "body": {
+    "data": {
+      "id": 0,
+      "name": "string",
+      "reference": "string",
+      "price": 0,
+      "cost": 0,
+      "harmonised_code": "string",
+      "customs_description": "string",
+      "country_of_origin": "string",
+      "un_number": "string",
+      "url": "http://example.com",
+      "requires_bubblewrap": true,
+      "barcode": "string",
+      "is_retired": true
+    }
+  }
+}

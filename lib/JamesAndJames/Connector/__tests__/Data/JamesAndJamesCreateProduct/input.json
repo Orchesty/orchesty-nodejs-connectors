@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "product": {
+            "name": "string",
+            "reference": "string",
+            "price": 0,
+            "cost": 0,
+            "harmonised_code": "string",
+            "customs_description": "string",
+            "country_of_origin": "string",
+            "un_number": "string",
+            "url": "http://example.com",
+            "requires_bubblewrap": true,
+            "barcode": "string"
+        }
+    }
+}
