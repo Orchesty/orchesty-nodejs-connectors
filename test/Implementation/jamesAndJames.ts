@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import JamesAndJamesCreateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateOrder';
 import JamesAndJamesCreateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateProduct';
+import JamesAndJamesGetProductStock from '../../lib/JamesAndJames/Connector/JamesAndJamesGetProductStock';
 import JamesAndJamesUpdateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateOrder';
 import JamesAndJamesUpdateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateProduct';
 import JamesAndJamesApplication, {
@@ -27,4 +28,5 @@ export function init(): void {
     container.setNode(new JamesAndJamesUpdateOrder(), jamesAndJamesApplication);
     container.setNode(new JamesAndJamesCreateProduct(), jamesAndJamesApplication);
     container.setNode(new JamesAndJamesUpdateProduct(), jamesAndJamesApplication);
+    container.setNode(new JamesAndJamesGetProductStock(), jamesAndJamesApplication);
 }
