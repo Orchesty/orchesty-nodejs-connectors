@@ -1,0 +1,22 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "barcode": "string",
+            "cost": 0,
+            "country_of_origin": "string",
+            "customs_description": "string",
+            "harmonised_code": "string",
+            "id": 0,
+            "is_retired": true,
+            "name": "string",
+            "price": 0,
+            "reference": "string",
+            "requires_bubblewrap": true,
+            "un_number": "string",
+            "url": "http://example.com"
+        }
+    }
+}
