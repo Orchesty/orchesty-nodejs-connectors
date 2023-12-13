@@ -45,42 +45,57 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IResponse {
-    data: {
-        customer: number;
-        id: string;
-        payment_type: string;
-        transport: number;
-        external_id: string;
-        ecommerce: number;
-        order_number: string;
-        selling_order_history: {
-            date: string;
+
+export interface ISellingOrder {
+    customer: {
+        address: {
+            city: string;
+            country: string;
+            name: string;
+            street: string;
+            street_number: string;
+            zip_code: string;
+        };
+        email: string;
+        phone: string;
+        name: string;
+    };
+    id: string;
+    payment_type: string;
+    transport: number;
+    external_id: string;
+    ecommerce: number;
+    order_number: string;
+    selling_order_history: {
+        date: string;
+        id: number;
+        selling_order: string;
+        type: string;
+    }[];
+    selling_order_product: {
+        id: number;
+        price: number;
+        quantity: number;
+        selling_order: string;
+        product_batch: number;
+        warehouse: number;
+        reclamation_product: {
             id: number;
-            selling_order: string;
-            type: string;
-        }[];
-        selling_order_product: {
-            id: number;
-            price: number;
             quantity: number;
-            selling_order: string;
-            product_batch: number;
-            warehouse: number;
-            reclamation_product: {
-                id: number;
-                quantity: number;
-                reclamation: string;
-                selling_order_product: number;
-            }[];
-            return_product: {
-                id: number;
-                quantity: number;
-                return: string;
-                selling_order_product: number;
-            }[];
+            reclamation: string;
+            selling_order_product: number;
+        }[];
+        return_product: {
+            id: number;
+            quantity: number;
+            return: string;
+            selling_order_product: number;
         }[];
     }[];
+}
+
+export interface IResponse {
+    data: ISellingOrder[];
     meta: {
         total_count: number;
         filter_count: number;

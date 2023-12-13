@@ -1,7 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import JamesAndJamesGetProductStock from '../../lib/JamesAndJames/Batch/JamesAndJamesGetProductStock';
 import JamesAndJamesCreateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateOrder';
 import JamesAndJamesCreateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateProduct';
-import JamesAndJamesGetProductStock from '../../lib/JamesAndJames/Connector/JamesAndJamesGetProductStock';
 import JamesAndJamesUpdateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateOrder';
 import JamesAndJamesUpdateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateProduct';
 import JamesAndJamesApplication, {

@@ -47,95 +47,83 @@ export default class SupplyDoGetProducts extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface IResponse {
-    data: {
-        alt_ean: string;
-        color: string;
-        country_of_origin: string;
-        ean: string;
-        eta_days: number;
-        height_cm: string;
+export interface IProduct {
+    alt_ean: string;
+    color: string;
+    country_of_origin: string;
+    ean: string;
+    eta_days: number;
+    height_cm: string;
+    id: number;
+    length_cm: string;
+    name: string;
+    sd: boolean;
+    tags: string[] | null;
+    weight_grams: number;
+    width_cm: string;
+    ecommerce: number;
+    external_id: string;
+    image: string;
+    selling_price: {
+        amount: number;
+        currency: string;
         id: number;
-        length_cm: string;
+    };
+    supplier: {
+        currency: string;
+        email?: string | null;
+        eta_days?: number | null;
+        ico: string;
+        id: number;
+        main_assortment?: string | null;
+        moq?: number | null;
         name: string;
-        sd: boolean;
-        tags: string[] | null;
-        weight_grams: number;
-        width_cm: string;
-        ecommerce: number;
+        payment_type?: string | null;
+        phone?: string | null;
+        purchase_style: string;
+        tags?: string[] | null;
         external_id: string;
-        category?: string | null;
-        image: string;
-        selling_price: {
-            amount: number;
-            currency: string;
+        image?: string | null;
+        discount?: number | null;
+        company: {
             id: number;
-        };
-        supplier: {
-            currency: string;
-            email?: string | null;
-            eta_days?: number | null;
-            ico: string;
-            id: number;
-            main_assortment?: string | null;
-            moq?: number | null;
             name: string;
-            payment_type?: string | null;
-            phone?: string | null;
-            purchase_style: string;
-            tags?: string[] | null;
-            external_id: string;
-            image?: string | null;
-            discount?: number | null;
-            company: {
+            dic: string;
+            ico: string;
+            url: string;
+            vat_payer: boolean;
+            active: boolean;
+            negative: string;
+            normal: string;
+            positive: string;
+            ecommerces: {
+                company: number;
                 id: number;
                 name: string;
-                dic: string;
-                ico: string;
                 url: string;
-                vat_payer: boolean;
                 active: boolean;
-                negative: string;
-                normal: string;
-                positive: string;
-                ecommerces: {
-                    company: number;
+                installed: boolean;
+                type: string;
+                logistics_method?: unknown;
+                markets?: string[] | null;
+                order_count_monthly?: number | null;
+                order_quantity?: number | null;
+                return_percent?: number | null;
+                sku_quantity?: number | null;
+                special_order_packaging?: unknown;
+                warehouse_area?: number | null;
+                warehouse_quantity?: number | null;
+                countries: {
+                    ecommerce: number;
                     id: number;
-                    name: string;
-                    url: string;
-                    active: boolean;
-                    installed: boolean;
-                    type: string;
-                    logistics_method?: unknown;
-                    markets?: string[] | null;
-                    order_count_monthly?: number | null;
-                    order_quantity?: number | null;
-                    return_percent?: number | null;
-                    sku_quantity?: number | null;
-                    special_order_packaging?: unknown;
-                    warehouse_area?: number | null;
-                    warehouse_quantity?: number | null;
-                    countries: {
-                        ecommerce: number;
+                    country: {
                         id: number;
-                        country: {
-                            id: number;
-                            iso_code: string;
-                            ecommerces: number[];
-                        };
-                    }[];
+                        iso_code: string;
+                        ecommerces: number[];
+                    };
                 }[];
-                users: string[] | null;
-                address: {
-                    city: string;
-                    country: string;
-                    id: number;
-                    name: string;
-                    street: string;
-                    street_number: string;
-                    zip_code?: unknown;
-                };
-            };
+            }[];
+            users: string[] | null;
             address: {
                 city: string;
                 country: string;
@@ -146,18 +134,32 @@ export interface IResponse {
                 zip_code?: unknown;
             };
         };
-        purchase_price: {
-            amount: number;
-            currency: string;
+        address: {
+            city: string;
+            country: string;
             id: number;
-        };
-        brand: {
-            id: number;
-            image: string;
             name: string;
-            ecommerce: number;
+            street: string;
+            street_number: string;
+            zip_code?: unknown;
         };
-    }[];
+    };
+    purchase_price: {
+        amount: number;
+        currency: string;
+        id: number;
+    };
+    brand: {
+        id: number;
+        image: string;
+        name: string;
+        ecommerce: number;
+    };
+    category?: string | null;
+}
+
+export interface IResponse {
+    data: IProduct[];
     meta: {
         total_count: number;
         filter_count: number;

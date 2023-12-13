@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"warehouse_id\":0,\"product_id\":0,\"batches\":[{\"batch_id\":0,\"pickable_stock\":0,\"stored_stock\":0,\"incoming_stock\":0,\"moving_stock\":0}]}",
+            "headers": {}
+        }
+    ]
+}

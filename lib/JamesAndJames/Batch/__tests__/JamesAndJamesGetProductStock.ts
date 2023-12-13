@@ -13,6 +13,6 @@ describe('Tests for JamesAndJamesGetProductStock', () => {
     it('process - ok', async () => {
         init();
         mock();
-        await tester.testConnector(JAMES_AND_JAMES_GET_PRODUCT_STOCK);
+        await tester.testBatch(JAMES_AND_JAMES_GET_PRODUCT_STOCK);
     });
 });
