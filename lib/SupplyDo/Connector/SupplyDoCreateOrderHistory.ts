@@ -35,7 +35,7 @@ export type IInput = ISellingOrderHistory | ISellingOrderHistory[];
 export interface ISellingOrderHistory {
     date: string;
     id: number;
-    selling_order: string | unknown;
+    selling_order: string;
     type: OrderStatus;
 }
 

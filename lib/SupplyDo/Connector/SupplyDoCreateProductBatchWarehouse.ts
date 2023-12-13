@@ -32,7 +32,6 @@ interface IResponse {
 /* eslint-disable @typescript-eslint/naming-convention */
 export type IInput = IProductBatch | IProductBatch[];
 
-// Nevim co vse bude potreba pro min pruchod, pripadne se unknown nahradi
 export interface IProductBatch {
     id: number;
     product_batch: number | {
@@ -40,7 +39,7 @@ export interface IProductBatch {
         name: string;
         product: number | {
             alt_ean?: string;
-            brand?: number | unknown;
+            brand?: number;
             color?: string;
             country_of_origin?: string;
             ean: string;
@@ -50,7 +49,6 @@ export interface IProductBatch {
             length_cm?: number;
             name: string;
             purchase_price?: number | {
-                // cena * 100, takze 10,50 = 1050
                 amount: number;
                 currency: string;
             };
@@ -59,7 +57,7 @@ export interface IProductBatch {
                 amount: number;
                 currency: string;
             };
-            supplier?: number | unknown;
+            supplier?: number;
             tags?: unknown;
             weight_grams: number;
             width_cm?: number;
@@ -83,8 +81,8 @@ export interface IProductBatch {
                     negative?: number;
                     normal?: number;
                     positive?: number;
-                    ecommerces: number[] | unknown[];
-                    users: string[] | unknown[];
+                    ecommerces: number[];
+                    users: string[];
                 };
                 id: number;
                 name: string;
@@ -105,9 +103,9 @@ export interface IProductBatch {
                     country: number | {
                         id: number;
                         iso_code: string;
-                        ecommerces: number[] | unknown[];
+                        ecommerces: number[];
                     };
-                    ecommerce: number | unknown;
+                    ecommerce: number;
                     id: number;
                 }[] | number[];
             };
@@ -118,7 +116,7 @@ export interface IProductBatch {
         expiresAt: string;
         external_id: string;
         ecommerce: number;
-        product_batch_warehouse: number[] | unknown[];
+        product_batch_warehouse: number[];
         selling_order_product: {
             id: number;
             price: number | {
@@ -126,17 +124,17 @@ export interface IProductBatch {
                 currency: string;
             };
             quantity: number;
-            selling_order: string | unknown;
+            selling_order: string;
         }[] | number[];
-        product_batch: number | unknown;
-        warehouse: number | unknown;
-        reclamation_product: number[] | unknown[];
-        return_product: number[] | unknown[];
+        product_batch: number;
+        warehouse: number;
+        reclamation_product: number[];
+        return_product: number[];
     };
     quantity: number;
-    warehouse: number | unknown;
+    warehouse: number;
     updated_at: string;
-    ecommerce: number | unknown;
+    ecommerce: number;
     stocked_at: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */
