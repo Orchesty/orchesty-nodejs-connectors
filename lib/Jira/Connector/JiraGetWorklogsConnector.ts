@@ -26,7 +26,7 @@ export default class JiraGetWorklogsConnector extends AConnector {
             dto,
             appInstall,
             HttpMethods.POST,
-            `${JIRA_GET_WORKLOGS_ENDPOINT}`,
+            JIRA_GET_WORKLOGS_ENDPOINT,
             { ids },
         );
         const response = await this.getSender().send<IOutput>(request);
