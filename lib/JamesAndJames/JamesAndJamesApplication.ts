@@ -9,10 +9,11 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import crypto from 'crypto';
 
 export const NAME = 'james-and-james';
 export const BASE_URL = 'baseUrl';
-export const BEARER_TOKEN = 'bearerToken';
+export const API_KEY = 'api_key';
 
 export default class JamesAndJamesApplication extends ABasicApplication {
 
@@ -35,7 +36,7 @@ export default class JamesAndJamesApplication extends ABasicApplication {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.URL, BASE_URL, 'URL', undefined, true))
-            .addField(new Field(FieldType.TEXT, BEARER_TOKEN, 'Bearer token', undefined, true));
+            .addField(new Field(FieldType.TEXT, API_KEY, 'Api key', undefined, true));
 
         return new FormStack().addForm(form);
     }
@@ -44,7 +45,7 @@ export default class JamesAndJamesApplication extends ABasicApplication {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return super.isAuthorized(applicationInstall)
             && !!authorizationForm?.[BASE_URL]
-            && !!authorizationForm?.[BEARER_TOKEN];
+            && !!authorizationForm?.[API_KEY];
     }
 
     public getRequestDto(
@@ -72,8 +73,25 @@ export default class JamesAndJamesApplication extends ABasicApplication {
         return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BASE_URL];
     }
 
-    protected getBearerToken(applicationInstall: ApplicationInstall): string {
-        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BEARER_TOKEN];
+    protected getApiKey(applicationInstall: ApplicationInstall): string {
+        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY];
+    }
+
+    private getBearerToken(applicationInstall: ApplicationInstall): string {
+        const apiKey = this.getApiKey(applicationInstall);
+        const halfApiKey = apiKey.substring(0, 16);
+        const timestamp = Math.floor(Date.now() / 1000);
+        const securityHash = crypto.createHash('md5').update(`${timestamp}${apiKey}`).digest('hex');
+
+        /* eslint-disable @typescript-eslint/naming-convention */
+        const payload = {
+            half_api_key: halfApiKey,
+            message_timestamp: timestamp,
+            security_hash: securityHash,
+        };
+        /* eslint-enable @typescript-eslint/naming-convention */
+
+        return Buffer.from(JSON.stringify(payload)).toString('base64');
     }
 
 }
