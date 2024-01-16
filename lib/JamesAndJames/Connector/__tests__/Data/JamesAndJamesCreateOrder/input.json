@@ -3,56 +3,34 @@
         "user": "TestUser"
     },
     "data": {
-        "allow_preorder": false,
+        "orderId": "SP-323771",
         "order": {
-            "channel_account_id": 0,
-            "reference": "string",
-            "date_placed": "2019-08-24T14:15:22Z",
-            "postage_speed": 2,
-            "allow_saturday": false,
-            "signed_for": false,
-            "no_signature": false,
-            "tracked": false,
-            "postage_cost": 0,
-            "total_value": 0,
-            "currency_code": "str",
-            "tissue_wrap": true,
-            "days_before_bbe": 0,
-            "hold": false,
-            "callback_url": "http://example.com",
-            "warehouse_id": 0,
-            "shipping_contact": {
-                "name": "string",
-                "company": "string",
-                "email": "user@example.com",
-                "phone": "string",
-                "address_line_1": "string",
-                "address_line_2": "string",
-                "city": "string",
-                "county": "string",
-                "country": "string",
-                "postcode": "string"
-            },
+            "reference": "order3",
+            "channel_account_id": "51b9649f8b6296b2528ba9e49f2377d1",
+            "callback_url": "http://starting-point:8080/topologies/james-and-james-to-supply-do-orders/nodes/start/user/orchesty/run-by-name",
+            "warehouse_id": 200,
             "billing_contact": {
-                "name": "string",
-                "company": "string",
-                "email": "user@example.com",
-                "phone": "string",
-                "address_line_1": "string",
-                "address_line_2": "string",
-                "city": "string",
-                "county": "string",
-                "country": "string",
-                "postcode": "string"
+                "city": "Praha123",
+                "country": "CZ",
+                "postcode": null,
+                "address_line_1": "123 ulice"
+            },
+            "shipping_contact": {
+                "city": "Praha123",
+                "country": "CZ",
+                "postcode": null,
+                "address_line_1": "123 ulice"
             },
             "items": [
                 {
-                    "product_id": 0,
-                    "quantity": 1,
-                    "price": 0,
-                    "line_reference": "string",
-                    "days_before_bbe": 0,
-                    "customisation_data": "string"
+                    "product_id": 5,
+                    "price": 20,
+                    "quantity": 51
+                },
+                {
+                    "product_id": 132,
+                    "price": 273,
+                    "quantity": 32
                 }
             ]
         }
