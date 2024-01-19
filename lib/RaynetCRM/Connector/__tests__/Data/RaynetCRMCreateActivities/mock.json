@@ -1,0 +1,10 @@
+{
+    "http": "PUT https://app.raynet.cz/api/v2/task",
+    "code": 201,
+    "body": {
+        "success": true,
+        "data": {
+            "id": 5
+        }
+    }
+}
