@@ -14,8 +14,9 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const NAME = 'servant';
-export const BASE_URL = 'baseUrl';
 export const COD_PAYMENT = 'DOB';
+
+export const BASE_URL = 'https://www.webskladservant.cz/impl/SAPI/V5/?wsdl';
 
 export default class ServantApplication extends ABasicApplication {
 
@@ -37,7 +38,6 @@ export default class ServantApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-            .addField(new Field(FieldType.URL, BASE_URL, 'URL', undefined, true))
             .addField(new Field(FieldType.TEXT, USER, 'E-mail', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true));
 
@@ -47,7 +47,6 @@ export default class ServantApplication extends ABasicApplication {
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return super.isAuthorized(applicationInstall)
-            && !!authorizationForm?.[BASE_URL]
             && !!authorizationForm?.[USER]
             && !!authorizationForm?.[PASSWORD];
     }
@@ -73,8 +72,8 @@ export default class ServantApplication extends ABasicApplication {
         };
     }
 
-    public getBaseUrl(applicationInstall: ApplicationInstall): string {
-        return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BASE_URL];
+    public getBaseUrl(): string {
+        return BASE_URL;
     }
 
 }

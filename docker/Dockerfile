@@ -1,5 +1,3 @@
-FROM node:alpine
+FROM node:slim
 
 RUN npm i -g pnpm
-
-RUN corepack prepare pnpm@latest --activate

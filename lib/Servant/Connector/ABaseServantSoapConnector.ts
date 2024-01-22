@@ -56,7 +56,7 @@ export default abstract class ABaseServantSoapConnector extends AConnector {
         const app = this.getApplication<ServantApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto, forForm ? null : true);
 
-        const url = app.getBaseUrl(appInstall);
+        const url = app.getBaseUrl();
 
         let resolve: CallableFunction;
         let reject: CallableFunction;

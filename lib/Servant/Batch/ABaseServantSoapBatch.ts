@@ -29,7 +29,7 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
             };
         }
 
-        const url = app.getBaseUrl(appInstall);
+        const url = app.getBaseUrl();
 
         let resolve: CallableFunction;
         let reject: CallableFunction;
