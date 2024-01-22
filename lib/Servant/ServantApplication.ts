@@ -15,8 +15,20 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
 export const NAME = 'servant';
 export const COD_PAYMENT = 'DOB';
+export const WAREHOUSE_ID = 'warehouse_id';
 
 export const BASE_URL = 'https://www.webskladservant.cz/impl/SAPI/V5/?wsdl';
+
+export function getWarehouses(): IChoice[] {
+    return [
+        { id: 'HU2', title: 'Humpolec - Lnářská' },
+        { id: 'PE2', title: 'Humpolec - Pelhřimovská' },
+        { id: 'BR2', title: 'Brunka' },
+        { id: 'SV2', title: 'Svémyslice' },
+        { id: 'PH2', title: 'Praha' },
+        { id: 'HU2', title: 'Humpolec' },
+    ];
+}
 
 export default class ServantApplication extends ABasicApplication {
 
@@ -39,7 +51,11 @@ export default class ServantApplication extends ABasicApplication {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'E-mail', undefined, true))
-            .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true));
+            .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+            .addField(new Field(FieldType.SELECT_BOX, WAREHOUSE_ID, 'Warehouse ID', undefined)
+                .setChoices(getWarehouses().map((warehouse) => ({
+                    [warehouse.id]: warehouse.title,
+                }))));
 
         return new FormStack().addForm(form);
     }
@@ -48,7 +64,8 @@ export default class ServantApplication extends ABasicApplication {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
         return super.isAuthorized(applicationInstall)
             && !!authorizationForm?.[USER]
-            && !!authorizationForm?.[PASSWORD];
+            && !!authorizationForm?.[PASSWORD]
+            && !!authorizationForm?.[WAREHOUSE_ID];
     }
 
     public getRequestDto(
@@ -96,17 +113,6 @@ export function getPayments(): IChoice[] {
         id: COD_PAYMENT,
         title: 'Dobírka',
     }];
-}
-
-export function getWarehouses(): IChoice[] {
-    return [
-        { id: 'HU2', title: 'Humpolec - Lnářská' },
-        { id: 'PE2', title: 'Humpolec - Pelhřimovská' },
-        { id: 'BR2', title: 'Brunka' },
-        { id: 'SV2', title: 'Svémyslice' },
-        { id: 'PH2', title: 'Praha' },
-        { id: 'HU2', title: 'Humpolec' },
-    ];
 }
 
 export function getShippingMethods(): IChoice[] {
