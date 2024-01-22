@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"_entityName\":\"Event\",\"id\":1,\"title\":\"656565\",\"personal\":true,\"status\":\"SCHEDULED\",\"priority\":\"DEFAULT\",\"category\":null,\"activity\":null,\"company\":null,\"person\":null,\"lead\":null,\"project\":null,\"businessCase\":null,\"offer\":null,\"salesOrder\":null,\"scheduledFrom\":\"2024-01-17 15:00\",\"scheduledTill\":\"2024-01-17 16:00\",\"completed\":null,\"description\":\"<p>321321321</p>\",\"solution\":null,\"tags\":[],\"rowInfo.createdAt\":\"2024-01-16 14:52\",\"rowInfo.createdBy\":\"fila.r@hanaboso.com\",\"rowInfo.updatedAt\":null,\"rowInfo.updatedBy\":null,\"rowInfo.rowAccess\":null,\"rowInfo.rowState\":null,\"securityLevel\":{\"id\":1,\"name\":\"Sdílená\"},\"_version\":0,\"customFields\":{},\"participants\":[{\"owner\":true,\"role\":\"FROM\",\"name\":\"Richard Fíla\",\"person\":2,\"company\":null,\"lead\":null}],\"recurrence\":null,\"meetingPlace\":\"Česká republika\",\"companyAddress\":{\"city\":null,\"country\":null,\"province\":null,\"street\":null,\"zipCode\":null}}",
+            "headers": {}
+        }
+    ]
+}

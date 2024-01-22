@@ -15,12 +15,15 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
+export const INSTANCE_NAME = 'instanceName';
+export const NAME = 'raynet-crm';
+
 export default class RaynetCRMApplication extends ABasicApplication {
 
     private readonly baseUrl: string = 'https://app.raynet.cz/api/v2/';
 
     public getName(): string {
-        return 'raynet-crm';
+        return NAME;
     }
 
     public getPublicName(): string {
@@ -34,7 +37,8 @@ export default class RaynetCRMApplication extends ABasicApplication {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-            .addField(new Field(FieldType.PASSWORD, PASSWORD, 'ApiKey', undefined, true));
+            .addField(new Field(FieldType.PASSWORD, PASSWORD, 'ApiKey', undefined, true))
+            .addField(new Field(FieldType.TEXT, INSTANCE_NAME, 'Instance name', undefined, true));
 
         return new FormStack().addForm(form);
     }
@@ -51,12 +55,16 @@ export default class RaynetCRMApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`${this.baseUrl}${url}`, method, dto);
-        const user = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER];
-        const password = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
+        const settings = applicationInstall.getSettings();
+        const user = settings[CoreFormsEnum.AUTHORIZATION_FORM][USER];
+        const password = settings[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD];
+        const instanceName = settings[CoreFormsEnum.AUTHORIZATION_FORM][INSTANCE_NAME];
 
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${user}:${password}`)}`,
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            'X-Instance-Name': instanceName,
         });
 
         if (data) {
