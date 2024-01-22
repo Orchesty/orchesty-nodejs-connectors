@@ -4,6 +4,7 @@ import {
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RaynetCRMGetActivities from '../../lib/RaynetCRM/Batch/RaynetCRMGetActivities';
+import RaynetCRMUniversalActivityDetail from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalActivityDetail';
 import RaynetCRMApplication, {
     INSTANCE_NAME,
     NAME as SUPPLY_DO_APP,
@@ -25,4 +26,5 @@ export function init(): void {
     const raynetCRMApplication = new RaynetCRMApplication();
 
     container.setNode(new RaynetCRMGetActivities(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalActivityDetail(), raynetCRMApplication);
 }

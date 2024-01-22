@@ -1,0 +1,85 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "activity": null,
+            "businessCase": null,
+            "category": {
+                "id": 90,
+                "value": "Lékař"
+            },
+            "company": {
+                "id": 2,
+                "name": "Klient s.r.o."
+            },
+            "completed": null,
+            "customFields": {
+                "VIP_b91d1": false
+            },
+            "deadline": "2022-06-11 15:03",
+            "description": "Je potřeba být laskavý!",
+            "id": 89,
+            "lead": null,
+            "offer": null,
+            "owner": {
+                "fullName": "Petr Svetr",
+                "id": 2
+            },
+            "participants": [
+                {
+                    "company": 2,
+                    "id": 123,
+                    "lead": null,
+                    "name": "Martin Vosa",
+                    "owner": false,
+                    "person": 6,
+                    "role": null
+                },
+                {
+                    "company": 2,
+                    "id": 119,
+                    "lead": null,
+                    "name": "Petr Svetr",
+                    "owner": true,
+                    "person": 2,
+                    "role": "FROM"
+                }
+            ],
+            "person": {
+                "fullName": "Pavel Dobrý",
+                "id": 3
+            },
+            "personal": false,
+            "priority": "DEFAULT",
+            "project": null,
+            "recurrence": {
+                "count": 3,
+                "endDate": null,
+                "id": 5,
+                "interval": "WEEKLY",
+                "recurrenceDay": 4,
+                "startDate": "2022-03-05"
+            },
+            "rowInfo.createdAt": "2022-04-24 08:06",
+            "rowInfo.createdBy": "info@raynet.cz",
+            "rowInfo.rowAccess": null,
+            "rowInfo.rowState": null,
+            "rowInfo.updatedAt": "2022-05-17 10:46",
+            "rowInfo.updatedBy": "info@raynet.cz",
+            "salesOrder": null,
+            "scheduledFrom": "2022-06-11 15:00",
+            "scheduledTill": "2022-06-11 16:00",
+            "securityLevel": {
+                "id": 1,
+                "name": "Sdílená"
+            },
+            "solution": "Nakonec to dopadlo dobře.",
+            "status": "SCHEDULED",
+            "tags": [],
+            "title": "Navázat kontakt s klientem"
+        },
+        "success": "true"
+    }
+}
