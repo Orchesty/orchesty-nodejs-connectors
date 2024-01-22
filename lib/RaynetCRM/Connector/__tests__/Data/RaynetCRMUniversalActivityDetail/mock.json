@@ -1,0 +1,84 @@
+{
+  "http": "GET https://app.raynet.cz/api/v2/task/123",
+  "code": 200,
+  "body": {
+    "success": "true",
+    "data": {
+      "id": 89,
+      "title": "Navázat kontakt s klientem",
+      "category": {
+        "id": 90,
+        "value": "Lékař"
+      },
+      "priority": "DEFAULT",
+      "status": "SCHEDULED",
+      "personal": false,
+      "owner": {
+        "id": 2,
+        "fullName": "Petr Svetr"
+      },
+      "company": {
+        "id": 2,
+        "name": "Klient s.r.o."
+      },
+      "person": {
+        "id": 3,
+        "fullName": "Pavel Dobrý"
+      },
+      "lead": null,
+      "businessCase": null,
+      "offer": null,
+      "salesOrder": null,
+      "project": null,
+      "activity": null,
+      "scheduledFrom": "2022-06-11 15:00",
+      "scheduledTill": "2022-06-11 16:00",
+      "deadline": "2022-06-11 15:03",
+      "completed": null,
+      "description": "Je potřeba být laskavý!",
+      "solution": "Nakonec to dopadlo dobře.",
+      "tags": [ ],
+      "rowInfo.createdAt": "2022-04-24 08:06",
+      "rowInfo.createdBy": "info@raynet.cz",
+      "rowInfo.updatedAt": "2022-05-17 10:46",
+      "rowInfo.updatedBy": "info@raynet.cz",
+      "rowInfo.rowAccess": null,
+      "rowInfo.rowState": null,
+      "securityLevel": {
+        "id": 1,
+        "name": "Sdílená"
+      },
+      "customFields": {
+        "VIP_b91d1": false
+      },
+      "participants": [
+        {
+          "id": 123,
+          "owner": false,
+          "role": null,
+          "name": "Martin Vosa",
+          "person": 6,
+          "company": 2,
+          "lead": null
+        },
+        {
+          "id": 119,
+          "owner": true,
+          "role": "FROM",
+          "name": "Petr Svetr",
+          "person": 2,
+          "company": 2,
+          "lead": null
+        }
+      ],
+      "recurrence": {
+        "id": 5,
+        "count": 3,
+        "endDate": null,
+        "interval": "WEEKLY",
+        "recurrenceDay": 4,
+        "startDate": "2022-03-05"
+      }
+    }
+  }
+}

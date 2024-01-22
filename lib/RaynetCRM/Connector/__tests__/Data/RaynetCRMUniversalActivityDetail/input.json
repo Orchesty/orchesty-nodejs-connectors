@@ -1,0 +1,22 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "eventId": "62497f2c609d4b7184b9adf1e427fa55",
+        "createdAt": "2017-01-18T13:16:39.923+01:00",
+        "type": "record.created",
+        "author": "admin@raynet.cz",
+        "source": {
+            "name": "user",
+            "description": "browser"
+        },
+        "data": {
+            "entityName": "Task",
+            "entityId": 123,
+            "extIds": [
+                "1111"
+            ]
+        }
+    }
+}
