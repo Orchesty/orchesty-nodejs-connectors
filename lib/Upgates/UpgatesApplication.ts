@@ -64,13 +64,15 @@ export default class UpgatesApplication extends ABasicApplication {
     }
 
     public getDecoratedUrl(app: ApplicationInstall): string {
-        return app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
+        const url = app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
+
+        return url.replace('api/v2', '');
     }
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-            .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-            .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+            .addField(new Field(FieldType.TEXT, USER, 'Login', undefined, true))
+            .addField(new Field(FieldType.TEXT, PASSWORD, 'Klíč API', undefined, true))
             .addField(new Field(FieldType.URL, UPGATES_URL, 'Url', undefined, true));
 
         return new FormStack().addForm(form);

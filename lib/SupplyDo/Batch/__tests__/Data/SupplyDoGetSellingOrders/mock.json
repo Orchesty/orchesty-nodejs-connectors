@@ -1,5 +1,5 @@
 {
-    "http": "GET https://supply.do/items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*&fields[]=customer.address.*&filter[ecommerce][_eq]=TestUser&limit=1000&offset=0&meta=filter_count",
+    "http": "GET https://supply.do/items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*&fields[]=customer.address.*&filter[ecommerce][_eq]=TestUser&filter[date_updated][_gte]=2022-01-01T11:12:58.135Z&limit=1000&offset=0&meta=filter_count",
     "code": 200,
     "body": {
         "data": [

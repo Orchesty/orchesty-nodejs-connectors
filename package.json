@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.84",
+    "version": "3.0.85",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -76,7 +76,7 @@
         "soap": "^1.0.0",
         "sqlite3": "^5.1.4",
         "tedious": "^16.0.0",
-        "ts-jest": "^29.1.1",
+        "ts-jest": "^29.1.2",
         "ts-node": "^10.9.2",
         "typescript": "^5.3.3"
     },

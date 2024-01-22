@@ -14,8 +14,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        // TODO odkomentovat az bude filtr
-        // const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
+        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
         const page = Number(dto.getBatchCursor('0'));
 
         const ecommerce = dto.getUser();
@@ -27,8 +26,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
             + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
             + '&fields[]=customer.address.*'
             + `&filter[ecommerce][_eq]=${ecommerce}`
-            // TODO doplnit filtr
-            // + `&filter[updated_at][_gte]=${lastRun}`
+            + `&filter[date_updated][_gte]=${lastRun}`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);

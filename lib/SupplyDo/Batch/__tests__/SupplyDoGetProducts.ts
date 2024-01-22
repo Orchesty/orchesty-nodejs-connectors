@@ -1,4 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import { mockDate } from '../../../../.jest/testLifecycle';
 import { init, mock } from '../../../../test/Implementation/supplyDo';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as SUPPLY_DO_GET_PRODUCTS } from '../SupplyDoGetProducts';
@@ -13,6 +14,7 @@ describe('Tests for SupplyDoGetProducts', () => {
     it('process - ok', async () => {
         init();
         mock();
+        mockDate();
         await tester.testBatch(SUPPLY_DO_GET_PRODUCTS);
     });
 });
