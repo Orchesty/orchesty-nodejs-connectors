@@ -4,6 +4,10 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'raynet-crm-universal-activity-detail';
 
+export function getEntityType(entityName: string): string {
+    return `${entityName.charAt(0).toLowerCase()}${entityName.slice(1)}`;
+}
+
 export default class RaynetCRMUniversalActivityDetail extends AConnector {
 
     public getName(): string {
@@ -13,7 +17,7 @@ export default class RaynetCRMUniversalActivityDetail extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const data = dto.getJsonData();
         const { entityName, entityId } = data.data;
-        const entityType = `${entityName.charAt(0).toLowerCase()}${entityName.slice(1)}`;
+        const entityType = getEntityType(entityName);
 
         const req = await this.getApplication().getRequestDto(
             dto,
@@ -45,68 +49,70 @@ export interface IInput {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface IResponse {
+export interface IResponse {
     success: string;
-    data: {
-        id: number;
-        title: string;
-        completed: string;
-        campaignName: string;
-        source: string;
-        externalOverviewUrl: string;
-        externalThumbnailUrl: string;
-        _version: number;
-        stats: {
-            sent: string;
-            clicked: string;
-            opened: string;
-            unsubscribed: string;
-        };
-        category: {
-            id: number;
-            value: string;
-        };
-        priority: string;
-        status: string;
-        personal: boolean;
-        owner: {
-            id: number;
-            fullName: string;
-        };
-        company: {
-            id: number;
-            name: string;
-        };
-        scheduledFrom: string;
-        scheduledTill: string;
-        description: string;
-        solution: string;
-        tags: undefined[];
-        'rowInfo.createdAt': string;
-        'rowInfo.createdBy': string;
-        'rowInfo.updatedAt': string;
-        'rowInfo.updatedBy': string;
-        securityLevel: {
-            id: number;
-            name: string;
-        };
-        customFields: unknown;
-        participants: {
-            id: number;
-            owner: boolean;
-            name: string;
-            person: number;
-            company: number;
-        }[];
-        recurrence: {
-            id: number;
-            count: number;
-            interval: string;
-            recurrenceDay: number;
-            startDate: string;
-        };
-        deadline: string;
-        meetingPlace: string;
+    data: IActivityData;
+}
+
+export interface IActivityData {
+    id: number;
+    title: string;
+    completed: string;
+    campaignName: string;
+    source: string;
+    externalOverviewUrl: string;
+    externalThumbnailUrl: string;
+    _version: number;
+    stats: {
+        sent: string;
+        clicked: string;
+        opened: string;
+        unsubscribed: string;
     };
+    category: {
+        id: number;
+        value: string;
+    };
+    priority: string;
+    status: string;
+    personal: boolean;
+    owner: {
+        id: number;
+        fullName: string;
+    };
+    company: {
+        id: number;
+        name: string;
+    };
+    scheduledFrom: string;
+    scheduledTill: string;
+    description: string;
+    solution: string;
+    tags: undefined[];
+    'rowInfo.createdAt': string;
+    'rowInfo.createdBy': string;
+    'rowInfo.updatedAt': string;
+    'rowInfo.updatedBy': string;
+    securityLevel: {
+        id: number;
+        name: string;
+    };
+    customFields: unknown;
+    participants: {
+        id: number;
+        owner: boolean;
+        name: string;
+        person: number;
+        company: number;
+    }[];
+    recurrence: {
+        id: number;
+        count: number;
+        interval: string;
+        recurrenceDay: number;
+        startDate: string;
+    };
+    deadline: string;
+    meetingPlace: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */
