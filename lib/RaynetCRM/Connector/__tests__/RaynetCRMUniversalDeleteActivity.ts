@@ -1,11 +1,11 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { init, mock } from '../../../../test/Implementation/raynetCRM';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as RAYNET_CRM_UNIVERSAL_CREATE_ACTIVITIES } from '../RaynetCRMUniversalCreateActivities';
+import { NAME as RAYNET_CRM_UNIVERSAL_DELETE_ACTIVITY } from '../RaynetCRMUniversalDeleteActivity';
 
 let tester: NodeTester;
 
-describe('Tests for RaynetCRMUniversalCreateActivities', () => {
+describe('Tests for RaynetCRMUniversalDeleteActivity', () => {
     beforeAll(() => {
         tester = new NodeTester(container, __filename);
     });
@@ -13,6 +13,6 @@ describe('Tests for RaynetCRMUniversalCreateActivities', () => {
     it('process - ok', async () => {
         init();
         mock();
-        await tester.testConnector(RAYNET_CRM_UNIVERSAL_CREATE_ACTIVITIES);
+        await tester.testConnector(RAYNET_CRM_UNIVERSAL_DELETE_ACTIVITY);
     });
 });

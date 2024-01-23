@@ -5,8 +5,9 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RaynetCRMGetActivities from '../../lib/RaynetCRM/Batch/RaynetCRMGetActivities';
 import RaynetCRMUniversalActivityDetail from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalActivityDetail';
-import RaynetCRMUniversalCreateActivities from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalCreateActivities';
-import RaynetCRMUniversalUpdateActivities from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalUpdateActivities';
+import RaynetCRMUniversalCreateActivity from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalCreateActivity';
+import RaynetCRMUniversalDeleteActivity from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalDeleteActivity';
+import RaynetCRMUniversalUpdateActivity from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalUpdateActivity';
 import RaynetCRMApplication, {
     INSTANCE_NAME,
     NAME as SUPPLY_DO_APP,
@@ -29,6 +30,7 @@ export function init(): void {
 
     container.setNode(new RaynetCRMGetActivities(), raynetCRMApplication);
     container.setNode(new RaynetCRMUniversalActivityDetail(), raynetCRMApplication);
-    container.setNode(new RaynetCRMUniversalCreateActivities(), raynetCRMApplication);
-    container.setNode(new RaynetCRMUniversalUpdateActivities(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalCreateActivity(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalUpdateActivity(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalDeleteActivity(), raynetCRMApplication);
 }
