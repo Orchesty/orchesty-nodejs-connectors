@@ -3,9 +3,9 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { getEntityType, IActivityData } from './RaynetCRMUniversalActivityDetail';
 
-export const NAME = 'raynet-crm-universal-create-activities';
+export const NAME = 'raynet-crm-universal-create-activity';
 
-export default class RaynetCRMUniversalCreateActivities extends AConnector {
+export default class RaynetCRMUniversalCreateActivity extends AConnector {
 
     public getName(): string {
         return NAME;

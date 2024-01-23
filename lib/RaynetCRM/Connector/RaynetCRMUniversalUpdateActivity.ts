@@ -2,11 +2,11 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { getEntityType } from './RaynetCRMUniversalActivityDetail';
-import { IInput } from './RaynetCRMUniversalCreateActivities';
+import { IInput } from './RaynetCRMUniversalCreateActivity';
 
-export const NAME = 'raynet-crm-universal-update-activities';
+export const NAME = 'raynet-crm-universal-update-activity';
 
-export default class RaynetCRMUniversalUpdateActivities extends AConnector {
+export default class RaynetCRMUniversalUpdateActivity extends AConnector {
 
     public getName(): string {
         return NAME;
