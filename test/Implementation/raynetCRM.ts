@@ -4,8 +4,9 @@ import {
     USER,
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RaynetCRMGetActivities from '../../lib/RaynetCRM/Batch/RaynetCRMGetActivities';
-import RaynetCRMCreateActivities from '../../lib/RaynetCRM/Connector/RaynetCRMCreateActivities';
 import RaynetCRMUniversalActivityDetail from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalActivityDetail';
+import RaynetCRMUniversalCreateActivities from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalCreateActivities';
+import RaynetCRMUniversalUpdateActivities from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalUpdateActivities';
 import RaynetCRMApplication, {
     INSTANCE_NAME,
     NAME as SUPPLY_DO_APP,
@@ -28,5 +29,6 @@ export function init(): void {
 
     container.setNode(new RaynetCRMGetActivities(), raynetCRMApplication);
     container.setNode(new RaynetCRMUniversalActivityDetail(), raynetCRMApplication);
-    container.setNode(new RaynetCRMCreateActivities(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalCreateActivities(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUniversalUpdateActivities(), raynetCRMApplication);
 }

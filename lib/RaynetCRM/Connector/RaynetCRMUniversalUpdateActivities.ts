@@ -1,11 +1,12 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { getEntityType, IActivityData } from './RaynetCRMUniversalActivityDetail';
+import { getEntityType } from './RaynetCRMUniversalActivityDetail';
+import { IInput } from './RaynetCRMUniversalCreateActivities';
 
-export const NAME = 'raynet-crm-create-activities';
+export const NAME = 'raynet-crm-universal-update-activities';
 
-export default class RaynetCRMCreateActivities extends AConnector {
+export default class RaynetCRMUniversalUpdateActivities extends AConnector {
 
     public getName(): string {
         return NAME;
@@ -16,24 +17,17 @@ export default class RaynetCRMCreateActivities extends AConnector {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
-            HttpMethods.PUT,
-            getEntityType(entityName),
+            HttpMethods.POST,
+            `${getEntityType(entityName)}/${data.id}`,
             data,
         );
-        const resp = await this.getSender().send<IResponse>(req, [201]);
+        const resp = await this.getSender().send<IResponse>(req, [200]);
 
         return dto.setNewJsonData(resp.getJsonBody());
     }
 
 }
 
-export interface IInput extends IActivityData {
-    entityName: string;
-}
-
 export interface IResponse {
     success: boolean;
-    data: {
-        id: number;
-    };
 }
