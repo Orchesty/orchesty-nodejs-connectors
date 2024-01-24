@@ -1,0 +1,10 @@
+{
+  "http": "PUT https://app.raynet.cz/api/v2/webhook",
+  "code": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "uuid": "532d339c0a874f68ae8f2cc108c7f7b2"
+    }
+  }
+}

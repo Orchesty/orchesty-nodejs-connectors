@@ -4,6 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import {
     ABasicApplication,
     PASSWORD,
@@ -72,6 +73,10 @@ export default class RaynetCRMApplication extends ABasicApplication {
         }
 
         return request;
+    }
+
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [];
     }
 
 }
