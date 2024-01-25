@@ -1,5 +1,5 @@
 {
-  "http": "POST https://xyz.myshopify.com/admin/api/2023-01/inventory_levels/set.json",
+  "http": "POST https://xyz.myshopify.com/admin/api/2024-01/inventory_levels/set.json",
   "code": 200,
   "body": {
     "inventory_level": {

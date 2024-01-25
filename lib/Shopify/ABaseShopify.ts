@@ -13,7 +13,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'shopify';
-export const API_VERSION = '2023-01';
+export const API_VERSION = '2024-01';
 export const SHOPIFY_URL = 'shopifyUrl';
 export const PREMIUM_PLAN = 'premium';
 export const CURRENCY = 'currency';

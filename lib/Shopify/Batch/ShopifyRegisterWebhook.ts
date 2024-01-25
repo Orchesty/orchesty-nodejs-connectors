@@ -10,7 +10,7 @@ import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-register-webhook';
 
-const SHOPIFY_REGISTER_WEBHOOK_ENDPOINT = 'admin/api/2023-01/webhooks.json';
+const SHOPIFY_REGISTER_WEBHOOK_ENDPOINT = 'admin/api/2024-01/webhooks.json';
 
 export default class ShopifyRegisterWebhook extends ABatchNode {
 

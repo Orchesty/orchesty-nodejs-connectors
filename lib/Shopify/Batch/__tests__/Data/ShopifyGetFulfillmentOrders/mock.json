@@ -1,5 +1,5 @@
 {
-    "http": "GET https://xyz.myshopify.com/admin/api/2023-01/fulfillment_orders/1/fulfillments.json",
+    "http": "GET https://xyz.myshopify.com/admin/api/2024-01/fulfillment_orders/1/fulfillments.json",
     "code": 200,
     "body": {
         "fulfillments": [

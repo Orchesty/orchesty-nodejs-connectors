@@ -9,7 +9,7 @@ import ShopifyApplication from '../ShopifyApplication';
 
 export const NAME = 'shopify-unregister-webhook';
 
-const SHOPIFY_UNREGISTER_WEBHOOK_ENDPOINT = 'admin/api/2023-01/webhooks/{id}.json';
+const SHOPIFY_UNREGISTER_WEBHOOK_ENDPOINT = 'admin/api/2024-01/webhooks/{id}.json';
 
 export default class ShopifyUnregisterWebhook extends ABatchNode {
 

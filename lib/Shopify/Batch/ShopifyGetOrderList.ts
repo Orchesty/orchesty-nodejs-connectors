@@ -137,7 +137,6 @@ export interface IDefaultAddress {
 export interface ICustomer {
     id: number;
     email: string;
-    accepts_marketing: boolean;
     created_at: Date;
     updated_at: Date;
     first_name: string;
@@ -152,13 +151,11 @@ export interface ICustomer {
     tags: string;
     last_order_name: string;
     currency: string;
-    accepts_marketing_updated_at: Date;
     tax_exemptions: unknown[];
     admin_graphql_api_id: string;
     default_address: IDefaultAddress;
     note?: unknown;
     multipass_identifier?: unknown;
-    marketing_opt_in_level?: unknown;
 }
 
 export interface IDiscountApplication {
@@ -232,15 +229,6 @@ export interface IFulfillment {
     shipment_status?: unknown;
 }
 
-export interface IPaymentDetails {
-    credit_card_number: string;
-    credit_card_compunknown: string;
-    credit_card_bin?: unknown;
-    avs_result_code?: unknown;
-    cvv_result_code?: unknown;
-
-}
-
 export interface ITransaction {
     id: number;
     admin_graphql_api_id: string;
@@ -307,7 +295,6 @@ export interface IShippingLine {
     tax_lines: unknown[];
     discount_allocations: unknown[];
     carrier_identifier?: unknown;
-    delivery_category?: unknown;
     phone?: unknown;
     requested_fulfillment_service_id?: unknown;
 }
@@ -332,7 +319,6 @@ export interface IOrder {
     }[];
     email: string;
     financial_status: string;
-    gateway: string;
     landing_site: string;
     landing_site_ref: string;
     name: string;
@@ -347,7 +333,6 @@ export interface IOrder {
     phone: string;
     presentment_currency: string;
     processed_at: Date;
-    processing_method: string;
     reference: string;
     referring_site: string;
     source_identifier: string;
@@ -377,7 +362,6 @@ export interface IOrder {
     discount_applications: IDiscountApplication[];
     fulfillments: IFulfillment[];
     line_items: ILineItem[];
-    payment_details: IPaymentDetails;
     refunds: {
         id: number;
         admin_graphql_api_id: string;

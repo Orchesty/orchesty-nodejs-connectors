@@ -142,7 +142,6 @@ interface IOrderJson {
             },
         ];
         payment_gateway_names: string[];
-        gateway: string;
         financial_status: string;
         contact_email: string;
         email: string;

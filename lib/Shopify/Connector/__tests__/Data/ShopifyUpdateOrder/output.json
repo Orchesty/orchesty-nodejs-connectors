@@ -88,8 +88,6 @@
             }
         },
         "customer": {
-            "accepts_marketing": false,
-            "accepts_marketing_updated_at": "2005-06-12T11:57:11-04:00",
             "admin_graphql_api_id": "gid://shopify/Customer/207119551",
             "created_at": "2023-03-16T13:00:04-04:00",
             "currency": "USD",
@@ -118,7 +116,6 @@
             "last_name": "Norman",
             "last_order_id": 450789469,
             "last_order_name": "#1001",
-            "marketing_opt_in_level": null,
             "multipass_identifier": null,
             "note": null,
             "orders_count": 1,
@@ -272,7 +269,6 @@
                 "updated_at": "2023-03-16T13:00:04-04:00"
             }
         ],
-        "gateway": "authorize_net",
         "id": 450789469,
         "landing_site": "http://www.example.com?source=abc",
         "landing_site_ref": "abc",
@@ -541,13 +537,6 @@
         "order_number": 1001,
         "order_status_url": "https://jsmith.myshopify.com/548380009/orders/b1946ac92492d2347c6235b4d2611184/authenticate?key=imasecretipod",
         "original_total_duties_set": null,
-        "payment_details": {
-            "avs_result_code": null,
-            "credit_card_bin": null,
-            "credit_card_company": "Visa",
-            "credit_card_number": "•••• •••• •••• 4242",
-            "cvv_result_code": null
-        },
         "payment_gateway_names": [
             "bogus"
         ],
@@ -555,7 +544,6 @@
         "phone": "+557734881234",
         "presentment_currency": "USD",
         "processed_at": "2008-01-10T11:00:00-05:00",
-        "processing_method": "direct",
         "reference": "fhwdgads",
         "referring_site": "http://www.otherexample.com",
         "refunds": [
@@ -854,7 +842,6 @@
             {
                 "carrier_identifier": null,
                 "code": "Free Shipping",
-                "delivery_category": null,
                 "discount_allocations": [],
                 "discounted_price": "0.00",
                 "discounted_price_set": {
