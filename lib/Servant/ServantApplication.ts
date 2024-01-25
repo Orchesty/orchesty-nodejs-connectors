@@ -105,6 +105,7 @@ export function getOrderStatuses(): IChoice[] {
         { id: 'transportPicked', title: 'Předáno dopravci' },
         { id: 'transportCarrier', title: 'V přepravě' },
         { id: 'transportDelivered', title: 'Doručeno' },
+        { id: 'error', title: 'Chyba' },
     ];
 }
 
