@@ -1,0 +1,7 @@
+{
+  "http": "DELETE https://app.raynet.cz/api/v2/webhook/1",
+  "code": 200,
+  "body": {
+    "success": true
+  }
+}

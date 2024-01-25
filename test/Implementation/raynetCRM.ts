@@ -5,6 +5,7 @@ import {
 } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RaynetCRMGetActivities from '../../lib/RaynetCRM/Batch/RaynetCRMGetActivities';
 import RaynetCRMSubscribeWebhook from '../../lib/RaynetCRM/Batch/RaynetCRMSubscribeWebhook';
+import RaynetCRMUnregisterWebhook from '../../lib/RaynetCRM/Batch/RaynetCRMUnregisterWebhook';
 import RaynetCRMUniversalActivityDetail from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalActivityDetail';
 import RaynetCRMUniversalCreateActivity from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalCreateActivity';
 import RaynetCRMUniversalDeleteActivity from '../../lib/RaynetCRM/Connector/RaynetCRMUniversalDeleteActivity';
@@ -35,4 +36,5 @@ export function init(): void {
     container.setNode(new RaynetCRMUniversalUpdateActivity(), raynetCRMApplication);
     container.setNode(new RaynetCRMUniversalDeleteActivity(), raynetCRMApplication);
     container.setNode(new RaynetCRMSubscribeWebhook(), raynetCRMApplication);
+    container.setNode(new RaynetCRMUnregisterWebhook(), raynetCRMApplication);
 }
