@@ -1,5 +1,5 @@
 {
-    "http": "GET https://xyz.myshopify.com/admin/api/2023-01/locations.json",
+    "http": "GET https://xyz.myshopify.com/admin/api/2024-01/locations.json",
     "code": 200,
     "body": {
         "locations": [

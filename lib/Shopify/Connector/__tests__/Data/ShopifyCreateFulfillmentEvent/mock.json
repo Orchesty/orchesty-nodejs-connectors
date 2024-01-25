@@ -1,5 +1,5 @@
 {
-    "http": "POST https://xyz.myshopify.com/admin/api/2023-01/orders/2/fulfillments/1/events.json",
+    "http": "POST https://xyz.myshopify.com/admin/api/2024-01/orders/2/fulfillments/1/events.json",
     "code": 200,
     "body": {
         "fulfillment_event": {

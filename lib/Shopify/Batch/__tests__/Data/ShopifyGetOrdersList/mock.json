@@ -1,5 +1,5 @@
 {
-  "http": "GET https://xyz.myshopify.com/admin/api/2023-01/orders.json?limit=100",
+  "http": "GET https://xyz.myshopify.com/admin/api/2024-01/orders.json?limit=100",
   "code": 200,
   "body": {
     "orders": [
@@ -39,7 +39,6 @@
         "email": "bob.norman@mail.example.com",
         "financial_status": "partially_refunded",
         "fulfillment_status": null,
-        "gateway": "authorize_net",
         "landing_site": "http://www.example.com?source=abc",
         "landing_site_ref": "abc",
         "location_id": null,
@@ -64,7 +63,6 @@
         "phone": "+557734881234",
         "presentment_currency": "USD",
         "processed_at": "2008-01-10T11:00:00-05:00",
-        "processing_method": "direct",
         "reference": "fhwdgads",
         "referring_site": "http://www.otherexample.com",
         "source_identifier": "fhwdgads",
@@ -181,7 +179,6 @@
         "customer": {
           "id": 207119551,
           "email": "bob.norman@mail.example.com",
-          "accepts_marketing": false,
           "created_at": "2022-04-05T13:05:24-04:00",
           "updated_at": "2022-04-05T13:05:24-04:00",
           "first_name": "Bob",
@@ -198,8 +195,6 @@
           "tags": "",
           "last_order_name": "#1001",
           "currency": "USD",
-          "accepts_marketing_updated_at": "2005-06-12T11:57:11-04:00",
-          "marketing_opt_in_level": null,
           "tax_exemptions": [],
           "admin_graphql_api_id": "gid://shopify/Customer/207119551",
           "default_address": {
@@ -590,13 +585,6 @@
             ]
           }
         ],
-        "payment_details": {
-          "credit_card_bin": null,
-          "avs_result_code": null,
-          "cvv_result_code": null,
-          "credit_card_number": "•••• •••• •••• 4242",
-          "credit_card_company": "Visa"
-        },
         "refunds": [
           {
             "id": 509562969,
@@ -879,7 +867,6 @@
             "id": 369256396,
             "carrier_identifier": null,
             "code": "Free Shipping",
-            "delivery_category": null,
             "discounted_price": "0.00",
             "discounted_price_set": {
               "shop_money": {
