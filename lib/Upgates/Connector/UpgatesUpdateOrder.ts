@@ -15,9 +15,7 @@ export default class UpgatesUpdateOrder extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOrder[]>> {
         const app = this.getApplication<UpgatesApplication>();
-        const {
-            data,
-        } = dto.getJsonData();
+        const { data } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = app.getRequestDto(
@@ -43,6 +41,7 @@ export interface IInput {
 interface IUpdateOrders {
     orders: IUpdate[];
     send_emails_yn?: boolean;
+    send_sms_yn?: boolean;
 }
 
 interface IUpdate {
