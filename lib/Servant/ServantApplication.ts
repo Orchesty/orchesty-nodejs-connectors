@@ -19,6 +19,15 @@ export const WAREHOUSE_ID = 'warehouse_id';
 
 export const BASE_URL = 'https://www.webskladservant.cz/impl/SAPI/V5/?wsdl';
 
+export const INDIVIDUAL = 'IND';
+export const DPD = 'DPD';
+export const GLS = 'GLS';
+export const CP = 'CP';
+export const CPNP = 'CPNP';
+export const ZAS = 'ZAS';
+export const GLS_PARCEL = 'GLS_PARCEL';
+export const BALIKOVNA = 'BALIKOVNA';
+
 export function getWarehouses(): IChoice[] {
     return [
         { id: 'HU2', title: 'Humpolec - Lnářská' },
@@ -110,25 +119,17 @@ export function getOrderStatuses(): IChoice[] {
 }
 
 export function getPayments(): IChoice[] {
-    return [{
-        id: COD_PAYMENT,
-        title: 'Dobírka',
-    }];
+    return [
+        { id: COD_PAYMENT, title: 'Dobírka' },
+    ];
 }
 
-export function getShippingMethods(): IChoice[] {
-    return [
-        { id: 'GLS', title: 'GLS' },
-        { id: 'CP', title: 'Česká Pošta' },
-        { id: 'FOFR', title: 'FOFR' },
-        { id: 'TOPT', title: 'TOPTRANS' },
-        { id: 'GEIS', title: 'Geis' },
-        { id: 'ZAS', title: 'Zásilkovna' },
-        { id: 'DPD', title: 'DPD' },
-        { id: 'IND', title: 'Individuální doprava' },
-        { id: 'OSB', title: 'Osobní odběr' },
-        { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
-    ];
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function getVirtualShippingMethods(): { CPNP: IChoice, GLS: IChoice } {
+    return {
+        [CPNP]: { id: BALIKOVNA, title: 'Česká pošta - BALÍKOVNA' },
+        [GLS]: { id: GLS_PARCEL, title: 'GLS - Parcel Shop' },
+    };
 }
 
 export interface IChoice {

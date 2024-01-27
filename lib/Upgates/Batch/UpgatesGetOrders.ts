@@ -189,6 +189,7 @@ export interface IOrder {
         price: string;
         vat: string;
         affiliate_id: string;
+        affiliate_name: string;
     };
     payment: {
         id: number;
