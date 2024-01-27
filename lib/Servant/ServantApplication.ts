@@ -110,11 +110,11 @@ export function getOrderStatuses(): IChoice[] {
         { id: 'packaged', title: 'Zabaleno' },
         { id: 'loaded', title: 'Naloženo' },
         { id: 'dispatch', title: 'Odesláno' },
+        { id: 'error', title: 'Chyba' },
         { id: 'transportEntered', title: 'Předány informace dopravci' },
         { id: 'transportPicked', title: 'Předáno dopravci' },
         { id: 'transportCarrier', title: 'V přepravě' },
         { id: 'transportDelivered', title: 'Doručeno' },
-        { id: 'error', title: 'Chyba' },
     ];
 }
 
@@ -130,6 +130,23 @@ export function getVirtualShippingMethods(): { CPNP: IChoice, GLS: IChoice } {
         [CPNP]: { id: BALIKOVNA, title: 'Česká pošta - BALÍKOVNA' },
         [GLS]: { id: GLS_PARCEL, title: 'GLS - Parcel Shop' },
     };
+}
+
+export function getShippingMethods(): IChoice[] {
+    return [
+        { id: GLS, title: 'GLS' },
+        { id: CP, title: 'Česká Pošta' },
+        { id: 'FOFR', title: 'FOFR' },
+        { id: 'TOPT', title: 'TOPTRANS' },
+        { id: 'GEIS', title: 'Geis' },
+        { id: ZAS, title: 'Zásilkovna' },
+        { id: DPD, title: 'DPD' },
+        { id: INDIVIDUAL, title: 'Individuální doprava' },
+        { id: 'OSB', title: 'Osobní odběr' },
+        { id: 'PDF', title: 'Vlastní doprava s přepravním štítkem' },
+        getVirtualShippingMethods()[CPNP],
+        getVirtualShippingMethods()[GLS],
+    ];
 }
 
 export interface IChoice {
