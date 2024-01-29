@@ -1,0 +1,5 @@
+{
+  "http": "DELETE https://graph.microsoft.com/v1.0/me/events/1234",
+  "code": 204,
+  "body": {}
+}
