@@ -47,7 +47,7 @@ export default class OutlookApplication extends AOAuth2Application {
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const token = settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
-        const url = `https://graph.microsoft.com/v1.0/${_url}`;
+        const url = `https://graph.microsoft.com/v1.0${_url}`;
         const request = new RequestDto(url, method, dto);
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
