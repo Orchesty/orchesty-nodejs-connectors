@@ -1,0 +1,89 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('cd209b0b-3f83-4c35-82d2-d88a61820480')/events/$entity",
+        "@odata.etag": "W/\"ZlnW4RIAV06KYYwlrfNZvQAALfZeRQ==\"",
+        "allowNewTimeProposals": true,
+        "attendees": [
+            {
+                "emailAddress": {
+                    "address": "samanthab@contoso.onmicrosoft.com",
+                    "name": "Samantha Booth"
+                },
+                "status": {
+                    "response": "none",
+                    "time": "0001-01-01T00:00:00Z"
+                },
+                "type": "required"
+            }
+        ],
+        "body": {
+            "content": "<html><head></head><body>Does late morning work for you?</body></html>",
+            "contentType": "html"
+        },
+        "bodyPreview": "Does noon work for you?",
+        "categories": [],
+        "changeKey": "ZlnW4RIAV06KYYwlrfNZvQAALfZeRQ==",
+        "createdDateTime": "2017-04-15T03:00:50.7579581Z",
+        "end": {
+            "dateTime": "2017-04-15T12:00:00.0000000",
+            "timeZone": "Pacific Standard Time"
+        },
+        "hasAttachments": false,
+        "hideAttendees": false,
+        "iCalUId": "040000008200E00074C5B7101A82E00800000000DA2B357D94B5D201000000000000000010000000EC4597557F0CB34EA4CC2887EA7B17C3",
+        "id": "AAMkAGI1AAAt9AHjAAA=",
+        "importance": "normal",
+        "isAllDay": false,
+        "isCancelled": false,
+        "isDraft": false,
+        "isOnlineMeeting": false,
+        "isOrganizer": true,
+        "isReminderOn": true,
+        "lastModifiedDateTime": "2017-04-15T03:00:51.245372Z",
+        "location": {
+            "displayName": "Harry's Bar",
+            "locationType": "default",
+            "uniqueId": "Harry's Bar",
+            "uniqueIdType": "private"
+        },
+        "locations": [
+            {
+                "displayName": "Harry's Bar",
+                "locationType": "default",
+                "uniqueIdType": "unknown"
+            }
+        ],
+        "onlineMeeting": null,
+        "onlineMeetingProvider": "unknown",
+        "onlineMeetingUrl": null,
+        "organizer": {
+            "emailAddress": {
+                "address": "danas@contoso.onmicrosoft.com",
+                "name": "Dana Swope"
+            }
+        },
+        "originalEndTimeZone": "Pacific Standard Time",
+        "originalStartTimeZone": "Pacific Standard Time",
+        "recurrence": null,
+        "reminderMinutesBeforeStart": 15,
+        "responseRequested": true,
+        "responseStatus": {
+            "response": "organizer",
+            "time": "0001-01-01T00:00:00Z"
+        },
+        "sensitivity": "normal",
+        "seriesMasterId": null,
+        "showAs": "busy",
+        "start": {
+            "dateTime": "2017-04-15T11:00:00.0000000",
+            "timeZone": "Pacific Standard Time"
+        },
+        "subject": "Let's go brunch",
+        "transactionId": "7E163156-7762-4BEB-A1C6-729EA81755A7",
+        "type": "singleInstance",
+        "webLink": "https://outlook.office365.com/owa/?itemid=AAMkAGI1AAAt9AHjAAA%3D&exvsurl=1&path=/calendar/item"
+    }
+}
