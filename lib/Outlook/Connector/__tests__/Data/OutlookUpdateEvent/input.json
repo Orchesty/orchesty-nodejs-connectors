@@ -1,0 +1,21 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": "1234",
+        "originalStartTimeZone": "originalStartTimeZone-value",
+        "originalEndTimeZone": "originalEndTimeZone-value",
+        "responseStatus": {
+            "response": "",
+            "time": "datetime-value"
+        },
+        "recurrence": null,
+        "reminderMinutesBeforeStart": 99,
+        "isOnlineMeeting": true,
+        "onlineMeetingProvider": "teamsForBusiness",
+        "isReminderOn": true,
+        "hideAttendees": false,
+        "categories": ["Red category"]
+    }
+}
