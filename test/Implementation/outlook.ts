@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import OutlookGetEvents from '../../lib/Outlook/Batch/OutlookGetEvents';
 import OutlookCreateEvent from '../../lib/Outlook/Connector/OutlookCreateEvent';
 import OutlookDeleteEvent from '../../lib/Outlook/Connector/OutlookDeleteEvent';
 import OutlookUpdateEvent from '../../lib/Outlook/Connector/OutlookUpdateEvent';
@@ -24,4 +25,5 @@ export default function init(): void {
     container.setNode(new OutlookCreateEvent(), app);
     container.setNode(new OutlookUpdateEvent(), app);
     container.setNode(new OutlookDeleteEvent(), app);
+    container.setNode(new OutlookGetEvents(), app);
 }
