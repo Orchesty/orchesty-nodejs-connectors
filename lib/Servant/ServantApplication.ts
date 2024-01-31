@@ -25,6 +25,7 @@ export const GLS = 'GLS';
 export const CP = 'CP';
 export const CPNP = 'CPNP';
 export const ZAS = 'ZAS';
+export const ZAS_ESHOP_NAME = 'ZAS_ESHOP_NAME';
 export const GLS_PARCEL = 'GLS_PARCEL';
 export const BALIKOVNA = 'BALIKOVNA';
 
@@ -125,10 +126,11 @@ export function getPayments(): IChoice[] {
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function getVirtualShippingMethods(): { CPNP: IChoice, GLS: IChoice } {
+export function getVirtualShippingMethods(): { CPNP: IChoice, GLS: IChoice, ZAS: IChoice } {
     return {
         [CPNP]: { id: BALIKOVNA, title: 'Česká pošta - BALÍKOVNA' },
         [GLS]: { id: GLS_PARCEL, title: 'GLS - Parcel Shop' },
+        [ZAS]: { id: ZAS_ESHOP_NAME, title: 'Jméno E-Shopu pro Zásilkovnu' },
     };
 }
 
