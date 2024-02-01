@@ -3,6 +3,7 @@ import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/AB
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import OutlookGetEvents from '../../lib/Outlook/Batch/OutlookGetEvents';
 import OutlookSubscribeWebhook from '../../lib/Outlook/Batch/OutlookSubscribeWebhook';
+import OutlookUnsubscribeWebhook from '../../lib/Outlook/Batch/OutlookUnsubscribeWebhook';
 import OutlookCreateEvent from '../../lib/Outlook/Connector/OutlookCreateEvent';
 import OutlookDeleteEvent from '../../lib/Outlook/Connector/OutlookDeleteEvent';
 import OutlookUpdateEvent from '../../lib/Outlook/Connector/OutlookUpdateEvent';
@@ -28,4 +29,5 @@ export default function init(): void {
     container.setNode(new OutlookDeleteEvent(), app);
     container.setNode(new OutlookGetEvents(), app);
     container.setNode(new OutlookSubscribeWebhook(), app);
+    container.setNode(new OutlookUnsubscribeWebhook(), app);
 }

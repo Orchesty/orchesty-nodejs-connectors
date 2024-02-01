@@ -1,0 +1,5 @@
+{
+    "http": "DELETE https://graph.microsoft.com/v1.0/subscriptions/1",
+    "code": 204,
+    "body": {}
+}
