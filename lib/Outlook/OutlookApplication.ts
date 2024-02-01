@@ -4,6 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
@@ -75,6 +76,24 @@ export default class OutlookApplication extends AOAuth2Application {
     // This URL is dynamically replaced in getProviderCustomOptions method
     public getTokenUrl(): string {
         return 'https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token';
+    }
+
+    public syncNotificationCallback(req: Request): Response | null {
+        const url = new URL(req.url).searchParams;
+        const validationToken = url.get('validationToken');
+
+        if (validationToken) {
+            const resp = new Response(validationToken);
+            resp.headers.set('Content-Type', 'text/plain');
+
+            return resp;
+        }
+
+        return null;
+    }
+
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [];
     }
 
     public getLogo(): string {
