@@ -47,7 +47,7 @@ export default class UpgatesApplication extends ABasicApplication {
     ): RequestDto {
         const settings = applicationInstall.getSettings();
         const base64 = encode(
-            `${settings[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:${settings[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`,
+            `${settings[CoreFormsEnum.AUTHORIZATION_FORM][USER]?.trim()}:${settings[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]?.trim()}`,
         );
         const headers = {
             [CommonHeaders.AUTHORIZATION]: `Basic ${base64}`,

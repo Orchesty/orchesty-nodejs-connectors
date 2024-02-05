@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.90",
+    "version": "3.0.91",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -35,7 +35,7 @@
         "@aws-sdk/client-s3": "^3.504.0",
         "@aws-sdk/client-ses": "^3.504.0",
         "@azure/arm-powerbiembedded": "^2.0.2",
-        "@azure/core-rest-pipeline": "^1.13.0",
+        "@azure/core-rest-pipeline": "^1.14.0",
         "@azure/identity": "^4.0.1",
         "@cloudamqp/amqp-client": "^3.1.1",
         "fast-xml-parser": "^4.3.4",
@@ -45,7 +45,7 @@
         "oracledb": "^6.3.0",
         "pg": "^8.11.3",
         "pg-hstore": "^2.3.4",
-        "sequelize": "^6.35.2",
+        "sequelize": "^6.36.0",
         "soap": "^1.0.0",
         "sqlite3": "^5.1.7",
         "tedious": "^16.6.1"
@@ -53,9 +53,9 @@
     "devDependencies": {
         "@hanaboso/eslint-plugin": "^1.1.1",
         "@types/debug": "^4.1.12",
-        "@types/jest": "^29.5.11",
+        "@types/jest": "^29.5.12",
         "@types/luxon": "^3.4.2",
-        "@types/node": "^20.11.15",
+        "@types/node": "^20.11.16",
         "@types/nodemailer": "^6.4.14",
         "@types/oracledb": "^6.0.4",
         "@types/pg": "^8.11.0",
