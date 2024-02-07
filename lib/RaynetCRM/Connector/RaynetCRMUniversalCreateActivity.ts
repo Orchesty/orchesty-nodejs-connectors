@@ -27,7 +27,9 @@ export default class RaynetCRMUniversalCreateActivity extends AConnector {
 
 }
 
-export interface IInput extends IActivityData {
+export type IActivityOptionalData = Partial<IActivityData>;
+
+export interface IInput extends IActivityOptionalData {
     entityName: string;
 }
 

@@ -38,7 +38,7 @@ export default class RaynetCRMApplication extends ABasicApplication {
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
-            .addField(new Field(FieldType.PASSWORD, PASSWORD, 'ApiKey', undefined, true))
+            .addField(new Field(FieldType.TEXT, PASSWORD, 'ApiKey', undefined, true))
             .addField(new Field(FieldType.TEXT, INSTANCE_NAME, 'Instance name', undefined, true));
 
         return new FormStack().addForm(form);

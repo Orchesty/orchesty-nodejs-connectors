@@ -47,34 +47,37 @@ export default class RaynetCRMGetActivities extends ABatchNode {
 export interface IResponse {
     success: boolean;
     totalCount: number;
-    data: {
-        _entityName: string;
+    data: IOutput[];
+}
+
+export interface IOutput {
+    _entityName: string;
+    id: number;
+    title: string;
+    personal: boolean;
+    status: string;
+    priority: string;
+    scheduledFrom: string;
+    scheduledTill: string;
+    description: string;
+    tags: unknown[];
+    'rowInfo.createdAt': string;
+    'rowInfo.createdBy': string;
+    'rowInfo.updatedAt': string;
+    securityLevel: {
         id: number;
-        title: string;
-        personal: boolean;
-        status: string;
-        priority: string;
-        scheduledFrom: string;
-        scheduledTill: string;
-        description: string;
-        tags: unknown[];
-        'rowInfo.createdAt': string;
-        'rowInfo.createdBy': string;
-        securityLevel: {
-            id: number;
-            name: string;
-        };
-        _version: number;
-        customFields: unknown;
-        participants: {
-            owner: boolean;
-            role: string;
-            name: string;
-            person: number;
-        }[];
-        meetingPlace: string;
-        companyAddress: unknown;
+        name: string;
+    };
+    _version: number;
+    customFields: unknown;
+    participants: {
+        owner: boolean;
+        role: string;
+        name: string;
+        person: number;
     }[];
+    meetingPlace: string;
+    companyAddress: unknown;
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

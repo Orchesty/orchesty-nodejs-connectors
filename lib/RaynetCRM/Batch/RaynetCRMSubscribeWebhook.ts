@@ -42,7 +42,7 @@ export default class RaynetCRMSubscribeWebhook extends ABatchNode {
                         webhooks[webhookIndex].getNode(),
                         token,
                     ),
-                    events: webhooks[webhookIndex].getName(),
+                    events: webhooks[webhookIndex].getName().split(','),
                     entityFilter: getEntities(),
                 },
             );

@@ -5,6 +5,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
@@ -47,7 +48,7 @@ export default class OutlookApplication extends AOAuth2Application {
         data?: unknown,
     ): RequestDto {
         const settings = applicationInstall.getSettings();
-        const token = settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN];
+        const token = settings[CoreFormsEnum.AUTHORIZATION_FORM][TOKEN][ACCESS_TOKEN];
         const url = `https://graph.microsoft.com/v1.0${_url}`;
         const request = new RequestDto(url, method, dto);
         request.setHeaders({
@@ -70,7 +71,7 @@ export default class OutlookApplication extends AOAuth2Application {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public getScopes(applicationInstall: ApplicationInstall): string[] {
-        return ['Calendars.Read', 'Calendars.Read.Shared', 'Calendars.ReadBasic', 'Calendars.ReadWrite', 'Calendars.ReadWrite.Shared', 'User.Read'];
+        return ['Calendars.Read Calendars.Read.Shared Calendars.ReadBasic Calendars.ReadWrite Calendars.ReadWrite.Shared User.Read offline_access'];
     }
 
     // This URL is dynamically replaced in getProviderCustomOptions method
