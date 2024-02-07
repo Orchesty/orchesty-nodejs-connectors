@@ -93,8 +93,8 @@ export interface IInput {
     attendees?: {
         emailAddress?: IEmailAddress,
         proposedNewTime?: {
-            start?: string;
-            end?: string;
+            start?: IDateTimeZone;
+            end?: IDateTimeZone;
         }
         status?: IResponseStatus,
         type?: string;
@@ -107,7 +107,7 @@ export interface IInput {
     categories?: string;
     changeKey?: string;
     createdDateTime?: string;
-    end?: string;
+    end?: IDateTimeZone;
     hasAttachments?: boolean;
     hideAttendees?: boolean;
     iCalUId?: string;
@@ -151,10 +151,10 @@ export interface IInput {
             type?: string;
         },
         range?: {
-            endDate?: string;
+            endDate?: IDateTimeZone;
             numberOfOccurrences?: number;
             recurrenceTimeZone?: string;
-            startDate?: string;
+            startDate?: IDateTimeZone;
             type?: string;
         },
     };
@@ -164,11 +164,16 @@ export interface IInput {
     sensitivity?: SensitivityEnum;
     seriesMasterId?: string;
     showAs?: ShowAsEnum;
-    start?: string;
+    start?: IDateTimeZone;
     subject?: string;
     transactionId?: string;
     type?: TypeEnum;
     webLink?: string;
+}
+
+export interface IDateTimeZone {
+    dateTime: string;
+    timeZone?: string;
 }
 
 export interface ILocation {

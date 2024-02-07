@@ -14,6 +14,10 @@ export default class RaynetCRMUniversalUpdateActivity extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const { entityName, ...data } = dto.getJsonData();
+
+        delete data.owner;
+        delete data['rowInfo.updatedAt'];
+
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),

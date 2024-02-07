@@ -14,7 +14,7 @@ export default class RaynetCRMUniversalActivityDetail extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IActivityData>> {
         const data = dto.getJsonData();
         const { entityName, entityId } = data.data;
         const entityType = getEntityType(entityName);
@@ -27,7 +27,7 @@ export default class RaynetCRMUniversalActivityDetail extends AConnector {
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
-        return dto.setNewJsonData(resp.getJsonBody());
+        return dto.setNewJsonData(resp.getJsonBody().data);
     }
 
 }
@@ -76,10 +76,8 @@ export interface IActivityData {
     priority: string;
     status: string;
     personal: boolean;
-    owner: {
-        id: number;
-        fullName: string;
-    };
+    owner: number;
+    resolver: number;
     company: {
         id: number;
         name: string;
