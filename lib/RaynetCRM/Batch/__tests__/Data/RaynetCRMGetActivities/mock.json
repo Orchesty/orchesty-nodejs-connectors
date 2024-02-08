@@ -1,14 +1,14 @@
 {
-  "http": "GET https://app.raynet.cz/api/v2/activity?offset=0&limit=1000&rowInfo.lastModifiedAt[GE]=1970-1-1%200:0",
+  "http": "GET https://app.raynet.cz/api/v2/activity?offset=0&limit=1000&rowInfo.lastModifiedAt[GE]=1970-1-1%200:0&dateFormat=ISO8601",
   "code": 200,
   "body": {
     "success": true,
     "totalCount": 1,
     "data": [
       {
-        "_entityName": "Event",
-        "id": 1,
-        "title": "656565",
+        "_entityName": "Meeting",
+        "id": 2,
+        "title": "ZRDZ-Meeting-",
         "personal": true,
         "status": "SCHEDULED",
         "priority": "DEFAULT",
@@ -21,23 +21,23 @@
         "businessCase": null,
         "offer": null,
         "salesOrder": null,
-        "scheduledFrom": "2024-01-17 15:00",
-        "scheduledTill": "2024-01-17 16:00",
+        "scheduledFrom": "2024-02-08T15:00:00.000+01:00",
+        "scheduledTill": "2024-02-08T15:30:00.000+01:00",
         "completed": null,
-        "description": "<p>321321321</p>",
+        "description": "<p>ZTSR</p>",
         "solution": null,
         "tags": [],
-        "rowInfo.createdAt": "2024-01-16 14:52",
+        "rowInfo.createdAt": "2024-02-05T09:33:13.833+01:00",
         "rowInfo.createdBy": "fila.r@hanaboso.com",
-        "rowInfo.updatedAt": null,
-        "rowInfo.updatedBy": null,
+        "rowInfo.updatedAt": "2024-02-07T12:42:24.900+01:00",
+        "rowInfo.updatedBy": "fila.r@hanaboso.com",
         "rowInfo.rowAccess": null,
         "rowInfo.rowState": null,
         "securityLevel": {
           "id": 1,
           "name": "Sdílená"
         },
-        "_version": 0,
+        "_version": 7,
         "customFields": {},
         "participants": [
           {
@@ -50,7 +50,7 @@
           }
         ],
         "recurrence": null,
-        "meetingPlace": "Česká republika",
+        "meetingPlace": null,
         "companyAddress": {
           "city": null,
           "country": null,
