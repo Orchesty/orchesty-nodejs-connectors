@@ -24,7 +24,7 @@ export default class RaynetCRMGetActivities extends ABatchNode {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `activity?offset=${page}&limit=${LIMIT}&rowInfo.lastModifiedAt[GE]=${formattedDate}`,
+            `activity?offset=${page}&limit=${LIMIT}&rowInfo.lastModifiedAt[GE]=${formattedDate}&dateFormat=ISO8601`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { totalCount } = resp.getJsonBody();
