@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/outlook';
+import init, { mock } from '../../../../test/Implementation/outlook';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as OUTLOOK_SUBSCRIBE_WEBHOOK } from '../OutlookSubscribeWebhook';
 
@@ -12,6 +12,7 @@ describe('Tests for OutlookSubscribeWebhook', () => {
     });
 
     it('process - ok', async () => {
+        mock();
         await tester.testBatch(OUTLOOK_SUBSCRIBE_WEBHOOK);
     });
 });

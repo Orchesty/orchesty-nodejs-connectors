@@ -12,7 +12,8 @@ export default class RaynetCRMGetActivities extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+        const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
         const lastRunDate = lastRun ? new Date(lastRun) : new Date(0);
@@ -24,7 +25,7 @@ export default class RaynetCRMGetActivities extends ABatchNode {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `activity?offset=${page}&limit=${LIMIT}&rowInfo.lastModifiedAt[GE]=${formattedDate}&dateFormat=ISO8601`,
+            `activity?offset=${page}&limit=${LIMIT}&rowInfo.lastModifiedAt[GE]=${formattedDate}&dateFormat=ISO8601${from ? `&scheduledFrom=${from}` : ''}`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { totalCount } = resp.getJsonBody();
@@ -41,6 +42,10 @@ export default class RaynetCRMGetActivities extends ABatchNode {
         return dto.setItemList(resp.getJsonBody().data);
     }
 
+}
+
+export interface IInput {
+    from?: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */

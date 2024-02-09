@@ -3,7 +3,7 @@ import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { devIp } from '../../../../.jest/testEnvs';
 import { DEFAULT_USER } from '../../../../test/DataProvider';
-import init from '../../../../test/Implementation/outlook';
+import init, { mock } from '../../../../test/Implementation/outlook';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as OUTLOOK_UNSUBSCRIBE_WEBHOOK } from '../OutlookUnsubscribeWebhook';
 
@@ -16,6 +16,7 @@ describe('Tests for OutlookUnsubscribeWebhook', () => {
 
     it('process - ok', async () => {
         init();
+        mock();
         mockOnce([
             {
                 request: {

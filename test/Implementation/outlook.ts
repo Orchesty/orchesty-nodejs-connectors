@@ -11,7 +11,7 @@ import OutlookApplication, { NAME as OUTLOOK_APP, TENANT_ID } from '../../lib/Ou
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container, oauth2Provider } from '../TestAbstract';
 
-export default function init(): void {
+export function mock(): void {
     appInstall(OUTLOOK_APP, DEFAULT_USER, {
         [CoreFormsEnum.AUTHORIZATION_FORM]: {
             [TOKEN]: '1234',
@@ -20,7 +20,9 @@ export default function init(): void {
             [CLIENT_SECRET]: CLIENT_SECRET,
         },
     });
+}
 
+export default function init(): void {
     const app = new OutlookApplication(oauth2Provider);
     container.setApplication(app);
 
