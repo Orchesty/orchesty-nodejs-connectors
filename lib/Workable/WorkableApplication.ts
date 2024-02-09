@@ -4,6 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -11,7 +12,6 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const NAME = 'workable';
-export const ACCESS_TOKEN = 'access token';
 export const SUBDOMAIN = 'subdomain';
 
 export default class WorkableApplication extends ABasicApplication {
@@ -34,8 +34,8 @@ export default class WorkableApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-            .addField(new Field(FieldType.TEXT, ACCESS_TOKEN, ' access token', undefined, true))
-            .addField(new Field(FieldType.TEXT, SUBDOMAIN, ' subdomain', 'www', true));
+            .addField(new Field(FieldType.TEXT, ACCESS_TOKEN, 'Access Token', undefined, true))
+            .addField(new Field(FieldType.TEXT, SUBDOMAIN, 'Subdomain', 'www', true));
 
         return new FormStack().addForm(form);
     }

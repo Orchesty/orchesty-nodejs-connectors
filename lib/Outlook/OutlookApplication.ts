@@ -87,7 +87,7 @@ export default class OutlookApplication extends AOAuth2Application {
 
         if (validationToken) {
             const resp = new Response(validationToken);
-            resp.headers.set('Content-Type', 'text/plain');
+            resp.headers.set(CommonHeaders.CONTENT_TYPE, 'text/plain');
 
             return resp;
         }

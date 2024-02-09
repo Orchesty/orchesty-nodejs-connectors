@@ -1,7 +1,8 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import WorkableGetAccountsBatch from '../../lib/Workable/Batch/WorkableGetAccountsBatch';
 import WorkableJobsBatch from '../../lib/Workable/Batch/WorkableJobsBatch';
-import WorkableApplication, { ACCESS_TOKEN, NAME, SUBDOMAIN } from '../../lib/Workable/WorkableApplication';
+import WorkableApplication, { NAME, SUBDOMAIN } from '../../lib/Workable/WorkableApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import {
     container, db, sender,

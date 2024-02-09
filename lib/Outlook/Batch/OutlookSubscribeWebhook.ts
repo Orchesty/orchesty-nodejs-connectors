@@ -29,6 +29,8 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
             const webhook = webhooks[webhookIndex];
             const backendUrl = orchestyOptions.backend;
             const token = this.getRandomToken();
+            const expiration = new Date();
+            expiration.setDate(expiration.getDate() + 6);
             const requestDto = app.getRequestDto(
                 dto,
                 appInstall,
@@ -38,7 +40,7 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
                     notificationUrl: `${backendUrl}/api/applications/${app.getName()}/sync/notificationCallback?pf_user=${dto.getUser()}&pf_wh_token=${token}&pf_topology=${webhook.getTopology()}&pf_node=${webhook.getNode()}`,
                     changeType: webhook.getParameters().changeType,
                     resource: webhook.getName(),
-                    expirationDateTime: '3000-01-01T00:00:00.0000000Z',
+                    expirationDateTime: expiration.toISOString(),
                 },
             );
 
