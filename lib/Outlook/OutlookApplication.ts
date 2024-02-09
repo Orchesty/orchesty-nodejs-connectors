@@ -9,6 +9,7 @@ import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provid
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
+import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
@@ -79,8 +80,9 @@ export default class OutlookApplication extends AOAuth2Application {
         return 'https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token';
     }
 
-    public syncNotificationCallback(req: Request): Response | null {
-        const url = new URL(req.url).searchParams;
+    // eslint-disable-next-line @typescript-eslint/require-await
+    public async syncNotificationCallback(req: Request): Promise<Response | null> {
+        const url = new URL(req.url, orchestyOptions.backend).searchParams;
         const validationToken = url.get('validationToken');
 
         if (validationToken) {

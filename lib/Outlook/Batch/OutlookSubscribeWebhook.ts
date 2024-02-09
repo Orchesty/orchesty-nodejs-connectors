@@ -35,7 +35,7 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
                 HttpMethods.POST,
                 '/subscriptions',
                 {
-                    notificationUrl: `${backendUrl}/api/applications/${app.getName()}/sync/notificationCallback?pf_user=${dto.getUser()}&pf_wh_token=${token}`,
+                    notificationUrl: `${backendUrl}/api/applications/${app.getName()}/sync/notificationCallback?pf_user=${dto.getUser()}&pf_wh_token=${token}&pf_topology=${webhook.getTopology()}&pf_node=${webhook.getNode()}`,
                     changeType: webhook.getParameters().changeType,
                     resource: webhook.getName(),
                     expirationDateTime: '3000-01-01T00:00:00.0000000Z',
