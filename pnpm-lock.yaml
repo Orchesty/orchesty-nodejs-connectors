@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@orchesty/nodejs-sdk':
-    specifier: ^4.2.37
-    version: 4.2.37
+    specifier: ^4.2.38
+    version: 4.2.38
   axios:
     specifier: ^1.6.7
     version: 1.6.7(debug@4.3.4)
@@ -2141,8 +2141,8 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /@orchesty/nodejs-sdk@4.2.37:
-    resolution: {integrity: sha512-G0fhJ+jWkU7PtCKTGYqGwu6CtGKPQ9MJT3Q/WRR1zdLmZZbAGWD90CCidXDLscrx2n0l1lMYmkEGWz4rldqmZg==}
+  /@orchesty/nodejs-sdk@4.2.38:
+    resolution: {integrity: sha512-aBvy2fkOsTc5QJSFE7KE0IsblW0fdBtIjJK2sp9qSNIj4Vo1axSy9FMLM9cFRXLNgxUZk+Gx1Lz0AbETso/U9g==}
     dependencies:
       async-mutex: 0.4.1
       axios: 1.6.7(debug@4.3.4)
@@ -2162,7 +2162,7 @@ packages:
       pino: 8.18.0
       prom-client: 15.1.0
       simple-oauth2: 5.0.0
-      sodium-native: 4.0.7
+      sodium-native: 4.0.8
     transitivePeerDependencies:
       - '@aws-sdk/credential-providers'
       - '@mongodb-js/zstd'
@@ -7792,8 +7792,8 @@ packages:
     dev: false
     optional: true
 
-  /sodium-native@4.0.7:
-    resolution: {integrity: sha512-ZwzA2mfkHoUljW+byZrnLKfexOFj6aD+WjWKL710bU0mixt1e9Cy038Nv+tP3D+ETxUDoq588YSpxlwhCiOjHw==}
+  /sodium-native@4.0.8:
+    resolution: {integrity: sha512-2MOwB92RlCF0Y+teiTOgRMaKvcgXbXvwmSlyHaY5Gy8d4W3Bm++9cMv+hB/gf8INdMUxo69DbmGcvJ7HzLSL9w==}
     requiresBuild: true
     dependencies:
       node-gyp-build: 4.8.0
