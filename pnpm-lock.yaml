@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@orchesty/nodejs-sdk':
-    specifier: ^4.2.35
-    version: 4.2.35
+    specifier: ^4.2.37
+    version: 4.2.37
   axios:
     specifier: ^1.6.7
     version: 1.6.7(debug@4.3.4)
@@ -2141,8 +2141,8 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /@orchesty/nodejs-sdk@4.2.35:
-    resolution: {integrity: sha512-p2R7N6rnKc/gtdNhu4pW3AemmCGjYxnqmMq9gFzbHFrkbMjL3hyrnrFxOXIlc4esVzLDRAtVh7dGM19+5JWSKg==}
+  /@orchesty/nodejs-sdk@4.2.37:
+    resolution: {integrity: sha512-G0fhJ+jWkU7PtCKTGYqGwu6CtGKPQ9MJT3Q/WRR1zdLmZZbAGWD90CCidXDLscrx2n0l1lMYmkEGWz4rldqmZg==}
     dependencies:
       async-mutex: 0.4.1
       axios: 1.6.7(debug@4.3.4)
@@ -5123,6 +5123,7 @@ packages:
   /has-tostringtag@1.0.2:
     resolution: {integrity: sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==}
     engines: {node: '>= 0.4'}
+    requiresBuild: true
     dependencies:
       has-symbols: 1.0.3
 

@@ -11,7 +11,7 @@ import RaynetCRMApplication from '../RaynetCRMApplication';
 export const NAME = 'raynet-crm-subscribe-webhook';
 
 export function getEntities(): string[] {
-    return ['Task', 'Email', 'Meeting', 'Letter', 'PhoneCall', 'MassEmail', 'Event'];
+    return ['Task', 'Email', 'Meeting', 'Letter', 'PhoneCall', 'Event'];
 }
 
 export default class RaynetCRMSubscribeWebhook extends ABatchNode {

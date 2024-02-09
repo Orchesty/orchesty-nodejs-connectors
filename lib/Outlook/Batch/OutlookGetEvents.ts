@@ -14,15 +14,20 @@ export default class OutlookGetEvents extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+        const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const lastRun = appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
         let page = Number(dto.getBatchCursor('0'));
 
         let url = `/me/events?$count=true&top=${LIMIT}&$skip=${page * LIMIT}`;
 
+        if (from) {
+            url = `${url}&$filter=start/dateTime%20gt%20${from}`;
+        }
+
         if (lastRun) {
-            url = `${url}&$filter=lastModifiedDateTime gt ${lastRun}`;
+            url = `${url}${from ? 'and ' : '&$filter='}lastModifiedDateTime gt ${lastRun}`;
         }
 
         const app = this.getApplication<OutlookApplication>();
@@ -48,6 +53,10 @@ export default class OutlookGetEvents extends ABatchNode {
         return dto;
     }
 
+}
+
+export interface IInput {
+    from?: string;
 }
 
 export interface IResponseJson {

@@ -1,5 +1,5 @@
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import init from '../../../../test/Implementation/outlook';
+import init, { mock } from '../../../../test/Implementation/outlook';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as OUTLOOK_GET_EVENTS } from '../OutlookGetEvents';
 
@@ -12,6 +12,12 @@ describe('Tests for OutlookGetEvents', () => {
     });
 
     it('process - ok', async () => {
+        mock();
         await tester.testBatch(OUTLOOK_GET_EVENTS);
+    });
+
+    it('process - with from', async () => {
+        mock();
+        await tester.testBatch(OUTLOOK_GET_EVENTS, 'from');
     });
 });
