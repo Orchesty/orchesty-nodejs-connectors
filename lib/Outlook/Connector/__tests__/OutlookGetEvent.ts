@@ -15,4 +15,9 @@ describe('Tests for OutlookGetEvent', () => {
         mock();
         await tester.testConnector(OUTLOOK_GET_EVENT);
     });
+
+    it('process - not-found', async () => {
+        mock();
+        await tester.testConnector(OUTLOOK_GET_EVENT, 'not-found');
+    });
 });

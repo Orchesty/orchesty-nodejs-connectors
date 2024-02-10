@@ -1,0 +1,5 @@
+{
+  "http": "GET https://graph.microsoft.com/v1.0/me/events/AAMkADYwMjNlMmJiLTMzNDEtNDY5Zi05NjBjLWY2NjkxMGVjNzdhMgBGAAAAAAADr0btmXmnS6g0bOPxqpciBwB09XXFepQrTZ_umVzX2hvLAAAAAAENAAB09XXFepQrTZ_umVzX2hvLAAAAgUXiAAA=",
+  "code": 404,
+  "body": {}
+}

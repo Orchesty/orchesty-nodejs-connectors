@@ -23,7 +23,7 @@ export default class RaynetCRMUniversalActivityDetail extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `${entityType}/${entityId}`,
+            `${entityType}/${entityId}?dateFormat=ISO8601`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 

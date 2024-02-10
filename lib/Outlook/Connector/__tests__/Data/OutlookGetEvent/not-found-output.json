@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "result-code": "1003",
+        "result-message": "Event not found"
+    },
+    "data": {
+        "id": "AAMkADYwMjNlMmJiLTMzNDEtNDY5Zi05NjBjLWY2NjkxMGVjNzdhMgBGAAAAAAADr0btmXmnS6g0bOPxqpciBwB09XXFepQrTZ_umVzX2hvLAAAAAAENAAB09XXFepQrTZ_umVzX2hvLAAAAgUXiAAA="
+    }
+}
