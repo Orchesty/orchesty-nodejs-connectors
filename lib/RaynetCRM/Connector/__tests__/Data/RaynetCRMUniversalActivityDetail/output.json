@@ -3,6 +3,7 @@
         "user": "TestUser"
     },
     "data": {
+        "_entityName": "Task",
         "activity": null,
         "businessCase": null,
         "category": {

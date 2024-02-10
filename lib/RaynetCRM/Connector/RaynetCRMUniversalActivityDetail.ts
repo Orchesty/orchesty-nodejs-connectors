@@ -27,7 +27,7 @@ export default class RaynetCRMUniversalActivityDetail extends AConnector {
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
-        return dto.setNewJsonData(resp.getJsonBody().data);
+        return dto.setNewJsonData({ ...resp.getJsonBody().data, _entityName: entityName });
     }
 
 }
