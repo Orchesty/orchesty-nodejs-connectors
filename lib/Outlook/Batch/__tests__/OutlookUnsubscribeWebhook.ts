@@ -12,10 +12,10 @@ let tester: NodeTester;
 describe('Tests for OutlookUnsubscribeWebhook', () => {
     beforeAll(() => {
         tester = new NodeTester(container, __filename);
+        init();
     });
 
     it('process - ok', async () => {
-        init();
         mock();
         mockOnce([
             {
@@ -38,5 +38,30 @@ describe('Tests for OutlookUnsubscribeWebhook', () => {
             },
         ]);
         await tester.testBatch(OUTLOOK_UNSUBSCRIBE_WEBHOOK);
+    });
+
+    it('process - ok - id', async () => {
+        mock();
+        mockOnce([
+            {
+                request: {
+                    url: new RegExp(`http:\\/\\/${devIp}\\/document\\/Webhook.*`),
+                    method: HttpMethods.GET,
+                },
+                response: {
+                    body: [{
+                        name: 'me/events',
+                        user: DEFAULT_USER,
+                        token: 'testToken',
+                        node: 'webhook',
+                        topology: 'testTopology',
+                        application: 'outlook',
+                        webhookId: '1',
+                        unsubscribeFailed: false,
+                    }],
+                },
+            },
+        ]);
+        await tester.testBatch(OUTLOOK_UNSUBSCRIBE_WEBHOOK, 'id');
     });
 });

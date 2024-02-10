@@ -6,6 +6,7 @@ import OutlookSubscribeWebhook from '../../lib/Outlook/Batch/OutlookSubscribeWeb
 import OutlookUnsubscribeWebhook from '../../lib/Outlook/Batch/OutlookUnsubscribeWebhook';
 import OutlookCreateEvent from '../../lib/Outlook/Connector/OutlookCreateEvent';
 import OutlookDeleteEvent from '../../lib/Outlook/Connector/OutlookDeleteEvent';
+import OutlookGetEvent from '../../lib/Outlook/Connector/OutlookGetEvent';
 import OutlookUpdateEvent from '../../lib/Outlook/Connector/OutlookUpdateEvent';
 import OutlookApplication, { NAME as OUTLOOK_APP, TENANT_ID } from '../../lib/Outlook/OutlookApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
@@ -29,6 +30,7 @@ export default function init(): void {
     container.setNode(new OutlookCreateEvent(), app);
     container.setNode(new OutlookUpdateEvent(), app);
     container.setNode(new OutlookDeleteEvent(), app);
+    container.setNode(new OutlookGetEvent(), app);
     container.setNode(new OutlookGetEvents(), app);
     container.setNode(new OutlookSubscribeWebhook(), app);
     container.setNode(new OutlookUnsubscribeWebhook(), app);

@@ -1,5 +1,5 @@
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
-import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
+import WebhookRepository, { IWebhookQueryFilter } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -15,13 +15,17 @@ export default class OutlookUnsubscribeWebhook extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+        const { id } = dto.getJsonData();
         const app = this.getApplication<OutlookApplication>();
-
         const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
-
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
+        let filter: IWebhookQueryFilter = { users: [appInstall.getUser()], apps: [app.getName()] };
+        if (id) {
+            filter = { ids: [id] };
+        }
+
+        const webhooks = await repo.findMany(filter);
 
         if (webhooks && webhooks.length > 0) {
             const webhookId = webhooks[0].getWebhookId();
@@ -42,11 +46,15 @@ export default class OutlookUnsubscribeWebhook extends ABatchNode {
             await repo.remove(webhooks[0]);
 
             if (webhooks.length > 1) {
-                dto.setBatchCursor('next');
+                dto.setBatchCursor('next', true);
             }
         }
 
         return dto;
     }
 
+}
+
+export interface IInput {
+    id?: string;
 }

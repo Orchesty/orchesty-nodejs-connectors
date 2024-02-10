@@ -1,5 +1,6 @@
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
+import WebhookRepository from '@orchesty/nodejs-sdk/dist/lib/Application/Database/WebhookRepository';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -18,14 +19,18 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const app = this.getApplication<OutlookApplication>();
+        const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
+        const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
+
+        let dbWebhooks: Webhook[] = [];
+        if (dto.getBatchCursor('firstRun') === 'firstRun') {
+            dbWebhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
+        }
 
         const webhookIndex = Number(dto.getBatchCursor('0'));
         const webhooks = app.getWebhookSubscriptions();
 
         if (webhooks.length > 0) {
-            const appInstall = await this.getApplicationInstallFromProcess(dto);
-            const repo = this.getDbClient().getRepository(Webhook);
-
             const webhook = webhooks[webhookIndex];
             const backendUrl = orchestyOptions.backend;
             const token = this.getRandomToken();
@@ -59,6 +64,7 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
                     .setName(webhooks[webhookIndex].getName()));
 
                 if (webhooks.length - 1 > webhookIndex) {
+                    dto.setItemList(dbWebhooks.map((w) => ({ id: w.getId() })));
                     dto.setBatchCursor((webhookIndex + 1).toString());
                 }
             } catch (e) {
