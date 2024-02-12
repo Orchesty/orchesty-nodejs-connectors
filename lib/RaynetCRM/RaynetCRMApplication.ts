@@ -21,7 +21,7 @@ export const NAME = 'raynet-crm';
 
 export default class RaynetCRMApplication extends ABasicApplication {
 
-    private readonly baseUrl: string = 'https://app.raynet.cz/api/v2/';
+    protected readonly baseUrl: string = 'https://app.raynet.cz/api/v2/';
 
     public getName(): string {
         return NAME;
