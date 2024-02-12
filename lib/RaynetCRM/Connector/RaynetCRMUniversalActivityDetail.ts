@@ -5,7 +5,12 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 export const NAME = 'raynet-crm-universal-activity-detail';
 
 export function getEntityType(entityName: string): string {
-    return `${entityName.charAt(0).toLowerCase()}${entityName.slice(1)}`;
+    let name = entityName.toLocaleLowerCase();
+    if (name === 'phonecall') {
+        name = 'phoneCall';
+    }
+
+    return name;
 }
 
 export default class RaynetCRMUniversalActivityDetail extends AConnector {
