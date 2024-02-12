@@ -83,6 +83,14 @@ export interface IOutput {
     }[];
     meetingPlace: string;
     companyAddress: unknown;
+    recurrence: {
+        id: number,
+        count: number,
+        endDate: string,
+        interval: string,
+        recurrenceDay: number,
+        startDate: string
+    },
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
