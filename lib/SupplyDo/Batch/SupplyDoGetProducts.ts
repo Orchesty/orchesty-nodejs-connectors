@@ -14,21 +14,25 @@ export default class SupplyDoGetProducts extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
+        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
         const page = Number(dto.getBatchCursor('0'));
-
         const ecommerce = dto.getUser();
-        const req = await this.getApplication().getRequestDto(
-            dto,
-            await this.getApplicationInstallFromProcess(dto),
-            HttpMethods.GET,
-            'items/product?&fields[]=*&fields[]=selling_price.*&fields[]=supplier.*&fields[]=supplier.company.*'
+        let url = 'items/product?&fields[]=*&fields[]=selling_price.*&fields[]=supplier.*&fields[]=supplier.company.*'
             + '&fields[]=supplier.company.ecommerces.*&fields[]=supplier.company.ecommerces.countries.*'
             + '&fields[]=supplier.company.ecommerces.countries.country.*&fields[]=supplier.company.address.*'
             + '&fields[]=supplier.address.*&fields[]=purchase_price.*&fields[]=brand.*'
             + `&filter[ecommerce][_eq]=${ecommerce}`
-            + `&filter[date_updated][_gte]=${lastRun}`
-            + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
+            + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
+
+        if (lastRun) {
+            url += `&filter[date_updated][_gte]=${lastRun}`;
+        }
+
+        const req = await this.getApplication().getRequestDto(
+            dto,
+            await this.getApplicationInstallFromProcess(dto),
+            HttpMethods.GET,
+            url,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { meta } = resp.getJsonBody();

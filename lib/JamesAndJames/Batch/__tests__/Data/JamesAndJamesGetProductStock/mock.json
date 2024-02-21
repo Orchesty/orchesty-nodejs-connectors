@@ -1,25 +1,27 @@
 {
-  "http": "GET https://controlport.co.uk/api/v2/product/stock",
-  "code": 200,
-  "body": {
-    "warehouses": [
-      {
-        "warehouse_id": 0,
-        "products": [
-          {
-            "product_id": 0,
-            "batches": [
-              {
-                "batch_id": 0,
-                "pickable_stock": 0,
-                "stored_stock": 0,
-                "incoming_stock": 0,
-                "moving_stock": 0
-              }
+    "http": "GET https://controlport.co.uk/api/v2/product/stock",
+    "code": 200,
+    "body": {
+        "data": {
+            "warehouses": [
+                {
+                    "warehouse_id": 0,
+                    "products": [
+                        {
+                            "product_id": 0,
+                            "batches": [
+                                {
+                                    "batch_id": 0,
+                                    "pickable_stock": 0,
+                                    "stored_stock": 0,
+                                    "incoming_stock": 0,
+                                    "moving_stock": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
-          }
-        ]
-      }
-    ]
-  }
+        }
+    }
 }
