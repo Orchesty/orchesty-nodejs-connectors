@@ -34,7 +34,12 @@ export type IInput = IProductBatch | IProductBatch[];
 
 export interface IProductBatch {
     id: number;
-    product_batch: number | {
+    quantity: number;
+    warehouse: number;
+    updated_at: string;
+    ecommerce: number;
+    stocked_at: string;
+    product_batch?: number | {
         id: number;
         name: string;
         product: number | {
@@ -131,11 +136,6 @@ export interface IProductBatch {
         reclamation_product: number[];
         return_product: number[];
     };
-    quantity: number;
-    warehouse: number;
-    updated_at: string;
-    ecommerce: number;
-    stocked_at: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */
 

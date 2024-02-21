@@ -21,7 +21,7 @@ export default class JamesAndJamesGetProductStock extends ABatchNode {
 
         const products: IOutput[] = [];
 
-        resp.getJsonBody().warehouses.forEach((warehouse) => {
+        resp.getJsonBody().data.warehouses.forEach((warehouse) => {
             warehouse.products.forEach((product) => {
                 products.push({
                     warehouse_id: warehouse.warehouse_id,
@@ -50,19 +50,21 @@ export interface IOutput {
 }
 
 export interface IResponse {
-    warehouses: {
-        warehouse_id: number;
-        products: {
-            product_id: number;
-            batches: {
-                batch_id: number;
-                pickable_stock: number;
-                stored_stock: number;
-                incoming_stock: number;
-                moving_stock: number;
+    data: {
+        warehouses: {
+            warehouse_id: number;
+            products: {
+                product_id: number;
+                batches: {
+                    batch_id: number;
+                    pickable_stock: number;
+                    stored_stock: number;
+                    incoming_stock: number;
+                    moving_stock: number;
+                }[];
             }[];
         }[];
-    }[];
+    }
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */

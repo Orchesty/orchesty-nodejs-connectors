@@ -14,20 +14,24 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
+        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
         const page = Number(dto.getBatchCursor('0'));
-
         const ecommerce = dto.getUser();
+        let url = 'items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*'
+            + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
+            + '&fields[]=customer.address.*'
+            + `&filter[ecommerce][_eq]=${ecommerce}`
+            + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
+
+        if (lastRun) {
+            url += `&filter[date_updated][_gte]=${lastRun}`;
+        }
+
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            'items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*'
-            + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
-            + '&fields[]=customer.address.*'
-            + `&filter[ecommerce][_eq]=${ecommerce}`
-            + `&filter[date_updated][_gte]=${lastRun}`
-            + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
+            url,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { meta } = resp.getJsonBody();
@@ -57,10 +61,9 @@ export interface ISellingOrder {
             street: string;
             street_number: string;
             zip_code: string;
+            email: string;
+            phone: string;
         };
-        email: string;
-        phone: string;
-        name: string;
     };
     id: string;
     payment_type: string;
