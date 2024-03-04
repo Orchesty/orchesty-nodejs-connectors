@@ -49,7 +49,7 @@ export interface IOrder {
     deliveryMethod: {
         id: number;
         branchId: string;
-    };
+    } | null;
     paymentMethod: {
         codAmount: number;
         codCurrency: string;
