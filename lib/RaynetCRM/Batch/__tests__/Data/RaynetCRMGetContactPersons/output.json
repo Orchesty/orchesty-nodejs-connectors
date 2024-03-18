@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":3,\"titleBefore\":\"Ing.\",\"firstName\":\"Petr\",\"lastName\":\"Chytrý\",\"titleAfter\":\"CSc.\",\"primaryRelationship\":{\"id\":1,\"type\":\"konzultant\",\"company\":{\"id\":1,\"name\":\"RAYNET s.r.o.\"}},\"owner\":{\"id\":2,\"fullName\":\"test test\"},\"contactInfo\":{\"email\":\"podpora@raynet.cz\",\"email2\":\"test@raynet.cz\",\"tel1\":\"+420 553 401 547\",\"tel1Type\":\"mobil\",\"tel2\":null,\"tel2Type\":null,\"www\":null,\"otherContact\":null},\"privateAddress\":{\"city\":\"Ostrava\",\"country\":\"Česká republika\",\"countryCode\":\"CZ\",\"province\":null,\"street\":\"Ocelářská 177\",\"zipCode\":\"703 00\"},\"category\":{\"id\":96,\"value\":\"kat 1\"},\"personClassification1\":{\"id\":97,\"value\":\"kla 1\"},\"personClassification2\":{\"id\":98,\"value\":\"kla 2\"},\"personClassification3\":{\"id\":99,\"value\":\"kla 3\"},\"salutation\":\"pan\",\"birthday\":\"2022-06-10\",\"language\":{\"id\":70,\"value\":\"Český\"},\"maritalStatus\":{\"id\":78,\"value\":\"Svobodný/Svobodná\"},\"gender\":\"FEMALE\",\"companyAddress\":{\"address\":{\"id\":1,\"city\":\"Ostrava-Poruba\",\"country\":\"Česká republika\",\"countryCode\":\"CZ\",\"province\":null,\"street\":\"Francouzská 6167/5\",\"zipCode\":\"708 00\"},\"territory\":null},\"customFields\":null,\"rowInfo.createdAt\":\"2022-06-18 13:19\",\"rowInfo.createdBy\":\"demo@raynet.cz\",\"rowInfo.updatedAt\":\"2022-09-06 09:43\",\"rowInfo.updatedBy\":\"demo@raynet.cz\",\"rowInfo.rowAccess\":null,\"rowInfo.rowState\":null,\"securityLevel\":{\"id\":1,\"name\":\"Sdílená\"},\"notice\":\"poznámka\",\"activeUserAccount\":true,\"keyman\":false,\"tags\":[],\"_version\":19,\"inlineGdpr\":[{\"id\":1,\"validFrom\":\"2022-01-01\",\"validTill\":\"2022-01-01\",\"legalTitle\":\"LEGITIMATE_INTEREST\",\"templateName\":\"Opravněný zájem\",\"gdprTemplate\":1}]}",
+            "headers": {}
+        }
+    ]
+}
