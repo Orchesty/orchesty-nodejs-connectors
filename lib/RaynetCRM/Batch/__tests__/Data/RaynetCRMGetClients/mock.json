@@ -1,0 +1,157 @@
+{
+  "http": "GET https://app.raynet.cz/api/v2/company?offset=0&limit=1000",
+  "code": 200,
+  "body": {
+    "success": "true",
+    "totalCount": 1,
+    "data": [
+      {
+        "id": 2,
+        "name": "Test s.r.o.",
+        "titleBefore": null,
+        "firstName": null,
+        "lastName": null,
+        "titleAfter": null,
+        "person": false,
+        "role": "B_PARTNER",
+        "state": "B_ACTUAL",
+        "rating": "A",
+        "owner": {
+          "id": 1,
+          "fullName": "RAYNET CRM"
+        },
+        "regNumber": "123456789",
+        "taxNumber": "CZ123456789",
+        "taxNumber2": null,
+        "taxPayer": "YES",
+        "bankAccount": null,
+        "databox": null,
+        "court": null,
+        "primaryAddress": {
+          "id": 2,
+          "primary": true,
+          "contactAddress": false,
+          "address": {
+            "id": 2,
+            "city": "Ostrava-Slezská Ostrava",
+            "country": "Česká republika",
+            "name": "Sídlo klienta",
+            "province": "Moravskoslezský kraj",
+            "street": "Těšínská",
+            "zipCode": "710 00",
+            "lat": 49.2499446,
+            "lng": 13.703011
+          },
+          "territory": {
+            "id": 91,
+            "value": "Morava"
+          },
+          "contactInfo": {
+            "email": "test@test.cz",
+            "email2": "test2@test.cz",
+            "primary": true,
+            "tel1": "123 456 789",
+            "tel1Type": "mobil",
+            "tel2": "987 654 321",
+            "tel2Type": "pevná linka",
+            "www": "www.test.cz",
+            "otherContact": null
+          },
+          "extIds": null
+        },
+        "contactAddress": {
+          "id": 3,
+          "primary": false,
+          "contactAddress": true,
+          "address": {
+            "id": 3,
+            "city": "Ostrava-Moravská Ostrava",
+            "country": "Česká republika",
+            "name": "Provozovna",
+            "province": "Moravskoslezský kraj",
+            "street": "Českobratrská 113",
+            "zipCode": "702 00",
+            "lat": null,
+            "lng": null
+          },
+          "territory": {
+            "id": 91,
+            "value": "Morava"
+          },
+          "contactInfo": {
+            "email": "provozovna@test.cz",
+            "email2": null,
+            "primary": true,
+            "tel1": "444 444 444",
+            "tel1Type": "mobil",
+            "tel2": "111 111 111",
+            "tel2Type": "pevná linka",
+            "www": null,
+            "otherContact": null
+          },
+          "extIds": null
+        },
+        "category": {
+          "id": 15,
+          "value": "Zákazník"
+        },
+        "turnover": {
+          "id": 82,
+          "value": "do 1 mil. Kč"
+        },
+        "economyActivity": {
+          "id": 92,
+          "value": "obor 1"
+        },
+        "companyClassification1": {
+          "id": 93,
+          "value": "kla 1"
+        },
+        "companyClassification2": {
+          "id": 94,
+          "value": "kla 2"
+        },
+        "companyClassification3": {
+          "id": 95,
+          "value": "kla 3"
+        },
+        "paymentTerm": {
+          "id": 64,
+          "value": "7 dní"
+        },
+        "contactSource": {
+          "id": 62,
+          "value": "e-mail"
+        },
+        "birthday": null,
+        "notice": "poznamka ke klientovi",
+        "tags": [
+          "stitek1",
+          "stitek 2"
+        ],
+        "customFields": null,
+        "rowInfo.createdAt": "2022-06-18 13:19",
+        "rowInfo.createdBy": "demo@raynet.cz",
+        "rowInfo.updatedAt": "2022-09-22 14:17",
+        "rowInfo.updatedBy": "demo@raynet.cz",
+        "rowInfo.rowAccess": null,
+        "rowInfo.rowState": null,
+        "securityLevel": {
+          "id": 1,
+          "name": "Sdílená"
+        },
+        "inlineGdpr": [
+          {
+            "id": 1,
+            "validFrom": "2022-01-01",
+            "validTill": "2022-01-01",
+            "legalTitle": "LEGITIMATE_INTEREST",
+            "templateName": "Opravněný zájem",
+            "gdprTemplate": 1
+          }
+        ],
+        "_version": 16
+      }
+    ]
+  }
+}
