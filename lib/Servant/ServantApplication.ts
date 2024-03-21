@@ -36,7 +36,7 @@ export function getWarehouses(): IChoice[] {
         { id: 'BR2', title: 'Brunka' },
         { id: 'SV2', title: 'Svémyslice' },
         { id: 'PH2', title: 'Praha' },
-        { id: 'HU2', title: 'Humpolec' },
+        { id: 'TS1', title: 'Aplikace221' },
     ];
 }
 

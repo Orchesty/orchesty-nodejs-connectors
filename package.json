@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.105",
+    "version": "3.0.106",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -29,19 +29,19 @@
         "ts-mixer": "^6.0.4"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.535.0",
-        "@aws-sdk/client-rds": "^3.535.0",
+        "@aws-sdk/client-lambda": "^3.536.0",
+        "@aws-sdk/client-rds": "^3.537.0",
         "@aws-sdk/client-redshift": "^3.535.0",
-        "@aws-sdk/client-s3": "^3.535.0",
+        "@aws-sdk/client-s3": "^3.537.0",
         "@aws-sdk/client-ses": "^3.535.0",
         "@azure/arm-powerbiembedded": "^2.0.2",
-        "@azure/core-rest-pipeline": "^1.15.0",
+        "@azure/core-rest-pipeline": "^1.15.1",
         "@azure/identity": "^4.0.1",
         "@cloudamqp/amqp-client": "^3.1.1",
         "fast-xml-parser": "^4.3.6",
-        "mariadb": "^3.2.3",
+        "mariadb": "^3.3.0",
         "mysql2": "^3.9.2",
-        "nodemailer": "^6.9.12",
+        "nodemailer": "^6.9.13",
         "oracledb": "^6.4.0",
         "pg": "^8.11.3",
         "pg-hstore": "^2.3.4",
@@ -55,10 +55,10 @@
         "@types/debug": "^4.1.12",
         "@types/jest": "^29.5.12",
         "@types/luxon": "^3.4.2",
-        "@types/node": "^20.11.28",
+        "@types/node": "^20.11.30",
         "@types/nodemailer": "^6.4.14",
         "@types/oracledb": "^6.3.0",
-        "@types/pg": "^8.11.2",
+        "@types/pg": "^8.11.4",
         "@types/sqlite3": "^3.1.11",
         "@types/tedious": "^4.0.14",
         "axios-mock-adapter": "^1.22.0",
@@ -78,7 +78,7 @@
         "tedious": "^16.0.0",
         "ts-jest": "^29.1.2",
         "ts-node": "^10.9.2",
-        "typescript": "^5.4.2"
+        "typescript": "^5.4.3"
     },
     "pnpm": {
         "overrides": {}
