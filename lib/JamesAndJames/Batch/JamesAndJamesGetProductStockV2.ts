@@ -2,9 +2,9 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
-export const NAME = 'james-and-james-get-product-stock';
+export const NAME = 'james-and-james-get-product-stock-v2';
 
-export default class JamesAndJamesGetProductStock extends ABatchNode {
+export default class JamesAndJamesGetProductStockV2 extends ABatchNode {
 
     public getName(): string {
         return NAME;

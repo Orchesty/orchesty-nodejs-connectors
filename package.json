@@ -51,7 +51,7 @@
         "tedious": "^17.0.0"
     },
     "devDependencies": {
-        "@hanaboso/eslint-plugin": "^1.1.1",
+        "@hanaboso/eslint-plugin": "^1.1.2",
         "@types/debug": "^4.1.12",
         "@types/jest": "^29.5.12",
         "@types/luxon": "^3.4.2",

@@ -6,7 +6,9 @@ import SupplyDoGetSellingOrders from '../../lib/SupplyDo/Batch/SupplyDoGetSellin
 import SupplyDoCreateOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreateOrderHistory';
 import SupplyDoCreateProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoCreateProductBatchWarehouse';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
+import SupplyDoGetWarehouses from '../../lib/SupplyDo/Connector/SupplyDoGetWarehouses';
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
+import SupplyDoUpdateProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoUpdateProductBatchWarehouse';
 import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';
 import SupplyDoUpsertProduct from '../../lib/SupplyDo/Connector/SupplyDoUpsertProduct';
 import SupplyDoApplication, {
@@ -38,5 +40,7 @@ export function init(): void {
     container.setNode(new SupplyDoGetSellingOrders(), supplyDoApplication);
     container.setNode(new SupplyDoGetProducts(), supplyDoApplication);
     container.setNode(new SupplyDoCreateProductBatchWarehouse(), supplyDoApplication);
+    container.setNode(new SupplyDoUpdateProductBatchWarehouse(), supplyDoApplication);
     container.setNode(new SupplyDoCreateOrderHistory(), supplyDoApplication);
+    container.setNode(new SupplyDoGetWarehouses(), supplyDoApplication);
 }
