@@ -13,7 +13,9 @@ export default class SupplyDoGetWarehouses extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         let url = 'items/warehouse';
         const params = this.uriParams(dto);
-        if (params) url = `${url}?${params}`;
+        if (params) {
+            url = `${url}?${params}`;
+        }
 
         const req = await this.getApplication().getRequestDto(
             dto,
