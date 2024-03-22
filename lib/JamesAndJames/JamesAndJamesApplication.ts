@@ -15,6 +15,7 @@ export const NAME = 'james-and-james';
 export const BASE_URL = 'baseUrl';
 export const API_KEY = 'api_key';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export default class JamesAndJamesApplication extends ABasicApplication {
 
     public getName(): string {
@@ -56,10 +57,36 @@ export default class JamesAndJamesApplication extends ABasicApplication {
         data?: unknown,
     ): RequestDto {
         const request = new RequestDto(`${this.getBaseUrl(applicationInstall)}/${url ?? ''}`, method, dto);
+        const token = Buffer.from(JSON.stringify(this.getBearerToken(applicationInstall))).toString('base64');
         request.setHeaders({
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
-            [CommonHeaders.AUTHORIZATION]: `Bearer ${this.getBearerToken(applicationInstall)}`,
+            [CommonHeaders.AUTHORIZATION]: `Bearer ${token}`,
+        });
+
+        if (data) {
+            request.setJsonBody(data);
+        }
+
+        return request;
+    }
+
+    public getRequestDtoV1(
+        dto: AProcessDto,
+        applicationInstall: ApplicationInstall,
+        method: HttpMethods,
+        url?: string,
+        data?: unknown,
+    ): RequestDto {
+        const token = this.getBearerToken(applicationInstall);
+        let fullUrl = `${this.getBaseUrl(applicationInstall)}/${url ?? ''}`.replace('/v2', '/1');
+        fullUrl += fullUrl.includes('?') ? '&' : '?';
+        fullUrl += `half_api_key=${token.half_api_key}&message_timestamp=${token.message_timestamp}&security_hash=${token.security_hash}`;
+
+        const request = new RequestDto(fullUrl, method, dto);
+        request.setHeaders({
+            [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
+            [CommonHeaders.ACCEPT]: JSON_TYPE,
         });
 
         if (data) {
@@ -77,21 +104,22 @@ export default class JamesAndJamesApplication extends ABasicApplication {
         return applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY];
     }
 
-    private getBearerToken(applicationInstall: ApplicationInstall): string {
+    private getBearerToken(applicationInstall: ApplicationInstall): {
+        half_api_key: string,
+        message_timestamp: number,
+        security_hash: string,
+    } {
         const apiKey = this.getApiKey(applicationInstall);
         const halfApiKey = apiKey.substring(0, 16);
         const timestamp = Math.floor(Date.now() / 1000);
         const securityHash = crypto.createHash('md5').update(`${timestamp}${apiKey}`).digest('hex');
 
-        /* eslint-disable @typescript-eslint/naming-convention */
-        const payload = {
+        return {
             half_api_key: halfApiKey,
             message_timestamp: timestamp,
             security_hash: securityHash,
         };
-        /* eslint-enable @typescript-eslint/naming-convention */
-
-        return Buffer.from(JSON.stringify(payload)).toString('base64');
     }
 
 }
+/* eslint-enable @typescript-eslint/naming-convention */
