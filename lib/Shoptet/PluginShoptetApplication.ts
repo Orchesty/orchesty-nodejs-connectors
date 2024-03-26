@@ -298,7 +298,11 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
             code,
             ['api'],
             ScopeSeparatorEnum.COMMA,
-            {},
+            {
+                options: {
+                    authorizationMethod: 'body',
+                },
+            },
         ) as IAccessToken;
     }
 
