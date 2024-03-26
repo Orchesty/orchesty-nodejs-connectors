@@ -41,7 +41,11 @@ export interface IInput {
 }
 
 interface IUpdateStock {
-    products: {
+    products?: {
+        code: string;
+        stock: number;
+    }[];
+    variants?: {
         code: string;
         stock: number;
     }[];
