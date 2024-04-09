@@ -81,6 +81,10 @@ export interface IOutput {
         name: string;
         person: number;
     }[];
+    owner: {
+        id: number;
+        fullName: string;
+    };
     meetingPlace: string;
     companyAddress: unknown;
     recurrence: {
@@ -90,7 +94,7 @@ export interface IOutput {
         interval: string,
         recurrenceDay: number,
         startDate: string
-    },
+    };
 }
 
 /* eslint-enable @typescript-eslint/naming-convention */
