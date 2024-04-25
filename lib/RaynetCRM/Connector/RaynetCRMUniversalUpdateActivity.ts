@@ -17,6 +17,9 @@ export default class RaynetCRMUniversalUpdateActivity extends AConnector {
 
         delete data.owner;
         delete data['rowInfo.updatedAt'];
+        if (entityName.toLowerCase() === 'task' && data.participants?.length) {
+            data.resolver = data.participants[0].id;
+        }
 
         const req = await this.getApplication().getRequestDto(
             dto,

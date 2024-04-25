@@ -13,6 +13,11 @@ export default class RaynetCRMUniversalCreateActivity extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IResponse>> {
         const { entityName, ...data } = dto.getJsonData();
+
+        if (entityName.toLowerCase() === 'task' && data.participants?.length) {
+            data.resolver = data.participants[0].id;
+        }
+
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
