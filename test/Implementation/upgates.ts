@@ -10,6 +10,7 @@ import UpgatesGetProducts from '../../lib/Upgates/Batch/UpgatesGetProducts';
 import UpgatesDeleteWebhooks from '../../lib/Upgates/Connector/UpgatesDeleteWebhooks';
 import UpgatesGetOrderStates from '../../lib/Upgates/Connector/UpgatesGetOrderStates';
 import UpgatesGetPayments from '../../lib/Upgates/Connector/UpgatesGetPayments';
+import UpgatesGetProductParameters from '../../lib/Upgates/Connector/UpgatesGetProductParameters';
 import UpgatesGetShipments from '../../lib/Upgates/Connector/UpgatesGetShipments';
 import UpgatesApplication, { NAME, UPGATES_URL } from '../../lib/Upgates/UpgatesApplication';
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
@@ -41,4 +42,5 @@ export function init(): void {
     container.setNode(new UpgatesGetOrderStates(), upgatesApplication);
     container.setNode(new UpgatesGetShipments(), upgatesApplication);
     container.setNode(new UpgatesGetPayments(), upgatesApplication);
+    container.setNode(new UpgatesGetProductParameters(), upgatesApplication);
 }

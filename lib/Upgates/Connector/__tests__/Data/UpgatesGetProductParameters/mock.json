@@ -1,0 +1,108 @@
+{
+  "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/products/parameters/?product_id=1",
+  "code": 200,
+  "body": {
+    "current_page": 1,
+    "current_page_items": 1,
+    "number_of_pages": 1,
+    "number_of_items": 1,
+    "products": [
+      {
+        "code": "P00001",
+        "parameters": [
+          {
+            "name": {
+              "cs": "Barva"
+            },
+            "values": [
+              {
+                "cs": "Žlutá"
+              },
+              {
+                "cs": "Purpurová"
+              },
+              {
+                "cs": "Šedá"
+              },
+              {
+                "cs": "Bílá"
+              }
+            ]
+          },
+          {
+            "name": {
+              "cs": "Velikost"
+            },
+            "values": [
+              {
+                "cs": "M"
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "code": "P00001-1",
+            "parameters": [
+              {
+                "name": {
+                  "cs": "Barva"
+                },
+                "values": [
+                  {
+                    "cs": "Žlutá"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "P00001-2",
+            "parameters": [
+              {
+                "name": {
+                  "cs": "Barva"
+                },
+                "values": [
+                  {
+                    "cs": "Purpurová"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "P00001-3",
+            "parameters": [
+              {
+                "name": {
+                  "cs": "Barva"
+                },
+                "values": [
+                  {
+                    "cs": "Šedá"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "P00001-4",
+            "parameters": [
+              {
+                "name": {
+                  "cs": "Barva"
+                },
+                "values": [
+                  {
+                    "cs": "Bílá"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

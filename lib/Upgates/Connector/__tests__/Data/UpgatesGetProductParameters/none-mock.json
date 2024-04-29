@@ -1,0 +1,5 @@
+{
+  "http": "GET https://private-anon-903e641b16-upgatesapiv2.apiary-mock.com/api/v2/products/parameters/?product_id=1",
+  "code": 200,
+  "body": {}
+}

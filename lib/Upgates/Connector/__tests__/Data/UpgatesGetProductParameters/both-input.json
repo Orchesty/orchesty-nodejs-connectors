@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "productId": "1",
+        "code": "P00001"
+    }
+}
