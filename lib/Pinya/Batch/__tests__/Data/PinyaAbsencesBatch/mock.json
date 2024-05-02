@@ -1,0 +1,26 @@
+{
+    "http": "GET https://api.pinya.hr/absences?PageNumber=1&PageSize=50",
+    "code": 200,
+    "body": {
+        "pageNumber": 1,
+        "pageSize": 50,
+        "lastPage": 1,
+        "totalItemsCount": 1,
+        "count": 1,
+        "data": [
+            {
+                "id": 0,
+                "dateFrom": "2024-04-30T10:02:11.630Z",
+                "dateTo": "2024-04-30T10:02:11.630Z",
+                "absenceState": "pending",
+                "amount": 0,
+                "description": "string",
+                "employeeNumber": "string",
+                "absenceTypeCode": "string",
+                "absenceTypeTitle": "string",
+                "absenceTypeShortcut": "string",
+                "isWorktime": true
+            }
+        ]
+    }
+}

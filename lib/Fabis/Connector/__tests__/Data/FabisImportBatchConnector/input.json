@@ -1,0 +1,38 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "isActive": true,
+            "companyIC": "string",
+            "degreeBefore": "string",
+            "firstName": "string",
+            "lastName": "string",
+            "degreeAfter": "string",
+            "dateBirth": "2024-04-29T10:37:17.499Z",
+            "sex": "string",
+            "personalNumber": "string",
+            "employmentRelationshipCode": "string",
+            "isDriver": true,
+            "email": "string",
+            "mobile": "string",
+            "street": "string",
+            "city": "string",
+            "postCode": "string",
+            "country": "string",
+            "costCenter": "string",
+            "costCenterName": "string",
+            "object": "string",
+            "employeeWork": "string",
+            "shift": "string",
+            "work": "string",
+            "workName": "string",
+            "parentEmployee": "string",
+            "dateMaternityLeaveStart": "2024-04-29T10:37:17.499Z",
+            "dateMaternityLeaveEnd": "2024-04-29T10:37:17.499Z",
+            "dateStart": "2024-04-29T10:37:17.499Z",
+            "dateEnd": "2024-04-29T10:37:17.499Z"
+        }
+    ]
+}

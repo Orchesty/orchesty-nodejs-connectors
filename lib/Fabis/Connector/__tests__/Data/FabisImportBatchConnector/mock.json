@@ -1,0 +1,5 @@
+{
+    "http": "POST https://api.precontrol.cz/api/v1/Import/Batch",
+    "code": 200,
+    "body": {}
+}
