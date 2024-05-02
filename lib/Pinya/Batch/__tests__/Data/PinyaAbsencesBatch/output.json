@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":0,\"dateFrom\":\"2024-04-30T10:02:11.630Z\",\"dateTo\":\"2024-04-30T10:02:11.630Z\",\"absenceState\":\"pending\",\"amount\":0,\"description\":\"string\",\"employeeNumber\":\"string\",\"absenceTypeCode\":\"string\",\"absenceTypeTitle\":\"string\",\"absenceTypeShortcut\":\"string\",\"isWorktime\":true}",
+            "headers": {}
+        }
+    ]
+}
