@@ -6,35 +6,35 @@ import Joi from 'joi';
 
 const inputSchema = Joi.array().items(
     Joi.object({
-        isActive: Joi.boolean().required(),
-        companyIC: Joi.string().required(),
-        degreeBefore: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        degreeAfter: Joi.string().required(),
-        dateBirth: Joi.string().required(),
-        sex: Joi.string().required(),
-        personalNumber: Joi.string().required(),
-        employmentRelationshipCode: Joi.string().required(),
-        isDriver: Joi.boolean().required(),
-        email: Joi.string().required(),
-        mobile: Joi.string().required(),
-        street: Joi.string().required(),
-        city: Joi.string().required(),
-        postCode: Joi.string().required(),
-        country: Joi.string().required(),
-        costCenter: Joi.string().required(),
-        costCenterName: Joi.string().required(),
-        object: Joi.string().required(),
-        employeeWork: Joi.string().required(),
-        shift: Joi.string().required(),
-        work: Joi.string().required(),
-        workName: Joi.string().required(),
-        parentEmployee: Joi.string().required(),
-        dateMaternityLeaveStart: Joi.string().required(),
-        dateMaternityLeaveEnd: Joi.string().required(),
-        dateStart: Joi.string().required(),
-        dateEnd: Joi.string().required(),
+        isActive: Joi.boolean().optional().allow(null),
+        companyIC: Joi.string().optional().allow(null),
+        degreeBefore: Joi.string().optional().allow(null),
+        firstName: Joi.string().optional().allow(null),
+        lastName: Joi.string().optional().allow(null),
+        degreeAfter: Joi.string().optional().allow(null),
+        dateBirth: Joi.string().optional().allow(null),
+        sex: Joi.string().optional().allow(null),
+        personalNumber: Joi.string().optional().allow(null),
+        employmentRelationshipCode: Joi.string().optional().allow(null),
+        isDriver: Joi.boolean().optional().allow(null),
+        email: Joi.string().optional().allow(null),
+        mobile: Joi.string().optional().allow(null),
+        street: Joi.string().optional().allow(null),
+        city: Joi.string().optional().allow(null),
+        postCode: Joi.string().optional().allow(null),
+        country: Joi.string().optional().allow(null),
+        costCenter: Joi.string().optional().allow(null),
+        costCenterName: Joi.string().optional().allow(null),
+        object: Joi.string().optional().allow(null),
+        employeeWork: Joi.string().optional().allow(null),
+        shift: Joi.string().optional().allow(null),
+        work: Joi.string().optional().allow(null),
+        workName: Joi.string().optional().allow(null),
+        parentEmployee: Joi.string().optional().allow(null),
+        dateMaternityLeaveStart: Joi.string().optional().allow(null),
+        dateMaternityLeaveEnd: Joi.string().optional().allow(null),
+        dateStart: Joi.string().optional().allow(null),
+        dateEnd: Joi.string().optional().allow(null),
     }),
 );
 
@@ -68,35 +68,35 @@ interface IResponse {
 }
 
 export interface IFabisImportBatchInput {
-    isActive: boolean;
-    companyIC: string;
-    degreeBefore: string;
-    firstName: string;
-    lastName: string;
-    degreeAfter: string;
-    dateBirth: string;
-    sex: string;
-    personalNumber: string;
-    employmentRelationshipCode: string;
-    isDriver: boolean;
-    email: string;
-    mobile: string;
-    street: string;
-    city: string;
-    postCode: string;
-    country: string;
-    costCenter: string;
-    costCenterName: string;
-    object: string;
-    employeeWork: string;
-    shift: string;
-    work: string;
-    workName: string;
-    parentEmployee: string;
-    dateMaternityLeaveStart: string;
-    dateMaternityLeaveEnd: string;
-    dateStart: string;
-    dateEnd: string;
+    isActive?: boolean;
+    companyIC?: string;
+    degreeBefore?: string;
+    firstName?: string;
+    lastName?: string;
+    degreeAfter?: string;
+    dateBirth?: string;
+    sex?: string;
+    personalNumber?: string;
+    employmentRelationshipCode?: string;
+    isDriver?: boolean;
+    email?: string;
+    mobile?: string;
+    street?: string;
+    city?: string;
+    postCode?: string;
+    country?: string;
+    costCenter?: string;
+    costCenterName?: string;
+    object?: string;
+    employeeWork?: string;
+    shift?: string;
+    work?: string;
+    workName?: string;
+    parentEmployee?: string;
+    dateMaternityLeaveStart?: string;
+    dateMaternityLeaveEnd?: string;
+    dateStart?: string;
+    dateEnd?: string;
 }
 
 export interface IFabisImportBatchOutput {
