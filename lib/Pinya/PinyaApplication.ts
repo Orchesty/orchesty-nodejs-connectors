@@ -163,7 +163,7 @@ export default class PinyaApplication extends ABasicApplication {
             expiration: this.getExpirationWithOffset(new Date().getTime() + 30 * 60_000),
         };
 
-        // Documentation has nothing about expiration, so for now set it at 30 minutes
+        // Documentation nor response has nothing about expiration, so for now set it at 30 minutes
         const expire = 30 * 60;
         return {
             dataToStore: token,
