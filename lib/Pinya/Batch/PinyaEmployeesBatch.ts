@@ -37,7 +37,7 @@ export default class PinyaEmployeesBatch extends ABatchNode {
     }
 
     protected processFilter(dto: BatchProcessDto): string {
-        const page = Number(dto.getBatchCursor('1'));
+        const page = Number(dto.getBatchCursor('0'));
 
         return `PageNumber=${page}&PageSize=${this.batchSize}`;
     }

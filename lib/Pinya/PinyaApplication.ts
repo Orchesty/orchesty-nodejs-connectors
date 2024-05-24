@@ -115,7 +115,7 @@ export default class PinyaApplication extends ABasicApplication {
 
     private async getAccessToken(applicationInstall: ApplicationInstall): Promise<string> {
         const date = new Date();
-        date.setMinutes(date.getMinutes() - 5);
+        date.setMinutes(date.getMinutes() - 1);
         const storedAccessToken = await this.accessToken(applicationInstall);
         // eslint-disable-next-line @typescript-eslint/prefer-destructuring
         let accessToken = storedAccessToken.accessToken;
@@ -160,11 +160,11 @@ export default class PinyaApplication extends ABasicApplication {
         const token: IAccess = {
             accessToken: body.data.accessToken,
             refreshToken: body.data.refreshToken,
-            expiration: this.getExpirationWithOffset(new Date().getTime() + 30 * 60_000),
+            expiration: this.getExpirationWithOffset(new Date().getTime() + 5 * 60_000),
         };
 
-        // Documentation nor response has nothing about expiration, so for now set it at 30 minutes
-        const expire = 30 * 60;
+        // Tested to last no more than 5 minutes
+        const expire = 5 * 60;
         return {
             dataToStore: token,
             expire,
