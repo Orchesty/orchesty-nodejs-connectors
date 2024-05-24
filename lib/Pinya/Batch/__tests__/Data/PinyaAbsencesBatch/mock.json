@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.pinya.hr/absences?PageNumber=1&PageSize=50",
+    "http": "GET https://api.pinya.hr/absences?PageNumber=0&PageSize=50",
     "code": 200,
     "body": {
         "pageNumber": 1,

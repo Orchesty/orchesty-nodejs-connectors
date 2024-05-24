@@ -68,35 +68,35 @@ interface IResponse {
 }
 
 export interface IFabisImportBatchInput {
-    isActive?: boolean;
-    companyIC?: string;
-    degreeBefore?: string;
-    firstName?: string;
-    lastName?: string;
-    degreeAfter?: string;
-    dateBirth?: string;
-    sex?: string;
-    personalNumber?: string;
-    employmentRelationshipCode?: string;
-    isDriver?: boolean;
-    email?: string;
-    mobile?: string;
-    street?: string;
-    city?: string;
-    postCode?: string;
-    country?: string;
-    costCenter?: string;
-    costCenterName?: string;
-    object?: string;
-    employeeWork?: string;
-    shift?: string;
-    work?: string;
-    workName?: string;
-    parentEmployee?: string;
-    dateMaternityLeaveStart?: string;
-    dateMaternityLeaveEnd?: string;
-    dateStart?: string;
-    dateEnd?: string;
+    isActive?: boolean | null;
+    companyIC?: string | null;
+    degreeBefore?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    degreeAfter?: string | null;
+    dateBirth?: string | null;
+    sex?: string | null;
+    personalNumber?: string | null;
+    employmentRelationshipCode?: string | null;
+    isDriver?: boolean | null;
+    email?: string | null;
+    mobile?: string | null;
+    street?: string | null;
+    city?: string | null;
+    postCode?: string | null;
+    country?: string | null;
+    costCenter?: string | null;
+    costCenterName?: string | null;
+    object?: string | null;
+    employeeWork?: string | null;
+    shift?: string | null;
+    work?: string | null;
+    workName?: string | null;
+    parentEmployee?: string | null;
+    dateMaternityLeaveStart?: string | null;
+    dateMaternityLeaveEnd?: string | null;
+    dateStart?: string | null;
+    dateEnd?: string | null;
 }
 
 export interface IFabisImportBatchOutput {

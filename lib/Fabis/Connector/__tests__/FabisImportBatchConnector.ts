@@ -6,9 +6,9 @@ import { FABIS_IMPORT_BATCH_CONNECTOR } from '../FabisImportBatchConnector';
 let tester: NodeTester;
 
 describe('Tests for FabisImportBatchConnector', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
         tester = new NodeTester(container, __filename);
-        initFabisIntegrationTest();
+        await initFabisIntegrationTest();
     });
 
     it('process - ok', async () => {
