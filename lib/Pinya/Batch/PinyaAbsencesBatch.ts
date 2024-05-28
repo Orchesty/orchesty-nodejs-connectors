@@ -23,8 +23,19 @@ export default class PinyaAbsencesBatch extends ABatchNode {
             HttpMethods.GET,
             `absences?${this.processFilter(dto)}`,
         );
-        const resp = await this.getSender().send<Response>(req);
-        const response = resp.getJsonBody();
+        const resp = await this.getSender().send<Response>(req, { success: ['<300', '404'] });
+        let response = resp.getJsonBody();
+        if (!('data' in response)) { // Instead of empty data, Pinya returns an error
+            response = {
+                pageNumber: 0,
+                pageSize: 1,
+                lastPage: 0,
+                totalItemsCount: 0,
+                count: 0,
+                data: [],
+            };
+        }
+
         this.processResult(dto, response);
 
         if (response.lastPage > response.pageNumber) {

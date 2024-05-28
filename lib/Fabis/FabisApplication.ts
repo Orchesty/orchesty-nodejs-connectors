@@ -57,8 +57,7 @@ export default class FabisApplication extends ABasicApplication {
 
     public isAuthorized(applicationInstall: ApplicationInstall): boolean {
         const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-        return super.isAuthorized(applicationInstall)
-            && authorizationForm?.[CLIENT_ID]
+        return authorizationForm?.[CLIENT_ID]
             && authorizationForm?.[CLIENT_SECRET];
     }
 
