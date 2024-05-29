@@ -14,4 +14,8 @@ describe('Tests for PinyaAbsencesBatch', () => {
     it('process - ok', async () => {
         await tester.testBatch(PINYA_ABSENCES_BATCH);
     });
+
+    it('process - empty', async () => {
+        await tester.testBatch(PINYA_ABSENCES_BATCH, 'empty');
+    });
 });

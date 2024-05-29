@@ -1,0 +1,9 @@
+{
+    "http": "GET https://api.pinya.hr/absences?PageNumber=0&PageSize=50",
+    "code": 404,
+    "body": {
+        "errorMessages": [
+            "Absence records with specified parameters were not found. Filter parameters: {\"PageNumber\":0,\"PageSize\":50}"
+        ]
+    }
+}
