@@ -64,9 +64,13 @@ export default class UpgatesApplication extends ABasicApplication {
     }
 
     public getDecoratedUrl(app: ApplicationInstall): string {
-        const url = app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
+        let url = app.getSettings()?.[CoreFormsEnum.AUTHORIZATION_FORM]?.[UPGATES_URL] ?? '';
+        url = url.replace('api/v2', '');
+        if (url.endsWith('/')) {
+            url = url.substring(0, url.length - 1);
+        }
 
-        return url.replace('api/v2', '');
+        return url;
     }
 
     public getFormStack(): FormStack {
