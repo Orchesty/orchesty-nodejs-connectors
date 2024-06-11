@@ -1,5 +1,5 @@
 {
-    "http": "GET https://api.myshoptet.com/api/orders/snapshot?include=shippingDetails,notes",
+    "http": "GET https://api.myshoptet.com/api/orders/snapshot?include=shippingDetails,notes,surchargeParameters",
     "code": 200,
     "body": {
         "data": {

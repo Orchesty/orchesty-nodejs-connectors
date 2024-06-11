@@ -14,7 +14,7 @@ export default class ShoptetGetAllOrders extends AShoptetConnector {
         const { from } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        let url = 'api/orders/snapshot?include=shippingDetails,notes';
+        let url = 'api/orders/snapshot?include=shippingDetails,notes,surchargeParameters';
 
         const creationTimeFrom = from || ShoptetPremiumApplication.shoptetDateISO(
             appInstall.getNonEncryptedSettings().lastRunListOrderChanges,
