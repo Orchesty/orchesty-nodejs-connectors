@@ -4,7 +4,7 @@ import AShoptetConnector from './AShoptetConnector';
 
 export const NAME = 'shoptet-get-order-detail';
 
-export const GET_ORDER_DETAIL_ENDPOINT = 'api/orders/{code}?include=shippingDetails,notes';
+export const GET_ORDER_DETAIL_ENDPOINT = 'api/orders/{code}?include=shippingDetails,notes,surchargeParameters';
 
 export default class ShoptetGetOrderDetail extends AShoptetConnector {
 
@@ -100,4 +100,17 @@ export interface IOutput {
         id: number;
         name: string;
     };
+    surchargeParameters: [
+        {
+            parameterName: {
+                code: string;
+                name: string;
+            };
+            parameterValue: {
+                description: string;
+                price: string;
+                valueIndex: string;
+            };
+        },
+    ];
 }

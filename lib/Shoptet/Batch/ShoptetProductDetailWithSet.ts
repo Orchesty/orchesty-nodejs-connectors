@@ -219,6 +219,19 @@ export interface IInput {
         longitude: string;
         carrierId: number;
     };
+    surchargeParameters: [
+        {
+            parameterName: {
+                code: string;
+                name: string;
+            };
+            parameterValue: {
+                description: string;
+                price: string;
+                valueIndex: string;
+            };
+        },
+    ];
 }
 
 export interface IItem {
