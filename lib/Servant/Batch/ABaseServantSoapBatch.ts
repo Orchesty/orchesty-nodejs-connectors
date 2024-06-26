@@ -1,5 +1,6 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import * as soap from 'soap';
 import { log } from '../Connector/ABaseServantSoapConnector';
@@ -47,6 +48,7 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
                     ...app.prepareArgs(appInstall),
                     ...body,
                 }, async (er: unknown, res: IResult & T): Promise<void> => {
+                    logger.info(client.lastRequest ?? '', {}, false);
                     if (er) {
                         reject(new OnRepeatException(60, 10, (er as Error).message));
                     }

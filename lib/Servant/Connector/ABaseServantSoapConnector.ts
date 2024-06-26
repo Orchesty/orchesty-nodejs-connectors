@@ -74,6 +74,7 @@ export default abstract class ABaseServantSoapConnector extends AConnector {
                     ...app.prepareArgs(appInstall),
                     ...args,
                 }, (er: unknown, res: IResult & T): void => {
+                    logger.info(client.lastRequest ?? '', {}, false);
                     if (er) {
                         reject(new OnRepeatException(60, 10, (er as Error).message));
                     }
