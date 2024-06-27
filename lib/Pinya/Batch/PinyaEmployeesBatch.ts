@@ -63,6 +63,7 @@ export interface PinyaEmployeesOutput {
         firstname: string;
         lastname: string;
         middlename: string;
+        isFabisActivated?: boolean;
         degrees: string;
         degreesBehind: string;
         workEmail: string;
