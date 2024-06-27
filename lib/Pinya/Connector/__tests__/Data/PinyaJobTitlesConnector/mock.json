@@ -1,0 +1,20 @@
+{
+  "http": "GET https://api.pinya.hr/system/job-titles?PageNumber=0&PageSize=1000",
+  "code": 200,
+  "body": {
+    "pageNumber": 0,
+    "pageSize": 0,
+    "lastPage": 0,
+    "totalItemsCount": 1,
+    "count": 1,
+    "data": [
+      {
+        "id": 1,
+        "title": "string",
+        "code": "string",
+        "description": "string",
+        "note": "string"
+      }
+    ]
+  }
+}

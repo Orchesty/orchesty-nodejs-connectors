@@ -7,6 +7,7 @@ import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import PinyaAbsencesBatch from '../../lib/Pinya/Batch/PinyaAbsencesBatch';
 import PinyaEmployeesBatch from '../../lib/Pinya/Batch/PinyaEmployeesBatch';
+import { PinyaJobTitlesConnector } from '../../lib/Pinya/Connector/PinyaJobTitlesConnector';
 import PinyaApplication, { PINYA_APPLICATION } from '../../lib/Pinya/PinyaApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
 import { container } from '../TestAbstract';
@@ -41,6 +42,12 @@ export async function initPinyaIntegrationTest(): Promise<void> {
     );
     container.setNode(
         new PinyaAbsencesBatch()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+    container.setNode(
+        new PinyaJobTitlesConnector()
             .setSender(sender)
             .setDb(db)
             .setApplication(app),
