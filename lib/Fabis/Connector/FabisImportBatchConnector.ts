@@ -49,21 +49,17 @@ export default class FabisImportBatchConnector extends AConnector {
     @validate(inputSchema)
     public async processAction(
         dto: ProcessDto<IFabisImportBatchInput[]>,
-    ): Promise<ProcessDto<IFabisImportBatchOutput>> {
+    ): Promise<ProcessDto> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'v1/Import/Batch',
         );
-        const resp = await this.getSender().send<IResponse>(req);
+        const resp = await this.getSender().send(req);
 
         return dto.setNewJsonData(resp.getJsonBody());
     }
-
-}
-
-interface IResponse {
 
 }
 
@@ -97,8 +93,4 @@ export interface IFabisImportBatchInput {
     dateMaternityLeaveEnd?: string | null;
     dateStart?: string | null;
     dateEnd?: string | null;
-}
-
-export interface IFabisImportBatchOutput {
-
 }

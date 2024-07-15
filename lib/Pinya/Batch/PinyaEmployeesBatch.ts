@@ -48,10 +48,6 @@ export default class PinyaEmployeesBatch extends ABatchNode {
 
 }
 
-export interface IInput {
-
-}
-
 export interface PinyaEmployeesOutput {
     employeeBasic: {
         employeeGuid: string;

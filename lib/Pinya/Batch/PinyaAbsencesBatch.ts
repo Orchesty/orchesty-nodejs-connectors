@@ -59,10 +59,6 @@ export default class PinyaAbsencesBatch extends ABatchNode {
 
 }
 
-export interface IInput {
-
-}
-
 export interface PinyaAbsencesOutput {
     id: number;
     dateFrom: string;

@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.120",
+    "version": "3.0.121",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -29,18 +29,18 @@
         "ts-mixer": "^6.0.4"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.600.0",
-        "@aws-sdk/client-rds": "^3.600.0",
-        "@aws-sdk/client-redshift": "^3.600.0",
-        "@aws-sdk/client-s3": "^3.600.0",
-        "@aws-sdk/client-ses": "^3.600.0",
+        "@aws-sdk/client-lambda": "^3.614.0",
+        "@aws-sdk/client-rds": "^3.614.0",
+        "@aws-sdk/client-redshift": "^3.614.0",
+        "@aws-sdk/client-s3": "^3.614.0",
+        "@aws-sdk/client-ses": "^3.614.0",
         "@azure/arm-powerbiembedded": "^2.0.2",
-        "@azure/core-rest-pipeline": "^1.16.1",
+        "@azure/core-rest-pipeline": "^1.16.2",
         "@azure/identity": "^4.3.0",
         "@cloudamqp/amqp-client": "^3.1.1",
         "fast-xml-parser": "^4.4.0",
         "mariadb": "^3.3.1",
-        "mysql2": "^3.10.1",
+        "mysql2": "^3.10.2",
         "nodemailer": "^6.9.14",
         "oracledb": "^6.5.1",
         "pg": "^8.12.0",
@@ -48,14 +48,14 @@
         "sequelize": "^6.37.3",
         "soap": "^1.0.4",
         "sqlite3": "^5.1.7",
-        "tedious": "^18.2.1"
+        "tedious": "^18.2.4"
     },
     "devDependencies": {
         "@hanaboso/eslint-plugin": "^1.1.2",
         "@types/debug": "^4.1.12",
         "@types/jest": "^29.5.12",
         "@types/luxon": "^3.4.2",
-        "@types/node": "^20.14.9",
+        "@types/node": "^20.14.10",
         "@types/nodemailer": "^6.4.15",
         "@types/oracledb": "^6.5.1",
         "@types/pg": "^8.11.6",
@@ -76,9 +76,9 @@
         "soap": "^1.0.0",
         "sqlite3": "^5.1.4",
         "tedious": "^18.2.0",
-        "ts-jest": "^29.1.5",
+        "ts-jest": "^29.2.2",
         "ts-node": "^10.9.2",
-        "typescript": "^5.5.2"
+        "typescript": "^5.5.3"
     },
     "pnpm": {
         "overrides": {}

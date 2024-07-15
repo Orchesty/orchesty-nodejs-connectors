@@ -10,7 +10,7 @@ export default class SupplyDoGetWarehouses extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
         let url = 'items/warehouse';
         const params = this.uriParams(dto);
         if (params) {
@@ -28,7 +28,7 @@ export default class SupplyDoGetWarehouses extends AConnector {
         return dto.setNewJsonData(resp.getJsonBody().data);
     }
 
-    protected uriParams(_dto: ProcessDto<IInput>): string | null {
+    protected uriParams(_dto: ProcessDto): string | null {
         // example: 'filter[fullfilment][type]=James&fields[]=*'
         return null;
     }
@@ -54,9 +54,6 @@ interface Warehouse {
 
 interface IResponse {
     data: Warehouse[];
-}
-
-export interface IInput {
 }
 
 export type IOutput = Warehouse[];
