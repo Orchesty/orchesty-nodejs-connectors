@@ -66,6 +66,7 @@ export interface IOrder {
     variableSymbol: string | null;
     application: string;
     packagingType?: string;
+    printDeliveryNote?: boolean;
     packagingInstructions?: {
         message: string;
         packagingInstructionType: string;
