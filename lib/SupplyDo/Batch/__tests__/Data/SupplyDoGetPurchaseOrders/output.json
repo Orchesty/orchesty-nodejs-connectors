@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":\"1SP-00004\",\"supplier\":4,\"warehouse\":200,\"external_id\":\"1SP-00004\",\"order_number\":\"1SP-00004\",\"company\":1,\"purchase_order_history\":[{\"date\":\"2022-11-24T12:00:00\",\"id\":429,\"purchase_order\":\"1SP-00004\",\"type\":\"draft\",\"purchase_order_product\":[555]},{\"date\":\"2022-11-24T14:00:00\",\"id\":430,\"purchase_order\":\"1SP-00004\",\"type\":\"ordered\",\"purchase_order_product\":[556]},{\"date\":\"2022-12-31T12:00:00\",\"id\":431,\"purchase_order\":\"1SP-00004\",\"type\":\"stocked\",\"purchase_order_product\":[557]}]}",
+            "headers": {}
+        }
+    ]
+}

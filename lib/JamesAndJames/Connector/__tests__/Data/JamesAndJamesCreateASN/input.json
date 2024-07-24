@@ -1,0 +1,27 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "asn": {
+            "reference": "string",
+            "supplier_id": 89,
+            "warehouse_id": 13,
+            "date_placed": "2024-08-24",
+            "date_delivery_due": "2024-08-24",
+            "callback_url": "https://example.com",
+            "carrier": "string",
+            "tracking_number": "string",
+            "expected_pallets": 0,
+            "expected_boxes": 0,
+            "items": [
+                {
+                    "product_id": 625098,
+                    "quantity": 1,
+                    "price": 0
+
+                }
+            ]
+        }
+    }
+}

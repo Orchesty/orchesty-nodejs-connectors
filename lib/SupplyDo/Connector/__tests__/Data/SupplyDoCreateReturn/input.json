@@ -1,0 +1,22 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "id": "adwawdadadwad_adwawdad_111223333",
+            "ecommerce": 37,
+            "return_number": 1,
+            "history": [
+                {
+                    "date": "2024-07-24T20:40:58.765Z",
+                    "return": "draft",
+                    "type": "draft"
+                }
+            ],
+            "products": [
+                166
+            ]
+        }
+    ]
+}

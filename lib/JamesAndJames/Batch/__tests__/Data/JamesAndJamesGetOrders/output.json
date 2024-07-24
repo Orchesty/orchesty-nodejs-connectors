@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":26840945,\"brand_id\":1642,\"type\":\"standard\",\"status\":\"returned\",\"fulfilment_status\":null,\"incoterm\":\"DAP\",\"reference\":\"SP-323771\",\"date_placed\":\"2024-02-21T09:50:33+00:00\",\"postage_speed\":2,\"allow_saturday\":false,\"signed_for\":false,\"no_signature\":false,\"tracked\":false,\"postage_cost\":0,\"currency_code\":\"CZK\",\"tissue_wrap\":false,\"days_before_bbe\":null,\"callback_url\":\"https://enor7pt7mo9g.x.pipedream.net\",\"warehouse_id\":13,\"shipping_contact\":{\"name\":\"Jmeno\",\"company\":null,\"email\":null,\"phone\":\"123\",\"address_line_1\":\"123 ulice\",\"address_line_2\":null,\"city\":\"Praha123\",\"county\":null,\"country\":\"Czech Republic\",\"postcode\":\"533 13\"},\"billing_contact\":{\"name\":\"Jmeno\",\"company\":null,\"email\":null,\"phone\":\"123\",\"address_line_1\":\"123 ulice\",\"address_line_2\":null,\"city\":\"Praha123\",\"county\":null,\"country\":\"Czech Republic\",\"postcode\":\"533 13\"},\"total_value\":293,\"date_labelled\":\"2024-02-23T09:15:28+00:00\",\"date_despatched\":\"2024-02-23T09:15:28+00:00\",\"shipping_info\":{\"carrier\":\"DPD NL\",\"service\":\"DPD NL B2C DPD Home\",\"branded_tracking_link\":\"https://tracking.controlport.co.uk/track/26840945/4763a603\",\"tracking_numbers\":[\"05222977165913\"],\"tracking_links\":[\"https://tracking.dpd.de/status/nl_NL/parcel/05222977165913\"],\"tracking_events\":[],\"tracking_events_updated_at\":\"2024-03-22T11:56:00+00:00\"},\"items\":[{\"id\":79953833,\"product_id\":625097,\"quantity\":51,\"price\":20,\"line_reference\":null,\"days_before_bbe\":null,\"customisation_data\":null,\"batch_id\":null},{\"id\":79953834,\"product_id\":625098,\"quantity\":32,\"price\":273,\"line_reference\":null,\"days_before_bbe\":null,\"customisation_data\":null,\"batch_id\":null}]}",
+            "headers": {}
+        }
+    ]
+}

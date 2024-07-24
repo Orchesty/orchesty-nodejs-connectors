@@ -2,9 +2,12 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import SupplyDoGetOrderHistory from '../../lib/SupplyDo/Batch/SupplyDoGetOrderHistory';
 import SupplyDoGetProducts from '../../lib/SupplyDo/Batch/SupplyDoGetProducts';
 import SupplyDoGetProductsStocks from '../../lib/SupplyDo/Batch/SupplyDoGetProductsStocks';
+import SupplyDoGetPurchaseOrders from '../../lib/SupplyDo/Batch/SupplyDoGetPurchaseOrders';
 import SupplyDoGetSellingOrders from '../../lib/SupplyDo/Batch/SupplyDoGetSellingOrders';
 import SupplyDoCreateOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreateOrderHistory';
 import SupplyDoCreateProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoCreateProductBatchWarehouse';
+import SupplyDoCreatePurchaseOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreatePurchaseOrderHistory';
+import SupplyDoCreateReturn from '../../lib/SupplyDo/Connector/SupplyDoCreateReturn';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
 import SupplyDoGetWarehouses from '../../lib/SupplyDo/Connector/SupplyDoGetWarehouses';
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
@@ -43,4 +46,7 @@ export function init(): void {
     container.setNode(new SupplyDoUpdateProductBatchWarehouse(), supplyDoApplication);
     container.setNode(new SupplyDoCreateOrderHistory(), supplyDoApplication);
     container.setNode(new SupplyDoGetWarehouses(), supplyDoApplication);
+    container.setNode(new SupplyDoGetPurchaseOrders(), supplyDoApplication);
+    container.setNode(new SupplyDoCreatePurchaseOrderHistory(), supplyDoApplication);
+    container.setNode(new SupplyDoCreateReturn(), supplyDoApplication);
 }

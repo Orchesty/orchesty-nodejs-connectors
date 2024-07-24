@@ -1,0 +1,18 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": [
+            {
+                "date": "2024-07-24T20:33:16",
+                "id": 1076,
+                "purchase_order": "1SP-00004",
+                "type": "draft",
+                "purchase_order_product": [
+                    555
+                ]
+            }
+        ]
+    }
+}
