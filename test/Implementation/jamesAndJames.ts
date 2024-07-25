@@ -5,6 +5,7 @@ import JamesAndJamesGetProductStockV2 from '../../lib/JamesAndJames/Batch/JamesA
 import JamesAndJamesCreateASN from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateASN';
 import JamesAndJamesCreateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateOrder';
 import JamesAndJamesCreateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesCreateProduct';
+import JamesAndJamesUpdateASN from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateASN';
 import JamesAndJamesUpdateOrder from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateOrder';
 import JamesAndJamesUpdateProduct from '../../lib/JamesAndJames/Connector/JamesAndJamesUpdateProduct';
 import JamesAndJamesApplication, {
@@ -35,4 +36,5 @@ export function init(): void {
     container.setNode(new JamesAndJamesGetProductStockV2(), jamesAndJamesApplication);
     container.setNode(new JamesAndJamesGetOrders(), jamesAndJamesApplication);
     container.setNode(new JamesAndJamesCreateASN(), jamesAndJamesApplication);
+    container.setNode(new JamesAndJamesUpdateASN(), jamesAndJamesApplication);
 }

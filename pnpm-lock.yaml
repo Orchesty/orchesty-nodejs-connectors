@@ -70,8 +70,8 @@ importers:
         specifier: ^6.9.14
         version: 6.9.14
       oracledb:
-        specifier: ^6.5.1
-        version: 6.5.1
+        specifier: ^6.6.0
+        version: 6.6.0
       pg:
         specifier: ^8.12.0
         version: 8.12.0
@@ -80,7 +80,7 @@ importers:
         version: 2.3.4
       sequelize:
         specifier: ^6.37.3
-        version: 6.37.3(mariadb@3.3.1)(mysql2@3.10.3)(oracledb@6.5.1)(pg-hstore@2.3.4)(pg@8.12.0)(sqlite3@5.1.7)(tedious@18.3.0)
+        version: 6.37.3(mariadb@3.3.1)(mysql2@3.10.3)(oracledb@6.6.0)(pg-hstore@2.3.4)(pg@8.12.0)(sqlite3@5.1.7)(tedious@18.3.0)
       soap:
         specifier: ^1.1.0
         version: 1.1.0
@@ -1822,8 +1822,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.0:
-    resolution: {integrity: sha512-Vb3xHHYnLseK8vlMJQKJYXJ++t4u1/qJ3vykuVrVjvdiOEhYyT1AuP4x03G8EnPmYvYOhe9T+dADTmthjRQMkA==}
+  electron-to-chromium@1.5.1:
+    resolution: {integrity: sha512-FKbOCOQ5QRB3VlIbl1LZQefWIYwszlBloaXcY2rbfpu9ioJnNh3TK03YtIDKDo3WKBi8u+YV4+Fn2CkEozgf4w==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -3134,8 +3134,8 @@ packages:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
 
-  oracledb@6.5.1:
-    resolution: {integrity: sha512-JzoSGei1wnvmqgKnAZK1W650mzHTZXx+7hClV4mwsbY/ZjUtrpnojNJMYJ2jkOhj7XG5oJPfXc4GqDKaNzkxqg==}
+  oracledb@6.6.0:
+    resolution: {integrity: sha512-T3dx+o3j+tVN53wQyr4yGTmoPHLy+a2V8yb1T2PmWrsj3ZlSt2Yu1BgV2yTDqnmBZYpRi/I3yJXRCOHHD7PiyA==}
     engines: {node: '>=14.6'}
 
   p-limit@2.3.0:
@@ -3262,8 +3262,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.3.1:
-    resolution: {integrity: sha512-afSfrq/hUiW/MFmQcLEwV9Zh8Ry6MrMTOyBU53o/fc0gEl+1OZ/Fks/xQCM2nOC0C/OfDtQMnT2d8c3kpcfSzA==}
+  pino@9.3.2:
+    resolution: {integrity: sha512-WtARBjgZ7LNEkrGWxMBN/jvlFiE17LTbBoH0konmBU684Kd0uIiDwBXlcTCW7iJnA6HfIKwUssS/2AC6cDEanw==}
     hasBin: true
 
   pirates@4.0.6:
@@ -3326,8 +3326,8 @@ packages:
     resolution: {integrity: sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  process-warning@3.0.0:
-    resolution: {integrity: sha512-mqn0kFRl0EoqhnL0GQ0veqFHyIN1yig9RHh/InzORTUiZHFRAur+aMtRkELNwGs9aNwKS6tg/An4NYBPGwvtzQ==}
+  process-warning@4.0.0:
+    resolution: {integrity: sha512-/MyYDxttz7DfGMMHiysAsFE4qF+pQYAA8ziO/3NcRVrQ5fSk+Mns4QZA/oRPFzvcqNoVJXQNWNAsdwBXLUkQKw==}
 
   process@0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
@@ -5526,7 +5526,7 @@ snapshots:
       node-redis-connection-pool: 3.1.0
       object-traversal: 1.0.1
       php-serialize: 4.1.1
-      pino: 9.3.1
+      pino: 9.3.2
       prom-client: 15.1.3
       simple-oauth2: 5.1.0
       sodium-native: 4.1.1
@@ -6620,7 +6620,7 @@ snapshots:
   browserslist@4.23.2:
     dependencies:
       caniuse-lite: 1.0.30001643
-      electron-to-chromium: 1.5.0
+      electron-to-chromium: 1.5.1
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
@@ -6940,7 +6940,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.0: {}
+  electron-to-chromium@1.5.1: {}
 
   emittery@0.13.1: {}
 
@@ -8689,7 +8689,7 @@ snapshots:
       type-check: 0.4.0
       word-wrap: 1.2.5
 
-  oracledb@6.5.1:
+  oracledb@6.6.0:
     optional: true
 
   p-limit@2.3.0:
@@ -8812,14 +8812,14 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.3.1:
+  pino@9.3.2:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
       on-exit-leak-free: 2.1.2
       pino-abstract-transport: 1.2.0
       pino-std-serializers: 7.0.0
-      process-warning: 3.0.0
+      process-warning: 4.0.0
       quick-format-unescaped: 4.0.4
       real-require: 0.2.0
       safe-stable-stringify: 2.4.3
@@ -8884,7 +8884,7 @@ snapshots:
       ansi-styles: 5.2.0
       react-is: 18.3.1
 
-  process-warning@3.0.0: {}
+  process-warning@4.0.0: {}
 
   process@0.11.10: {}
 
@@ -9126,7 +9126,7 @@ snapshots:
   sequelize-pool@7.1.0:
     optional: true
 
-  sequelize@6.37.3(mariadb@3.3.1)(mysql2@3.10.3)(oracledb@6.5.1)(pg-hstore@2.3.4)(pg@8.12.0)(sqlite3@5.1.7)(tedious@18.3.0):
+  sequelize@6.37.3(mariadb@3.3.1)(mysql2@3.10.3)(oracledb@6.6.0)(pg-hstore@2.3.4)(pg@8.12.0)(sqlite3@5.1.7)(tedious@18.3.0):
     dependencies:
       '@types/debug': 4.1.12
       '@types/validator': 13.12.0
@@ -9147,7 +9147,7 @@ snapshots:
     optionalDependencies:
       mariadb: 3.3.1
       mysql2: 3.10.3
-      oracledb: 6.5.1
+      oracledb: 6.6.0
       pg: 8.12.0
       pg-hstore: 2.3.4
       sqlite3: 5.1.7

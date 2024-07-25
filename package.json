@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.122",
+    "version": "3.0.123",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -42,7 +42,7 @@
         "mariadb": "^3.3.1",
         "mysql2": "^3.10.3",
         "nodemailer": "^6.9.14",
-        "oracledb": "^6.5.1",
+        "oracledb": "^6.6.0",
         "pg": "^8.12.0",
         "pg-hstore": "^2.3.4",
         "sequelize": "^6.37.3",
