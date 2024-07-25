@@ -34,13 +34,13 @@ export interface IInput {
         reference: string;
         warehouse_id: number;
         supplier_id: number;
-        date_placed: string;
         date_delivery_due: string;
         callback_url: string;
-        carrier: string;
-        tracking_number: string;
-        expected_pallets: number;
-        expected_boxes: number;
+        date_placed?: string;
+        carrier?: string;
+        tracking_number?: string;
+        expected_pallets?: number;
+        expected_boxes?: number;
         items: [
             {
                 product_id: number;

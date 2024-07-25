@@ -17,8 +17,8 @@ export default class SupplyDoGetPurchaseOrders extends ABatchNode {
         const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
         const page = Number(dto.getBatchCursor('0'));
         const ecommerce = dto.getUser();
-        let url = 'items/purchase_order?fields[]=*&fields[]=purchase_order_history.*&fields[]=purchase_order_product.*'
-            + `&filter[ecommerce][_eq]=${ecommerce}`
+        let url = 'items/purchase_order?fields[]=*&fields[]=warehouse.*&fields[]=purchase_order_history.*&fields[]=purchase_order_history.purchase_order_product.*'
+            + `&filter[ecommerce][_eq]=${ecommerce}` // TODO: nefunkční filtr
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
 
         if (lastRun) {
@@ -49,10 +49,12 @@ export default class SupplyDoGetPurchaseOrders extends ABatchNode {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IPurchaseOrder {
     supplier: number;
-    warehouse: number;
+    warehouse: {
+        id: number;
+        external_id: string;
+    };
     external_id: string;
     order_number: string;
     company: number;
@@ -63,6 +65,7 @@ export interface IPurchaseOrder {
         type: string;
         purchase_order_product:
         {
+            id: number;
             price: number;
             purchase_order_history: number;
             quantity: number;
