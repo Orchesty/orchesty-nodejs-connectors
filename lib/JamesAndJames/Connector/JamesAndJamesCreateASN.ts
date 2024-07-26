@@ -38,13 +38,11 @@ export interface IInput {
         tracking_number?: string;
         expected_pallets?: number;
         expected_boxes?: number;
-        items: [
-            {
-                product_id: number;
-                quantity: number;
-                price: number;
-            },
-        ]
+        items: {
+            product_id: number;
+            quantity: number;
+            price: number;
+        }[],
     }
 }
 

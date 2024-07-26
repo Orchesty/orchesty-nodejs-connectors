@@ -66,14 +66,12 @@ export interface IOutput {
         tracking_number: string;
         expected_pallets: number;
         expected_boxes: number;
-        items: [
-            {
-                id: number;
-                product_id: number;
-                quantity: number;
-                price: number;
-            },
-        ]
+        items: {
+            id: number;
+            product_id: number;
+            quantity: number;
+            price: number;
+        }[],
     }
 }
 
