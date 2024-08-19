@@ -61,22 +61,20 @@ export default class ShopifyApplication extends Mixin(AOAuth2Application, ABaseS
     public getScopes(applicationInstall: ApplicationInstall): string[] {
         return [
             'read_assigned_fulfillment_orders',
-            'read_assigned_fulfillment_orders',
             'read_fulfillments',
-            'read_locations',
             'read_merchant_managed_fulfillment_orders',
             'read_orders',
             'read_products',
             'read_shipping',
             'read_third_party_fulfillment_orders',
-            'write_assigned_fulfillment_orders',
+            'read_locations',
             'write_assigned_fulfillment_orders',
             'write_fulfillments',
-            'write_inventory',
             'write_merchant_managed_fulfillment_orders',
             'write_orders',
             'write_products',
             'write_shipping',
+            'write_inventory',
             'write_third_party_fulfillment_orders',
         ];
     }
