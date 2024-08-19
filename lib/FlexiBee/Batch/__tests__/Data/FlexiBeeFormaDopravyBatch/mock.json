@@ -1,0 +1,18 @@
+{
+    "http": "GET https://demo.flexibee.eu/c/demo/forma-dopravy.json?add-row-count=true&start=0&limit=100",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "@rowCount": "1",
+            "forma-dopravy": [
+                {
+                    "id": "14",
+                    "lastUpdate": "2021-04-01T11:27:52.842+02:00",
+                    "kod": "CP_DR",
+                    "nazev": "ČP Do ruky"
+                }
+            ]
+        }
+    }
+}

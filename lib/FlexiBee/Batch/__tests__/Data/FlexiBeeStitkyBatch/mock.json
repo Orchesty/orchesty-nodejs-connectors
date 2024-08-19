@@ -1,0 +1,18 @@
+{
+    "http": "GET https://demo.flexibee.eu/c/demo/stitek.json?add-row-count=true&start=0&limit=100",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "@rowCount": "1",
+            "stitek": [
+                {
+                    "id": "107",
+                    "lastUpdate": "2024-02-12T08:43:33.137+01:00",
+                    "kod": "AAAA",
+                    "nazev": "Aaaaaa"
+                }
+            ]
+        }
+    }
+}

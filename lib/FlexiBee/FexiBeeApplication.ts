@@ -39,6 +39,8 @@ const TOKEN_MAX_LIFE = 60 * 30; // 30 min
 
 const ENDPOINT_LOGIN = 'login-logout/login.json';
 
+export const FLEXI_BEE_APPLICATION = 'flexibee';
+
 interface IToken {
     success: boolean;
     [AUTH_SESSION_ID]: string;
@@ -54,7 +56,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     }
 
     public getName(): string {
-        return 'flexibee';
+        return FLEXI_BEE_APPLICATION;
     }
 
     public getDescription(): string {
@@ -116,7 +118,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
     public getUrl(applicationInstall: ApplicationInstall, url?: string): string {
         const host = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][FLEXIBEE_URL] ?? '';
 
-        if (host) {
+        if (!host) {
             throw Error('There is no flexibee url');
         }
 

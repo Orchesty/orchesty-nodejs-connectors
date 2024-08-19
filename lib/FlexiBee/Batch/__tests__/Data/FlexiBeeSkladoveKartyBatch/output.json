@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":\"1\",\"lastUpdate\":\"2023-06-06T13:54:08.663+02:00\",\"prumCenaTuz\":\"0.0\",\"prumCenaMen\":\"0.0\",\"stavMJ\":\"20.0\",\"stavTuz\":\"0.0\",\"stavMen\":\"0.0\",\"datPosl\":\"2020-11-01+01:00\",\"pocatMJ\":\"0.0\",\"pocatTuz\":\"0.0\",\"pocatMen\":\"0.0\",\"minMJ\":\"0.0\",\"maxMJ\":\"0.0\",\"rezervMJ\":\"0.0\",\"datStavMJ\":\"0.0\",\"datStavTuz\":\"0.0\",\"datStavMen\":\"0.0\",\"poslCenaTuz\":\"0.0\",\"poslCenaMen\":\"0.0\",\"vydExpir\":\"false\",\"popis\":\"\",\"popisA\":\"\",\"popisB\":\"\",\"popisC\":\"\",\"poznamVelka\":\"\",\"nazev\":\"Baterie sprch. pod omitku Focus E 2\",\"nazevA\":\"\",\"nazevB\":\"\",\"nazevC\":\"\",\"cenPopis\":\"popis1\",\"cenPopisA\":\"\",\"cenPopisB\":\"\",\"cenPopisC\":\"\",\"cenPoznam\":\"poznamka\",\"pozadavkyMj\":\"0.0\",\"stavMjSPozadavky\":\"48.0\",\"dostupMj\":\"48.0\",\"ucetObdobi\":\"code:2020\",\"ucetObdobi@ref\":\"/c/demo/ucetni-obdobi/1.json\",\"ucetObdobi@showAs\":\"2020\",\"cenik\":\"code:31967000\",\"cenik@ref\":\"/c/demo/cenik/2.json\",\"cenik@showAs\":\"31967000: Baterie sprch. pod omitku Focus E 2\",\"sklad\":\"code:LIBEREC\",\"sklad@ref\":\"/c/demo/sklad/5.json\",\"sklad@showAs\":\"LIBEREC: Liberecký sklad\",\"typDokl\":\"code:LIBEREC\",\"typDokl@ref\":\"/c/demo/sklad/5.json\",\"typDokl@showAs\":\"LIBEREC: Liberecký sklad\",\"mistnost\":\"\",\"regal\":\"\",\"police\":\"\"}",
+            "headers": {}
+        }
+    ]
+}

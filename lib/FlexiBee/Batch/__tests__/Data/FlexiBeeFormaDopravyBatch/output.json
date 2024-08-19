@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":\"14\",\"lastUpdate\":\"2021-04-01T11:27:52.842+02:00\",\"kod\":\"CP_DR\",\"nazev\":\"ČP Do ruky\"}",
+            "headers": {}
+        }
+    ]
+}

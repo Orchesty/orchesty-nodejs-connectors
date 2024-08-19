@@ -1,0 +1,19 @@
+{
+    "http": "GET https://demo.flexibee.eu/c/demo/forma-uhrady.json?add-row-count=true&start=0&limit=100",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "@rowCount": "1",
+            "forma-uhrady": [
+                {
+                    "id": "9",
+                    "lastUpdate": "2020-06-16T21:52:59.510+02:00",
+                    "kod": "COMGATE",
+                    "nazev": "COMGATE",
+                    "mena": ""
+                }
+            ]
+        }
+    }
+}
