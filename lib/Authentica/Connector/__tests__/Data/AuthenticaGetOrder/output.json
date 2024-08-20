@@ -1,0 +1,64 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "addressLine1": "Marešova 14",
+        "addressLine2": "2nd floor",
+        "addressLine3": null,
+        "branchId": null,
+        "carrierId": 8,
+        "city": "Brno",
+        "cod": false,
+        "codValue": null,
+        "codValueCurrency": null,
+        "companyName": "Webwings s.r.o.",
+        "country": "CZ",
+        "email": "developers@webwings.cz",
+        "externalId": "external-ddw",
+        "firstName": null,
+        "id": 1,
+        "items": [
+            {
+                "amount": 2,
+                "productId": 12
+            },
+            {
+                "amount": 5,
+                "productId": 3
+            },
+            {
+                "amount": 5,
+                "productId": 17
+            },
+            {
+                "amount": 4,
+                "productId": 5
+            },
+            {
+                "amount": 1,
+                "productId": 21
+            },
+            {
+                "amount": 1,
+                "productId": 4
+            }
+        ],
+        "lastName": null,
+        "orderNumber": null,
+        "orderTags": [
+            "tag1",
+            "tag2"
+        ],
+        "phone": "+420808875329",
+        "price": "110.00",
+        "priceCurrency": "EUR",
+        "printDeliveryNote": true,
+        "state": null,
+        "status": "preparation",
+        "trackingNumbers": [],
+        "trackingUrls": [],
+        "vs": null,
+        "zip": "602 00"
+    }
+}

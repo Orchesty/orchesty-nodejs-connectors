@@ -1,0 +1,68 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "id": 3,
+        "externalId": "external-ccx",
+        "carrierId": 8,
+        "branchId": null,
+        "price": "153.00",
+        "priceCurrency": "CZK",
+        "cod": false,
+        "codValue": null,
+        "codValueCurrency": null,
+        "vs": null,
+        "companyName": "Webwings s.r.o.",
+        "firstName": null,
+        "lastName": null,
+        "addressLine1": "Marešova 14",
+        "addressLine2": "2nd floor",
+        "addressLine3": null,
+        "city": "Brno",
+        "zip": "602 00",
+        "country": "CZ",
+        "state": null,
+        "phone": "+420808875329",
+        "email": "developers@webwings.cz",
+        "processingDate": "2023-01-24",
+        "printDeliveryNote": true,
+        "orderNumber": null,
+        "orderTags": [
+            "tag1",
+            "tag2"
+        ],
+        "packagingInstructions": [
+            {
+                "message": "Apply fragile sticker",
+                "packagingInstructionType": "after"
+            }
+        ],
+        "items": [
+            {
+                "productId": 16,
+                "amount": 4
+            },
+            {
+                "productId": 4,
+                "amount": 3
+            },
+            {
+                "productId": 12,
+                "amount": 4
+            },
+            {
+                "productId": 3,
+                "amount": 4
+            },
+            {
+                "productId": 8,
+                "amount": 4
+            },
+            {
+                "productId": 7,
+                "amount": 4
+            }
+        ]
+    }
+}

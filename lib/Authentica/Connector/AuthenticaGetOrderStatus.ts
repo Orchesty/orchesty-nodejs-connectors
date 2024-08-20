@@ -15,7 +15,7 @@ export default class AuthenticaGetOrderStatus extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            'order-statuses',
+            'applinth/order-statuses',
         );
 
         const response = (await this.getSender().send<IResponse>(

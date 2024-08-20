@@ -1,19 +1,19 @@
+import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { init, mock, regiterApiKey } from '../../../../test/Implementation/authentica';
+import { initAuthenticaTest } from '../../../../test/Implementation/authentica';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as AUTHENTICA_GET_STOCK } from '../AuthenticaGetStock';
 
 let tester: NodeTester;
 
 describe('Tests for AuthenticaGetStock', () => {
-    beforeAll(() => {
-        init();
+    beforeAll(async () => {
         tester = new NodeTester(container, __filename);
+        await initAuthenticaTest();
     });
 
-    beforeEach(async () => {
-        await regiterApiKey();
-        mock();
+    afterAll(async () => {
+        await container.get(Redis).close();
     });
 
     it('process - ok', async () => {

@@ -1,6 +1,6 @@
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
-import { init, mock } from '../../../../test/Implementation/authentica';
+import { initAuthenticaTest } from '../../../../test/Implementation/authentica';
 import { container } from '../../../../test/TestAbstract';
 import { NAME as AUTHENTICA_POST_ORDERS } from '../AuthenticaPutOrders';
 
@@ -8,15 +8,14 @@ let tester: NodeTester;
 let redis: Redis;
 
 describe('Tests for AuthenticaPostOrders', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
         tester = new NodeTester(container, __filename);
         redis = container.get(Redis);
-        init();
+        await initAuthenticaTest();
     });
 
-    beforeEach(async () => {
-        mock();
-        await redis.remove('authentica_cache_key');
+    afterAll(async () => {
+        await redis.close();
     });
 
     it('process - ok', async () => {

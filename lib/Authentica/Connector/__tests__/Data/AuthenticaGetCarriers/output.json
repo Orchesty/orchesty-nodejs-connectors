@@ -1,0 +1,19 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "branchRequired": false,
+            "branchSupported": false,
+            "id": 1,
+            "name": "Česká pošta - Balík do ruky"
+        },
+        {
+            "branchRequired": false,
+            "branchSupported": true,
+            "id": 2,
+            "name": "Česká pošta - Balík na poštu"
+        }
+    ]
+}
