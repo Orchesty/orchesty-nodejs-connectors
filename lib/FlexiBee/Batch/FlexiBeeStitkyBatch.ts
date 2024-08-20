@@ -2,7 +2,7 @@ import { FlexiBeeSimpleIterator } from './FlexiBeeSimpleIterator';
 
 export const FLEXI_BEE_STITKY_BATCH = 'flexi-bee-stitky-batch';
 
-export class FlexiBeeStitkyBatch extends FlexiBeeSimpleIterator<Stitek> {
+export default class FlexiBeeStitkyBatch extends FlexiBeeSimpleIterator<Stitek> {
 
     protected endpoint = 'stitek';
 

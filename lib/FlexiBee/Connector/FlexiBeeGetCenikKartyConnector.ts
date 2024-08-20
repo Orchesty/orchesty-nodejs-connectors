@@ -7,7 +7,7 @@ import { parseFlexiBeeUri } from '../FlexiBee.utils';
 
 export const FLEXI_BEE_GET_CENIK_KARTY_CONNECTOR = 'flexi-bee-get-cenik-karty-connector';
 
-export class FlexiBeeGetCenikKartyConnector extends AConnector {
+export default class FlexiBeeGetCenikKartyConnector extends AConnector {
 
     public getName(): string {
         return FLEXI_BEE_GET_CENIK_KARTY_CONNECTOR;

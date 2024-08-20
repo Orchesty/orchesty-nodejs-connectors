@@ -7,7 +7,7 @@ import { FlexiBeeGetCenikKartyOutput } from './FlexiBeeGetCenikKartyConnector';
 
 export const FLEXI_BEE_GET_SARZE_EXPIRACE_KARTY_CONNECTOR = 'flexi-bee-get-sarze-expirace-karty-connector';
 
-export class FlexiBeeGetSarzeExpiraceKartyConnector extends AConnector {
+export default class FlexiBeeGetSarzeExpiraceKartyConnector extends AConnector {
 
     public getName(): string {
         return FLEXI_BEE_GET_SARZE_EXPIRACE_KARTY_CONNECTOR;

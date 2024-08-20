@@ -5,7 +5,7 @@ import FlexiBeeApplication from '../FexiBeeApplication';
 
 export const FLEXI_BEE_SKLADOVE_KARTY_BATCH = 'flexi-bee-skladove-karty-batch';
 
-export class FlexiBeeSkladoveKartyBatch extends ABatchNode {
+export default class FlexiBeeSkladoveKartyBatch extends ABatchNode {
 
     protected pageSize = 100;
 

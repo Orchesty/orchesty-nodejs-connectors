@@ -2,7 +2,7 @@ import { FlexiBeeSimpleIterator } from './FlexiBeeSimpleIterator';
 
 export const FLEXI_BEE_FORMA_UHRADY_BATCH = 'flexi-bee-forma-uhrady-batch';
 
-export class FlexiBeeFormaUhradyBatch extends FlexiBeeSimpleIterator<FormaDopravy> {
+export default class FlexiBeeFormaUhradyBatch extends FlexiBeeSimpleIterator<FormaDopravy> {
 
     protected endpoint = 'forma-uhrady';
 
