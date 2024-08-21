@@ -1,0 +1,49 @@
+{
+    "http": "GET https://demo.flexibee.eu/c/demo/sarze-expirace/(cenik=2%20and%20sklad=5).json?detail=full",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "sarze-expirace": [
+                {
+                    "id": "2",
+                    "pocet": "26.0",
+                    "cenaMj": "0.0",
+                    "datVyst": "2020-01-01+01:00",
+                    "datSklad": "2020-02-13+01:00",
+                    "datTrvan": "",
+                    "datVyroby": "",
+                    "expirace": "",
+                    "sarze": "",
+                    "typPohybuK": "typPohybu.prijem",
+                    "typPohybuK@showAs": "Příjem",
+                    "sklad": "code:LIBEREC",
+                    "sklad@ref": "/c/demo/sklad/5.json",
+                    "sklad@showAs": "LIBEREC: Liberecký sklad",
+                    "cenik": "code:31967000",
+                    "cenik@ref": "/c/demo/cenik/2.json",
+                    "cenik@showAs": "31967000: Baterie sprch. pod omitku Focus E 2"
+                },
+                {
+                    "id": "657",
+                    "pocet": "28.0",
+                    "cenaMj": "0.0",
+                    "datVyst": "2021-06-25+02:00",
+                    "datSklad": "2021-06-25+02:00",
+                    "datTrvan": "",
+                    "datVyroby": "",
+                    "expirace": "",
+                    "sarze": "",
+                    "typPohybuK": "typPohybu.prijem",
+                    "typPohybuK@showAs": "Příjem",
+                    "sklad": "code:LIBEREC",
+                    "sklad@ref": "/c/demo/sklad/5.json",
+                    "sklad@showAs": "LIBEREC: Liberecký sklad",
+                    "cenik": "code:31967000",
+                    "cenik@ref": "/c/demo/cenik/2.json",
+                    "cenik@showAs": "31967000: Baterie sprch. pod omitku Focus E 2"
+                }
+            ]
+        }
+    }
+}

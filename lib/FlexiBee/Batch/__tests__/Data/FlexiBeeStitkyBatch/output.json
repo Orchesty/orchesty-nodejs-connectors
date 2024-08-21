@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"id\":\"107\",\"lastUpdate\":\"2024-02-12T08:43:33.137+01:00\",\"kod\":\"AAAA\",\"nazev\":\"Aaaaaa\"}",
+            "headers": {}
+        }
+    ]
+}
