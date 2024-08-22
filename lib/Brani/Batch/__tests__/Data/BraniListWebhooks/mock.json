@@ -1,0 +1,13 @@
+{
+    "http": "GET https://api.brani.cz/webhook",
+    "code": 200,
+    "body": {
+        "webhook_urls": [
+            {
+                "id": 251,
+                "event_type": "balic_packed",
+                "webhook_url": "https://example.com"
+            }
+        ]
+    }
+}

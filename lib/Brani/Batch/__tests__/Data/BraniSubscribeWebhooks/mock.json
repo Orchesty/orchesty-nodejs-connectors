@@ -1,0 +1,7 @@
+{
+    "http": "POST https://api.brani.cz/webhook",
+    "code": 200,
+    "body": {
+        "detail": "Uspesne ulozeno"
+    }
+}

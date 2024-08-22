@@ -1,0 +1,105 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "billingAddress": {
+      "additional": "XY",
+      "city": "Praha",
+      "company": "Brani s.r.o.",
+      "countryCode": "CZ",
+      "district": "město",
+      "fullName": "Jan Novák",
+      "houseNumber": "1677",
+      "regionName": "Praha 2",
+      "street": "Vinohradská",
+      "zip": "61200"
+    },
+    "cashDeskOrder": false,
+    "code": "2022000040",
+    "companyId": "12345678",
+    "creationTime": "2022-11-04T22:43:25+01:00",
+    "price": {
+      "toPay": "260.90",
+      "withVat": "260.90",
+      "currencyCode": "CZK"
+    },
+    "deliveryAddress": {
+      "additional": "XY",
+      "city": "Praha",
+      "company": "Brani s.r.o.",
+      "countryCode": "CZ",
+      "district": "město",
+      "fullName": "Jan Novák",
+      "houseNumber": "1677",
+      "regionName": "Praha 2",
+      "street": "Vinohradská",
+      "zip": "61200"
+    },
+    "email": "novak@seznam.cz",
+    "adminUrl": "https://brani.myshoptet.com/admin/objednavky-detail?id=2022000040",
+    "items": [
+      {
+        "amount": "1.000",
+        "amountUnit": "ks",
+        "brand": "ACER",
+        "code": "NIVEA_CARE",
+        "itemId": 3936,
+        "itemPriceWithVat": "130.00",
+        "itemType": "product",
+        "name": "Nivea Cream Care",
+        "productGuid": "0d1e2524-51d3-11ec-821f-ecf4bbd49285",
+        "remark": "",
+        "status": {
+          "id": -1
+        },
+        "supplierName": "CatherineLife",
+        "surchargeParameters": [
+          {
+            "parameterName": {
+              "code": "priplatek",
+              "name": "Příplatek"
+            },
+            "parameterValue": {
+              "valueIndex": "fotka-s-ni",
+              "description": "Fotka s ní",
+              "price": "1000.00"
+            }
+          }
+        ],
+        "variantName": "",
+        "weight": "1.000"
+      },
+      {
+        "amount": "1.000",
+        "amountUnit": "ks",
+        "code": "PERSIL",
+        "itemId": 3939,
+        "itemPriceWithVat": "130.00",
+        "itemType": "product",
+        "name": "Persil Universal",
+        "productGuid": "a170e014-51d2-11ec-96c4-ecf4bbcda94d",
+        "status": {
+          "id": -1
+        },
+        "variantName": "25l",
+        "weight": "1.000",
+        "adminUrl": "https://brani.myshoptet.com/admin/produkty-detail/?id=PERSIL"
+      }
+    ],
+    "notes": {
+      "eshopRemark": "Zákazník 5x volal, kde má zboží",
+      "trackingNumber": "DR123456789"
+    },
+    "paid": true,
+    "paymentMethodGuid": "46ebb02d-c44f-4c49-b9b7-f31a46ebe927",
+    "phone": "+420737123789",
+    "shippingDetails": {},
+    "shippingGuid": "6d33d5bc-0b65-4284-9c1a-dcd7a4f4d31c",
+    "status": {
+      "id": -2
+    },
+    "taxId": "CZ12345678",
+    "vatId": "CZ12345678"
+  }
+}

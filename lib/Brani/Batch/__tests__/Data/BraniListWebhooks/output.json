@@ -1,0 +1,6 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [{"body": "{\"id\":251,\"event_type\":\"balic_packed\",\"webhook_url\":\"https://example.com\"}", "headers": {}}]
+}

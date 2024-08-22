@@ -1,0 +1,7 @@
+{
+  "http": "DELETE https://api.brani.cz/webhook/251",
+  "code": 200,
+  "body": {
+    "detail": "Webhook s webhook_id: 251 byl uspesne smazan"
+  }
+}

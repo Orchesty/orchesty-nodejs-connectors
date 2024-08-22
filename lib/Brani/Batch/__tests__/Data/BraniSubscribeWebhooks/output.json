@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "cursor": "next",
+        "result-code": "1011",
+        "result-message": "Message will be used as a iterator with cursor [next]. No follower will be called.",
+        "user": "TestUser"
+    },
+    "data": []
+}

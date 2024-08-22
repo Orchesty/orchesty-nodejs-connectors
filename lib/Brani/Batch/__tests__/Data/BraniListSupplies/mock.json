@@ -1,0 +1,21 @@
+{
+    "http": "GET https://api.brani.cz/stock/supplies",
+    "code": 200,
+    "body": [
+        {
+            "code": "PERSIL",
+            "location_name": "A01-01-02",
+            "amount": 6
+        },
+        {
+            "code": "NIVEA",
+            "location_name": "A01-01-03",
+            "amount": 0
+        },
+        {
+            "code": "NIVEA_CARE",
+            "location_name": "A01-01-01",
+            "amount": 4
+        }
+    ]
+}

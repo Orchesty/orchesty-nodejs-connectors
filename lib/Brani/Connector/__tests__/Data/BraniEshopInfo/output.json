@@ -1,0 +1,61 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "orderStatuses": {
+                "statuses": [
+                    {
+                        "id": -1,
+                        "name": "Zabaleno"
+                    },
+                    {
+                        "id": -2,
+                        "name": "K expedici"
+                    }
+                ]
+            },
+            "shippingMethods": {
+                "retail": {
+                    "methods": [
+                        {
+                            "guid": "6d33d5bc-0b65-4284-9c1a-dcd7a4f4d31c",
+                            "name": "Česká pošta"
+                        }
+                    ]
+                },
+                "wholesale": {
+                    "methods": [
+                        {
+                            "guid": "b25900f3-5f0e-46f8-b5ff-114b598d340f",
+                            "name": "PPL VO"
+                        }
+                    ]
+                }
+            },
+            "paymentMethods": {
+                "retail": {
+                    "methods": [
+                        {
+                            "guid": "08962fe8-ea34-4f69-be75-b62ef1dcac2f",
+                            "name": "Dobírka"
+                        }
+                    ]
+                },
+                "wholesale": {
+                    "methods": [
+                        {
+                            "guid": "e8827deb-61c0-42a2-afb2-2efae1cd5dcb",
+                            "name": "Kartou"
+                        },
+                        {
+                            "guid": "46ebb02d-c44f-4c49-b9b7-f31a46ebe927",
+                            "name": "Převodem"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
