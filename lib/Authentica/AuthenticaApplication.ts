@@ -16,7 +16,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'authentica';
-export const AUTHENTICA_SHOP_ID = 'authentica-shop-id';
+const AUTHENTICA_SHOP_ID = 'authentica-shop-id';
 const CACHE_KEY = 'authentica_cache_key';
 const LOCK_KEY = 'authentica_lock_key';
 
@@ -76,7 +76,7 @@ export default class AuthenticaApplication extends ABasicApplication {
 
         let url = _url;
         if (!url?.includes('applinth')) {
-            const shopId = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTHENTICA_SHOP_ID] || '';
+            const shopId = applicationInstall.getUser();
             url = `shop/${shopId}/${url}`;
         }
 

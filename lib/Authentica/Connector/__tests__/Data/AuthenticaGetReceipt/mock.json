@@ -1,5 +1,5 @@
 {
-    "http": "GET https://app.authentica.cz/api/shop/1/receipt/123",
+    "http": "GET https://app.authentica.cz/api/shop/TestUser/receipt/123",
     "code": 200,
     "body": {
         "id": 1,

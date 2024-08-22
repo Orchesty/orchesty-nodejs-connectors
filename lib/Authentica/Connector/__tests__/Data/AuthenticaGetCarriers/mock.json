@@ -1,5 +1,5 @@
 {
-    "http": "GET https://app.authentica.cz/api/shop/1/carrier",
+    "http": "GET https://app.authentica.cz/api/shop/TestUser/carrier",
     "code": 200,
     "body": [
         {

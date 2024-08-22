@@ -1,5 +1,5 @@
 {
-    "http": "PUT https://app.authentica.cz/api/shop/1/product/12",
+    "http": "PUT https://app.authentica.cz/api/shop/TestUser/product/12",
     "code": 200,
     "body": {
         "id": 3,

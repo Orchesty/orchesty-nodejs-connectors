@@ -1,5 +1,5 @@
 {
-    "http": "POST https://app.authentica.cz/api/shop/1/order",
+    "http": "POST https://app.authentica.cz/api/shop/TestUser/order",
     "code": 200,
     "body": {
         "id": 3,
