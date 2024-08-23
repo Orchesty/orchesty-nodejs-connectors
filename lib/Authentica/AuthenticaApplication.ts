@@ -46,8 +46,12 @@ export default class AuthenticaApplication extends ABasicApplication {
         const settingsForm = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM));
         const clientId = new Field(FieldType.TEXT, CLIENT_ID, 'Client id');
         const clientSecret = new Field(FieldType.PASSWORD, CLIENT_SECRET, 'Client secret');
+        const shopId = new Field(FieldType.TEXT, AUTHENTICA_SHOP_ID, 'Shop ID', undefined, false);
 
-        settingsForm.addField(clientId).addField(clientSecret);
+        settingsForm
+            .addField(clientId)
+            .addField(clientSecret)
+            .addField(shopId);
         return new FormStack().addForm(settingsForm);
     }
 
@@ -60,7 +64,7 @@ export default class AuthenticaApplication extends ABasicApplication {
         dto: ProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
-        url?: string,
+        _url?: string,
         data?: unknown,
     ): Promise<RequestDto> {
         const headers = {
@@ -70,7 +74,13 @@ export default class AuthenticaApplication extends ABasicApplication {
             [CommonHeaders.AUTHORIZATION]: await this.getAccessToken(dto, applicationInstall),
         };
 
-        const req = new RequestDto(`${this.getBaseUrl()}/applinth/${url}`, method, dto);
+        let url = _url;
+        if (!url?.includes('applinth')) {
+            const shopId = applicationInstall.getUser();
+            url = `shop/${shopId}/${url}`;
+        }
+
+        const req = new RequestDto(`${this.getBaseUrl()}/${url}`, method, dto);
         req.setHeaders(headers);
 
         if (data) {

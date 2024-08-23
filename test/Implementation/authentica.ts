@@ -2,19 +2,24 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
-import AuthenticaApplication, { NAME as AUTHENTICA } from '../../lib/Authentica/AuthenticaApplication';
+import AuthenticaApplication, {
+    NAME as AUTHENTICA,
+} from '../../lib/Authentica/AuthenticaApplication';
 import AuthenticaGetStock from '../../lib/Authentica/Batch/AuthenticaGetStock';
 import AuthenticaGetStockAvailable from '../../lib/Authentica/Batch/AuthenticaGetStockAvailable';
+import AuthenticaCreateOrder from '../../lib/Authentica/Connector/AuthenticaCreateOrder';
+import AuthenticaCreateProduct from '../../lib/Authentica/Connector/AuthenticaCreateProduct';
+import { AuthenticaGetCarriers } from '../../lib/Authentica/Connector/AuthenticaGetCarriersConnector';
+import AuthenticaGetOrder from '../../lib/Authentica/Connector/AuthenticaGetOrder';
 import AuthenticaGetOrderStatus from '../../lib/Authentica/Connector/AuthenticaGetOrderStatus';
+import AuthenticaGetReceipt from '../../lib/Authentica/Connector/AuthenticaGetReceipt';
 import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/AuthenticaGetShippingMethods';
 import AuthenticaPutOrders from '../../lib/Authentica/Connector/AuthenticaPutOrders';
 import AuthenticaPostProducts from '../../lib/Authentica/Connector/AuthenticaPutProducts';
-import {
-    appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER,
-} from '../DataProvider';
-import {
-    cacheService, container, db, sender,
-} from '../TestAbstract';
+import AuthenticaUpdateOrder from '../../lib/Authentica/Connector/AuthenticaUpdateOrder';
+import AuthenticaUpdateProduct from '../../lib/Authentica/Connector/AuthenticaUpdateProduct';
+import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
+import { cacheService, container, db, sender } from '../TestAbstract';
 
 export function mock(): ApplicationInstall {
     return appInstall(
@@ -46,7 +51,10 @@ export async function regiterApiKey(): Promise<void> {
     );
 }
 
-export function init(): void {
+export async function initAuthenticaTest(): Promise<void> {
+    mock();
+    await regiterApiKey();
+
     const authenticaApplication = new AuthenticaApplication(cacheService);
     container.setApplication(authenticaApplication);
 
@@ -85,4 +93,53 @@ export function init(): void {
         .setDb(db)
         .setApplication(authenticaApplication);
     container.setBatch(authenticaGetStockAvailable);
+
+    container.setNode(
+        new AuthenticaGetCarriers()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaGetOrder()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaGetReceipt()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaCreateProduct()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaUpdateProduct('product')
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaCreateOrder()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaUpdateOrder()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
 }

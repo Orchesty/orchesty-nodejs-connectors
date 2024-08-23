@@ -15,7 +15,7 @@ export default class AuthenticaGetShippingMethods extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            'delivery-methods',
+            'applinth/delivery-methods',
         );
 
         const response = (await this.getSender().send<IResponse>(

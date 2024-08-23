@@ -19,7 +19,7 @@ export default class AuthenticaGetStock extends ABatchNode {
             dto,
             appInstall,
             HttpMethods.GET,
-            `stock?page=${page}&limit=50`,
+            `applinth/stock?page=${page}&limit=50`,
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 

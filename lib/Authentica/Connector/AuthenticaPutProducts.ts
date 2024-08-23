@@ -17,7 +17,7 @@ export default class AuthenticaPutProducts extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,
-            'products',
+            'applinth/products',
             products,
         );
 

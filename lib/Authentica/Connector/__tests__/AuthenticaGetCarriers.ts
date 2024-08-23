@@ -2,11 +2,11 @@ import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { initAuthenticaTest } from '../../../../test/Implementation/authentica';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as AUTHENTICA_GET_SHIPPING_METHODS } from '../AuthenticaGetShippingMethods';
+import { AUTHENTICA_GET_CARRIERS } from '../AuthenticaGetCarriersConnector';
 
 let tester: NodeTester;
 
-describe('Tests for AuthenticaGetShippingMethods', () => {
+describe('Tests for AuthenticaGetCarriers', () => {
     beforeAll(async () => {
         tester = new NodeTester(container, __filename);
         await initAuthenticaTest();
@@ -17,6 +17,6 @@ describe('Tests for AuthenticaGetShippingMethods', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(AUTHENTICA_GET_SHIPPING_METHODS);
+        await tester.testConnector(AUTHENTICA_GET_CARRIERS);
     });
 });

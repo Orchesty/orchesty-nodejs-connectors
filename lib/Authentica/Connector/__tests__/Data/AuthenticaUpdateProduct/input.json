@@ -1,0 +1,32 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "product": {
+            "id": 12,
+            "idd": 13,
+            "name": "Small iPhone",
+            "declarationName": "Small iPhone declaration",
+            "description": null,
+            "note": null,
+            "length": 2.53,
+            "width": 10.43,
+            "height": 7.82,
+            "weight": 13.52,
+            "hsCode": "1234",
+            "fdaCode": null,
+            "hasLot": false,
+            "hasImei": false,
+            "hasLotExpiration": false,
+            "inspectionMethod": null,
+            "countryOfOrigin": "CZ",
+            "skus": [
+                "sku-3079"
+            ],
+            "barcodes": [
+                "5103092117757"
+            ]
+        }
+    }
+}

@@ -17,7 +17,7 @@ export default class AuthenticaPutOrders extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,
-            'orders',
+            'applinth/orders',
             orders,
         );
 

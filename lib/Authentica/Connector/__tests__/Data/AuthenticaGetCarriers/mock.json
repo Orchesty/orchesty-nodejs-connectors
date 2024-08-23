@@ -1,0 +1,18 @@
+{
+    "http": "GET https://app.authentica.cz/api/shop/TestUser/carrier",
+    "code": 200,
+    "body": [
+        {
+            "id": 1,
+            "name": "Česká pošta - Balík do ruky",
+            "branchSupported": false,
+            "branchRequired": false
+        },
+        {
+            "id": 2,
+            "name": "Česká pošta - Balík na poštu",
+            "branchSupported": true,
+            "branchRequired": false
+        }
+    ]
+}
