@@ -30,12 +30,11 @@ export interface AuthenticaOrder {
     packagingInstructions: {
         message: string;
         packagingInstructionType: string;
-    };
-    [];
+    }[];
     items: {
         productId: number;
         amount: number;
-    } [];
+    }[];
     trackingNumbers: unknown[];
     trackingUrls: string[];
 }
