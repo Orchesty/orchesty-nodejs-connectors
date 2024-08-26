@@ -13,7 +13,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const NAME = 'brani';
 
-export class BraniApplication extends ABasicApplication {
+export default class BraniApplication extends ABasicApplication {
 
     public getName(): string {
         return NAME;

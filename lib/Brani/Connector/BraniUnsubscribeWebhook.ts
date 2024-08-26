@@ -5,7 +5,7 @@ import { IOutput as IInput } from '../Batch/BraniListWebhooks';
 
 export const NAME = 'brani-unsubscribe-webhook';
 
-export class BraniUnsubscribeWebhook extends AConnector {
+export default class BraniUnsubscribeWebhook extends AConnector {
 
     public getName(): string {
         return NAME;

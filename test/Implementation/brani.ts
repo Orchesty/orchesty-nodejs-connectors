@@ -1,12 +1,13 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
-import { BraniListSupplies } from '../../lib/Brani/Batch/BraniListSupplies';
-import { BraniListWebhooks } from '../../lib/Brani/Batch/BraniListWebhooks';
-import { BraniSubscribeWebhooks } from '../../lib/Brani/Batch/BraniSubscribeWebhooks';
-import { BraniApplication, NAME as BRANI_APP } from '../../lib/Brani/BraniApplication';
-import { BraniEshopInfo } from '../../lib/Brani/Connector/BraniEshopInfo';
-import { BraniUnsubscribeWebhook } from '../../lib/Brani/Connector/BraniUnsubscribeWebhook';
-import { BraniUpsertOrder } from '../../lib/Brani/Connector/BraniUpsertOrder';
+import BraniListSupplies from '../../lib/Brani/Batch/BraniListSupplies';
+import BraniListWebhooks from '../../lib/Brani/Batch/BraniListWebhooks';
+import BraniSubscribeWebhooks from '../../lib/Brani/Batch/BraniSubscribeWebhooks';
+import BraniApplication, { NAME as BRANI_APP } from '../../lib/Brani/BraniApplication';
+import BraniEshopInfo from '../../lib/Brani/Connector/BraniEshopInfo';
+import BraniUnsubscribeWebhook from '../../lib/Brani/Connector/BraniUnsubscribeWebhook';
+import BraniUpsertOrder from '../../lib/Brani/Connector/BraniUpsertOrder';
+import BraniUpsertProduct from '../../lib/Brani/Connector/BraniUpsertProduct';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 import { container } from '../TestAbstract';
 
@@ -29,4 +30,5 @@ export default function init(): void {
     container.setNode(new BraniListWebhooks(), app);
     container.setNode(new BraniUnsubscribeWebhook(), app);
     container.setNode(new BraniListSupplies(), app);
+    container.setNode(new BraniUpsertProduct(), app);
 }

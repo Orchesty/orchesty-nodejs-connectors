@@ -4,7 +4,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 
 export const NAME = 'brani-list-webhooks';
 
-export class BraniListWebhooks extends ABatchNode {
+export default class BraniListWebhooks extends ABatchNode {
 
     public getName(): string {
         return NAME;

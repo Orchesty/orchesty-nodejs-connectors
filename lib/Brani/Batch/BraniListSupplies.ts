@@ -4,7 +4,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 
 export const NAME = 'brani-list-supplies';
 
-export class BraniListSupplies extends ABatchNode {
+export default class BraniListSupplies extends ABatchNode {
 
     public getName(): string {
         return NAME;

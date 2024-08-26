@@ -4,7 +4,7 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'brani-upsert-order';
 
-export class BraniUpsertOrder extends AConnector {
+export default class BraniUpsertOrder extends AConnector {
 
     public getName(): string {
         return NAME;

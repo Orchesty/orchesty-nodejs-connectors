@@ -4,7 +4,7 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'eshop-info-connector';
 
-export class BraniEshopInfo extends AConnector {
+export default class BraniEshopInfo extends AConnector {
 
     public getName(): string {
         return NAME;

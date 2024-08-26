@@ -5,11 +5,11 @@ import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunne
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import crypto from 'crypto';
-import { BraniApplication } from '../BraniApplication';
+import BraniApplication from '../BraniApplication';
 
 export const NAME = 'brani-subscribe-webhooks';
 
-export class BraniSubscribeWebhooks extends ABatchNode {
+export default class BraniSubscribeWebhooks extends ABatchNode {
 
     public getName(): string {
         return NAME;

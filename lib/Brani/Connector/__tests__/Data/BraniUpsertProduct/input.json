@@ -1,0 +1,39 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "name": "Chytré Hodinky",
+        "guid": "a605ac02-d030-49a0-9965-e3a85f93d89c",
+        "creationTime": "2024-02-15T12:00:00+00:00",
+        "changeTime": "2024-02-15T12:00:00+00:00",
+        "visibility": "string",
+        "type": "product",
+        "internalNote": "string",
+        "images": [
+            {
+                "name": "69671-3.jpg",
+                "url": "https://cdn.myshoptet.com/usr/brani.myshoptet.com/user/shop/big/37_37-kos-odpadkovy-curver-flipbin-25l-new-york.jpg",
+                "description": "string"
+            }
+        ],
+        "variants": [
+            {
+                "code": "0001",
+                "name": "Chytré Hodinky 44mm",
+                "weight": "0.459",
+                "minStockSupply": "1.000",
+                "visible": true,
+                "manufacturerCode": "string",
+                "pluCode": "string",
+                "ean": "string",
+                "isbn": "string",
+                "serialNo": "string",
+                "mpn": "string",
+                "negativeStockAllowed": "yes",
+                "image": "https://cdn.myshoptet.com/usr/brani.myshoptet.com/user/shop/big/37_37-kos-odpadkovy-curver-flipbin-25l-new-york.jpg",
+                "amountDecimalPlaces": 0
+            }
+        ]
+    }
+}
