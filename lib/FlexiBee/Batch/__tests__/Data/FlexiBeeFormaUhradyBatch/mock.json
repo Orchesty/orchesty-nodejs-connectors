@@ -1,5 +1,5 @@
 {
-    "http": "GET https://demo.flexibee.eu/c/demo/forma-uhrady.json?add-row-count=true&start=0&limit=100",
+    "http": "GET https://demo.flexibee.eu/c/demo/forma-uhrady.json?detail=full&add-row-count=true&start=0&limit=100",
     "code": 200,
     "body": {
         "winstrom": {

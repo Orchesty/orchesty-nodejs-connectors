@@ -1,0 +1,24 @@
+{
+    "http": "POST https://demo.flexibee.eu/c/demo/objednavka-vydana",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "success": "true",
+            "stats": {
+                "created": "0",
+                "updated": "1",
+                "deleted": "0",
+                "skipped": "0",
+                "failed": "0"
+            },
+            "results": [
+                {
+                    "id": "1",
+                    "request-id": "1",
+                    "ref": "/c/olaola_s_r_o_/objednava-vydana/1"
+                }
+            ]
+        }
+    }
+}

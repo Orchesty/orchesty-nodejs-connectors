@@ -15,8 +15,15 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const app = this.getApplication<FlexiBeeApplication>();
 
+        // eslint-disable-next-line
+        const { lastUpdate } = dto.getJsonData() as any;
+        let url = this.endpoint;
+        if (lastUpdate) {
+            url = `${url}/${encodeURI(`(lastUpdate > ${lastUpdate})`)}`;
+        }
+
         const page = Number(dto.getBatchCursor('0'));
-        const url = `${this.endpoint}.json?add-row-count=true&start=${page * this.pageSize}&limit=${this.pageSize}`;
+        url = `${url}.json?detail=full&add-row-count=true&start=${page * this.pageSize}&limit=${this.pageSize}`;
 
         const request = await app.getRequestDto(
             dto,
