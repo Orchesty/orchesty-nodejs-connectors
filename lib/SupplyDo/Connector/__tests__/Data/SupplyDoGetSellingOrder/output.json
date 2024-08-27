@@ -1,0 +1,23 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "data": {
+            "customer": 428,
+            "id": "063be986-d20f-48c7-a524-3b72df0c758f",
+            "payment_type": "cash_on_delivery",
+            "external_id": "063be986-d20f-48c7-a524-3b72df0c758f",
+            "ecommerce": 52,
+            "order_number": "78378",
+            "date_created": "2024-02-07T06:58:14.211Z",
+            "date_updated": "2024-02-07T06:55:45.708Z",
+            "transport": {
+                "carrier": 206,
+                "id": 471,
+                "tracking_number": "96726282",
+                "ecommerce": 52
+            }
+        }
+    }
+}
