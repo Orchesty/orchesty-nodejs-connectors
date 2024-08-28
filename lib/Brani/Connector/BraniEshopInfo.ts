@@ -13,7 +13,7 @@ export default class BraniEshopInfo extends AConnector {
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.GET,
             'eshop/info',
         );

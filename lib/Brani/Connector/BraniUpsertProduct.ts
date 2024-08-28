@@ -33,19 +33,19 @@ interface Product {
     variants:
     {
         code: string;
-        name: string;
         weight: string;
-        minStockSupply: string;
-        visible: boolean;
-        manufacturerCode: string;
-        pluCode: string;
-        ean: string;
-        isbn: string;
-        serialNo: string;
-        mpn: string;
-        negativeStockAllowed: string;
-        image: string;
-        amountDecimalPlaces: number;
+        name?: string;
+        minStockSupply?: string;
+        visible?: boolean;
+        manufacturerCode?: string;
+        pluCode?: string;
+        ean?: string;
+        isbn?: string;
+        serialNo?: string;
+        mpn?: string;
+        negativeStockAllowed?: string;
+        image?: string;
+        amountDecimalPlaces?: number;
     }[]
     type?: 'product' | 'bazar' | 'service' | 'gift-certificate' | 'product-set';
     changeTime?: string;

@@ -26,59 +26,44 @@ export default class BraniUpsertOrder extends AConnector {
 }
 
 export interface IInput {
-    billingAddress: {
-        additional: string;
-        city: string;
-        company: string;
-        countryCode: string;
-        district: string;
-        fullName: string;
-        houseNumber: string;
-        regionName: string;
-        street: string;
-        zip: string;
-    },
-    cashDeskOrder: boolean;
     code: string;
-    companyId: string;
     creationTime: string;
+    email: string;
+    phone: string;
     price: {
         toPay: string;
         withVat: string;
         currencyCode: string;
     },
     deliveryAddress: {
-        additional:string;
         city: string;
-        company: string;
         countryCode: string;
-        district: string;
         fullName:string;
-        houseNumber: string;
-        regionName:string;
         street:string;
         zip: string;
+        additional?: string;
+        company?: string;
+        district?: string;
+        houseNumber?: string;
+        regionName?:string;
     },
-    email: string;
-    adminUrl: string;
-    items:
-    {
+    items: {
         amount: string;
         amountUnit: string;
-        brand: string;
         code: string;
-        itemId: number;
-        itemPriceWithVat: string;
-        itemType: string;
+        itemType: 'product' | 'second-hand' | 'service' | 'gift';
         name: string;
         productGuid: string;
-        remark: string;
-        status: {
+        weight: string;
+        brand?: string;
+        itemId?: number;
+        itemPriceWithVat?: string;
+        remark?: string;
+        status?: {
             id: number;
         },
-        supplierName: string;
-        surchargeParameters:
-        {
+        supplierName?: string;
+        surchargeParameters?: {
             parameterName: {
                 code: string;
                 name: string;
@@ -89,22 +74,36 @@ export interface IInput {
                 price: string;
             }
         }[],
-        variantName: string;
-        weight: string;
+        variantName?: string;
     }[],
     notes: {
-        eshopRemark: string;
-        trackingNumber: string;
+        eshopRemark?: string;
+        customerRemark?: string;
+        trackingNumber?: string;
     },
-    paid: boolean;
-    paymentMethodGuid: string;
-    phone: string;
-    shippingGuid: string;
-    status: {
+    billingAddress?: {
+        city: string;
+        countryCode: string;
+        fullName: string;
+        street: string;
+        zip: string;
+        additional?: string;
+        company?: string;
+        district?: string;
+        houseNumber?: string;
+        regionName?: string;
+    },
+    cashDeskOrder?: boolean;
+    companyId?: string;
+    adminUrl?: string;
+    paid?: boolean;
+    paymentMethodGuid?: string;
+    shippingGuid?: string;
+    status?: {
         id: number;
     },
-    taxId: string;
-    vatId: string;
+    taxId?: string;
+    vatId?: string;
 }
 
 export interface IOutput {
