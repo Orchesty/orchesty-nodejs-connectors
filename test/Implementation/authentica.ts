@@ -9,6 +9,7 @@ import AuthenticaGetStock from '../../lib/Authentica/Batch/AuthenticaGetStock';
 import AuthenticaGetStockAvailable from '../../lib/Authentica/Batch/AuthenticaGetStockAvailable';
 import AuthenticaCreateOrder from '../../lib/Authentica/Connector/AuthenticaCreateOrder';
 import AuthenticaCreateProduct from '../../lib/Authentica/Connector/AuthenticaCreateProduct';
+import AuthenticaCreateReceipt from '../../lib/Authentica/Connector/AuthenticaCreateReceipt';
 import { AuthenticaGetCarriers } from '../../lib/Authentica/Connector/AuthenticaGetCarriersConnector';
 import AuthenticaGetOrder from '../../lib/Authentica/Connector/AuthenticaGetOrder';
 import AuthenticaGetOrderStatus from '../../lib/Authentica/Connector/AuthenticaGetOrderStatus';
@@ -138,6 +139,13 @@ export async function initAuthenticaTest(): Promise<void> {
 
     container.setNode(
         new AuthenticaUpdateOrder()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaCreateReceipt()
             .setSender(sender)
             .setDb(db)
             .setApplication(authenticaApplication),

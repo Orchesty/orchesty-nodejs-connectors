@@ -5,11 +5,19 @@ import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Clien
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
 import FlexiBeeFormaDopravyBatch from '../../lib/FlexiBee/Batch/FlexiBeeFormaDopravyBatch';
 import FlexiBeeFormaUhradyBatch from '../../lib/FlexiBee/Batch/FlexiBeeFormaUhradyBatch';
+import FlexiBeeGetSkladovyPohybBatch from '../../lib/FlexiBee/Batch/FlexiBeeGetSkladovyPohybBatch';
+import FlexiBeeObjednavkaPrijataBatch from '../../lib/FlexiBee/Batch/FlexiBeeObjednavkaPrijataBatch';
 import FlexiBeeSkladoveKartyBatch from '../../lib/FlexiBee/Batch/FlexiBeeSkladoveKartyBatch';
 import FlexiBeeStitkyBatch from '../../lib/FlexiBee/Batch/FlexiBeeStitkyBatch';
+import FlexiBeeCreateObjednavkaVydanaConnector
+    from '../../lib/FlexiBee/Connector/FlexiBeeCreateObjednavkaVydanaConnector';
+import FlexiBeeCreateSkladovyPohybConnector from '../../lib/FlexiBee/Connector/FlexiBeeCreateSkladovyPohybConnector';
 import FlexiBeeGetCenikKartyConnector from '../../lib/FlexiBee/Connector/FlexiBeeGetCenikKartyConnector';
 import FlexiBeeGetSarzeExpiraceKartyConnector
     from '../../lib/FlexiBee/Connector/FlexiBeeGetSarzeExpiraceKartyConnector';
+import FlexiBeeUpdateObjednavkaPrijataConnector
+    from '../../lib/FlexiBee/Connector/FlexiBeeUpdateObjednavkaPrijataConnector';
+import FlexiBeeUpdateSkladovyPohybConnector from '../../lib/FlexiBee/Connector/FlexiBeeUpdateSkladovyPohybConnector';
 import FlexiBeeApplication, { FLEXI_BEE_APPLICATION, FLEXIBEE_URL } from '../../lib/FlexiBee/FexiBeeApplication';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
 
@@ -64,6 +72,48 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         (new FlexiBeeGetSarzeExpiraceKartyConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeObjednavkaPrijataBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeCreateSkladovyPohybConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeUpdateSkladovyPohybConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeCreateObjednavkaVydanaConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeUpdateObjednavkaPrijataConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeGetSkladovyPohybBatch())
             .setSender(sender)
             .setDb(db)
             .setApplication(app),

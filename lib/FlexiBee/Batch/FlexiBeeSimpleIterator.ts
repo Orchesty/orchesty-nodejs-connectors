@@ -15,8 +15,15 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const app = this.getApplication<FlexiBeeApplication>();
 
+        // eslint-disable-next-line
+        const { lastUpdate } = dto.getJsonData() as any;
+        let url = this.endpoint;
+        if (lastUpdate) {
+            url = `${url}/${encodeURI(`(lastUpdate > ${lastUpdate})`)}`;
+        }
+
         const page = Number(dto.getBatchCursor('0'));
-        const url = `${this.endpoint}.json?add-row-count=true&start=${page * this.pageSize}&limit=${this.pageSize}`;
+        url = `${url}.json?detail=full&add-row-count=true&start=${page * this.pageSize}&limit=${this.pageSize}`;
 
         const request = await app.getRequestDto(
             dto,
@@ -29,7 +36,7 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
         const data = response.getJsonBody().winstrom;
         // eslint-disable-next-line
         const items = (data as any)[this.endpoint] as T[];
-        await this.processItems(items);
+        await this.processItems(dto, items);
 
         const rows = Number(data['@rowCount']);
         const pages = Math.ceil(rows / this.pageSize);
@@ -43,7 +50,7 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
     }
 
     // eslint-disable-next-line
-    protected async processItems(_items: T[]): Promise<void> {
+    protected async processItems(_dto: BatchProcessDto, _items: T[]): Promise<void> {
     }
 
 }

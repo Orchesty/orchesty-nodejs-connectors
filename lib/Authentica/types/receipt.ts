@@ -20,9 +20,9 @@ interface AuthenticaReceipt {
     },
     items: {
         productId: number;
-        receivedAmount: number;
+        receivedAmount: number | null;
         expectedAmount: number;
-        expectedLot: null;
+        expectedLot: unknown | null;
         expectedExpirationDate: unknown | null;
     }[];
     trackingNumbers: string[];

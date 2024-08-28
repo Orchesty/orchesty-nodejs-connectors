@@ -1,0 +1,47 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "externalId": "receipt-1",
+        "incomingDate": 1709178916,
+        "customerNote": null,
+        "customerType": "customer-type",
+        "supplier": {
+            "firstName": null,
+            "lastName": null,
+            "companyName": "Webwings s.r.o.",
+            "addressLine1": "Marešova 305/14",
+            "addressLine2": "2nd floor",
+            "addressLine3": null,
+            "city": "Brno",
+            "zip": "602 00",
+            "country": "CZ",
+            "state": null
+        },
+        "items": [
+            {
+                "productId": 1,
+                "expectedAmount": 5,
+                "expectedLot": null,
+                "expectedExpirationDate": null
+            },
+            {
+                "productId": 2,
+                "expectedAmount": 3,
+                "expectedLot": "LOT-1",
+                "expectedExpirationDate": null
+            },
+            {
+                "productId": 3,
+                "receivedAmount": 0,
+                "expectedAmount": 1,
+                "expectedLot": "LOT-1",
+                "expectedExpirationDate": 1719178916
+            }
+        ],
+        "trackingNumbers": [
+            "123456789"
+        ]
+    }
+}
