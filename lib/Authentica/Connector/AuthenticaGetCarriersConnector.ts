@@ -23,7 +23,7 @@ export class AuthenticaGetCarriers extends AConnector {
         return dto.setNewJsonData(resp);
     }
 
-    protected async processItems(dto: ProcessDto, _items: AuthenticaCarrier[]): Promise<void> {
+    protected async processItems(_dto: ProcessDto, _items: AuthenticaCarrier[]): Promise<void> {
     }
 
 }
