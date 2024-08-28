@@ -18,23 +18,23 @@ export class AuthenticaGetCarriers extends AConnector {
             'carrier',
         );
         const resp = (await this.getSender().send<Response>(req, [200])).getJsonBody();
-        await this.processItems(resp);
+        await this.processItems(dto, resp);
 
         return dto.setNewJsonData(resp);
     }
 
-    protected async processItems(_items: Carrier[]): Promise<void> {
+    protected async processItems(dto: ProcessDto, _items: AuthenticaCarrier[]): Promise<void> {
     }
 
 }
 
-interface Carrier {
+export interface AuthenticaCarrier {
     id: number;
     name: string;
     branchSupported: boolean;
     branchRequired: boolean;
 }
 
-type Response = Carrier[];
+type Response = AuthenticaCarrier[];
 
-export type AuthenticaGetCarriersOutput = Carrier[];
+export type AuthenticaGetCarriersOutput = AuthenticaCarrier[];
