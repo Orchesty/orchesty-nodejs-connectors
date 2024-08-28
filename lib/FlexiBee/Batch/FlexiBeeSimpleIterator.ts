@@ -36,7 +36,7 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
         const data = response.getJsonBody().winstrom;
         // eslint-disable-next-line
         const items = (data as any)[this.endpoint] as T[];
-        await this.processItems(items);
+        await this.processItems(dto, items);
 
         const rows = Number(data['@rowCount']);
         const pages = Math.ceil(rows / this.pageSize);
@@ -50,7 +50,7 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
     }
 
     // eslint-disable-next-line
-    protected async processItems(_items: T[]): Promise<void> {
+    protected async processItems(_dto: BatchProcessDto, _items: T[]): Promise<void> {
     }
 
 }

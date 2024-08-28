@@ -2,7 +2,7 @@ import { FlexiBeeSimpleIterator } from './FlexiBeeSimpleIterator';
 
 export const FLEXI_BEE_FORMA_DOPRAVY_BATCH = 'flexi-bee-forma-dopravy-batch';
 
-export default class FlexiBeeFormaDopravyBatch extends FlexiBeeSimpleIterator<FormaDopravy> {
+export default class FlexiBeeFormaDopravyBatch extends FlexiBeeSimpleIterator<FlexiBeeFormaDopravy> {
 
     protected endpoint = 'forma-dopravy';
 
@@ -12,7 +12,7 @@ export default class FlexiBeeFormaDopravyBatch extends FlexiBeeSimpleIterator<Fo
 
 }
 
-interface FormaDopravy {
+export interface FlexiBeeFormaDopravy {
     id: string;
     lastUpdate: string;
     kod: string;
