@@ -31,11 +31,12 @@ export default class BraniSubscribeWebhooks extends ABatchNode {
         const unregistered = all.filter((wh) => !registered.find((reg) => reg.getName() === wh.event)).shift();
         if (unregistered) {
             const body = {
-                event: unregistered.event,
+                // eslint-disable-next-line @typescript-eslint/naming-convention
+                event_type: unregistered.event,
                 url: TopologyRunner.getWebhookUrl(unregistered.topology, unregistered.node, unregistered.token),
             };
 
-            const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.POST, 'webhook', JSON.stringify(body));
+            const requestDto = app.getRequestDto(dto, appInstall, HttpMethods.POST, 'webhook', body);
             await this.getSender().send<IOutput>(requestDto, [200]);
 
             const wb = new Webhook()
@@ -56,7 +57,7 @@ export default class BraniSubscribeWebhooks extends ABatchNode {
     }
 
     private getRandomToken(): string {
-        return crypto.randomBytes(64).toString('hex');
+        return crypto.randomBytes(12).toString('hex');
     }
 
 }

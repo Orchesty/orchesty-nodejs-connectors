@@ -16,7 +16,7 @@ export default class BraniUnsubscribeWebhook extends AConnector {
 
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.DELETE,
             `webhook/${id}`,
         );

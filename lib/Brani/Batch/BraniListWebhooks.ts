@@ -13,7 +13,7 @@ export default class BraniListWebhooks extends ABatchNode {
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, null),
             HttpMethods.GET,
             'webhook',
         );

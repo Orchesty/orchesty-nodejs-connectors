@@ -19,7 +19,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
         const ecommerce = dto.getUser();
         let url = 'items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*'
             + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
-            + '&fields[]=customer.address.*&fields[]=selling_order_product.product_batch.*'
+            + '&fields[]=customer.address.*&fields[]=selling_order_product.product_batch.*&fields[]=total_price.*&fields[]=transport.*'
             + `&filter[ecommerce][_eq]=${ecommerce}`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
 
@@ -67,11 +67,19 @@ export interface ISellingOrder {
     };
     id: string;
     payment_type: string;
-    transport: number;
+    transport: {
+        carrier: number;
+        id: number;
+        tracking_number: string;
+        ecommerce: number;
+    };
     external_id: string;
     ecommerce: number;
     order_number: string;
-    total_price: number;
+    total_price: {
+        amount: number;
+        currency: string;
+    }
     selling_order_history: {
         date: string;
         id: number;
