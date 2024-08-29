@@ -4,7 +4,7 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
 export const NAME = 'supply-do-get-selling-order';
 
-export class SupplyDoGetSellingOrder extends AConnector {
+export default class SupplyDoGetSellingOrder extends AConnector {
 
     public getName(): string {
         return NAME;

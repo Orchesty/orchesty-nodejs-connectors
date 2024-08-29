@@ -9,9 +9,9 @@ import SupplyDoCreateProductBatchWarehouse from '../../lib/SupplyDo/Connector/Su
 import SupplyDoCreatePurchaseOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreatePurchaseOrderHistory';
 import SupplyDoCreateReturn from '../../lib/SupplyDo/Connector/SupplyDoCreateReturn';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
-import { SupplyDoGetSellingOrder } from '../../lib/SupplyDo/Connector/SupplyDoGetSellingOrder';
+import SupplyDoGetSellingOrder from '../../lib/SupplyDo/Connector/SupplyDoGetSellingOrder';
 import SupplyDoGetWarehouses from '../../lib/SupplyDo/Connector/SupplyDoGetWarehouses';
-import { SupplyDoSetTrackingNumber } from '../../lib/SupplyDo/Connector/SupplyDoSetTrackingNumber';
+import SupplyDoSetTrackingNumber from '../../lib/SupplyDo/Connector/SupplyDoSetTrackingNumber';
 import SupplyDoUpdateEcommerce from '../../lib/SupplyDo/Connector/SupplyDoUpdateEcommerce';
 import SupplyDoUpdateProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoUpdateProductBatchWarehouse';
 import SupplyDoUpsertOrders from '../../lib/SupplyDo/Connector/SupplyDoUpsertOrders';

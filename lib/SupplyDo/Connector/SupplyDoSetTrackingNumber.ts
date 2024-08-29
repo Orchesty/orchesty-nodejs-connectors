@@ -5,7 +5,7 @@ import { IOutput } from './SupplyDoGetSellingOrder';
 
 export const NAME = 'supply-do-set-tracking-number';
 
-export class SupplyDoSetTrackingNumber extends AConnector {
+export default class SupplyDoSetTrackingNumber extends AConnector {
 
     public getName(): string {
         return NAME;
