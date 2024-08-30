@@ -46,6 +46,7 @@ export interface IInput {
         };
     };
     payment_type: string;
+    paid: boolean;
     transport: {
         carrier: number;
         tracking_number?: string;
