@@ -20,7 +20,8 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
         let url = 'items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*'
             + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
             + '&fields[]=customer.address.*&fields[]=selling_order_product.product_batch.*&fields[]=total_price.*&fields[]=transport.*'
-            + '&filter[selling_order_history][_some][type][_eq]=processing'
+            + '&filter[selling_order_history][_some][type][_eq]=new'
+            // + '&filter[selling_order_history][_some][type][_eq]=processing'
             + '&filter[selling_order_history][_none][type][_in]=dispatched,delivered,not_delivered,not_paid,wrong_address,wrong_phone_number,package_lost'
             + `&filter[ecommerce][_eq]=${ecommerce}`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
