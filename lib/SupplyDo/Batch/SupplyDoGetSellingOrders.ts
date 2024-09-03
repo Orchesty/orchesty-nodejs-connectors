@@ -78,6 +78,7 @@ export interface ISellingOrder {
         carrier: number;
         id: number;
         tracking_number: string;
+        packeta_pickup_point_id: string;
         ecommerce: number;
     };
     external_id: string;
