@@ -20,11 +20,9 @@ export default class ShopifyGetOrderList extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const app = this.getApplication<ShopifyApplication>();
-        const {
-            from,
-        } = dto.getJsonData();
+        const { from } = dto.getJsonData();
         let url = dto.getBatchCursor(LIST_PAGE_ENDPOINT);
-        if (from) {
+        if (from && url === LIST_PAGE_ENDPOINT) {
             const separatorChar = url.includes('?') ? '&' : '?';
             url = `${url}${separatorChar}created_at_min=${from}`;
         }
