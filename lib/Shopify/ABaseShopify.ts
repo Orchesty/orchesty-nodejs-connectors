@@ -90,10 +90,10 @@ export default abstract class ABaseShopify extends ABasicApplication {
     }
 
     public getNextPageFromHeaders(headers: Record<string, unknown>): string | undefined {
-        const linkHeaders = headers.Link as string;
+        const linkHeaders = (headers.Link ?? headers.link) as string;
 
         if (linkHeaders) {
-            const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('rel=next'));
+            const nextLinkHeader = linkHeaders.split(',').find((link) => link.includes('rel=next') || link.includes('rel="next"'));
             // eslint-disable-next-line prefer-named-capture-group
             const nextLink = (/<(.+)>/).exec(nextLinkHeader ?? '');
             if (nextLink) {
