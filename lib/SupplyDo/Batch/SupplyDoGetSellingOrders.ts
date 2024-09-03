@@ -71,6 +71,9 @@ export interface ISellingOrder {
     };
     id: string;
     payment_type: string;
+    date_created: string;
+    date_updated: string;
+    paid: boolean;
     transport: {
         carrier: number;
         id: number;
