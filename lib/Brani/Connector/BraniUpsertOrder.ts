@@ -93,6 +93,9 @@ export interface IInput {
         houseNumber?: string;
         regionName?: string;
     },
+    shippingDetails?: {
+        branchId?: string;
+    }
     cashDeskOrder?: boolean;
     companyId?: string;
     adminUrl?: string;
