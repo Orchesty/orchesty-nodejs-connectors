@@ -20,12 +20,19 @@ export default class ShopifyGetOrderList extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const app = this.getApplication<ShopifyApplication>();
-        const { from } = dto.getJsonData();
+        const { from, ids } = dto.getJsonData();
         let url = dto.getBatchCursor(LIST_PAGE_ENDPOINT);
+
         if (from && url === LIST_PAGE_ENDPOINT) {
             const separatorChar = url.includes('?') ? '&' : '?';
             url = `${url}${separatorChar}created_at_min=${from}`;
         }
+
+        if (ids && url === LIST_PAGE_ENDPOINT) {
+            const separatorChar = url.includes('?') ? '&' : '?';
+            url = `${url}${separatorChar}ids=${ids}`;
+        }
+
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = await app.getRequestDto(dto, appInstall, HttpMethods.GET, url);
 
@@ -57,7 +64,8 @@ export default class ShopifyGetOrderList extends ABatchNode {
 }
 
 export interface IInput {
-    from: string;
+    from?: string;
+    ids?: string;
 }
 
 interface IResponse {
