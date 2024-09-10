@@ -1,5 +1,5 @@
 {
-    "http": "GET https://demo.flexibee.eu/c/demo/objednavka-prijata.json?detail=full&add-row-count=true&start=0&limit=100",
+    "http": "GET https://demo.flexibee.eu/c/demo/objednavka-prijata.json?detail=full&add-row-count=true&start=0&limit=100&relations=polozkyObchDokladu",
     "code": 200,
     "body": {
         "winstrom": {
