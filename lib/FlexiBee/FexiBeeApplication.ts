@@ -89,9 +89,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
             headers = {
                 [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
                 [CommonHeaders.ACCEPT]: JSON_TYPE,
-                [CommonHeaders.AUTHORIZATION]: `Basic 
-        ${encode(`${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:
-        ${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`)}`,
+                [CommonHeaders.AUTHORIZATION]: `Basic ${encode(`${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`)}`,
             };
         }
 

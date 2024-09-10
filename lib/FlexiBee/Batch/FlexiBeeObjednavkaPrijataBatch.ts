@@ -7,6 +7,8 @@ export default class FlexiBeeObjednavkaPrijataBatch extends FlexiBeeSimpleIterat
 
     protected endpoint = 'objednavka-prijata';
 
+    protected override relations: string[] = ['polozkyObchDokladu'];
+
     public getName(): string {
         return FLEXI_BEE_OBJEDNAVKA_PRIJATA_BATCH;
     }

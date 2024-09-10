@@ -12,7 +12,7 @@ export default class FlexiBeeStitkyBatch extends FlexiBeeSimpleIterator<FlexiBee
 
 }
 
-interface FlexiBeeStitek {
+export interface FlexiBeeStitek {
     id: string;
     lastUpdate: string;
     kod: string;
