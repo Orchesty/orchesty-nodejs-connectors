@@ -63,7 +63,7 @@ export default class SESApplication extends AAwsApplication {
                 },
                 [REGION]: settings[REGION],
                 [VERSION]: LATEST,
-                [ENDPOINT]: endpoint ? settings[ENDPOINT] : [],
+                [ENDPOINT]: endpoint ? settings[ENDPOINT] : undefined,
             },
         );
     }
