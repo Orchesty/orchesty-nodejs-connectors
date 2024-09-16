@@ -50,7 +50,7 @@ export interface ProductBatchWarehouse {
     id?: number;
 }
 
-interface IResponse {
+export interface IResponse {
     data: ProductBatchWarehouse[];
 }
 
