@@ -2,16 +2,16 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 
-export const NAME = 'supply-do-get-warehouses';
+export const NAME = 'supply-do-get-product-batch-warehouses';
 
-export default class SupplyDoGetWarehouses extends AConnector {
+export default class SupplyDoGetProductBatchWarehouse extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
     public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput>> {
-        let url = 'items/warehouse';
+        let url = 'items/product_batch_warehouse';
         const params = this.uriParams(dto);
         if (params) {
             url = `${url}?${params}`;
@@ -29,7 +29,7 @@ export default class SupplyDoGetWarehouses extends AConnector {
     }
 
     protected uriParams(_dto: ProcessDto): string | null {
-        // example: 'filter[fullfilment][type]=Foo'
+        // example: 'filter[ecommerce][_eq]=_dto.getUser()'
         return null;
     }
 
@@ -40,25 +40,19 @@ export default class SupplyDoGetWarehouses extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface Warehouse {
-    address: number;
+interface ProductBatchWarehouse {
     id: number;
-    name: string;
-    central: boolean;
-    company: number;
-    active: boolean;
-    contact: string;
-    phone: string;
-    store: boolean;
-    supply_time: string;
-    external_id: string;
-    fullfilment: number;
-    product_batches: (number | string)[];
+    product_batch: number;
+    quantity: number;
+    warehouse: number;
+    updated_at: string;
+    ecommerce: number;
+    stocked_at: string;
 }
 
 interface IResponse {
-    data: Warehouse[];
+    data: ProductBatchWarehouse[];
 }
 
-export type IOutput = Warehouse[];
+export type IOutput = ProductBatchWarehouse[];
 /* eslint-enable @typescript-eslint/naming-convention */

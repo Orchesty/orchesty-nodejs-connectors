@@ -1,0 +1,17 @@
+{
+  "http": "GET https://supply.do/items/product_batch_warehouse",
+  "code": 200,
+  "body": {
+    "data": [
+      {
+        "id": 0,
+        "product_batch": 0,
+        "quantity": 0,
+        "warehouse": 0,
+        "updated_at": "string",
+        "ecommerce": 0,
+        "stocked_at": "2023-12-08T08:34:50.896Z"
+      }
+    ]
+  }
+}

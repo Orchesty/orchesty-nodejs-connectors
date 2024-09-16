@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "ecommerce": 0,
+      "id": 0,
+      "product_batch": 0,
+      "quantity": 0,
+      "stocked_at": "2023-12-08T08:34:50.896Z",
+      "updated_at": "string",
+      "warehouse": 0
+    }
+  ]
+}

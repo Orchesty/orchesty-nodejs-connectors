@@ -9,6 +9,7 @@ import SupplyDoCreateProductBatchWarehouse from '../../lib/SupplyDo/Connector/Su
 import SupplyDoCreatePurchaseOrderHistory from '../../lib/SupplyDo/Connector/SupplyDoCreatePurchaseOrderHistory';
 import SupplyDoCreateReturn from '../../lib/SupplyDo/Connector/SupplyDoCreateReturn';
 import SupplyDoGetCarriers from '../../lib/SupplyDo/Connector/SupplyDoGetCarriers';
+import SupplyDoGetProductBatchWarehouse from '../../lib/SupplyDo/Connector/SupplyDoGetProductBatchWarehouse';
 import SupplyDoGetSellingOrder from '../../lib/SupplyDo/Connector/SupplyDoGetSellingOrder';
 import SupplyDoGetWarehouses from '../../lib/SupplyDo/Connector/SupplyDoGetWarehouses';
 import SupplyDoSetTrackingNumber from '../../lib/SupplyDo/Connector/SupplyDoSetTrackingNumber';
@@ -46,6 +47,7 @@ export function init(): void {
     container.setNode(new SupplyDoGetProducts(), supplyDoApplication);
     container.setNode(new SupplyDoCreateProductBatchWarehouse(), supplyDoApplication);
     container.setNode(new SupplyDoUpdateProductBatchWarehouse(), supplyDoApplication);
+    container.setNode(new SupplyDoGetProductBatchWarehouse(), supplyDoApplication);
     container.setNode(new SupplyDoCreateOrderHistory(), supplyDoApplication);
     container.setNode(new SupplyDoGetWarehouses(), supplyDoApplication);
     container.setNode(new SupplyDoGetPurchaseOrders(), supplyDoApplication);
