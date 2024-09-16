@@ -13,13 +13,22 @@ export default class HubSpotCreateContactConnector extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const data = dto.getJsonData();
 
         const request = await this.getApplication().getRequestDto(
             dto,
             applicationInstall,
             HttpMethods.POST,
             `${BASE_URL}/crm/v3/objects/contacts`,
-            dto.getData(),
+            JSON.stringify({
+                properties: {
+                    company: data['properties']?.['company'],
+                    email: data['properties']?.['email'],
+                    firstname: data['properties']?.['firstname'],
+                    lastname: data['properties']?.['lastname'],
+                    phone: data['properties']?.['phone'],
+                },
+            }),
         );
 
         const response = await this.getSender().send(request, [201, 409]);
