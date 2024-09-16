@@ -40,14 +40,14 @@ export default class SupplyDoGetProductBatchWarehouse extends AConnector {
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
-interface ProductBatchWarehouse {
-    id: number;
+export interface ProductBatchWarehouse {
     product_batch: number;
     quantity: number;
     warehouse: number;
     updated_at: string;
     ecommerce: number;
     stocked_at: string;
+    id?: number;
 }
 
 interface IResponse {
