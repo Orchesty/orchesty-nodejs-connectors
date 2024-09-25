@@ -3,7 +3,7 @@ import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provid
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import { NAME } from '../../lib/Shopify/ABaseShopify';
-import ShopifyGetFulfillmentOrders from '../../lib/Shopify/Batch/ShopifyGetFulfillmentOrders';
+import ShopifyGetFulfillmentOrdersFulfilment from '../../lib/Shopify/Batch/ShopifyGetFulfillmentOrders';
 import ShopifyGetFulfillments from '../../lib/Shopify/Batch/ShopifyGetFulfillments';
 import ShopifyGetOrderList from '../../lib/Shopify/Batch/ShopifyGetOrderList';
 import ShopifyGetProductsList from '../../lib/Shopify/Batch/ShopifyGetProductsList';
@@ -13,6 +13,7 @@ import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsol
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyCreateFulfillmentEvent from '../../lib/Shopify/Connector/ShopifyCreateFulfillmentEvent';
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
+import ShopifyGetFulfillmentOrders from '../../lib/Shopify/Connector/ShopifyGetFulfilmentOrders';
 import ShopifyGetInventoryLocation from '../../lib/Shopify/Connector/ShopifyGetInventoryLocation';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyGetVariantDetail from '../../lib/Shopify/Connector/ShopifyGetVariantDetail';
@@ -105,7 +106,7 @@ export default function init(): void {
         .setDb(db);
     container.setConnector(shopifyUpdateOrder);
 
-    const shopifyGetFulfillmentOrders = new ShopifyGetFulfillmentOrders()
+    const shopifyGetFulfillmentOrders = new ShopifyGetFulfillmentOrdersFulfilment()
         .setApplication(shopifyApplication)
         .setSender(sender)
         .setDb(db);
@@ -119,4 +120,5 @@ export default function init(): void {
 
     container.setNode(new ShopifyGetInventoryLocation(), shopifyApplication);
     container.setNode(new ShopifyGetVariantDetail(), shopifyApplication);
+    container.setNode(new ShopifyGetFulfillmentOrders(), shopifyApplication);
 }

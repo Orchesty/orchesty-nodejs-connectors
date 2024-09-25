@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "fulfillment_orders": [
+            {
+                "id": 11,
+                "created_at": "2024-09-18T20:30:20+02:00",
+                "updated_at": "2024-09-18T20:30:20+02:00",
+                "shop_id": 1,
+                "order_id": 1,
+                "assigned_location_id": 1,
+                "request_status": "unsubmitted",
+                "status": "open",
+                "fulfill_at": "2024-09-18T20:00:00+02:00"
+            }
+        ]
+    }
+}

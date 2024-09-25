@@ -1,0 +1,19 @@
+{
+  "http": "GET https://xyz.myshopify.com/admin/api/2024-01/orders/1/fulfillment_orders.json",
+  "code": 200,
+  "body": {
+    "fulfillment_orders": [
+      {
+        "id": 11,
+        "created_at": "2024-09-18T20:30:20+02:00",
+        "updated_at": "2024-09-18T20:30:20+02:00",
+        "shop_id": 1,
+        "order_id": 1,
+        "assigned_location_id": 1,
+        "request_status": "unsubmitted",
+        "status": "open",
+        "fulfill_at": "2024-09-18T20:00:00+02:00"
+      }
+    ]
+  }
+}
