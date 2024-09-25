@@ -6,6 +6,7 @@ import BraniSubscribeWebhooks from '../../lib/Brani/Batch/BraniSubscribeWebhooks
 import BraniApplication, { NAME as BRANI_APP } from '../../lib/Brani/BraniApplication';
 import BraniEshopInfo from '../../lib/Brani/Connector/BraniEshopInfo';
 import BraniUnsubscribeWebhook from '../../lib/Brani/Connector/BraniUnsubscribeWebhook';
+import BraniUpdateEshopInfo from '../../lib/Brani/Connector/BraniUpdateEshopInfo';
 import BraniUpsertOrder from '../../lib/Brani/Connector/BraniUpsertOrder';
 import BraniUpsertProduct from '../../lib/Brani/Connector/BraniUpsertProduct';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
@@ -25,6 +26,7 @@ export default function init(): void {
     container.setApplication(app);
 
     container.setNode(new BraniEshopInfo(), app);
+    container.setNode(new BraniUpdateEshopInfo(), app);
     container.setNode(new BraniUpsertOrder(), app);
     container.setNode(new BraniSubscribeWebhooks(), app);
     container.setNode(new BraniListWebhooks(), app);

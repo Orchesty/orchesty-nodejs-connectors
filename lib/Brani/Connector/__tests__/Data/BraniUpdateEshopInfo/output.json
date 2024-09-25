@@ -1,0 +1,10 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "status_code": 200,
+        "detail": "Uspesne ulozeno",
+        "headers": null
+    }
+}

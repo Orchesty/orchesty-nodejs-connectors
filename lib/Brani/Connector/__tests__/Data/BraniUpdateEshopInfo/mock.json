@@ -1,0 +1,9 @@
+{
+  "http": "POST https://api.brani.cz/eshop/info",
+  "code": 200,
+  "body": {
+    "status_code": 200,
+    "detail": "Uspesne ulozeno",
+    "headers": null
+  }
+}
