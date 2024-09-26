@@ -1,4 +1,5 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
+import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
@@ -39,6 +40,10 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
             await this.getDbClient().getApplicationRepository().update(appInstall);
         }
 
+        return this.setItemList(dto, resp);
+    }
+
+    protected setItemList(dto: BatchProcessDto, resp: ResponseDto<IResponse>): BatchProcessDto {
         return dto.setItemList(resp.getJsonBody().data);
     }
 
