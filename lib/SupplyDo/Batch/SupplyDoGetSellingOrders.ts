@@ -40,12 +40,16 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
             dto.setBatchCursor(String(page + 1));
         } else {
             appInstall.addNonEncryptedSettings({
-                [LAST_RUN_KEY]: new Date().toISOString(),
+                [this.getLastRunKey()]: new Date().toISOString(),
             });
             await this.getDbClient().getApplicationRepository().update(appInstall);
         }
 
         return dto.setItemList(resp.getJsonBody().data);
+    }
+
+    protected getLastRunKey(): string {
+        return LAST_RUN_KEY;
     }
 
     protected getStatusQueryParams(): string {
