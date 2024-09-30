@@ -49,5 +49,14 @@ export interface IFulfillment {
     order_id: string;
     status: string;
     // eslint-disable-next-line @typescript-eslint/naming-convention
+    line_items_by_fulfillment_order: {
+        fulfillment_order_id: number;
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        fulfillment_order_line_items?: {
+            id: number;
+            quantity: number;
+        }[];
+    }[];
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     tracking_numbers: string[];
 }

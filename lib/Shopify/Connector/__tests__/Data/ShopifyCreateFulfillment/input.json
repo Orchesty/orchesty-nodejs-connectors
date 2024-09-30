@@ -6,7 +6,12 @@
         "fulfillment": {
             "order_id": "testOrderId",
             "status": "testStatus",
-            "tracking_numbers": ["testTrackingNumber"]
+            "tracking_numbers": ["testTrackingNumber"],
+            "line_items_by_fulfillment_order": [
+                {
+                    "fulfillment_order_id": 1
+                }
+            ]
         }
     }
 }
