@@ -14,7 +14,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY];
+        const lastRun = await appInstall.getNonEncryptedSettings()[this.getLastRunKey()];
         const page = Number(dto.getBatchCursor('0'));
         const ecommerce = dto.getUser();
         let url = 'items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*'
