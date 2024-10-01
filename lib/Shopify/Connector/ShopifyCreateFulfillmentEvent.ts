@@ -24,9 +24,13 @@ export default class ShopifyCreateFulfillmentEvent extends AConnector {
             { event: data },
         );
 
-        const { fulfillment_event } = (await this.getSender().send<IResponse>(requestDto, [200])).getJsonBody();
+        const response = await this.getSender().send<IResponse>(requestDto, [200]);
 
-        return dto.setNewJsonData({ ...fulfillment_event });
+        return this.setDtoData(dto, response.getJsonBody());
+    }
+
+    protected setDtoData(dto: ProcessDto<IInput>, response: IResponse): ProcessDto<IOutput> {
+        return dto.setNewJsonData(response.fulfillment_event);
     }
 
 }
@@ -59,7 +63,7 @@ export interface IOutput {
     estimated_delivery_at: string;
 }
 
-interface IResponse {
+export interface IResponse {
     fulfillment_event: IOutput;
 }
 /* eslint-enable @typescript-eslint/naming-convention */

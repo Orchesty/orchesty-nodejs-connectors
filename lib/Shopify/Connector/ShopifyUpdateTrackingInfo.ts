@@ -4,11 +4,11 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ABaseShopify, { API_VERSION } from '../ABaseShopify';
 import { IOutput as IBaseOutput } from '../Batch/ShopifyGetFulfillmentOrders';
 
-export const NAME = 'shopify-create-fulfillment';
+export const NAME = 'shopify-update-tracking-info';
 
-const CREATE_FULFILLMENT = `admin/api/${API_VERSION}/fulfillments.json`;
+const UPDATE_TRACKING_INFO = `admin/api/${API_VERSION}/fulfillments/{id}/update_tracking.json`;
 
-export default class ShopifyCreateFulfillment extends AConnector {
+export default class ShopifyUpdateTrackingInfo extends AConnector {
 
     public getName(): string {
         return NAME;
@@ -16,13 +16,13 @@ export default class ShopifyCreateFulfillment extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const app = this.getApplication<ABaseShopify>();
-        const data = dto.getJsonData();
+        const { id, ...data } = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const requestDto = app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.POST,
-            CREATE_FULFILLMENT,
+            UPDATE_TRACKING_INFO.replace('{id}', id.toString()),
             JSON.stringify(data),
         );
         const res = await this.getSender().send<IResponse>(requestDto);
@@ -37,28 +37,21 @@ export default class ShopifyCreateFulfillment extends AConnector {
 }
 
 export interface IInput {
-    fulfillment: IFulfillment;
+    id: number;
+    fulfillment: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        notify_customer?: boolean;
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        tracking_info: {
+            company?: string;
+            number: string;
+            url?: string;
+        };
+    }
 }
-
-export type IOutput = IBaseOutput;
 
 export interface IResponse {
-    fulfillment: IOutput;
+    fulfillment: IOutput
 }
 
-export interface IFulfillment {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    line_items_by_fulfillment_order: {
-        fulfillment_order_id: number;
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        fulfillment_order_line_items?: {
-            id: number;
-            quantity: number;
-        }[];
-    }[];
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    tracking_info?: {
-        number: string;
-        url?: string;
-    };
-}
+export type IOutput = IBaseOutput

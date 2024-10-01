@@ -18,6 +18,7 @@ import ShopifyGetInventoryLocation from '../../lib/Shopify/Connector/ShopifyGetI
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyGetVariantDetail from '../../lib/Shopify/Connector/ShopifyGetVariantDetail';
 import ShopifyUpdateOrder from '../../lib/Shopify/Connector/ShopifyUpdateOrder';
+import ShopifyUpdateTrackingInfo from '../../lib/Shopify/Connector/ShopifyUpdateTrackingInfo';
 import ShopifyApplication from '../../lib/Shopify/ShopifyApplication';
 import {
     appInstall,
@@ -121,4 +122,5 @@ export default function init(): void {
     container.setNode(new ShopifyGetInventoryLocation(), shopifyApplication);
     container.setNode(new ShopifyGetVariantDetail(), shopifyApplication);
     container.setNode(new ShopifyGetFulfillmentOrders(), shopifyApplication);
+    container.setNode(new ShopifyUpdateTrackingInfo(), shopifyApplication);
 }
