@@ -25,7 +25,7 @@ export default class SupplyDoGetProductBatchWarehouse extends AConnector {
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
 
-        return this.processResponseData(dto, resp.getJsonBody());
+        return this.processResponseData(dto, resp.getJsonBody()) as ProcessDto<IOutput>;
     }
 
     protected uriParams(_dto: ProcessDto): string | null {
@@ -33,7 +33,7 @@ export default class SupplyDoGetProductBatchWarehouse extends AConnector {
         return null;
     }
 
-    protected processResponseData(_dto: ProcessDto, response: IResponse): ProcessDto<IOutput> {
+    protected processResponseData(_dto: ProcessDto, response: IResponse): ProcessDto {
         return _dto.setNewJsonData(response.data);
     }
 

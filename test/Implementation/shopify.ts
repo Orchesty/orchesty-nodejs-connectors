@@ -13,7 +13,7 @@ import ShopifyAbsoluteUpdateStock from '../../lib/Shopify/Connector/ShopifyAbsol
 import ShopifyCreateFulfillment from '../../lib/Shopify/Connector/ShopifyCreateFulfillment';
 import ShopifyCreateFulfillmentEvent from '../../lib/Shopify/Connector/ShopifyCreateFulfillmentEvent';
 import ShopifyGetCarrierServices from '../../lib/Shopify/Connector/ShopifyGetCarrierServices';
-import ShopifyGetFulfillmentOrders from '../../lib/Shopify/Connector/ShopifyGetFulfilmentOrders';
+import ShopifyGetFulfillmentOrders from '../../lib/Shopify/Connector/ShopifyGetFulfillmentOrders';
 import ShopifyGetInventoryLocation from '../../lib/Shopify/Connector/ShopifyGetInventoryLocation';
 import ShopifyGetShippingZones from '../../lib/Shopify/Connector/ShopifyGetShippingZones';
 import ShopifyGetVariantDetail from '../../lib/Shopify/Connector/ShopifyGetVariantDetail';

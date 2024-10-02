@@ -27,10 +27,10 @@ export default class ShopifyCreateFulfillment extends AConnector {
         );
         const res = await this.getSender().send<IResponse>(requestDto);
 
-        return this.setDtoData(dto, res.getJsonBody());
+        return this.setDtoData(dto, res.getJsonBody()) as ProcessDto<IOutput>;
     }
 
-    protected setDtoData(dto: ProcessDto<IInput>, response: IResponse): ProcessDto<IOutput> {
+    protected setDtoData(dto: ProcessDto<IInput>, response: IResponse): ProcessDto {
         return dto.setNewJsonData(response.fulfillment);
     }
 

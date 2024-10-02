@@ -9,7 +9,7 @@ export const NAME = 'shopify-get-fulfilment-orders';
 
 const FULFILLMENT_ORDER_ENDPOINT = `admin/api/${API_VERSION}/orders/{id}/fulfillment_orders.json`;
 
-export default class ShopifyGetFulfilmentOrders extends AConnector {
+export default class ShopifyGetFulfillmentOrders extends AConnector {
 
     public getName(): string {
         return NAME;
