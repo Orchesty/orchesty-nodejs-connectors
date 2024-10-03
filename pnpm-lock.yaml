@@ -375,8 +375,8 @@ packages:
     resolution: {integrity: sha512-62Vv8nC+uPId3j86XJ0WI+sBf0jlqTqPUFCBNrGtlaUeQUIXWV/D8GE5A1d+Qx8H7OQojn2WguC8kChD6v0shA==}
     engines: {node: '>=18.0.0'}
 
-  '@azure/core-tracing@1.1.2':
-    resolution: {integrity: sha512-dawW9ifvWAWmUm9/h+/UQ2jrdvjCJ7VJEuCJ6XVNudzcOwm53BFZH4Q845vjfgoUAM8ZxokvVNxNxAITc502YA==}
+  '@azure/core-tracing@1.2.0':
+    resolution: {integrity: sha512-UKTiEJPkWcESPYJz3X5uKRYyOcJD+4nYph+KpfdPRnQJVrZfk0KJgdnaAWKfhsBBtAf/D58Az4AvCJEmWgIBAg==}
     engines: {node: '>=18.0.0'}
 
   '@azure/core-util@1.10.0':
@@ -4874,7 +4874,7 @@ snapshots:
       '@azure/abort-controller': 2.1.2
       '@azure/core-auth': 1.8.0
       '@azure/core-rest-pipeline': 1.17.0
-      '@azure/core-tracing': 1.1.2
+      '@azure/core-tracing': 1.2.0
       '@azure/core-util': 1.10.0
       '@azure/logger': 1.1.4
       tslib: 2.7.0
@@ -4908,7 +4908,7 @@ snapshots:
     dependencies:
       '@azure/abort-controller': 2.1.2
       '@azure/core-auth': 1.8.0
-      '@azure/core-tracing': 1.1.2
+      '@azure/core-tracing': 1.2.0
       '@azure/core-util': 1.10.0
       '@azure/logger': 1.1.4
       http-proxy-agent: 7.0.2
@@ -4918,7 +4918,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@azure/core-tracing@1.1.2':
+  '@azure/core-tracing@1.2.0':
     dependencies:
       tslib: 2.7.0
     optional: true
@@ -4935,7 +4935,7 @@ snapshots:
       '@azure/core-auth': 1.8.0
       '@azure/core-client': 1.9.2
       '@azure/core-rest-pipeline': 1.17.0
-      '@azure/core-tracing': 1.1.2
+      '@azure/core-tracing': 1.2.0
       '@azure/core-util': 1.10.0
       '@azure/logger': 1.1.4
       '@azure/msal-browser': 3.25.0
@@ -4958,7 +4958,7 @@ snapshots:
       '@azure/core-lro': 2.7.2
       '@azure/core-paging': 1.6.2
       '@azure/core-rest-pipeline': 1.17.0
-      '@azure/core-tracing': 1.1.2
+      '@azure/core-tracing': 1.2.0
       '@azure/core-util': 1.10.0
       '@azure/logger': 1.1.4
       tslib: 2.7.0
