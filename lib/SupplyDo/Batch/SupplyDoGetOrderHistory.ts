@@ -24,8 +24,7 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
             'items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*'
-            + '&filter[type][_nin]=new,hold,canceled'
-            + `&filter[selling_order][ecommerce][_eq]=${ecommerce}&filter[date][_gte]=${lastRun}&sort=-date`
+            + `${this.addStatusFilter(dto)}&filter[selling_order][ecommerce][_eq]=${ecommerce}&filter[date][_gte]=${lastRun}&sort=-date`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
         );
 
@@ -46,6 +45,10 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
 
     protected setItemList(dto: BatchProcessDto, resp: ResponseDto<IResponse>): BatchProcessDto {
         return dto.setItemList(resp.getJsonBody().data);
+    }
+
+    protected addStatusFilter(_dto: BatchProcessDto): string {
+        return '&filter[type][_nin]=new,hold,canceled';
     }
 
 }
