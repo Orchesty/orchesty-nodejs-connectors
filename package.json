@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.160",
+    "version": "3.0.161",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -23,18 +23,18 @@
     "dependencies": {
         "@orchesty/nodejs-sdk": "^4.2.48",
         "axios": "^1.7.7",
-        "form-data": "^4.0.0",
+        "form-data": "^4.0.1",
         "http-status-codes": "^2.3.0",
         "joi": "^17.13.3",
         "luxon": "^3.5.0",
         "ts-mixer": "^6.0.4"
     },
     "optionalDependencies": {
-        "@aws-sdk/client-lambda": "^3.664.0",
-        "@aws-sdk/client-rds": "^3.664.0",
-        "@aws-sdk/client-redshift": "^3.664.0",
-        "@aws-sdk/client-s3": "^3.664.0",
-        "@aws-sdk/client-ses": "^3.664.0",
+        "@aws-sdk/client-lambda": "^3.668.0",
+        "@aws-sdk/client-rds": "^3.668.0",
+        "@aws-sdk/client-redshift": "^3.668.0",
+        "@aws-sdk/client-s3": "^3.668.0",
+        "@aws-sdk/client-ses": "^3.668.0",
         "@azure/arm-powerbiembedded": "^2.0.2",
         "@azure/core-rest-pipeline": "^1.17.0",
         "@azure/identity": "^4.4.1",
@@ -56,13 +56,13 @@
         "@types/debug": "^4.1.12",
         "@types/jest": "^29.5.13",
         "@types/luxon": "^3.4.2",
-        "@types/node": "^22.7.4",
+        "@types/node": "^22.7.5",
         "@types/nodemailer": "^6.4.16",
         "@types/oracledb": "^6.5.1",
         "@types/pg": "^8.11.10",
         "@types/sqlite3": "^3.1.11",
         "@types/tedious": "^4.0.14",
-        "axios-mock-adapter": "^2.0.0",
+        "axios-mock-adapter": "^2.1.0",
         "eslint": "^8.57.1",
         "jest": "^29.7.0",
         "mariadb": "^3.0.2",
@@ -79,7 +79,7 @@
         "tedious": "^18.2.0",
         "ts-jest": "^29.2.5",
         "ts-node": "^10.9.2",
-        "typescript": "^5.6.2"
+        "typescript": "^5.6.3"
     },
     "pnpm": {
         "overrides": {}

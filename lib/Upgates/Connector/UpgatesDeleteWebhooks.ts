@@ -43,7 +43,7 @@ export default class UpgatesDeleteWebhooks extends AConnector {
                 HttpMethods.DELETE,
                 `${UPGATES_DELETE_WEBHOOK_ENDPOINT}?ids=${webhooksIds.join(';')}`,
             );
-            const res = await this.getSender().send<IResponse[]>(requestDto);
+            const res = await this.getSender().send<IResponse>(requestDto);
             if (res.getResponseCode() !== StatusCodes.OK && res.getResponseCode() !== StatusCodes.NOT_FOUND) {
                 await Promise.all(
                     webhooks.map(async (wantedDelete) => {
@@ -55,7 +55,7 @@ export default class UpgatesDeleteWebhooks extends AConnector {
             }
 
             let repeat = false;
-            const resData = res.getJsonBody();
+            const resData = res.getJsonBody().webhooks;
             await Promise.all(
                 webhooks.map(async (wantedDelete) => {
                     const foundWebhook = resData?.find(
@@ -82,6 +82,10 @@ export default class UpgatesDeleteWebhooks extends AConnector {
 }
 
 export interface IResponse {
+    webhooks: IWebhook[]
+}
+
+export interface IWebhook {
     id: string;
     // eslint-disable-next-line @typescript-eslint/naming-convention
     deleted: boolean;
