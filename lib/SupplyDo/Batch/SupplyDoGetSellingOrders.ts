@@ -12,7 +12,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const lastRun = await appInstall.getNonEncryptedSettings()[this.getLastRunKey()];
         const page = Number(dto.getBatchCursor('0'));
@@ -21,7 +21,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
             + '&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*'
             + '&fields[]=customer.address.*&fields[]=selling_order_product.product_batch.*&fields[]=selling_order_product.product_batch.product.*'
             + `&fields[]=total_price.*&fields[]=transport.*&fields[]=customer.*${this.getStatusQueryParams()}&filter[ecommerce][_eq]=${ecommerce}`
-            + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
+            + `${this.addIdFilter(dto)}&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
 
         if (lastRun) {
             url += `&filter[date_updated][_gte]=${lastRun}`;
@@ -57,6 +57,19 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
             + '&filter[selling_order_history][_none][type][_in]=dispatched,delivered,not_delivered,not_paid,wrong_address,wrong_phone_number,package_lost';
     }
 
+    protected addIdFilter(dto: BatchProcessDto<IInput>): string {
+        const { id } = dto.getJsonData();
+        if (id) {
+            return `&filter[id][_eq]=${id}`;
+        }
+
+        return '';
+    }
+
+}
+
+export interface IInput {
+    id?: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
