@@ -23,7 +23,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
             + `&fields[]=total_price.*&fields[]=transport.*&fields[]=customer.*${this.getStatusQueryParams()}&filter[ecommerce][_eq]=${ecommerce}`
             + `${this.addIdFilter(dto)}&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`;
 
-        if (lastRun) {
+        if (this.addIdFilter(dto) === '' && lastRun) {
             url += `&filter[date_updated][_gte]=${lastRun}`;
         }
 

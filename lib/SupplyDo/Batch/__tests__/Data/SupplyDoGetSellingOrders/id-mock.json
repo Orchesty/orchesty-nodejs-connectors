@@ -1,0 +1,59 @@
+{
+    "http": "GET https://supply.do/items/selling_order?fields[]=*&fields[]=selling_order_history.*&fields[]=selling_order_product.*&fields[]=selling_order_product.return_product.*&fields[]=selling_order_product.reclamation_product.*&fields[]=customer.address.*&fields[]=selling_order_product.product_batch.*&fields[]=selling_order_product.product_batch.product.*&fields[]=total_price.*&fields[]=transport.*&fields[]=customer.*&filter[selling_order_history][_some][type][_eq]=processing&filter[selling_order_history][_none][type][_in]=dispatched,delivered,not_delivered,not_paid,wrong_address,wrong_phone_number,package_lost&filter[ecommerce][_eq]=TestUser&filter[id][_eq]=123&limit=1000&offset=0&meta=filter_count",
+    "code": 200,
+    "body": {
+        "data": [
+            {
+                "customer": 0,
+                "id": "string",
+                "payment_type": "cash_on_delivery",
+                "transport": 0,
+                "external_id": "string",
+                "ecommerce": 0,
+                "order_number": "string",
+                "selling_order_history": [
+                    0,
+                    {
+                        "date": "2023-12-07T14:21:00.423Z",
+                        "id": 0,
+                        "selling_order": "string",
+                        "type": "new"
+                    }
+                ],
+                "selling_order_product": [
+                    0,
+                    {
+                        "id": 0,
+                        "price": 0,
+                        "quantity": 0,
+                        "selling_order": "string",
+                        "product_batch": 0,
+                        "warehouse": 0,
+                        "reclamation_product": [
+                            0,
+                            {
+                                "id": 0,
+                                "quantity": 0,
+                                "reclamation": "string",
+                                "selling_order_product": 0
+                            }
+                        ],
+                        "return_product": [
+                            0,
+                            {
+                                "id": 0,
+                                "quantity": 0,
+                                "return": "string",
+                                "selling_order_product": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "meta": {
+            "total_count": 0,
+            "filter_count": 0
+        }
+    }
+}

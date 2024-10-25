@@ -9,12 +9,18 @@ let tester: NodeTester;
 describe('Tests for SupplyDoGetSellingOrders', () => {
     beforeAll(() => {
         tester = new NodeTester(container, __filename);
+        init();
     });
 
     it('process - ok', async () => {
-        init();
         mock();
         mockDate();
         await tester.testBatch(SUPPLY_DO_GET_SELLING_ORDERS);
+    });
+
+    it('process - with Id', async () => {
+        mock();
+        mockDate();
+        await tester.testBatch(SUPPLY_DO_GET_SELLING_ORDERS, 'id');
     });
 });
