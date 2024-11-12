@@ -24,16 +24,28 @@ describe('Tests for UpgatesDeleteWebhooks', () => {
                     method: HttpMethods.GET,
                 },
                 response: {
-                    body: [{
-                        name: 'orders/create',
-                        user: DEFAULT_USER,
-                        token: 'testToken',
-                        node: 'testNode',
-                        topology: 'testTopology',
-                        application: 'shopify',
-                        webhookId: '1',
-                        unsubscribeFailed: false,
-                    }],
+                    body: [
+                        {
+                            name: 'orders/create',
+                            user: DEFAULT_USER,
+                            token: 'testToken',
+                            node: 'testNode',
+                            topology: 'testTopology',
+                            application: 'shopify',
+                            webhookId: '1',
+                            unsubscribeFailed: false,
+                        },
+                        {
+                            name: 'orders/update',
+                            user: DEFAULT_USER,
+                            token: 'testToken',
+                            node: 'testNode',
+                            topology: 'testTopology',
+                            application: 'shopify',
+                            webhookId: '2',
+                            unsubscribeFailed: true,
+                        },
+                    ],
                 },
             },
             {

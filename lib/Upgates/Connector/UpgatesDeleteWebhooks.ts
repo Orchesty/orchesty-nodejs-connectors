@@ -28,7 +28,8 @@ export default class UpgatesDeleteWebhooks extends AConnector {
         }
 
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
+        const webhooks = (await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] }))
+            .filter((item) => !item.getUnsubscribeFailed());
 
         const webhooksIds: number[] = [];
 
@@ -59,7 +60,7 @@ export default class UpgatesDeleteWebhooks extends AConnector {
             await Promise.all(
                 webhooks.map(async (wantedDelete) => {
                     const foundWebhook = resData?.find(
-                        (item) => item.id === wantedDelete.getWebhookId(),
+                        (item) => String(item.id) === String(wantedDelete.getWebhookId()),
                     );
                     if (foundWebhook) {
                         return repo.remove(wantedDelete);
