@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/nodejs-connectors",
     "description": "",
-    "version": "3.0.167",
+    "version": "3.0.168",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -31,12 +31,12 @@
     },
     "optionalDependencies": {
         "@aws-sdk/client-lambda": "^3.689.0",
-        "@aws-sdk/client-rds": "^3.687.0",
+        "@aws-sdk/client-rds": "^3.690.0",
         "@aws-sdk/client-redshift": "^3.687.0",
         "@aws-sdk/client-s3": "^3.689.0",
         "@aws-sdk/client-ses": "^3.687.0",
         "@azure/arm-powerbiembedded": "^2.0.2",
-        "@azure/core-rest-pipeline": "^1.17.0",
+        "@azure/core-rest-pipeline": "^1.18.0",
         "@azure/identity": "^4.5.0",
         "@cloudamqp/amqp-client": "^3.1.1",
         "fast-xml-parser": "^4.5.0",

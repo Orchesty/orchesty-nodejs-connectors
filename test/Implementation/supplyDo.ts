@@ -1,4 +1,5 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import SupplyDoGetCacheProductDetail from '../../lib/SupplyDo/Batch/SupplyDoGetCacheProductDetail';
 import SupplyDoGetOrderHistory from '../../lib/SupplyDo/Batch/SupplyDoGetOrderHistory';
 import SupplyDoGetProducts from '../../lib/SupplyDo/Batch/SupplyDoGetProducts';
 import SupplyDoGetProductsStocks from '../../lib/SupplyDo/Batch/SupplyDoGetProductsStocks';
@@ -55,4 +56,5 @@ export function init(): void {
     container.setNode(new SupplyDoCreateReturn(), supplyDoApplication);
     container.setNode(new SupplyDoGetSellingOrder(), supplyDoApplication);
     container.setNode(new SupplyDoSetTrackingNumber(), supplyDoApplication);
+    container.setNode(new SupplyDoGetCacheProductDetail(), supplyDoApplication);
 }
