@@ -14,17 +14,22 @@ export default class WooCommerceGetOrders extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
+        const { ids } = dto.getJsonData();
         const pageNumber = dto.getBatchCursor('1');
         const app = this.getApplication<WooCommerceApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const after = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().orderLastRun);
+
+        let after;
+        if (!ids) {
+            after = app.getIsoDateFromDate(appInstall.getNonEncryptedSettings().orderLastRun);
+        }
 
         const requestDto = app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.GET,
-            `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}${after ? `&after=${after}` : ''}`,
+            `${WOOCOMMERCE_GET_ORDERS_ENDPOINT}${pageNumber}${after ? `&after=${after}` : ''}${ids ? `&include=${ids}` : ''}`,
         );
 
         const res = await this.getSender().send<IResponseJson[]>(requestDto, [200, 404]);
@@ -45,6 +50,10 @@ export default class WooCommerceGetOrders extends ABatchNode {
         dto.setItemList(responseBody);
     }
 
+}
+
+export interface IInput {
+    ids?: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */

@@ -34,4 +34,9 @@ describe('Tests for WooCommerceGetOrders', () => {
         mock({ orderLastRun: '2022-09-22T08:21:27.000Z' });
         await tester.testBatch(WOO_COMMERCE_GET_ORDERS, 'lastRun');
     });
+
+    it('process - with ids', async () => {
+        mock();
+        await tester.testBatch(WOO_COMMERCE_GET_ORDERS, 'ids');
+    });
 });
