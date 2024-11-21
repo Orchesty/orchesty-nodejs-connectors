@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "channel": "string",
+        "message": "TTeamchatMessageEvent",
+        "ok": "boolean",
+        "ts": "string"
+    }
+}

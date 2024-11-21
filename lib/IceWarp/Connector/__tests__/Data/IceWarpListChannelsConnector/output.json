@@ -1,0 +1,194 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "id": "cHJpdmF0ZV9rdWJhLm9uaWNlLmlvJTQwJTIzJTIzaW50ZXJuYWxzZXJ2aWNlZG9tYWluLmljZXdhcnAuY29tJTIzJTIzJlRlYW1DaGF0JTVDNjcyODhhZTEwOGE2",
+            "name": "Zendesk notifications",
+            "created": 1730710241,
+            "creator": "hanaboso@kuba.onice.io",
+            "is_archived": false,
+            "is_member": true,
+            "group_email": "private_kuba.onice.io@##internalservicedomain.icewarp.com##",
+            "group_folder_name": "kuba.onice.io",
+            "is_active": true,
+            "is_auto_followed": false,
+            "is_notifications": true,
+            "num_members": 0,
+            "num_members_display": 0,
+            "members": []
+        },
+        {
+            "id": "cHVibGljLWZvbGRlcnMlNDBrdWJhLm9uaWNlLmlvJlRlYW1DaGF0JTVDNjJkZmUzZmQzMjYz",
+            "name": "Icewardemo",
+            "created": 1658840061,
+            "creator": "",
+            "is_archived": false,
+            "is_member": true,
+            "group_email": "public-folders@kuba.onice.io",
+            "group_folder_name": "Public-2",
+            "is_active": true,
+            "is_auto_followed": false,
+            "is_notifications": true,
+            "num_members": 13,
+            "num_members_display": 13,
+            "members": [
+                {
+                    "name": "amp&amp@kuba.onice.io"
+                },
+                {
+                    "name": "hanaboso@kuba.onice.io"
+                },
+                {
+                    "name": "iwtest@kuba.onice.io"
+                },
+                {
+                    "name": "klara@kuba.onice.io"
+                },
+                {
+                    "name": "kubaadmin@kuba.onice.io"
+                },
+                {
+                    "name": "petrtest@kuba.onice.io"
+                },
+                {
+                    "name": "testforscope@kuba.onice.io"
+                },
+                {
+                    "name": "testiw@kuba.onice.io"
+                },
+                {
+                    "name": "tomas@kuba.onice.io"
+                },
+                {
+                    "name": "tonda@kuba.onice.io"
+                },
+                {
+                    "name": "tonda1@kuba.onice.io"
+                },
+                {
+                    "name": "vasek@kuba.onice.io"
+                },
+                {
+                    "name": "vaclav2@kuba.onice.io"
+                }
+            ]
+        },
+        {
+            "id": "cHVibGljLWZvbGRlcnMlNDBrdWJhLm9uaWNlLmlvJlRlYW1DaGF0JTVDVGVhbUNoYXQ=",
+            "name": "TeamChat",
+            "created": 1646819946,
+            "creator": "public-folders@kuba.onice.io",
+            "is_archived": false,
+            "is_member": true,
+            "group_email": "public-folders@kuba.onice.io",
+            "group_folder_name": "Public-2",
+            "is_active": true,
+            "is_auto_followed": false,
+            "is_notifications": true,
+            "num_members": 13,
+            "num_members_display": 13,
+            "members": [
+                {
+                    "name": "amp&amp@kuba.onice.io"
+                },
+                {
+                    "name": "hanaboso@kuba.onice.io"
+                },
+                {
+                    "name": "iwtest@kuba.onice.io"
+                },
+                {
+                    "name": "klara@kuba.onice.io"
+                },
+                {
+                    "name": "kubaadmin@kuba.onice.io"
+                },
+                {
+                    "name": "petrtest@kuba.onice.io"
+                },
+                {
+                    "name": "testforscope@kuba.onice.io"
+                },
+                {
+                    "name": "testiw@kuba.onice.io"
+                },
+                {
+                    "name": "tomas@kuba.onice.io"
+                },
+                {
+                    "name": "tonda@kuba.onice.io"
+                },
+                {
+                    "name": "tonda1@kuba.onice.io"
+                },
+                {
+                    "name": "vasek@kuba.onice.io"
+                },
+                {
+                    "name": "vaclav2@kuba.onice.io"
+                }
+            ]
+        },
+        {
+            "id": "cHVibGljZm9sZGVyJTQwa3ViYS5vbmljZS5pbyZUZWFtQ2hhdCU1Q1RlYW1DaGF0",
+            "name": "TeamChat",
+            "created": 1646819951,
+            "creator": "publicfolder@kuba.onice.io",
+            "is_archived": false,
+            "is_member": true,
+            "group_email": "publicfolder@kuba.onice.io",
+            "group_folder_name": "publicfolder@kuba.onice.io",
+            "is_active": true,
+            "is_auto_followed": false,
+            "is_notifications": true,
+            "num_members": 14,
+            "num_members_display": 14,
+            "members": [
+                {
+                    "name": "vaclav.zvolensky@icewarp.com"
+                },
+                {
+                    "name": "amp&amp@kuba.onice.io"
+                },
+                {
+                    "name": "hanaboso@kuba.onice.io"
+                },
+                {
+                    "name": "iwtest@kuba.onice.io"
+                },
+                {
+                    "name": "klara@kuba.onice.io"
+                },
+                {
+                    "name": "kubaadmin@kuba.onice.io"
+                },
+                {
+                    "name": "petrtest@kuba.onice.io"
+                },
+                {
+                    "name": "testforscope@kuba.onice.io"
+                },
+                {
+                    "name": "testiw@kuba.onice.io"
+                },
+                {
+                    "name": "tomas@kuba.onice.io"
+                },
+                {
+                    "name": "tonda@kuba.onice.io"
+                },
+                {
+                    "name": "tonda1@kuba.onice.io"
+                },
+                {
+                    "name": "vasek@kuba.onice.io"
+                },
+                {
+                    "name": "vaclav2@kuba.onice.io"
+                }
+            ]
+        }
+    ]
+}
