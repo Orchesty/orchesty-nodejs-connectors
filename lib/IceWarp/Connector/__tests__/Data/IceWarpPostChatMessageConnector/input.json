@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "channel": "1",
+        "message": "message text"
+    }
+}

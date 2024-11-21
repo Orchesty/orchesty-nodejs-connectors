@@ -1,0 +1,29 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "actions": [
+            {
+                "field": "group_id",
+                "value": "20455932"
+            }
+        ],
+        "category_id": "10026",
+        "conditions": {
+            "all": [
+                {
+                    "field": "status",
+                    "operator": "is",
+                    "value": "open"
+                },
+                {
+                    "field": "priority",
+                    "operator": "less_than",
+                    "value": "high"
+                }
+            ]
+        },
+        "title": "Roger Wilco"
+    }
+}

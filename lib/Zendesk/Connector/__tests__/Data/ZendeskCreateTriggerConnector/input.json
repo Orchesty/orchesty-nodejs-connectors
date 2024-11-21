@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "actions": [],
+        "conditions": {},
+        "title": "title",
+        "category_id": "category_id"
+    }
+}

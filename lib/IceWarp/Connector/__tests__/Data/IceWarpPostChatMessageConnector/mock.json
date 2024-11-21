@@ -1,0 +1,10 @@
+{
+    "http": "POST https://kuba.onice.io/teamchatapi/chat.postMessage?channel=1&text=message%20text&token=xoxp",
+    "code": 200,
+    "body": {
+        "ts": "string",
+        "channel": "string",
+        "message": "TTeamchatMessageEvent",
+        "ok": "boolean"
+    }
+}
