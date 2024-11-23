@@ -28,7 +28,6 @@ export default class CeskaPostaParcelStatusConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
     parcelIds: string [];
     language: string;
@@ -55,5 +54,3 @@ export interface IOutput {
         }[];
     } [];
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

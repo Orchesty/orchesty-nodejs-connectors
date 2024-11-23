@@ -20,7 +20,7 @@ export default class MailchimpTagContactConnector extends AConnector {
                     dto,
                     applicationInstall,
                     HttpMethods.POST,
-                    // eslint-disable-next-line max-len
+
                     `${apiEndpoint}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/segments/${applicationInstall.getSettings()[SEGMENT_ID]}/members`,
                     dto.getData(),
                 ),

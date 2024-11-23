@@ -31,8 +31,6 @@ export default class TableauCreateConnectedAppConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IInput {
     name: string;
     enabled: string;
@@ -49,5 +47,3 @@ export interface IOutput {
     createdAt: string;
     unrestrictedEmbedding: boolean;
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

@@ -14,7 +14,7 @@ export default class MondayCreateItemConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const body = dto.getJsonData();
         let graphQl = 'mutation { create_item (';
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const [key, value] of Object.entries(body)) {
             if (key === 'board_id') {
                 graphQl += `${key}:${value},`;

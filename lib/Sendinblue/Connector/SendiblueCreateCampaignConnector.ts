@@ -23,8 +23,6 @@ export default class SendiblueCreateCampaignConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IInput {
     inlineImageActivation: boolean;
     sendAtBestTime: boolean;

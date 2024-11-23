@@ -59,8 +59,6 @@ export default class FlexiBeeCreateObjednavkaVydanaConnector extends AConnector 
 
 }
 
-/* eslint-disable */
-
 interface ResponseResult {
     results: {
         id: string;

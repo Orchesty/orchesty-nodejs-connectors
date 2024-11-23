@@ -20,7 +20,7 @@ export default class MerkSuggestConnector extends AConnector {
             dto,
             appInstall,
             HttpMethods.GET,
-            // eslint-disable-next-line max-len
+
             `suggest/?regno=${regno}&email=${email}&name=${name}&bank_account=${bank_account}&only_active=${only_active}&expand_regno=${expand_regno}&sort_by=${sort}&country_code=${country_code}`,
         );
         const resp = await this.getSender().send<IOutput>(req, [200]);

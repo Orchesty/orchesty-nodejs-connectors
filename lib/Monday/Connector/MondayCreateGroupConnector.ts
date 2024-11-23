@@ -15,7 +15,7 @@ export default class MondayCreateGroupConnector extends AConnector {
         const body = dto.getJsonData();
 
         let graphQl = 'mutation { create_group (';
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const [key, value] of Object.entries(body)) {
             if (key === 'board_id') {
                 graphQl += `${key}:${value},`;

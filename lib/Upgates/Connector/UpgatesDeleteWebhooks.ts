@@ -23,6 +23,7 @@ export default class UpgatesDeleteWebhooks extends AConnector {
         let appInstall: ApplicationInstall;
         try {
             appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             appInstall = await this.getApplicationInstallFromProcess(dto, null, false);
         }
@@ -88,7 +89,7 @@ export interface IResponse {
 
 export interface IWebhook {
     id: string;
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+
     deleted: boolean;
     messages: string[];
 }

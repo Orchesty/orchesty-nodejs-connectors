@@ -18,7 +18,6 @@ export function log<T>(
     let resultText: string | undefined = '';
     let success: boolean | undefined = true;
     if (resultKey === 'importRequestResult') {
-        // eslint-disable-next-line @typescript-eslint/prefer-destructuring
         success = res?.importRequestResult?.success;
         resultText = `${res?.importRequestResult?.result}: ${res?.importRequestResult?.infoText}`;
     }
@@ -69,7 +68,6 @@ export default abstract class ABaseServantSoapConnector extends AConnector {
             if (err) {
                 reject(new OnRepeatException(60, 10, (err as Error).message));
             } else {
-                // eslint-disable-next-line @typescript-eslint/dot-notation
                 client[methodName]({
                     ...app.prepareArgs(appInstall),
                     ...args,

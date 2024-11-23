@@ -65,7 +65,7 @@ export default class NutshellApplication extends ABasicApplication {
 
     private getToken(applicationInstall: ApplicationInstall): string {
         return encode(
-            // eslint-disable-next-line max-len
+
             `${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][USER]}:${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PASSWORD]}`,
         );
     }

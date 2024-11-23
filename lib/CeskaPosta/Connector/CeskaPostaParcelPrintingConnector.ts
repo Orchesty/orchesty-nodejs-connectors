@@ -28,7 +28,6 @@ export default class CeskaPostaParcelPrintingConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
     printingHeader: {
         customerID: string;

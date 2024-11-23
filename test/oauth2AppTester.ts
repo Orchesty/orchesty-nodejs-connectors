@@ -1,4 +1,3 @@
-/* eslint-disable import/first */
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
 import OneDriveApplication from '../lib/OneDrive/OneDriveApplication';
 import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';

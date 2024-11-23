@@ -61,6 +61,7 @@ export default class UpgatesCreateWebhooks extends ABatchNode {
                 if (webhooks.length - 1 > webhookIndex) {
                     dto.setBatchCursor((webhookIndex + 1).toString());
                 }
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (e) {
                 appInstall.setEnabled(false);
                 await this.getDbClient().getRepository(ApplicationInstall).update(appInstall);

@@ -5,7 +5,6 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import { IOrderJson } from '../Connector/Magento2GetOrder';
 import Magento2Application, { MAGENTO_URL } from '../Magento2Application';
 
-// eslint-disable-next-line max-len
 export const GET_ORDERS_ENDPOINT = 'index.php/rest/default/V1/orders?searchCriteria[page_size]={items_per_page}&searchCriteria[currentPage]={current_page}';
 
 const ITEMS_PER_PAGE = 100;
@@ -34,7 +33,7 @@ export default class Magento2GetOrders extends ABatchNode {
 
         const res = await this.getSender().send<IResponseJson>(requestDto, [200, 404]);
         const {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             total_count,
             items,
         } = res.getJsonBody();

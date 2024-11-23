@@ -13,10 +13,6 @@ export default class FlexiBeeGetSkladovyPohybBatch extends FlexiBeeSimpleIterato
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export type FlexiBeeGetSkladovyPohybBatchInput = object;
 
 export type FlexiBeeGetSkladovyPohybBatchItemOutput = FlexiBeeSkladovyPohybBatchItem;
-
-/* eslint-enable @typescript-eslint/naming-convention */

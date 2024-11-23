@@ -23,11 +23,11 @@ describe('Tests for AuthenticaPostProducts', () => {
             'authentica_cache_key',
             JSON.stringify({
                 expiration: 1759965308,
-                /* eslint-disable @typescript-eslint/naming-convention */
+
                 access_token: 'testAccessToken',
                 refresh_token: 'testRefreshToken',
                 refresh_token_expiration: 1759965308,
-                /* eslint-enable @typescript-eslint/naming-convention */
+
             }),
             4,
         );

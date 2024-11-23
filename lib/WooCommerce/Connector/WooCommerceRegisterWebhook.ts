@@ -66,6 +66,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
                     return undefined;
                 }),
             );
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             appInstall.setEnabled(false);
             await this.getDbClient().getRepository(ApplicationInstall).update(appInstall);

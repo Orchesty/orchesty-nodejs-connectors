@@ -79,7 +79,6 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected async saveInProgress(appInstall: ApplicationInstall): Promise<void> {}
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected async saveLastRunKey(appInstall: ApplicationInstall): Promise<void> {
         appInstall.addNonEncryptedSettings({ [this.lastRunKey]: new Date() });
         await this.getDbClient().getApplicationRepository().update(appInstall);

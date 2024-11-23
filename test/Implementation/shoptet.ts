@@ -87,7 +87,7 @@ export async function init(): Promise<void> {
     const redisService = container.get(Redis);
     await redisService.set(
         cacheKey,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
+
         JSON.stringify({ expires_in: 55, access_token: 'testToken' }),
         10,
     );

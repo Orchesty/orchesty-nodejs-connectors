@@ -54,7 +54,6 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
         return dto.setItemList(items, this.iterateOnly);
     }
 
-    // eslint-disable-next-line
     protected async processItems(_dto: BatchProcessDto, _items: T[]): Promise<void> {
     }
 

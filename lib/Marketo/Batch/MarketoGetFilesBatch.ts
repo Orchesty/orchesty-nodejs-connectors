@@ -33,8 +33,6 @@ export default class MarketoGetFilesBatch extends ABatchNode {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IOutput {
     errors: {
         code: string;
@@ -73,5 +71,3 @@ export interface IOutput {
         url: string;
     }[];
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

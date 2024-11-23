@@ -49,9 +49,9 @@ export default class WebflowAddProductConnector extends AConnector {
                 fields: {
                     name,
                     slug,
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
+
                     _draft: draft,
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
+
                     _archived: archived,
                 },
                 description,
@@ -60,9 +60,9 @@ export default class WebflowAddProductConnector extends AConnector {
                 fields: {
                     name,
                     slug,
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
+
                     _draft: draft,
-                    // eslint-disable-next-line @typescript-eslint/naming-convention
+
                     _archived: archived,
                     price: {
                         value: price,

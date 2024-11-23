@@ -126,10 +126,10 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
                 requestDto,
                 (dto): ICacheCallback<string> => {
                     const dtoBody = dto.getJsonBody() as {
-                        /* eslint-disable @typescript-eslint/naming-convention */
+
                         expires_in: number;
                         access_token: string;
-                        /* eslint-enable @typescript-eslint/naming-convention */
+
                     };
                     let expire = dtoBody.expires_in;
                     if (expire > 30) {
@@ -166,6 +166,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         let appInstall;
         try {
             appInstall = await this.getApplicationInstall(eshopId);
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             // Ignore not installed applications
         }

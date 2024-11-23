@@ -27,7 +27,7 @@ export function mock(): void {
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
             [XERO_TENANT_ID]: 'Xero-tenant-id',
             [TOKEN]: {
-                // eslint-disable-next-line max-len
+
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
         },

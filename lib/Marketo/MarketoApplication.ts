@@ -86,12 +86,9 @@ export default class MarketoApplication extends ABasicApplication {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 interface LoginResponse {
     access_token: string;
     token_type: string;
     expires_in: number;
     scope: string;
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

@@ -35,9 +35,9 @@ export default class ShopifyAbsoluteUpdateStock extends AConnector {
 }
 
 export interface IInput {
-    /* eslint-disable @typescript-eslint/naming-convention */
+
     inventory_item_id: string;
     location_id: string;
-    /* eslint-enable @typescript-eslint/naming-convention */
+
     available: number;
 }

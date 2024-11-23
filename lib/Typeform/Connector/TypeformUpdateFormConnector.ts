@@ -11,7 +11,6 @@ export default class TypeformUpdateFormConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         const { form_id, ...body } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);

@@ -11,7 +11,6 @@ export default class BoxListTasksBatch extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         const { file_id } = dto.getJsonData();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);

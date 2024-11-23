@@ -123,6 +123,7 @@ export default class RedshiftApplication extends AAwsApplication {
         });
         try {
             await client.connect();
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             throw new Error('Connection to Redshift db was unsuccessful.');
         }

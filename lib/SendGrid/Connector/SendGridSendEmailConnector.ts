@@ -43,7 +43,7 @@ export default class SendGridSendEmailConnector extends AConnector {
                     email: 'noreply@johndoe.com',
                     name: 'John Doe',
                 },
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             template_id: '1',
         };
 

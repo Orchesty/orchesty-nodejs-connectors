@@ -8,6 +8,7 @@ import ServantApplication from '../ServantApplication';
 
 export default abstract class ABaseSoapBatch extends ABatchNode {
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
     protected async callSOAP<T extends object[]>(
         dto: BatchProcessDto,
         methodName: string,
@@ -43,7 +44,6 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
             if (err) {
                 reject(new OnRepeatException(60, 10, (err as Error).message));
             } else {
-                // eslint-disable-next-line @typescript-eslint/dot-notation
                 client[methodName]({
                     ...app.prepareArgs(appInstall),
                     ...body,

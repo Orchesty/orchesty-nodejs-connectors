@@ -21,7 +21,7 @@ export default class UpgatesGetOrders extends ABatchNode {
         const { from, orderNumber, orderNumbers } = dto.getJsonData();
         const pageNumber = dto.getBatchCursor('1');
 
-        let url = LIST_PAGE_ENDPOINT;
+        let url: string;
 
         if (orderNumbers) {
             url = `${LIST_PAGE_ENDPOINT}?order_numbers=${orderNumbers}`;
@@ -40,12 +40,11 @@ export default class UpgatesGetOrders extends ABatchNode {
         const res = await this.getSender().send<IResponseJson>(requestDto);
 
         const {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             number_of_pages,
             orders,
         } = res.getJsonBody();
 
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         if (Number(pageNumber) < number_of_pages) {
             dto.setBatchCursor((Number(pageNumber) + 1).toString());
         } else if (!orderNumber) {

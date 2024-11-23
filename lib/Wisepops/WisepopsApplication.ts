@@ -51,7 +51,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.AUTHORIZATION]:
-            /* eslint-enable @typescript-eslint/naming-convention */
+
                 `WISEPOPS-API key="${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][API_KEY]}"`,
         });
 

@@ -23,6 +23,7 @@ export default abstract class ABaseShoptet extends ABasicApplication {
             }
 
             return `${newDate.toISOString().split('.')[0]}Z`;
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             throw new Error(`${date} is not in the correct format`);
         }

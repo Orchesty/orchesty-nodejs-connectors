@@ -98,7 +98,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
 
     public getFormStack(): FormStack {
         const authTypeField = new Field(FieldType.SELECT_BOX, AUTH, 'Authorize type', null, true);
-        // eslint-disable-next-line @typescript-eslint/naming-convention
+
         authTypeField.setChoices([{ [AUTH_HTTP]: AUTH_HTTP }, { [AUTH_JSON]: AUTH_JSON }]);
 
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
@@ -133,6 +133,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
 
             try {
                 token = res.getJsonBody();
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (Throwable) {
                 throw Error(CANNOT_GET_BODY);
             }

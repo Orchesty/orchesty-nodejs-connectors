@@ -7,6 +7,7 @@ import FlexiBeeFormaDopravyBatch from '../../lib/FlexiBee/Batch/FlexiBeeFormaDop
 import FlexiBeeFormaUhradyBatch from '../../lib/FlexiBee/Batch/FlexiBeeFormaUhradyBatch';
 import FlexiBeeGetSkladovyPohybBatch from '../../lib/FlexiBee/Batch/FlexiBeeGetSkladovyPohybBatch';
 import FlexiBeeObjednavkaPrijataBatch from '../../lib/FlexiBee/Batch/FlexiBeeObjednavkaPrijataBatch';
+import FlexiBeeObjednavkaVydanaBatch from '../../lib/FlexiBee/Batch/FlexiBeeObjednavkaVydanaBatch';
 import FlexiBeeSkladoveKartyBatch from '../../lib/FlexiBee/Batch/FlexiBeeSkladoveKartyBatch';
 import FlexiBeeStitkyBatch from '../../lib/FlexiBee/Batch/FlexiBeeStitkyBatch';
 import FlexiBeeCreateObjednavkaVydanaConnector
@@ -79,6 +80,13 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         (new FlexiBeeObjednavkaPrijataBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeObjednavkaVydanaBatch())
             .setSender(sender)
             .setDb(db)
             .setApplication(app),

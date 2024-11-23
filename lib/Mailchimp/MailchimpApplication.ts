@@ -149,7 +149,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
             ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
             applicationInstall,
             HttpMethods.DELETE,
-            // eslint-disable-next-line max-len
+
             `${applicationInstall.getSettings()[API_KEYPOINT]}/3.0/lists/${applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUDIENCE_ID]}/webhooks/${webhook.getWebhookId()}`,
         );
     }

@@ -124,6 +124,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
         );
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
         const { user } = JSON.parse(String(req.body));
         const appRepo = this.mongoService.getApplicationRepository();

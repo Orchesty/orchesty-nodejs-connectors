@@ -14,7 +14,7 @@ export default class MondayCreateBoardConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const body = dto.getJsonData();
         let graphQl = 'mutation { create_board (';
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const [key, value] of Object.entries(body)) {
             if (key === 'board_kind') {
                 graphQl += `${key}:${value},`;

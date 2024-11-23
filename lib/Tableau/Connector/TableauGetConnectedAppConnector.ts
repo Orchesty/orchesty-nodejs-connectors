@@ -29,8 +29,6 @@ export default class TableauGetConnectedAppConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 interface IResponse {
     secret: {
         id: string;
@@ -47,4 +45,3 @@ export interface IOutput {
     createdAt: string;
     unrestrictedEmbedding: false;
 }
-/* eslint-enable @typescript-eslint/naming-convention */

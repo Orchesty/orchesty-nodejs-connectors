@@ -27,7 +27,6 @@ export default class WixGetOrderConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface IInput {
     id: string;
 }
@@ -135,5 +134,3 @@ export interface IOutput {
         lastUpdated: string;
     };
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

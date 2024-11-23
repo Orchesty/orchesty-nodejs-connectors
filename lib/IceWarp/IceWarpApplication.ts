@@ -121,7 +121,6 @@ export default class IceWarpApplication extends ABasicApplication {
             this.xoxpIdLock(dto),
             request,
             async (resp): Promise<ICacheCallback<string>> => {
-                // eslint-disable-next-line
                 const sessionId = [...resp.getBody()?.matchAll(/sid="(.+?)"/g)]?.[0]?.groups?.[1] || '';
 
                 const requestXoxp = new RequestDto(
@@ -137,7 +136,7 @@ export default class IceWarpApplication extends ABasicApplication {
 
                 const expire = 23 * 60 * 60;
                 const res = await curl.send(requestXoxp);
-                // eslint-disable-next-line
+
                 const xoxp = [...res.getBody()?.matchAll(/<result>(.+?)<\/result>/g)]?.[0]?.groups?.[1] || '';
                 await redis.set(sessionKey, xoxp, expire);
 

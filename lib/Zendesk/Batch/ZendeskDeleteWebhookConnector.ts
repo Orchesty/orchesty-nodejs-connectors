@@ -8,8 +8,6 @@ import { StatusCodes } from 'http-status-codes';
 
 export const ZENDESK_DELETE_WEBHOOK = 'zendesk-delete-webhook';
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export default class ZendeskDeleteWebhookConnector extends ABatchNode {
 
     public getName(): string {

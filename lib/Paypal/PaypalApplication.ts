@@ -94,8 +94,6 @@ export default class PaypalApplication extends ABasicApplication {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 interface ITokenResponse {
     scope: string;
     access_token: string;
@@ -104,5 +102,3 @@ interface ITokenResponse {
     expires_in: number;
     nonce: string;
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */

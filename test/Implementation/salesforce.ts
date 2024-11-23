@@ -26,7 +26,7 @@ export default function init(): void {
             [CLIENT_SECRET]: DEFAULT_CLIENT_SECRET,
             [INSTANCE_NAME]: 'hanaboso-dev-ed',
             [TOKEN]: {
-                // eslint-disable-next-line max-len
+
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
         },

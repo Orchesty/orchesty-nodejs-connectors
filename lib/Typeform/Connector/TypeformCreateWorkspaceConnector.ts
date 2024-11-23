@@ -23,8 +23,6 @@ export default class TypeformCreateWorkspaceConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IInput {
     name: string;
 }

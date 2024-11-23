@@ -46,5 +46,5 @@ export interface ICarrier {
     admin_graphql_api_id: string;
     format: string;
     callback_url: string;
-    /* eslint-disable @typescript-eslint/naming-convention */
+
 }

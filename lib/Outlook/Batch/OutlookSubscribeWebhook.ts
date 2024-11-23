@@ -67,6 +67,7 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
                     dto.setItemList(dbWebhooks.map((w) => ({ id: w.getId() })));
                     dto.setBatchCursor((webhookIndex + 1).toString());
                 }
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (e) {
                 appInstall.setEnabled(false);
                 await this.getDbClient().getRepository(ApplicationInstall).update(appInstall);

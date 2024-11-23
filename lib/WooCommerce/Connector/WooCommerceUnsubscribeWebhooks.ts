@@ -22,6 +22,7 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
         let appInstall: ApplicationInstall;
         try {
             appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             appInstall = await this.getApplicationInstallFromProcess(dto, null, false);
         }

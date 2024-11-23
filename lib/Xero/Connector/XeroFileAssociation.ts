@@ -47,9 +47,9 @@ export interface IInput {
 }
 
 export interface IResponse extends IInput {
-    /* eslint-disable @typescript-eslint/naming-convention */
+
     ObjectType: string;
-    /* eslint-enable @typescript-eslint/naming-convention */
+
 }
 
 export interface IErrorResponse {

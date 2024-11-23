@@ -23,8 +23,6 @@ export default class MergadoCreateElementConnector extends AConnector {
 
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 export interface IInput {
     id: string;
     name: string;
@@ -38,5 +36,3 @@ export interface IOutput {
     type: string;
     hidden: boolean;
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */
