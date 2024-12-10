@@ -54,7 +54,7 @@ export default class SupplyDoGetSellingOrders extends ABatchNode {
 
     protected getStatusQueryParams(): string {
         return '&filter[selling_order_history][_some][type][_eq]=processing'
-            + '&filter[selling_order_history][_none][type][_in]=dispatched,delivered,not_delivered,not_paid,wrong_address,wrong_phone_number,package_lost';
+            + '&filter[selling_order_history][_none][type][_in]=dispatched,ready_for_pickup,delivered,not_delivered,not_paid,wrong_address,wrong_phone_number,package_lost,canceled,rejected,missing_pickup_point,hold';
     }
 
     protected addIdFilter(dto: BatchProcessDto<IInput>): string {

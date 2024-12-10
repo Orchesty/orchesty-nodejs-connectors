@@ -16,6 +16,7 @@ export default [
   {
     rules: {
       'import/no-extraneous-dependencies': 'off',
+      '@typescript-eslint/no-base-to-string': 'off',
     },
   }
 ];
