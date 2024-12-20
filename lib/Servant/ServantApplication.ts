@@ -107,15 +107,13 @@ export default class ServantApplication extends ABasicApplication {
 
 export function getOrderStatuses(): IChoice[] {
     return [
-        { id: 'entered', title: 'Vytvořeno' },
+        { id: 'loaded', title: 'Načteno do systému' },
+        { id: 'entered', title: 'Zadáno do výroby' },
         { id: 'packaged', title: 'Zabaleno' },
-        { id: 'loaded', title: 'Naloženo' },
-        { id: 'dispatch', title: 'Odesláno' },
-        { id: 'error', title: 'Chyba' },
-        { id: 'transportEntered', title: 'Předány informace dopravci' },
+        { id: 'transportEntered', title: 'Přiděleno číslo dopravy' },
         { id: 'transportPicked', title: 'Předáno dopravci' },
-        { id: 'transportCarrier', title: 'V přepravě' },
         { id: 'transportDelivered', title: 'Doručeno' },
+        { id: 'error', title: 'Chyba' },
     ];
 }
 

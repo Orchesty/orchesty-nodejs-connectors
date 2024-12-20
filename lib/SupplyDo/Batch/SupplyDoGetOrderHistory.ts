@@ -1,3 +1,4 @@
+import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -13,9 +14,8 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
         return NAME;
     }
 
-    public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
+    public async processAction(dto: BatchProcessDto<IInput>): Promise<BatchProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const lastRun = await appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
         const ecommerce = dto.getUser();
         const page = Number(dto.getBatchCursor('0'));
 
@@ -24,7 +24,7 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
             'items/selling_order_history?fields[]=*&fields[]=*.*&fields[]=selling_order.transport.*'
-            + `${this.addStatusFilter(dto)}&filter[selling_order][ecommerce][_eq]=${ecommerce}&filter[date][_gte]=${lastRun}&sort=-date`
+            + `${this.addStatusFilter(dto)}&filter[selling_order][ecommerce][_eq]=${ecommerce}${this.addLastRunFilter(dto, appInstall)}${this.addOrderNumberFilter(dto)}&sort=-date`
             + `&limit=${LIMIT}&offset=${page * LIMIT}&meta=filter_count`,
         );
 
@@ -51,6 +51,29 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
         return '&filter[type][_nin]=new,hold,canceled';
     }
 
+    protected addLastRunFilter(_dto: BatchProcessDto<IInput>, appInstall: ApplicationInstall): string {
+        const { orderNumber } = _dto.getJsonData();
+        const lastRun = appInstall.getNonEncryptedSettings()[LAST_RUN_KEY] ?? new Date(0).toISOString();
+        if (orderNumber) {
+            return '';
+        }
+
+        return `&filter[date][_gte]=${lastRun}`;
+    }
+
+    protected addOrderNumberFilter(_dto: BatchProcessDto<IInput>): string {
+        const { orderNumber } = _dto.getJsonData();
+        if (orderNumber) {
+            return `&filter[selling_order][order_number][_eq]=${orderNumber}`;
+        }
+
+        return '';
+    }
+
+}
+
+export interface IInput {
+    orderNumber?: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
