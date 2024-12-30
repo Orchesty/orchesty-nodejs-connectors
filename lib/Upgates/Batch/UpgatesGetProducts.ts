@@ -180,7 +180,7 @@ interface IProductVariant {
 interface IProductVariantMeta {
     key: string;
     type: MetaTypeEnum;
-    value: string;
+    value: string|boolean;
     values: IProductVariantMetaValues[];
 }
 
