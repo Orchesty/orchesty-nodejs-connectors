@@ -15,6 +15,7 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
         resultKey: string,
         args: object | null,
         lastRunKey: string | null = null,
+        lastRunDayOffset: number|null = null,
     ): Promise<BatchProcessDto> {
         const app = this.getApplication<ServantApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
@@ -22,10 +23,12 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
 
         if (lastRunKey) {
             const lastRun = await appInstall.getNonEncryptedSettings()[lastRunKey] ?? new Date(0).toISOString();
+            const lastRunDate = new Date(lastRun);
+            lastRunDate.setDate(lastRunDate.getDate() - (lastRunDayOffset ?? 0));
             body = {
                 ...body,
                 interval: {
-                    from: lastRun,
+                    from: lastRunDate.toISOString(),
                     to: new Date().toISOString(),
                 },
             };

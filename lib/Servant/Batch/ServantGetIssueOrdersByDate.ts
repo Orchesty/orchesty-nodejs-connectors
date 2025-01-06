@@ -17,6 +17,7 @@ export default class ServantGetIssueOrdersByDate extends ABaseServantSoapBatch {
             'orders',
             {},
             LAST_RUN_KEY,
+            14,
         );
     }
 
