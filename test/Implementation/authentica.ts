@@ -19,6 +19,7 @@ import AuthenticaPutOrders from '../../lib/Authentica/Connector/AuthenticaPutOrd
 import AuthenticaPostProducts from '../../lib/Authentica/Connector/AuthenticaPutProducts';
 import AuthenticaUpdateOrder from '../../lib/Authentica/Connector/AuthenticaUpdateOrder';
 import AuthenticaUpdateProduct from '../../lib/Authentica/Connector/AuthenticaUpdateProduct';
+import AuthenticaUpdateReceipt from '../../lib/Authentica/Connector/AuthenticaUpdateReceipt';
 import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
 import { cacheService, container, db, sender } from '../TestAbstract';
 
@@ -146,6 +147,13 @@ export async function initAuthenticaTest(): Promise<void> {
 
     container.setNode(
         new AuthenticaCreateReceipt()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(authenticaApplication),
+    );
+
+    container.setNode(
+        new AuthenticaUpdateReceipt()
             .setSender(sender)
             .setDb(db)
             .setApplication(authenticaApplication),
