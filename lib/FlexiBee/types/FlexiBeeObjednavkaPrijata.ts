@@ -146,4 +146,8 @@ export interface FlexiBeeObjednavkaPrijata {
     'stavDoklObch@ref': string;
     'stavDoklObch@showAs': string;
     'skladCil': string;
+    'polozkyObchDokladu': {
+        'cenik@ref': string;
+        'mnozMj': string;
+    }[]
 }
