@@ -58,7 +58,7 @@ export default class SupplyDoGetOrderHistory extends ABatchNode {
             return '';
         }
 
-        return `&filter[date][_gte]=${lastRun}`;
+        return `&filter[_or][1][date_created][_gte]=${lastRun}&filter[_or][2][date_updated][_gte]=${lastRun}`;
     }
 
     protected addOrderNumberFilter(_dto: BatchProcessDto<IInput>): string {
