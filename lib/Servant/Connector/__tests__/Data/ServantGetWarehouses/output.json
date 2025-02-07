@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "id": "PE2",
+      "name": "Humpolec - Pelhřimovská"
+    },
+    {
+      "id": "HU2",
+      "name": "Humpolec - H2"
+    },
+    {
+      "id": "PH2",
+      "name": "Praha"
+    },
+    {
+      "id": "TS1",
+      "name": "Humpolec - Lnářská - Testovací"
+    },
+    {
+      "id": "SV2",
+      "name": "Svémyslice"
+    },
+    {
+      "id": "HU2",
+      "name": "Humpolec - Lnářská"
+    }
+  ]
+}

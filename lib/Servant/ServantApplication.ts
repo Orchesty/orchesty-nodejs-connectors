@@ -29,17 +29,6 @@ export const ZAS_ESHOP_NAME = 'ZAS_ESHOP_NAME';
 export const GLS_PARCEL = 'GLS_PARCEL';
 export const BALIKOVNA = 'BALIKOVNA';
 
-export function getWarehouses(): IChoice[] {
-    return [
-        { id: 'HU2', title: 'Humpolec - Lnářská' },
-        { id: 'PE2', title: 'Humpolec - Pelhřimovská' },
-        { id: 'BR2', title: 'Brunka' },
-        { id: 'SV2', title: 'Svémyslice' },
-        { id: 'PH2', title: 'Praha' },
-        { id: 'TS1', title: 'Aplikace221' },
-    ];
-}
-
 export default class ServantApplication extends ABasicApplication {
 
     public getName(): string {
@@ -62,10 +51,7 @@ export default class ServantApplication extends ABasicApplication {
         const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
             .addField(new Field(FieldType.TEXT, USER, 'E-mail', undefined, true))
             .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
-            .addField(new Field(FieldType.SELECT_BOX, WAREHOUSE_ID, 'Warehouse ID', undefined)
-                .setChoices(getWarehouses().map((warehouse) => ({
-                    [warehouse.id]: warehouse.title,
-                }))));
+            .addField(new Field(FieldType.TEXT, WAREHOUSE_ID, 'Warehouse ID', undefined));
 
         return new FormStack().addForm(form);
     }
