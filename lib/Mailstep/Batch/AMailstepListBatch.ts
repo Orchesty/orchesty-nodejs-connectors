@@ -94,6 +94,11 @@ export default abstract class AMailstepListBatch<
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+    protected async getLastRunKey(dto: BatchProcessDto<IInput>): Promise<string> {
+        return this.getUrl();
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
     protected async useLastRun(dto: BatchProcessDto<IInput>): Promise<boolean> {
         return false;
     }
@@ -105,7 +110,7 @@ export default abstract class AMailstepListBatch<
 
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
-        return applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[this.getUrl()];
+        return applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[await this.getLastRunKey(dto)];
     }
 
     protected async setLastRun(dto: BatchProcessDto<IInput>): Promise<void> {
@@ -117,7 +122,7 @@ export default abstract class AMailstepListBatch<
 
         applicationInstall.addNonEncryptedSettings({
             [LAST_RUN]: {
-                [this.getUrl()]: new Date().toISOString(),
+                [await this.getLastRunKey(dto)]: new Date().toISOString(),
             },
         });
 

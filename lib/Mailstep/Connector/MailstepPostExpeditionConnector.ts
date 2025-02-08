@@ -1,5 +1,4 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import OnStopAndFailException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnStopAndFailException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
@@ -27,19 +26,7 @@ export default class MailstepPostExpeditionConnector extends AConnector {
             stopAndFail: StatusCodes.BAD_REQUEST,
         }, undefined, undefined, getErrorInResponse);
 
-        const response = responseDto.getJsonBody();
-
-        if (Array.isArray(response.errors)) {
-            throw new OnStopAndFailException(`Error: ${
-                response.errors.map(({
-                    message,
-                    propertyPath,
-                    parameters,
-                }) => `${message} [${propertyPath}: ${parameters['{{ value }}']}]`).join(', ')
-            })`);
-        }
-
-        return dto.setNewJsonData(response);
+        return dto.setNewJsonData(responseDto.getJsonBody());
     }
 
 }
@@ -73,14 +60,14 @@ export interface IInput {
         ref2?: string;
         ref3?: string;
     }[];
-    billingFirstName: string;
-    billingLastName: string;
     billingEmail: string;
     billingPhone: string;
     billingStreet: string;
     billingCity: string;
     billingZip: string;
     billingCountry: string;
+    billingFirstName?: string;
+    billingLastName?: string;
     partner?: string;
     note?: string;
     billingDegree?: string;

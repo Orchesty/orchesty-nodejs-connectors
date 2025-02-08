@@ -33,11 +33,11 @@ export default class MailstepPostProductConnector extends AConnector {
 
 export interface IInput {
     eshops: string[];
-    productSku: number;
-    internalSku: number;
+    productSku: string;
+    internalSku: string;
     organisation: string;
     name: string;
-    referenceNumbers: number[];
+    referenceNumbers: string[];
     description?: string;
     productGroup?: string;
     weight?: number;

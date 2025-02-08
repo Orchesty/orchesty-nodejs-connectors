@@ -1,5 +1,4 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import OnStopAndFailException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnStopAndFailException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
@@ -29,19 +28,7 @@ export default class MailstepPutExpeditionConnector extends AConnector {
             stopAndFail: [StatusCodes.BAD_REQUEST, StatusCodes.NOT_FOUND, StatusCodes.GONE],
         }, undefined, undefined, getErrorInResponse);
 
-        const response = responseDto.getJsonBody();
-
-        if (Array.isArray(response.errors)) {
-            throw new OnStopAndFailException(`Error: ${
-                response.errors.map(({
-                    message,
-                    propertyPath,
-                    parameters,
-                }) => `${message} [${propertyPath}: ${parameters['{{ value }}']}]`).join(', ')
-            })`);
-        }
-
-        return dto.setNewJsonData(response);
+        return dto.setNewJsonData(responseDto.getJsonBody());
     }
 
 }
