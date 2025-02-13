@@ -29,7 +29,7 @@ export default abstract class AShoptetList<ResponseData> extends ABatchNode {
             querySeparator = '&';
         }
 
-        let url = `${this.endpoint}${querySeparator}itemsPerPage=100`;
+        let url = `${this.endpoint}${querySeparator}itemsPerPage=1000`;
 
         let creationTimeFrom = dateFrom ?? from;
         if (!creationTimeFrom) {

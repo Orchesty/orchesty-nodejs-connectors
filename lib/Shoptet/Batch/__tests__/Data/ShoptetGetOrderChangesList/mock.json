@@ -1,5 +1,5 @@
 {
-    "http": "GET https:\\/\\/api\\.myshoptet\\.com\\/api\\/orders\\/changes\\?itemsPerPage=100\\&page=1\\&from=.*",
+    "http": "GET https:\\/\\/api\\.myshoptet\\.com\\/api\\/orders\\/changes\\?itemsPerPage=1000\\&page=1\\&from=.*",
     "useRegexp": true,
     "code": 200,
     "body": {
