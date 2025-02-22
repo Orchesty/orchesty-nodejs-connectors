@@ -4,16 +4,22 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import {
+    ABasicApplication,
+    PASSWORD,
+    USER,
+} from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import OnStopAndFailException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnStopAndFailException';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
+import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 
 export const NAME = 'pohoda';
-export const AUTH_TOKEN = 'Authorization_token';
-export const BASE_URL = 'base_url';
-export const COMPANY_ID = 'company_id';
+export const M_SERVER_URL = 'mServerUrl';
+export const ICO = 'ico';
 
 export default class PohodaApplication extends ABasicApplication {
 
@@ -34,12 +40,14 @@ export default class PohodaApplication extends ABasicApplication {
     }
 
     public getFormStack(): FormStack {
-        const form = new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-            .addField(new Field(FieldType.TEXT, BASE_URL, ' Base url', undefined, true))
-            .addField(new Field(FieldType.TEXT, COMPANY_ID, ' Company ID', undefined, true))
-            .addField(new Field(FieldType.TEXT, AUTH_TOKEN, ' Authorization token', 'QDo=', true));
-
-        return new FormStack().addForm(form);
+        return new FormStack()
+            .addForm(
+                new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
+                    .addField(new Field(FieldType.TEXT, USER, 'User', undefined, true))
+                    .addField(new Field(FieldType.TEXT, PASSWORD, 'Password', undefined, true))
+                    .addField(new Field(FieldType.TEXT, M_SERVER_URL, 'mServer URL', undefined, true))
+                    .addField(new Field(FieldType.TEXT, ICO, 'ICO', undefined, true)),
+            );
     }
 
     public getRequestDto(
@@ -49,21 +57,64 @@ export default class PohodaApplication extends ABasicApplication {
         url?: string,
         data?: unknown,
     ): RequestDto {
-        const baseUrl = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][BASE_URL];
-        const token = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][AUTH_TOKEN];
-        const request = new RequestDto(`${baseUrl}/${url}`, method, dto);
+        const { user, password, mServerUrl } = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
 
-        request.setHeaders({
-            [CommonHeaders.CONTENT_TYPE]: 'text/xml',
-            [CommonHeaders.ACCEPT]: 'text/xml',
-            'STW-Authorization': `Basic ${token}`,
-        });
+        const requestDto = new RequestDto(
+            `${mServerUrl}/${url}`,
+            method,
+            dto,
+            undefined,
+            {
+                [CommonHeaders.CONTENT_TYPE]: 'text/xml',
+                [CommonHeaders.ACCEPT]: 'text/xml',
+                'STW-Authorization': `Basic ${encode(`${user}:${password}`)}`,
+            },
+        );
 
         if (data) {
-            request.setBody(data);
+            requestDto.setBody(data);
         }
 
-        return request;
+        return requestDto;
     }
 
 }
+
+export function checkErrorInResponse(data?: object): void {
+    if (data === undefined) {
+        return;
+    }
+
+    if ('state' in data && data.state !== 'ok') {
+        if ('note' in data) {
+            throw new OnStopAndFailException(`Error: ${data.note}`);
+        }
+
+        throw new OnStopAndFailException(`Error: ${JSON.stringify(data)}`);
+    }
+}
+
+const xmlParser = new XMLParser({
+    ignoreAttributes: false,
+    parseAttributeValue: true,
+    removeNSPrefix: true,
+    attributeNamePrefix: '',
+});
+
+const xmlBuilder = new XMLBuilder({
+    attributeNamePrefix: '@_',
+    ignoreAttributes: false,
+});
+
+const textDecoder = new TextDecoder('Windows-1250');
+
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+export function xmlToJson<T>(buffer: Buffer): T {
+    return xmlParser.parse(textDecoder.decode(buffer)) as T;
+}
+
+export function jsonToXml(data: object): string {
+    return xmlBuilder.build(data);
+}
+
+export type ResponseState = 'ok' | 'warning' | 'error';

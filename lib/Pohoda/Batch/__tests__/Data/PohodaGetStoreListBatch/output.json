@@ -1,0 +1,19 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":2,\"name\":\"ZBOĹ˝ĂŤ\",\"text\":\"Sklad zboĹľĂ­\",\"PLU\":{\"usePLU\":true,\"lowerLimit\":1,\"upperLimit\":1},\"version\":2}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":3,\"name\":\"MATERIĂL\",\"text\":\"Sklad materiĂˇlu\",\"PLU\":{\"usePLU\":false,\"lowerLimit\":1,\"upperLimit\":1},\"version\":2}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":4,\"name\":\"PRODEJ\",\"text\":\"ProdejnĂ­ sklad\",\"storekeeper\":{\"ids\":\"*\"},\"PLU\":{\"usePLU\":false,\"lowerLimit\":1,\"upperLimit\":1},\"version\":2}",
+      "headers": {}
+    }
+  ]
+}

@@ -1,49 +1,49 @@
 {
-    "headers": {
-        "user": "TestUser"
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "importDetails": {
+      "detail": [
+        {
+          "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
+          "errno": 603,
+          "note": "Hodnota prvku musela být upravena.",
+          "state": "warning",
+          "valueProduced": "3Fv"
+        },
+        {
+          "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
+          "errno": 603,
+          "note": "Hodnota prvku musela být upravena.",
+          "state": "warning",
+          "valueProduced": "UD"
+        },
+        {
+          "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
+          "errno": 603,
+          "note": "Neznámý účet",
+          "state": "warning",
+          "valueProduced": "KB"
+        }
+      ]
     },
-    "data": {
-        "importDetails": {
-            "detail": [
-                {
-                    "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:accounting",
-                    "errno": 603,
-                    "note": "Hodnota prvku musela být upravena.",
-                    "state": "warning",
-                    "valueProduced": "3Fv"
-                },
-                {
-                    "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:classificationVAT",
-                    "errno": 603,
-                    "note": "Hodnota prvku musela být upravena.",
-                    "state": "warning",
-                    "valueProduced": "UD"
-                },
-                {
-                    "XPath": "/dat:dataPack/dat:dataPackItem[1]/inv:invoice[1]/inv:invoiceHeader[1]/inv:account",
-                    "errno": 603,
-                    "note": "Neznámý účet",
-                    "state": "warning",
-                    "valueProduced": "KB"
-                }
-            ]
-        },
-        "producedDetails": {
-            "actionType": "add",
-            "id": 114,
-            "itemDetails": {
-                "type": "FApol",
-                "item": {
-                    "actionType": "add",
-                    "producedItem": {
-                        "id": 230
-                    }
-                }
-            },
-            "number": "FAK0008"
-        },
-        "state": "ok",
-        "version": 2
-    }
+    "producedDetails": {
+      "actionType": "add",
+      "id": 114,
+      "itemDetails": {
+        "type": "FApol",
+        "item": {
+          "actionType": "add",
+          "producedItem": {
+            "id": 230
+          }
+        }
+      },
+      "number": "FAK0008"
+    },
+    "state": "ok",
+    "version": 2
+  }
 }
 

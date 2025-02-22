@@ -4,9 +4,7 @@ import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { readFileSync } from 'fs';
 import init from '../../../../test/Implementation/pohoda';
 import { container } from '../../../../test/TestAbstract';
-import {
-    NAME as POHODA_GET_INVOICES_CONNECTOR,
-} from '../PohodaGetInvoicesConnector';
+import { NAME as POHODA_GET_INVOICES_CONNECTOR } from '../PohodaGetInvoicesConnector';
 
 let tester: NodeTester;
 

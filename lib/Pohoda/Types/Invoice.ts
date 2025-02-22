@@ -1,6 +1,15 @@
 export type PohodaInvoiceVatRate = 'high' | 'low' | 'none' | 'third'; // 21% | 15% | 0% | 10%
 export type PohodaInvoiceType = 'issuedInvoice' | 'receivedInvoice';
-export type PohodaInvoicePaymentType = 'advance' | 'cash' | 'cheque' | 'compensation' | 'creditcard' | 'delivery' | 'draft' | 'encashment' | 'postal';
+export type PohodaInvoicePaymentType =
+    'advance'
+    | 'cash'
+    | 'cheque'
+    | 'compensation'
+    | 'creditcard'
+    | 'delivery'
+    | 'draft'
+    | 'encashment'
+    | 'postal';
 
 interface IInvoiceDetailItem {
     id: number;
@@ -45,6 +54,7 @@ interface IInvoiceDetailItem {
         };
     };
 }
+
 interface IInvoiceLinkedDocumentLink {
     sourceAgenda: string;
     sourceDocument: {
@@ -52,6 +62,7 @@ interface IInvoiceLinkedDocumentLink {
         number: number;
     };
 }
+
 export interface IListInvoiceItem {
     version: string;
     invoiceHeader: {

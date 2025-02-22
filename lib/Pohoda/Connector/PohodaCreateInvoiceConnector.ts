@@ -3,8 +3,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
-import { COMPANY_ID } from '../PohodaApplication';
-import { convertPohodaResponseToUtf8, xmlBuilder, xmlParser } from '../Service/xmlService';
+import { ICO, jsonToXml, xmlToJson } from '../PohodaApplication';
 import { PohodaInvoicePaymentType, PohodaInvoiceType, PohodaInvoiceVatRate } from '../Types/Invoice';
 import { IResponse, PohodaResponseState } from '../Types/Response';
 
@@ -18,7 +17,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const companyId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][COMPANY_ID];
+        const companyId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][ICO];
         const xmlData = this.createXml(dto.getJsonData(), companyId);
 
         const req = await this.getApplication().getRequestDto(
@@ -31,7 +30,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
 
         const resp = await this.getSender().send(req, [200]);
 
-        const responseJson = xmlParser.parse(convertPohodaResponseToUtf8(resp.getBuffer())) as IResponse<IOutput>;
+        const responseJson = xmlToJson<IResponse<IOutput>>(resp.getBuffer());
 
         const errorMessage = this.checkResponseForErrors(responseJson);
 
@@ -105,7 +104,7 @@ export default class PohodaCreateInvoiceConnector extends AConnector {
         };
         /* eslint-enable @typescript-eslint/naming-convention */
 
-        return xmlBuilder.build(invoice);
+        return jsonToXml(invoice);
     }
 
     private checkResponseForErrors(response: IResponse<IOutput>): string | null {

@@ -2,10 +2,7 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
-import { COMPANY_ID } from '../PohodaApplication';
-import { hasResponseErrorMessage } from '../Service/pohodaService';
-import { convertPohodaResponseToUtf8, xmlBuilder, xmlParser } from '../Service/xmlService';
+import { checkErrorInResponse, ICO, jsonToXml, xmlToJson } from '../PohodaApplication';
 import { IListInvoiceItem } from '../Types/Invoice';
 import { IResponse, PohodaResponseState } from '../Types/Response';
 
@@ -20,7 +17,7 @@ export default class PohodaGetInvoicesConnector extends AConnector {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const data = dto.getJsonData();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
-        const companyId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][COMPANY_ID];
+        const companyId = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][ICO];
         const xmlData = this.getXmlData(companyId, data.application, data.filter);
 
         const req = await this.getApplication().getRequestDto(
@@ -33,19 +30,20 @@ export default class PohodaGetInvoicesConnector extends AConnector {
 
         const resp = await this.getSender().send(req, [200]);
 
-        const responseJson = xmlParser.parse(convertPohodaResponseToUtf8(resp.getBuffer())) as IResponse;
+        const responseJson = xmlToJson<IResponse>(resp.getBuffer());
+        checkErrorInResponse(responseJson);
 
-        const errorMessage = hasResponseErrorMessage(responseJson);
+        const { responsePack } = responseJson;
+        checkErrorInResponse(responsePack);
 
-        if (errorMessage) {
-            dto.setStopProcess(ResultCode.STOP_AND_FAILED, errorMessage);
-        }
+        const { responsePackItem } = responsePack;
+        checkErrorInResponse(responsePackItem);
 
-        return dto.setNewJsonData<IOutput>(responseJson.responsePack.responsePackItem.listInvoice as IOutput);
+        return dto.setNewJsonData<IOutput>(responsePackItem.listInvoice as IOutput);
     }
 
     private getXmlData(companyId: string, application: string, filter: RequestFilter = {}): string {
-    /* eslint-disable @typescript-eslint/naming-convention */
+        /* eslint-disable @typescript-eslint/naming-convention */
         const requestFilter: Record<string, unknown> = {};
 
         if (filter.dateLastChange) requestFilter['ftr:lastChanges'] = `${filter.dateLastChange}T00:00:00`;
@@ -95,7 +93,7 @@ export default class PohodaGetInvoicesConnector extends AConnector {
         };
         /* eslint-enable @typescript-eslint/naming-convention */
 
-        return xmlBuilder.build(xml);
+        return jsonToXml(xml);
     }
 
 }
