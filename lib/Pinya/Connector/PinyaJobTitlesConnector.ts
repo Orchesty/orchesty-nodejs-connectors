@@ -15,7 +15,7 @@ export class PinyaJobTitlesConnector extends AConnector {
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            'system/job-titles?PageNumber=0&PageSize=1000',
+            'system/job-titles?PageNumber=0&PageSize=150',
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const titles = resp.getJsonBody().data;

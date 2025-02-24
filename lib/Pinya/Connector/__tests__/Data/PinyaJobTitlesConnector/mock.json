@@ -1,5 +1,5 @@
 {
-  "http": "GET https://api.pinya.hr/system/job-titles?PageNumber=0&PageSize=1000",
+  "http": "GET https://api.pinya.hr/system/job-titles?PageNumber=0&PageSize=150",
   "code": 200,
   "body": {
     "pageNumber": 0,
