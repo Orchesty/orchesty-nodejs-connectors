@@ -55,6 +55,7 @@ export default class FabisImportBatchConnector extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             'v1/Import/Batch',
+            dto.getJsonData(),
         );
         const resp = await this.getSender().send(req);
 
