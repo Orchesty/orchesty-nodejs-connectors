@@ -25,13 +25,8 @@ export default class PinyaEmployeesBatch extends ABatchNode {
         );
         const resp = await this.getSender().send<Response>(req);
         const response = resp.getJsonBody();
-        this.processResult(dto, response);
-
-        if (response.lastPage > response.pageNumber) {
-            dto.setBatchCursor((response.pageNumber + 1).toString());
-        } else {
-            dto.removeBatchCursor();
-        }
+        await this.processResult(dto, response);
+        this.doPagination(dto, response);
 
         return dto;
     }
@@ -42,8 +37,17 @@ export default class PinyaEmployeesBatch extends ABatchNode {
         return `PageNumber=${page}&PageSize=${this.batchSize}`;
     }
 
-    protected processResult(dto: BatchProcessDto, response: Response): BatchProcessDto {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async processResult(dto: BatchProcessDto, response: Response): Promise<BatchProcessDto> {
         return dto.setItemList(response.data, this.resultAsBatch);
+    }
+
+    protected doPagination(dto: BatchProcessDto, response: Response): void {
+        if (response.lastPage > response.pageNumber) {
+            dto.setBatchCursor((response.pageNumber + 1).toString());
+        } else {
+            dto.removeBatchCursor();
+        }
     }
 
 }
@@ -236,7 +240,7 @@ export interface PinyaEmployeesOutput {
     }
 }
 
-interface Response {
+export interface Response {
     pageNumber: number;
     pageSize: number;
     lastPage: number;
