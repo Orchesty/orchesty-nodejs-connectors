@@ -1,0 +1,12 @@
+{
+  "http": "POST https://api.fapi.cz/invoice-labels/1",
+  "code": 200,
+  "body": {
+    "status": "success",
+    "message": "success",
+    "invoice_id": 1,
+    "labels": [
+      1
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "http": "GET https://api.fapi.cz/projects?limit=1000&offset=0",
+  "code": 200,
+  "body": {
+    "projects": [
+      {
+        "id": 5864,
+        "hidden": false,
+        "name": "A - Test",
+        "code": "AT",
+        "email": null,
+        "is_default": false,
+        "has_different_logo": true,
+        "logo": 529,
+        "has_different_signature": false,
+        "signature": null,
+        "has_different_bank_account_set": false,
+        "bank_account_set": null,
+        "has_different_sender": false,
+        "sender_email": null,
+        "sender_name": null,
+        "sender_reply_to": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "http": "POST https://api.fapi.cz/connections",
+  "code": 200,
+  "body": {
+    "id": 35,
+    "user_id": 3,
+    "application": "global-webhook",
+    "credentials": {
+      "url": "https://test.cz/",
+      "event": "ordered"
+    },
+    "fields_mapping": [],
+    "meta_data": {
+      "description": "Webhook test"
+    }
+  }
+}

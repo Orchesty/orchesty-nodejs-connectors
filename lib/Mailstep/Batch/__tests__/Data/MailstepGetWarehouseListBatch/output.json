@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"name\":\"Sklad - Praha\",\"customId\":\"S01\",\"wms\":[\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\"],\"defaultWms\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"createdAt\":\"2020-05-25T13:36:05+00:00\",\"organisation\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"dmg\":true,\"type\":\"available\",\"scrapingWarehouse\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"changedAt\":\"2020-05-25T13:36:05+00:00\"}",
+      "headers": {}
+    }
+  ]
+}

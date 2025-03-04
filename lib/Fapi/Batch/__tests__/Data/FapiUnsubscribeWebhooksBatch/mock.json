@@ -1,0 +1,5 @@
+{
+  "http": "DELETE https://api.fapi.cz/connections/webhookId",
+  "code": 200,
+  "body": {}
+}

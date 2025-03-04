@@ -1,0 +1,13 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "status": "success",
+    "message": "success",
+    "invoice_id": 1,
+    "labels": [
+      1
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "http": "GET https://api.fapi.cz/item_templates?limit=1000&offset=0",
+  "code": 200,
+  "body": {
+    "item_templates": [
+      {
+        "id": 12,
+        "hidden": false,
+        "name": "test",
+        "code": "12",
+        "accounting_code": null,
+        "description": null,
+        "price_czk": 1066.0,
+        "price_eur": 39.42,
+        "price_usd": null,
+        "repayment_amount_czk": 1500.0,
+        "repayment_amount_eur": null,
+        "repayment_amount_usd": null,
+        "prices": [
+          {
+            "type": "one_time",
+            "price": 1066.000000,
+            "currency_code": "CZK"
+          },
+          {
+            "type": "one_time",
+            "price": 39.420000,
+            "currency_code": "EUR"
+          },
+          {
+            "type": "repayment",
+            "price": 1500.000000,
+            "currency_code": "CZK"
+          }
+        ],
+        "vat": 0,
+        "including_vat": false,
+        "count": 1,
+        "allow_change_count": false,
+        "enable_stock": false,
+        "stock": 0,
+        "show_stock_information": false,
+        "type": "electronic-service",
+        "pohoda_accounting": null,
+        "pohoda_centre": null,
+        "pohoda_store": null,
+        "pohoda_stock_item": null,
+        "mioweb_eshop": false,
+        "mioweb_eshop_url": null,
+        "disable_discount": false,
+        "user": 3
+      }
+    ]
+  }
+}

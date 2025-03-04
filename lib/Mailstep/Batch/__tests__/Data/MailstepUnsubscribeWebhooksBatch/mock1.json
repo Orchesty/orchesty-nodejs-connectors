@@ -1,0 +1,5 @@
+{
+  "http": "DELETE https://app.mailship.eu/api/eshop-webhook/webhookId",
+  "code": 204,
+  "body": {}
+}

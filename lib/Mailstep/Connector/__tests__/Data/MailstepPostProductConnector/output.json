@@ -1,0 +1,68 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "active": true,
+    "category": "dangerous_substances",
+    "changedAt": "2020-05-25T13:36:05+00:00",
+    "childrenProducts": [
+      {
+        "productId": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "quantity": 0
+      }
+    ],
+    "countryOfOrigin": "CZ",
+    "createdAt": "2020-05-25T13:36:05+00:00",
+    "customsDescription": "FA12345",
+    "description": "Volně stojící ikrovlnná trouba s příkonem 3kW",
+    "eshops": [
+      "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+    ],
+    "expectedTurnover": "A",
+    "expirationOffset": 30,
+    "height": 50,
+    "hsCode": "HS123456",
+    "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "images": [
+      "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+    ],
+    "imeiCheckRequired": true,
+    "intHeight": 50,
+    "intImages": [
+      "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+    ],
+    "intLength": 1000,
+    "intWeight": 50,
+    "intWidth": 400,
+    "internalSku": 456,
+    "length": 1000,
+    "localisation": [
+      "en",
+      "cs",
+      "de",
+      "hu"
+    ],
+    "name": "Mikrovlnná trouba 526",
+    "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "packagingType": "A",
+    "productGroup": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "productSku": 123,
+    "referenceNumbers": [
+      123,
+      456
+    ],
+    "requiresAdditionalWork": true,
+    "requiresQualitativeReceiving": true,
+    "services": [
+      "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+    ],
+    "type": "bundle",
+    "weight": 50,
+    "width": 400,
+    "workAroundEanSticker": true,
+    "workAroundLot": true,
+    "workAroundSnIn": true,
+    "workAroundWarrantyInf": true
+  }
+}

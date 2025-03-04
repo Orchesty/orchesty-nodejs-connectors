@@ -1,0 +1,60 @@
+{
+  "http": "POST https://app.mailship.eu/api/eshop/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "name": "Odin&Son bikes",
+        "urlSlug": "odin-n-son-bikes",
+        "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "defaultWarehouse": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "warehouses": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "active": true,
+        "createdAt": "2020-05-25T13:36:05+00:00",
+        "partners": [
+          {
+            "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "eshop": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "code": 1,
+            "name": "Velkoobchod Skříně s.r.o.",
+            "companyName": "Skříně s.r.o.",
+            "firstName": "John",
+            "lastName": "Doe",
+            "degree": "Ing.",
+            "degree2": "CSc.",
+            "street": "Street",
+            "houseNr": "315/2a",
+            "city": "City",
+            "zip": 15012,
+            "country": "CZ",
+            "phone": "+420 123456789",
+            "email": "john.doe@example.com",
+            "registrationNumber": 12345678,
+            "vatNumber": "CZ12345678",
+            "note": "This is the text of the note. bla bla",
+            "active": true,
+            "createdAt": "2020-05-25T13:36:05+00:00",
+            "ref1": "REFX123",
+            "ref2": "REFX123",
+            "ref3": "REFX123",
+            "changedAt": "2020-05-25T13:36:05+00:00"
+          }
+        ],
+        "salesChannelId": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "waitBeforeProcessing": false,
+        "editBeforeProcessing": false,
+        "integrationType": "baselinker",
+        "changedAt": "2020-05-25T13:36:05+00:00"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}

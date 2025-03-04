@@ -1,0 +1,87 @@
+{
+  "http": "POST https://app.mailship.eu/api/product/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "eshops": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "productSku": 123,
+        "internalSku": 456,
+        "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "productGroup": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "name": "Mikrovlnná trouba 526",
+        "description": "Volně stojící ikrovlnná trouba s příkonem 3kW",
+        "images": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "intImages": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "weight": 50,
+        "height": 50,
+        "width": 400,
+        "length": 1000,
+        "intWeight": 50,
+        "intHeight": 50,
+        "intWidth": 400,
+        "intLength": 1000,
+        "referenceNumbers": [
+          123,
+          456
+        ],
+        "packagingType": "A",
+        "imeiCheckRequired": true,
+        "workAroundSnIn": true,
+        "workAroundEanSticker": true,
+        "workAroundWarrantyInf": true,
+        "workAroundLot": true,
+        "active": true,
+        "createdAt": "2020-05-25T13:36:05+00:00",
+        "countryOfOrigin": "CZ",
+        "hsCode": "HS123456",
+        "type": "bundle",
+        "childrenProducts": [
+          {
+            "productId": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "quantity": 0
+          }
+        ],
+        "category": "dangerous_substances",
+        "customsDescription": "FA12345",
+        "requiresAdditionalWork": true,
+        "requiresQualitativeReceiving": true,
+        "expectedTurnover": "A",
+        "expirationOffset": 30,
+        "localisation": [
+          "en",
+          "cs",
+          "de",
+          "hu"
+        ],
+        "services": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "codes": [
+          {
+            "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "type": "unknown",
+            "value": "string",
+            "primary": true,
+            "createdAt": "2020-05-25T13:36:05+00:00",
+            "changedAt": "2020-05-25T13:36:05+00:00"
+          }
+        ],
+        "changedAt": "2020-05-25T13:36:05+00:00"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}

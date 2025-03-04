@@ -1,0 +1,39 @@
+{
+  "http": "POST https://app.mailship.eu/api/carrier-service/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "name": "Balík do ruky",
+        "code": 100,
+        "createdAt": "2020-05-27T00:00:00+00:00",
+        "pickupPlaceIgnore": true,
+        "pickupPlaceMandatory": true,
+        "emailMandatory": true,
+        "phoneMandatory": true,
+        "nameMandatory": true,
+        "legacyDispense": true,
+        "skipDeliveryStatus": true,
+        "carrier": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "countriesOfOperation": [
+          "DE",
+          "PL"
+        ],
+        "lockedForImport": true,
+        "carrierPickupPlace": [
+          "wedo_box",
+          "wedo_branch"
+        ],
+        "invoiceMandatoryOutsideEU": true,
+        "changedAt": "2020-05-25T13:36:05+00:00"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}

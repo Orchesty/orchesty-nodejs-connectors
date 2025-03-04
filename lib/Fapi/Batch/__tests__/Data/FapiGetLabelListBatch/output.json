@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":1,\"user_id\":3,\"name\":\"štítek 1\",\"color\":\"#A83232\"}",
+      "headers": {}
+    }
+  ]
+}
