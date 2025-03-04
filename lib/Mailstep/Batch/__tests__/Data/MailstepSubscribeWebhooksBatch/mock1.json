@@ -1,0 +1,19 @@
+{
+  "http": "POST https://app.mailship.eu/api/eshop-webhook",
+  "code": 200,
+  "body": {
+    "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "eshop": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "event": "product_change",
+    "destination": "https://webhook.site/161166f9-a6a0-4123-b53b-1f9be727f2f8",
+    "active": true,
+    "createdAt": "2020-05-25T13:36:05+00:00",
+    "authentication": {
+      "type": "string",
+      "username": "string",
+      "password": "string",
+      "token": "string"
+    },
+    "changedAt": "2020-05-25T13:36:05+00:00"
+  }
+}

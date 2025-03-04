@@ -1,0 +1,53 @@
+{
+  "http": "POST https://app.mailship.eu/api/product-stock/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "product": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "warehouse": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "wms": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "quantity": 5,
+        "booked": 2,
+        "bookedAtExpeditions": 2,
+        "virtualBookedAtExpeditions": 2,
+        "bookedAtTransfers": 2,
+        "bookedAtStockChanges": 2,
+        "available": 3,
+        "missing": 9,
+        "missingAtExpeditions": 9,
+        "missingAtTransfers": 9,
+        "missingAtStockChanges": 9,
+        "bookedAtInternalStockChanges": 9,
+        "missingAtInternalStockChanges": 9,
+        "required": 6,
+        "incoming": 10,
+        "createdAt": "2020-05-25T13:36:05+00:00",
+        "lots": [
+          {
+            "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "lot": "21-01",
+            "date": "2021-01-01",
+            "quantity": 5,
+            "booked": 2,
+            "available": 3,
+            "missing": 9,
+            "required": 6,
+            "createdAt": "2020-05-25T13:36:05+00:00",
+            "changedAt": "2020-05-25T13:36:05+00:00"
+          }
+        ],
+        "changedAt": "2020-05-25T13:36:05+00:00",
+        "productProductGroup.id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "productProductGroup.name": "Group name"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}

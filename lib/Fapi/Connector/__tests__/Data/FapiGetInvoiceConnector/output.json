@@ -1,0 +1,224 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "automatic_charge_date": null,
+    "campaign_code": null,
+    "cancellation_reason": null,
+    "cancelled": false,
+    "client": 23,
+    "create_date": "2018-08-31",
+    "create_invoice_automatically": true,
+    "create_payment_confirmation": true,
+    "create_simplified_invoice": true,
+    "created_on": "2018-08-31 15:04:59",
+    "credit_note": false,
+    "currency": "CZK",
+    "custom_fields": [
+      {
+        "custom_field_id": 1117,
+        "invoice_custom_fields_data_id": 4632174,
+        "name": "a",
+        "type": "text",
+        "value": "hodnota"
+      },
+      {
+        "custom_field_id": 1253,
+        "invoice_custom_fields_data_id": 4632174,
+        "name": "test multicheckbox",
+        "type": "multi_checkbox",
+        "value": "[\"test 1\"]"
+      },
+      {
+        "custom_field_id": 2903,
+        "invoice_custom_fields_data_id": 4632174,
+        "name": "Partner",
+        "type": "radio",
+        "value": "partner 1"
+      },
+      {
+        "custom_field_id": 2904,
+        "invoice_custom_fields_data_id": 4632174,
+        "name": "Partner",
+        "type": "select_box",
+        "value": "partner 2"
+      },
+      {
+        "custom_field_id": 3282,
+        "invoice_custom_fields_data_id": 4632174,
+        "name": "B2BZasilka",
+        "type": "text",
+        "value": "hodnota"
+      }
+    ],
+    "customer": {
+      "address": {
+        "country": "CZ"
+      },
+      "email": "slischkaj@seznam.com",
+      "name": "slischkaj@seznam.com"
+    },
+    "exchange_rate": "1.00000000000000000000",
+    "exchange_rate_czk": "1.00000000000000000000",
+    "form": 16,
+    "form_url": "http://web.fapi.log/forms/preview/16?projectId=all",
+    "has_credit_note": false,
+    "id": 239,
+    "items": [
+      {
+        "accounting_code": null,
+        "code": "86096",
+        "correction_item": false,
+        "count": 1,
+        "id": 600,
+        "including_vat": false,
+        "invoice": 239,
+        "moss": false,
+        "name": "simple",
+        "pohoda_accounting": null,
+        "pohoda_centre": null,
+        "pohoda_stock_item": null,
+        "pohoda_store": null,
+        "price": 1066,
+        "round_item": false,
+        "type": "good",
+        "vat": 21
+      },
+      {
+        "accounting_code": null,
+        "code": null,
+        "correction_item": false,
+        "count": 1,
+        "id": 601,
+        "including_vat": false,
+        "invoice": 239,
+        "moss": false,
+        "name": "Zaokrouhlení",
+        "pohoda_accounting": null,
+        "pohoda_centre": null,
+        "pohoda_stock_item": null,
+        "pohoda_store": null,
+        "price": -0.71,
+        "round_item": true,
+        "type": "good",
+        "vat": 21
+      }
+    ],
+    "labels": [
+      {
+        "color": "#ff0000",
+        "id": 5,
+        "name": "test_label"
+      }
+    ],
+    "language": "pl",
+    "last_modified_on": "2018-08-31 15:08:08",
+    "locked": false,
+    "number": "20180020",
+    "paid": true,
+    "paid_on": "2018-08-31 00:00:00",
+    "path": "eg20z2nd8wbhosoabxz64p9a4k0mv6kdlpwhurhr",
+    "payday_date": "2018-09-10",
+    "payment_confirmation": false,
+    "payment_confirmation_mode": "default",
+    "payment_type": "wire",
+    "periodic_invoice": null,
+    "periodic_invoice_number": null,
+    "preserve_vat_date_on_invoice": false,
+    "proforma": false,
+    "recurring_gopay_payment_id": null,
+    "reverse_charge": false,
+    "round_function": "floor",
+    "round_precision": 0,
+    "session_id": null,
+    "shipping_method": {
+      "address_prices": [
+        {
+          "address": {
+            "country_code": "CZ"
+          },
+          "prices": [
+            {
+              "currency_code": "CZK",
+              "price": 99
+            }
+          ]
+        },
+        {
+          "address": {
+            "country_code": "SK"
+          },
+          "prices": [
+            {
+              "currency_code": "EUR",
+              "price": 4.9
+            }
+          ]
+        },
+        {
+          "address": {
+            "country_code": "PL"
+          },
+          "prices": [
+            {
+              "currency_code": "EUR",
+              "price": 1
+            }
+          ]
+        },
+        {
+          "address": {
+            "country_code": "DE"
+          },
+          "prices": [
+            {
+              "currency_code": "EUR",
+              "price": 1
+            }
+          ]
+        }
+      ],
+      "deleted": 0,
+      "description": null,
+      "disable_discount": 0,
+      "free_of_charges": "[]",
+      "id": 2743,
+      "including_vat": 0,
+      "meta_data": null,
+      "name": "Výdení místa zásilkovna",
+      "subtype": "packatery_personal_collection",
+      "type": "packatery",
+      "user_id": 7678
+    },
+    "show_vat_info": false,
+    "simplified_invoice": true,
+    "supplier": {
+      "address": {
+        "city": "Hong Kong",
+        "country": "CZ",
+        "street": "Testovací 32",
+        "zip": "544 00W"
+      },
+      "bank_account": "test",
+      "dic": "CZ683555119",
+      "iban": "CZ8508000000002677686023",
+      "ic": "61989100",
+      "ic_dph": "SK1212121218",
+      "name": "TESTER s.r.o.",
+      "swift": "GIBACZPX"
+    },
+    "tax_exempt": false,
+    "total": 1289,
+    "total_czk": 1289,
+    "total_native": 1289,
+    "total_vat": 223.71,
+    "total_vat_czk": 223.71,
+    "total_vat_native": 223.71,
+    "type": "simplified_invoice",
+    "user": 3,
+    "variable_symbol": "20180020",
+    "vat_date": "2018-08-31",
+    "vat_recapitulation_algorithm": "pohoda"
+  }
+}

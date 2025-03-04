@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": 1,
+    "labels": [
+      1
+    ]
+  }
+}

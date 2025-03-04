@@ -1,0 +1,28 @@
+{
+  "http": "POST https://app.mailship.eu/api/wms/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "name": "WMS wh1",
+        "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "distributionCenter": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "storeKey": "ABC123",
+        "internalId": "11ecb7ac-7a2c-4c7b-aba8-6be241ceba7f",
+        "createdAt": "2020-05-25T13:36:05+00:00",
+        "warehouses": [
+          "529baf4b-b7f1-4ff4-827f-b05f52a1a22f"
+        ],
+        "type": "available",
+        "changedAt": "2020-05-25T13:36:05+00:00"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}
