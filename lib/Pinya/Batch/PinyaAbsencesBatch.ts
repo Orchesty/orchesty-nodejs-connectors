@@ -36,13 +36,8 @@ export default class PinyaAbsencesBatch extends ABatchNode {
             };
         }
 
-        this.processResult(dto, response);
-
-        if (response.lastPage > response.pageNumber) {
-            dto.setBatchCursor((response.pageNumber + 1).toString());
-        } else {
-            dto.removeBatchCursor();
-        }
+        await this.processResult(dto, response);
+        this.doPagination(dto, response);
 
         return dto;
     }
@@ -53,8 +48,17 @@ export default class PinyaAbsencesBatch extends ABatchNode {
         return `PageNumber=${page}&PageSize=${this.batchSize}`;
     }
 
-    protected processResult(dto: BatchProcessDto, response: Response): BatchProcessDto {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async processResult(dto: BatchProcessDto, response: Response): Promise<BatchProcessDto> {
         return dto.setItemList(response.data, this.resultAsBatch);
+    }
+
+    protected doPagination(dto: BatchProcessDto, response: Response): void {
+        if (response.lastPage > response.pageNumber) {
+            dto.setBatchCursor((response.pageNumber + 1).toString());
+        } else {
+            dto.removeBatchCursor();
+        }
     }
 
 }
@@ -73,7 +77,7 @@ export interface PinyaAbsencesOutput {
     isWorktime: boolean;
 }
 
-interface Response {
+export interface Response {
     pageNumber: number;
     pageSize: number;
     lastPage: number;
