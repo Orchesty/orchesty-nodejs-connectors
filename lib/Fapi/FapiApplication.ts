@@ -21,6 +21,7 @@ export const NAME = 'fapi';
 
 export enum WebhookTypes {
     ORDERED = 'ordered',
+    PAID = 'paid',
 }
 
 export default class FapiApplication extends ABasicApplication {

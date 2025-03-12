@@ -2,7 +2,7 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
-import { NAME as APPLICATION_NAME } from '../FapiApplication';
+import { getErrorInResponse, NAME as APPLICATION_NAME } from '../FapiApplication';
 
 export const NAME = `${APPLICATION_NAME}-get-invoice-connector`;
 
@@ -22,7 +22,10 @@ export default class FapiGetInvoiceConnector extends AConnector {
             `invoices/${id}`,
         );
 
-        const responseDto = await this.getSender().send<IOutput>(requestDto, [StatusCodes.OK]);
+        const responseDto = await this.getSender().send<IOutput>(requestDto, {
+            success: StatusCodes.OK,
+            stopAndFail: StatusCodes.NOT_FOUND,
+        }, undefined, undefined, getErrorInResponse);
 
         return dto.setNewJsonData(responseDto.getJsonBody());
     }
@@ -181,5 +184,6 @@ export interface IOutput {
         name: string;
         color: string;
     }[];
+    parent?: string;
     /* eslint-enable @typescript-eslint/naming-convention */
 }

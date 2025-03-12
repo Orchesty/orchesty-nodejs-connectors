@@ -116,7 +116,7 @@ export interface IInput {
     packagesCount?: number;
     fragile?: boolean;
     cod?: boolean;
-    codValue?: number;
+    codValue?: string;
     codCurrency?: string;
     codVariableSymbol?: string;
     customerGroup?: string;

@@ -1,147 +1,39 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
-import OnStopAndFailException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnStopAndFailException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
 import { getErrorInResponse, NAME as APPLICATION_NAME } from '../MailstepApplication';
 
-export const NAME = `${APPLICATION_NAME}-put-expedition-connector`;
+export const NAME = `${APPLICATION_NAME}-send-expedition-connector`;
 
-export default class MailstepPutExpeditionConnector extends AConnector {
+export default class MailstepSendExpeditionConnector extends AConnector {
 
     public getName(): string {
         return NAME;
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const { id, ...data } = dto.getJsonData();
+        const { id } = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.PUT,
-            `expedition/${id}`,
-            data,
+            `expedition/${id}/send`,
         );
 
         const responseDto = await this.getSender().send<IOutput>(requestDto, {
             success: StatusCodes.OK,
-            stopAndFail: [StatusCodes.BAD_REQUEST, StatusCodes.NOT_FOUND, StatusCodes.GONE],
+            stopAndFail: [StatusCodes.NOT_FOUND, StatusCodes.GONE],
         }, undefined, undefined, getErrorInResponse);
 
-        const response = responseDto.getJsonBody();
-
-        if (Array.isArray(response.errors)) {
-            throw new OnStopAndFailException(`Error: ${
-                response.errors.map(({
-                    message,
-                    propertyPath,
-                    parameters,
-                }) => `${message} [${propertyPath}: ${parameters['{{ value }}']}]`).join(', ')
-            })`);
-        }
-
-        return dto.setNewJsonData(response);
+        return dto.setNewJsonData(responseDto.getJsonBody());
     }
 
 }
 
 export interface IInput {
     id: string;
-    eshop?: string;
-    warehouse?: string;
-    wms?: string;
-    partner?: string;
-    orderNumber?: string;
-    note?: string;
-    billingFirstName?: string;
-    billingLastName?: string;
-    billingDegree?: string;
-    billingCompany?: string;
-    billingStreet?: string;
-    billingHouseNr?: string;
-    billingZip?: number;
-    billingCity?: string;
-    billingCountry?: string;
-    billingState?: string;
-    billingEmail?: string;
-    billingPhone?: string;
-    billingRegistrationNumber?: number;
-    billingVatNumber?: string;
-    differentDeliveryAddress?: boolean;
-    deliveryFirstName?: string;
-    deliveryLastName?: string;
-    deliveryDegree?: string;
-    deliveryCompany?: string;
-    deliveryStreet?: string;
-    deliveryHouseNr?: string;
-    deliveryZip?: number;
-    deliveryCity?: string;
-    deliveryCountry?: string;
-    deliveryState?: string;
-    deliveryEmail?: string;
-    deliveryPhone?: string;
-    requiredExpeditionDate?: string;
-    carrier?: string;
-    carrierService?: string;
-    carrierPickupPlace?: string;
-    carrierPickupPlaceCode?: string;
-    externalCarrierPickupPlace?: string;
-    externalCarrierPickupPlaceCode?: string;
-    carrierNote?: string;
-    trackingNumber?: string;
-    trackingUrl?: string;
-    genericTrackingUrl?: string;
-    externalTrackingNumber?: string;
-    externalPackageNumber?: string;
-    packagesCount?: number;
-    value?: string;
-    currency?: string;
-    fragile?: boolean;
-    cod?: boolean;
-    codValue?: number;
-    codCurrency?: string;
-    codVariableSymbol?: string;
-    customerGroup?: string;
-    eshopOrderDate?: string;
-    items?: {
-        product?: string;
-        bookStockAdvices?: {
-            expeditionItem?: string;
-            stockAdviceItem?: string;
-            quantity?: number
-        }[];
-        productValue?: number;
-        productValueCurrency?: string;
-        productLabel?: string;
-        bookLimit?: number;
-        quantity?: number;
-        book?: number;
-        lot?: string;
-        lifo?: boolean;
-        ref1?: string;
-        ref2?: string;
-        ref3?: string;
-    }[];
-    waitBeforeProcessing?: boolean;
-    editBeforeProcessing?: boolean;
-    priority?: number;
-    ref1?: string;
-    ref2?: string;
-    ref3?: string;
-    removedVirtualProducts?: {
-        productId?: string;
-        quantity?: number;
-    }[];
-    ignoreAddressValidation?: boolean;
-    b2b?: boolean;
-    carrierOptions?: {
-        recipientIdentificationNumber?: string;
-    };
-    deliveryCost?: number;
-    deliveryCostCurrency?: string;
-    invoiceNumber?: string;
-    services?: string[];
 }
 
 export interface IOutput {
