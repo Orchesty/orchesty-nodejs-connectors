@@ -1,0 +1,43 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd" version="2.0" id="Za001" state="ok"
+                  note="" programVersion="10800.180 (1.10.2014)">
+    <rsp:responsePackItem version="2.0" id="a55" state="ok">
+        <lst:listStore version="2.0" dateTimeStamp="2014-10-01T11:21:00" dateValidFrom="2014-10-01" state="ok">
+            <lst:store version="2.0">
+                <sto:id>2</sto:id>
+                <sto:name>ZBOŽÍ</sto:name>
+                <sto:text>Sklad zboží</sto:text>
+                <sto:PLU>
+                    <sto:usePLU>true</sto:usePLU>
+                    <sto:lowerLimit>1</sto:lowerLimit>
+                    <sto:upperLimit>1</sto:upperLimit>
+                </sto:PLU>
+            </lst:store>
+            <lst:store version="2.0">
+                <sto:id>3</sto:id>
+                <sto:name>MATERIÁL</sto:name>
+                <sto:text>Sklad materiálu</sto:text>
+                <sto:PLU>
+                    <sto:usePLU>false</sto:usePLU>
+                    <sto:lowerLimit>1</sto:lowerLimit>
+                    <sto:upperLimit>1</sto:upperLimit>
+                </sto:PLU>
+            </lst:store>
+            <lst:store version="2.0">
+                <sto:id>4</sto:id>
+                <sto:name>PRODEJ</sto:name>
+                <sto:text>Prodejní sklad</sto:text>
+                <sto:storekeeper>
+                    <typ:ids>*</typ:ids>
+                </sto:storekeeper>
+                <sto:PLU>
+                    <sto:usePLU>false</sto:usePLU>
+                    <sto:lowerLimit>1</sto:lowerLimit>
+                    <sto:upperLimit>1</sto:upperLimit>
+                </sto:PLU>
+            </lst:store>
+        </lst:listStore>
+    </rsp:responsePackItem>
+</rsp:responsePack>

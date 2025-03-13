@@ -51,6 +51,11 @@ export default abstract class AFapiListBatch<IInput, IOutput> extends ABatchNode
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+    protected async getLastRunKey(dto: BatchProcessDto<IInput>): Promise<string> {
+        return this.getUrl();
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
     protected async useLastRun(dto: BatchProcessDto<IInput>): Promise<boolean> {
         return false;
     }
@@ -61,7 +66,7 @@ export default abstract class AFapiListBatch<IInput, IOutput> extends ABatchNode
         }
 
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
-        const lastRun = applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[this.getUrl()];
+        const lastRun = applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[await this.getLastRunKey(dto)];
 
         if (!lastRun) {
             return undefined;
@@ -79,7 +84,7 @@ export default abstract class AFapiListBatch<IInput, IOutput> extends ABatchNode
 
         applicationInstall.addNonEncryptedSettings({
             [LAST_RUN]: {
-                [this.getUrl()]: new Date().toISOString(),
+                [await this.getLastRunKey(dto)]: new Date().toISOString(),
             },
         });
 

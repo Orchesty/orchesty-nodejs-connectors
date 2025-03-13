@@ -1,0 +1,14 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+                  xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
+                  version="2.0" id="zas003" state="ok"
+                  note="" programVersion="9601.4 E1 (30.9.2010)">
+    <rsp:responsePackItem version="2.0" id="ZAS001" state="ok">
+        <stk:stockItemResponse version="2.0" state="ok">
+            <rdc:producedDetails>
+                <rdc:id>4</rdc:id>
+                <rdc:code/>
+            </rdc:producedDetails>
+        </stk:stockItemResponse>
+    </rsp:responsePackItem>
+</rsp:responsePack>

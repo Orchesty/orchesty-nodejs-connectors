@@ -1,0 +1,487 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:ord="http://www.stormware.cz/schema/version_2/order.xsd"
+                  version="2.0" id="001" state="ok"
+                  note="" programVersion="9700.125 (28.12.2010)">
+    <rsp:responsePackItem version="2.0" id="li1" state="ok">
+        <lst:listOrder version="2.0" dateTimeStamp="2010-12-28T23:48:27Z" dateValidFrom="2010-12-28" state="ok">
+            <lst:order version="2.0">
+                <ord:orderHeader>
+                    <ord:id>6</ord:id>
+                    <ord:orderType>issuedOrder</ord:orderType>
+                    <ord:number>
+                        <typ:id>37</typ:id>
+                        <typ:ids>1020</typ:ids>
+                        <typ:numberRequested>102000001</typ:numberRequested>
+                    </ord:number>
+                    <ord:date>2010-01-26</ord:date>
+                    <ord:dateDelivery>2010-01-30</ord:dateDelivery>
+                    <ord:text>Objednáváme u Vás níže uvedené zboží</ord:text>
+                    <ord:partnerIdentity>
+                        <typ:id>5</typ:id>
+                        <typ:address>
+                            <typ:company>ACO nábytkové prvky s.r.o.</typ:company>
+                            <typ:name>Michal Dolejší</typ:name>
+                            <typ:city>Opava 1</typ:city>
+                            <typ:street>Jana Nerudy 6</typ:street>
+                            <typ:zip>746 01</typ:zip>
+                            <typ:ico>55967724</typ:ico>
+                            <typ:dic>CZ55967724</typ:dic>
+                            <typ:phone>553 387 734</typ:phone>
+                            <typ:fax>553 466 651</typ:fax>
+                        </typ:address>
+                    </ord:partnerIdentity>
+                    <ord:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </ord:myIdentity>
+                    <ord:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </ord:paymentType>
+                    <ord:isExecuted>false</ord:isExecuted>
+                    <ord:isDelivered>false</ord:isDelivered>
+                </ord:orderHeader>
+                <ord:orderDetail>
+                    <ord:orderItem>
+                        <ord:id>15</ord:id>
+                        <ord:text>Stůl jídelní - rozkládací</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>0.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>2500</typ:unitPrice>
+                            <typ:price>12500</typ:price>
+                            <typ:priceVAT>2500</typ:priceVAT>
+                            <typ:priceSum>15000</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>Jídel</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>9</typ:id>
+                                <typ:ids>Jídel</typ:ids>
+                                <typ:PLU>624</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>16</ord:id>
+                        <ord:text>Pohovka rozkládací 1425</ord:text>
+                        <ord:quantity>3.0</ord:quantity>
+                        <ord:delivered>0.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>11200</typ:unitPrice>
+                            <typ:price>33600</typ:price>
+                            <typ:priceVAT>6720</typ:priceVAT>
+                            <typ:priceSum>40320</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>Poh1425</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>16</typ:id>
+                                <typ:ids>Poh1425</typ:ids>
+                                <typ:PLU>628</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                </ord:orderDetail>
+                <ord:orderSummary>
+                    <ord:roundingDocument>none</ord:roundingDocument>
+                    <ord:roundingVAT>none</ord:roundingVAT>
+                    <ord:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>46100</typ:priceHigh>
+                        <typ:priceHighVAT>9220</typ:priceHighVAT>
+                        <typ:priceHighSum>55320</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </ord:homeCurrency>
+                </ord:orderSummary>
+            </lst:order>
+            <lst:order version="2.0">
+                <ord:orderHeader>
+                    <ord:id>7</ord:id>
+                    <ord:orderType>issuedOrder</ord:orderType>
+                    <ord:number>
+                        <typ:id>37</typ:id>
+                        <typ:ids>1020</typ:ids>
+                        <typ:numberRequested>102000002</typ:numberRequested>
+                    </ord:number>
+                    <ord:date>2010-02-10</ord:date>
+                    <ord:text>Objednáváme u Vás následující zboží:</ord:text>
+                    <ord:partnerIdentity>
+                        <typ:id>15</typ:id>
+                        <typ:address>
+                            <typ:company>INTEAK spol. s r. o.</typ:company>
+                            <typ:division>prodejna</typ:division>
+                            <typ:name>David Jánský</typ:name>
+                            <typ:city>Benešovice</typ:city>
+                            <typ:street>Jiřího z Poděbrad 35</typ:street>
+                            <typ:zip>463 48</typ:zip>
+                            <typ:ico>85236972</typ:ico>
+                            <typ:dic>CZ85236972</typ:dic>
+                            <typ:phone>466 958 542</typ:phone>
+                            <typ:fax>466 958 543</typ:fax>
+                        </typ:address>
+                    </ord:partnerIdentity>
+                    <ord:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </ord:myIdentity>
+                    <ord:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </ord:paymentType>
+                    <ord:isExecuted>true</ord:isExecuted>
+                    <ord:isDelivered>true</ord:isDelivered>
+                </ord:orderHeader>
+                <ord:orderDetail>
+                    <ord:orderItem>
+                        <ord:id>17</ord:id>
+                        <ord:text>Postel roštová</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>5.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>4000</typ:unitPrice>
+                            <typ:price>20000</typ:price>
+                            <typ:priceVAT>4000</typ:priceVAT>
+                            <typ:priceSum>24000</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>BM450</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>6</typ:id>
+                                <typ:ids>BM450</typ:ids>
+                                <typ:PLU>619</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>18</ord:id>
+                        <ord:text>Stůl jídelní - rozkládací</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>5.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>2500</typ:unitPrice>
+                            <typ:price>12500</typ:price>
+                            <typ:priceVAT>2500</typ:priceVAT>
+                            <typ:priceSum>15000</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>Jídel</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>9</typ:id>
+                                <typ:ids>Jídel</typ:ids>
+                                <typ:PLU>624</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>19</ord:id>
+                        <ord:text>Pohovka rozkládací 1425</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>5.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>11200</typ:unitPrice>
+                            <typ:price>56000</typ:price>
+                            <typ:priceVAT>11200</typ:priceVAT>
+                            <typ:priceSum>67200</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>Poh1425</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>16</typ:id>
+                                <typ:ids>Poh1425</typ:ids>
+                                <typ:PLU>628</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>20</ord:id>
+                        <ord:text>Židle Z120</ord:text>
+                        <ord:quantity>10.0</ord:quantity>
+                        <ord:delivered>10.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>1200</typ:unitPrice>
+                            <typ:price>12000</typ:price>
+                            <typ:priceVAT>2400</typ:priceVAT>
+                            <typ:priceSum>14400</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>Z120</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>26</typ:id>
+                                <typ:ids>Z120</typ:ids>
+                                <typ:PLU>649</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>21</ord:id>
+                        <ord:text>Konferenční stolek chrom</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>5.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>6400</typ:unitPrice>
+                            <typ:price>32000</typ:price>
+                            <typ:priceVAT>6400</typ:priceVAT>
+                            <typ:priceSum>38400</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:note>Rozměr: 120 x 60</ord:note>
+                        <ord:code>Konf11</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>10</typ:id>
+                                <typ:ids>Konf11</typ:ids>
+                                <typ:PLU>625</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                </ord:orderDetail>
+                <ord:orderSummary>
+                    <ord:roundingDocument>none</ord:roundingDocument>
+                    <ord:roundingVAT>none</ord:roundingVAT>
+                    <ord:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>132500</typ:priceHigh>
+                        <typ:priceHighVAT>26500</typ:priceHighVAT>
+                        <typ:priceHighSum>159000</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </ord:homeCurrency>
+                </ord:orderSummary>
+            </lst:order>
+            <lst:order version="2.0">
+                <ord:orderHeader>
+                    <ord:id>8</ord:id>
+                    <ord:orderType>issuedOrder</ord:orderType>
+                    <ord:number>
+                        <typ:id>37</typ:id>
+                        <typ:ids>1020</typ:ids>
+                        <typ:numberRequested>102000003</typ:numberRequested>
+                    </ord:number>
+                    <ord:date>2010-05-27</ord:date>
+                    <ord:dateDelivery>2010-06-18</ord:dateDelivery>
+                    <ord:text>Objednáváme zboží dle smlouvy číslo 9901523</ord:text>
+                    <ord:partnerIdentity>
+                        <typ:id>14</typ:id>
+                        <typ:address>
+                            <typ:company>Dřevo a.s.</typ:company>
+                            <typ:division>Odbyt</typ:division>
+                            <typ:name>Jiří Kulich</typ:name>
+                            <typ:city>Praha 7</typ:city>
+                            <typ:street>Bubenská 17</typ:street>
+                            <typ:zip>170 00</typ:zip>
+                            <typ:ico>75062103</typ:ico>
+                            <typ:dic>CZ75062103</typ:dic>
+                            <typ:phone>287 582 015</typ:phone>
+                            <typ:fax>287 582 309</typ:fax>
+                        </typ:address>
+                    </ord:partnerIdentity>
+                    <ord:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </ord:myIdentity>
+                    <ord:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </ord:paymentType>
+                    <ord:isExecuted>false</ord:isExecuted>
+                    <ord:isDelivered>false</ord:isDelivered>
+                </ord:orderHeader>
+                <ord:orderDetail>
+                    <ord:orderItem>
+                        <ord:id>22</ord:id>
+                        <ord:text>Skříňka rohová</ord:text>
+                        <ord:quantity>5.0</ord:quantity>
+                        <ord:delivered>0.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>1250</typ:unitPrice>
+                            <typ:price>6250</typ:price>
+                            <typ:priceVAT>1250</typ:priceVAT>
+                            <typ:priceSum>7500</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>KR20a</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>4</typ:id>
+                                <typ:ids>PRODEJ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>12</typ:id>
+                                <typ:ids>KR20a</typ:ids>
+                                <typ:PLU>406</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                    <ord:orderItem>
+                        <ord:id>23</ord:id>
+                        <ord:text>Stůl kancelářský s roletou</ord:text>
+                        <ord:quantity>10.0</ord:quantity>
+                        <ord:delivered>0.0</ord:delivered>
+                        <ord:unit>ks</ord:unit>
+                        <ord:coefficient>1.0</ord:coefficient>
+                        <ord:payVAT>false</ord:payVAT>
+                        <ord:rateVAT>high</ord:rateVAT>
+                        <ord:discountPercentage>0.0</ord:discountPercentage>
+                        <ord:homeCurrency>
+                            <typ:unitPrice>8400</typ:unitPrice>
+                            <typ:price>84000</typ:price>
+                            <typ:priceVAT>16800</typ:priceVAT>
+                            <typ:priceSum>100800</typ:priceSum>
+                        </ord:homeCurrency>
+                        <ord:code>St1045</ord:code>
+                        <ord:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>20</typ:id>
+                                <typ:ids>St1045</typ:ids>
+                                <typ:PLU>630</typ:PLU>
+                            </typ:stockItem>
+                        </ord:stockItem>
+                    </ord:orderItem>
+                </ord:orderDetail>
+                <ord:orderSummary>
+                    <ord:roundingDocument>none</ord:roundingDocument>
+                    <ord:roundingVAT>none</ord:roundingVAT>
+                    <ord:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>90250</typ:priceHigh>
+                        <typ:priceHighVAT>18050</typ:priceHighVAT>
+                        <typ:priceHighSum>108300</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </ord:homeCurrency>
+                </ord:orderSummary>
+            </lst:order>
+        </lst:listOrder>
+    </rsp:responsePackItem>
+</rsp:responsePack>

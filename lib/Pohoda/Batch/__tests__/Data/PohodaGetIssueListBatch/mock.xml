@@ -1,0 +1,421 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd"
+                  version="2.0" id="001" state="ok"
+                  note="" programVersion="9700.125 (28.12.2010)">
+    <rsp:responsePackItem version="2.0" id="vyd_01" state="ok">
+        <lst:listVydejka version="2.0" dateTimeStamp="2010-12-29T01:59:37Z" dateValidFrom="2010-12-29" state="ok">
+            <lst:vydejka version="2.0">
+                <vyd:vydejkaHeader>
+                    <vyd:id>1</vyd:id>
+                    <vyd:number>
+                        <typ:id>36</typ:id>
+                        <typ:ids>10SV</typ:ids>
+                        <typ:numberRequested>10SV00001</typ:numberRequested>
+                    </vyd:number>
+                    <vyd:date>2010-02-11</vyd:date>
+                    <vyd:text>Výdej zboží</vyd:text>
+                    <vyd:partnerIdentity>
+                        <typ:id>8</typ:id>
+                        <typ:address>
+                            <typ:company>Argo, a. s.</typ:company>
+                            <typ:name>Martin Dvořáček</typ:name>
+                            <typ:city>Praha 2</typ:city>
+                            <typ:street>Trocnovská 3</typ:street>
+                            <typ:zip>120 00</typ:zip>
+                            <typ:ico>85471296</typ:ico>
+                            <typ:dic>CZ85471296</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company>Argo, a. s.</typ:company>
+                            <typ:city>Praha 2</typ:city>
+                            <typ:street>Jarní 8</typ:street>
+                            <typ:zip>120 00</typ:zip>
+                        </typ:shipToAddress>
+                    </vyd:partnerIdentity>
+                    <vyd:priceLevel>
+                        <typ:id>2</typ:id>
+                        <typ:ids>Sleva 1</typ:ids>
+                    </vyd:priceLevel>
+                </vyd:vydejkaHeader>
+                <vyd:vydejkaDetail>
+                    <vyd:vydejkaItem>
+                        <vyd:id>1</vyd:id>
+                        <vyd:text>Konferenční stolek chrom</vyd:text>
+                        <vyd:quantity>1.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>2.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>7680</typ:unitPrice>
+                            <typ:price>7526.4</typ:price>
+                            <typ:priceVAT>1505.28</typ:priceVAT>
+                            <typ:priceSum>9031.68</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:note>Rozměr: 120 x 60</vyd:note>
+                        <vyd:code>Konf11</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>10</typ:id>
+                                <typ:ids>Konf11</typ:ids>
+                                <typ:PLU>625</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                    <vyd:vydejkaItem>
+                        <vyd:id>2</vyd:id>
+                        <vyd:text>Židle Z100</vyd:text>
+                        <vyd:quantity>4.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>2.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>1188</typ:unitPrice>
+                            <typ:price>4656.96</typ:price>
+                            <typ:priceVAT>931.39</typ:priceVAT>
+                            <typ:priceSum>5588.35</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Z100</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>4</typ:id>
+                                <typ:ids>PRODEJ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>25</typ:id>
+                                <typ:ids>Z100</typ:ids>
+                                <typ:PLU>410</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                </vyd:vydejkaDetail>
+                <vyd:vydejkaSummary>
+                    <vyd:roundingDocument>math2one</vyd:roundingDocument>
+                    <vyd:roundingVAT>none</vyd:roundingVAT>
+                    <vyd:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>12183.36</typ:priceHigh>
+                        <typ:priceHighVAT>2436.67</typ:priceHighVAT>
+                        <typ:priceHighSum>14620.03</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>-0.03</typ:priceRound>
+                        </typ:round>
+                    </vyd:homeCurrency>
+                </vyd:vydejkaSummary>
+            </lst:vydejka>
+            <lst:vydejka version="2.0">
+                <vyd:vydejkaHeader>
+                    <vyd:id>2</vyd:id>
+                    <vyd:number>
+                        <typ:id>36</typ:id>
+                        <typ:ids>10SV</typ:ids>
+                        <typ:numberRequested>10SV00002</typ:numberRequested>
+                    </vyd:number>
+                    <vyd:date>2010-04-19</vyd:date>
+                    <vyd:text>Výdej zboží, fakturace proběhne v květnu</vyd:text>
+                    <vyd:partnerIdentity>
+                        <typ:id>16</typ:id>
+                        <typ:address>
+                            <typ:company>Jaromír Novák - Nábytek</typ:company>
+                            <typ:division>Odbyt</typ:division>
+                            <typ:name>Jarmila Nováková</typ:name>
+                            <typ:city>Plzeň 15</typ:city>
+                            <typ:street>Chlumova 6</typ:street>
+                            <typ:zip>315 00</typ:zip>
+                            <typ:ico>35896417</typ:ico>
+                            <typ:dic>CZ5812318523</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:division/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </vyd:partnerIdentity>
+                    <vyd:priceLevel>
+                        <typ:id>4</typ:id>
+                        <typ:ids>Sleva 3</typ:ids>
+                    </vyd:priceLevel>
+                </vyd:vydejkaHeader>
+                <vyd:vydejkaDetail>
+                    <vyd:vydejkaItem>
+                        <vyd:id>3</vyd:id>
+                        <vyd:text>Židle Z120</vyd:text>
+                        <vyd:quantity>3.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>6.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>1440</typ:unitPrice>
+                            <typ:price>4060.8</typ:price>
+                            <typ:priceVAT>812.16</typ:priceVAT>
+                            <typ:priceSum>4872.96</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Z120</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>26</typ:id>
+                                <typ:ids>Z120</typ:ids>
+                                <typ:PLU>649</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                    <vyd:vydejkaItem>
+                        <vyd:id>4</vyd:id>
+                        <vyd:text>Pohovka rozkládací 1425</vyd:text>
+                        <vyd:quantity>1.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>6.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>13440</typ:unitPrice>
+                            <typ:price>12633.6</typ:price>
+                            <typ:priceVAT>2526.72</typ:priceVAT>
+                            <typ:priceSum>15160.32</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Poh1425</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>16</typ:id>
+                                <typ:ids>Poh1425</typ:ids>
+                                <typ:PLU>628</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                    <vyd:vydejkaItem>
+                        <vyd:id>5</vyd:id>
+                        <vyd:text>Sedací souprava 1320</vyd:text>
+                        <vyd:quantity>1.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>6.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>9576</typ:unitPrice>
+                            <typ:price>9001.44</typ:price>
+                            <typ:priceVAT>1800.29</typ:priceVAT>
+                            <typ:priceSum>10801.73</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Sed1320</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>4</typ:id>
+                                <typ:ids>PRODEJ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>18</typ:id>
+                                <typ:ids>Sed1320</typ:ids>
+                                <typ:PLU>408</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                </vyd:vydejkaDetail>
+                <vyd:vydejkaSummary>
+                    <vyd:roundingDocument>math2one</vyd:roundingDocument>
+                    <vyd:roundingVAT>none</vyd:roundingVAT>
+                    <vyd:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>25695.84</typ:priceHigh>
+                        <typ:priceHighVAT>5139.17</typ:priceHighVAT>
+                        <typ:priceHighSum>30835.01</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>-0.01</typ:priceRound>
+                        </typ:round>
+                    </vyd:homeCurrency>
+                </vyd:vydejkaSummary>
+            </lst:vydejka>
+            <lst:vydejka version="2.0">
+                <vyd:vydejkaHeader>
+                    <vyd:id>3</vyd:id>
+                    <vyd:number>
+                        <typ:id>36</typ:id>
+                        <typ:ids>10SV</typ:ids>
+                        <typ:numberRequested>10SV00003</typ:numberRequested>
+                    </vyd:number>
+                    <vyd:date>2010-09-20</vyd:date>
+                    <vyd:text>Výměna reklamovaného zboží</vyd:text>
+                    <vyd:partnerIdentity>
+                        <typ:id>15</typ:id>
+                        <typ:address>
+                            <typ:company>INTEAK spol. s r. o.</typ:company>
+                            <typ:division>prodejna</typ:division>
+                            <typ:name>David Jánský</typ:name>
+                            <typ:city>Benešovice</typ:city>
+                            <typ:street>Jiřího z Poděbrad 35</typ:street>
+                            <typ:zip>463 48</typ:zip>
+                            <typ:ico>85236972</typ:ico>
+                            <typ:dic>CZ85236972</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:division/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </vyd:partnerIdentity>
+                </vyd:vydejkaHeader>
+                <vyd:vydejkaDetail>
+                    <vyd:vydejkaItem>
+                        <vyd:id>6</vyd:id>
+                        <vyd:text>Židle Z120</vyd:text>
+                        <vyd:quantity>1.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>0.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>1440</typ:unitPrice>
+                            <typ:price>1440</typ:price>
+                            <typ:priceVAT>288</typ:priceVAT>
+                            <typ:priceSum>1728</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Z120</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>26</typ:id>
+                                <typ:ids>Z120</typ:ids>
+                                <typ:PLU>649</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                </vyd:vydejkaDetail>
+                <vyd:vydejkaSummary>
+                    <vyd:roundingDocument>math2one</vyd:roundingDocument>
+                    <vyd:roundingVAT>none</vyd:roundingVAT>
+                    <vyd:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>1440</typ:priceHigh>
+                        <typ:priceHighVAT>288</typ:priceHighVAT>
+                        <typ:priceHighSum>1728</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </vyd:homeCurrency>
+                </vyd:vydejkaSummary>
+            </lst:vydejka>
+            <lst:vydejka version="2.0">
+                <vyd:vydejkaHeader>
+                    <vyd:id>4</vyd:id>
+                    <vyd:number>
+                        <typ:id>36</typ:id>
+                        <typ:ids>10SV</typ:ids>
+                        <typ:numberRequested>10SV00004</typ:numberRequested>
+                    </vyd:number>
+                    <vyd:date>2010-09-20</vyd:date>
+                    <vyd:text>Výměna reklamovaného zboží</vyd:text>
+                    <vyd:partnerIdentity>
+                        <typ:id>15</typ:id>
+                        <typ:address>
+                            <typ:company>INTEAK spol. s r. o.</typ:company>
+                            <typ:division>prodejna</typ:division>
+                            <typ:name>David Jánský</typ:name>
+                            <typ:city>Benešovice</typ:city>
+                            <typ:street>Jiřího z Poděbrad 35</typ:street>
+                            <typ:zip>463 48</typ:zip>
+                            <typ:ico>85236972</typ:ico>
+                            <typ:dic>CZ85236972</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:division/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </vyd:partnerIdentity>
+                </vyd:vydejkaHeader>
+                <vyd:vydejkaDetail>
+                    <vyd:vydejkaItem>
+                        <vyd:id>7</vyd:id>
+                        <vyd:text>Židle Z220</vyd:text>
+                        <vyd:quantity>1.0</vyd:quantity>
+                        <vyd:unit>ks</vyd:unit>
+                        <vyd:coefficient>1.0</vyd:coefficient>
+                        <vyd:payVAT>false</vyd:payVAT>
+                        <vyd:rateVAT>high</vyd:rateVAT>
+                        <vyd:discountPercentage>0.0</vyd:discountPercentage>
+                        <vyd:homeCurrency>
+                            <typ:unitPrice>1968</typ:unitPrice>
+                            <typ:price>1968</typ:price>
+                            <typ:priceVAT>393.6</typ:priceVAT>
+                            <typ:priceSum>2361.6</typ:priceSum>
+                        </vyd:homeCurrency>
+                        <vyd:code>Z220</vyd:code>
+                        <vyd:guaranteeType>none</vyd:guaranteeType>
+                        <vyd:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>27</typ:id>
+                                <typ:ids>Z220</typ:ids>
+                                <typ:PLU>650</typ:PLU>
+                            </typ:stockItem>
+                        </vyd:stockItem>
+                    </vyd:vydejkaItem>
+                </vyd:vydejkaDetail>
+                <vyd:vydejkaSummary>
+                    <vyd:roundingDocument>math2one</vyd:roundingDocument>
+                    <vyd:roundingVAT>none</vyd:roundingVAT>
+                    <vyd:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>1968</typ:priceHigh>
+                        <typ:priceHighVAT>393.6</typ:priceHighVAT>
+                        <typ:priceHighSum>2361.6</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0.4</typ:priceRound>
+                        </typ:round>
+                    </vyd:homeCurrency>
+                </vyd:vydejkaSummary>
+            </lst:vydejka>
+        </lst:listVydejka>
+    </rsp:responsePackItem>
+</rsp:responsePack>
