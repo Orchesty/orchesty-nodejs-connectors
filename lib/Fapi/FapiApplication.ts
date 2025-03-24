@@ -21,6 +21,7 @@ export const NAME = 'fapi';
 
 export enum WebhookTypes {
     ORDERED = 'ordered',
+    UPDATED = 'invoice_update',
     PAID = 'paid',
 }
 
