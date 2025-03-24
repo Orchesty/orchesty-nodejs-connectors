@@ -1,0 +1,19 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":20,\"code\":\"ÄŚR\",\"name\":\"ÄŚeskĂˇ republika\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":21,\"code\":\"SR\",\"name\":\"SlovenskĂˇ republika\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":22,\"code\":\"DE\",\"name\":\"NÄ›mecko\"}",
+      "headers": {}
+    }
+  ]
+}

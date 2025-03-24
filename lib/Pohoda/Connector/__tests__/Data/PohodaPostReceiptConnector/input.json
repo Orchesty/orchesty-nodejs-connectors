@@ -1,0 +1,25 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "itemData:prijemkaHeader": {
+      "itemData:partnerIdentity": {
+        "type:address": {
+          "type:company": "123"
+        }
+      },
+      "itemData:intNote": "123"
+    },
+    "itemData:prijemkaDetail": {
+      "itemData:prijemkaItem": {
+        "itemData:quantity": 1,
+        "itemData:stockItem": {
+          "type:stockItem": {
+            "type:id": 123
+          }
+        }
+      }
+    }
+  }
+}

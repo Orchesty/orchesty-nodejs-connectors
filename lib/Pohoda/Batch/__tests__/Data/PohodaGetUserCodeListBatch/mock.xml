@@ -1,0 +1,15 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  version="2.0" id="Ex010" state="ok"
+                  note="" programVersion="10800.148 E1 (11.9.2014)">
+    <rsp:responsePackItem version="2.0" id="US001" state="ok">
+        <lst:listUserCodePack version="1.1" dateTimeStamp="2014-09-11T14:37:27" dateValidFrom="2014-09-11" state="ok">
+            <lst:listUserCode version="1.1" dateTimeStamp="2014-09-11T14:37:27" dateValidFrom="2014-09-11" state="ok"
+                              id="3" code="Stát" name="Stát" constants="false">
+                <lst:itemUserCode id="20" code="ČR" name="Česká republika"/>
+                <lst:itemUserCode id="21" code="SR" name="Slovenská republika"/>
+                <lst:itemUserCode id="22" code="DE" name="Německo"/>
+            </lst:listUserCode>
+        </lst:listUserCodePack>
+    </rsp:responsePackItem>
+</rsp:responsePack>

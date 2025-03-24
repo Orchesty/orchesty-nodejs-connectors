@@ -1,0 +1,19 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "itemData:links": {
+      "type:link": {
+        "type:sourceAgenda": "receivedOrder",
+        "type:sourceDocument": {
+          "type:id": "123"
+        }
+      }
+    },
+    "itemData:invoiceHeader": {
+      "itemData:invoiceType": "issuedInvoice",
+      "itemData:intNote": "123"
+    }
+  }
+}

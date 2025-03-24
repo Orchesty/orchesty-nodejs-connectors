@@ -1,0 +1,46 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:prm="http://www.stormware.cz/schema/version_2/parameter.xsd"
+                  version="2.0" id="Ex001" state="ok"
+                  note="" programVersion="9700.125 E1 (28.12.2010)">
+    <rsp:responsePackItem version="2.0" id="prmTest" state="ok">
+        <lst:listParameter version="2.0" dateTimeStamp="2010-12-29T01:36:10Z" dateValidFrom="2010-12-29" state="ok">
+            <lst:parameter version="2.0" id="1" idsAgenda="nabidky" idsUserAgenda="">
+                <prm:formParameter>
+                    <prm:parameterDef>
+                        <prm:id>1</prm:id>
+                        <prm:label>barva</prm:label>
+                        <prm:name>VPrbarva</prm:name>
+                        <prm:type>text</prm:type>
+                        <prm:length>20</prm:length>
+                        <prm:use0>true</prm:use0>
+                    </prm:parameterDef>
+                    <prm:parameterDef>
+                        <prm:id>2</prm:id>
+                        <prm:label>velikost</prm:label>
+                        <prm:name>VPrvelikost</prm:name>
+                        <prm:type>text</prm:type>
+                        <prm:length>20</prm:length>
+                        <prm:use0>true</prm:use0>
+                    </prm:parameterDef>
+                </prm:formParameter>
+                <prm:itemParameter>
+                    <prm:parameterDef>
+                        <prm:id>3</prm:id>
+                        <prm:label>datum výroby</prm:label>
+                        <prm:name>VPrdatvyrob</prm:name>
+                        <prm:type>datetime</prm:type>
+                        <prm:use0>true</prm:use0>
+                    </prm:parameterDef>
+                    <prm:parameterDef>
+                        <prm:id>3</prm:id>
+                        <prm:label>datum výroby</prm:label>
+                        <prm:name>VPrdatvyrob</prm:name>
+                        <prm:type>datetime</prm:type>
+                        <prm:use0>true</prm:use0>
+                    </prm:parameterDef>
+                </prm:itemParameter>
+            </lst:parameter>
+        </lst:listParameter>
+    </rsp:responsePackItem>
+</rsp:responsePack>
