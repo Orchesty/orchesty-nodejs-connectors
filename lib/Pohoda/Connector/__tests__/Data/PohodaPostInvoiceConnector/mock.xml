@@ -1,0 +1,14 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+                  xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd"
+                  version="2.0" id="fa0005" state="ok"
+                  note="" programVersion="10700.139 (19.5.2014)">
+    <rsp:responsePackItem version="2.0" id="LINK001" state="ok">
+        <inv:invoiceResponse version="2.0" state="ok">
+            <rdc:producedDetails>
+                <rdc:id>102</rdc:id>
+                <rdc:number>140100020</rdc:number>
+            </rdc:producedDetails>
+        </inv:invoiceResponse>
+    </rsp:responsePackItem>
+</rsp:responsePack>

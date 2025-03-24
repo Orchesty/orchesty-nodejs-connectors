@@ -1,0 +1,23 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":1,\"label\":\"barva\",\"name\":\"VPrbarva\",\"type\":\"text\",\"length\":20,\"use0\":true}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":2,\"label\":\"velikost\",\"name\":\"VPrvelikost\",\"type\":\"text\",\"length\":20,\"use0\":true}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":3,\"label\":\"datum vĂ˝roby\",\"name\":\"VPrdatvyrob\",\"type\":\"datetime\",\"use0\":true}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":3,\"label\":\"datum vĂ˝roby\",\"name\":\"VPrdatvyrob\",\"type\":\"datetime\",\"use0\":true}",
+      "headers": {}
+    }
+  ]
+}

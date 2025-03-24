@@ -27,23 +27,9 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
             jsonToXml(await this.createData(dto, applicationInstall)),
         );
 
-        const itemKey = this.getKey();
-        const listKey = `list${itemKey.charAt(0).toUpperCase()}${itemKey.slice(1)}`;
-        const headerKey = `${itemKey}Header`;
-
         const responseDto = await this.getSender().send(requestDto, [StatusCodes.OK]);
         const response = xmlToJson<IResponse<IOutput>>(responseDto.getBuffer());
-
-        const { responsePack } = response;
-        checkErrorInResponse(responsePack);
-
-        const { responsePackItem } = responsePack;
-        checkErrorInResponse(responsePackItem);
-
-        const itemsList = responsePackItem[listKey];
-        checkErrorInResponse(itemsList.importDetails?.detail);
-
-        let items = itemsList[itemKey];
+        let items = this.getItems(response);
 
         if (items === undefined) {
             items = [];
@@ -59,7 +45,7 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
             const item = items.pop() as Record<string, { id: string; }> | undefined;
 
             if (item) {
-                dto.setBatchCursor(String(Number(item[headerKey].id) + 1));
+                dto.setBatchCursor(String(Number(item[`${this.getKey()}Header`].id) + 1));
             }
         } else {
             await this.setLastRun(dto);
@@ -92,17 +78,36 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
                     [`itemData:list${listKey}Request`]: {
                         '@_version': '2.0',
                         [`@_${itemKey}Version`]: '2.0',
-                        ...await this.getCustomRequestAttributes(dto),
+                        ...await this.getCustomListRequestAttributes(dto),
                         'itemData:limit': {
                             'filter:count': await this.getLimit(dto),
                             'filter:idFrom': await this.getOffset(dto),
                         },
-                        [`itemData:request${listKey}`]: this.processFilters(await this.getFilters(dto)),
+                        [`itemData:request${listKey}`]: {
+                            ...await this.getCustomRequestAttributes(dto),
+                            ...this.processFilters(await this.getFilters(dto)),
+                        },
                     },
                 },
             },
             /* eslint-enable @typescript-eslint/naming-convention */
         };
+    }
+
+    protected getItems(response: IResponse<IOutput>): IOutput[] {
+        const itemKey = this.getKey();
+        const listKey = `list${itemKey.charAt(0).toUpperCase()}${itemKey.slice(1)}`;
+
+        const { responsePack } = response;
+        checkErrorInResponse(responsePack);
+
+        const { responsePackItem } = responsePack;
+        checkErrorInResponse(responsePackItem);
+
+        const itemsList = responsePackItem[listKey];
+        checkErrorInResponse(itemsList.importDetails?.detail);
+
+        return itemsList[itemKey];
     }
 
     protected async getFilters(dto: BatchProcessDto<IInput>): Promise<IFilter<Filter>> {
@@ -137,6 +142,11 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
     protected async getCustomDataPackItemAttributes(dto: BatchProcessDto<IInput>): Promise<object> {
+        return {};
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+    protected async getCustomListRequestAttributes(dto: BatchProcessDto<IInput>): Promise<object> {
         return {};
     }
 
@@ -187,6 +197,10 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
     }
 
     private processFilters(filters: IFilter<Filter>): object {
+        if (!Object.keys(filters).length) {
+            return {};
+        }
+
         const rawFilter = 'filter:filter';
         const rawFilters: Record<string, Record<string, unknown>> = {
             [rawFilter]: {},

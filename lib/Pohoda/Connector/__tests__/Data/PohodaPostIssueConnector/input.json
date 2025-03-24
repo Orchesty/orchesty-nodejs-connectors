@@ -1,0 +1,25 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "itemData:vydejkaHeader": {
+      "itemData:partnerIdentity": {
+        "type:address": {
+          "type:company": "123"
+        }
+      },
+      "itemData:intNote": "123"
+    },
+    "itemData:vydejkaDetail": {
+      "itemData:vydejkaItem": {
+        "itemData:quantity": 1,
+        "itemData:stockItem": {
+          "type:stockItem": {
+            "type:id": 123
+          }
+        }
+      }
+    }
+  }
+}

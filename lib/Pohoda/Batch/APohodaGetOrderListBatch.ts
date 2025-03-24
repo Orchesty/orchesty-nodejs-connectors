@@ -23,7 +23,7 @@ export default abstract class APohodaGetOrderListBatch<IOrderOutput> extends APo
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-    protected async getCustomRequestAttributes(dto: BatchProcessDto): Promise<object> {
+    protected async getCustomListRequestAttributes(dto: BatchProcessDto): Promise<object> {
         return {
             '@_orderType': this.getType(),
         };
@@ -34,12 +34,6 @@ export default abstract class APohodaGetOrderListBatch<IOrderOutput> extends APo
         return this.getType();
     }
 
-}
-
-export interface IOutput {
-    orderHeader: {
-        id: number;
-    };
 }
 
 export enum OrderType {

@@ -4,11 +4,11 @@ import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { readFileSync } from 'fs';
 import init from '../../../../test/Implementation/pohoda';
 import { container } from '../../../../test/TestAbstract';
-import { NAME as POHODA_PUT_STOCK_CONNECTOR } from '../PohodaPutStockConnector';
+import { NAME as POHODA_POST_RECEIPT_CONNECTOR } from '../PohodaPostReceiptConnector';
 
 let tester: NodeTester;
 
-describe('Tests for PohodaPutStockConnector', () => {
+describe('Tests for PohodaPostReceiptConnector', () => {
     beforeEach(() => {
         tester = new NodeTester(container, __filename, false, ['']);
         init();
@@ -21,10 +21,10 @@ describe('Tests for PohodaPutStockConnector', () => {
             },
             response: {
                 code: 200,
-                body: readFileSync(`${__dirname}/Data/PohodaPutStockConnector/mock.xml`),
+                body: readFileSync(`${__dirname}/Data/PohodaPostReceiptConnector/mock.xml`),
             },
         }]);
 
-        await tester.testConnector(POHODA_PUT_STOCK_CONNECTOR);
+        await tester.testConnector(POHODA_POST_RECEIPT_CONNECTOR);
     });
 });

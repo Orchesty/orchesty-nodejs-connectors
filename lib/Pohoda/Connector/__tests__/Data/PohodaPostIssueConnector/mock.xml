@@ -1,0 +1,14 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+                  xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd"
+                  version="2.0" id="vyd001" state="ok"
+                  note="" programVersion="10700.139 (19.5.2014)">
+    <rsp:responsePackItem version="2.0" id="VYD001" state="ok">
+        <vyd:vydejkaResponse version="2.0" state="ok">
+            <rdc:producedDetails>
+                <rdc:id>5</rdc:id>
+                <rdc:number>14SV00005</rdc:number>
+            </rdc:producedDetails>
+        </vyd:vydejkaResponse>
+    </rsp:responsePackItem>
+</rsp:responsePack>

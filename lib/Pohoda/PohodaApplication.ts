@@ -85,7 +85,13 @@ export function checkErrorInResponse(data?: object): void {
         return;
     }
 
-    if ('state' in data && data.state !== 'ok') {
+    if (Array.isArray(data)) {
+        for (const innerData of data) {
+            checkErrorInResponse(innerData);
+        }
+    }
+
+    if ('state' in data && data.state === 'error') {
         if ('note' in data) {
             throw new OnStopAndFailException(`Error: ${data.note}`);
         }
