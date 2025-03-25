@@ -66,6 +66,7 @@ export interface IOutput {
                 email: string;
             };
         };
+        intNote?: string;
         priceLevel: {
             id: number;
             ids: string;

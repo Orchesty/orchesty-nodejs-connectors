@@ -135,8 +135,8 @@ export default class MailstepApplication extends ABasicApplication {
         );
 
         return this.cache.entryWithLock(
-            'mailstemCacheKey',
-            'mailstepCacheKeyLock',
+            `mailstepCacheKey-${user}`,
+            `mailstepCacheKeyLock-${user}`,
             requestDto,
             async (responseDto: ResponseDto): Promise<ICacheCallback<string>> => {
                 const now = Math.floor(new Date().getTime() / 1_000);
