@@ -31,9 +31,7 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
         const response = xmlToJson<IResponse<IOutput>>(responseDto.getBuffer());
         let items = this.getItems(response);
 
-        if (items === undefined) {
-            items = [];
-        }
+        items ??= [];
 
         if (!Array.isArray(items)) {
             items = [items];
