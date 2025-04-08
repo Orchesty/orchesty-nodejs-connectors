@@ -65,6 +65,7 @@ export interface IOrder {
     }[];
     variableSymbol: string | null;
     application: string;
+    orderTags: string[];
     packagingType?: string;
     printDeliveryNote?: boolean;
     packagingInstructions?: {
