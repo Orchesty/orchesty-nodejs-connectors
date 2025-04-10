@@ -4,6 +4,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import { StatusCodes } from 'http-status-codes';
+import { DateTime } from 'luxon';
 import { checkErrorInResponse, ICO, jsonToXml, ResponseState, xmlToJson } from '../PohodaApplication';
 
 export const LAST_RUN = 'lastRun';
@@ -169,8 +170,13 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
         }
 
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const lastRun = applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[await this.getLastRunKey(dto)];
 
-        return applicationInstall.getNonEncryptedSettings()[LAST_RUN]?.[await this.getLastRunKey(dto)];
+        if (!lastRun) {
+            return undefined;
+        }
+
+        return `${DateTime.fromISO(lastRun, { zone: 'Europe/Prague' }).toISO({ includeOffset: false })}Z`;
     }
 
     protected async setLastRun(dto: BatchProcessDto<IInput>): Promise<void> {
