@@ -60,7 +60,7 @@ export interface IInput {
                     'type:id': number;
                 };
             };
-        };
+        }[];
     };
     /* eslint-enable @typescript-eslint/naming-convention */
 }
