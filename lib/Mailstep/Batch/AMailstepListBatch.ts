@@ -5,7 +5,7 @@ import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto
 import { StatusCodes } from 'http-status-codes';
 import { ESHOP_ID } from '../MailstepApplication';
 
-const LAST_RUN = 'lastRun';
+export const LAST_RUN = 'lastRun';
 
 export default abstract class AMailstepListBatch<
     IInput,
@@ -35,7 +35,14 @@ export default abstract class AMailstepListBatch<
 
         const responseDto = await this.getSender().send<IResponse<IOutput>>(requestDto, [StatusCodes.OK]);
         const response = responseDto.getJsonBody();
-        dto.setItemList(response.results);
+
+        if (await this.useAsBatch(dto)) {
+            if (response.results.length) {
+                dto.addItem(response.results);
+            }
+        } else {
+            dto.setItemList(response.results);
+        }
 
         if (response.paging.returned === await this.getLimit(dto)) {
             dto.setBatchCursor((Number(dto.getBatchCursor('1')) + 1).toString());
@@ -127,6 +134,11 @@ export default abstract class AMailstepListBatch<
         });
 
         await this.getDbClient().getApplicationRepository().update(applicationInstall);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+    protected async useAsBatch(dto: BatchProcessDto<IInput>): Promise<boolean> {
+        return false;
     }
 
     private async getRawSorters(dto: BatchProcessDto<IInput>): Promise<IRawSorter[]> {

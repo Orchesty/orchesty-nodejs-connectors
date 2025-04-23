@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"product\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"movementType\":\"IN\",\"movementSubType\":\"new\",\"organisation\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"warehouse\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"wms\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"inboundReceipt\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"outboundReceipt\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"expedition\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"expeditionItem\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"stockChange\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"stockChangeItem\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"internalStockChange\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"internalStockChangeItem\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"transfer\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"transferItem\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"ean\":7501031311309,\"serialNumber\":\"XN23213232424\",\"quantity\":10,\"lot\":\"BN20200626\",\"lotDate\":\"2021-01-01\",\"warranty\":\"2020-12-31\",\"createdAt\":\"2020-05-25T13:36:05+00:00\",\"movedAt\":\"2020-05-25T13:36:05+00:00\",\"reported\":true,\"wmsInternalId\":\"D-A-195301\",\"serialNumbers\":[\"56565k\",\"CDFGB\"],\"productProductGroup.id\":\"529baf4b-b7f1-4ff4-827f-b05f52a1a22f\",\"productProductGroup.name\":\"Group name\"}",
+      "headers": {}
+    }
+  ]
+}

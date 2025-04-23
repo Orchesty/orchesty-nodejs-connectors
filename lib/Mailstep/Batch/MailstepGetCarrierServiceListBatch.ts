@@ -3,6 +3,8 @@ import AMailstepListBatch from './AMailstepListBatch';
 
 export const NAME = `${APPLICATION_NAME}-get-carrier-service-list-batch`;
 
+export const LAST_RUN_KEY = 'carrier-service/list';
+
 export enum Select {
     ID = 'id',
     NAME = 'name', // eslint-disable-line @typescript-eslint/no-shadow
@@ -62,7 +64,7 @@ export default class MailstepGetCarrierServiceListBatch extends AMailstepListBat
     }
 
     protected getUrl(): string {
-        return 'carrier-service/list';
+        return LAST_RUN_KEY;
     }
 
 }

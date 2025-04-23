@@ -4,8 +4,10 @@ import MailstepGetCarrierListBatch from '../../lib/Mailstep/Batch/MailstepGetCar
 import MailstepGetCarrierServiceListBatch from '../../lib/Mailstep/Batch/MailstepGetCarrierServiceListBatch';
 import MailstepGetEshopListBatch from '../../lib/Mailstep/Batch/MailstepGetEshopListBatch';
 import MailstepGetExpeditionListBatch from '../../lib/Mailstep/Batch/MailstepGetExpeditionListBatch';
+import MailstepGetInboundReceiptListBatch from '../../lib/Mailstep/Batch/MailstepGetInboundReceiptListBatch';
 import MailstepGetProductListBatch from '../../lib/Mailstep/Batch/MailstepGetProductListBatch';
 import MailstepGetProductStockListBatch from '../../lib/Mailstep/Batch/MailstepGetProductStockListBatch';
+import MailstepGetStockMovementListBatch from '../../lib/Mailstep/Batch/MailstepGetStockMovementListBatch';
 import MailstepGetWarehouseListBatch from '../../lib/Mailstep/Batch/MailstepGetWarehouseListBatch';
 import MailstepGetWmsListBatch from '../../lib/Mailstep/Batch/MailstepGetWmsListBatch';
 import MailstepSubscribeWebhooksBatch from '../../lib/Mailstep/Batch/MailstepSubscribeWebhooksBatch';
@@ -40,11 +42,13 @@ export default function init(): void {
     container.setNode(new MailstepPostExpeditionConnector(), mailstepApplication);
     container.setNode(new MailstepPutExpeditionConnector(), mailstepApplication);
     container.setNode(new MailstepSendExpeditionConnector(), mailstepApplication);
+    container.setNode(new MailstepGetInboundReceiptListBatch(), mailstepApplication);
     container.setNode(new MailstepGetProductListBatch(), mailstepApplication);
     container.setNode(new MailstepPostProductConnector(), mailstepApplication);
     container.setNode(new MailstepPutProductConnector(), mailstepApplication);
     container.setNode(new MailstepGetProductStockListBatch(), mailstepApplication);
     container.setNode(new MailstepGetProductStockConnector(), mailstepApplication);
+    container.setNode(new MailstepGetStockMovementListBatch(), mailstepApplication);
     container.setNode(new MailstepGetWarehouseListBatch(), mailstepApplication);
     container.setNode(new MailstepGetWmsListBatch(), mailstepApplication);
     container.setNode(new MailstepSubscribeWebhooksBatch(), mailstepApplication);

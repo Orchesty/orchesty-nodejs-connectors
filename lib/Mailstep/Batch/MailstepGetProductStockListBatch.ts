@@ -4,6 +4,8 @@ import AMailstepListBatch, { IFilter } from './AMailstepListBatch';
 
 export const NAME = `${APPLICATION_NAME}-get-product-stock-list-batch`;
 
+export const LAST_RUN_KEY = 'product-stock/list';
+
 export enum Select {
     ID = 'id',
     PRODUCT = 'product',
@@ -112,7 +114,7 @@ export default class MailstepGetProductStockListBatch extends AMailstepListBatch
     }
 
     protected getUrl(): string {
-        return 'product-stock/list';
+        return LAST_RUN_KEY;
     }
 
     protected async getFilters(dto: BatchProcessDto<undefined>): Promise<IFilter<Filter>> {

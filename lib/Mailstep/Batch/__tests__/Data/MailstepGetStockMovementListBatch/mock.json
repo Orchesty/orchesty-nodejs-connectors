@@ -1,0 +1,8 @@
+{
+  "http": "POST https://app.mailship.eu/api/login/user",
+  "code": 200,
+  "body": {
+    "token": "JWT Token",
+    "exp": 123456789
+  }
+}

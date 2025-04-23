@@ -3,6 +3,8 @@ import AMailstepListBatch from './AMailstepListBatch';
 
 export const NAME = `${APPLICATION_NAME}-get-eshop-list-batch`;
 
+export const LAST_RUN_KEY = 'eshop/list';
+
 export enum Select {
     ID = 'id',
     NAME = 'name', // eslint-disable-line @typescript-eslint/no-shadow
@@ -49,7 +51,7 @@ export default class MailstepGetEshopListBatch extends AMailstepListBatch<
     }
 
     protected getUrl(): string {
-        return 'eshop/list';
+        return LAST_RUN_KEY;
     }
 
 }
