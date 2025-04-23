@@ -3,6 +3,8 @@ import AMailstepListBatch from './AMailstepListBatch';
 
 export const NAME = `${APPLICATION_NAME}-get-wms-list-batch`;
 
+export const LAST_RUN_KEY = 'wms/list';
+
 export enum Select {
     ID = 'id',
     NAME = 'name', // eslint-disable-line @typescript-eslint/no-shadow
@@ -45,7 +47,7 @@ export default class MailstepGetWmsListBatch extends AMailstepListBatch<
     }
 
     protected getUrl(): string {
-        return 'wms/list';
+        return LAST_RUN_KEY;
     }
 
 }
