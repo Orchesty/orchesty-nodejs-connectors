@@ -21,7 +21,7 @@ export default class ShoptetGetAllProducts extends AShoptetConnector {
         );
 
         if (creationTimeFrom) {
-            url = `${url}&creationTimeFrom=${creationTimeFrom}`;
+            url = `${url}?creationTimeFrom=${creationTimeFrom}`;
         }
 
         const response = await this.doRequest(url, dto) as IResponse;
