@@ -1,0 +1,28 @@
+{
+  "http": "POST https://app.mailship.eu/api/outbound-receipt/list",
+  "code": 200,
+  "body": {
+    "results": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "expedition": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "wms": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "warehouse": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "wmsInternalId": "WMS Internal number.",
+        "issuedAt": "2020-05-25T13:36:05+00:00",
+        "createdAt": "2020-05-25T13:36:05+00:00",
+        "countOfItems": 5,
+        "countOfSku": 5,
+        "sumOfQuantity": 5,
+        "status": "processed"
+      }
+    ],
+    "paging": {
+      "returned": 10,
+      "from": 5,
+      "to": 15,
+      "total": 30
+    }
+  }
+}

@@ -87,6 +87,10 @@ export interface IOutput {
         };
         isExecuted: boolean;
         isDelivered: boolean;
+        centre: {
+            id: number;
+            ids: string;
+        };
         isReserved: boolean;
         dateCancellation: string;
         permanentDocument: boolean;
