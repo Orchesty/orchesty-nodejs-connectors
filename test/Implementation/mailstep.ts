@@ -5,6 +5,7 @@ import MailstepGetCarrierServiceListBatch from '../../lib/Mailstep/Batch/Mailste
 import MailstepGetEshopListBatch from '../../lib/Mailstep/Batch/MailstepGetEshopListBatch';
 import MailstepGetExpeditionListBatch from '../../lib/Mailstep/Batch/MailstepGetExpeditionListBatch';
 import MailstepGetInboundReceiptListBatch from '../../lib/Mailstep/Batch/MailstepGetInboundReceiptListBatch';
+import MailstepGetOutboundReceiptListBatch from '../../lib/Mailstep/Batch/MailstepGetOutboundReceiptListBatch';
 import MailstepGetProductListBatch from '../../lib/Mailstep/Batch/MailstepGetProductListBatch';
 import MailstepGetProductStockListBatch from '../../lib/Mailstep/Batch/MailstepGetProductStockListBatch';
 import MailstepGetStockMovementListBatch from '../../lib/Mailstep/Batch/MailstepGetStockMovementListBatch';
@@ -43,6 +44,7 @@ export default function init(): void {
     container.setNode(new MailstepPutExpeditionConnector(), mailstepApplication);
     container.setNode(new MailstepSendExpeditionConnector(), mailstepApplication);
     container.setNode(new MailstepGetInboundReceiptListBatch(), mailstepApplication);
+    container.setNode(new MailstepGetOutboundReceiptListBatch(), mailstepApplication);
     container.setNode(new MailstepGetProductListBatch(), mailstepApplication);
     container.setNode(new MailstepPostProductConnector(), mailstepApplication);
     container.setNode(new MailstepPutProductConnector(), mailstepApplication);

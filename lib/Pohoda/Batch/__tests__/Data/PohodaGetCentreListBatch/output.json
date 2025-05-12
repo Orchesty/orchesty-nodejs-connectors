@@ -1,0 +1,23 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":1,\"code\":\"BRNO\",\"name\":\"Prodejna Brno\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":2,\"code\":\"PRAHA\",\"name\":\"Prodejna Praha\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":3,\"code\":\"JIHLAVA\",\"name\":\"Prodejna Jihlava\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":4,\"code\":\"DĂŤLNA\",\"name\":\"DĂ­lna Jihlava\"}",
+      "headers": {}
+    }
+  ]
+}

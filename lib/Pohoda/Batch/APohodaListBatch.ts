@@ -77,7 +77,6 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
                     [`itemData:list${listKey}Request`]: {
                         '@_version': '2.0',
                         [`@_${itemKey}Version`]: '2.0',
-                        ...await this.getCustomListRequestAttributes(dto),
                         'itemData:limit': {
                             'filter:count': await this.getLimit(dto),
                             'filter:idFrom': await this.getOffset(dto),
@@ -86,6 +85,7 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
                             ...await this.getCustomRequestAttributes(dto),
                             ...this.processFilters(await this.getFilters(dto)),
                         },
+                        ...await this.getCustomListRequestAttributes(dto),
                     },
                 },
             },

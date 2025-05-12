@@ -1,5 +1,6 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import PohodaGetCentreListBatch from '../../lib/Pohoda/Batch/PohodaGetCentreListBatch';
 import PohodaGetIssuedOrderListBatch from '../../lib/Pohoda/Batch/PohodaGetIssuedOrderListBatch';
 import PohodaGetIssueListBatch from '../../lib/Pohoda/Batch/PohodaGetIssueListBatch';
 import PohodaGetOrderParameterListBatch from '../../lib/Pohoda/Batch/PohodaGetOrderParameterListBatch';
@@ -29,6 +30,7 @@ export default function init(): void {
     const pohodaApplication = new PohodaApplication();
     container.setApplication(pohodaApplication);
 
+    container.setNode(new PohodaGetCentreListBatch(), pohodaApplication);
     container.setNode(new PohodaGetIssueListBatch(), pohodaApplication);
     container.setNode(new PohodaGetOrderParameterListBatch(), pohodaApplication);
     container.setNode(new PohodaPostIssueConnector(), pohodaApplication);

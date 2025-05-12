@@ -6,8 +6,11 @@ import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
 import { checkErrorInResponse, ICO, jsonToXml, xmlToJson } from '../PohodaApplication';
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export default abstract class APohodaConnector<IInput, IOutput, IResponse extends object> extends AConnector {
+
+    public constructor(private readonly timeout = 60_000) {
+        super();
+    }
 
     protected abstract getSchema(): string;
 
@@ -17,13 +20,13 @@ export default abstract class APohodaConnector<IInput, IOutput, IResponse extend
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
-        const requestDto = await this.getApplication().getRequestDto(
+        const requestDto = (await this.getApplication().getRequestDto(
             dto,
             applicationInstall,
             HttpMethods.POST,
             'xml',
             jsonToXml(await this.createData(dto, applicationInstall)),
-        );
+        )).setTimeout(this.timeout);
 
         const responseDto = await this.getSender().send(requestDto, [StatusCodes.OK]);
         const response = xmlToJson<IBaseResponse<IResponse>>(responseDto.getBuffer());
