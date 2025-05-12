@@ -39,7 +39,7 @@ export default abstract class ASqlApplication extends ABasicApplication {
     }
 
     public getName(): string {
-        return this.dialect.toString();
+        return this.dialect;
     }
 
     public getRequestDto(

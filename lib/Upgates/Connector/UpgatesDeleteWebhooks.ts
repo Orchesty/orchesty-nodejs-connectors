@@ -61,7 +61,7 @@ export default class UpgatesDeleteWebhooks extends AConnector {
             await Promise.all(
                 webhooks.map(async (wantedDelete) => {
                     const foundWebhook = resData?.find(
-                        (item) => String(item.id) === String(wantedDelete.getWebhookId()),
+                        (item) => String(item.id) === wantedDelete.getWebhookId(),
                     );
                     if (foundWebhook) {
                         return repo.remove(wantedDelete);
@@ -88,7 +88,7 @@ export interface IResponse {
 }
 
 export interface IWebhook {
-    id: string;
+    id: string|number;
 
     deleted: boolean;
     messages: string[];

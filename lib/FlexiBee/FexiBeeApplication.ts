@@ -190,8 +190,7 @@ export default class FlexiBeeApplication extends ABasicApplication {
         };
 
         return new RequestDto(
-            this.getUrl(applicationInstall, ENDPOINT_LOGIN)
-                .toString(),
+            this.getUrl(applicationInstall, ENDPOINT_LOGIN),
             HttpMethods.POST,
             dto,
             JSON.stringify({

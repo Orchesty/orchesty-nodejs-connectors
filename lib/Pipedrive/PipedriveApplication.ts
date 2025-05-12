@@ -61,7 +61,7 @@ export default class PipedriveApplication extends ABasicApplication implements I
         let url = `https://${subdomain}.pipedrive.com/api/v1`;
         const join = _url?.includes('?') ? '&' : '?';
         url += `${_url}${join}api_token=${this.getToken(applicationInstall)}`;
-        const request = new RequestDto(url.toString(), method, dto);
+        const request = new RequestDto(url, method, dto);
         request.setHeaders({
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
