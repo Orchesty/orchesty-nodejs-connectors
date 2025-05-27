@@ -91,6 +91,10 @@ export interface IOutput {
             id: number;
             ids: string;
         };
+        activity: {
+            id: number;
+            ids: string;
+        };
         isReserved: boolean;
         dateCancellation: string;
         permanentDocument: boolean;

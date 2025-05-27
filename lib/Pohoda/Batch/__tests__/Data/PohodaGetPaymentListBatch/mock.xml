@@ -1,0 +1,33 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
+                  version="2.0" id="001" state="ok"
+                  note="" programVersion="9800.60 (2.5.2011)">
+    <rsp:responsePackItem version="2.0" id="101" state="ok">
+        <lst:listPayment version="2.0" dateTimeStamp="2025-05-20T13:22:25" dateValidFrom="2025-05-20" state="ok">
+            <lst:payment version="2.0">
+                <pay:paymentHeader>
+                    <pay:id>1</pay:id>
+                    <pay:name>Příkazem</pay:name>
+                    <pay:text>Příkazem k úhradě</pay:text>
+                    <pay:paymentType>transfer</pay:paymentType>
+                    <pay:useInSales>false</pay:useInSales>
+                    <pay:useInOtherAgendas>true</pay:useInOtherAgendas>
+                </pay:paymentHeader>
+            </lst:payment>
+            <lst:payment version="2.0">
+                <pay:paymentHeader>
+                    <pay:id>2</pay:id>
+                    <pay:name>Hotově</pay:name>
+                    <pay:text>Platbou v hotovosti</pay:text>
+                    <pay:paymentType>cash</pay:paymentType>
+                    <pay:cash>
+                        <pay:default>true</pay:default>
+                    </pay:cash>
+                    <pay:useInSales>true</pay:useInSales>
+                    <pay:useInOtherAgendas>true</pay:useInOtherAgendas>
+                </pay:paymentHeader>
+            </lst:payment>
+        </lst:listPayment>
+    </rsp:responsePackItem>
+</rsp:responsePack>

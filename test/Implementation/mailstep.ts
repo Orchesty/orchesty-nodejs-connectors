@@ -15,6 +15,8 @@ import MailstepSubscribeWebhooksBatch from '../../lib/Mailstep/Batch/MailstepSub
 import MailstepUnsubscribeWebhooksBatch from '../../lib/Mailstep/Batch/MailstepUnsubscribeWebhooksBatch';
 import MailstepGetExpeditionConnector from '../../lib/Mailstep/Connector/MailstepGetExpeditionConnector';
 import MailstepGetProductStockConnector from '../../lib/Mailstep/Connector/MailstepGetProductStockConnector';
+import MailstepGetStockAdviceConnector from '../../lib/Mailstep/Connector/MailstepGetStockAdviceConnector';
+import MailstepGetSupplierConnector from '../../lib/Mailstep/Connector/MailstepGetSupplierConnector';
 import MailstepPostExpeditionConnector from '../../lib/Mailstep/Connector/MailstepPostExpeditionConnector';
 import MailstepPostProductConnector from '../../lib/Mailstep/Connector/MailstepPostProductConnector';
 import MailstepPutExpeditionConnector from '../../lib/Mailstep/Connector/MailstepPutExpeditionConnector';
@@ -55,4 +57,6 @@ export default function init(): void {
     container.setNode(new MailstepGetWmsListBatch(), mailstepApplication);
     container.setNode(new MailstepSubscribeWebhooksBatch(), mailstepApplication);
     container.setNode(new MailstepUnsubscribeWebhooksBatch(), mailstepApplication);
+    container.setNode(new MailstepGetStockAdviceConnector(), mailstepApplication);
+    container.setNode(new MailstepGetSupplierConnector(), mailstepApplication);
 }

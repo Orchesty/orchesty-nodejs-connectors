@@ -1,0 +1,436 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd"
+                  version="2.0" id="001" state="ok"
+                  note="" programVersion="9700.125 (28.12.2010)">
+    <rsp:responsePackItem version="2.0" id="li1" state="ok">
+        <lst:listInvoice version="2.0" dateTimeStamp="2010-12-28T22:56:48Z" dateValidFrom="2010-12-28" state="ok">
+            <lst:invoice version="2.0">
+                <inv:invoiceHeader>
+                    <inv:id>18</inv:id>
+                    <inv:invoiceType>issuedInvoice</inv:invoiceType>
+                    <inv:number>
+                        <typ:numberRequested>290100007</typ:numberRequested>
+                    </inv:number>
+                    <inv:symVar>290100007</inv:symVar>
+                    <inv:date>2009-06-30</inv:date>
+                    <inv:dateTax>2009-06-30</inv:dateTax>
+                    <inv:dateAccounting>2009-06-30</inv:dateAccounting>
+                    <inv:dateDue>2009-07-14</inv:dateDue>
+                    <inv:accounting>
+                        <typ:id>3</typ:id>
+                        <typ:ids>Bez</typ:ids>
+                        <typ:accountingType>withoutAccounting</typ:accountingType>
+                    </inv:accounting>
+                    <inv:classificationVAT>
+                        <typ:id>5</typ:id>
+                        <typ:ids>UN</typ:ids>
+                        <typ:classificationVATType>nonSubsume</typ:classificationVATType>
+                    </inv:classificationVAT>
+                    <inv:text>Fakturujeme Vám zboží dle Vaší objednávky:</inv:text>
+                    <inv:partnerIdentity>
+                        <typ:id>18</typ:id>
+                        <typ:address>
+                            <typ:company>Jiří Batula</typ:company>
+                            <typ:name>Josef Stéblo</typ:name>
+                            <typ:city>Bruntál 1</typ:city>
+                            <typ:street>Zahradní 30</typ:street>
+                            <typ:zip>792 01</typ:zip>
+                            <typ:ico>15966674</typ:ico>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </inv:partnerIdentity>
+                    <inv:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </inv:myIdentity>
+                    <inv:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </inv:paymentType>
+                    <inv:account>
+                        <typ:id>2</typ:id>
+                        <typ:ids>KB</typ:ids>
+                    </inv:account>
+                    <inv:symConst>0308</inv:symConst>
+                    <inv:liquidation>
+                        <typ:amountHome>2901</typ:amountHome>
+                    </inv:liquidation>
+                </inv:invoiceHeader>
+                <inv:invoiceDetail>
+                    <inv:invoiceItem>
+                        <inv:id>17</inv:id>
+                        <inv:text>Sanorin</inv:text>
+                        <inv:quantity>30.0</inv:quantity>
+                        <inv:unit>bal</inv:unit>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>58.5</typ:unitPrice>
+                            <typ:price>1755</typ:price>
+                            <typ:priceVAT>333.45</typ:priceVAT>
+                            <typ:priceSum>2088.45</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:foreignCurrency>
+                            <typ:unitPrice>0</typ:unitPrice>
+                            <typ:price>0</typ:price>
+                            <typ:priceVAT>0</typ:priceVAT>
+                            <typ:priceSum>0</typ:priceSum>
+                        </inv:foreignCurrency>
+                        <inv:note>Nosní kapky</inv:note>
+                        <inv:code>KPSAN</inv:code>
+                        <inv:guarantee>0</inv:guarantee>
+                    </inv:invoiceItem>
+                    <inv:invoiceItem>
+                        <inv:id>18</inv:id>
+                        <inv:text>Acylpyrin</inv:text>
+                        <inv:quantity>35.0</inv:quantity>
+                        <inv:unit>bal</inv:unit>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>19.5</typ:unitPrice>
+                            <typ:price>682.5</typ:price>
+                            <typ:priceVAT>129.68</typ:priceVAT>
+                            <typ:priceSum>812.18</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:foreignCurrency>
+                            <typ:unitPrice>0</typ:unitPrice>
+                            <typ:price>0</typ:price>
+                            <typ:priceVAT>0</typ:priceVAT>
+                            <typ:priceSum>0</typ:priceSum>
+                        </inv:foreignCurrency>
+                        <inv:code>AC</inv:code>
+                        <inv:guarantee>0</inv:guarantee>
+                    </inv:invoiceItem>
+                </inv:invoiceDetail>
+                <inv:invoiceSummary>
+                    <inv:roundingDocument>math2one</inv:roundingDocument>
+                    <inv:roundingVAT>none</inv:roundingVAT>
+                    <inv:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>2437.5</typ:priceHigh>
+                        <typ:priceHighVAT>463.13</typ:priceHighVAT>
+                        <typ:priceHighSum>2900.63</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0.37</typ:priceRound>
+                        </typ:round>
+                    </inv:homeCurrency>
+                </inv:invoiceSummary>
+            </lst:invoice>
+            <lst:invoice version="2.0">
+                <inv:invoiceHeader>
+                    <inv:id>19</inv:id>
+                    <inv:invoiceType>issuedInvoice</inv:invoiceType>
+                    <inv:number>
+                        <typ:numberRequested>290100014</typ:numberRequested>
+                    </inv:number>
+                    <inv:symVar>290100014</inv:symVar>
+                    <inv:date>2009-10-10</inv:date>
+                    <inv:dateTax>2009-10-10</inv:dateTax>
+                    <inv:dateAccounting>2009-10-10</inv:dateAccounting>
+                    <inv:dateDue>2009-10-24</inv:dateDue>
+                    <inv:accounting>
+                        <typ:id>3</typ:id>
+                        <typ:ids>Bez</typ:ids>
+                        <typ:accountingType>withoutAccounting</typ:accountingType>
+                    </inv:accounting>
+                    <inv:classificationVAT>
+                        <typ:id>5</typ:id>
+                        <typ:ids>UN</typ:ids>
+                        <typ:classificationVATType>nonSubsume</typ:classificationVATType>
+                    </inv:classificationVAT>
+                    <inv:text>Fakturujeme Vám zboží dle Vaší objednávky:</inv:text>
+                    <inv:partnerIdentity>
+                        <typ:id>11</typ:id>
+                        <typ:address>
+                            <typ:company>A-STORES s.r.o.</typ:company>
+                            <typ:name>Josef Navrátil</typ:name>
+                            <typ:city>Přerov I - Město</typ:city>
+                            <typ:street>Pražská 43</typ:street>
+                            <typ:zip>750 02</typ:zip>
+                            <typ:ico>48365960</typ:ico>
+                            <typ:dic>CZ48365960</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </inv:partnerIdentity>
+                    <inv:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </inv:myIdentity>
+                    <inv:priceLevel>
+                        <typ:id>1</typ:id>
+                        <typ:ids>Prodejní</typ:ids>
+                    </inv:priceLevel>
+                    <inv:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </inv:paymentType>
+                    <inv:account>
+                        <typ:id>2</typ:id>
+                        <typ:ids>KB</typ:ids>
+                    </inv:account>
+                    <inv:symConst>0308</inv:symConst>
+                    <inv:liquidation>
+                        <typ:amountHome>8999</typ:amountHome>
+                    </inv:liquidation>
+                </inv:invoiceHeader>
+                <inv:invoiceSummary>
+                    <inv:roundingDocument>math2one</inv:roundingDocument>
+                    <inv:roundingVAT>none</inv:roundingVAT>
+                    <inv:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>7561.86</typ:priceHigh>
+                        <typ:priceHighVAT>1437.14</typ:priceHighVAT>
+                        <typ:priceHighSum>8999</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0</typ:priceRound>
+                        </typ:round>
+                    </inv:homeCurrency>
+                </inv:invoiceSummary>
+            </lst:invoice>
+            <lst:invoice version="2.0">
+                <inv:invoiceHeader>
+                    <inv:id>20</inv:id>
+                    <inv:invoiceType>issuedInvoice</inv:invoiceType>
+                    <inv:number>
+                        <typ:id>26</typ:id>
+                        <typ:ids>1001</typ:ids>
+                        <typ:numberRequested>100100001</typ:numberRequested>
+                    </inv:number>
+                    <inv:symVar>100100001</inv:symVar>
+                    <inv:date>2010-01-30</inv:date>
+                    <inv:dateTax>2010-01-30</inv:dateTax>
+                    <inv:dateAccounting>2010-01-30</inv:dateAccounting>
+                    <inv:dateDue>2010-02-13</inv:dateDue>
+                    <inv:accounting>
+                        <typ:id>17</typ:id>
+                        <typ:ids>3Fv</typ:ids>
+                    </inv:accounting>
+                    <inv:classificationVAT>
+                        <typ:id>83</typ:id>
+                        <typ:ids>xUD</typ:ids>
+                        <typ:classificationVATType>inland</typ:classificationVATType>
+                    </inv:classificationVAT>
+                    <inv:text>Fakturujeme Vám zboží dle Vaší objednávky:</inv:text>
+                    <inv:partnerIdentity>
+                        <typ:id>15</typ:id>
+                        <typ:address>
+                            <typ:company>INTEAK spol. s r. o.</typ:company>
+                            <typ:division>prodejna</typ:division>
+                            <typ:name>David Jánský</typ:name>
+                            <typ:city>Benešovice</typ:city>
+                            <typ:street>Jiřího z Poděbrad 35</typ:street>
+                            <typ:zip>463 48</typ:zip>
+                            <typ:ico>85236972</typ:ico>
+                            <typ:dic>CZ85236972</typ:dic>
+                        </typ:address>
+                        <typ:shipToAddress>
+                            <typ:company/>
+                            <typ:division/>
+                            <typ:name/>
+                            <typ:city/>
+                            <typ:street/>
+                        </typ:shipToAddress>
+                    </inv:partnerIdentity>
+                    <inv:myIdentity>
+                        <typ:address>
+                            <typ:company>Novák</typ:company>
+                            <typ:surname>Novák</typ:surname>
+                            <typ:name>Jan</typ:name>
+                            <typ:city>Jihlava 1</typ:city>
+                            <typ:street>Horní</typ:street>
+                            <typ:number>15</typ:number>
+                            <typ:zip>586 01</typ:zip>
+                            <typ:ico>12345678</typ:ico>
+                            <typ:dic>CZ12345678</typ:dic>
+                            <typ:phone>569 876 542</typ:phone>
+                            <typ:mobilPhone>602 852 369</typ:mobilPhone>
+                            <typ:fax>564 563 216</typ:fax>
+                            <typ:email>info@novak.cz</typ:email>
+                            <typ:www>www.novak.cz</typ:www>
+                        </typ:address>
+                    </inv:myIdentity>
+                    <inv:dateOrder>2010-01-22</inv:dateOrder>
+                    <inv:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </inv:paymentType>
+                    <inv:account>
+                        <typ:id>2</typ:id>
+                        <typ:ids>KB</typ:ids>
+                    </inv:account>
+                    <inv:symConst>0308</inv:symConst>
+                    <inv:centre>
+                        <typ:id>1</typ:id>
+                        <typ:ids>BRNO</typ:ids>
+                    </inv:centre>
+                    <inv:activity>
+                        <typ:id>2</typ:id>
+                        <typ:ids>NÁBYTEK</typ:ids>
+                    </inv:activity>
+                    <inv:liquidation>
+                        <typ:date>2010-02-12</typ:date>
+                        <typ:amountHome>356</typ:amountHome>
+                    </inv:liquidation>
+                </inv:invoiceHeader>
+                <inv:invoiceDetail>
+                    <inv:invoiceItem>
+                        <inv:id>19</inv:id>
+                        <inv:text>Židle Z220</inv:text>
+                        <inv:quantity>2.0</inv:quantity>
+                        <inv:unit>ks</inv:unit>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>1968</typ:unitPrice>
+                            <typ:price>3936</typ:price>
+                            <typ:priceVAT>787.2</typ:priceVAT>
+                            <typ:priceSum>4723.2</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:code>Z220</inv:code>
+                        <inv:guarantee>0</inv:guarantee>
+                        <inv:guaranteeType>none</inv:guaranteeType>
+                        <inv:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>27</typ:id>
+                                <typ:ids>Z220</typ:ids>
+                                <typ:PLU>650</typ:PLU>
+                            </typ:stockItem>
+                        </inv:stockItem>
+                    </inv:invoiceItem>
+                    <inv:invoiceItem>
+                        <inv:id>20</inv:id>
+                        <inv:text>Konferenční stolek chrom</inv:text>
+                        <inv:quantity>1.0</inv:quantity>
+                        <inv:unit>ks</inv:unit>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>7680</typ:unitPrice>
+                            <typ:price>7680</typ:price>
+                            <typ:priceVAT>1536</typ:priceVAT>
+                            <typ:priceSum>9216</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:note>Rozměr: 120 x 60</inv:note>
+                        <inv:code>Konf11</inv:code>
+                        <inv:guarantee>0</inv:guarantee>
+                        <inv:guaranteeType>none</inv:guaranteeType>
+                        <inv:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>10</typ:id>
+                                <typ:ids>Konf11</typ:ids>
+                                <typ:PLU>625</typ:PLU>
+                            </typ:stockItem>
+                        </inv:stockItem>
+                    </inv:invoiceItem>
+                    <inv:invoiceItem>
+                        <inv:id>21</inv:id>
+                        <inv:text>Křeslo čalouněné 1320</inv:text>
+                        <inv:quantity>4.0</inv:quantity>
+                        <inv:unit>ks</inv:unit>
+                        <inv:coefficient>1.0</inv:coefficient>
+                        <inv:rateVAT>high</inv:rateVAT>
+                        <inv:discountPercentage>0.0</inv:discountPercentage>
+                        <inv:homeCurrency>
+                            <typ:unitPrice>5988</typ:unitPrice>
+                            <typ:price>23952</typ:price>
+                            <typ:priceVAT>4790.4</typ:priceVAT>
+                            <typ:priceSum>28742.4</typ:priceSum>
+                        </inv:homeCurrency>
+                        <inv:code>Kř1320</inv:code>
+                        <inv:guarantee>0</inv:guarantee>
+                        <inv:guaranteeType>none</inv:guaranteeType>
+                        <inv:stockItem>
+                            <typ:store>
+                                <typ:id>1</typ:id>
+                                <typ:ids>ZBOŽÍ</typ:ids>
+                            </typ:store>
+                            <typ:stockItem>
+                                <typ:id>13</typ:id>
+                                <typ:ids>Kř1320</typ:ids>
+                                <typ:PLU>627</typ:PLU>
+                            </typ:stockItem>
+                        </inv:stockItem>
+                    </inv:invoiceItem>
+                </inv:invoiceDetail>
+                <inv:invoiceSummary>
+                    <inv:roundingDocument>up2one</inv:roundingDocument>
+                    <inv:roundingVAT>none</inv:roundingVAT>
+                    <inv:homeCurrency>
+                        <typ:priceNone>0</typ:priceNone>
+                        <typ:priceLow>0</typ:priceLow>
+                        <typ:priceLowVAT>0</typ:priceLowVAT>
+                        <typ:priceLowSum>0</typ:priceLowSum>
+                        <typ:priceHigh>35568</typ:priceHigh>
+                        <typ:priceHighVAT>7113.6</typ:priceHighVAT>
+                        <typ:priceHighSum>42681.6</typ:priceHighSum>
+                        <typ:round>
+                            <typ:priceRound>0.4</typ:priceRound>
+                        </typ:round>
+                    </inv:homeCurrency>
+                </inv:invoiceSummary>
+            </lst:invoice>
+        </lst:listInvoice>
+    </rsp:responsePackItem>
+</rsp:responsePack>

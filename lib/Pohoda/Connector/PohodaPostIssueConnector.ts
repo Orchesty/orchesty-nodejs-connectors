@@ -4,6 +4,11 @@ import APohodaConnector from './APohodaConnector';
 
 export const NAME = `${APPLICATION_NAME}-post-issue-connector`;
 
+export enum SourceAgendaType {
+    RECEIVED_ORDER = 'receivedOrder',
+    ISSUE = 'issueSlip',
+}
+
 export default class PohodaPostIssueConnector extends APohodaConnector<IInput, IOutput, IResponse> {
 
     public getName(): string {
@@ -44,15 +49,23 @@ export default class PohodaPostIssueConnector extends APohodaConnector<IInput, I
 
 export interface IInput {
     /* eslint-disable @typescript-eslint/naming-convention */
-    'itemData:vydejkaHeader': {
-        'itemData:partnerIdentity': {
+    'itemData:links'?: {
+        'type:link': {
+            'type:sourceAgenda': SourceAgendaType;
+            'type:sourceDocument': {
+                'type:id': string;
+            };
+        };
+    };
+    'itemData:vydejkaHeader'?: {
+        'itemData:partnerIdentity'?: {
             'type:address': {
                 'type:company': string;
             };
         };
         'itemData:intNote'?: string;
     };
-    'itemData:vydejkaDetail': {
+    'itemData:vydejkaDetail'?: {
         'itemData:vydejkaItem': {
             'itemData:quantity': number;
             'itemData:stockItem': {

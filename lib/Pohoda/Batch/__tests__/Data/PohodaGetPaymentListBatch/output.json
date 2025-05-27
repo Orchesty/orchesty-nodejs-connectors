@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"paymentHeader\":{\"id\":1,\"name\":\"PĹ™Ă­kazem\",\"text\":\"PĹ™Ă­kazem k ĂşhradÄ›\",\"paymentType\":\"transfer\",\"useInSales\":false,\"useInOtherAgendas\":true},\"version\":2}",
+      "headers": {}
+    },
+    {
+      "body": "{\"paymentHeader\":{\"id\":2,\"name\":\"HotovÄ›\",\"text\":\"Platbou v hotovosti\",\"paymentType\":\"cash\",\"cash\":{\"default\":true},\"useInSales\":true,\"useInOtherAgendas\":true},\"version\":2}",
+      "headers": {}
+    }
+  ]
+}

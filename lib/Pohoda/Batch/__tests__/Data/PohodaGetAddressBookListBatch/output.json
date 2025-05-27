@@ -1,0 +1,19 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"addressbookHeader\":{\"id\":2,\"identity\":{\"address\":{\"company\":\"ABC Audit s.r.o.\",\"division\":\"\",\"name\":\"Ing. Roman DvorskĂ˝\",\"city\":\"TĹ™ebĂ­ÄŤ 1\",\"street\":\"PalackĂ©ho 74\",\"zip\":\"674 01\",\"ico\":30081593,\"dic\":\"CZ30081593\"}},\"region\":\"VysoÄŤina\",\"phone\":\"568 694 123\",\"mobil\":\"602 529 786\",\"fax\":\"568 607 456\",\"email\":\"info@abc-audit.cz\",\"web\":\"www.abc-audit.cz\",\"adGroup\":\"ĂšÄŤetnĂ­,ZĂˇkaznĂ­k\",\"adKey\":\"PF\",\"number\":{\"id\":48,\"ids\":\"13AD\",\"numberRequested\":\"13AD00007\"},\"p1\":true,\"p2\":false,\"p3\":false,\"p4\":false,\"p5\":false,\"p6\":false},\"addressbookAccount\":{\"accountItem\":{\"id\":1,\"accountNumber\":195783960237,\"symSpec\":\"\",\"bankCode\":300,\"defaultAccount\":true}},\"version\":2}",
+      "headers": {}
+    },
+    {
+      "body": "{\"addressbookHeader\":{\"id\":5,\"identity\":{\"address\":{\"company\":\"ACO nĂˇbytkovĂ© prvky s.r.o.\",\"division\":\"\",\"name\":\"Michal DolejĹˇĂ­\",\"city\":\"Opava 1\",\"street\":\"Jana Nerudy 6\",\"zip\":\"746 01\",\"ico\":55967724,\"dic\":\"CZ55967724\"}},\"region\":\"MoravskoslezskĂ˝\",\"phone\":\"553 387 734\",\"mobil\":\"606 141 955\",\"fax\":\"553 466 651\",\"email\":\"info@aco.cz\",\"web\":\"www.aco.cz\",\"adGroup\":\"Obchod\",\"adKey\":\"PF\",\"credit\":15000,\"priceIDS\":\"Sleva 1\",\"maturity\":30,\"paymentType\":{\"id\":1,\"ids\":\"pĹ™Ă­kazem\",\"paymentType\":\"draft\"},\"number\":{\"id\":48,\"ids\":\"13AD\",\"numberRequested\":\"13AD00008\"},\"p1\":true,\"p2\":true,\"p3\":false,\"p4\":false,\"p5\":false,\"p6\":false},\"addressbookAccount\":{\"accountItem\":{\"id\":2,\"accountNumber\":\"705-57624201\",\"symSpec\":\"\",\"bankCode\":5500,\"defaultAccount\":true}},\"version\":2}",
+      "headers": {}
+    },
+    {
+      "body": "{\"addressbookHeader\":{\"id\":6,\"identity\":{\"address\":{\"company\":\"AgroZet a.s.\",\"division\":\"\",\"name\":\"Marek SvÄ›tĂˇk\",\"city\":\"Kaplice\",\"street\":\"LineckĂˇ 323\",\"zip\":\"382 41\",\"ico\":45622877,\"dic\":\"CZ45622877\"}},\"region\":\"JihoÄŤeskĂ˝\",\"phone\":\"380 356 547\",\"mobil\":\"603 523 641\",\"fax\":\"380 833 271\",\"email\":\"prodej@agrozet.cz\",\"web\":\"www.agrozet.cz\",\"adGroup\":\"ZĂˇkaznĂ­k\",\"adKey\":\"HlĂ­dat placenĂ­\",\"credit\":0,\"paymentType\":{\"id\":2,\"ids\":\"HotovÄ›\",\"paymentType\":\"cash\"},\"number\":{\"id\":48,\"ids\":\"13AD\",\"numberRequested\":\"13AD00009\"},\"p1\":false,\"p2\":true,\"p3\":false,\"p4\":false,\"p5\":false,\"p6\":false,\"message\":\"NeplatĂ­, pouze za hotovĂ© !\"},\"version\":2}",
+      "headers": {}
+    }
+  ]
+}

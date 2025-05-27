@@ -1,0 +1,67 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "user": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "organisation": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "warehouse": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "wms": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "supplier": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+    "packagingUnit": "pallet",
+    "countOfUnits": 5,
+    "status": "new",
+    "manualInput": true,
+    "items": [
+      {
+        "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "stockAdvice": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "bookStockAdvices": [
+          {
+            "id": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "createdAt": "2020-05-25T13:36:05+00:00",
+            "expeditionItem": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+            "quantity": 10
+          }
+        ],
+        "blocked": 4,
+        "position": 2,
+        "product": "529baf4b-b7f1-4ff4-827f-b05f52a1a22f",
+        "quantity": 4,
+        "suppliedQuantity": 4,
+        "ref1": "string",
+        "ref2": "string",
+        "ref3": "string",
+        "unitPurchasePrice": 0,
+        "unitPurchasePriceCurrency": "CZK"
+      }
+    ],
+    "note": "Note about the stock advice.",
+    "internalId": "Internal number.",
+    "wmsInternalId": "WMS Internal number.",
+    "mailwiseInternalId": "WMS Internal number.",
+    "expectedAt": "2020-05-25T13:36:05+00:00",
+    "receivingBegunAt": "2020-05-25T13:36:05+00:00",
+    "unloadingBegunAt": "2020-05-25T13:36:05+00:00",
+    "arrivedAt": "2020-05-25T13:36:05+00:00",
+    "createdAt": "2020-05-25T13:36:05+00:00",
+    "countOfItems": 5,
+    "countOfSku": 5,
+    "sumOfQuantity": 5,
+    "sumOfSuppliedQuantity": 5,
+    "errors": [
+      {
+        "message": "This value should not be blank.",
+        "propertyPath": "firstName",
+        "code": "3b70573f-c259-4df7-89fd-ad0104c1b828",
+        "parameters": {}
+      }
+    ],
+    "ref1": "REFX123",
+    "ref2": "REFX123",
+    "ref3": "REFX123",
+    "type": "HIGH_PRIORITY",
+    "changedAt": "2020-05-25T13:36:05+00:00"
+  }
+}
