@@ -1,43 +1,38 @@
 import { NAME as APPLICATION_NAME } from '../PohodaApplication';
-import APohodaListBatch from './APohodaListBatch';
+import APohodaGetInvoiceListBatch, { InvoiceType } from './APohodaGetInvoiceListBatch';
 
-export const NAME = `${APPLICATION_NAME}-get-issue-list-batch`;
+export const NAME = `${APPLICATION_NAME}-get-issued-invoice-list-batch`;
 
-export const LAST_RUN_KEY = 'vydejka';
+export const LAST_RUN_KEY = InvoiceType.ISSUED;
 
-export enum Filter {
-    LAST_CHANGES = 'lastChanges',
-    DATE_FROM = 'dateFrom',
-}
-
-export default class PohodaGetIssueListBatch extends APohodaListBatch<unknown, IOutput, Filter> {
+export default class PohodaGetIssuedInvoiceListBatch extends APohodaGetInvoiceListBatch<IOutput> {
 
     public getName(): string {
         return NAME;
     }
 
-    protected getKey(): string {
-        return LAST_RUN_KEY;
-    }
-
-    protected getSchema(): string {
-        return 'http://www.stormware.cz/schema/version_2/list.xsd';
+    protected getType(): InvoiceType {
+        return InvoiceType.ISSUED;
     }
 
 }
 
 export interface IOutput {
     /* eslint-disable @typescript-eslint/naming-convention */
-    vydejkaHeader: {
+    invoiceHeader: {
         id: number;
+        invoiceType: string;
+        storno: string;
         number: {
             id: number;
-            ids: string;
-            numberRequested: string;
+            ids: number;
+            numberRequested: number;
         };
-        date: string;
         numberOrder: number;
-        dateOrder: string;
+        date: string;
+        dateFrom: string;
+        dateTo: string;
+        text: string;
         partnerIdentity: {
             address: {
                 company: string;
@@ -66,11 +61,26 @@ export interface IOutput {
                 email: string;
             };
         };
-        intNote?: string;
-        priceLevel: {
-            id: number;
-            ids: string;
+        myIdentity: {
+            address: {
+                company: string;
+                city: string;
+                street: string;
+                number: string;
+                zip: string;
+                ico: number;
+                dic: string;
+                mobilPhone: string;
+                email: string;
+            };
+            establishment: {
+                company: string;
+                city: string;
+                street: string;
+                zip: string;
+            };
         };
+        intNote?: string;
         paymentType: {
             id: number;
             ids: string;
@@ -86,6 +96,9 @@ export interface IOutput {
             id: number;
             ids: string;
         };
+        isReserved: boolean;
+        dateCancellation: string;
+        permanentDocument: boolean;
         lock1: boolean;
         lock2: boolean;
         markRecord: boolean;
@@ -107,13 +120,13 @@ export interface IOutput {
             }[];
         };
     };
-    vydejkaDetail: {
-        vydejkaItem: {
+    invoiceDetail: {
+        invoiceItem: {
             id: number;
             text: string;
             quantity: number;
-            transferred: number;
-            unit: string;
+            delivered: number;
+            unit?: string;
             coefficient: number;
             payVAT: boolean;
             rateVAT: {
@@ -127,36 +140,39 @@ export interface IOutput {
                 priceVAT: number;
                 priceSum: number;
             };
-            code: string;
-            stockItem: {
+            code?: number;
+            stockItem?: {
                 store: {
                     id: number;
                     ids: string;
                 };
                 stockItem: {
                     id: number;
-                    ids: string;
+                    ids: number;
                     EAN: number;
                 };
             };
             PDP: boolean;
-            linkedDocument: {
-                sourceAgenda: string;
-                sourceDocument: {
+            parameters: {
+                name: string;
+                textValue: string;
+                integerValue?: number;
+                booleanValue?: boolean;
+                datetimeValue?: boolean;
+                listValueRef?: {
                     id: number;
-                    number: number;
+                    ids: string;
                 };
-                sourceDocumentItem: {
-                    sourceItemId: number;
+                list?: {
+                    id: number;
+                    ids: string;
                 };
-            };
-            parameters: string;
+            }[];
         }[];
     };
-    vydejkaSummary: {
+    invoiceSummary: {
         roundingDocument: string;
         roundingVAT: string;
-        calculateVAT: boolean;
         typeCalculateVATInclusivePrice: string;
         homeCurrency: {
             priceNone: number;
@@ -172,19 +188,16 @@ export interface IOutput {
                 rate: number;
             };
             priceHighSum: number;
+            price3: number;
+            price3VAT: {
+                '#text': number;
+                rate: number;
+            };
+            price3Sum: number;
             round: {
                 priceRound: number;
             };
         };
-    };
-    linkedDocuments: {
-        link: {
-            sourceAgenda: string;
-            sourceDocument: {
-                id: number;
-                number: number;
-            };
-        }[];
     };
     version: number;
     /* eslint-enable @typescript-eslint/naming-convention */

@@ -1,0 +1,152 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+                  xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
+                  xmlns:adb="http://www.stormware.cz/schema/version_2/addressbook.xsd"
+                  version="2.0" id="001" state="ok"
+                  note="" programVersion="10400.133 (13.5.2013)">
+    <rsp:responsePackItem version="2.0" id="01" state="ok">
+        <lAdb:listAddressBook version="2.0" dateTimeStamp="2013-05-13T15:24:54" dateValidFrom="2013-05-13" state="ok">
+            <lAdb:addressbook version="2.0">
+                <adb:addressbookHeader>
+                    <adb:id>2</adb:id>
+                    <adb:identity>
+                        <typ:address>
+                            <typ:company>ABC Audit s.r.o.</typ:company>
+                            <typ:division/>
+                            <typ:name>Ing. Roman Dvorský</typ:name>
+                            <typ:city>Třebíč 1</typ:city>
+                            <typ:street>Palackého 74</typ:street>
+                            <typ:zip>674 01</typ:zip>
+                            <typ:ico>30081593</typ:ico>
+                            <typ:dic>CZ30081593</typ:dic>
+                        </typ:address>
+                    </adb:identity>
+                    <adb:region>Vysočina</adb:region>
+                    <adb:phone>568 694 123</adb:phone>
+                    <adb:mobil>602 529 786</adb:mobil>
+                    <adb:fax>568 607 456</adb:fax>
+                    <adb:email>info@abc-audit.cz</adb:email>
+                    <adb:web>www.abc-audit.cz</adb:web>
+                    <adb:adGroup>Účetní,Zákazník</adb:adGroup>
+                    <adb:adKey>PF</adb:adKey>
+                    <adb:number>
+                        <typ:id>48</typ:id>
+                        <typ:ids>13AD</typ:ids>
+                        <typ:numberRequested>13AD00007</typ:numberRequested>
+                    </adb:number>
+                    <adb:p1>true</adb:p1>
+                    <adb:p2>false</adb:p2>
+                    <adb:p3>false</adb:p3>
+                    <adb:p4>false</adb:p4>
+                    <adb:p5>false</adb:p5>
+                    <adb:p6>false</adb:p6>
+                </adb:addressbookHeader>
+                <adb:addressbookAccount>
+                    <adb:accountItem>
+                        <adb:id>1</adb:id>
+                        <adb:accountNumber>195783960237</adb:accountNumber>
+                        <adb:symSpec/>
+                        <adb:bankCode>0300</adb:bankCode>
+                        <adb:defaultAccount>true</adb:defaultAccount>
+                    </adb:accountItem>
+                </adb:addressbookAccount>
+            </lAdb:addressbook>
+            <lAdb:addressbook version="2.0">
+                <adb:addressbookHeader>
+                    <adb:id>5</adb:id>
+                    <adb:identity>
+                        <typ:address>
+                            <typ:company>ACO nábytkové prvky s.r.o.</typ:company>
+                            <typ:division/>
+                            <typ:name>Michal Dolejší</typ:name>
+                            <typ:city>Opava 1</typ:city>
+                            <typ:street>Jana Nerudy 6</typ:street>
+                            <typ:zip>746 01</typ:zip>
+                            <typ:ico>55967724</typ:ico>
+                            <typ:dic>CZ55967724</typ:dic>
+                        </typ:address>
+                    </adb:identity>
+                    <adb:region>Moravskoslezský</adb:region>
+                    <adb:phone>553 387 734</adb:phone>
+                    <adb:mobil>606 141 955</adb:mobil>
+                    <adb:fax>553 466 651</adb:fax>
+                    <adb:email>info@aco.cz</adb:email>
+                    <adb:web>www.aco.cz</adb:web>
+                    <adb:adGroup>Obchod</adb:adGroup>
+                    <adb:adKey>PF</adb:adKey>
+                    <adb:credit>15000</adb:credit>
+                    <adb:priceIDS>Sleva 1</adb:priceIDS>
+                    <adb:maturity>30</adb:maturity>
+                    <adb:paymentType>
+                        <typ:id>1</typ:id>
+                        <typ:ids>příkazem</typ:ids>
+                        <typ:paymentType>draft</typ:paymentType>
+                    </adb:paymentType>
+                    <adb:number>
+                        <typ:id>48</typ:id>
+                        <typ:ids>13AD</typ:ids>
+                        <typ:numberRequested>13AD00008</typ:numberRequested>
+                    </adb:number>
+                    <adb:p1>true</adb:p1>
+                    <adb:p2>true</adb:p2>
+                    <adb:p3>false</adb:p3>
+                    <adb:p4>false</adb:p4>
+                    <adb:p5>false</adb:p5>
+                    <adb:p6>false</adb:p6>
+                </adb:addressbookHeader>
+                <adb:addressbookAccount>
+                    <adb:accountItem>
+                        <adb:id>2</adb:id>
+                        <adb:accountNumber>705-57624201</adb:accountNumber>
+                        <adb:symSpec/>
+                        <adb:bankCode>5500</adb:bankCode>
+                        <adb:defaultAccount>true</adb:defaultAccount>
+                    </adb:accountItem>
+                </adb:addressbookAccount>
+            </lAdb:addressbook>
+            <lAdb:addressbook version="2.0">
+                <adb:addressbookHeader>
+                    <adb:id>6</adb:id>
+                    <adb:identity>
+                        <typ:address>
+                            <typ:company>AgroZet a.s.</typ:company>
+                            <typ:division/>
+                            <typ:name>Marek Světák</typ:name>
+                            <typ:city>Kaplice</typ:city>
+                            <typ:street>Linecká 323</typ:street>
+                            <typ:zip>382 41</typ:zip>
+                            <typ:ico>45622877</typ:ico>
+                            <typ:dic>CZ45622877</typ:dic>
+                        </typ:address>
+                    </adb:identity>
+                    <adb:region>Jihočeský</adb:region>
+                    <adb:phone>380 356 547</adb:phone>
+                    <adb:mobil>603 523 641</adb:mobil>
+                    <adb:fax>380 833 271</adb:fax>
+                    <adb:email>prodej@agrozet.cz</adb:email>
+                    <adb:web>www.agrozet.cz</adb:web>
+                    <adb:adGroup>Zákazník</adb:adGroup>
+                    <adb:adKey>Hlídat placení</adb:adKey>
+                    <adb:credit>0</adb:credit>
+                    <adb:paymentType>
+                        <typ:id>2</typ:id>
+                        <typ:ids>Hotově</typ:ids>
+                        <typ:paymentType>cash</typ:paymentType>
+                    </adb:paymentType>
+                    <adb:number>
+                        <typ:id>48</typ:id>
+                        <typ:ids>13AD</typ:ids>
+                        <typ:numberRequested>13AD00009</typ:numberRequested>
+                    </adb:number>
+                    <adb:p1>false</adb:p1>
+                    <adb:p2>true</adb:p2>
+                    <adb:p3>false</adb:p3>
+                    <adb:p4>false</adb:p4>
+                    <adb:p5>false</adb:p5>
+                    <adb:p6>false</adb:p6>
+                    <adb:message>Neplatí, pouze za hotové !</adb:message>
+                </adb:addressbookHeader>
+            </lAdb:addressbook>
+        </lAdb:listAddressBook>
+    </rsp:responsePackItem>
+</rsp:responsePack>

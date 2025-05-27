@@ -1,10 +1,15 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import PohodaGetActivityListBatch from '../../lib/Pohoda/Batch/PohodaGetActivityListBatch';
+import PohodaGetAddressBookListBatch from '../../lib/Pohoda/Batch/PohodaGetAddressBookListBatch';
 import PohodaGetCentreListBatch from '../../lib/Pohoda/Batch/PohodaGetCentreListBatch';
+import PohodaGetIssuedInvoiceListBatch from '../../lib/Pohoda/Batch/PohodaGetIssuedInvoiceListBatch';
 import PohodaGetIssuedOrderListBatch from '../../lib/Pohoda/Batch/PohodaGetIssuedOrderListBatch';
 import PohodaGetIssueListBatch from '../../lib/Pohoda/Batch/PohodaGetIssueListBatch';
 import PohodaGetOrderParameterListBatch from '../../lib/Pohoda/Batch/PohodaGetOrderParameterListBatch';
+import PohodaGetPaymentListBatch from '../../lib/Pohoda/Batch/PohodaGetPaymentListBatch';
 import PohodaGetReceiptListBatch from '../../lib/Pohoda/Batch/PohodaGetReceiptListBatch';
+import PohodaGetReceivedInvoiceListBatch from '../../lib/Pohoda/Batch/PohodaGetReceivedInvoiceListBatch';
 import PohodaGetReceivedOrderListBatch from '../../lib/Pohoda/Batch/PohodaGetReceivedOrderListBatch';
 import PohodaGetStockListBatch from '../../lib/Pohoda/Batch/PohodaGetStockListBatch';
 import PohodaGetStoreListBatch from '../../lib/Pohoda/Batch/PohodaGetStoreListBatch';
@@ -30,17 +35,22 @@ export default function init(): void {
     const pohodaApplication = new PohodaApplication();
     container.setApplication(pohodaApplication);
 
+    container.setNode(new PohodaGetActivityListBatch(), pohodaApplication);
+    container.setNode(new PohodaGetAddressBookListBatch(), pohodaApplication);
     container.setNode(new PohodaGetCentreListBatch(), pohodaApplication);
     container.setNode(new PohodaGetIssueListBatch(), pohodaApplication);
-    container.setNode(new PohodaGetOrderParameterListBatch(), pohodaApplication);
     container.setNode(new PohodaPostIssueConnector(), pohodaApplication);
+    container.setNode(new PohodaGetIssuedInvoiceListBatch(), pohodaApplication);
     container.setNode(new PohodaGetIssuedOrderListBatch(), pohodaApplication);
+    container.setNode(new PohodaGetOrderParameterListBatch(), pohodaApplication);
+    container.setNode(new PohodaGetPaymentListBatch(), pohodaApplication);
     container.setNode(new PohodaGetReceiptListBatch(), pohodaApplication);
-    container.setNode(new PohodaPostReceiptConnector(), pohodaApplication);
+    container.setNode(new PohodaGetReceivedInvoiceListBatch(), pohodaApplication);
     container.setNode(new PohodaGetReceivedOrderListBatch(), pohodaApplication);
     container.setNode(new PohodaGetStockListBatch(), pohodaApplication);
     container.setNode(new PohodaPutStockConnector(), pohodaApplication);
     container.setNode(new PohodaGetStoreListBatch(), pohodaApplication);
     container.setNode(new PohodaGetUserCodeListBatch(), pohodaApplication);
     container.setNode(new PohodaPostInvoiceConnector(), pohodaApplication);
+    container.setNode(new PohodaPostReceiptConnector(), pohodaApplication);
 }

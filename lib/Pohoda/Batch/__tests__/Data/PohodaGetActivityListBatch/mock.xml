@@ -1,0 +1,12 @@
+<rsp:responsePack xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd"
+                  xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+                  version="2.0" id="Ex002" state="ok"
+                  note="" programVersion="10400.133 (13.5.2013)">
+    <rsp:responsePackItem version="2.0" id="Cin01" state="ok">
+        <lst:listActivity version="1.1" dateTimeStamp="2013-05-13T15:25:49" dateValidFrom="2013-05-13" state="ok">
+            <lst:itemActivity id="1" code="DŘEVO" name="Prodej materiálu"/>
+            <lst:itemActivity id="2" code="NÁBYTEK" name="Prodej nábytku"/>
+            <lst:itemActivity id="3" code="SLUŽBY" name="Poskytování služeb"/>
+        </lst:listActivity>
+    </rsp:responsePackItem>
+</rsp:responsePack>

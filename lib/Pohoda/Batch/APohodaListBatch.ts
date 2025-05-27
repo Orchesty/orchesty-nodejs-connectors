@@ -38,7 +38,13 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
             items = [items];
         }
 
-        dto.setItemList(items);
+        if (await this.useAsBatch(dto)) {
+            if (items.length) {
+                dto.addItem(items);
+            }
+        } else {
+            dto.setItemList(items);
+        }
 
         if (items.length === await this.getLimit(dto)) {
             const item = items.pop() as Record<string, { id: string; }> | undefined;
@@ -193,6 +199,11 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
         });
 
         await this.getDbClient().getApplicationRepository().update(applicationInstall);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+    protected async useAsBatch(dto: BatchProcessDto<IInput>): Promise<boolean> {
+        return false;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await

@@ -44,23 +44,32 @@ export default class PohodaPostReceiptConnector extends APohodaConnector<IInput,
 
 export interface IInput {
     /* eslint-disable @typescript-eslint/naming-convention */
-    'itemData:prijemkaHeader': {
-        'itemData:partnerIdentity': {
-            'type:address': {
-                'type:company': string;
+    'itemData:prijemkaHeader'?: {
+        'itemData:partnerIdentity'?: {
+            'type:id'?: number;
+            'type:address'?: {
+                'type:company'?: string;
             };
         };
         'itemData:intNote'?: string;
     };
-    'itemData:prijemkaDetail': {
+    'itemData:prijemkaDetail'?: {
         'itemData:prijemkaItem': {
-            'itemData:quantity': number;
-            'itemData:stockItem': {
-                'type:stockItem': {
-                    'type:id': number;
+            'itemData:text'?: string;
+            'itemData:quantity'?: number;
+            'itemData:stockItem'?: {
+                'type:stockItem'?: {
+                    'type:id'?: number;
                 };
             };
         }[];
+    };
+    'itemData:prijemkaSummary'?: {
+        'itemData:foreignCurrency'?: {
+            'type:currency'?: {
+                'type:id'?: number;
+            };
+        };
     };
     /* eslint-enable @typescript-eslint/naming-convention */
 }

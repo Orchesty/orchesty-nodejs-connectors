@@ -1,0 +1,19 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"id\":1,\"code\":\"DĹEVO\",\"name\":\"Prodej materiĂˇlu\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":2,\"code\":\"NĂBYTEK\",\"name\":\"Prodej nĂˇbytku\"}",
+      "headers": {}
+    },
+    {
+      "body": "{\"id\":3,\"code\":\"SLUĹ˝BY\",\"name\":\"PoskytovĂˇnĂ­ sluĹľeb\"}",
+      "headers": {}
+    }
+  ]
+}
