@@ -56,7 +56,7 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
                         reject(new OnRepeatException(60, 10, (er as Error).message));
                     }
 
-                    const data = log(dto, res, resultKey);
+                    const data = this.processDataAfterRequest(log(dto, res, resultKey));
 
                     if (lastRunKey) {
                         appInstall.addNonEncryptedSettings({
@@ -71,6 +71,10 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
         });
 
         return await promise as BatchProcessDto<T>;
+    }
+
+    protected processDataAfterRequest(data: object[]): object[] {
+        return data;
     }
 
 }
