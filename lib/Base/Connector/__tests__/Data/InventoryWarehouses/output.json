@@ -1,0 +1,25 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "warehouses": [
+      {
+        "warehouse_type": "bl",
+        "warehouse_id": 205,
+        "name": "Default",
+        "description": "Default warehouse located in London",
+        "stock_edition": true,
+        "is_default": true
+      },
+      {
+        "warehouse_type": "shop",
+        "warehouse_id": 2334,
+        "name": "MyShop.com",
+        "description": "Warehouse keeping stocks for Myshop.com",
+        "stock_edition": false,
+        "is_default": false
+      }
+    ]
+  }
+}

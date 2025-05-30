@@ -1,0 +1,57 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "couriers": [
+      {
+        "code": "dhl",
+        "name": "DHL"
+      },
+      {
+        "code": "dpd",
+        "name": "DPD"
+      },
+      {
+        "code": "fedexpl",
+        "name": "FedEx"
+      },
+      {
+        "code": "globkurier",
+        "name": "Globkurier"
+      },
+      {
+        "code": "gls",
+        "name": "GLS"
+      },
+      {
+        "code": "inpostkurier",
+        "name": "InPost"
+      },
+      {
+        "code": "kex2",
+        "name": "K-EX Geis"
+      },
+      {
+        "code": "paczkomaty",
+        "name": "Paczkomaty"
+      },
+      {
+        "code": "pkwid",
+        "name": "PKWiD"
+      },
+      {
+        "code": "pocztapolska",
+        "name": "Poczta Polska"
+      },
+      {
+        "code": "qlink",
+        "name": "Qlink"
+      },
+      {
+        "code": "ruch",
+        "name": "Ruch"
+      }
+    ]
+  }
+}

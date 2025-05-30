@@ -1,0 +1,10 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "package_id": 77014696,
+    "package_number": "622222044730624327700198",
+    "courier_inner_number": "12387890"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "courier_code": "dhl",
+    "package_id": 7323859
+  }
+}

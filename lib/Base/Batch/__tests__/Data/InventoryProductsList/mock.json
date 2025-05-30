@@ -1,0 +1,37 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "products": {
+      "2685": {
+        "id": 2685,
+        "ean": "63576363463",
+        "sku": "PL53F",
+        "name": "Nike PL35 shoes",
+        "prices": {
+          "105": 20.99,
+          "106": 23.99
+        },
+        "stock": {
+          "bl_206": 5,
+          "bl_207": 7
+        }
+      },
+      "2686": {
+        "id": 2686,
+        "ean": "6345623525",
+        "sku": "ZF55F",
+        "name": "Adidas ZF3 shoes",
+        "prices": {
+          "105": 21.99,
+          "106": 24.99
+        },
+        "stock": {
+          "bl_206": 8,
+          "bl_207": 9
+        }
+      }
+    }
+  }
+}

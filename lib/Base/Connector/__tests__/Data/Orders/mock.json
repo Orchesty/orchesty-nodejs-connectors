@@ -1,0 +1,89 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "orders": [
+      {
+        "order_id": 1630473,
+        "shop_order_id": 2824,
+        "external_order_id": "534534234",
+        "order_source": "amazon",
+        "order_source_id": 2598,
+        "order_source_info": "-",
+        "order_status_id": 6624,
+        "date_add": 1407841161,
+        "date_confirmed": 1407841256,
+        "date_in_status": 1407841256,
+        "user_login": "nick123",
+        "phone": "693123123",
+        "email": "test@test.com",
+        "user_comments": "User comment",
+        "admin_comments": "Seller test comments",
+        "currency": "GBP",
+        "payment_method": "PayPal",
+        "payment_method_cod": "0",
+        "payment_done": "50",
+        "delivery_method": "Expedited shipping",
+        "delivery_price": 10,
+        "delivery_package_module": "other",
+        "delivery_package_nr": "0042348723648234",
+        "delivery_fullname": "John Doe",
+        "delivery_company": "Company",
+        "delivery_address": "Long Str 12",
+        "delivery_city": "London",
+        "delivery_state": "",
+        "delivery_postcode": "E2 8HQ",
+        "delivery_country": "Great Britain",
+        "delivery_point_id": "",
+        "delivery_point_name": "",
+        "delivery_point_address": "",
+        "delivery_point_postcode": "",
+        "delivery_point_city": "",
+        "invoice_fullname": "John Doe",
+        "invoice_company": "Company",
+        "invoice_nip": "GB8943245",
+        "invoice_address": "Long Str 12",
+        "invoice_city": "London",
+        "invoice_state": "",
+        "invoice_postcode": "E2 8HQ",
+        "invoice_country": "Great Britain",
+        "want_invoice": "0",
+        "extra_field_1": "",
+        "extra_field_2": "",
+        "custom_extra_fields": {
+          "135": "B2B",
+          "172": "1646913115"
+        },
+        "order_page": "https://klient.baselinker.com/1630473/4ceca0d940/",
+        "pick_status": "1",
+        "pack_status": "0",
+        "commission": {
+          "net": 12.5,
+          "gross": 15.38,
+          "currency": "USD"
+        },
+        "products": [
+          {
+            "storage": "shop",
+            "storage_id": 1,
+            "order_product_id": 154904741,
+            "product_id": "5434",
+            "variant_id": 52124,
+            "name": "Harry Potter and the Chamber of Secrets",
+            "attributes": "Colour: green",
+            "sku": "LU4235",
+            "ean": "1597368451236",
+            "location": "A1-13-7",
+            "auction_id": "0",
+            "price_brutto": 20.00,
+            "tax_rate": 23,
+            "quantity": 2,
+            "weight": 1,
+            "bundle_id": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "multi_packages": false,
+    "fields": [
+      {
+        "id": "courier",
+        "name": "Courier",
+        "type": "select",
+        "desc": "",
+        "options": {
+          "2": "KEX",
+          "4": "GLS",
+          "5": "FedEx",
+          "6": "InPost Paczkomaty",
+          "8": "DHL",
+          "10": "FedEx Lotniczy",
+          "11": "Paczka w ruchu",
+          "12": "InPost Kurier",
+          "13": "Delta city",
+          "30": "UPS Express Saver",
+          "31": "UPS Standard"
+        }
+      },
+      {
+        "id": "package_type",
+        "name": "Type",
+        "type": "select",
+        "options": {
+          "paczka": "parcel",
+          "paleta": "palette",
+          "koperta": "envelope"
+        },
+        "show_field": {
+          "paleta": [
+            "before_delivery_notification"
+          ]
+        }
+      },
+      {
+        "id": "pickup_date",
+        "name": "Dispatch date",
+        "type": "date",
+        "desc": "Order pickup for specific day",
+        "value": 1487085753
+      },
+      {
+        "id": "cod",
+        "name": "Cash on delivery",
+        "type": "text"
+      },
+      {
+        "id": "insurance",
+        "name": "Insurance",
+        "type": "text"
+      },
+      {
+        "id": "package_description",
+        "name": "Content description",
+        "type": "text"
+      },
+      {
+        "id": "before_delivery_notification",
+        "name": "Notification before delivery",
+        "type": "checkbox",
+        "desc": "Available only for DHL Palette",
+        "options": {
+          "1": "Yes"
+        }
+      }
+    ],
+    "package_fields": [
+      {
+        "id": "weight",
+        "name": "Weight",
+        "type": "text"
+      },
+      {
+        "id": "size_length",
+        "name": "Length",
+        "type": "text"
+      },
+      {
+        "id": "size_width",
+        "name": "Width",
+        "type": "text"
+      },
+      {
+        "id": "size_height",
+        "name": "Height",
+        "type": "text"
+      },
+      {
+        "id": "size_custom",
+        "name": "Custom",
+        "type": "checkbox",
+        "options": {
+          "1": "Unusual shape"
+        },
+        "default": "0"
+      }
+    ]
+  }
+}
