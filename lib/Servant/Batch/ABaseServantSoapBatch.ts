@@ -73,8 +73,8 @@ export default abstract class ABaseSoapBatch extends ABatchNode {
         return await promise as BatchProcessDto<T>;
     }
 
-    protected processDataAfterRequest(data: object[]): object[] {
-        return data;
+    protected processDataAfterRequest(data: object[]|undefined): object[] {
+        return data ?? [];
     }
 
 }

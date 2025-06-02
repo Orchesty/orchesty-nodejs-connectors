@@ -18,9 +18,9 @@ export default class ServantGetInventory extends ABaseServantSoapBatch {
         );
     }
 
-    protected processDataAfterRequest(data: IOutput[]): IOutput[] {
+    protected processDataAfterRequest(data: IOutput[]|undefined): IOutput[] {
         const processData: IOutput[] = [];
-        data.forEach((item) => {
+        data?.forEach((item) => {
             const index = processData.findIndex((line) => line.item.code === item.item.code);
             if (index >= 0) {
                 processData[index].count += item.count;
