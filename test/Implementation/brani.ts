@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import BraniListSupplies from '../../lib/Brani/Batch/BraniListSupplies';
+import BraniListWebhookEvents from '../../lib/Brani/Batch/BraniListWebhookEvents';
 import BraniListWebhooks from '../../lib/Brani/Batch/BraniListWebhooks';
 import BraniSubscribeWebhooks from '../../lib/Brani/Batch/BraniSubscribeWebhooks';
 import BraniApplication, { NAME as BRANI_APP } from '../../lib/Brani/BraniApplication';
@@ -30,6 +31,7 @@ export default function init(): void {
     container.setNode(new BraniUpsertOrder(), app);
     container.setNode(new BraniSubscribeWebhooks(), app);
     container.setNode(new BraniListWebhooks(), app);
+    container.setNode(new BraniListWebhookEvents(), app);
     container.setNode(new BraniUnsubscribeWebhook(), app);
     container.setNode(new BraniListSupplies(), app);
     container.setNode(new BraniUpsertProduct(), app);

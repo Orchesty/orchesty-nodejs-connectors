@@ -1,0 +1,29 @@
+{
+    "http": "GET https://api.brani.cz/webhook/events/255?only_failed=true&items_per_page=1000&page_number=1",
+    "code": 200,
+    "body": {
+        "webhook_events": [
+            {
+                "id": 645976,
+                "webhook_id": 255,
+                "event_creation": "2025-06-02 08:14:35",
+                "order_code": "27072",
+                "event_status_id": -3,
+                "event_package_number": null,
+                "event_order_history": null,
+                "date_successful": null,
+                "date_last_failed": "2025-06-02 08:36:03",
+                "last_errors": {
+                    "message": "Service Unavailable",
+                    "status_code": 503
+                },
+                "fail_counter": 5,
+                "processed": 0
+            }
+        ],
+        "total_items": 52,
+        "items_per_page": 1,
+        "page": 1,
+        "items_on_current_page": 1
+    }
+}

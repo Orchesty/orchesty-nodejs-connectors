@@ -1,0 +1,9 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "webhookId": 255,
+        "onlyFailed": true
+    }
+}
