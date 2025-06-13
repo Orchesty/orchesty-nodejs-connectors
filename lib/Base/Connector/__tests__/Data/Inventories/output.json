@@ -1,0 +1,51 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "inventories": [
+      {
+        "inventory_id": 306,
+        "name": "Default",
+        "description": "Default catalog",
+        "languages": [
+          "en"
+        ],
+        "default_language": "en",
+        "price_groups": [
+          105
+        ],
+        "default_price_group": 105,
+        "warehouses": [
+          "bl_205",
+          "shop_2334",
+          "warehouse_4556"
+        ],
+        "default_warehouse": "bl_205",
+        "reservations": false,
+        "is_default": true
+      },
+      {
+        "inventory_id": 307,
+        "name": "Default",
+        "description": "Default catalog",
+        "languages": [
+          "en",
+          "de"
+        ],
+        "default_language": "en",
+        "price_groups": [
+          105
+        ],
+        "default_price_group": 105,
+        "warehouses": [
+          "bl_205",
+          "shop_2334"
+        ],
+        "default_warehouse": "bl_205",
+        "reservations": true,
+        "is_default": true
+      }
+    ]
+  }
+}

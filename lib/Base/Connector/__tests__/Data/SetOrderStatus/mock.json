@@ -1,0 +1,7 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS"
+  }
+}

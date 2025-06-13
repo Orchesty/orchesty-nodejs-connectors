@@ -1,0 +1,54 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "statuses": [
+      {
+        "id": 1051,
+        "name": "New orders",
+        "name_for_customer": "Order accepted"
+      },
+      {
+        "id": 1052,
+        "name": "To be paid (courier)",
+        "name_for_customer": " Awaiting payment"
+      },
+      {
+        "id": 1291,
+        "name": "Ready to ship (courier)",
+        "name_for_customer": "Processing"
+      },
+      {
+        "id": 1470,
+        "name": "To be paid (post mail)",
+        "name_for_customer": " Awaiting payment"
+      },
+      {
+        "id": 1471,
+        "name": "Dispatched",
+        "name_for_customer": "The parcel has been shipped"
+      },
+      {
+        "id": 4073,
+        "name": "Ready to ship (post mail)",
+        "name_for_customer": "Processing"
+      },
+      {
+        "id": 4128,
+        "name": "Ready to ship (economy mail)",
+        "name_for_customer": "Processing"
+      },
+      {
+        "id": 4129,
+        "name": "Ready to ship (priority mail)",
+        "name_for_customer": "Processing"
+      },
+      {
+        "id": 4130,
+        "name": "Ready to ship (post priority)",
+        "name_for_customer": "Processing"
+      }
+    ]
+  }
+}

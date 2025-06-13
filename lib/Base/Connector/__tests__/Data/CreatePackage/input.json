@@ -1,0 +1,37 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "order_id": 6910995,
+    "courier_code": "dhl",
+    "account_id": 33,
+    "fields": [
+      {
+        "id": "service",
+        "value": "dhl"
+      },
+      {
+        "id": "cod",
+        "value": "101"
+      },
+      {
+        "id": "insurance",
+        "value": "55"
+      },
+      {
+        "id": "package_description",
+        "value": "Shipment description"
+      }
+    ],
+    "packages": [
+      {
+        "length": 11,
+        "height": 12,
+        "width": 13,
+        "weight": 4,
+        "size_custom": 1
+      }
+    ]
+  }
+}

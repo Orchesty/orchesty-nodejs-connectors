@@ -1,0 +1,12 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "order_id": 6910995,
+    "courier_code": "dhl",
+    "package_number": "622222044730624327700197",
+    "pickup_date": "1487006161",
+    "return_shipment": true
+  }
+}
