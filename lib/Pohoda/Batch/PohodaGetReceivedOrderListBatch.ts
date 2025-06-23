@@ -106,6 +106,7 @@ export interface IOutput {
                 name: string;
                 textValue: string;
                 integerValue?: number;
+                currencyValue?: number;
                 booleanValue?: boolean;
                 datetimeValue?: boolean;
                 listValueRef?: {
@@ -156,6 +157,7 @@ export interface IOutput {
                 name: string;
                 textValue: string;
                 integerValue?: number;
+                currencyValue?: number;
                 booleanValue?: boolean;
                 datetimeValue?: boolean;
                 listValueRef?: {

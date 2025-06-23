@@ -8,7 +8,7 @@ import { checkErrorInResponse, ICO, jsonToXml, xmlToJson } from '../PohodaApplic
 
 export default abstract class APohodaConnector<IInput, IOutput, IResponse extends object> extends AConnector {
 
-    public constructor(private readonly timeout = 60_000) {
+    public constructor(private readonly timeout = 120_000) {
         super();
     }
 
