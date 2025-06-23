@@ -11,6 +11,10 @@ export const LAST_RUN = 'lastRun';
 
 export default abstract class APohodaListBatch<IInput, IOutput, Filter extends string> extends ABatchNode {
 
+    public constructor(private readonly timeout = 120_000) {
+        super();
+    }
+
     protected abstract getKey(): string;
 
     protected abstract getSchema(): string;
@@ -20,13 +24,13 @@ export default abstract class APohodaListBatch<IInput, IOutput, Filter extends s
             dto,
             await this.useInForm(dto) ? null : true,
         );
-        const requestDto = await this.getApplication().getRequestDto(
+        const requestDto = (await this.getApplication().getRequestDto(
             dto,
             applicationInstall,
             HttpMethods.POST,
             'xml',
             jsonToXml(await this.createData(dto, applicationInstall)),
-        );
+        )).setTimeout(this.timeout);
 
         const responseDto = await this.getSender().send(requestDto, [StatusCodes.OK]);
         const response = xmlToJson<IResponse<IOutput>>(responseDto.getBuffer());
