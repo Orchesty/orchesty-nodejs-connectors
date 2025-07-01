@@ -2,7 +2,7 @@ import ABaseConnector from './ABaseConnector';
 
 export const NAME = 'inventory-warehouses';
 
-export default class InventoryWarehouses extends ABaseConnector<undefined, IOutput> {
+export default class InventoryWarehouses extends ABaseConnector<unknown, IOutput> {
 
     public getName(): string {
         return NAME;

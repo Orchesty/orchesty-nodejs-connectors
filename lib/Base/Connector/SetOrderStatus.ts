@@ -13,7 +13,8 @@ export default class SetOrderStatus extends ABaseConnector<IInput, unknown> {
         return 'setOrderStatus';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { orderId, statusId } = dto.getJsonData();
 
         return {

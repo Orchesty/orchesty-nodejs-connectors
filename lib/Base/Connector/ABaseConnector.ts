@@ -15,7 +15,7 @@ export default abstract class ABaseConnector<T, K> extends AConnector {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             undefined,
-            this.prepareBody(this.getMethod(), this.getParameters(dto)),
+            this.prepareBody(this.getMethod(), await this.getParameters(dto)),
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { status, ...jsonBody } = resp.getJsonBody();
@@ -26,7 +26,8 @@ export default abstract class ABaseConnector<T, K> extends AConnector {
         return this.processOutputData(dto, jsonBody);
     }
 
-    protected getParameters(_dto: ProcessDto<T>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(_dto: ProcessDto<T>): Promise<object> {
         return [];
     }
 

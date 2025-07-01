@@ -13,7 +13,8 @@ export default class UpdateInventoryProductsStock extends ABaseConnector<IInput,
         return 'updateInventoryProductsStock';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { inventoryId, products } = dto.getJsonData();
 
         return {

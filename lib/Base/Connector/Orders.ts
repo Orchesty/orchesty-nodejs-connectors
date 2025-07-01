@@ -13,7 +13,8 @@ export default class Orders extends ABaseConnector<IInput, IOutput> {
         return 'getOrders';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const {
             orderId,
             dateConfirmedFrom,

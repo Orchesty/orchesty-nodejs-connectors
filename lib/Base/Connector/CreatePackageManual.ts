@@ -13,7 +13,8 @@ export default class CreatePackageManual extends ABaseConnector<IInput, IOutput>
         return 'createPackageManual';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { orderId, courierCode, packageNumber, pickupDate, returnShipment } = dto.getJsonData();
 
         /* eslint-disable @typescript-eslint/naming-convention */

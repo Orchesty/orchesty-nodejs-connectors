@@ -2,7 +2,7 @@ import ABaseConnector from './ABaseConnector';
 
 export const NAME = 'order-status-list';
 
-export default class OrderStatusList extends ABaseConnector<undefined, IOutput> {
+export default class OrderStatusList extends ABaseConnector<unknown, IOutput> {
 
     public getName(): string {
         return NAME;

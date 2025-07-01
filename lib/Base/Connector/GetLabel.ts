@@ -13,7 +13,8 @@ export default class GetLabel extends ABaseConnector<IInput, IOutput> {
         return 'getLabel';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { courierCode, packageId, packageNumber } = dto.getJsonData();
 
         /* eslint-disable @typescript-eslint/naming-convention */

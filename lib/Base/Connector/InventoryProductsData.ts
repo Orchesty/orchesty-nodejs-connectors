@@ -13,7 +13,8 @@ export default class InventoryProductsData extends ABaseConnector<IInput, IOutpu
         return 'getInventoryProductsData';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { inventoryId, products, includeErpUnits, includeWmsUnits, includeAdditionalEans } = dto.getJsonData();
 
         /* eslint-disable @typescript-eslint/naming-convention */

@@ -13,7 +13,8 @@ export default class CourierFields extends ABaseConnector<IInput, IOutput> {
         return 'getCourierFields';
     }
 
-    protected getParameters(dto: ProcessDto<IInput>): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
         const { courierCode } = dto.getJsonData();
 
         return {

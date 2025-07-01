@@ -2,7 +2,7 @@ import ABaseConnector from './ABaseConnector';
 
 export const NAME = 'couriers-list';
 
-export default class CouriersList extends ABaseConnector<undefined, IOutput> {
+export default class CouriersList extends ABaseConnector<unknown, IOutput> {
 
     public getName(): string {
         return NAME;
@@ -14,7 +14,7 @@ export default class CouriersList extends ABaseConnector<undefined, IOutput> {
 
 }
 
-interface IOutput {
+export interface IOutput {
     couriers: {
         code: string;
         name: string;

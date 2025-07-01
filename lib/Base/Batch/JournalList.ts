@@ -13,12 +13,14 @@ export default class JournalList extends ABaseBatch<IInput> {
         return 'getJournalList';
     }
 
-    protected getParameters(dto: BatchProcessDto<IInput>, _page: number, _lastRun?: Date): object {
+    protected getParameters(dto: BatchProcessDto<IInput>, _page: number, _lastRun?: Date|number): object {
         const { lastLogId, logsTypes, orderId } = dto.getJsonData();
+
+        const lastLog = (lastLogId ?? _lastRun) ?? 0;
 
         /* eslint-disable @typescript-eslint/naming-convention */
         return {
-            last_log_id: lastLogId,
+            last_log_id: lastLog,
             logs_types: logsTypes,
             order_id: orderId,
         };
@@ -51,8 +53,8 @@ export default class JournalList extends ABaseBatch<IInput> {
 }
 
 export interface IInput {
-    lastLogId: number;
     logsTypes: number[];
+    lastLogId?: number;
     orderId?: number;
 }
 
