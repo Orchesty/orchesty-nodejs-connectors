@@ -7,7 +7,7 @@ import BulkGateApplication, {
 import BulkGateGetPromotionalSMSConnector from '../../lib/BulkGate/Connector/BulkGateGetPromotionalSMSConnector';
 import BulkGateGetTransactionSMSConnector from '../../lib/BulkGate/Connector/BulkGateGetTransactionSMSConnector';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
-import { container, db, sender } from '../TestAbstract';
+import { container } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(BULKGATE_APP, DEFAULT_USER, {
@@ -18,19 +18,8 @@ export default function init(): void {
     });
 
     const bulkGateApp = new BulkGateApplication();
-    const bulkGateGetPromotionalSMSConnector = new BulkGateGetPromotionalSMSConnector();
-    const bulkGateGetTransactionSMSConnector = new BulkGateGetTransactionSMSConnector();
     container.setApplication(bulkGateApp);
 
-    bulkGateGetPromotionalSMSConnector
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(bulkGateApp);
-    container.setConnector(bulkGateGetPromotionalSMSConnector);
-
-    bulkGateGetTransactionSMSConnector
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(bulkGateApp);
-    container.setConnector(bulkGateGetTransactionSMSConnector);
+    container.setNode(new BulkGateGetPromotionalSMSConnector(), bulkGateApp);
+    container.setNode(new BulkGateGetTransactionSMSConnector(), bulkGateApp);
 }

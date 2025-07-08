@@ -8,7 +8,7 @@ import CeskaPostaGetSendParcelsConnector from '../../lib/CeskaPosta/Connector/Ce
 import CeskaPostaParcelPrintingConnector from '../../lib/CeskaPosta/Connector/CeskaPostaParcelPrintingConnector';
 import CeskaPostaParcelStatusConnector from '../../lib/CeskaPosta/Connector/CeskaPostaParcelStatusConnector';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '../DataProvider';
-import { container, db, sender } from '../TestAbstract';
+import { container } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(CESKAPOSTA_APP, DEFAULT_USER, {
@@ -21,25 +21,7 @@ export default function init(): void {
     const app = new CeskaPostaApplication();
     container.setApplication(app);
 
-    const parcelStatus = new CeskaPostaParcelStatusConnector();
-    const getSendParcels = new CeskaPostaGetSendParcelsConnector();
-    const parcelPrinting = new CeskaPostaParcelPrintingConnector();
-
-    parcelStatus
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(parcelStatus);
-
-    getSendParcels
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getSendParcels);
-
-    parcelPrinting
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(parcelPrinting);
+    container.setNode(new CeskaPostaParcelStatusConnector(), app);
+    container.setNode(new CeskaPostaGetSendParcelsConnector(), app);
+    container.setNode(new CeskaPostaParcelPrintingConnector(), app);
 }

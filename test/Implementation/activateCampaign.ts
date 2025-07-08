@@ -6,7 +6,7 @@ import ActiveCampaignListAccountsBatch from '../../lib/ActiveCampaign/Batch/Acti
 import ActivateCampaignCreateAccountConnector
     from '../../lib/ActiveCampaign/Connector/ActivateCampaignCreateAccountConnector';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
-import { container, db, sender } from '../TestAbstract';
+import { container } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(ACTIVATECAMPAIGN_APP, DEFAULT_USER, {
@@ -18,18 +18,6 @@ export default function init(): void {
     const app = new ActiveCampaignApplication();
     container.setApplication(app);
 
-    const createAccount = new ActivateCampaignCreateAccountConnector();
-    const listAccounts = new ActiveCampaignListAccountsBatch();
-
-    createAccount
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createAccount);
-
-    listAccounts
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listAccounts);
+    container.setNode(new ActivateCampaignCreateAccountConnector(), app);
+    container.setNode(new ActiveCampaignListAccountsBatch(), app);
 }

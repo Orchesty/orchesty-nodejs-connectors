@@ -7,7 +7,7 @@ import AlzaCreateShipmentConnector from '../../lib/Alza/Connector/AlzaCreateShip
 import AlzaInsetrOrderConnector from '../../lib/Alza/Connector/AlzaInsetrOrderConnector';
 import AlzaTrackAndTraceConnector from '../../lib/Alza/Connector/AlzaTrackAndTraceConnector';
 import { appInstall, DEFAULT_PASSWORD, DEFAULT_USER } from '../DataProvider';
-import { container, db, sender } from '../TestAbstract';
+import { container } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(ALZA_APP, DEFAULT_USER, {
@@ -22,39 +22,9 @@ export default function init(): void {
     const app = new AlzaApplication();
     container.setApplication(app);
 
-    const createShipment = new AlzaCreateShipmentConnector();
-    const insertOrder = new AlzaInsetrOrderConnector();
-    const cancelOrder = new AlzaCancelOrderConnector();
-    const confirmOrder = new AlzaConfirmOrderConnector();
-    const trackAndTrace = new AlzaTrackAndTraceConnector();
-
-    createShipment
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createShipment);
-
-    insertOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(insertOrder);
-
-    cancelOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(cancelOrder);
-
-    confirmOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(confirmOrder);
-
-    trackAndTrace
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(trackAndTrace);
+    container.setNode(new AlzaCreateShipmentConnector(), app);
+    container.setNode(new AlzaInsetrOrderConnector(), app);
+    container.setNode(new AlzaCancelOrderConnector(), app);
+    container.setNode(new AlzaConfirmOrderConnector(), app);
+    container.setNode(new AlzaTrackAndTraceConnector(), app);
 }

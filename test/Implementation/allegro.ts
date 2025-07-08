@@ -16,9 +16,7 @@ import {
     DEFAULT_CLIENT_SECRET,
     DEFAULT_USER,
 } from '../DataProvider';
-import {
-    container, db, oauth2Provider, sender,
-} from '../TestAbstract';
+import { container, oauth2Provider } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(ALLEGRO_APP, DEFAULT_USER, {
@@ -35,41 +33,10 @@ export default function init(): void {
     const app = new AllegroApplication(oauth2Provider);
     container.setApplication(app);
 
-    const getProductDetail = new AllegroGetProductDetailConnector();
-    const proposeProduct = new AllegroProposeProductConnector();
-    const getOrderDetail = new AllegroGetOrderDetailConnector();
-    const getUsersOrderList = new AllegroGetUsersOrderListBatch();
-    const getAvailableProducts = new AllegroGetAvailableProductsBatch();
-    const createDraftOffer = new AllegroCreateDraftOfferConnector();
-
-    getProductDetail
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getProductDetail);
-    proposeProduct
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(proposeProduct);
-    getOrderDetail
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getOrderDetail);
-    getUsersOrderList
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getUsersOrderList);
-    getAvailableProducts
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getAvailableProducts);
-    createDraftOffer
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createDraftOffer);
+    container.setNode(new AllegroGetProductDetailConnector(), app);
+    container.setNode(new AllegroProposeProductConnector(), app);
+    container.setNode(new AllegroGetOrderDetailConnector(), app);
+    container.setNode(new AllegroGetUsersOrderListBatch(), app);
+    container.setNode(new AllegroGetAvailableProductsBatch(), app);
+    container.setNode(new AllegroCreateDraftOfferConnector(), app);
 }

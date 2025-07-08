@@ -1,0 +1,5 @@
+{
+  "http": "POST https://app.authentica.cz/api/applinth/label",
+  "code": 200,
+  "body": {}
+}

@@ -13,7 +13,7 @@ import {
     DEFAULT_CLIENT_SECRET,
     DEFAULT_USER,
 } from '../DataProvider';
-import { container, db, oauth2Provider, sender } from '../TestAbstract';
+import { container, oauth2Provider } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(CALENDLY_APP, DEFAULT_USER, {
@@ -28,23 +28,8 @@ export default function init(): void {
 
     const app = new CalendlyApplication(oauth2Provider);
     container.setApplication(app);
-    const getUser = new CalendlyGetUserConnector();
-    const listEvents = new CalendlyListEventsBatch();
-    const inviteUser = new CalendlyInviteUserConnector();
 
-    getUser
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getUser);
-    listEvents
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listEvents);
-    inviteUser
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(inviteUser);
+    container.setNode(new CalendlyGetUserConnector(), app);
+    container.setNode(new CalendlyListEventsBatch(), app);
+    container.setNode(new CalendlyInviteUserConnector(), app);
 }

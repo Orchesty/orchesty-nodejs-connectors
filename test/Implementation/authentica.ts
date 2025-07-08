@@ -15,13 +15,14 @@ import AuthenticaGetOrder from '../../lib/Authentica/Connector/AuthenticaGetOrde
 import AuthenticaGetOrderStatus from '../../lib/Authentica/Connector/AuthenticaGetOrderStatus';
 import AuthenticaGetReceipt from '../../lib/Authentica/Connector/AuthenticaGetReceipt';
 import AuthenticaGetShippingMethods from '../../lib/Authentica/Connector/AuthenticaGetShippingMethods';
+import AuthenticaPostLabel from '../../lib/Authentica/Connector/AuthenticaPostLabel';
 import AuthenticaPutOrders from '../../lib/Authentica/Connector/AuthenticaPutOrders';
 import AuthenticaPostProducts from '../../lib/Authentica/Connector/AuthenticaPutProducts';
 import AuthenticaUpdateOrder from '../../lib/Authentica/Connector/AuthenticaUpdateOrder';
 import AuthenticaUpdateProduct from '../../lib/Authentica/Connector/AuthenticaUpdateProduct';
 import AuthenticaUpdateReceipt from '../../lib/Authentica/Connector/AuthenticaUpdateReceipt';
 import { appInstall, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
-import { cacheService, container, db, sender } from '../TestAbstract';
+import { cacheService, container } from '../TestAbstract';
 
 export function mock(): ApplicationInstall {
     return appInstall(
@@ -60,102 +61,20 @@ export async function initAuthenticaTest(): Promise<void> {
     const authenticaApplication = new AuthenticaApplication(cacheService);
     container.setApplication(authenticaApplication);
 
-    const authenticaGetShippingMethods = new AuthenticaGetShippingMethods()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setConnector(authenticaGetShippingMethods);
-
-    const authenticaPostOrders = new AuthenticaPutOrders()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setConnector(authenticaPostOrders);
-
-    const authenticaPostProducts = new AuthenticaPostProducts()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setConnector(authenticaPostProducts);
-
-    const authenticaGetOrderStatus = new AuthenticaGetOrderStatus()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setConnector(authenticaGetOrderStatus);
-
-    const authenticaGetStock = new AuthenticaGetStock()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setBatch(authenticaGetStock);
-
-    const authenticaGetStockAvailable = new AuthenticaGetStockAvailable()
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(authenticaApplication);
-    container.setBatch(authenticaGetStockAvailable);
-
-    container.setNode(
-        new AuthenticaGetCarriers()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaGetOrder()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaGetReceipt()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaCreateProduct()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaUpdateProduct('product')
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaCreateOrder()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaUpdateOrder()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaCreateReceipt()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
-
-    container.setNode(
-        new AuthenticaUpdateReceipt()
-            .setSender(sender)
-            .setDb(db)
-            .setApplication(authenticaApplication),
-    );
+    container.setNode(new AuthenticaGetShippingMethods(), authenticaApplication);
+    container.setNode(new AuthenticaPutOrders(), authenticaApplication);
+    container.setNode(new AuthenticaPostProducts(), authenticaApplication);
+    container.setNode(new AuthenticaGetOrderStatus(), authenticaApplication);
+    container.setNode(new AuthenticaGetStock(), authenticaApplication);
+    container.setNode(new AuthenticaGetStockAvailable(), authenticaApplication);
+    container.setNode(new AuthenticaGetCarriers(), authenticaApplication);
+    container.setNode(new AuthenticaGetOrder(), authenticaApplication);
+    container.setNode(new AuthenticaGetReceipt(), authenticaApplication);
+    container.setNode(new AuthenticaCreateProduct(), authenticaApplication);
+    container.setNode(new AuthenticaUpdateProduct('product'), authenticaApplication);
+    container.setNode(new AuthenticaCreateOrder(), authenticaApplication);
+    container.setNode(new AuthenticaUpdateOrder(), authenticaApplication);
+    container.setNode(new AuthenticaCreateReceipt(), authenticaApplication);
+    container.setNode(new AuthenticaUpdateReceipt(), authenticaApplication);
+    container.setNode(new AuthenticaPostLabel(), authenticaApplication);
 }

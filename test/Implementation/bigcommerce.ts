@@ -15,7 +15,7 @@ import {
     DEFAULT_CLIENT_SECRET,
     DEFAULT_USER,
 } from '../DataProvider';
-import { container, db, oauth2Provider, sender } from '../TestAbstract';
+import { container, oauth2Provider } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(BIGCOMMERCE_APP, DEFAULT_USER, {
@@ -30,18 +30,8 @@ export default function init(): void {
     });
 
     const app = new BigcommerceApplication(oauth2Provider);
-    const createOrder = new BigcommerceCreateOrderConnector();
-    const createProduct = new BigcommerceCreateProductConnector();
     container.setApplication(app);
 
-    createOrder
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createOrder);
-    createProduct
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createProduct);
+    container.setNode(new BigcommerceCreateOrderConnector(), app);
+    container.setNode(new BigcommerceCreateProductConnector(), app);
 }

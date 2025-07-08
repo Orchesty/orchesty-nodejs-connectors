@@ -13,7 +13,7 @@ import {
     DEFAULT_CLIENT_SECRET,
     DEFAULT_USER,
 } from '../DataProvider';
-import { container, db, oauth2Provider, sender } from '../TestAbstract';
+import { container, oauth2Provider } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(BOX_APP, DEFAULT_USER, {
@@ -29,22 +29,7 @@ export default function init(): void {
     const app = new BoxApplication(oauth2Provider);
     container.setApplication(app);
 
-    const getCollaboration = new BoxGetCollaborationConnector();
-    const getUser = new BoxGetUserConnector();
-    const listTasks = new BoxListTasksBatch();
-    getCollaboration
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getCollaboration);
-    getUser
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getUser);
-    listTasks
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listTasks);
+    container.setNode(new BoxGetCollaborationConnector(), app);
+    container.setNode(new BoxGetUserConnector(), app);
+    container.setNode(new BoxListTasksBatch(), app);
 }

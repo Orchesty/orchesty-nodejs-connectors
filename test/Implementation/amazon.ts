@@ -13,7 +13,7 @@ import AmazonGetListingsItemConnector
 import AmazonPutListingsItemConnector
     from '../../lib/AmazonApps/SellingPartner/Connector/AmazonPutListingsItemConnector';
 import { appInstall, DEFAULT_USER } from '../DataProvider';
-import { container, db, sender } from '../TestAbstract';
+import { container, sender } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(AMAZON_APP, DEFAULT_USER, {
@@ -27,39 +27,9 @@ export default function init(): void {
     const app = new AmazonApplication(sender);
     container.setApplication(app);
 
-    const createShipment = new AmazonCreateShipmentConnector();
-    const listCatalogItem = new AmazonListCatalogItemsBatch();
-    const putListingsItem = new AmazonPutListingsItemConnector();
-    const getListingsItem = new AmazonGetListingsItemConnector();
-    const getOrders = new AmazonGetOrdersBatch();
-
-    createShipment
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(createShipment);
-
-    listCatalogItem
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(listCatalogItem);
-
-    getOrders
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setBatch(getOrders);
-
-    putListingsItem
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(putListingsItem);
-
-    getListingsItem
-        .setSender(sender)
-        .setDb(db)
-        .setApplication(app);
-    container.setConnector(getListingsItem);
+    container.setNode(new AmazonCreateShipmentConnector(), app);
+    container.setNode(new AmazonListCatalogItemsBatch(), app);
+    container.setNode(new AmazonGetOrdersBatch(), app);
+    container.setNode(new AmazonPutListingsItemConnector(), app);
+    container.setNode(new AmazonGetListingsItemConnector(), app);
 }
