@@ -94,6 +94,7 @@ export interface Order {
     delivery_state: string;
     delivery_postcode: string;
     delivery_country: string;
+    delivery_country_code: string;
     delivery_point_id: string;
     delivery_point_name: string;
     delivery_point_address: string;
@@ -107,6 +108,7 @@ export interface Order {
     invoice_state: string;
     invoice_postcode: string;
     invoice_country: string;
+    invoice_country_code: string;
     want_invoice: string;
     extra_field_1: string;
     extra_field_2: string;

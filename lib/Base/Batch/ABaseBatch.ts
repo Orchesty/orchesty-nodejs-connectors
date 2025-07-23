@@ -22,7 +22,7 @@ export abstract class ABaseBatch<T> extends ABatchNode {
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
             undefined,
-            this.prepareBody(this.getMethod(), this.getParameters(dto, page, this.prepareLastRun(lastRun))),
+            this.prepareBody(this.getMethod(), await this.getParameters(dto, page, this.prepareLastRun(lastRun))),
         );
         const resp = await this.getSender().send<IResponse>(req, [200]);
         const { status, ...jsonBody } = resp.getJsonBody();
@@ -59,7 +59,8 @@ export abstract class ABaseBatch<T> extends ABatchNode {
         return new Date().toISOString();
     }
 
-    protected getParameters(_dto: BatchProcessDto<T>, _page: number, _lastRun?: Date|number): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(_dto: BatchProcessDto<T>, _page: number, _lastRun?: Date|number): Promise<object> {
         return [];
     }
 

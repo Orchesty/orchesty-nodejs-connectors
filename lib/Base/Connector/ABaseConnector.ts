@@ -7,12 +7,16 @@ export const SUCCESS = 'SUCCESS';
 
 export default abstract class ABaseConnector<T, K> extends AConnector {
 
+    public constructor(private readonly useInForm = false) {
+        super();
+    }
+
     protected abstract getMethod(): string;
 
     public async processAction(dto: ProcessDto<T>): Promise<ProcessDto<K>> {
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, this.useInForm ? null : true),
             HttpMethods.POST,
             undefined,
             this.prepareBody(this.getMethod(), await this.getParameters(dto)),
