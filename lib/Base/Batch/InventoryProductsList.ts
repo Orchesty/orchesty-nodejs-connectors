@@ -13,7 +13,8 @@ export default class InventoryProductsList extends ABaseBatch<IInput> {
         return 'getInventoryProductsList';
     }
 
-    protected getParameters(dto: BatchProcessDto<IInput>, page: number, _lastRun?: Date): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(dto: BatchProcessDto<IInput>, page: number, _lastRun?: Date): Promise<object> {
         const {
             inventoryId,
             filterId,

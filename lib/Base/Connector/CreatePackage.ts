@@ -24,11 +24,10 @@ export default class CreatePackage extends ABaseConnector<IInput, IOutput> {
             account_id: accountId,
             fields,
             packages: packages.map((item) => ({
-                length: item.length,
-                height: item.height,
-                width: item.width,
+                size_length: item.length,
+                size_height: item.height,
+                size_width: item.width,
                 weight: item.weight,
-                size_custom: item.sizeCustom,
             })),
         };
         /* eslint-enable @typescript-eslint/naming-convention */
@@ -39,7 +38,6 @@ export default class CreatePackage extends ABaseConnector<IInput, IOutput> {
 export interface IInput {
     orderId: number;
     courierCode: string;
-    accountId: number;
     fields: {
         id: string;
         value: string;
@@ -50,8 +48,8 @@ export interface IInput {
         height:number;
         width:number;
         weight:number;
-        sizeCustom:number;
     }[]
+    accountId?: number;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */

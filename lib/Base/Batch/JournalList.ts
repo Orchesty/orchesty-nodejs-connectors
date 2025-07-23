@@ -13,7 +13,12 @@ export default class JournalList extends ABaseBatch<IInput> {
         return 'getJournalList';
     }
 
-    protected getParameters(dto: BatchProcessDto<IInput>, _page: number, _lastRun?: Date|number): object {
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async getParameters(
+        dto: BatchProcessDto<IInput>,
+        _page: number,
+        _lastRun?: Date|number,
+    ): Promise<object> {
         const { lastLogId, logsTypes, orderId } = dto.getJsonData();
 
         const lastLog = (lastLogId ?? _lastRun) ?? 0;
