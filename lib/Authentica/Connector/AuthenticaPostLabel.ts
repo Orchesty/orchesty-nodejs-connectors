@@ -31,7 +31,7 @@ export default class AuthenticaPostLabel extends AConnector {
 }
 
 export interface IInput {
-    printCode: string;
+    printcode: string;
     data: string;
     extension: string;
 }
