@@ -133,9 +133,8 @@ export default class FlexiBeeApplication extends ABasicApplication {
 
             try {
                 token = res.getJsonBody();
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (Throwable) {
-                throw Error(CANNOT_GET_BODY);
+                throw Error(CANNOT_GET_BODY, { cause: Throwable });
             }
 
             if (!token.success) {
