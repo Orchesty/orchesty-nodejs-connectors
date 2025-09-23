@@ -39,7 +39,7 @@ export abstract class ABaseBatch<T> extends ABatchNode {
         } else {
             dto.removeBatchCursor();
 
-            appInstall.setNonEncryptedSettings({ [this.getLastRunKey()]: this.getNewLastRun(jsonBody) });
+            appInstall.addNonEncryptedSettings({ [this.getLastRunKey()]: this.getNewLastRun(jsonBody, lastRun) });
             const repo = this.getDbClient().getApplicationRepository();
             await repo.update(appInstall);
         }
@@ -55,7 +55,7 @@ export abstract class ABaseBatch<T> extends ABatchNode {
         return lastRun ? new Date(lastRun) : undefined;
     }
 
-    protected getNewLastRun(_jsonBody: object): string {
+    protected getNewLastRun(_jsonBody: object, _lastRun?: string): string {
         return new Date().toISOString();
     }
 

@@ -21,11 +21,11 @@ export default class JournalList extends ABaseBatch<IInput> {
     ): Promise<object> {
         const { lastLogId, logsTypes, orderId } = dto.getJsonData();
 
-        const lastLog = (lastLogId ?? _lastRun) ?? 0;
+        const lastLog = Number((lastLogId ?? _lastRun) ?? 0);
 
         /* eslint-disable @typescript-eslint/naming-convention */
         return {
-            last_log_id: lastLog,
+            last_log_id: lastLog + 1,
             logs_types: logsTypes,
             order_id: orderId,
         };
@@ -49,10 +49,10 @@ export default class JournalList extends ABaseBatch<IInput> {
         return false;
     }
 
-    protected getNewLastRun(_jsonBody: IOutput): string {
+    protected getNewLastRun(_jsonBody: IOutput, _lastRun?: string): string {
         const lastLog = Object.values(_jsonBody.logs).pop();
 
-        return String(lastLog?.log_id ?? 0);
+        return String(lastLog?.log_id ?? _lastRun ?? 0);
     }
 
 }
