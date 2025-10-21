@@ -66,6 +66,12 @@ export interface IOutput {
     sku: string;
     productId: string;
     timestamp: string;
+    event: EventEnum;
     inStock?: string;
     inStockDelta?: string;
+}
+
+export enum EventEnum {
+    AVAILABLE_STOCK_CHANGE = 'availableStockChange',
+    QUARANTINE_STOCK_CHANGE = 'quarantineStockChange',
 }
