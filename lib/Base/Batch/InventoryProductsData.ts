@@ -1,9 +1,13 @@
-import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import ABaseConnector from './ABaseConnector';
+import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
+import { ABaseBatch } from './ABaseBatch';
 
 export const NAME = 'inventory-products-data';
 
-export default class InventoryProductsData extends ABaseConnector<IInput, IOutput> {
+export default class InventoryProductsData extends ABaseBatch<IInput> {
+
+    public constructor(private readonly useAsBatch = false) {
+        super();
+    }
 
     public getName(): string {
         return NAME;
@@ -14,7 +18,7 @@ export default class InventoryProductsData extends ABaseConnector<IInput, IOutpu
     }
 
     // eslint-disable-next-line @typescript-eslint/require-await
-    protected async getParameters(dto: ProcessDto<IInput>): Promise<object> {
+    protected async getParameters(dto: BatchProcessDto<IInput>): Promise<object> {
         const { inventoryId, products, includeErpUnits, includeWmsUnits, includeAdditionalEans } = dto.getJsonData();
 
         /* eslint-disable @typescript-eslint/naming-convention */
@@ -26,6 +30,24 @@ export default class InventoryProductsData extends ABaseConnector<IInput, IOutpu
             include_additional_eans: includeAdditionalEans,
         };
         /* eslint-enable @typescript-eslint/naming-convention */
+    }
+
+    // eslint-disable-next-line @typescript-eslint/require-await
+    protected async processOutputData(dto: BatchProcessDto, body: IOutput): Promise<BatchProcessDto> {
+        if (this.useAsBatch) {
+            dto.addItem(body);
+        } else {
+            Object.values(body.products).forEach((product) => {
+                dto.addItem(product);
+            });
+        }
+
+        return dto;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected hasNextPage(jsonBody: IOutput): boolean {
+        return false;
     }
 
 }

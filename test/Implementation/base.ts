@@ -1,6 +1,7 @@
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import BaseApplication, { NAME as BASE_APP } from '../../lib/Base/BaseApplication';
+import InventoryProductsData from '../../lib/Base/Batch/InventoryProductsData';
 import InventoryProductsList from '../../lib/Base/Batch/InventoryProductsList';
 import JournalList from '../../lib/Base/Batch/JournalList';
 import CourierFields from '../../lib/Base/Connector/CourierFields';
@@ -9,7 +10,6 @@ import CreatePackage from '../../lib/Base/Connector/CreatePackage';
 import CreatePackageManual from '../../lib/Base/Connector/CreatePackageManual';
 import GetLabel from '../../lib/Base/Connector/GetLabel';
 import Inventories from '../../lib/Base/Connector/Inventories';
-import InventoryProductsData from '../../lib/Base/Connector/InventoryProductsData';
 import InventoryWarehouses from '../../lib/Base/Connector/InventoryWarehouses';
 import OrderPaymentsHistory from '../../lib/Base/Connector/OrderPaymentsHistory';
 import Orders from '../../lib/Base/Connector/Orders';

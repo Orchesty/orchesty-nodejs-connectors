@@ -13,7 +13,8 @@ export abstract class ABaseBatch<T> extends ABatchNode {
     protected abstract hasNextPage(jsonBody: object): boolean;
 
     public async processAction(dto: BatchProcessDto<T>): Promise<BatchProcessDto> {
-        let page = Number(dto.getBatchCursor() ?? '1');
+        let page = Number(dto.getBatchCursor('1'));
+
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const lastRun = appInstall.getNonEncryptedSettings()[this.getLastRunKey()] as string | undefined;
 

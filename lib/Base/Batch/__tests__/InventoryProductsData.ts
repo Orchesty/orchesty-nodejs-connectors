@@ -12,6 +12,6 @@ describe('Tests for InventoryProductsData', () => {
     });
 
     it('process - ok', async () => {
-        await tester.testConnector(INVENTORY_PRODUCTS_DATA);
+        await tester.testBatch(INVENTORY_PRODUCTS_DATA);
     });
 });

@@ -5,6 +5,10 @@ export const NAME = 'inventory-products-list';
 
 export default class InventoryProductsList extends ABaseBatch<IInput> {
 
+    public constructor(private readonly useAsBatch = false) {
+        super();
+    }
+
     public getName(): string {
         return NAME;
     }
@@ -49,9 +53,13 @@ export default class InventoryProductsList extends ABaseBatch<IInput> {
 
     // eslint-disable-next-line @typescript-eslint/require-await
     protected async processOutputData(dto: BatchProcessDto, body: IOutput): Promise<BatchProcessDto> {
-        Object.values(body.products).forEach((product) => {
-            dto.addItem(product);
-        });
+        if (this.useAsBatch) {
+            dto.addItem(body);
+        } else {
+            Object.values(body.products).forEach((product) => {
+                dto.addItem(product);
+            });
+        }
 
         return dto;
     }

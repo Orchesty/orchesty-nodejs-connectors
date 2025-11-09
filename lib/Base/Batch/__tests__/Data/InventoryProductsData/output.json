@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "body": "{\"is_bundle\":false,\"ean\":\"983628103943\",\"sku\":\"EPL-432\",\"tags\":[\"Summer\",\"Winter\"],\"tax_rate\":23,\"weight\":0.25,\"height\":0.3,\"width\":0.2,\"length\":0.05,\"star\":2,\"category_id\":\"3\",\"manufacturer_id\":\"7\",\"prices\":{\"105\":20.99,\"106\":23.99},\"stock\":{\"bl_206\":5,\"bl_207\":7},\"locations\":{\"bl_206\":\"A-5-2\",\"bl_207\":\"B-1-5\"},\"text_fields\":{\"name\":\"Harry Potter and the Chamber of Secrets\",\"description\":\"Basic book description\",\"description_extra1\":\"Additional description, e.g. of the entire product category\",\"description_extra2\":\"Second additional description - e.g. IMG tags with photos from an external server\",\"features\":{\"Cover\":\"Hardcover\",\"Pages\":\"300\",\"Language\":\"English\"},\"name|de\":\"Harry Potter und die Kammer des Schreckens\"},\"average_cost\":120.98,\"average_landed_cost\":1.2,\"images\":{\"1\":\"http://upload.cdn.baselinker.com/products/23/484608.jpg\",\"3\":\"http://upload.cdn.baselinker.com/products/23/484609.jpg\",\"5\":\"http://upload.cdn.baselinker.com/products/23/484610.jpg\"},\"links\":{\"shop_23\":{\"product_id\":8,\"variant_id\":3}},\"variants\":{\"17\":{\"name\":\"Harry Potter and the Chamber of Secrets. Special edition\",\"sku\":\"AGH-41\",\"ean\":\"5697482359144\",\"prices\":{\"105\":22.99,\"106\":25.99},\"stock\":{\"bl_206\":3,\"bl_207\":4},\"locations\":{\"bl_206\":\"A-5-2\",\"bl_207\":\"B-1-5\"}}}}",
+      "headers": {}
+    }
+  ]
+}
