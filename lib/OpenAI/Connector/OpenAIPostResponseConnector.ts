@@ -2,9 +2,11 @@ import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
-import { BASE_PATH, getErrorInResponse, NAME as APPLICATION_NAME } from '../OpenAIApplication';
+import { getErrorInResponse, NAME as APPLICATION_NAME } from '../OpenAIApplication';
+import { OpenAIRequest } from '../types/request.types';
+import { OpenAIResponse } from '../types/response.types';
 
-export const NAME = `${APPLICATION_NAME}-post-invoice-label-connector`;
+export const NAME = `${APPLICATION_NAME}-post-response-connector`;
 
 export default class OpenAIPostResponseConnector extends AConnector {
 
@@ -12,18 +14,18 @@ export default class OpenAIPostResponseConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
+    public async processAction(dto: ProcessDto<OpenAIRequest>): Promise<ProcessDto<OpenAIResponse>> {
         const data = dto.getJsonData();
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.POST,
-            `${BASE_PATH}/v1/responses`,
+            '/v1/responses',
             data,
         );
 
-        const responseDto = await this.getSender().send<IOutput>(requestDto, {
+        const responseDto = await this.getSender().send<OpenAIResponse>(requestDto, {
             success: StatusCodes.OK,
             stopAndFail: [StatusCodes.BAD_REQUEST],
         }, undefined, undefined, getErrorInResponse);
@@ -33,19 +35,9 @@ export default class OpenAIPostResponseConnector extends AConnector {
 
 }
 
-export interface IInput {
-    model: string;
-    input: string;
-}
-
-export interface IMessageContent {
-    text: string;
-}
-
-export interface IMessageOutput {
-    content: IMessageContent[];
-}
-
-export interface IOutput {
-    output: IMessageOutput[];
+export function getOutputText(response: OpenAIResponse): string {
+    return response.output
+        ?.find((item) => item.type === 'message')?.content
+        ?.filter((item) => item.type === 'output_text')
+        .map((item) => item.text).join('') ?? '';
 }

@@ -13,8 +13,8 @@ export default function init(): void {
         },
     });
 
-    const fapiApplication = new OpenAIApplication();
-    container.setApplication(fapiApplication);
+    const app = new OpenAIApplication();
+    container.setApplication(app);
 
-    container.setNode(new OpenAIPostResponseConnector(), fapiApplication);
+    container.setNode(new OpenAIPostResponseConnector(), app);
 }

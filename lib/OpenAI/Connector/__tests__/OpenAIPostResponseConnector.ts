@@ -5,7 +5,7 @@ import { NAME as OPEN_AI_POST_RESPONSE_CONNECTOR } from '../OpenAIPostResponseCo
 
 let tester: NodeTester;
 
-describe('Tests for FapiPostInvoiceLabelConnector', () => {
+describe('Tests for OpenAIPostResponseConnector', () => {
     beforeEach(() => {
         tester = new NodeTester(container, __filename);
         init();

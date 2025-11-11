@@ -60,17 +60,14 @@ export default class OpenAIApplication extends ABasicApplication {
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
-        url?: string,
+        path?: string,
         data?: unknown,
     ): RequestDto {
         const {
-            api_key: apiKey,
-            organizationId,
-            projectId,
+            [API_KEY]: apiKey,
+            [ORGANIZATION_ID]: organizationId,
+            [PROJECT_ID]: projectId,
         } = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
-
-        // eslint-disable-next-line no-console
-        console.log('API_KEY:', apiKey);
 
         const headers: Record<string, string> = {
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -86,17 +83,15 @@ export default class OpenAIApplication extends ABasicApplication {
             headers[OpenAIHeaders.PROJECT] = projectId;
         }
 
+        const url = new URL(path ?? '', BASE_PATH).href;
+
         const requestDto = new RequestDto(
-            url ?? BASE_PATH,
+            url,
             method,
             dto,
-            undefined,
+            data,
             headers,
         );
-
-        if (data) {
-            requestDto.setJsonBody(data);
-        }
 
         return requestDto;
     }
