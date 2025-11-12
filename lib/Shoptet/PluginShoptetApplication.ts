@@ -297,7 +297,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         return await this.oauth2Provider.getAccessToken(
             oAuth2Dto,
             code,
-            ['api'],
+            ['basic_eshop'],
             ScopeSeparatorEnum.COMMA,
             {
                 options: {
