@@ -5,7 +5,7 @@ export const NAME = 'google-cloud-logging';
 
 export const BASE_URL = 'https://logging.googleapis.com';
 
-export default class GoogleSheetApplication extends AGoogle {
+export default class GoogleCloudLoggingApplication extends AGoogle {
 
     public getName(): string {
         return NAME;

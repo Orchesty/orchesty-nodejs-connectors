@@ -1,0 +1,277 @@
+{
+  "http": "POST https://logging.googleapis.com/v2/entries:list",
+  "code": 200,
+  "body": {
+    "entries": [
+      {
+        "protoPayload": {
+          "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+          "status": {},
+          "authenticationInfo": {
+            "principalEmail": "test.user@orchesty.io"
+          },
+          "requestMetadata": {
+            "callerIp": "0.0.0.0",
+            "callerSuppliedUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36,gzip(gfe),gzip(gfe)",
+            "requestAttributes": {},
+            "destinationAttributes": {}
+          },
+          "serviceName": "cloudresourcemanager.googleapis.com",
+          "methodName": "CreateProject",
+          "authorizationInfo": [
+            {
+              "resource": "organizations/535736758735",
+              "permission": "resourcemanager.projects.create",
+              "granted": true,
+              "resourceAttributes": {
+                "service": "cloudresourcemanager.googleapis.com",
+                "type": "cloudresourcemanager.googleapis.com/Project"
+              },
+              "permissionType": "ADMIN_WRITE"
+            }
+          ],
+          "resourceName": "projects/test-project",
+          "request": {
+            "@type": "type.googleapis.com/google.cloudresourcemanager.v1.CreateProjectRequest",
+            "project": {
+              "name": "Test Project",
+              "createTime": "2022-01-01T10:09:56.764245Z",
+              "lifecycleState": "ACTIVE",
+              "parent": {
+                "id": "535736758735",
+                "type": "organization"
+              },
+              "projectId": "test-project",
+              "projectNumber": "640754259240"
+            }
+          }
+        },
+        "insertId": "-z7j9z6dbhre",
+        "resource": {
+          "type": "project",
+          "labels": {
+            "project_id": "test-project"
+          }
+        },
+        "timestamp": "2023-04-06T08:09:26.956736Z",
+        "severity": "NOTICE",
+        "logName": "projects/test-project/logs/cloudaudit.googleapis.com%2Factivity",
+        "receiveTimestamp": "2023-04-06T08:09:28.005427465Z"
+      },
+      {
+        "protoPayload": {
+          "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+          "authenticationInfo": {
+            "principalEmail": "test.user@orchesty.io"
+          },
+          "requestMetadata": {
+            "callerIp": "0.0.0.0",
+            "callerSuppliedUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36,gzip(gfe),gzip(gfe)",
+            "requestAttributes": {},
+            "destinationAttributes": {}
+          },
+          "methodName": "google.api.serviceusage.v1.ServiceUsage.EnableService",
+          "authorizationInfo": [
+            {
+              "resource": "projectnumbers/640754259240/services/cloudapis.googleapis.com",
+              "permission": "serviceusage.services.enable",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "ADMIN_WRITE"
+            },
+            {
+              "resource": "services/cloudapis.googleapis.com",
+              "permission": "servicemanagement.services.bind",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_WRITE"
+            }
+          ],
+          "resourceName": "projects/test-project/services/cloudapis.googleapis.com"
+        },
+        "insertId": "-9nvu06d35ws",
+        "resource": {
+          "type": "audited_resource",
+          "labels": {
+            "project_id": "test-project",
+            "service": "",
+            "method": "google.api.serviceusage.v1.ServiceUsage.EnableService"
+          }
+        },
+        "timestamp": "2023-04-06T08:09:28.724301Z",
+        "severity": "NOTICE",
+        "logName": "projects/test-project/logs/cloudaudit.googleapis.com%2Factivity",
+        "operation": {
+          "id": "operations/acat.p2-640754259240-f106b527-cb0f-4ad0-b3d1-9a70cc02ed3f",
+          "producer": "serviceusage.googleapis.com",
+          "first": true
+        },
+        "receiveTimestamp": "2023-04-06T08:09:30.223645924Z"
+      },
+      {
+        "protoPayload": {
+          "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+          "authenticationInfo": {
+            "principalEmail": "test.user@orchesty.io"
+          },
+          "requestMetadata": {
+            "callerIp": "0.0.0.0",
+            "callerSuppliedUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36,gzip(gfe),gzip(gfe)",
+            "requestAttributes": {},
+            "destinationAttributes": {}
+          },
+          "serviceName": "serviceusage.googleapis.com",
+          "methodName": "google.api.serviceusage.v1.ServiceUsage.EnableService",
+          "authorizationInfo": [
+            {
+              "resource": "projectnumbers/640754259240/services/cloudapis.googleapis.com",
+              "permission": "serviceusage.services.enable",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "ADMIN_WRITE"
+            },
+            {
+              "resource": "services/cloudapis.googleapis.com",
+              "permission": "servicemanagement.services.bind",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_WRITE"
+            }
+          ],
+          "resourceName": "projects/test-project/services/cloudapis.googleapis.com",
+          "request": {
+            "name": "projects/test-project/services/cloudapis.googleapis.com",
+            "@type": "type.googleapis.com/google.api.serviceusage.v1.EnableServiceRequest"
+          }
+        },
+        "insertId": "1w0yh4ed7sx4",
+        "resource": {
+          "type": "audited_resource",
+          "labels": {
+            "project_id": "test-project",
+            "service": "serviceusage.googleapis.com",
+            "method": "google.api.serviceusage.v1.ServiceUsage.EnableService"
+          }
+        },
+        "timestamp": "2023-04-06T08:09:28.724301Z",
+        "severity": "NOTICE",
+        "logName": "projects/test-project/logs/cloudaudit.googleapis.com%2Factivity",
+        "operation": {
+          "id": "operations/acat.p2-640754259240-f106b527-cb0f-4ad0-b3d1-9a70cc02ed3f",
+          "producer": "serviceusage.googleapis.com",
+          "first": true
+        },
+        "receiveTimestamp": "2023-04-06T08:09:30.435880237Z"
+      },
+      {
+        "protoPayload": {
+          "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+          "status": {},
+          "authenticationInfo": {
+            "principalEmail": "test.user@orchesty.io"
+          },
+          "requestMetadata": {
+            "callerIp": "0.0.0.0",
+            "callerSuppliedUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36,gzip(gfe),gzip(gfe)",
+            "requestAttributes": {},
+            "destinationAttributes": {}
+          },
+          "serviceName": "serviceusage.googleapis.com",
+          "methodName": "google.longrunning.Operations.GetOperation",
+          "authorizationInfo": [
+            {
+              "resource": "projectnumbers/640754259240",
+              "permission": "serviceusage.services.enable",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "ADMIN_WRITE"
+            },
+            {
+              "resource": "projectnumbers/640754259240/operations/-",
+              "permission": "serviceusage.operations.get",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_READ"
+            },
+            {
+              "resource": "projectnumbers/640754259240",
+              "permission": "serviceusage.services.get",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_READ"
+            }
+          ],
+          "resourceName": "projects/640754259240/operations/acat.p2-640754259240-f106b527-cb0f-4ad0-b3d1-9a70cc02ed3f"
+        },
+        "insertId": "xm1l6vd9tru",
+        "resource": {
+          "type": "audited_resource",
+          "labels": {
+            "method": "google.longrunning.Operations.GetOperation",
+            "project_id": "test-project",
+            "service": "serviceusage.googleapis.com"
+          }
+        },
+        "timestamp": "2023-04-06T08:09:30.118490Z",
+        "severity": "NOTICE",
+        "logName": "projects/test-project/logs/cloudaudit.googleapis.com%2Factivity",
+        "receiveTimestamp": "2023-04-06T08:09:30.735349833Z"
+      },
+      {
+        "protoPayload": {
+          "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+          "status": {},
+          "authenticationInfo": {
+            "principalEmail": "test.user@orchesty.io"
+          },
+          "requestMetadata": {
+            "callerIp": "0.0.0.0",
+            "callerSuppliedUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36,gzip(gfe),gzip(gfe)",
+            "requestAttributes": {},
+            "destinationAttributes": {}
+          },
+          "serviceName": "serviceusage.googleapis.com",
+          "methodName": "google.longrunning.Operations.GetOperation",
+          "authorizationInfo": [
+            {
+              "resource": "projectnumbers/640754259240",
+              "permission": "serviceusage.services.enable",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "ADMIN_WRITE"
+            },
+            {
+              "resource": "projectnumbers/640754259240/operations/-",
+              "permission": "serviceusage.operations.get",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_READ"
+            },
+            {
+              "resource": "projectnumbers/640754259240",
+              "permission": "serviceusage.services.get",
+              "granted": true,
+              "resourceAttributes": {},
+              "permissionType": "DATA_READ"
+            }
+          ],
+          "resourceName": "projects/640754259240/operations/acat.p2-640754259240-f106b527-cb0f-4ad0-b3d1-9a70cc02ed3f"
+        },
+        "insertId": "78bw6sd8rb0",
+        "resource": {
+          "type": "audited_resource",
+          "labels": {
+            "project_id": "test-project",
+            "service": "serviceusage.googleapis.com",
+            "method": "google.longrunning.Operations.GetOperation"
+          }
+        },
+        "timestamp": "2023-04-06T08:09:31.837411Z",
+        "severity": "NOTICE",
+        "logName": "projects/test-project/logs/cloudaudit.googleapis.com%2Factivity",
+        "receiveTimestamp": "2023-04-06T08:09:32.934209936Z"
+      }
+    ],
+    "nextPageToken": "evAGCusGAcpOjMzTBEgLUgaW01Ujc2NUa41L4MusT32o4jNgbDdABiHrTpRx2tOXdwdaasO0kaj3lvC7hXkqwxnu7vq-DLua1TryZuppeyS6bgTh2qQZW5MTwkrmMPAN4z_9pGe6x7J3x9PqTra6XdlxTmGLZKhj7X4E22peyCEIzHuuyNORWTzX7Tb0EvTDVKlzoTeD4rXUqWoHDLomO5DjbrOHNZU58VLc8UcJrq9oEzZ8JygBlp29eoRfdjfB9KJCOzbttjqfK7qtDYYfDqSt7O9A5VPZVWuxw7xLXiUErARUjBOta361NLawsHr-5C6mlBEeW9CSEjzkLK22IK2cXvrOmzeZvLKy9MN4fh5E12qol6kj5v_WqkzLzT2MtRdITePVNABvLiTZOm9WUzUojRqJ2WT9eXI4XRqCGdBYxioHgn0FYNDOVxY8bwIHz9e5enR8XNKqgwtr_ENz3VAxYITEktYNP08NVuK-tV3yWH7WBAKPe86og6jiVF-aGoWQjMZJyMyMpIUmvqClcrNZ5JXQlWT9pJT8eZ2dppT7oLy6ZGqXA8-CriR1YnFb4ZkRnf6KUg_DwQcAT00FwRk9iWvrJfYowi6MVsrDyrV0QTvUdnZPMzQ81vLQIJkIFbrLqXbhfxxLZVSYhjIQHa0tvaVcYzgYF8g71WE7QFBomgdioRctjRDK4jvYMsD15QYkX1xt_mAW-blmuPaY_SXoWESBRyxeK-wafLkmcEhihg8aajG6uilpWCHo9vU_PgHR3qGphNnmoDfwJFp_yiKjX0A7sJVk5GY-StQChphP-wFqAAgADQUo9o_HBd_PA2qrxCQlKBbwsSEVMgTqzrOqwtcDYKbJv6nYl3KCCQCKzbZtbZK4RFQIgM8YAk99_7oXRXzuZeWSv9vQgZomTIkO7qM6KDC6fGNRXbxgBzA5RMTHoNlmFTnT-8SNbzsNgVFOVbooPQXahou0S7Fp4_ZYYCrowLu2fCOAsw-oSCdeiyFUUNP4tydJHT95Rs36OTD3LQqtTQGW4dWg3BC_0wf6326TNhX0NHfzOomLz7d2yOGAo0ZYWr2OoNq85AcQRBdTIA75V9l07jKhB0shWuIN3_slxj7aNWh77ZG2-4IkhV8oXPdSlQzxaM4S9jf4aP0QFRqPbGjM5yUgv_j1v8cQAQ"
+  }
+}
