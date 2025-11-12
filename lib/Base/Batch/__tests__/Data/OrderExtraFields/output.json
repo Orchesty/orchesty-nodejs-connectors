@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"extra_field_id\":1,\"name\":\"Text\",\"editor_type\":\"text\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"extra_field_id\":2,\"name\":\"Checkbox\",\"editor_type\":\"checkbox\",\"options\":[\"0\",\"1\"]}",
+            "headers": {}
+        }
+    ]
+}

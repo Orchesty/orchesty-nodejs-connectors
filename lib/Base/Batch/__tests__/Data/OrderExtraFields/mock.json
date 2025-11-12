@@ -1,0 +1,23 @@
+{
+  "http": "POST https://api.baselinker.com/connector.php",
+  "code": 200,
+  "body": {
+    "status": "SUCCESS",
+    "extra_fields": [
+      {
+        "extra_field_id": 1,
+        "name": "Text",
+        "editor_type": "text"
+      },
+      {
+        "extra_field_id": 2,
+        "name": "Checkbox",
+        "editor_type": "checkbox",
+        "options": [
+          "0",
+          "1"
+        ]
+      }
+    ]
+  }
+}
