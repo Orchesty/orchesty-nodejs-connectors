@@ -1,0 +1,5 @@
+{
+    "http": "GET http://127.0.0.1:3100/loki/api/v1/query_range",
+    "code": 200,
+    "body": {}
+}
