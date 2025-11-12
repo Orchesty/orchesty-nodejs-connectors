@@ -4,6 +4,7 @@ import BaseApplication, { NAME as BASE_APP } from '../../lib/Base/BaseApplicatio
 import InventoryProductsData from '../../lib/Base/Batch/InventoryProductsData';
 import InventoryProductsList from '../../lib/Base/Batch/InventoryProductsList';
 import JournalList from '../../lib/Base/Batch/JournalList';
+import OrderExtraFields from '../../lib/Base/Batch/OrderExtraFields';
 import CourierFields from '../../lib/Base/Connector/CourierFields';
 import CouriersList from '../../lib/Base/Connector/CouriersList';
 import CreatePackage from '../../lib/Base/Connector/CreatePackage';
@@ -44,4 +45,5 @@ export default function init(): void {
     container.setNode(new Orders(), app);
     container.setNode(new InventoryProductsList(), app);
     container.setNode(new JournalList(), app);
+    container.setNode(new OrderExtraFields(), app);
 }

@@ -6,6 +6,10 @@ import { SUCCESS } from '../Connector/ABaseConnector';
 
 export abstract class ABaseBatch<T> extends ABatchNode {
 
+    public constructor(private readonly useInForm = false) {
+        super();
+    }
+
     protected abstract getMethod(): string;
 
     protected abstract processOutputData(dto: BatchProcessDto, body: object): Promise<BatchProcessDto>;
@@ -15,7 +19,7 @@ export abstract class ABaseBatch<T> extends ABatchNode {
     public async processAction(dto: BatchProcessDto<T>): Promise<BatchProcessDto> {
         let page = Number(dto.getBatchCursor('1'));
 
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
+        const appInstall = await this.getApplicationInstallFromProcess(dto, this.useInForm ? null : true);
         const lastRun = appInstall.getNonEncryptedSettings()[this.getLastRunKey()] as string | undefined;
 
         const req = await this.getApplication().getRequestDto(
