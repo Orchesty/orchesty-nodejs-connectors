@@ -9,7 +9,6 @@ import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto'
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { AxiosResponse } from 'axios';
 
 export const NAME = 'open-ai';
 export const API_KEY = 'api_key';
@@ -96,14 +95,4 @@ export default class OpenAIApplication extends ABasicApplication {
         return requestDto;
     }
 
-}
-
-export async function getErrorInResponse(response: AxiosResponse, body: string): Promise<string> {
-    const data = JSON.parse(body);
-
-    if ('error' in data && data.error !== null) {
-        return Promise.reject(new Error(`Error: ${data.error?.code}: ${data.error?.message}`));
-    }
-
-    return Promise.resolve(body);
 }
