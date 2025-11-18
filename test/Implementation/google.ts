@@ -5,7 +5,7 @@ import GoogleCloudLoggingGetEntryListBatch from '../../lib/Google/GoogleCloudLog
 import GoogleCloudLoggingApplication, { NAME as GOOGLE_CLOUD_LOGGING_APPLICATION } from '../../lib/Google/GoogleCloudLogging/GoogleCloudLoggingApplication';
 import { CLIENT_ID, TOKEN } from '../../lib/Tableau/TableauApplication';
 import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_CLIENT_ID, DEFAULT_CLIENT_SECRET, DEFAULT_USER } from '../DataProvider';
-import { container, db, oauth2Provider, prepare, sender } from '../TestAbstract';
+import { container, oauth2Provider, prepare } from '../TestAbstract';
 
 export default function init(): void {
     appInstall(GOOGLE_CLOUD_LOGGING_APPLICATION, DEFAULT_USER, {
@@ -22,5 +22,5 @@ export default function init(): void {
     const app = new GoogleCloudLoggingApplication(oauth2Provider);
     container.setApplication(app);
 
-    container.setBatch(new GoogleCloudLoggingGetEntryListBatch().setApplication(app).setSender(sender).setDb(db));
+    container.setNode(new GoogleCloudLoggingGetEntryListBatch(), app);
 }
