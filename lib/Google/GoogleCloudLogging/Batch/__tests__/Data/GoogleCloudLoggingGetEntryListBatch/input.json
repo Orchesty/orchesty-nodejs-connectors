@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "resourceNames": [
+      "projects/test-project"
+    ]
+  }
+}
