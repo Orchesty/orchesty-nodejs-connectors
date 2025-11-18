@@ -12,7 +12,7 @@ export async function getErrorInResponse(response: AxiosResponse, body: string):
     const data: IOutput = JSON.parse(body);
 
     if ('error' in data && data.error) {
-        throw new Error(`Request failed with code ${data.error.code}. Message: ${data.error.message}`);
+        throw new Error(`Error: ${data.error.code}: ${data.error.message}`);
     }
 
     return body;
