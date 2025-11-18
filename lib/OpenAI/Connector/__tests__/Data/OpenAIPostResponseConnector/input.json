@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": {
+    "model": "test-model",
+    "input": "Tell me a three sentence bedtime story about a unicorn."
+  }
+}
