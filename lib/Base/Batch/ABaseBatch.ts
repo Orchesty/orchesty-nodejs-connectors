@@ -24,7 +24,7 @@ export abstract class ABaseBatch<T> extends ABatchNode {
 
         const req = await this.getApplication().getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            appInstall,
             HttpMethods.POST,
             undefined,
             this.prepareBody(this.getMethod(), await this.getParameters(dto, page, this.prepareLastRun(lastRun))),
