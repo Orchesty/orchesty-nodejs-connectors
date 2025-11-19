@@ -31,6 +31,7 @@ export default class InventoryProductsList extends ABaseBatch<IInput> {
             filterStockFrom,
             filterStockTo,
             filterSort,
+            includeVariants,
         } = dto.getJsonData();
 
         /* eslint-disable @typescript-eslint/naming-convention */
@@ -46,6 +47,7 @@ export default class InventoryProductsList extends ABaseBatch<IInput> {
             filter_stock_from: filterStockFrom,
             filter_stock_to: filterStockTo,
             filter_sort: filterSort,
+            include_variants: includeVariants,
             page,
         };
         /* eslint-enable @typescript-eslint/naming-convention */
@@ -82,6 +84,7 @@ export interface IInput {
     filterStockFrom?: number;
     filterStockTo?: number;
     filterSort?: string;
+    includeVariants?: boolean;
 }
 
 export interface Product {
