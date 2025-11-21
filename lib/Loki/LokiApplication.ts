@@ -12,10 +12,9 @@ import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const NAME = 'loki';
-export const BASE_URL = 'http://127.0.0.1:3100';
-export const TENANT_KEY = 'tenant';
 
-const URL_KEY = 'url';
+export const TENANT_KEY = 'tenant';
+export const URL_KEY = 'url';
 
 export enum LokiHeaders {
     TENANT = 'X-Scope-OrgID',
@@ -56,9 +55,14 @@ export default class LokiApplication extends ABasicApplication {
         path?: string,
         data?: unknown,
     ): RequestDto {
-        const url = new URL(path ?? '', BASE_URL).href;
+        const {
+            user,
+            password,
+            tenant,
+            url: lokiURL,
+        } = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
 
-        const { user, password, tenant } = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+        const url = new URL(path ?? '', lokiURL).href;
 
         const headers: Record<string, string> = {
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,
@@ -76,6 +80,14 @@ export default class LokiApplication extends ABasicApplication {
         const requestDto = new RequestDto(url, method, dto, data, headers);
 
         return requestDto;
+    }
+
+    public isAuthorized(applicationInstall: ApplicationInstall): boolean {
+        const authorizationForm = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM];
+        return (
+            authorizationForm?.[URL_KEY]
+            ?? (authorizationForm?.[URL_KEY] && authorizationForm?.[USER] && authorizationForm?.[PASSWORD])
+        );
     }
 
 }

@@ -17,27 +17,25 @@ export default class LokiGetQueryListBatch extends ABatchNode {
 
         const { query, limit, start, end, since, interval, step, direction } = dto.getJsonData();
 
-        const params = new URL('');
-
-        params.searchParams.set('query', query);
+        const params = new URLSearchParams({ query });
 
         if (start || (boundaryTimestamp && direction === 'forward')) {
-            params.searchParams.set('start', (direction === 'forward' ? boundaryTimestamp : String(start)));
+            params.set('start', (direction === 'forward' ? boundaryTimestamp : String(start)));
         }
         if (end || (boundaryTimestamp && direction !== 'backward')) {
-            params.searchParams.set('end', (direction === 'forward' ? String(end) : boundaryTimestamp));
+            params.set('end', (direction === 'forward' ? String(end) : boundaryTimestamp));
         }
-        if (limit) params.searchParams.set('limit', String(limit));
-        if (since) params.searchParams.set('since', since);
-        if (interval) params.searchParams.set('interval', String(interval));
-        if (step) params.searchParams.set('step', String(step));
-        if (direction) params.searchParams.set('direction', direction);
+        if (limit) params.set('limit', String(limit));
+        if (since) params.set('since', since);
+        if (interval) params.set('interval', String(interval));
+        if (step) params.set('step', String(step));
+        if (direction) params.set('direction', direction);
 
         const requestDto = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
             HttpMethods.GET,
-            `/loki/api/v1/query_range${params.search}`,
+            `/loki/api/v1/query_range?${params}`,
         );
 
         const responseDto = await this.getSender().send<IOutput>(requestDto);
@@ -49,15 +47,22 @@ export default class LokiGetQueryListBatch extends ABatchNode {
             return dto;
         }
 
-        if (data.resultType === 'streams' && data.result.values.length === (limit ?? 100)) {
-            // The direction determines the order of items in response. If the direction is forward, then first item is the
-            // oldest so the timestamp of last item should be used to determine next page. If the direction is backward then
-            // the most recent item is first and again the last item's timestamp should be used for next page.
-            // The only difference is the adding or substracting 1 to/from selected timestamp, which can be resolved by direction
-            dto.setBatchCursor(String(Number(data.result.values[data.result.values.length - 1][0]) + (direction === 'forward' ? 1 : -1)));
+        const items: string[] = [];
+        if (data.resultType === 'streams') {
+            const result = data.result.flatMap((item) => item.values);
+            result.sort((a, b) => (direction === 'forward' ? Number(a[0]) - Number(b[0]) : Number(b[0]) - Number(a[0])));
+            items.push(...result.map((item) => item[1]));
+            if (result.length === (limit ?? 100)) {
+                const timestamp = Number(result.map((item) => item[0])[result.length - 1]);
+                dto.setBatchCursor(String(timestamp + (direction === 'forward' ? 1 : -1)));
+            }
+        } else {
+            const result = data.result.flatMap((item) => item.values);
+            result.sort((a, b) => (direction === 'forward' ? a[0] - b[0] : b[0] - a[0]));
+            items.push(...result.map((item) => item[1]));
         }
 
-        return dto.setItemList(data.result.values.map((item) => item[1]) ?? []);
+        return dto.setItemList(items);
     }
 
 }
@@ -115,38 +120,6 @@ export interface IInput {
     direction?: 'forward' | 'backward';
 }
 
-interface Stats {
-    ingester: {
-        compressedBytes: number;
-        decompressedBytes: number;
-        decompressedLines: number;
-        headChunkBytes: number;
-        headChunkLines: number;
-        totalBatches: number;
-        totalChunksMatched: number;
-        totalDuplicates: number;
-        totalLinesSent: number;
-        totalReached: number;
-    };
-    store: {
-        compressedBytes: number;
-        decompressedBytes: number;
-        decompressedLines: number;
-        chunksDownloadTime: number;
-        totalChunksRef: number;
-        totalChunksDownloaded: number;
-        totalDuplicates: number;
-    };
-    summary: {
-        bytesProcessedPerSecond: number;
-        execTime: number;
-        linesProcessedPerSecond: number;
-        queueTime: number;
-        totalBytesProcessed: number;
-        totalLinesProcessed: number;
-    };
-}
-
 export interface IOutput {
     status: string;
     data: ({
@@ -154,12 +127,103 @@ export interface IOutput {
         result: {
             metric: Record<string, unknown>;
             values: [number, string][]
-        };
+        }[];
     } | {
         resultType: 'streams';
         result: {
             stream: Record<string, unknown>;
             values: [string, string][]
-        };
-    }) & { stats: Stats[] };
+        }[];
+    }) & { stats: Statistics };
+}
+
+interface Statistics {
+    summary: {
+        bytesProcessedPerSecond: number;
+        linesProcessedPerSecond: number;
+        totalBytesProcessed: number;
+        totalLinesProcessed: number;
+        execTime: number;
+        queueTime: number;
+        subqueries: number;
+        totalEntriesReturned: number;
+        splits: number;
+        shards: number;
+        totalPostFilterLines: number;
+        totalStructuredMetadataBytesProcessed: number;
+    };
+    querier: {
+        store: Store;
+    };
+    ingester: {
+        totalReached: number;
+        totalChunksMatched: number;
+        totalBatches: number;
+        totalLinesSent: number;
+        store: Store;
+    }
+    cache: {
+        chunk: CacheStatistic;
+        index: CacheStatistic;
+        result: CacheStatistic;
+        statsResult: CacheStatistic;
+        volumeResult: CacheStatistic;
+        seriesResult: CacheStatistic;
+        labelResult: CacheStatistic;
+        instantMetricResult: CacheStatistic;
+    };
+    index: {
+        totalChunks: number;
+        postFilterChunks: number;
+        shardsDuration: number;
+        usedBloomFilters: boolean;
+    };
+}
+
+interface Store {
+    totalChunksRef: number;
+    totalChunksDownloaded: number;
+    chunksDownloadTime: number;
+    queryReferencedStructuredMetadata: boolean;
+    queryUsedV2Engine: boolean;
+    chunk: {
+        headChunkBytes: number;
+        headChunkLines: number;
+        decompressedBytes: number;
+        decompressedLines: number;
+        compressedBytes: number;
+        totalDuplicates: number;
+        postFilterLines: number;
+        headChunkStructuredMetadataBytes: number;
+        decompressedStructuredMetadataBytes: number;
+    };
+    chunkRefsFetchTime: number;
+    congestionControlLatency: number;
+    pipelineWrapperFilteredLines: number;
+    dataobj: {
+        prePredicateDecompressedRows: number;
+        prePredicateDecompressedBytes: number;
+        prePredicateDecompressedStructuredMetadataBytes: number;
+        postPredicateRows: number;
+        postPredicateDecompressedBytes: number;
+        postPredicateStructuredMetadataBytes: number;
+        postFilterRows: number;
+        pagesScanned: number;
+        pagesDownloaded: number;
+        pagesDownloadedBytes: number;
+        pageBatches: number;
+        totalRowsAvailable: number;
+        totalPageDownloadTime: number;
+    };
+}
+
+interface CacheStatistic {
+    entriesFound: number;
+    entriesRequested: number;
+    entriesStored: number;
+    bytesReceived: number;
+    bytesSent: number;
+    requests: number;
+    downloadTime: number;
+    queryLengthServed: number;
 }
