@@ -6,6 +6,11 @@ import { NAME as APPLICATION_NAME } from '../LokiApplication';
 
 export const NAME = `${APPLICATION_NAME}-get-query-list-batch`;
 
+enum Direction {
+    FORWARD = 'forward',
+    BACKWARD = 'backward',
+}
+
 export default class LokiGetQueryListBatch extends ABatchNode {
 
     public getName(): string {
@@ -19,11 +24,11 @@ export default class LokiGetQueryListBatch extends ABatchNode {
 
         const params = new URLSearchParams({ query });
 
-        if (start || (boundaryTimestamp && direction === 'forward')) {
-            params.set('start', (direction === 'forward' ? boundaryTimestamp : String(start)));
+        if (start || (boundaryTimestamp && direction === Direction.FORWARD)) {
+            params.set('start', (direction === Direction.FORWARD ? boundaryTimestamp || String(start) : String(start)));
         }
-        if (end || (boundaryTimestamp && direction !== 'backward')) {
-            params.set('end', (direction === 'forward' ? String(end) : boundaryTimestamp));
+        if (end || (boundaryTimestamp && direction !== Direction.FORWARD)) {
+            params.set('end', (direction === Direction.FORWARD ? String(end) : boundaryTimestamp || String(end)));
         }
         if (limit) params.set('limit', String(limit));
         if (since) params.set('since', since);
@@ -50,15 +55,19 @@ export default class LokiGetQueryListBatch extends ABatchNode {
         const items: string[] = [];
         if (data.resultType === 'streams') {
             const result = data.result.flatMap((item) => item.values);
-            result.sort((a, b) => (direction === 'forward' ? Number(a[0]) - Number(b[0]) : Number(b[0]) - Number(a[0])));
+            result.sort((a, b) => (
+                direction === Direction.FORWARD
+                    ? Number(a[0]) - Number(b[0])
+                    : Number(b[0]) - Number(a[0])
+            ));
             items.push(...result.map((item) => item[1]));
             if (result.length === (limit ?? 100)) {
                 const timestamp = Number(result.map((item) => item[0])[result.length - 1]);
-                dto.setBatchCursor(String(timestamp + (direction === 'forward' ? 1 : -1)));
+                dto.setBatchCursor(String(timestamp + (direction === Direction.FORWARD ? 1 : -1)));
             }
         } else {
             const result = data.result.flatMap((item) => item.values);
-            result.sort((a, b) => (direction === 'forward' ? a[0] - b[0] : b[0] - a[0]));
+            result.sort((a, b) => (direction === Direction.FORWARD ? a[0] - b[0] : b[0] - a[0]));
             items.push(...result.map((item) => item[1]));
         }
 
@@ -67,7 +76,7 @@ export default class LokiGetQueryListBatch extends ABatchNode {
 
 }
 
-type Duration = `${number}${'ns' | 'us' | 'µs' | 'ms' | 's' | 'm' | 'h'}`
+type Duration = `${number}${'ns' | 'us' | 'µs' | 'ms' | 's' | 'm' | 'h'}`;
 
 export interface IInput {
     /** LogQL query to retrieve data */
@@ -117,7 +126,7 @@ export interface IInput {
      *
      * - This defaults to `backward`
      */
-    direction?: 'forward' | 'backward';
+    direction?: Direction;
 }
 
 export interface IOutput {
