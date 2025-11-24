@@ -1,0 +1,259 @@
+{
+    "http": "GET http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bcontainer%3D%22test-container%22%7D",
+    "code": 200,
+    "body": {
+        "status": "success",
+        "data": {
+            "resultType": "streams",
+            "result": [
+                {
+                    "stream": {
+                        "container": "test-container",
+                        "detected_level": "unknown",
+                        "service_name": "test-container"
+                    },
+                    "values": [
+                        [
+                            "1763718000105421097",
+                            "{\"level\":50,\"time\":1763718000103,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000103,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-messageInTrash] does not exist!]\"}"
+                        ],
+                        [
+                            "1763718000082354870",
+                            "{\"level\":50,\"time\":1763718000080,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189a\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"178876cb-8de8-4a20-b806-2819dff03a23\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000080,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-limitOverflow] does not exist!]\"}"
+                        ],
+                        [
+                            "1763718000075690371",
+                            "{\"level\":50,\"time\":1763718000073,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b86071899\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"08b02c86-ca3e-44a1-ae6a-7aa8adee8e64\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000073,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-processFailed] does not exist!]\"}"
+                        ]
+                    ]
+                },
+                {
+                    "stream": {
+                        "container": "test-container",
+                        "detected_level": "info",
+                        "service_name": "test-container"
+                    },
+                    "values": [
+                        [
+                            "1763716743460138650",
+                            "{\"level\":30,\"time\":1763716743459,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"56d59e60-4de9-466e-a239-62849f58174f\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"a3a8f55a-4931-44da-8fc1-db9f3422ba0a\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716743459,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Processed successfully.]\"}"
+                        ],
+                        [
+                            "1763716742150279721",
+                            "{\"level\":30,\"time\":1763716742142,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"56d59e60-4de9-466e-a239-62849f58174f\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"a3a8f55a-4931-44da-8fc1-db9f3422ba0a\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716742142,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Message will be used as a iterator with cursor [1763715600133392400]. Data will be send to follower(s).]\"}"
+                        ],
+                        [
+                            "1763716651483968589",
+                            "{\"level\":30,\"time\":1763716651483,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"d7dfb793-000a-4d72-a385-3f6e2f788ab7\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"dcb634b6-1f2b-467d-93a9-618a42c237b1\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716651483,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Processed successfully.]\"}"
+                        ]
+                    ]
+                },
+                {
+                    "stream": {
+                        "container": "test-container",
+                        "detected_level": "debug",
+                        "service_name": "test-container"
+                    },
+                    "values": [
+                        [
+                            "1763718000105457435",
+                            "{\"level\":20,\"time\":1763718000104,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000104,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Total request duration: 1ms for endpoint POST[/custom-node/event-status-filter-messageInTrash/process]\"}"
+                        ],
+                        [
+                            "1763718000102718589",
+                            "{\"level\":20,\"time\":1763718000102,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"reqHeaders\":{\"host\":\"worker:8080\",\"user-agent\":\"Go-http-client/1.1\",\"content-length\":\"1011\",\"accept-encoding\":\"gzip\"},\"reqBody\":{\"headers\":{\"applications\":\"\",\"content-type\":\"application/json\",\"correlation-id\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"node-id\":\"692013fc52d8b25b8607189b\",\"parent-id\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"previous-node-id\":\"692013fc52d8b25b8607189c\",\"process-id\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"process-started\":1763718000047,\"system-event\":\"true\",\"topology-id\":\"692013fc52d8b25b86071897\",\"user\":\"orchesty\",\"worker-followers\":\"[]\"},\"body\":\"{\\\"type\\\":\\\"messageInTrash\\\",\\\"data\\\":{\\\"topologyName\\\":\\\"oauth2-refresh-tokens\\\",\\\"topologyVersion\\\":0,\\\"applications\\\":\\\"\\\",\\\"topologyId\\\":\\\"692013fa52d8b25b86071892\\\",\\\"resultMessage\\\":\\\"result status [400], message: Error occurred: Service with name [hbpf.batch.get-application-for-refresh] does not exist!\\\",\\\"correlationId\\\":\\\"4a83b1fc-5de7-475f-b4cf-8dec88fcbaeb\\\",\\\"processId\\\":\\\"b7cd93cf-03e6-4a0e-a2bb-a7b06b26346f\\\",\\\"user\\\":\\\"orchesty\\\",\\\"timestampMs\\\":1763718000018},\\\"contents\\\":[{\\\"trashId\\\":\\\"69203370ecd9fd9edfd75929\\\",\\\"body\\\":\\\"{}\\\\n\\\"}]}\"},\"timestamp\":1763718000102,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Incoming request: Method[POST] Url[/custom-node/event-status-filter-messageInTrash/process]\"}"
+                        ],
+                        [
+                            "1763718000082385057",
+                            "{\"level\":20,\"time\":1763718000081,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189a\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"178876cb-8de8-4a20-b806-2819dff03a23\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000081,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Total request duration: 2ms for endpoint POST[/custom-node/event-status-filter-limitOverflow/process]\"}"
+                        ]
+                    ]
+                }
+            ],
+            "stats": {
+                "summary": {
+                    "bytesProcessedPerSecond": 9164713,
+                    "linesProcessedPerSecond": 6777,
+                    "totalBytesProcessed": 164974,
+                    "totalLinesProcessed": 122,
+                    "execTime": 0.018001,
+                    "queueTime": 0.000182,
+                    "subqueries": 0,
+                    "totalEntriesReturned": 100,
+                    "splits": 1,
+                    "shards": 1,
+                    "totalPostFilterLines": 122,
+                    "totalStructuredMetadataBytesProcessed": 3000
+                },
+                "querier": {
+                    "store": {
+                        "totalChunksRef": 0,
+                        "totalChunksDownloaded": 0,
+                        "chunksDownloadTime": 0,
+                        "queryReferencedStructuredMetadata": false,
+                        "queryUsedV2Engine": false,
+                        "chunk": {
+                            "headChunkBytes": 0,
+                            "headChunkLines": 0,
+                            "decompressedBytes": 0,
+                            "decompressedLines": 0,
+                            "compressedBytes": 0,
+                            "totalDuplicates": 0,
+                            "postFilterLines": 0,
+                            "headChunkStructuredMetadataBytes": 0,
+                            "decompressedStructuredMetadataBytes": 0
+                        },
+                        "chunkRefsFetchTime": 1375760,
+                        "congestionControlLatency": 0,
+                        "pipelineWrapperFilteredLines": 0,
+                        "dataobj": {
+                            "prePredicateDecompressedRows": 0,
+                            "prePredicateDecompressedBytes": 0,
+                            "prePredicateDecompressedStructuredMetadataBytes": 0,
+                            "postPredicateRows": 0,
+                            "postPredicateDecompressedBytes": 0,
+                            "postPredicateStructuredMetadataBytes": 0,
+                            "postFilterRows": 0,
+                            "pagesScanned": 0,
+                            "pagesDownloaded": 0,
+                            "pagesDownloadedBytes": 0,
+                            "pageBatches": 0,
+                            "totalRowsAvailable": 0,
+                            "totalPageDownloadTime": 0
+                        }
+                    }
+                },
+                "ingester": {
+                    "totalReached": 1,
+                    "totalChunksMatched": 2,
+                    "totalBatches": 1,
+                    "totalLinesSent": 100,
+                    "store": {
+                        "totalChunksRef": 0,
+                        "totalChunksDownloaded": 0,
+                        "chunksDownloadTime": 0,
+                        "queryReferencedStructuredMetadata": false,
+                        "queryUsedV2Engine": false,
+                        "chunk": {
+                            "headChunkBytes": 27194,
+                            "headChunkLines": 30,
+                            "decompressedBytes": 137780,
+                            "decompressedLines": 92,
+                            "compressedBytes": 65197,
+                            "totalDuplicates": 0,
+                            "postFilterLines": 122,
+                            "headChunkStructuredMetadataBytes": 240,
+                            "decompressedStructuredMetadataBytes": 2760
+                        },
+                        "chunkRefsFetchTime": 0,
+                        "congestionControlLatency": 0,
+                        "pipelineWrapperFilteredLines": 0,
+                        "dataobj": {
+                            "prePredicateDecompressedRows": 0,
+                            "prePredicateDecompressedBytes": 0,
+                            "prePredicateDecompressedStructuredMetadataBytes": 0,
+                            "postPredicateRows": 0,
+                            "postPredicateDecompressedBytes": 0,
+                            "postPredicateStructuredMetadataBytes": 0,
+                            "postFilterRows": 0,
+                            "pagesScanned": 0,
+                            "pagesDownloaded": 0,
+                            "pagesDownloadedBytes": 0,
+                            "pageBatches": 0,
+                            "totalRowsAvailable": 0,
+                            "totalPageDownloadTime": 0
+                        }
+                    }
+                },
+                "cache": {
+                    "chunk": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "index": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "result": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "statsResult": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "volumeResult": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "seriesResult": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "labelResult": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    },
+                    "instantMetricResult": {
+                        "entriesFound": 0,
+                        "entriesRequested": 0,
+                        "entriesStored": 0,
+                        "bytesReceived": 0,
+                        "bytesSent": 0,
+                        "requests": 0,
+                        "downloadTime": 0,
+                        "queryLengthServed": 0
+                    }
+                },
+                "index": {
+                    "totalChunks": 0,
+                    "postFilterChunks": 0,
+                    "shardsDuration": 0,
+                    "usedBloomFilters": false
+                }
+            }
+        }
+    }
+}
