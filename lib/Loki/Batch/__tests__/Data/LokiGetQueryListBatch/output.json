@@ -1,0 +1,43 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "body": "{\"level\":20,\"time\":1763718000104,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000104,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Total request duration: 1ms for endpoint POST[/custom-node/event-status-filter-messageInTrash/process]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":50,\"time\":1763718000103,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000103,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-messageInTrash] does not exist!]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":20,\"time\":1763718000102,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189b\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"reqHeaders\":{\"host\":\"worker:8080\",\"user-agent\":\"Go-http-client/1.1\",\"content-length\":\"1011\",\"accept-encoding\":\"gzip\"},\"reqBody\":{\"headers\":{\"applications\":\"\",\"content-type\":\"application/json\",\"correlation-id\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"node-id\":\"692013fc52d8b25b8607189b\",\"parent-id\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"previous-node-id\":\"692013fc52d8b25b8607189c\",\"process-id\":\"2a4e871b-cdcb-45cc-bc4b-c5cca17ed72c\",\"process-started\":1763718000047,\"system-event\":\"true\",\"topology-id\":\"692013fc52d8b25b86071897\",\"user\":\"orchesty\",\"worker-followers\":\"[]\"},\"body\":\"{\\\"type\\\":\\\"messageInTrash\\\",\\\"data\\\":{\\\"topologyName\\\":\\\"oauth2-refresh-tokens\\\",\\\"topologyVersion\\\":0,\\\"applications\\\":\\\"\\\",\\\"topologyId\\\":\\\"692013fa52d8b25b86071892\\\",\\\"resultMessage\\\":\\\"result status [400], message: Error occurred: Service with name [hbpf.batch.get-application-for-refresh] does not exist!\\\",\\\"correlationId\\\":\\\"4a83b1fc-5de7-475f-b4cf-8dec88fcbaeb\\\",\\\"processId\\\":\\\"b7cd93cf-03e6-4a0e-a2bb-a7b06b26346f\\\",\\\"user\\\":\\\"orchesty\\\",\\\"timestampMs\\\":1763718000018},\\\"contents\\\":[{\\\"trashId\\\":\\\"69203370ecd9fd9edfd75929\\\",\\\"body\\\":\\\"{}\\\\n\\\"}]}\"},\"timestamp\":1763718000102,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Incoming request: Method[POST] Url[/custom-node/event-status-filter-messageInTrash/process]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":20,\"time\":1763718000081,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189a\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"178876cb-8de8-4a20-b806-2819dff03a23\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000081,\"service\":\"sdk\",\"levelName\":\"debug\",\"message\":\"Total request duration: 2ms for endpoint POST[/custom-node/event-status-filter-limitOverflow/process]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":50,\"time\":1763718000080,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b8607189a\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"178876cb-8de8-4a20-b806-2819dff03a23\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000080,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-limitOverflow] does not exist!]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":50,\"time\":1763718000073,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692013fc52d8b25b8607189c\",\"nodeId\":\"692013fc52d8b25b86071899\",\"correlationId\":\"f814b1a4-e50a-4799-b4e0-e82d3c210eed\",\"topologyId\":\"692013fc52d8b25b86071897\",\"processId\":\"08b02c86-ca3e-44a1-ae6a-7aa8adee8e64\",\"parentId\":\"35264ef5-90ef-4729-bfd2-342739d3eb18\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"timestamp\":1763718000073,\"service\":\"sdk\",\"levelName\":\"error\",\"message\":\"Request process failed. Message: [Error occurred: Service with name [hbpf.custom-node.event-status-filter-processFailed] does not exist!]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":30,\"time\":1763716743459,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"56d59e60-4de9-466e-a239-62849f58174f\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"a3a8f55a-4931-44da-8fc1-db9f3422ba0a\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716743459,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Processed successfully.]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":30,\"time\":1763716742142,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"56d59e60-4de9-466e-a239-62849f58174f\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"a3a8f55a-4931-44da-8fc1-db9f3422ba0a\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716742142,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Message will be used as a iterator with cursor [1763715600133392400]. Data will be send to follower(s).]\"}",
+            "headers": {}
+        },
+        {
+            "body": "{\"level\":30,\"time\":1763716651483,\"pid\":953,\"hostname\":\"3975fa509fa3\",\"previousNodeId\":\"692015f2711ce3b17d0b72f2\",\"nodeId\":\"692015f2711ce3b17d0b72f3\",\"correlationId\":\"d7dfb793-000a-4d72-a385-3f6e2f788ab7\",\"topologyId\":\"692015dc70454e872a0bc373\",\"processId\":\"dcb634b6-1f2b-467d-93a9-618a42c237b1\",\"sequenceId\":\"0\",\"userId\":\"orchesty\",\"applications\":\"loki\",\"timestamp\":1763716651483,\"service\":\"sdk\",\"levelName\":\"info\",\"message\":\"Request successfully processed. Message: [Processed successfully.]\"}",
+            "headers": {}
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "query": "{container=\"test-container\"}"
+    }
+}
