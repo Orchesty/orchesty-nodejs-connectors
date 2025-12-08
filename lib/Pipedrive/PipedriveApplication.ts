@@ -54,14 +54,13 @@ export default class PipedriveApplication extends ABasicApplication implements I
         dto: AProcessDto,
         applicationInstall: ApplicationInstall,
         method: HttpMethods,
-        _url?: string,
+        path?: string,
         data?: unknown,
     ): RequestDto {
         const subdomain = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][SUBDOMAIN];
-        let url = `https://${subdomain}.pipedrive.com/api/v1`;
-        const join = _url?.includes('?') ? '&' : '?';
-        url += `${_url}${join}api_token=${this.getToken(applicationInstall)}`;
-        const request = new RequestDto(url, method, dto);
+        const url = new URL(`/api/v1${path ?? ''}`, `https://${subdomain}.pipedrive.com`);
+        url.searchParams.set('api_token', this.getToken(applicationInstall));
+        const request = new RequestDto(url.href, method, dto);
         request.setHeaders({
             [CommonHeaders.ACCEPT]: JSON_TYPE,
             [CommonHeaders.CONTENT_TYPE]: JSON_TYPE,

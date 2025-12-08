@@ -1,0 +1,8 @@
+{
+    "http": "DELETE https://company.pipedrive.com/api/v1/leads/1?api_token=AccessToken",
+    "code": 200,
+    "body": {
+        "success": true,
+        "data": { "id": "adf21080-0e10-11eb-879b-05d71fb426ec" }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "http": "DELETE https://company.pipedrive.com/api/v1/notes/1?api_token=AccessToken",
+    "code": 200,
+    "body": {
+        "success": true,
+        "data": true
+    }
+}

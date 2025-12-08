@@ -2,9 +2,9 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 
-export const NAME = 'pipedrive-get-all-leads-batch';
+export const NAME = 'pipedrive-get-all-notes-batch';
 
-export default class PipedriveGetAllLeadsBatch extends ABatchNode {
+export default class PipedriveGetAllNotesBatch extends ABatchNode {
 
     public getName(): string {
         return NAME;
@@ -21,7 +21,7 @@ export default class PipedriveGetAllLeadsBatch extends ABatchNode {
                     dto,
                     await this.getApplicationInstallFromProcess(dto),
                     HttpMethods.GET,
-                    `/leads?${params}`,
+                    `/notes?${params}`,
                 ),
                 [200],
             )
@@ -42,23 +42,41 @@ export default class PipedriveGetAllLeadsBatch extends ABatchNode {
 
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface IOutput {
-    id: string;
-    title: string;
-    owner_id: number;
-    creator_id: number;
-    label_ids: string[];
-    value: unknown;
-    expected_close_date: Date;
+    id: number;
+    active_flag: boolean;
+    add_time: string;
+    content: string;
+    deal: {
+        title: string;
+    };
+    lead_id: string;
+    deal_id: number;
+    last_update_user_id: number;
+    org_id: number;
+    organization: {
+        name: string;
+    };
+    person: {
+        name: string;
+    };
     person_id: number;
-    organization_id: number;
-    is_archived: boolean;
-    source_name: string;
-    was_seen: boolean;
-    next_activity_id: number;
-    add_time: Date;
-    update_time: Date;
-    visible_to: string;
-    cc_email: string;
+    project_id: number;
+    project: {
+        title: string;
+    };
+    pinned_to_lead_flag: boolean;
+    pinned_to_deal_flag: boolean;
+    pinned_to_organization_flag: boolean;
+    pinned_to_person_flag: boolean;
+    pinned_to_project_flag: boolean;
+    update_time: string;
+    user: {
+        email: string;
+        icon_url: string;
+        is_you: boolean;
+        name: string;
+    };
+    user_id: number;
 }
 
 interface IResponse {
