@@ -1,0 +1,8 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "content": "<p>Note content</p>"
+    }
+}

@@ -10,17 +10,23 @@ export default class PipedriveAddLeadConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IInput>> {
-        return dto.setJsonData((await this.getSender().send<IResponse>(
-            await this.getApplication().getRequestDto(
-                dto,
-                await this.getApplicationInstallFromProcess(dto),
-                HttpMethods.POST,
-                '/leads',
-                dto.getJsonData(),
-            ),
-            [201],
-        )).getJsonBody().data);
+    public async processAction(
+        dto: ProcessDto<IInput>,
+    ): Promise<ProcessDto<IOutput>> {
+        return dto.setNewJsonData(
+            (
+                await this.getSender().send<IResponse>(
+                    await this.getApplication().getRequestDto(
+                        dto,
+                        await this.getApplicationInstallFromProcess(dto),
+                        HttpMethods.POST,
+                        '/leads',
+                        dto.getJsonData(),
+                    ),
+                    [201],
+                )
+            ).getJsonBody().data,
+        );
     }
 
 }
