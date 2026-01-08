@@ -1,0 +1,449 @@
+{
+  "http": "GET https://api.wflow.com/api/test/documents/463b5265-2672-4191-9e3b-9d6fcfe6a452",
+  "code": 200,
+  "body": {
+    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+    "serie": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "externalId": "string",
+      "code": "string",
+      "description": "string",
+      "isValid": true,
+      "kind": "IncomingInvoice",
+      "invoiceType": "TaxInvoice"
+    },
+    "number": "string",
+    "internalCode": "string",
+    "vatDocumentCode": "string",
+    "variableSymbol": "string",
+    "constantSymbol": "string",
+    "specificSymbol": "string",
+    "issueDate": "2019-08-24T14:15:22Z",
+    "dueDate": "2019-08-24T14:15:22Z",
+    "vatDate": "2019-08-24T14:15:22Z",
+    "acceptDate": "2019-08-24T14:15:22Z",
+    "caseDate": "2019-08-24T14:15:22Z",
+    "validFrom": "2019-08-24T14:15:22Z",
+    "validTo": "2019-08-24T14:15:22Z",
+    "effectiveFrom": "2019-08-24T14:15:22Z",
+    "effectiveTo": "2019-08-24T14:15:22Z",
+    "signatureDate": "2019-08-24T14:15:22Z",
+    "reviewDate": "2019-08-24T14:15:22Z",
+    "accountTerm": "string",
+    "vatTerm": "string",
+    "taxExclusiveAmount": -1.7976931348623157e308,
+    "totalAmount": -1.7976931348623157e308,
+    "roundingAmount": -1.7976931348623157e308,
+    "totalAmountFC": -1.7976931348623157e308,
+    "advanceAmount": -1.7976931348623157e308,
+    "currency": "string",
+    "partnerIC": "string",
+    "partnerVAT": "string",
+    "partnerLocalVAT": "string",
+    "partnerName": "string",
+    "partnerAddress": "string",
+    "partnerEmail": "string",
+    "accountNo": "string",
+    "bankCode": "string",
+    "iban": "string",
+    "bic": "string",
+    "meIC": "string",
+    "exchangeRate": -1.7976931348623157e308,
+    "exchangeRateUnits": -2147483648,
+    "tag": "string",
+    "orderNo": "string",
+    "description": "string",
+    "contactPersonName": "string",
+    "contactPersonEmail": "string",
+    "remainsToDeliverAmount": -1.7976931348623157e308,
+    "invoiceType": "TaxInvoice",
+    "expectedDeliveryDate": "2019-08-24T14:15:22Z",
+    "accountCode": "string",
+    "doNotPay": true,
+    "created": "2019-08-24T14:15:22Z",
+    "updated": "2019-08-24T14:15:22Z",
+    "lastAction": "2019-08-24T14:15:22Z",
+    "removed": "2019-08-24T14:15:22Z",
+    "locked": true,
+    "approvalStatus": "NotApproved",
+    "flowStatus": "New",
+    "payment": {
+      "paidAmount": 0,
+      "paidDate": "2019-08-24T14:15:22Z",
+      "paymentStatus": "NotPaid",
+      "paymentOrderAmount": 0,
+      "paymentOrderStatus": "Requested",
+      "activePaymentRequestDate": "2019-08-24T14:15:22Z"
+    },
+    "dataSource": "ISDOC",
+    "source": "Email",
+    "createdBy": "string",
+    "series": "string",
+    "type": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "name": "string",
+      "kind": "IncomingInvoice",
+      "default": true,
+      "erpExclude": true,
+      "filesExtendName": true,
+      "docCreatingMethod": "Upload",
+      "autoStamp": "None",
+      "serie": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true,
+        "kind": "IncomingInvoice",
+        "invoiceType": "TaxInvoice"
+      },
+      "sequence": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "entity": "string",
+        "description": "string",
+        "fixedPart": "string",
+        "counter": "string"
+      },
+      "invoiceType": "TaxInvoice"
+    },
+    "partner": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "externalId": "string",
+      "ic": "string",
+      "vat": "string",
+      "name": "string",
+      "address": "string",
+      "localVAT": "string",
+      "note": "string",
+      "phoneNo": "string",
+      "mailAddress": "string",
+      "deliveryPeriod": 0,
+      "minOrderTotal": 0,
+      "toleranceRate": 0,
+      "language": "string",
+      "isValid": true,
+      "businessRegisterRegistration": "string",
+      "customer": true,
+      "supplier": true
+    },
+    "deliveryLocation": {
+      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+      "externalId": "string",
+      "code": "string",
+      "description": "string",
+      "isValid": true,
+      "address": "string",
+      "contact": "string"
+    },
+    "accounting": {
+      "businessItemCode": "string",
+      "accountingRule": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true,
+        "kind": "IncomingInvoice"
+      },
+      "activity": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "businessCase": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "cardDocumentType": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "cashDocumentType": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "cashRegister": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "contraAccount": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "contract": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "costCenter": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "employee": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "paymentMethod": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true,
+        "kind": "IncomingInvoice"
+      },
+      "project": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "vatControlStatementLine": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "vatReturnLine": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true,
+        "reverseCharge": true
+      },
+      "vatReverseChargeCode": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "vehicle": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "externalId": "string",
+        "code": "string",
+        "description": "string",
+        "isValid": true
+      },
+      "vatSupplyModeCode": "Normal",
+      "vatApplyReductionCoefficient": true,
+      "vatFixedAssets": true,
+      "vatMode": "Standard"
+    },
+    "vaTs": [
+      {
+        "rate": 0,
+        "type": "Exempt",
+        "base": 0,
+        "tax": 0
+      }
+    ],
+    "lines": [
+      {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "totalAmount": 0,
+        "totalAmountFC": 0,
+        "accountCode": "string",
+        "currency": "string",
+        "description": "string",
+        "quantity": 0,
+        "unitPrice": 0,
+        "measureUnit": "string",
+        "vatType": "Exempt",
+        "vatRate": 0,
+        "order": 0,
+        "approval": {
+          "level": 0,
+          "team": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "name": "string",
+            "description": "string",
+            "system": true
+          },
+          "identity": {
+            "login": "string",
+            "firstName": "string",
+            "lastName": "string",
+            "fullName": "string"
+          },
+          "date": "2019-08-24T14:15:22Z",
+          "status": "NotApproved"
+        },
+        "changedAfterApprove": true,
+        "accounting": {
+          "businessItemCode": "string",
+          "accountingRule": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true,
+            "kind": "IncomingInvoice"
+          },
+          "activity": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "businessCase": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "cardDocumentType": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "cashDocumentType": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "cashRegister": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "contraAccount": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "contract": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "costCenter": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "employee": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "paymentMethod": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true,
+            "kind": "IncomingInvoice"
+          },
+          "project": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "vatControlStatementLine": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "vatReturnLine": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true,
+            "reverseCharge": true
+          },
+          "vatReverseChargeCode": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "vehicle": {
+            "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+            "externalId": "string",
+            "code": "string",
+            "description": "string",
+            "isValid": true
+          },
+          "vatSupplyModeCode": "Normal",
+          "vatApplyReductionCoefficient": true,
+          "vatFixedAssets": true,
+          "vatMode": "Standard"
+        },
+        "code": "string",
+        "costCenter": {
+          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          "externalId": "string",
+          "code": "string",
+          "description": "string",
+          "isValid": true
+        },
+        "contract": {
+          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          "externalId": "string",
+          "code": "string",
+          "description": "string",
+          "isValid": true
+        },
+        "activity": {
+          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          "externalId": "string",
+          "code": "string",
+          "description": "string",
+          "isValid": true
+        }
+      }
+    ],
+    "transactionId": "75906707-8c31-479c-b354-aa805c4cefbc",
+    "expenseCardId": "a8fd484a-d41d-4d62-82b9-479b13da2c4c"
+  }
+}

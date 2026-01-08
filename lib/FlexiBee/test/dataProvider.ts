@@ -11,6 +11,7 @@ import FlexiBeeObjednavkaPrijataBatch from '../src/Batch/FlexiBeeObjednavkaPrija
 import FlexiBeeObjednavkaVydanaBatch from '../src/Batch/FlexiBeeObjednavkaVydanaBatch';
 import FlexiBeeSkladoveKartyBatch from '../src/Batch/FlexiBeeSkladoveKartyBatch';
 import FlexiBeeStitkyBatch from '../src/Batch/FlexiBeeStitkyBatch';
+import FlexiBeeCreateFakturaVydanaConnector from '../src/Connector/FlexiBeeCreateFakturaVydanaConnector';
 import FlexiBeeCreateObjednavkaVydanaConnector
     from '../src/Connector/FlexiBeeCreateObjednavkaVydanaConnector';
 import FlexiBeeCreateSkladovyPohybConnector from '../src/Connector/FlexiBeeCreateSkladovyPohybConnector';
@@ -130,6 +131,13 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         (new FlexiBeeGetSkladovyPohybBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        new FlexiBeeCreateFakturaVydanaConnector()
             .setSender(sender)
             .setDb(db)
             .setApplication(app),
