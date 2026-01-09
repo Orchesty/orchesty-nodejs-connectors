@@ -5,6 +5,7 @@ import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Fiel
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
+import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
@@ -12,6 +13,7 @@ import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const NAME = 'wflow';
+export const ORGANIZATION = 'organization';
 
 export default class WflowApplication extends AOAuth2Application {
 
@@ -35,7 +37,8 @@ export default class WflowApplication extends AOAuth2Application {
         return new FormStack().addForm(
             new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
                 .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, false))
-                .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, false)),
+                .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, false))
+                .addField(new Field(FieldType.TEXT, ORGANIZATION, 'Organization', null, false)),
         );
     }
 
@@ -65,6 +68,10 @@ export default class WflowApplication extends AOAuth2Application {
 
     public getScopes(): string[] {
         return ['uccl_common_api'];
+    }
+
+    public getScopesSeparator(): string {
+        return ScopeSeparatorEnum.SPACE;
     }
 
 }
