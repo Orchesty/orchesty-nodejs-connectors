@@ -5,7 +5,8 @@ import { ACCESS_TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provid
 import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import WflowGetDocumentConnector from '../src/Connector/WflowGetDocumentConnector';
-import WflowApplication, { NAME as WFLOW_APP } from '../src/WflowApplication';
+import WflowGetOrganizationsConnector from '../src/Connector/WflowGetOrganizationsConnector';
+import WflowApplication, { NAME as WFLOW_APP, ORGANIZATION, ORGANIZATION_FORM } from '../src/WflowApplication';
 
 export default function init(): void {
     appInstall(WFLOW_APP, DEFAULT_USER, {
@@ -16,10 +17,15 @@ export default function init(): void {
                 [ACCESS_TOKEN]: DEFAULT_ACCESS_TOKEN,
             },
         },
+        [ORGANIZATION_FORM]: {
+            [ORGANIZATION]: 'test',
+        },
     });
 
-    const app = new WflowApplication(oauth2Provider);
+    const getOrganizationsConnector = new WflowGetOrganizationsConnector();
+    const app = new WflowApplication(oauth2Provider, getOrganizationsConnector);
     container.setApplication(app);
 
     container.setConnector(new WflowGetDocumentConnector().setApplication(app).setDb(db).setSender(sender));
+    container.setConnector(getOrganizationsConnector.setApplication(app).setDb(db).setSender(sender));
 }

@@ -1,13 +1,13 @@
 {
-    "http": "POST https://demo.flexibee.eu/c/demo/faktura-vydana",
+    "http": "POST https://demo.flexibee.eu/c/demo/faktura-prijata/1.json",
     "code": 200,
     "body": {
         "winstrom": {
             "@version": "1.0",
             "success": "true",
             "stats": {
-                "created": "0",
-                "updated": "1",
+                "created": "1",
+                "updated": "0",
                 "deleted": "0",
                 "skipped": "0",
                 "failed": "0"
@@ -16,7 +16,7 @@
                 {
                     "id": "1",
                     "request-id": "1",
-                    "ref": "/c/test/faktura-vydana/1"
+                    "ref": "/c/test/faktura-prijata/1"
                 }
             ]
         }

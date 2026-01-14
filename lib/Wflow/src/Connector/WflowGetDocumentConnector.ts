@@ -1,7 +1,7 @@
 import ACommonConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/ACommonConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { NAME as WFLOW_APP_NAME } from '../WflowApplication';
+import { NAME as WFLOW_APP_NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-get-document-connector`;
 
@@ -13,7 +13,9 @@ export default class WflowGetDocumentConnector extends ACommonConnector {
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const app = this.getApplication();
-        const { organization, documentId } = dto.getJsonData();
+        const applicationInstall = await this.getApplicationInstallFromProcess(dto);
+        const { documentId } = dto.getJsonData();
+        const organization = applicationInstall.getSettings()[ORGANIZATION_FORM][ORGANIZATION];
 
         const request = await app.getRequestDto(
             dto,
@@ -30,7 +32,6 @@ export default class WflowGetDocumentConnector extends ACommonConnector {
 }
 
 export interface IInput {
-    organization: string;
     documentId: string;
 }
 

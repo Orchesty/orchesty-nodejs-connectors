@@ -1,0 +1,12 @@
+{
+  "http": "GET https://api.wflow.com/api/user/myorganizations",
+  "code": 200,
+  "body": [
+    {
+      "name": "Test",
+      "baseURL": "test.wflow.com",
+      "subdomain": "test",
+      "trialExpiration": "2026-08-24T14:15:22Z"
+    }
+  ]
+}

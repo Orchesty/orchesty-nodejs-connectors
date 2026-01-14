@@ -4,18 +4,29 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
-import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
+import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
 import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/IOAuth2Application';
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
+import WflowGetOrganizationsConnector, { IResponse } from './Connector/WflowGetOrganizationsConnector';
 
 export const NAME = 'wflow';
+export const ORGANIZATION_FORM = 'organization-form';
 export const ORGANIZATION = 'organization';
 
 export default class WflowApplication extends AOAuth2Application {
+
+    public constructor(
+        provider: OAuth2Provider,
+        private readonly wflowGetOrganizationsConnector: WflowGetOrganizationsConnector,
+    ) {
+        super(provider);
+    }
 
     public getName(): string {
         return NAME;
@@ -34,12 +45,15 @@ export default class WflowApplication extends AOAuth2Application {
     }
 
     public getFormStack(): FormStack {
-        return new FormStack().addForm(
-            new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
-                .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, false))
-                .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, false))
-                .addField(new Field(FieldType.TEXT, ORGANIZATION, 'Organization', null, false)),
-        );
+        return new FormStack()
+            .addForm(
+                new Form(CoreFormsEnum.AUTHORIZATION_FORM, getFormName(CoreFormsEnum.AUTHORIZATION_FORM))
+                    .addField(new Field(FieldType.TEXT, CLIENT_ID, 'Client Id', null, false))
+                    .addField(new Field(FieldType.TEXT, CLIENT_SECRET, 'Client Secret', null, false)),
+            )
+            .addForm(
+                new Form(ORGANIZATION_FORM, 'Organization settings'),
+            );
     }
 
     public getRequestDto(
@@ -72,6 +86,37 @@ export default class WflowApplication extends AOAuth2Application {
 
     public getScopesSeparator(): string {
         return ScopeSeparatorEnum.SPACE;
+    }
+
+    protected async customFormReplace(formStack: FormStack, applicationInstall: ApplicationInstall): Promise<void> {
+        const organizations = (await this.wflowGetOrganizationsConnector.processAction(
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                crypto.randomUUID(),
+                'form',
+            ),
+        )).getJsonData() as IResponse[];
+
+        const form = formStack.getForms().find((item) => item.getKey() === ORGANIZATION_FORM);
+        const settings = applicationInstall.getSettings()[ORGANIZATION_FORM];
+
+        if (!form) {
+            return;
+        }
+
+        const choises: Record<string, string>[]
+            = organizations.map((organization) => ({ [organization.subdomain]: organization.name }));
+
+        form.addField(
+            new Field(
+                FieldType.SELECT_BOX,
+                ORGANIZATION,
+                'Organization name',
+                settings?.[ORGANIZATION],
+                true,
+            ).setChoices(choises),
+        );
     }
 
 }
