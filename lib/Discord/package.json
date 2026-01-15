@@ -1,0 +1,22 @@
+{
+    "name": "@orchesty/connector-discord",
+    "description": "",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
+    "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
+    "scripts": {
+        "build": "rm -rf dist && rm -rf tsconfig.prod.tsbuildinfo && tsc -d -p tsconfig.prod.json && cp package.json ./dist/package.json",
+        "test": "jest --coverage --forceExit --passWithNoTests",
+        "lint": "eslint src --fix",
+        "lint-ci": "eslint src"
+    },
+    "keywords": [],
+    "author": "info@hanaboso.com",
+    "dependencies": {
+        "@orchesty/nodejs-sdk": "^4.3.6"
+    },
+    "engines": {
+        "node": ">=24"
+    }
+}

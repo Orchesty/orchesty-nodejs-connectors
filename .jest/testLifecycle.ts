@@ -1,4 +1,5 @@
 import { prepare } from '../test/TestAbstract';
+import logger from '@orchesty/nodejs-sdk/dist/lib/Logger/Logger';
 import {
   createLoggerMockedServer,
   createMetricsMockedServer,
@@ -7,6 +8,7 @@ import {
 jest.setTimeout(10000);
 
 beforeAll(() => {
+  logger.logger.level = 'error';
   createLoggerMockedServer();
   createMetricsMockedServer();
   prepare();
@@ -14,28 +16,6 @@ beforeAll(() => {
 
 afterAll(async () => {
 })
-
-jest.mock('nodemailer', () => ({
-    createTransport: jest.fn().mockReturnValue({
-        sendMail: jest.fn().mockReturnValue({
-          "accepted": [
-            "neco@gmail.com"
-          ],
-          "envelope": {
-            "from": "neco@neco.com",
-            "to": [
-              "neco@gmail.com"
-            ]
-          },
-          "envelopeTime": 2,
-          "messageId": "<731836a2-74d2-36f6-8053-08242c91ce1c@neco.com>",
-          "messageSize": 614,
-          "messageTime": 3,
-          "rejected": [],
-          "response": "250 Ok: queued as uDtelNMtPWAML6YfHjji5zYLhJjL1frJBtBBOZNJIcE=@mailhog.example"
-        }),
-    }),
-}));
 
 export default class MockDate extends Date {
   constructor() {

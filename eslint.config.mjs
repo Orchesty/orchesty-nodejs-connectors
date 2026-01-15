@@ -12,8 +12,40 @@ const compat = new FlatCompat({
 });
 
 export default [
-  ...compat.extends('plugin:@hanaboso/orchesty'),
+  ...compat.extends("plugin:@hanaboso/orchesty"),
+
   {
+    files: ["test/**/*.ts"],
+    languageOptions: {
+      parserOptions: {
+        project: ["./test/tsconfig.json", "./lib/**/tsconfig.json"],
+        tsconfigRootDir: __dirname,
+      },
+    },
+    rules: {
+      "import/no-extraneous-dependencies": "off",
+    },
+  },
+
+  {
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.ts'],
+        },
+        typescript: {
+          project: ['./tsconfig.json'],
+        },
+      },
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+      },
+    },
+  },
+
+  {
+    files: ["**/*.ts"],
+    ignores: ["dist/**"],
     rules: {
       'import/no-extraneous-dependencies': 'off',
     },
