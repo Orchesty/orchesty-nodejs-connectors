@@ -1,12 +1,13 @@
+/* eslint-disable import/no-relative-packages */
 import runCli from '@orchesty/nodejs-sdk/dist/test/Testers/oauth2AppTester';
-import OneDriveApplication from '../lib/OneDrive/OneDriveApplication';
-import QuickBooksApplication from '../lib/QuickBooks/QuickBooksApplication';
-import SalesForceApplication from '../lib/SalesForce/SalesForceApplication';
-import TodoistApplication from '../lib/Todoist/TodoistApplication';
-import TypeformApplication from '../lib/Typeform/TypeformApplication';
-import XeroApplication from '../lib/Xero/XeroApplication';
-import ZendeskApplication from '../lib/Zendesk/ZendeskApplication';
-import ZohoApplication from '../lib/Zoho/ZohoApplication';
+import OneDriveApplication from '../lib/OneDrive/src/OneDriveApplication';
+import QuickBooksApplication from '../lib/QuickBooks/src/QuickBooksApplication';
+import SalesForceApplication from '../lib/SalesForce/src/SalesForceApplication';
+import TodoistApplication from '../lib/Todoist/src/TodoistApplication';
+import TypeformApplication from '../lib/Typeform/src/TypeformApplication';
+import XeroApplication from '../lib/Xero/src/XeroApplication';
+import ZendeskApplication from '../lib/Zendesk/src/ZendeskApplication';
+import ZohoApplication from '../lib/Zoho/src/ZohoApplication';
 import { container, db, oauth2Provider, prepare, sender } from './TestAbstract';
 
 // Change this, if you need different host in redirectUri

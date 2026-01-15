@@ -1,0 +1,187 @@
+/* eslint-disable max-classes-per-file */
+import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '@orchesty/nodejs-connectors/test/DataProvider';
+import { cacheService, container, db, oauth2Provider, sender, topologyRunner } from '@orchesty/nodejs-connectors/test/TestAbstract';
+import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
+import {
+    ApplicationInstall,
+    IApplicationSettings,
+} from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
+import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import { TOKEN } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
+import DataStorageManager from '@orchesty/nodejs-sdk/dist/lib/Storage/DataStore/DataStorageManager';
+import FileSystem from '@orchesty/nodejs-sdk/dist/lib/Storage/File/FileSystem';
+import Redis from '@orchesty/nodejs-sdk/dist/lib/Storage/Redis/Redis';
+import ShoptetGetOrderChangesList from '../src/Batch/ShoptetGetOrderChangesList';
+import ShoptetGetProductChangesList from '../src/Batch/ShoptetGetProductChangesList';
+import ShoptetParseJsonLines from '../src/Batch/ShoptetParseJsonLines';
+import ShoptetProductDetailWithSet from '../src/Batch/ShoptetProductDetailWithSet';
+import ShoptetGetAllOrders from '../src/Connector/ShoptetGetAllOrders';
+import ShoptetGetAllProducts from '../src/Connector/ShoptetGetAllProducts';
+import ShoptetGetEshopInfo from '../src/Connector/ShoptetGetEshopInfo';
+import ShoptetGetListOfStocks from '../src/Connector/ShoptetGetListOfStocks';
+import ShoptetGetPaymentMethods from '../src/Connector/ShoptetGetPaymentMethods';
+import ShoptetGetProductDetail from '../src/Connector/ShoptetGetProductDetail';
+import ShoptetGetShippingMethods from '../src/Connector/ShoptetGetShippingMethods';
+import ShoptetJobFinishedWebhook from '../src/Connector/ShoptetJobFinishedWebhook';
+import ShoptetUpdateStockMovements from '../src/Connector/ShoptetUpdateStockMovements';
+import APluginShoptetApplication from '../src/PluginShoptetApplication';
+
+const NAME = 'shoptet';
+
+class ImplPluginShoptetApplication extends APluginShoptetApplication {
+
+    protected shoptetHost = 'www.test.cz';
+
+    protected defaultAppName = 'Default app';
+
+    protected shoptetClientId = 'clientId';
+
+    protected shoptetClientSecret = 'clientSecret';
+
+    protected shoptetOAuth2RedirectUrl = 'redirectUrl';
+
+    public getName(): string {
+        return NAME;
+    }
+
+    public getFormStack(): FormStack {
+        return new FormStack();
+    }
+
+}
+
+export function mock(callCount = 1, extraNonEncryptedSettings?: IApplicationSettings): ApplicationInstall {
+    let applicationInstall: ApplicationInstall = new ApplicationInstall();
+    let count = callCount;
+    if (count < 1) {
+        count = 1;
+    }
+    for (let i = 0; i < count; i++) {
+        applicationInstall = appInstall(
+            NAME,
+            DEFAULT_USER,
+            {
+                [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                    [TOKEN]: DEFAULT_ACCESS_TOKEN,
+                },
+            },
+            {
+                eshopId: '222651',
+                ...extraNonEncryptedSettings,
+            },
+        );
+    }
+    return applicationInstall;
+}
+
+const originalDate = global.Date;
+
+class MockDate extends Date {
+
+    public constructor() {
+        super('2022-01-01T11:12:58.135Z');
+    }
+
+}
+
+export function mockDate(): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    global.Date = MockDate;
+}
+
+export function restoreDate(): void {
+    global.Date = originalDate;
+}
+
+export async function init(): Promise<void> {
+    const implPluginShoptetApplication = new ImplPluginShoptetApplication(
+        db,
+        cacheService,
+        sender,
+        oauth2Provider,
+        topologyRunner,
+    );
+
+    const cacheKey = `${NAME}ApiKey_TestUser`;
+
+    const redisService = container.get(Redis);
+    await redisService.set(
+        cacheKey,
+
+        JSON.stringify({ expires_in: 55, access_token: 'testToken' }),
+        10,
+    );
+
+    const dataStorageManager = new DataStorageManager(new FileSystem());
+    container.set(dataStorageManager);
+
+    const shoptetGetAllOrders = new ShoptetGetAllOrders()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetAllOrders);
+
+    const shoptetGetAllProducts = new ShoptetGetAllProducts()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetAllProducts);
+
+    const shoptetJobFinishedWebhook = new ShoptetJobFinishedWebhook()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetJobFinishedWebhook);
+
+    const shoptetGetProductDetail = new ShoptetGetProductDetail()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetProductDetail);
+
+    const shoptetParseJsonLines = new ShoptetParseJsonLines()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setBatch(shoptetParseJsonLines);
+
+    const shoptetGetShippingMethods = new ShoptetGetShippingMethods()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetShippingMethods);
+
+    const shoptetGetEshopInfo = new ShoptetGetEshopInfo()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetEshopInfo);
+
+    const shoptetGetOrderChangesList = new ShoptetGetOrderChangesList()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setBatch(shoptetGetOrderChangesList);
+
+    const shoptetGetProductChangesList = new ShoptetGetProductChangesList()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setBatch(shoptetGetProductChangesList);
+
+    const shoptetGetListOfStocks = new ShoptetGetListOfStocks()
+        .setSender(sender)
+        .setDb(db)
+        .setApplication(implPluginShoptetApplication);
+    container.setConnector(shoptetGetListOfStocks);
+
+    const shoptetUpdateStockMovements = new ShoptetUpdateStockMovements()
+        .setApplication(implPluginShoptetApplication)
+        .setDb(db)
+        .setSender(sender);
+    container.setConnector(shoptetUpdateStockMovements);
+
+    container.setNode(new ShoptetProductDetailWithSet(dataStorageManager), implPluginShoptetApplication);
+    container.setNode(new ShoptetGetPaymentMethods(), implPluginShoptetApplication);
+}

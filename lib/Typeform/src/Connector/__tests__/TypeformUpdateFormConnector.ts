@@ -1,0 +1,17 @@
+import { container } from '@orchesty/nodejs-connectors/test/TestAbstract';
+import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
+import init from '../../../test/dataProvider';
+import { NAME as TYPEFORM_UPDATE_FORM_CONNECTOR } from '../TypeformUpdateFormConnector';
+
+let tester: NodeTester;
+
+describe('Tests for TypeformUpdateFormConnector', () => {
+    beforeEach(() => {
+        tester = new NodeTester(container, __filename, true);
+        init();
+    });
+
+    it('process - ok', async () => {
+        await tester.testConnector(TYPEFORM_UPDATE_FORM_CONNECTOR);
+    });
+});
