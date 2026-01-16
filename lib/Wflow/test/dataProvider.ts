@@ -22,10 +22,10 @@ export default function init(): void {
         },
     });
 
-    const getOrganizationsConnector = new WflowGetOrganizationsConnector();
+    const getOrganizationsConnector = new WflowGetOrganizationsConnector().setDb(db).setSender(sender);
     const app = new WflowApplication(oauth2Provider, getOrganizationsConnector);
     container.setApplication(app);
 
-    container.setConnector(new WflowGetDocumentConnector().setApplication(app).setDb(db).setSender(sender));
-    container.setConnector(getOrganizationsConnector.setApplication(app).setDb(db).setSender(sender));
+    container.setNode(new WflowGetDocumentConnector(), app);
+    container.setNode(getOrganizationsConnector, app);
 }

@@ -1,11 +1,11 @@
-import ACommonConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/ACommonConnector';
+import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { NAME as WFLOW_APP_NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-get-document-connector`;
 
-export default class WflowGetDocumentConnector extends ACommonConnector {
+export default class WflowGetDocumentConnector extends AConnector {
 
     public getName(): string {
         return NAME;
