@@ -1,5 +1,5 @@
 {
-    "http": "POST https://demo.flexibee.eu/c/demo/faktura-prijata/1.json",
+    "http": "POST https://demo.flexibee.eu/c/demo/faktura-prijata",
     "code": 200,
     "body": {
         "winstrom": {
