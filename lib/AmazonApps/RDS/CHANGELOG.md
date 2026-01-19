@@ -1,5 +1,13 @@
 # @orchesty/connector-amazon-apps-rds
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-amazon-apps-common@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

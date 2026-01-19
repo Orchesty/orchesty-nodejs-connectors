@@ -1,5 +1,13 @@
 # @orchesty/connector-woocommerce
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-authentica@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,5 +1,13 @@
 # @orchesty/connector-xero
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-digitoo@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
