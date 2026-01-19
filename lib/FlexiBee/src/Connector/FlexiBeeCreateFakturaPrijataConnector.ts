@@ -3,7 +3,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import FlexiBeeApplication, { FLEXI_BEE_APPLICATION } from '../FexiBeeApplication';
 
-export const NAME = `${FLEXI_BEE_APPLICATION}-create-faktura-prijata`;
+export const NAME = `${FLEXI_BEE_APPLICATION}-create-faktura-prijata-connector`;
 
 export default class FlexiBeeCreateFakturaPrijataConnector extends AConnector {
 
@@ -11,7 +11,7 @@ export default class FlexiBeeCreateFakturaPrijataConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<Record<string, string>>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput[]>> {
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const application = this.getApplication<FlexiBeeApplication>();
 
@@ -23,32 +23,32 @@ export default class FlexiBeeCreateFakturaPrijataConnector extends AConnector {
             dto.getJsonData(),
         );
 
-        const response = await this.getSender().send(request);
+        const response = await this.getSender().send<IResponse>(request);
 
-        dto.setData(response.getBody());
-
-        return dto;
+        return dto.setNewJsonData(response.getJsonBody().winstrom.results);
     }
 
 }
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface IResponse {
-  winstrom: {
-    "@version": string;
-    success: string;
-    stats: {
-      created: string;
-      updated: string;
-      deleted: string;
-      skipped: string;
-      failed: string;
+    winstrom: {
+        '@version': string;
+        success: string;
+        stats: {
+            created: string;
+            updated: string;
+            deleted: string;
+            skipped: string;
+            failed: string;
+        };
+        results: IOutput[];
     };
-    results: [
-      {
-        id: string;
-        "request-id": `ext:${string}`;
-        ref: string;
-      }
-    ];
-  };
 }
+
+export interface IOutput {
+    id: string;
+    'request-id': `ext:${string}`;
+    ref: string;
+}
+/* eslint-enable @typescript-eslint/naming-convention */

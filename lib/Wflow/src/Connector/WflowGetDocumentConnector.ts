@@ -11,7 +11,7 @@ export default class WflowGetDocumentConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const app = this.getApplication();
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const { documentId } = dto.getJsonData();
@@ -19,7 +19,7 @@ export default class WflowGetDocumentConnector extends AConnector {
 
         const request = await app.getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            applicationInstall,
             HttpMethods.GET,
             `/${organization}/documents/${documentId}`,
         );

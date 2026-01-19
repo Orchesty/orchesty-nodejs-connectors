@@ -1,25 +1,17 @@
 {
-    "headers": {
-        "user": "TestUser"
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "id": "127",
+      "request-id": "ext:17864810",
+      "ref": "/c/test/adresar/127"
     },
-    "data": {
-        "winstrom": {
-            "@version": "1.0",
-            "success": "true",
-            "stats": {
-                "created": "1",
-                "updated": "0",
-                "deleted": "0",
-                "skipped": "0",
-                "failed": "0"
-            },
-            "results": [
-                {
-                    "id": "1",
-                    "request-id": "1",
-                    "ref": "/c/test/faktura-prijata/1"
-                }
-            ]
-        }
+    {
+      "id": "1",
+      "request-id": "ext:40830940-fc60-4ffd-a143-37ed2022bd21",
+      "ref": "/c/test/faktura-prijata/1"
     }
+  ]
 }

@@ -7,16 +7,20 @@ export const NAME = `${WFLOW_APPLICATION}-get-organizations-connector`;
 
 export default class WflowGetOrganizationsConnector extends AConnector {
 
+    public constructor(private readonly useInForm = false) {
+        super();
+    }
+
     public getName(): string {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IResponse[]>> {
         const app = this.getApplication();
 
         const request = await app.getRequestDto(
             dto,
-            await this.getApplicationInstallFromProcess(dto),
+            await this.getApplicationInstallFromProcess(dto, this.useInForm ? null : true),
             HttpMethods.GET,
             '/user/myorganizations',
         );
@@ -29,8 +33,8 @@ export default class WflowGetOrganizationsConnector extends AConnector {
 }
 
 export interface IResponse {
-    name: string; // show this name in the list
+    name: string;
     baseURL: string;
-    subdomain: string; // organizationId
+    subdomain: string;
     trialExpiration?: string;
 }

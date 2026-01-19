@@ -4,6 +4,7 @@ import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
 import FieldType from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FieldType';
 import Form from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Form';
 import FormStack from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/FormStack';
+import WebhookSubscription from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Webhook/WebhookSubscription';
 import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import ScopeSeparatorEnum from '@orchesty/nodejs-sdk/dist/lib/Authorization/ScopeSeparatorEnum';
 import AOAuth2Application from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/OAuth2/AOAuth2Application';
@@ -13,11 +14,24 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import WflowGetOrganizationsConnector, { IResponse } from './Connector/WflowGetOrganizationsConnector';
+import WflowGetOrganizationsConnector from './Connector/WflowGetOrganizationsConnector';
 
 export const NAME = 'wflow';
 export const ORGANIZATION_FORM = 'organization-form';
 export const ORGANIZATION = 'organization';
+
+export enum WebhookType {
+    DOCUMENT_READY_TO_EXTRACT = 'DocumentReadyToExtract',
+    DOCUMENT_READY_TO_EXPORT = 'DocumentReadyToExport',
+    DOCUMENT_UPDATED = 'DocumentUpdated',
+    DOCUMENT_APPROVAL_PROCESS_FINISHED = 'DocumentApprovalProcessFinished',
+    DOCUMENT_DELETED = 'DocumentDeleted',
+    DOCUMENT_READY_TO_REVIEW = 'DocumentReadyToReview',
+    DOCUMENT_CREATED = 'DocumentCreated',
+    DOCUMENT_REVIEWED = 'DocumentReviewed',
+    REGISTER_UPDATED = 'RegisterUpdated',
+    ALL = 'All',
+}
 
 export default class WflowApplication extends AOAuth2Application {
 
@@ -88,6 +102,10 @@ export default class WflowApplication extends AOAuth2Application {
         return ScopeSeparatorEnum.SPACE;
     }
 
+    public getWebhookSubscriptions(): WebhookSubscription[] {
+        return [];
+    }
+
     protected async customFormReplace(formStack: FormStack, applicationInstall: ApplicationInstall): Promise<void> {
         const organizations = (await this.wflowGetOrganizationsConnector.processAction(
             ProcessDto.createForFormRequest(
@@ -96,7 +114,7 @@ export default class WflowApplication extends AOAuth2Application {
                 crypto.randomUUID(),
                 'form',
             ),
-        )).getJsonData() as IResponse[];
+        )).getJsonData();
 
         const form = formStack.getForms().find((item) => item.getKey() === ORGANIZATION_FORM);
         const settings = applicationInstall.getSettings()[ORGANIZATION_FORM];
@@ -105,7 +123,7 @@ export default class WflowApplication extends AOAuth2Application {
             return;
         }
 
-        const choises: Record<string, string>[]
+        const choices: Record<string, string>[]
             = organizations.map((organization) => ({ [organization.subdomain]: organization.name }));
 
         form.addField(
@@ -115,7 +133,7 @@ export default class WflowApplication extends AOAuth2Application {
                 'Organization name',
                 settings?.[ORGANIZATION],
                 true,
-            ).setChoices(choises),
+            ).setChoices(choices),
         );
     }
 
