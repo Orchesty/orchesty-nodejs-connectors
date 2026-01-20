@@ -15,7 +15,7 @@ export default class WflowGetDocumentConnector extends AConnector {
         const app = this.getApplication();
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const { documentId } = dto.getJsonData();
-        const organization = applicationInstall.getSettings()[ORGANIZATION_FORM][ORGANIZATION];
+        const organization = applicationInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
 
         const request = await app.getRequestDto(
             dto,
@@ -176,16 +176,16 @@ export interface IOutput {
         approval: {
             level: number;
             team: {
-                id: string
-                name: string
-                description: string
-                system: boolean
+                id: string;
+                name: string;
+                description: string;
+                system: boolean;
             };
             identity: {
-                login: string
-                firstName: string
-                lastName: string
-                fullName: string
+                login: string;
+                firstName: string;
+                lastName: string;
+                fullName: string;
             };
             date: string;
             status: string;

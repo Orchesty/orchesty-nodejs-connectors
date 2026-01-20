@@ -11,7 +11,7 @@ export default class WflowUpdateDocumentStateConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const app = this.getApplication();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { documentId } = dto.getJsonData();
@@ -35,3 +35,5 @@ export default class WflowUpdateDocumentStateConnector extends AConnector {
 export interface IInput {
     documentId: string;
 }
+
+export type IOutput = IInput;

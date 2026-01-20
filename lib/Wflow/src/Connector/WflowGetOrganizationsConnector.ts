@@ -15,7 +15,7 @@ export default class WflowGetOrganizationsConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto): Promise<ProcessDto<IResponse[]>> {
+    public async processAction(dto: ProcessDto): Promise<ProcessDto<IOutput[]>> {
         const app = this.getApplication();
 
         const request = await app.getRequestDto(
@@ -25,14 +25,14 @@ export default class WflowGetOrganizationsConnector extends AConnector {
             '/user/myorganizations',
         );
 
-        const response = (await this.getSender().send<IResponse[]>(request)).getJsonBody();
+        const response = (await this.getSender().send<IOutput[]>(request)).getJsonBody();
 
         return dto.setNewJsonData(response);
     }
 
 }
 
-export interface IResponse {
+export interface IOutput {
     name: string;
     baseURL: string;
     subdomain: string;
