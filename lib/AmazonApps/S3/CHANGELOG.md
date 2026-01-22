@@ -1,5 +1,12 @@
 # @orchesty/connector-amazon-apps-s3
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @orchesty/connector-amazon-apps-common@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
