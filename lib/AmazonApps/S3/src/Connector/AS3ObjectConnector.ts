@@ -1,4 +1,4 @@
-import AAwsObjectConnector from '@orchesty/connector-amazon-apps-common/src/AAwsObjectConnector';
+import { AAwsObjectConnector } from '@orchesty/connector-amazon-apps-common';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import { BUCKET } from '../S3Application';

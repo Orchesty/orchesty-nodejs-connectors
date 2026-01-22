@@ -1,6 +1,3 @@
-import {
-    IInput as IErrorOutput,
-} from '@orchesty/connector-digitoo/src/Connector/DigitooMarkAsExportErrored';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import ResponseDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResponseDto';
 import { IResultRanges, StatusRange } from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/ResultCodeRange';
@@ -16,7 +13,7 @@ export default class XeroPostContactsConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IContact>): Promise<ProcessDto<IErrorOutput | IOutput>> {
+    public async processAction(dto: ProcessDto<IContact>): Promise<ProcessDto<IOutput>> {
         const req = await this.getApplication().getRequestDto(
             dto,
             await this.getApplicationInstallFromProcess(dto),
@@ -33,7 +30,7 @@ export default class XeroPostContactsConnector extends AConnector {
         return dto.getJsonData();
     }
 
-    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IErrorOutput | IOutput> {
+    protected setNewJsonData(dto: ProcessDto, resp: ResponseDto<IResponse>): ProcessDto<IOutput> {
         return dto.setNewJsonData({ contact: resp.getJsonBody().Contacts.shift() ?? null });
     }
 

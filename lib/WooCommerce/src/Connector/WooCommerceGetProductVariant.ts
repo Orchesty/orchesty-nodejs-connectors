@@ -1,4 +1,3 @@
-import { IProduct } from '@orchesty/connector-authentica/src/Connector/AuthenticaPutProducts';
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -48,6 +47,22 @@ export default class WooCommerceGetProductVariant extends AConnector {
         }
     }
 
+}
+
+export interface IProduct {
+    productId: string;
+    sku: string;
+    name: string;
+    englishName: string | null;
+    ean: string;
+    width: number | null;
+    widthUnit: string | null;
+    height: number | null;
+    heightUnit: string | null;
+    length: number | null;
+    lengthUnit: string | null;
+    weight: number | null;
+    weightUnit: string | null;
 }
 
 export interface IInput extends IProduct {

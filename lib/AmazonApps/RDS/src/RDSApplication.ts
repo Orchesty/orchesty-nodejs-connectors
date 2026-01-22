@@ -1,7 +1,7 @@
 import { RDSClient } from '@aws-sdk/client-rds';
-import AAwsApplication, {
-    CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET,
-} from '@orchesty/connector-amazon-apps-common/src/AAwsApplication';
+import {
+    AAwsApplication, CREDENTIALS, KEY, LATEST, REGION, REGIONS, SECRET,
+} from '@orchesty/connector-amazon-apps-common';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';

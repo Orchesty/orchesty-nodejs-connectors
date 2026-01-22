@@ -11,9 +11,17 @@
         "lint": "eslint src --fix",
         "lint-ci": "eslint src"
     },
-    "files": [
-        "dist"
-    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+
+    "files": ["dist"],
+
+    "exports": {
+        ".": {
+        "require": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+        }
+    },
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {

@@ -1,4 +1,3 @@
-import { NAME } from '@orchesty/connector-git-hub/src/GitHubApplication';
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
@@ -25,6 +24,7 @@ import { StatusCodes } from 'http-status-codes';
 
 export const SHIPSTATION_URL = 'https://ssapi.shipstation.com';
 export const ORDER_NOTIFY = 'ORDER_NOTIFY';
+export const NAME = 'shipstation';
 
 export default class ShipstationApplication extends ABasicApplication implements IWebhookApplication {
 
@@ -37,7 +37,7 @@ export default class ShipstationApplication extends ABasicApplication implements
     }
 
     public getName(): string {
-        return 'shipstation';
+        return NAME;
     }
 
     public getPublicName(): string {

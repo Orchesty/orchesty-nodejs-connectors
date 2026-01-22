@@ -9,7 +9,6 @@ init: docker-up-force install
 
 publish:
 	pnpm build
-	pnpm version
 	pnpm release
 
 docker-compose.ci.yml:

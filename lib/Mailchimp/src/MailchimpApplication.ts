@@ -1,4 +1,3 @@
-import { NAME } from '@orchesty/connector-git-hub/src/GitHubApplication';
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
@@ -27,6 +26,7 @@ export const AUDIENCE_ID = 'audience_id';
 export const TOKEN_URL = 'https://login.mailchimp.com/oauth2/token';
 export const API_KEYPOINT = 'api_keypoint';
 export const SEGMENT_ID = 'segment_id';
+export const NAME = 'mailchimp';
 
 export default class MailchimpApplication extends AOAuth2Application implements IWebhookApplication {
 
@@ -43,7 +43,7 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     }
 
     public getName(): string {
-        return 'mailchimp';
+        return NAME;
     }
 
     public getPublicName(): string {

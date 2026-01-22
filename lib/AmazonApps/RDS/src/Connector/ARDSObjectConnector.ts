@@ -1,4 +1,4 @@
-import AAwsObjectConnector from '@orchesty/connector-amazon-apps-common/src/AAwsObjectConnector';
+import { AAwsObjectConnector } from '@orchesty/connector-amazon-apps-common';
 
 export default abstract class ARDSObjectConnector extends AAwsObjectConnector {
 

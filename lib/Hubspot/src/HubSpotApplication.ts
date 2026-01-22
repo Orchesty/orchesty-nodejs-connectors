@@ -1,4 +1,3 @@
-import { NAME } from '@orchesty/connector-git-hub/src/GitHubApplication';
 import ApplicationTypeEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/ApplicationTypeEnum';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
@@ -20,6 +19,7 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { StatusCodes } from 'http-status-codes';
 
+export const NAME = 'hub-spot';
 export const APP_ID = 'app_id';
 export const BASE_URL = 'https://api.hubapi.com';
 
@@ -30,7 +30,7 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
     }
 
     public getName(): string {
-        return 'hub-spot';
+        return NAME;
     }
 
     public getPublicName(): string {
