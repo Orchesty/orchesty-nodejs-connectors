@@ -1,7 +1,7 @@
 {
     "name": "@orchesty/connector-amazon-apps-common",
     "description": "",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "Apache-2.0",
     "url": "https://github.com/Orchesty/orchesty-nodejs-connectors",
     "repository": "https://github.com/Orchesty/orchesty-nodejs-connectors",
@@ -11,9 +11,17 @@
         "lint": "eslint src --fix",
         "lint-ci": "eslint src"
     },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {

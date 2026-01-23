@@ -17,7 +17,6 @@
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {
-        "@orchesty/connector-git-hub": "workspace:*",
         "@orchesty/nodejs-sdk": "^4.3.6",
         "http-status-codes": "^2.3.0"
     },

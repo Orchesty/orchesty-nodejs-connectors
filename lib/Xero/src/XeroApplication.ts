@@ -170,7 +170,7 @@ export default class XeroApplication extends AOAuth2Application {
         }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/strict-void-return
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
         const { user } = JSON.parse(String(req.body));
         const appRepo = this.mongoService.getApplicationRepository();
@@ -200,8 +200,6 @@ export default class XeroApplication extends AOAuth2Application {
                 const response = await this.curlSender.send(requestDto);
 
                 if (response.getResponseCode() !== StatusCodes.OK) {
-                    // TODO
-                    // xeroApp.setDeleted(false);
                     await appRepo.update(xeroApp);
                 }
             }

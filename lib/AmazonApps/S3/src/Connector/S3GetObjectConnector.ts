@@ -1,6 +1,5 @@
 import { GetObjectCommand, GetObjectCommandInput, GetObjectCommandOutput } from '@aws-sdk/client-s3';
-import { KEY } from '@orchesty/connector-amazon-apps-common/src/AAwsApplication';
-import { CONTENT, NAME } from '@orchesty/connector-amazon-apps-common/src/AAwsObjectConnector';
+import { CONTENT, KEY, NAME } from '@orchesty/connector-amazon-apps-common';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import S3Application, { BUCKET } from '../S3Application';

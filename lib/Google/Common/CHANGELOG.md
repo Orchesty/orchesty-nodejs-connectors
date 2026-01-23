@@ -1,5 +1,11 @@
 # @orchesty/connector-google-common
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated export for common packages
+
 ## 1.0.1
 
 ### Patch Changes

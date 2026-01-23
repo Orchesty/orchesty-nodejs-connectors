@@ -1,4 +1,3 @@
-import { NAME } from '@orchesty/connector-git-hub/src/GitHubApplication';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { IWebhookApplication } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/IWebhookApplication';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
@@ -20,6 +19,7 @@ import { StatusCodes } from 'http-status-codes';
 const API_KEY = 'api_key';
 const WISEPOPS_URL = 'https://app.wisepops.com/api1/hooks';
 const EMAIL_EVENT = 'email';
+export const NAME = 'wisepops';
 
 export default class WisepopsApplication extends ABasicApplication implements IWebhookApplication {
 
@@ -28,7 +28,7 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     }
 
     public getName(): string {
-        return 'wisepops';
+        return NAME;
     }
 
     public getPublicName(): string {

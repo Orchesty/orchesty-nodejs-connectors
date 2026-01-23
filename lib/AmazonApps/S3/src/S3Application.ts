@@ -1,5 +1,6 @@
 import { S3Client } from '@aws-sdk/client-s3';
-import AAwsApplication, {
+import {
+    AAwsApplication,
     CREDENTIALS,
     ENDPOINT,
     KEY,
@@ -8,7 +9,7 @@ import AAwsApplication, {
     REGIONS,
     SECRET,
     VERSION,
-} from '@orchesty/connector-amazon-apps-common/src/AAwsApplication';
+} from '@orchesty/connector-amazon-apps-common';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';

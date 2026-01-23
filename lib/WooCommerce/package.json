@@ -17,7 +17,6 @@
     "keywords": [],
     "author": "info@hanaboso.com",
     "dependencies": {
-        "@orchesty/connector-authentica": "workspace:*",
         "@orchesty/nodejs-sdk": "^4.3.6",
         "luxon": "^3.7.2",
         "http-status-codes": "^2.3.0"

@@ -11,7 +11,7 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
-export default abstract class AGoogle extends AOAuth2Application {
+export abstract class AGoogle extends AOAuth2Application {
 
     public abstract getBaseUrl(): string;
 

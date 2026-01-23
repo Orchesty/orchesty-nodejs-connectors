@@ -1,4 +1,3 @@
-import { NAME } from '@orchesty/connector-git-hub/src/GitHubApplication';
 import { container, redis } from '@orchesty/nodejs-connectors/test/TestAbstract';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
@@ -27,7 +26,7 @@ describe('Tests for AuthenticaApplication', () => {
 
     it('should get requestDto', async () => {
         const requestDto = await app.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, Authentica, crypto.randomUUID()),
+            ProcessDto.createForFormRequest(Authentica, Authentica, crypto.randomUUID()),
             mock(),
             HttpMethods.GET,
             'applinth/orders',

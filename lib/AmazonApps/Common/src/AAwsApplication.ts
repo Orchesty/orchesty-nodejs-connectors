@@ -3,7 +3,6 @@ import { ABasicApplication } from '@orchesty/nodejs-sdk/dist/lib/Authorization/T
 import RequestDto from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/RequestDto';
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 
-export const KEY = 'Key';
 export const SECRET = 'secret';
 export const REGION = 'region';
 export const VERSION = 'apiVersion';
@@ -38,7 +37,7 @@ export const REGIONS = [
 
 export const LATEST = 'latest';
 
-export default abstract class AAwsApplication extends ABasicApplication {
+export abstract class AAwsApplication extends ABasicApplication {
 
     public getRequestDto(
         /* eslint-disable @typescript-eslint/no-unused-vars */

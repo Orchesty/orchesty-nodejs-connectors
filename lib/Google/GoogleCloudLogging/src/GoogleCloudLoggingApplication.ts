@@ -1,4 +1,4 @@
-import AGoogle from '@orchesty/connector-google-common/src/AGoogle';
+import { AGoogle } from '@orchesty/connector-google-common';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 
 export const NAME = 'google-cloud-logging';

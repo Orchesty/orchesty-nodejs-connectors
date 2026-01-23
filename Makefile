@@ -9,7 +9,6 @@ init: docker-up-force install
 
 publish:
 	pnpm build
-	pnpm version
 	pnpm release
 
 docker-compose.ci.yml:
@@ -29,6 +28,9 @@ oauth2:
 install:
 	$(DCS) pnpm install
 
+build:
+	$(DCS) pnpm build
+
 update:
 	$(DCS) pnpm update
 
@@ -41,9 +43,10 @@ lint:
 unit:
 	$(DCS) pnpm test
 
-fasttest: lint unit
+fasttest: build lint unit
 
 localtest:
+	pnpm build
 	pnpm lint
 	pnpm test
 

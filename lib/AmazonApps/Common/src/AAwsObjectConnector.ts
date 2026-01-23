@@ -16,7 +16,7 @@ export const NAME = 'name';
 
 export const CONTENT = 'content';
 
-export default abstract class AAwsObjectConnector extends AConnector {
+export abstract class AAwsObjectConnector extends AConnector {
 
     protected abstract getCustomId(): string;
 
