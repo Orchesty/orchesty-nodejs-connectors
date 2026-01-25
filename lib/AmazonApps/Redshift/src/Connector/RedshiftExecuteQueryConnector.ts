@@ -1,4 +1,4 @@
-import { QUERY } from '@orchesty/connector-amazon-apps-common/src/AAwsObjectConnector';
+import { QUERY } from '@orchesty/connector-amazon-apps-common';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import RedshiftApplication from '../RedshiftApplication';
 import ARedshiftObjectConnector from './ARedshiftObjectConnector';
