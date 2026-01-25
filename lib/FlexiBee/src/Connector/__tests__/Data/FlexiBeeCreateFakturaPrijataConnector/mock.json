@@ -1,0 +1,29 @@
+{
+    "http": "POST https://demo.flexibee.eu/c/demo/faktura-prijata",
+    "code": 200,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "success": "true",
+            "stats": {
+                "created": "2",
+                "updated": "0",
+                "deleted": "0",
+                "skipped": "0",
+                "failed": "0"
+            },
+            "results": [
+                {
+                    "id": "127",
+                    "request-id": "ext:17864810",
+                    "ref": "/c/test/adresar/127"
+                },
+                {
+                    "id": "1",
+                    "request-id": "ext:40830940-fc60-4ffd-a143-37ed2022bd21",
+                    "ref": "/c/test/faktura-prijata/1"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "user": "TestUser"
+  },
+  "data": [
+    {
+      "id": "127",
+      "request-id": "ext:17864810",
+      "ref": "/c/test/adresar/127"
+    },
+    {
+      "id": "1",
+      "request-id": "ext:40830940-fc60-4ffd-a143-37ed2022bd21",
+      "ref": "/c/test/faktura-prijata/1"
+    }
+  ]
+}

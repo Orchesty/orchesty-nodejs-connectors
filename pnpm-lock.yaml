@@ -913,6 +913,12 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6(bare-url@2.2.2)(socks@2.8.7)
 
+  lib/Wflow:
+    dependencies:
+      '@orchesty/nodejs-sdk':
+        specifier: ^4.3.6
+        version: 4.3.6(bare-url@2.2.2)(socks@2.8.7)
+
   lib/Wisepops:
     dependencies:
       '@orchesty/nodejs-sdk':
