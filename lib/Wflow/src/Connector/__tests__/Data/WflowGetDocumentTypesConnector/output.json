@@ -1,0 +1,28 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "autoStamp": "None",
+            "default": false,
+            "docCreatingMethod": "Upload",
+            "erpExclude": false,
+            "filesExtendName": false,
+            "id": "One",
+            "kind": "IncomingInvoice",
+            "name": "One"
+        },
+        {
+            "autoStamp": "None",
+            "default": false,
+            "docCreatingMethod": "Upload",
+            "erpExclude": false,
+            "filesExtendName": false,
+            "id": "Two",
+            "invoiceType": "TaxInvoice",
+            "kind": "IncomingInvoice",
+            "name": "Two"
+        }
+    ]
+}
