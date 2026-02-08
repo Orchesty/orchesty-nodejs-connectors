@@ -86,6 +86,16 @@ export default class WflowApplication extends AOAuth2Application {
         return new RequestDto(url, method, dto, data, headers);
     }
 
+    public getOrganization(applicationInstall: ApplicationInstall): string {
+        const organization = applicationInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
+
+        if (!organization) {
+            throw Error('Organization is not set.');
+        }
+
+        return organization;
+    }
+
     public getAuthUrl(): string {
         return 'https://account.wflow.com/connect/authorize';
     }

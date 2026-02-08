@@ -10,6 +10,7 @@ import { mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
 import WflowSubscribeWebhookBatch from '../src/Batch/WflowSubscribeWebhookBatch';
 import WflowUnsubscribeWebhookBatch from '../src/Batch/WflowUnsubscribeWebhookBatch';
 import WflowGetDocumentConnector from '../src/Connector/WflowGetDocumentConnector';
+import WflowGetDocumentTypesConnector from '../src/Connector/WflowGetDocumentTypesConnector';
 import WflowGetOrganizationsConnector from '../src/Connector/WflowGetOrganizationsConnector';
 import WflowPutDocumentConnector from '../src/Connector/WflowPutDocumentConnector';
 import WflowUpdateDocumentStateConnector from '../src/Connector/WflowUpdateDocumentStateConnector';
@@ -47,6 +48,7 @@ export default function init(): void {
     container.setApplication(app);
 
     container.setNode(new WflowGetDocumentConnector(), app);
+    container.setNode(new WflowGetDocumentTypesConnector(), app);
     container.setNode(new WflowUpdateDocumentStateConnector(), app);
     container.setNode(new WflowSubscribeWebhookBatch(), app);
     container.setNode(new WflowUnsubscribeWebhookBatch(), app);

@@ -1,0 +1,32 @@
+{
+    "http": "GET https://api.wflow.com/api/test/documents/types?pageSize=100",
+    "code": 200,
+    "body": {
+        "items": [
+            {
+                "erpExclude": false,
+                "filesExtendName": false,
+                "docCreatingMethod": "Upload",
+                "autoStamp": "None",
+                "id": "One",
+                "name": "One",
+                "kind": "IncomingInvoice",
+                "default": false
+            },
+            {
+                "erpExclude": false,
+                "filesExtendName": false,
+                "docCreatingMethod": "Upload",
+                "autoStamp": "None",
+                "invoiceType": "TaxInvoice",
+                "id": "Two",
+                "name": "Two",
+                "kind": "IncomingInvoice",
+                "default": false
+            }
+        ],
+        "totalItems": 2,
+        "pageSize": 100,
+        "page": 0
+    }
+}
