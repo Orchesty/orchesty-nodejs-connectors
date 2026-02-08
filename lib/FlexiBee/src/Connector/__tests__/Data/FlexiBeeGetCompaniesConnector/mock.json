@@ -1,0 +1,30 @@
+{
+    "http": "GET https://demo.flexibee.eu/c.json",
+    "code": 200,
+    "body": {
+        "companies": {
+            "company": [
+                {
+                    "createDt": "2025-12-12T18:20:06.542+01:00",
+                    "dbNazev": "One",
+                    "id": "-2",
+                    "licenseGroup": "One",
+                    "nazev": "One",
+                    "show": "true",
+                    "stavEnum": "ESTABLISHED",
+                    "watchingChanges": "false"
+                },
+                {
+                    "createDt": "2026-01-26T18:13:28.511+01:00",
+                    "dbNazev": "Two",
+                    "id": "-2",
+                    "licenseGroup": "Two",
+                    "nazev": "Two",
+                    "show": "true",
+                    "stavEnum": "ESTABLISHED",
+                    "watchingChanges": "false"
+                }
+            ]
+        }
+    }
+}
