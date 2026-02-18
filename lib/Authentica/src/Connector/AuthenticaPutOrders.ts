@@ -62,6 +62,7 @@ export interface IOrder {
         sku: string;
         quantity: number;
         unitPrice: number | null;
+        lot?: string | null;
     }[];
     variableSymbol: string | null;
     application: string;
