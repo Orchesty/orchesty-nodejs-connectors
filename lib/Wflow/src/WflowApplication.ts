@@ -105,7 +105,7 @@ export default class WflowApplication extends AOAuth2Application {
     }
 
     public getScopes(): string[] {
-        return ['uccl_common_api'];
+        return ['uccl_common_api', 'offline_access'];
     }
 
     public getScopesSeparator(): string {
