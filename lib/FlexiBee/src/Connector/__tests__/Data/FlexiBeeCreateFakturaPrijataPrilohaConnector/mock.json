@@ -1,0 +1,24 @@
+{
+    "http": "PUT https://demo.flexibee.eu/c/demo/faktura-prijata/1/prilohy/new/1.pdf",
+    "code": 201,
+    "body": {
+        "winstrom": {
+            "@version": "1.0",
+            "success": "true",
+            "stats": {
+                "created": "1",
+                "updated": "0",
+                "deleted": "0",
+                "skipped": "0",
+                "failed": "0"
+            },
+            "results": [
+                {
+                    "id": "10",
+                    "request-id": "ext:1.pdf",
+                    "ref": "/c/demo/priloha/10"
+                }
+            ]
+        }
+    }
+}

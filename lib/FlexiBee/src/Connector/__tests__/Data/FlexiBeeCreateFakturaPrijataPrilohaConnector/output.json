@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "id": "10",
+            "request-id": "ext:1.pdf",
+            "ref": "/c/demo/priloha/10"
+        }
+    ]
+}
