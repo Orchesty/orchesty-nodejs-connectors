@@ -12,7 +12,7 @@ export default class WflowGetDocumentMainFileConnector extends AConnector {
         return NAME;
     }
 
-    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
+    public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
         const { documentId } = dto.getJsonData();
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const organization = applicationInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
@@ -26,11 +26,15 @@ export default class WflowGetDocumentMainFileConnector extends AConnector {
 
         const responseDto = await this.getSender().send(requestDto, [200]);
 
-        return dto.setData(responseDto.getBody());
+        return dto.setNewJsonData({ file: responseDto.getBuffer().toString('base64') });
     }
 
 }
 
 export interface IInput {
     documentId: string;
+}
+
+export interface IOutput {
+    file: string;
 }
