@@ -19,6 +19,7 @@ import FlexiBeeCreateObjednavkaVydanaConnector
 import FlexiBeeCreateSkladovyPohybConnector from '../src/Connector/FlexiBeeCreateSkladovyPohybConnector';
 import FlexiBeeGetCenikKartyConnector from '../src/Connector/FlexiBeeGetCenikKartyConnector';
 import FlexiBeeGetCompaniesConnector from '../src/Connector/FlexiBeeGetCompaniesConnector';
+import FlexiBeeGetFakturaPrijataConnector from '../src/Connector/FlexiBeeGetFakturaPrijataConnector';
 import FlexiBeeGetObjednavkaVydanaConnector from '../src/Connector/FlexiBeeGetObjednavkaVydanaConnector';
 import FlexiBeeGetSarzeExpiraceKartyConnector
     from '../src/Connector/FlexiBeeGetSarzeExpiraceKartyConnector';
@@ -148,6 +149,13 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         new FlexiBeeCreateFakturaPrijataConnector()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeGetFakturaPrijataConnector())
             .setSender(sender)
             .setDb(db)
             .setApplication(app),

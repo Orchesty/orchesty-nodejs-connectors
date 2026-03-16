@@ -13,7 +13,7 @@ export default class FlexiBeeCreateFakturaPrijataPrilohaConnector extends AConne
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput[]>> {
-        const { id, content } = dto.getJsonData();
+        const { id, file } = dto.getJsonData();
         const application = this.getApplication<FlexiBeeApplication>();
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
 
@@ -24,7 +24,7 @@ export default class FlexiBeeCreateFakturaPrijataPrilohaConnector extends AConne
             application.getUrl(applicationInstall, `faktura-prijata/${id}/prilohy/new/${id}.pdf`),
         ))
             .addHeaders({ [CommonHeaders.CONTENT_TYPE]: 'application/pdf' })
-            .setBody(Buffer.from(content, 'base64'));
+            .setBody(Buffer.from(file, 'base64'));
 
         const responseDto = await this.getSender().send<IResponse>(requestDto);
 
@@ -35,7 +35,7 @@ export default class FlexiBeeCreateFakturaPrijataPrilohaConnector extends AConne
 
 export interface IInput {
     id: string;
-    content: string;
+    file: string;
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
