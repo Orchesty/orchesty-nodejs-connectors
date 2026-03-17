@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": {
+        "winstrom": {
+            "zavazek": [
+                {
+                    "id": "ext:test-zavazek-001",
+                    "typDokl": "code:OST. ZÁVAZKY 666",
+                    "firma": "code:KLIMT",
+                    "varSym": "100182020",
+                    "datVyst": "2020-02-17",
+                    "datSplat": "2020-02-17",
+                    "popis": "Test závazek"
+                }
+            ]
+        }
+    }
+}

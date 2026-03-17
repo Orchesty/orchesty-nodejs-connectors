@@ -1,0 +1,12 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "id": "53",
+            "request-id": "ext:test-zavazek-001",
+            "ref": "/c/demo/zavazek/53"
+        }
+    ]
+}

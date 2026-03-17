@@ -24,12 +24,16 @@ import FlexiBeeCreateFakturaPrijataPrilohaConnector
 import FlexiBeeCreateObjednavkaVydanaConnector
     from '../src/Connector/FlexiBeeCreateObjednavkaVydanaConnector';
 import FlexiBeeCreateSkladovyPohybConnector from '../src/Connector/FlexiBeeCreateSkladovyPohybConnector';
+import FlexiBeeCreateZavazekConnector from '../src/Connector/FlexiBeeCreateZavazekConnector';
+import FlexiBeeCreateZavazekPrilohaConnector
+    from '../src/Connector/FlexiBeeCreateZavazekPrilohaConnector';
 import FlexiBeeGetCenikKartyConnector from '../src/Connector/FlexiBeeGetCenikKartyConnector';
 import FlexiBeeGetCompaniesConnector from '../src/Connector/FlexiBeeGetCompaniesConnector';
 import FlexiBeeGetFakturaPrijataConnector from '../src/Connector/FlexiBeeGetFakturaPrijataConnector';
 import FlexiBeeGetObjednavkaVydanaConnector from '../src/Connector/FlexiBeeGetObjednavkaVydanaConnector';
 import FlexiBeeGetSarzeExpiraceKartyConnector
     from '../src/Connector/FlexiBeeGetSarzeExpiraceKartyConnector';
+import FlexiBeeGetZavazekConnector from '../src/Connector/FlexiBeeGetZavazekConnector';
 import FlexiBeeUpdateObjednavkaPrijataConnector
     from '../src/Connector/FlexiBeeUpdateObjednavkaPrijataConnector';
 import FlexiBeeUpdateSkladovyPohybConnector from '../src/Connector/FlexiBeeUpdateSkladovyPohybConnector';
@@ -170,6 +174,27 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         new FlexiBeeCreateFakturaPrijataPrilohaConnector()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        new FlexiBeeCreateZavazekConnector()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeGetZavazekConnector())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        new FlexiBeeCreateZavazekPrilohaConnector()
             .setSender(sender)
             .setDb(db)
             .setApplication(app),
