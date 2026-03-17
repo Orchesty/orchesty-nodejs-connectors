@@ -13,6 +13,14 @@ import WflowGetDocumentConnector from '../src/Connector/WflowGetDocumentConnecto
 import WflowGetDocumentMainFileConnector from '../src/Connector/WflowGetDocumentMainFileConnector';
 import WflowGetDocumentTypesConnector from '../src/Connector/WflowGetDocumentTypesConnector';
 import WflowGetOrganizationsConnector from '../src/Connector/WflowGetOrganizationsConnector';
+import WflowPatchAccountingRulesConnector from '../src/Connector/WflowPatchAccountingRulesConnector';
+import WflowPatchChartOfAccountsConnector from '../src/Connector/WflowPatchChartOfAccountsConnector';
+import WflowPatchContractsConnector from '../src/Connector/WflowPatchContractsConnector';
+import WflowPatchCostCentersConnector from '../src/Connector/WflowPatchCostCentersConnector';
+import WflowPatchSeriesConnector from '../src/Connector/WflowPatchSeriesConnector';
+import WflowPatchVatControlStatementLinesConnector
+    from '../src/Connector/WflowPatchVatControlStatementLinesConnector';
+import WflowPatchVatReturnLinesConnector from '../src/Connector/WflowPatchVatReturnLinesConnector';
 import WflowPutDocumentConnector from '../src/Connector/WflowPutDocumentConnector';
 import WflowUpdateDocumentStateConnector from '../src/Connector/WflowUpdateDocumentStateConnector';
 import WflowApplication, { NAME as WFLOW_APP, ORGANIZATION, ORGANIZATION_FORM } from '../src/WflowApplication';
@@ -56,4 +64,11 @@ export default function init(): void {
     container.setNode(new WflowUnsubscribeWebhookBatch(), app);
     container.setNode(new WflowPutDocumentConnector(), app);
     container.setNode(getOrganizationsConnector, app);
+    container.setNode(new WflowPatchCostCentersConnector(), app);
+    container.setNode(new WflowPatchContractsConnector(), app);
+    container.setNode(new WflowPatchChartOfAccountsConnector(), app);
+    container.setNode(new WflowPatchAccountingRulesConnector(), app);
+    container.setNode(new WflowPatchVatReturnLinesConnector(), app);
+    container.setNode(new WflowPatchVatControlStatementLinesConnector(), app);
+    container.setNode(new WflowPatchSeriesConnector(), app);
 }

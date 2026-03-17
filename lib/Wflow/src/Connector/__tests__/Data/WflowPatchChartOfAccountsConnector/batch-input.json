@@ -1,0 +1,17 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "code": "AAA",
+            "description": "AAA",
+            "isValid": true
+        },
+        {
+            "code": "BBB",
+            "description": "BBB",
+            "isValid": true
+        }
+    ]
+}

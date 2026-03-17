@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { NAME as WFLOW_APP_NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
+import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-put-document-connector`;
 
@@ -12,7 +12,7 @@ export default class WflowPutDocumentConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const app = this.getApplication();
+        const app = this.getApplication<WflowApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { externalId, ignoreLock, setAsFilled } = dto.getJsonData();
 
@@ -21,14 +21,11 @@ export default class WflowPutDocumentConnector extends AConnector {
         if (ignoreLock) query.set('ignoreLock', ignoreLock.toString());
         if (setAsFilled) query.set('setAsFilled', setAsFilled.toString());
 
-        const organization: string | undefined
-            = appInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
-
-        const request = await app.getRequestDto(
+        const request = app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.PUT,
-            `/${organization}/documents${query.size ? `?${query}` : ''}`,
+            `/${app.getOrganization(appInstall)}/documents${query.size ? `?${query}` : ''}`,
             dto.getJsonData(),
         );
 

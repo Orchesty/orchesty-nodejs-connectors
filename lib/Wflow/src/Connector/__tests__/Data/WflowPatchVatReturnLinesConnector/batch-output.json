@@ -1,0 +1,19 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "code": "000P",
+            "description": "Doklad bez vlivu na DPH",
+            "isValid": true,
+            "reverseCharge": false
+        },
+        {
+            "code": "001P",
+            "description": "Second item",
+            "isValid": true,
+            "reverseCharge": true
+        }
+    ]
+}
