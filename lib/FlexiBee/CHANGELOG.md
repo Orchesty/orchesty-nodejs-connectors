@@ -1,5 +1,11 @@
 # @orchesty/connector-flexi-bee
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated release
+
 ## 1.0.5
 
 ### Patch Changes
