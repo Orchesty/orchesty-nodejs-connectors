@@ -4,13 +4,20 @@ import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFo
 import { PASSWORD, USER } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Type/Basic/ABasicApplication';
 import DatabaseClient from '@orchesty/nodejs-sdk/dist/lib/Storage/Database/Client';
 import CurlSender from '@orchesty/nodejs-sdk/dist/lib/Transport/Curl/CurlSender';
+import FlexiBeeCleneniDphBatch from '../src/Batch/FlexiBeeCleneniDphBatch';
+import FlexiBeeCleneniKontrolniHlaseniBatch from '../src/Batch/FlexiBeeCleneniKontrolniHlaseniBatch';
 import FlexiBeeFormaDopravyBatch from '../src/Batch/FlexiBeeFormaDopravyBatch';
 import FlexiBeeFormaUhradyBatch from '../src/Batch/FlexiBeeFormaUhradyBatch';
 import FlexiBeeGetSkladovyPohybBatch from '../src/Batch/FlexiBeeGetSkladovyPohybBatch';
 import FlexiBeeObjednavkaPrijataBatch from '../src/Batch/FlexiBeeObjednavkaPrijataBatch';
 import FlexiBeeObjednavkaVydanaBatch from '../src/Batch/FlexiBeeObjednavkaVydanaBatch';
+import FlexiBeePredpisZauctovaniBatch from '../src/Batch/FlexiBeePredpisZauctovaniBatch';
 import FlexiBeeSkladoveKartyBatch from '../src/Batch/FlexiBeeSkladoveKartyBatch';
 import FlexiBeeStitkyBatch from '../src/Batch/FlexiBeeStitkyBatch';
+import FlexiBeeStrediskoBatch from '../src/Batch/FlexiBeeStrediskoBatch';
+import FlexiBeeTypFakturyPrijateBatch from '../src/Batch/FlexiBeeTypFakturyPrijateBatch';
+import FlexiBeeUcetBatch from '../src/Batch/FlexiBeeUcetBatch';
+import FlexiBeeZakazkaBatch from '../src/Batch/FlexiBeeZakazkaBatch';
 import FlexiBeeCreateFakturaPrijataConnector from '../src/Connector/FlexiBeeCreateFakturaPrijataConnector';
 import FlexiBeeCreateFakturaPrijataPrilohaConnector
     from '../src/Connector/FlexiBeeCreateFakturaPrijataPrilohaConnector';
@@ -163,6 +170,55 @@ export function initFlexiBeeTest(): void {
 
     container.setNode(
         new FlexiBeeCreateFakturaPrijataPrilohaConnector()
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeStrediskoBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeZakazkaBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeUcetBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeePredpisZauctovaniBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeCleneniDphBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeCleneniKontrolniHlaseniBatch())
+            .setSender(sender)
+            .setDb(db)
+            .setApplication(app),
+    );
+
+    container.setNode(
+        (new FlexiBeeTypFakturyPrijateBatch())
             .setSender(sender)
             .setDb(db)
             .setApplication(app),

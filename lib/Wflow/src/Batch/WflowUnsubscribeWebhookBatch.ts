@@ -4,7 +4,7 @@ import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import WflowApplication, { NAME as WFLOW_APP_NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
+import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-unsubscribe-webhooks-batch`;
 
@@ -28,9 +28,11 @@ export default class WflowUnsubscribeWebhookBatch extends ABatchNode {
             return dto;
         }
 
-        const organization: string | undefined
-            = appInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
-        if (!organization) {
+        let organization: string;
+
+        try {
+            organization = app.getOrganization(appInstall);
+        } catch {
             return dto;
         }
 

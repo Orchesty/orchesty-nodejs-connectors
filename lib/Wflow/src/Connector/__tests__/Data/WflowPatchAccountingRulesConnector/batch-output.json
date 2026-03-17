@@ -1,0 +1,19 @@
+{
+    "headers": {
+        "user": "TestUser"
+    },
+    "data": [
+        {
+            "code": "AAAA",
+            "description": "aaaa",
+            "isValid": true,
+            "kind": "IncomingInvoice"
+        },
+        {
+            "code": "BBBB",
+            "description": "bbbb",
+            "isValid": true,
+            "kind": "OutgoingInvoice"
+        }
+    ]
+}

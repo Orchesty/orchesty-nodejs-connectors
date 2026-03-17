@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import { NAME as WFLOW_APP_NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
+import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-update-document-state-connector`;
 
@@ -12,18 +12,15 @@ export default class WflowUpdateDocumentStateConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const app = this.getApplication();
-        const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { documentId } = dto.getJsonData();
+        const app = this.getApplication<WflowApplication>();
+        const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        const organization: string | undefined
-            = appInstall.getSettings()[ORGANIZATION_FORM]?.[ORGANIZATION];
-
-        const request = await app.getRequestDto(
+        const request = app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.PUT,
-            `/${organization}/documents/${documentId}/task/Export/processed`,
+            `/${app.getOrganization(appInstall)}/documents/${documentId}/task/Export/processed`,
         );
 
         await this.getSender().send(request, [200]);
