@@ -9,6 +9,8 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
 
     protected iterateOnly = false;
 
+    protected batchOutput = false;
+
     protected pageSize = 100;
 
     protected relations: string[] = [];
@@ -49,6 +51,10 @@ export abstract class FlexiBeeSimpleIterator<T> extends ABatchNode {
             dto.setBatchCursor(String(page + 1), this.iterateOnly);
         } else {
             dto.removeBatchCursor();
+        }
+
+        if (this.batchOutput && items.length > 0) {
+            return dto.addItem(items);
         }
 
         return dto.setItemList(items, this.iterateOnly);
