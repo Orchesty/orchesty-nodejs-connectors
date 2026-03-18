@@ -59,6 +59,7 @@ Register the application and nodes in your Orchesty DI container:
 
 ```typescript
 import { container } from '@orchesty/nodejs-sdk';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
 import AllegroApplication from '@orchesty/connector-allegro/dist/AllegroApplication';
 import AllegroCreateDraftOfferConnector from '@orchesty/connector-allegro/dist/Connector/AllegroCreateDraftOfferConnector';
 import AllegroGetOrderDetailConnector from '@orchesty/connector-allegro/dist/Connector/AllegroGetOrderDetailConnector';
@@ -67,7 +68,7 @@ import AllegroProposeProductConnector from '@orchesty/connector-allegro/dist/Con
 import AllegroGetAvailableProductsBatch from '@orchesty/connector-allegro/dist/Batch/AllegroGetAvailableProductsBatch';
 import AllegroGetUsersOrderListBatch from '@orchesty/connector-allegro/dist/Batch/AllegroGetUsersOrderListBatch';
 
-const allegroApp = new AllegroApplication();
+const allegroApp = new AllegroApplication(container.get(OAuth2Provider));
 container.setApplication(allegroApp);
 container.setNode(new AllegroCreateDraftOfferConnector(), allegroApp);
 container.setNode(new AllegroGetOrderDetailConnector(), allegroApp);

@@ -43,3 +43,5 @@ export interface PinyaJobTitle {
 }
 
 export type PinyaJobTitlesOutput = PinyaJobTitle[];
+
+export default PinyaJobTitlesConnector;
