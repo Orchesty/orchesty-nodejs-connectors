@@ -1,23 +1,77 @@
-# [Google Calender](https://developers.google.com/calendar/api/v3/reference)
+# Google Calendar Connector
 
-## OAuth 2.0
+[![npm](https://img.shields.io/npm/v/@orchesty/connector-google-calendar?color=15ba68)](https://www.npmjs.com/package/@orchesty/connector-google-calendar)
+[![License](https://img.shields.io/badge/license-Apache--2.0-15ba68)](https://github.com/Orchesty/orchesty-nodejs-connectors/blob/master/LICENSE)
 
-- Client ID
-- Client secret
+An [Orchesty](https://orchesty.io) connector for Google Calendar, a time-management and scheduling service by Google for creating, sharing, and managing calendar events.
 
-### How to get
+## Application Type
 
-- Go to [Google console](https://console.cloud.google.com/apis/api/calendar-json.googleapis.com/credentials)
+**OAuth 2.0**
 
-### Example data for create event
+This connector uses Google OAuth 2.0 with the `auth/calendar` scope. After entering your credentials in Orchesty, you will be redirected to Google to authorize access.
 
-```json
-{
-  "start": "2021-12-16T07:00:00+01:00",
-  "end": "2021-12-16T20:00:00+01:00",
-  "timeZone": "Europe/Prague",
-  "summary": "TITLE",
-  "userName": "asdrvt15e21as51ce",
-  "calenderId": "c_ou4db6jnke42obshctiodai4c0@group.calendar.google.com"
-}
+| Field | Description |
+|---|---|
+| `client_id` | OAuth Client ID from the Google Cloud Console |
+| `client_secret` | OAuth Client Secret from the Google Cloud Console |
+
+## Components
+
+| Class | Type | Description |
+|---|---|---|
+| `GoogleCalendarAddEventConnector` | Connector | Creates a new event in a calendar via `POST /calendar/v3/calendars/{calenderId}/events` |
+
+## Setup
+
+### Credentials
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com) and open your project.
+2. Navigate to **APIs & Services → Credentials**.
+3. Create an **OAuth 2.0 Client ID** (type: Web application).
+4. Add the Orchesty OAuth callback URL to **Authorized redirect URIs**.
+5. Copy the **Client ID** and **Client Secret**.
+6. Enable the **Google Calendar API** under **APIs & Services → Library**.
+7. In Orchesty, open the Google Calendar application settings, enter the credentials, and complete the OAuth authorization flow.
+
+### API Documentation
+
+Google Calendar API: [https://developers.google.com/calendar/api/v3/reference](https://developers.google.com/calendar/api/v3/reference)
+
+## Installation & Usage
+
+Install the package:
+
+```bash
+npm install @orchesty/connector-google-calendar @orchesty/nodejs-sdk
+# or
+pnpm add @orchesty/connector-google-calendar @orchesty/nodejs-sdk
 ```
+
+Register the application and nodes in your Orchesty DI container:
+
+```typescript
+import { container } from '@orchesty/nodejs-sdk';
+import { OAuth2Provider } from '@orchesty/nodejs-sdk/dist/lib/Authorization/Provider/OAuth2/OAuth2Provider';
+import GoogleCalendarApplication from '@orchesty/connector-google-calendar/dist/GoogleCalendarApplication';
+import GoogleCalendarAddEventConnector from '@orchesty/connector-google-calendar/dist/Connector/GoogleCalendarAddEventConnector';
+
+const app = new GoogleCalendarApplication(container.get(OAuth2Provider));
+container.setApplication(app);
+container.setNode(new GoogleCalendarAddEventConnector(), app);
+```
+
+## License
+
+This connector is released under the **Apache License 2.0**. See the [LICENSE](https://github.com/Orchesty/orchesty-nodejs-connectors/blob/master/LICENSE) file for the full license text.
+
+## Contributing
+
+Contributions are welcome! This connector is part of the open-source [Orchesty Node.js Connectors](https://github.com/Orchesty/orchesty-nodejs-connectors) monorepo.
+
+For guidelines on how to create or update connectors — including project setup, coding conventions, and how to write tests — please refer to the **[Contributing to Connectors](https://orchesty.io/community/contributing-to-connectors)** guide.
+
+All contributions should include:
+- Source code in `src/` following the existing connector structure
+- Tests in `src/**/__tests__/` with `input.json`, `mock.json`, and `output.json` fixtures
+- An updated `CHANGELOG.md` entry

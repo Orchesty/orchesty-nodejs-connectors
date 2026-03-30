@@ -1,0 +1,50 @@
+---
+description: Rules for generating README files for Orchesty connectors
+globs: **/README.md, README_TEMPLATE.md
+alwaysApply: false
+---
+
+# README Generation Rules
+
+## No Hallucination
+
+Never invent or assume content. Every piece of information must come directly from the connector source code or a verified external source.
+
+- Connector names, class names, and field names → read from source files
+- Application description → read from `getDescription()` in the Application class
+- Auth type → determined by the base class (`ABasicApplication` = Basic, `AOAuth2Application` = OAuth 2.0)
+- Credential field names → read from `getFormStack()` in the Application class
+
+## Documentation Links
+
+**Only include a link if you have verified it returns HTTP 200.**
+
+Use the `WebFetch` or `WebSearch` tool to check each URL before writing it into the README. If a link cannot be verified, do not include it — omit the API Documentation section entirely rather than writing an unverified URL.
+
+```
+✅ Verified: https://developers.activecampaign.com/reference → include
+❌ Unverified or 404: omit the section
+```
+
+## Credentials Setup Instructions
+
+**Only include a Setup → Credentials section if you are certain the steps are accurate.**
+
+Acceptable sources:
+- Official API documentation you have fetched and read
+- Direct observation from the application source code (e.g. field names, token format)
+
+If the exact UI navigation steps (e.g. "Settings → Developer → API Access") cannot be verified against current documentation, omit the numbered steps. You may still include the credential field descriptions from the form definition.
+
+```
+✅ Include: field names and what they mean (from source code)
+❌ Omit: specific UI navigation steps you cannot verify
+```
+
+## Required Source Verification Checklist
+
+Before writing a README:
+1. Read the Application `.ts` file → extract auth type, field names, base URL
+2. Read all Connector and Batch `.ts` files → extract class names, HTTP methods, endpoints
+3. Fetch and verify any documentation URL before including it
+4. Read `package.json` → extract npm package name for badges and install commands
