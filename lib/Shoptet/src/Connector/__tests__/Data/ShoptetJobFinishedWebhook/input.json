@@ -1,5 +1,8 @@
 {
-    "headers": {},
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
     "data": {
         "eshopId": 222651,
         "event": "job:finished",

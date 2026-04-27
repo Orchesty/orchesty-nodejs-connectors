@@ -1,18 +1,19 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "sender": {
-      "name": "yc",
-      "id": 1
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
-    "inlineImageActivation": false,
-    "sendAtBestTime": false,
-    "abTesting": false,
-    "ipWarmupEnable": false,
-    "name": "sdas",
-    "templateId": 2,
-    "subject": "Discover the New Collection !"
-  }
+    "data": {
+        "sender": {
+            "name": "yc",
+            "id": 1
+        },
+        "inlineImageActivation": false,
+        "sendAtBestTime": false,
+        "abTesting": false,
+        "ipWarmupEnable": false,
+        "name": "sdas",
+        "templateId": 2,
+        "subject": "Discover the New Collection !"
+    }
 }

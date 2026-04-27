@@ -1,10 +1,11 @@
 {
     "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
         "result-code": "1003",
-        "result-message": "\"One or more errors occurred. (Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.)\\nHodnota pole Číslo dokladu je duplicitní s jiným záznamem.\"",
-        "user": "TestUser"
+        "result-message": "\"One or more errors occurred. (Hodnota pole \u010c\u00edslo dokladu je duplicitn\u00ed s jin\u00fdm z\u00e1znamem.)\\nHodnota pole \u010c\u00edslo dokladu je duplicitn\u00ed s jin\u00fdm z\u00e1znamem.\""
     },
     "data": {
-        "body": "\"One or more errors occurred. (Hodnota pole Číslo dokladu je duplicitní s jiným záznamem.)\\nHodnota pole Číslo dokladu je duplicitní s jiným záznamem.\""
+        "body": "\"One or more errors occurred. (Hodnota pole \u010c\u00edslo dokladu je duplicitn\u00ed s jin\u00fdm z\u00e1znamem.)\\nHodnota pole \u010c\u00edslo dokladu je duplicitn\u00ed s jin\u00fdm z\u00e1znamem.\""
     }
 }

@@ -54,6 +54,7 @@ export default class WooCommerceRegisterWebhook extends AConnector {
                         const wb = new Webhook()
                             .setWebhookId(webhook.id.toString())
                             .setUser(appInstall.getUser())
+                            .setSdk(appInstall.getSdk())
                             .setNode(located.node)
                             .setToken(located.token)
                             .setApplication(app.getName())

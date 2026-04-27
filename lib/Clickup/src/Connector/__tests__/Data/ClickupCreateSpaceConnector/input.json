@@ -1,10 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "teamId": 14353588,
-        "name": "Karové",
+        "name": "Karov\u00e9",
         "multiple_assignees": true,
         "features": {
             "due_dates": {

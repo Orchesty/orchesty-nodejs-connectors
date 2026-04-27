@@ -119,7 +119,12 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         url: string,
     ): RequestDto {
         return this.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
             applicationInstall,
             HttpMethods.POST,
             `${applicationInstall.getSettings()[API_KEYPOINT]}
@@ -146,7 +151,12 @@ export default class MailchimpApplication extends AOAuth2Application implements 
         webhook: Webhook,
     ): RequestDto {
         return this.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
             applicationInstall,
             HttpMethods.DELETE,
 
@@ -169,7 +179,12 @@ export default class MailchimpApplication extends AOAuth2Application implements 
     public async getApiEndpoint(applicationInstall: ApplicationInstall): Promise<string> {
         const output = await this.sender.send(
             this.getRequestDto(
-                ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+                ProcessDto.createForFormRequest(
+                    NAME,
+                    applicationInstall.getUser(),
+                    applicationInstall.getSdk(),
+                    crypto.randomUUID(),
+                ),
                 applicationInstall,
                 HttpMethods.GET,
                 '%s/oauth2/metadata',

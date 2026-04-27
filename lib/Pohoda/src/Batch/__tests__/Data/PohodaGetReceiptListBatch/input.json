@@ -1,6 +1,7 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {}
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {}
 }

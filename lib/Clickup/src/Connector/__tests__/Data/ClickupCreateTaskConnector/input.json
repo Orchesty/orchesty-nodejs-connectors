@@ -1,10 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "listId": 170322402,
-        "name": "Nevím ale snad to bude fugovat",
+        "name": "Nev\u00edm ale snad to bude fugovat",
         "description": "fungujjj",
         "status": "to do",
         "priority": 3

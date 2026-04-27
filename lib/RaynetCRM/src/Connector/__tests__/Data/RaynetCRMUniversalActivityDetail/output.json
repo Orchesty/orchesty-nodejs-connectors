@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "_entityName": "Task",
@@ -8,7 +9,7 @@
         "businessCase": null,
         "category": {
             "id": 90,
-            "value": "Lékař"
+            "value": "L\u00e9ka\u0159"
         },
         "company": {
             "id": 2,
@@ -19,7 +20,7 @@
             "VIP_b91d1": false
         },
         "deadline": "2022-06-11 15:03",
-        "description": "Je potřeba být laskavý!",
+        "description": "Je pot\u0159eba b\u00fdt laskav\u00fd!",
         "id": 89,
         "lead": null,
         "offer": null,
@@ -48,7 +49,7 @@
             }
         ],
         "person": {
-            "fullName": "Pavel Dobrý",
+            "fullName": "Pavel Dobr\u00fd",
             "id": 3
         },
         "personal": false,
@@ -73,11 +74,11 @@
         "scheduledTill": "2022-06-11 16:00",
         "securityLevel": {
             "id": 1,
-            "name": "Sdílená"
+            "name": "Sd\u00edlen\u00e1"
         },
-        "solution": "Nakonec to dopadlo dobře.",
+        "solution": "Nakonec to dopadlo dob\u0159e.",
         "status": "SCHEDULED",
         "tags": [],
-        "title": "Navázat kontakt s klientem"
+        "title": "Nav\u00e1zat kontakt s klientem"
     }
 }

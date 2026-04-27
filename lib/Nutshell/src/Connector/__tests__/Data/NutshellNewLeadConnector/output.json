@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "accounts": [],
@@ -40,7 +41,7 @@
             "stub": true
         },
         "modifiedTime": "2022-08-10T16:18:05+0000",
-        "name": "Lead–1001",
+        "name": "Lead\u20131001",
         "notes": [],
         "primaryAccount": null,
         "priority": 0,

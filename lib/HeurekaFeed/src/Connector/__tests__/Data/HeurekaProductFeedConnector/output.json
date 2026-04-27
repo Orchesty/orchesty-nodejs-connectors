@@ -1,13 +1,14 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "SHOP": {
             "SHOPITEM": [
                 {
                     "ACCESSORY": "CD456",
-                    "CATEGORYTEXT": "Elektronika | Mobilní telefony",
+                    "CATEGORYTEXT": "Elektronika | Mobiln\u00ed telefony",
                     "DELIVERY": [
                         {
                             "DELIVERY_ID": "CESKA_POSTA",
@@ -21,10 +22,10 @@
                         }
                     ],
                     "DELIVERY_DATE": 2,
-                    "DESCRIPTION": "Klasický s plným dotykovým uživatelským rozhraním",
+                    "DESCRIPTION": "Klasick\u00fd s pln\u00fdm dotykov\u00fdm u\u017eivatelsk\u00fdm rozhran\u00edm",
                     "EAN": 6417182041488,
                     "EXTENDED_WARRANTY": {
-                        "DESC": "Záruka na 36 měsíců",
+                        "DESC": "Z\u00e1ruka na 36 m\u011bs\u00edc\u016f",
                         "VAL": 36
                     },
                     "GIFT": "Pouzdro zdarma",
@@ -36,7 +37,7 @@
                     "MANUFACTURER": "NOKIA",
                     "PARAM": {
                         "PARAM_NAME": "Barva",
-                        "VAL": "černá"
+                        "VAL": "\u010dern\u00e1"
                     },
                     "PRICE_VAT": 6000,
                     "PRODUCT": "Nokia 5800 XpressMusic",
@@ -44,15 +45,15 @@
                     "PRODUCTNO": "RM-559394",
                     "SALES_VOUCHER": {
                         "CODE": "SLEVA20",
-                        "DESC": "Sleva 20% po zadání kódu do 31.12.2021!"
+                        "DESC": "Sleva 20% po zad\u00e1n\u00ed k\u00f3du do 31.12.2021!"
                     },
-                    "SPECIAL_SERVICE": "Aplikace ochranné fólie",
+                    "SPECIAL_SERVICE": "Aplikace ochrann\u00e9 f\u00f3lie",
                     "URL": "http://obchod.cz/mobily/nokia-5800-xpressmusic",
                     "VIDEO_URL": "http://www.youtube.com/watch?v=KjR759oWF7w"
                 },
                 {
                     "ACCESSORY": "CD456",
-                    "CATEGORYTEXT": "Elektronika | Mobilní telefony",
+                    "CATEGORYTEXT": "Elektronika | Mobiln\u00ed telefony",
                     "DELIVERY": [
                         {
                             "DELIVERY_ID": "CESKA_POSTA",
@@ -66,10 +67,10 @@
                         }
                     ],
                     "DELIVERY_DATE": 2,
-                    "DESCRIPTION": "Klasický s plným dotykovým uživatelským rozhraním",
+                    "DESCRIPTION": "Klasick\u00fd s pln\u00fdm dotykov\u00fdm u\u017eivatelsk\u00fdm rozhran\u00edm",
                     "EAN": 6417182041488,
                     "EXTENDED_WARRANTY": {
-                        "DESC": "Záruka na 36 měsíců",
+                        "DESC": "Z\u00e1ruka na 36 m\u011bs\u00edc\u016f",
                         "VAL": 36
                     },
                     "GIFT": "Pouzdro zdarma",
@@ -81,7 +82,7 @@
                     "MANUFACTURER": "NOKIA",
                     "PARAM": {
                         "PARAM_NAME": "Barva",
-                        "VAL": "černá"
+                        "VAL": "\u010dern\u00e1"
                     },
                     "PRICE_VAT": 6000,
                     "PRODUCT": "Nokia 5800 XpressMusic",
@@ -89,9 +90,9 @@
                     "PRODUCTNO": "RM-559394",
                     "SALES_VOUCHER": {
                         "CODE": "SLEVA20",
-                        "DESC": "Sleva 20% po zadání kódu do 31.12.2021!"
+                        "DESC": "Sleva 20% po zad\u00e1n\u00ed k\u00f3du do 31.12.2021!"
                     },
-                    "SPECIAL_SERVICE": "Aplikace ochranné fólie",
+                    "SPECIAL_SERVICE": "Aplikace ochrann\u00e9 f\u00f3lie",
                     "URL": "http://obchod.cz/mobily/nokia-5800-xpressmusic",
                     "VIDEO_URL": "http://www.youtube.com/watch?v=KjR759oWF7w"
                 }

@@ -1,10 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
-            "body": "[{\"id\":\"2\",\"lastUpdate\":\"2013-12-23T13:27:36.635+01:00\",\"kod\":\"A.1.\",\"nazev\":\"Údaje z vyhotovenej faktúry o dodaní tovarov a služieb, ktorú bol platiteľ dane povinný vyhotoviť podľa § 71 až 75 zákona, pri ktorých je osobou povinnou platiť daň (okrem zjednodušenej faktúry a faktúry o dodaní plnení oslobodených od dane)\",\"nazevA\":\"\",\"nazevB\":\"\",\"nazevC\":\"\",\"poznam\":\"\",\"popis\":\"Údaje z vyhotovenej faktúry o dodaní tovarov a služieb, ktorú bol platiteľ dane povinný vyhotoviť podľa § 71 až 75 zákona, pri ktorých je osobou povinnou platiť daň (okrem zjednodušenej faktúry a faktúry o dodaní plnení oslobodených od dane)\",\"platiOd\":\"0\",\"platiDo\":\"9999\",\"vyplnCisKod\":\"false\",\"vyplnDruh\":\"false\",\"kodTransakce\":\"A1\",\"typPohybuK\":\"\",\"uuid\":\"SK A.1.\",\"stat\":\"code:SK\",\"stat@ref\":\"/c/demo/stat/190.json\",\"stat@showAs\":\"Slovensko\"}]",
+            "body": "[{\"id\":\"2\",\"lastUpdate\":\"2013-12-23T13:27:36.635+01:00\",\"kod\":\"A.1.\",\"nazev\":\"\u00dadaje z vyhotovenej fakt\u00fary o dodan\u00ed tovarov a slu\u017eieb, ktor\u00fa bol platite\u013e dane povinn\u00fd vyhotovi\u0165 pod\u013ea \u00a7 71 a\u017e 75 z\u00e1kona, pri ktor\u00fdch je osobou povinnou plati\u0165 da\u0148 (okrem zjednodu\u0161enej fakt\u00fary a fakt\u00fary o dodan\u00ed plnen\u00ed osloboden\u00fdch od dane)\",\"nazevA\":\"\",\"nazevB\":\"\",\"nazevC\":\"\",\"poznam\":\"\",\"popis\":\"\u00dadaje z vyhotovenej fakt\u00fary o dodan\u00ed tovarov a slu\u017eieb, ktor\u00fa bol platite\u013e dane povinn\u00fd vyhotovi\u0165 pod\u013ea \u00a7 71 a\u017e 75 z\u00e1kona, pri ktor\u00fdch je osobou povinnou plati\u0165 da\u0148 (okrem zjednodu\u0161enej fakt\u00fary a fakt\u00fary o dodan\u00ed plnen\u00ed osloboden\u00fdch od dane)\",\"platiOd\":\"0\",\"platiDo\":\"9999\",\"vyplnCisKod\":\"false\",\"vyplnDruh\":\"false\",\"kodTransakce\":\"A1\",\"typPohybuK\":\"\",\"uuid\":\"SK A.1.\",\"stat\":\"code:SK\",\"stat@ref\":\"/c/demo/stat/190.json\",\"stat@showAs\":\"Slovensko\"}]",
             "headers": {}
         }
     ]

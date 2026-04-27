@@ -58,7 +58,7 @@ export default class FlexiBeeGetObjednavkaVydanaConnector extends AConnector {
             dto.setNewJsonData(order);
         }
 
-        return dto as unknown as ProcessDto<FlexiBeeObjednavkaVydana>;
+        return dto;
     }
 
 }

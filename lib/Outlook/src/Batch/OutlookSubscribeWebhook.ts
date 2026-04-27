@@ -24,7 +24,11 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
 
         let dbWebhooks: Webhook[] = [];
         if (dto.getBatchCursor('firstRun') === 'firstRun') {
-            dbWebhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
+            dbWebhooks = await repo.findMany({
+                users: [appInstall.getUser()],
+                apps: [app.getName()],
+                sdks: [appInstall.getSdk()],
+            });
         }
 
         const webhookIndex = Number(dto.getBatchCursor('0'));
@@ -57,6 +61,7 @@ export default class OutlookSubscribeWebhook extends ABatchNode {
                 await repo.insert(new Webhook()
                     .setWebhookId(respBody.id)
                     .setUser(appInstall.getUser())
+                    .setSdk(appInstall.getSdk())
                     .setNode(webhooks[webhookIndex].getNode())
                     .setToken(token)
                     .setApplication(app.getName())

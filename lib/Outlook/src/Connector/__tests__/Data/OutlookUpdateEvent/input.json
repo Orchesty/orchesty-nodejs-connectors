@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": "1234",
@@ -16,6 +17,8 @@
         "onlineMeetingProvider": "teamsForBusiness",
         "isReminderOn": true,
         "hideAttendees": false,
-        "categories": ["Red category"]
+        "categories": [
+            "Red category"
+        ]
     }
 }

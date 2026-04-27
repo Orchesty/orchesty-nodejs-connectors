@@ -128,6 +128,7 @@
     "rootDir": "./",
     "baseUrl": "./",
     "typeRoots": ["node_modules/@types"],
+    "types": ["node", "jest"],
     "allowJs": true,
     "noImplicitAny": true,
     "removeComments": true,
@@ -137,6 +138,7 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
     "composite": true,
     "isolatedModules": true,
     "paths": {

@@ -1,4 +1,4 @@
-import { DEFAULT_USER } from '@orchesty/nodejs-connectors/test/DataProvider';
+import { DEFAULT_SDK, DEFAULT_USER } from '@orchesty/nodejs-connectors/test/DataProvider';
 import { container } from '@orchesty/nodejs-connectors/test/TestAbstract';
 import Webhook from '@orchesty/nodejs-sdk/dist/lib/Application/Database/Webhook';
 import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
@@ -24,6 +24,7 @@ describe('Tests for BraniSubscribeWebhooks', () => {
             .setTopology('example-topology')
             .setUnsubscribeFailed(false)
             .setUser(DEFAULT_USER)
+            .setSdk(DEFAULT_SDK)
             .setWebhookId('n/a');
 
         mockOnce([
