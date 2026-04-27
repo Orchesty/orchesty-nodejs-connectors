@@ -1,10 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "resourceNames": [
-      "projects/test-project"
-    ]
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "resourceNames": [
+            "projects/test-project"
+        ]
+    }
 }

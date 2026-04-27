@@ -1,18 +1,19 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
-      "body": "{\"id\":20,\"code\":\"ÄŚR\",\"name\":\"ÄŚeskĂˇ republika\"}",
+      "body": "{\"id\":20,\"code\":\"\u00c4\u015aR\",\"name\":\"\u00c4\u015aesk\u0102\u02c7 republika\"}",
       "headers": {}
     },
     {
-      "body": "{\"id\":21,\"code\":\"SR\",\"name\":\"SlovenskĂˇ republika\"}",
+      "body": "{\"id\":21,\"code\":\"SR\",\"name\":\"Slovensk\u0102\u02c7 republika\"}",
       "headers": {}
     },
     {
-      "body": "{\"id\":22,\"code\":\"DE\",\"name\":\"NÄ›mecko\"}",
+      "body": "{\"id\":22,\"code\":\"DE\",\"name\":\"N\u00c4\u203amecko\"}",
       "headers": {}
     }
   ]

@@ -108,7 +108,7 @@ export async function init(): Promise<void> {
         topologyRunner,
     );
 
-    const cacheKey = `${NAME}ApiKey_TestUser`;
+    const cacheKey = `${NAME}ApiKey_${DEFAULT_SDK}_${DEFAULT_USER}`;
 
     const redisService = container.get(Redis);
     await redisService.set(

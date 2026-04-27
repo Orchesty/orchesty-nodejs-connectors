@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "data": {
@@ -21,7 +22,7 @@
                     "methods": [
                         {
                             "guid": "6d33d5bc-0b65-4284-9c1a-dcd7a4f4d31c",
-                            "name": "Česká pošta"
+                            "name": "\u010cesk\u00e1 po\u0161ta"
                         }
                     ]
                 },
@@ -39,7 +40,7 @@
                     "methods": [
                         {
                             "guid": "08962fe8-ea34-4f69-be75-b62ef1dcac2f",
-                            "name": "Dobírka"
+                            "name": "Dob\u00edrka"
                         }
                     ]
                 },
@@ -51,7 +52,7 @@
                         },
                         {
                             "guid": "46ebb02d-c44f-4c49-b9b7-f31a46ebe927",
-                            "name": "Převodem"
+                            "name": "P\u0159evodem"
                         }
                     ]
                 }

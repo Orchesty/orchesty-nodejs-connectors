@@ -1,19 +1,20 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
             "branchRequired": false,
             "branchSupported": false,
             "id": 1,
-            "name": "Česká pošta - Balík do ruky"
+            "name": "\u010cesk\u00e1 po\u0161ta - Bal\u00edk do ruky"
         },
         {
             "branchRequired": false,
             "branchSupported": true,
             "id": 2,
-            "name": "Česká pošta - Balík na poštu"
+            "name": "\u010cesk\u00e1 po\u0161ta - Bal\u00edk na po\u0161tu"
         }
     ]
 }

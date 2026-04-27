@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "_links": {
@@ -16,15 +17,15 @@
             ]
         },
         "default": "all",
-        "description": "Tato volba umožňuje omezit země, ve kterých jste ochotni prodávat.",
+        "description": "Tato volba umo\u017e\u0148uje omezit zem\u011b, ve kter\u00fdch jste ochotni prod\u00e1vat.",
         "id": "woocommerce_allowed_countries",
         "label": "Oblast(i) prodeje",
         "options": {
-            "all": "Prodávat do všech zemí",
-            "all_except": "Prodávat do všech zemí kromě&hellip;",
-            "specific": "Prodávat do vybraných zemí"
+            "all": "Prod\u00e1vat do v\u0161ech zem\u00ed",
+            "all_except": "Prod\u00e1vat do v\u0161ech zem\u00ed krom\u011b&hellip;",
+            "specific": "Prod\u00e1vat do vybran\u00fdch zem\u00ed"
         },
-        "tip": "Tato volba umožňuje omezit země, ve kterých jste ochotni prodávat.",
+        "tip": "Tato volba umo\u017e\u0148uje omezit zem\u011b, ve kter\u00fdch jste ochotni prod\u00e1vat.",
         "type": "select",
         "value": "all"
     }

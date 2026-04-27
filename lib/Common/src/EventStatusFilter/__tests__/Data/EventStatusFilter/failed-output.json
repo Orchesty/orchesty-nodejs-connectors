@@ -1,8 +1,9 @@
 {
     "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
         "result-code": "1003",
-        "result-message": "Filtered out!",
-        "user": "TestUser"
+        "result-message": "Filtered out!"
     },
     "data": {
         "type": "processFailed",
@@ -16,4 +17,3 @@
         }
     }
 }
-

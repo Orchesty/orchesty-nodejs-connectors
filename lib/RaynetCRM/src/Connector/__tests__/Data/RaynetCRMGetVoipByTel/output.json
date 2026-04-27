@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "data": {
@@ -20,12 +21,12 @@
                         "_version": 0,
                         "address.city": "Ostrava-Poruba",
                         "address.countryCode": "CZ",
-                        "address.countryName": "Česká republika",
+                        "address.countryName": "\u010cesk\u00e1 republika",
                         "address.lat": 49.8259006,
                         "address.lng": 18.1824497,
-                        "address.name": "Sídlo klienta",
+                        "address.name": "S\u00eddlo klienta",
                         "address.province": null,
-                        "address.street": "Hlavní třída 6078/13",
+                        "address.street": "Hlavn\u00ed t\u0159\u00edda 6078/13",
                         "address.zipCode": "708 00",
                         "contactAddress": true,
                         "contactInfo.doNotSendMM": false,
@@ -104,11 +105,11 @@
                         "customFields": null,
                         "extIds": null,
                         "firstName": "Richard",
-                        "fullName": "Richard Fíla",
-                        "fullNameWithoutTitles": "Richard Fíla",
+                        "fullName": "Richard F\u00edla",
+                        "fullNameWithoutTitles": "Richard F\u00edla",
                         "gender": null,
                         "id": 2,
-                        "lastName": "Fíla",
+                        "lastName": "F\u00edla",
                         "notice": null,
                         "personClassification1": null,
                         "personClassification2": null,
@@ -121,14 +122,14 @@
                             "extIds": null,
                             "id": 1,
                             "locked": true,
-                            "name": "Sdílená"
+                            "name": "Sd\u00edlen\u00e1"
                         },
                         "titleAfter": null,
                         "titleBefore": null
                     },
                     "paymentTerm": {
                         "_permission": 31,
-                        "code01": "7 dní",
+                        "code01": "7 dn\u00ed",
                         "code02": null,
                         "extIds": null,
                         "id": 51,
@@ -145,12 +146,12 @@
                         "_version": 0,
                         "address.city": "Ostrava-Poruba",
                         "address.countryCode": "CZ",
-                        "address.countryName": "Česká republika",
+                        "address.countryName": "\u010cesk\u00e1 republika",
                         "address.lat": 49.8259006,
                         "address.lng": 18.1824497,
-                        "address.name": "Sídlo klienta",
+                        "address.name": "S\u00eddlo klienta",
                         "address.province": null,
-                        "address.street": "Hlavní třída 6078/13",
+                        "address.street": "Hlavn\u00ed t\u0159\u00edda 6078/13",
                         "address.zipCode": "708 00",
                         "contactAddress": true,
                         "contactInfo.doNotSendMM": false,
@@ -187,7 +188,7 @@
                         "extIds": null,
                         "id": 1,
                         "locked": true,
-                        "name": "Sdílená"
+                        "name": "Sd\u00edlen\u00e1"
                     },
                     "socialNetworkContact.facebook": "https://www.facebook.com/raynetsw",
                     "socialNetworkContact.googleplus": null,

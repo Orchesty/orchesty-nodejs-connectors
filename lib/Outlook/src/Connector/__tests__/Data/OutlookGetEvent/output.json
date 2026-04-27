@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "@odata.etag": "W/\"dPV1xXqUK02frplc19obywAAAH83AA==\"",

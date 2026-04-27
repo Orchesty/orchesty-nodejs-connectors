@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "KS": "",
@@ -19,7 +20,7 @@
         "customer_IC": "123456789",
         "customer_IDNUM3": "",
         "customer_city": "Praha",
-        "customer_country": "Česká republika",
+        "customer_country": "\u010cesk\u00e1 republika",
         "customer_country_code": "CZ",
         "customer_delivery_city": "",
         "customer_delivery_company": "",
@@ -32,8 +33,8 @@
         "customer_delivery_zip": "",
         "customer_firstname": "",
         "customer_lastname": "",
-        "customer_name": "Ukázková Firma",
-        "customer_street": "Pouliční 79/C",
+        "customer_name": "Uk\u00e1zkov\u00e1 Firma",
+        "customer_street": "Pouli\u010dn\u00ed 79/C",
         "customer_tel": "",
         "customer_zip": "10300",
         "date_created": "2022-08-16",
@@ -70,7 +71,7 @@
                 "domestic-unit_price": 990.25,
                 "domestic-vat": 148.54,
                 "quantity": 1,
-                "text": "Stěrač na ponorku",
+                "text": "St\u011bra\u010d na ponorku",
                 "total": 1138.79,
                 "total_without_vat": 990.25,
                 "unit": "",
@@ -86,7 +87,7 @@
                 "domestic-unit_price": 59,
                 "domestic-vat": 8.85,
                 "quantity": 1,
-                "text": "Kapalina do ostřikovačů 250 ml",
+                "text": "Kapalina do ost\u0159ikova\u010d\u016f 250 ml",
                 "total": 67.85,
                 "total_without_vat": 59,
                 "unit": "",
@@ -116,11 +117,11 @@
         "log": [
             {
                 "date": "2022-08-16 11:11:20",
-                "text": "Vytvořeno přes API."
+                "text": "Vytvo\u0159eno p\u0159es API."
             },
             {
                 "date": "2022-08-16 11:11:20",
-                "text": "Vytvoření dokumentu."
+                "text": "Vytvo\u0159en\u00ed dokumentu."
             }
         ],
         "mail_to": [],
@@ -143,10 +144,10 @@
         "supplier_contact_name": "",
         "supplier_contact_tel": "",
         "supplier_contact_web": "",
-        "supplier_country": "Česká republika",
+        "supplier_country": "\u010cesk\u00e1 republika",
         "supplier_country_code": "CZ",
         "supplier_name": "HANABOSO, s.r.o.",
-        "supplier_street": "Chládkova 898/2",
+        "supplier_street": "Chl\u00e1dkova 898/2",
         "supplier_zip": "61600",
         "tags": "0",
         "text_before_items": "",

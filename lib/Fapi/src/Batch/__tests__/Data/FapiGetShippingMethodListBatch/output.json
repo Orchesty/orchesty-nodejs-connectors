@@ -1,10 +1,11 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
-      "body": "{\"id\":1,\"user_id\":3,\"name\":\"Moje odběrové místo\",\"type\":\"personal_collection\",\"subtype\":null,\"address_prices\":[{\"address\":{\"simple_address\":\"test adresa\"},\"prices\":[{\"currency_code\":\"CZK\",\"price\":100}]}],\"meta_data\":null,\"including_vat\":false,\"description\":null}",
+      "body": "{\"id\":1,\"user_id\":3,\"name\":\"Moje odb\u011brov\u00e9 m\u00edsto\",\"type\":\"personal_collection\",\"subtype\":null,\"address_prices\":[{\"address\":{\"simple_address\":\"test adresa\"},\"prices\":[{\"currency_code\":\"CZK\",\"price\":100}]}],\"meta_data\":null,\"including_vat\":false,\"description\":null}",
       "headers": {}
     }
   ]

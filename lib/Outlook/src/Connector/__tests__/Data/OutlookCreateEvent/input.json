@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "subject": "Let's go for lunch",
@@ -16,19 +17,19 @@
             "dateTime": "2017-04-15T14:00:00",
             "timeZone": "Pacific Standard Time"
         },
-        "location":{
-            "displayName":"Harry's Bar"
+        "location": {
+            "displayName": "Harry's Bar"
         },
         "attendees": [
             {
                 "emailAddress": {
-                    "address":"samanthab@contoso.onmicrosoft.com",
+                    "address": "samanthab@contoso.onmicrosoft.com",
                     "name": "Samantha Booth"
                 },
                 "type": "required"
             }
         ],
         "allowNewTimeProposals": true,
-        "transactionId":"7E163156-7762-4BEB-A1C6-729EA81755A7"
+        "transactionId": "7E163156-7762-4BEB-A1C6-729EA81755A7"
     }
 }

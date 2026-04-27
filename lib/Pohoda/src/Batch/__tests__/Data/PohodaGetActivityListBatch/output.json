@@ -1,18 +1,19 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
-      "body": "{\"id\":1,\"code\":\"DĹEVO\",\"name\":\"Prodej materiĂˇlu\"}",
+      "body": "{\"id\":1,\"code\":\"D\u0139\u0098EVO\",\"name\":\"Prodej materi\u0102\u02c7lu\"}",
       "headers": {}
     },
     {
-      "body": "{\"id\":2,\"code\":\"NĂBYTEK\",\"name\":\"Prodej nĂˇbytku\"}",
+      "body": "{\"id\":2,\"code\":\"N\u0102\u0081BYTEK\",\"name\":\"Prodej n\u0102\u02c7bytku\"}",
       "headers": {}
     },
     {
-      "body": "{\"id\":3,\"code\":\"SLUĹ˝BY\",\"name\":\"PoskytovĂˇnĂ­ sluĹľeb\"}",
+      "body": "{\"id\":3,\"code\":\"SLU\u0139\u02ddBY\",\"name\":\"Poskytov\u0102\u02c7n\u0102\u00ad slu\u0139\u013eeb\"}",
       "headers": {}
     }
   ]
