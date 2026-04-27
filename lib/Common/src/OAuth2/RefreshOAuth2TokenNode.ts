@@ -21,9 +21,10 @@ export default class RefreshOAuth2TokenNode extends AConnector {
         const repo = this.getDbClient().getApplicationRepository();
 
         const user = dto.getUser();
+        const sdk = dto.getSdk();
 
         const applicationInstall = await repo.findOne({
-            names: [app], users: user ? [user] : undefined, enabled: true,
+            names: [app], users: user ? [user] : undefined, enabled: true, sdks: sdk ? [sdk] : undefined,
         });
 
         if (applicationInstall) {

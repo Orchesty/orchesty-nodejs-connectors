@@ -1,5 +1,10 @@
 /* eslint-disable max-classes-per-file */
-import { appInstall, DEFAULT_ACCESS_TOKEN, DEFAULT_USER } from '@orchesty/nodejs-connectors/test/DataProvider';
+import {
+    appInstall,
+    DEFAULT_ACCESS_TOKEN,
+    DEFAULT_SDK,
+    DEFAULT_USER,
+} from '@orchesty/nodejs-connectors/test/DataProvider';
 import { cacheService, container, db, oauth2Provider, sender, topologyRunner } from '@orchesty/nodejs-connectors/test/TestAbstract';
 import CoreFormsEnum from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import {
@@ -51,7 +56,7 @@ class ImplPluginShoptetApplication extends APluginShoptetApplication {
 }
 
 export function mock(callCount = 1, extraNonEncryptedSettings?: IApplicationSettings): ApplicationInstall {
-    let applicationInstall: ApplicationInstall = new ApplicationInstall();
+    let applicationInstall: ApplicationInstall = new ApplicationInstall().setSdk(DEFAULT_SDK);
     let count = callCount;
     if (count < 1) {
         count = 1;

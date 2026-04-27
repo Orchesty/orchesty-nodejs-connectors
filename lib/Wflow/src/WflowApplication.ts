@@ -121,6 +121,7 @@ export default class WflowApplication extends AOAuth2Application {
             ProcessDto.createForFormRequest(
                 NAME,
                 applicationInstall.getUser(),
+                applicationInstall.getSdk(),
                 crypto.randomUUID(),
                 'form',
             ),

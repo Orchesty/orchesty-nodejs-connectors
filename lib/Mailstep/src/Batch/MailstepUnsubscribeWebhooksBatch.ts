@@ -26,6 +26,7 @@ export default class MailstepUnsubscribeWebhooksBatch extends ABatchNode {
         const subscribedWebhook = await webhookRepository.findOne({
             users: [applicationInstall.getUser()],
             apps: [applicationInstall.getName()],
+            sdks: [applicationInstall.getSdk()],
         });
 
         if (subscribedWebhook) {

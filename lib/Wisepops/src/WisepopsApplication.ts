@@ -79,7 +79,12 @@ export default class WisepopsApplication extends ABasicApplication implements IW
         subscription: WebhookSubscription,
         url: string,
     ): RequestDto {
-        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
+        const request = ProcessDto.createForFormRequest(
+            NAME,
+            applicationInstall.getUser(),
+            applicationInstall.getSdk(),
+            crypto.randomUUID(),
+        );
         return this.getRequestDto(
             request,
             applicationInstall,
@@ -100,7 +105,12 @@ export default class WisepopsApplication extends ABasicApplication implements IW
     }
 
     public getWebhookUnsubscribeRequestDto(applicationInstall: ApplicationInstall, webhook: Webhook): RequestDto {
-        const request = ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID());
+        const request = ProcessDto.createForFormRequest(
+            NAME,
+            applicationInstall.getUser(),
+            applicationInstall.getSdk(),
+            crypto.randomUUID(),
+        );
         return this.getRequestDto(
             request,
             applicationInstall,

@@ -29,7 +29,11 @@ export default class UpgatesDeleteWebhooks extends AConnector {
         }
 
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const webhooks = (await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] }))
+        const webhooks = (await repo.findMany({
+            users: [appInstall.getUser()],
+            apps: [app.getName()],
+            sdks: [appInstall.getSdk()],
+        }))
             .filter((item) => !item.getUnsubscribeFailed());
 
         const webhooksIds: number[] = [];

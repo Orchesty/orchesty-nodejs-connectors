@@ -22,7 +22,11 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
         const app = this.getApplication<ABaseShoptet>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        const registered = await repo.findMany({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
+        const registered = await repo.findMany({
+            users: [appInstall.getUser()],
+            apps: [appInstall.getName()],
+            sdks: [appInstall.getSdk()],
+        });
         const all = app.getWebhookSubscriptions().map((sub) => ({
             event: sub.getName(),
             token: this.getRandomToken(),
@@ -51,6 +55,7 @@ export default class ShoptetSubscribeWebhooks extends ABatchNode {
                     const wb = new Webhook()
                         .setWebhookId(webhook.id.toString())
                         .setUser(appInstall.getUser())
+                        .setSdk(appInstall.getSdk())
                         .setNode(located.node)
                         .setToken(located.token)
                         .setApplication(app.getName())

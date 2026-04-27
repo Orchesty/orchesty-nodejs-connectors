@@ -55,6 +55,7 @@ export default class RaynetCRMSubscribeWebhook extends ABatchNode {
                 await repo.insert(new Webhook()
                     .setWebhookId(respBody.data.uuid)
                     .setUser(appInstall.getUser())
+                    .setSdk(appInstall.getSdk())
                     .setNode(webhooks[webhookIndex].getNode())
                     .setToken(token)
                     .setApplication(app.getName())
