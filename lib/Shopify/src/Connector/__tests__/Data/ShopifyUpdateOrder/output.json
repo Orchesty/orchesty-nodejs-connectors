@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "admin_graphql_api_id": "gid://shopify/Order/450789469",
@@ -121,7 +122,7 @@
             "orders_count": 1,
             "phone": "+16136120707",
             "state": "disabled",
-            "tags": "Léon, Noël",
+            "tags": "L\u00e9on, No\u00ebl",
             "tax_exempt": false,
             "tax_exemptions": [],
             "total_spent": "199.65",

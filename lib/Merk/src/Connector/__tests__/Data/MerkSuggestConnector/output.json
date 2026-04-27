@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
@@ -8,32 +9,32 @@
                 "country_code": "cz",
                 "county": {
                     "id": "CZ0534",
-                    "text": "Ústí nad Orlicí"
+                    "text": "\u00dast\u00ed nad Orlic\u00ed"
                 },
                 "lines": [
-                    "Nádražní 150",
-                    "Žichlínské Předměstí",
-                    "56301 Lanškroun"
+                    "N\u00e1dra\u017en\u00ed 150",
+                    "\u017dichl\u00ednsk\u00e9 P\u0159edm\u011bst\u00ed",
+                    "56301 Lan\u0161kroun"
                 ],
-                "municipality": "Lanškroun",
-                "municipality_first": "Lanškroun",
-                "municipality_part": "Žichlínské Předměstí",
+                "municipality": "Lan\u0161kroun",
+                "municipality_first": "Lan\u0161kroun",
+                "municipality_part": "\u017dichl\u00ednsk\u00e9 P\u0159edm\u011bst\u00ed",
                 "number": "150",
                 "number_descriptive": "150",
                 "number_orientation": "",
                 "postal_code": "56301",
                 "region": {
                     "id": "CZ053",
-                    "text": "Pardubický kraj"
+                    "text": "Pardubick\u00fd kraj"
                 },
-                "street": "Nádražní",
-                "street_fixed": "Nádražní",
+                "street": "N\u00e1dra\u017en\u00ed",
+                "street_fixed": "N\u00e1dra\u017en\u00ed",
                 "text": ""
             },
             "bank_accounts": null,
             "court": {
                 "file_nr": "B 85",
-                "name": "Krajský soud v Hradci Králové"
+                "name": "Krajsk\u00fd soud v Hradci Kr\u00e1lov\u00e9"
             },
             "databox_ids": [
                 "v4vhaq5"
@@ -42,7 +43,7 @@
             "estab_date": "1990-12-29T00:00:00",
             "industry": {
                 "id": "03220",
-                "text": "Sladkovodní akvakultura"
+                "text": "Sladkovodn\u00ed akvakultura"
             },
             "insolvency_cases": null,
             "is_active": true,
@@ -50,7 +51,7 @@
             "is_vatpayer": false,
             "legal_form": {
                 "id": 121,
-                "text": "Akciová společnost"
+                "text": "Akciov\u00e1 spole\u010dnost"
             },
             "magnitude": {
                 "id": 0,
@@ -92,23 +93,23 @@
                     "text": "Praha"
                 },
                 "lines": [
-                    "U mlýna 1755/5",
-                    "Záběhlice",
+                    "U ml\u00fdna 1755/5",
+                    "Z\u00e1b\u011bhlice",
                     "14100 Praha"
                 ],
                 "municipality": "Praha",
                 "municipality_first": "Praha",
-                "municipality_part": "Záběhlice",
+                "municipality_part": "Z\u00e1b\u011bhlice",
                 "number": "1755/5",
                 "number_descriptive": "1755",
                 "number_orientation": "5",
                 "postal_code": "14100",
                 "region": {
                     "id": "CZ010",
-                    "text": "Hlavní město Praha"
+                    "text": "Hlavn\u00ed m\u011bsto Praha"
                 },
-                "street": "U mlýna",
-                "street_fixed": "U mlýna",
+                "street": "U ml\u00fdna",
+                "street_fixed": "U ml\u00fdna",
                 "text": ""
             },
             "bank_accounts": [
@@ -119,7 +120,7 @@
             ],
             "court": {
                 "file_nr": "A      76031",
-                "name": "Městský soud v Praze"
+                "name": "M\u011bstsk\u00fd soud v Praze"
             },
             "databox_ids": [
                 "dxusuqt"
@@ -128,7 +129,7 @@
             "estab_date": "1989-07-01T00:00:00",
             "industry": {
                 "id": "17120",
-                "text": "Výroba papíru a lepenky"
+                "text": "V\u00fdroba pap\u00edru a lepenky"
             },
             "insolvency_cases": null,
             "is_active": true,
@@ -136,17 +137,17 @@
             "is_vatpayer": true,
             "legal_form": {
                 "id": 301,
-                "text": "Státní podnik"
+                "text": "St\u00e1tn\u00ed podnik"
             },
             "magnitude": {
                 "id": 120,
                 "lower_bound": "1 zam.",
-                "text": "1 - 5 zaměstnanců",
+                "text": "1 - 5 zam\u011bstnanc\u016f",
                 "trend": "stagnating",
                 "upper_bound": "5 zam."
             },
             "mobiles": [],
-            "name": "Brněnské papírny, státní podnik - v likvidaci",
+            "name": "Brn\u011bnsk\u00e9 pap\u00edrny, st\u00e1tn\u00ed podnik - v likvidaci",
             "phones": [],
             "regno": 12343,
             "regno_str": "00012343",
@@ -157,10 +158,10 @@
             "taxno": null,
             "turnover": {
                 "id": 10,
-                "lower_bound": "1 Kč",
-                "text": "1 - 199 999 Kč",
+                "lower_bound": "1 K\u010d",
+                "text": "1 - 199 999 K\u010d",
                 "trend": "stagnating",
-                "upper_bound": "199 tis. Kč"
+                "upper_bound": "199 tis. K\u010d"
             },
             "unreliable_vatpayer_since": null,
             "updated": "2022-08-04T00:00:00",

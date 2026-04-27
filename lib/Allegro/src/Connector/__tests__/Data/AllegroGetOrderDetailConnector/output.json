@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": "29738e61-7f6a-11e8-ac45-09db60ede9d6",
@@ -17,7 +18,7 @@
             "phoneNumber": null,
             "address": {
                 "street": "Solna",
-                "city": "Poznań",
+                "city": "Pozna\u0144",
                 "postCode": "60-166",
                 "countryCode": "PL"
             }
@@ -48,7 +49,7 @@
                 "firstName": "Jan",
                 "lastName": "Kowalski",
                 "street": "Grunwaldzka 182",
-                "city": "Poznań",
+                "city": "Pozna\u0144",
                 "zipCode": "60-166",
                 "countryCode": "PL",
                 "companyName": null,
@@ -66,7 +67,7 @@
                 "address": {
                     "street": "Grunwaldzka 108",
                     "zipCode": "60-166",
-                    "city": "Poznań"
+                    "city": "Pozna\u0144"
                 }
             },
             "cost": {
@@ -86,7 +87,7 @@
             "required": true,
             "address": {
                 "street": "Grunwaldzka 182",
-                "city": "Poznań",
+                "city": "Pozna\u0144",
                 "zipCode": "60-166",
                 "countryCode": "PL",
                 "company": {

@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations,customfield_10600.requestTypePractice",
@@ -329,5 +330,5 @@
         "id": "37106",
         "key": "PIP-1528",
         "self": "https://example.atlassian.net/rest/api/3/issue/37106"
-    } 
+    }
 }

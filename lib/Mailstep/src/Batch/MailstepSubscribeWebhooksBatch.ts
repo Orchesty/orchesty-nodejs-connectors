@@ -37,6 +37,7 @@ export default class MailstepSubscribeWebhooksBatch extends ABatchNode {
         const subscribedWebhooks = await webhookRepository.findMany({
             users: [applicationInstall.getUser()],
             apps: [applicationInstall.getName()],
+            sdks: [applicationInstall.getSdk()],
         });
 
         const unsubscribedWebhook = webhookSubscriptions.filter(
@@ -68,6 +69,7 @@ export default class MailstepSubscribeWebhooksBatch extends ABatchNode {
                 .setWebhookId(responseDto.getJsonBody().id)
                 .setApplication(applicationInstall.getName())
                 .setUser(applicationInstall.getUser())
+                .setSdk(applicationInstall.getSdk())
                 .setTopology(topology)
                 .setNode(node)
                 .setToken(token)

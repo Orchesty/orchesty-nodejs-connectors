@@ -1,5 +1,16 @@
 # @orchesty/connector-amazon-apps-selling-partner
 
+## 2.0.0
+
+### Major Changes
+
+- Use @orchesty/nodejs-sdk ^5.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @orchesty/connector-amazon-apps-common@2.0.0
+
 ## 1.0.2
 
 ### Patch Changes

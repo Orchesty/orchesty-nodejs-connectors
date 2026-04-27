@@ -26,16 +26,16 @@ oauth2:
 	docker-compose exec connectors pnpm oauth2
 
 install:
-	$(DCS) pnpm install
+	$(DCS) pnpm install -r
 
 build:
 	$(DCS) pnpm build
 
 update:
-	$(DCS) pnpm update
+	$(DCS) pnpm update -r
 
 outdated:
-	$(DCS) pnpm outdated
+	$(DCS) pnpm outdated -r
 
 lint:
 	$(DCS) pnpm lint-ci

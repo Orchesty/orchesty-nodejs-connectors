@@ -20,9 +20,13 @@ export default class OutlookUnsubscribeWebhook extends ABatchNode {
         const app = this.getApplication<OutlookApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto, null, true);
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        let filter: IWebhookQueryFilter = { users: [appInstall.getUser()], apps: [app.getName()] };
+        let filter: IWebhookQueryFilter = {
+            users: [appInstall.getUser()],
+            apps: [app.getName()],
+            sdks: [appInstall.getSdk()],
+        };
         if (id) {
-            filter = { ids: [id] };
+            filter = { ids: [id], sdks: [appInstall.getSdk()] };
         }
 
         const webhooks = await repo.findMany(filter);

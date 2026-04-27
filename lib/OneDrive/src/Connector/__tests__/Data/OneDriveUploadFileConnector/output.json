@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "@microsoft.graph.downloadUrl": "https://jpo1ka.db.files.1drv.com/y4pVT0dUWahsv64nswrSkRSDE0513M0WRrYA1f_1K0sal0jKmW1MlC5HHDjUON_g3N5Xr76GVhuO1oEBqzU9lGfzCIoSVY1vfvpEco864MsgmKnkm4aeaVDR5qYfz2SwWJQ5rp55O67wHxRg57xB32KaJ9pCZl8E69IvdBaO9-1-57F-X0wEwDIxzIvSPQMRAuYUhXdepN_7M28ZXGdgK5LvsKGilWKgXj4ZJjtxlkFMtc",
@@ -12,7 +13,7 @@
                 "id": "4cbaeb3a"
             },
             "user": {
-                "displayName": "Martin Pilný",
+                "displayName": "Martin Piln\u00fd",
                 "id": "22acaed92a726dbf"
             }
         },
@@ -37,7 +38,7 @@
                 "id": "4cbaeb3a"
             },
             "user": {
-                "displayName": "Martin Pilný",
+                "displayName": "Martin Piln\u00fd",
                 "id": "22acaed92a726dbf"
             }
         },

@@ -7,7 +7,7 @@ import {
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import { orchestyOptions } from '@orchesty/nodejs-sdk/dist/lib/Config/Config';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
-import { APPLICATIONS, getLimiterKey, getLimiterKeyWithGroup } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
+import { APPLICATIONS, getLimiterKey, getLimiterKeyWithGroup, SDK } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 import ResultCode from '@orchesty/nodejs-sdk/dist/lib/Utils/ResultCode';
 
 export default class ListUsers extends ABatchNode {
@@ -61,7 +61,9 @@ export default class ListUsers extends ABatchNode {
                     .map((filteredAppInstall) => this.mapLimiterKey(filteredAppInstall, user))
                     .filter((keys) => keys);
 
-                dto.addItem(body ?? {}, user, limiterKeys.join(';'));
+                dto.addItem(body ?? {}, user, limiterKeys.join(';'), {
+                    [SDK]: appInstall.getSdk(),
+                });
             }
         });
         return dto;
@@ -69,20 +71,22 @@ export default class ListUsers extends ABatchNode {
 
     protected async getUser(dto: BatchProcessDto, user: string, body: unknown): Promise<BatchProcessDto> {
         const repo = this.getDbClient().getApplicationRepository();
-        const appInstall = await repo.findByNameAndUser(this.getApplication().getName(), user);
+        const appInstall = await repo.findByNameAndUser(this.getApplication().getName(), user, []);
         if (!appInstall) {
             dto.setStopProcess(ResultCode.DO_NOT_CONTINUE, `User [${user}] has not been found.`);
             return dto;
         }
 
-        const allAppInstalls = await repo.findMany(this.getFilterForLimiter(dto, user));
+        const allAppInstalls = await repo.findMany(this.getFilterForLimiter(dto, user, appInstall.getSdk()));
 
         const limiterKeys = allAppInstalls
             .filter((userAppInstall) => userAppInstall.getUser() === user)
             .map((filteredAppInstall) => this.mapLimiterKey(filteredAppInstall, user))
             .filter((keys) => keys);
 
-        return dto.addItem(body ?? {}, appInstall.getUser(), limiterKeys.join(';'));
+        return dto.addItem(body ?? {}, appInstall.getUser(), limiterKeys.join(';'), {
+            [SDK]: appInstall.getSdk(),
+        });
     }
 
     private mapLimiterKey(appInstall: ApplicationInstall, user: string): string {
@@ -102,14 +106,15 @@ export default class ListUsers extends ABatchNode {
         const groupTime = limiterForm?.[GROUP_TIME] ?? undefined;
         const groupValue = limiterForm?.[GROUP_VALUE] ?? undefined;
 
-        const key = `${user}|${appInstall.getName()}`;
+        const applicationLimiterKey = `${appInstall.getSdk()}:${appInstall.getName()}`;
+        const key = `${user}|${applicationLimiterKey}`;
 
         if (groupTime && groupValue) {
             return getLimiterKeyWithGroup(
                 key,
                 time,
                 value,
-                `|${appInstall.getName()}`,
+                `|${applicationLimiterKey}`,
                 groupTime,
                 groupValue,
             );
@@ -118,7 +123,7 @@ export default class ListUsers extends ABatchNode {
         return getLimiterKey(key, time, value);
     }
 
-    private getFilterForLimiter(dto: BatchProcessDto, user?: string): IApplicationInstallQueryFilter {
+    private getFilterForLimiter(dto: BatchProcessDto, user?: string, sdk?: string): IApplicationInstallQueryFilter {
         const headerApplications = dto.getHeader(APPLICATIONS, '')?.split(';');
         const filter: IApplicationInstallQueryFilter = {
             enabled: true,
@@ -130,6 +135,10 @@ export default class ListUsers extends ABatchNode {
 
         if (user) {
             filter.users = [user];
+        }
+
+        if (sdk) {
+            filter.sdks = [sdk];
         }
 
         return filter;

@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "public_url": "/vystavene-faktury/1.pdf",
@@ -54,7 +55,7 @@
                     "description": "Invoice line 10",
                     "id": 1,
                     "invoice_id": 1,
-                    "price": "199,90 €",
+                    "price": "199,90 \u20ac",
                     "quantity": "1,00",
                     "unit_type": null,
                     "vat_rate": "20%"
@@ -63,7 +64,7 @@
                     "description": "Invoice line 11",
                     "id": 2,
                     "invoice_id": 1,
-                    "price": "312,00 €",
+                    "price": "312,00 \u20ac",
                     "quantity": "1,00",
                     "unit_type": null,
                     "vat_rate": "10,5%"
@@ -72,7 +73,7 @@
                     "description": "Invoice line 12",
                     "id": 3,
                     "invoice_id": 1,
-                    "price": "199,90 €",
+                    "price": "199,90 \u20ac",
                     "quantity": "10,00",
                     "unit_type": null,
                     "vat_rate": "15%"

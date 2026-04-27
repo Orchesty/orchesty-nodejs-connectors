@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "additionalName": "+ free gift",
@@ -103,15 +104,15 @@
             {
                 "code": "potisk",
                 "currency": "CZK",
-                "description": "Ozdobný potisk",
-                "displayName": "Příplatek za potisk",
+                "description": "Ozdobn\u00fd potisk",
+                "displayName": "P\u0159\u00edplatek za potisk",
                 "includingVat": true,
                 "name": "S potiskem",
                 "priority": 1,
                 "required": true,
                 "values": [
                     {
-                        "description": "Zlatý",
+                        "description": "Zlat\u00fd",
                         "price": "50.00",
                         "priority": 1,
                         "valueIndex": "zlaty",
@@ -166,7 +167,7 @@
                         "image": "null",
                         "paramIndex": "barva",
                         "paramName": "Colour",
-                        "paramValue": "červená",
+                        "paramValue": "\u010derven\u00e1",
                         "rawValue": "cervena",
                         "valuePriority": 1
                     }
@@ -196,7 +197,7 @@
         "voteAverageScore": "2.6",
         "voteCount": 16,
         "warranty": {
-            "description": "Tři roky",
+            "description": "T\u0159i roky",
             "id": -1,
             "inMonths": 12
         },

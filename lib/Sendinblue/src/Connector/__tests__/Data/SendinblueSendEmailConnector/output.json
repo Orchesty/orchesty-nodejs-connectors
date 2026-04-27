@@ -1,6 +1,7 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": {
     "messageId": "<201798300811.5787683@relay.domain.com>"

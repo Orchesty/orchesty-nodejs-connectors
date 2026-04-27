@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": "adf21080-0e10-11eb-879b-05d71fb426ec",
@@ -20,7 +21,10 @@
         "channel_id": "Jun23 Billboards",
         "is_archived": false,
         "was_seen": false,
-        "value": { "amount": 999, "currency": "USD" },
+        "value": {
+            "amount": 999,
+            "currency": "USD"
+        },
         "expected_close_date": null,
         "next_activity_id": 1,
         "add_time": "2020-10-14T11:30:36.551Z",

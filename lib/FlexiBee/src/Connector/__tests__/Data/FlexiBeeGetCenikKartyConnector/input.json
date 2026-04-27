@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": "1",
@@ -48,10 +49,10 @@
         "cenik@showAs": "31967000: Baterie sprch. pod omitku Focus E 2",
         "sklad": "code:LIBEREC",
         "sklad@ref": "/c/demo/sklad/5.json",
-        "sklad@showAs": "LIBEREC: Liberecký sklad",
+        "sklad@showAs": "LIBEREC: Libereck\u00fd sklad",
         "typDokl": "code:LIBEREC",
         "typDokl@ref": "/c/demo/sklad/5.json",
-        "typDokl@showAs": "LIBEREC: Liberecký sklad",
+        "typDokl@showAs": "LIBEREC: Libereck\u00fd sklad",
         "mistnost": "",
         "regal": "",
         "police": ""

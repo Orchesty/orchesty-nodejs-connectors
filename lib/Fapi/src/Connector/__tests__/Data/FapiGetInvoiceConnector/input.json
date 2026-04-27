@@ -1,8 +1,9 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "id": 1
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "id": 1
+    }
 }

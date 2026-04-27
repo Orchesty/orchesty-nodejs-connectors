@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "hash": "XZY",
@@ -38,7 +39,7 @@
         "additional_insurance": 9999,
         "carrier_name": "XYZ",
         "reference_number": "1234",
-        "note": "Poznámka",
+        "note": "Pozn\u00e1mka",
         "packet": [
             {
                 "weight": 8,

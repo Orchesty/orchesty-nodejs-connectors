@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": "6",
@@ -20,7 +21,7 @@
         "locale": "cs_CZ",
         "postcode": "61200",
         "registered_at": "2015-11-03T16:08:17+00:00",
-        "street": "Palackého 123/456",
+        "street": "Palack\u00e9ho 123/456",
         "timezone": "Europe/Prague",
         "timezone_offset": null,
         "send_summary": false

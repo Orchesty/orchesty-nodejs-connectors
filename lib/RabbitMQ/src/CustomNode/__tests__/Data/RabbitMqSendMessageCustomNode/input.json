@@ -1,10 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "queue": "testQueue",
-        "queueParams" : {
+        "queueParams": {
             "args": {
                 "x-queue-type": "quorum"
             }

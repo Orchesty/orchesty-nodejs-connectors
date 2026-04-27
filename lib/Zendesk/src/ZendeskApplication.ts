@@ -102,7 +102,11 @@ export default class ZendeskApplication extends AOAuth2Application {
             this.getAuthUrlWithSubdomain(applicationInstall),
             this.getTokenUrlWithSubdomain(applicationInstall),
         );
-        dto.setCustomAppDependencies(applicationInstall.getUser(), applicationInstall.getName());
+        dto.setCustomAppDependencies(
+            applicationInstall.getUser(),
+            applicationInstall.getName(),
+            applicationInstall.getSdk(),
+        );
         if (redirectUrl) {
             dto.setRedirectUrl(redirectUrl);
         }

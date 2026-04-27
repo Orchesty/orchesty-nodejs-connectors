@@ -126,10 +126,10 @@ export default class QuickBooksApplication extends AOAuth2Application {
 
     // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/strict-void-return
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
-        const { user } = JSON.parse(String(req.body));
+        const { user, sdk } = JSON.parse(String(req.body));
         const appRepo = this.mongoService.getApplicationRepository();
         const quickbooksApps = (await appRepo.findMany(
-            { users: [user], names: [this.getName()], enabled: null, deleted: true },
+            { users: [user], names: [this.getName()], enabled: null, deleted: true, sdks: [sdk] },
         ))
             .sort((x, y) => x.getUpdated().getTime() - y.getUpdated().getTime());
 
@@ -141,7 +141,7 @@ export default class QuickBooksApplication extends AOAuth2Application {
                 const requestDto = new RequestDto(
                     'https://developer.api.intuit.com/v2/oauth2/tokens/revoke',
                     HttpMethods.POST,
-                    ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
+                    ProcessDto.createForFormRequest(NAME, user, quickbooksApp.getSdk(), crypto.randomUUID()),
                 );
 
                 requestDto.setHeaders({

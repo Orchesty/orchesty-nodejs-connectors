@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "asn": {
@@ -19,7 +20,6 @@
                     "product_id": 625098,
                     "quantity": 1,
                     "price": 0
-
                 }
             ]
         }

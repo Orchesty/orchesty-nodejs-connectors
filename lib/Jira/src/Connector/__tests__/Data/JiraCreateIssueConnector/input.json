@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "description": "Iaculis id, diam. Morbi viverra neque sit amet risus. Nunc pellentesque aliquam orci. Proin neque elit, mollis vel, tristique nec, varius consectetuer, lorem. Nam malesuada ornare nunc.",

@@ -1,5 +1,11 @@
 # @orchesty/connector-humaans
 
+## 2.0.0
+
+### Major Changes
+
+- Use @orchesty/nodejs-sdk ^5.0
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,9 +1,10 @@
 {
     "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
         "cursor": "next",
         "result-code": "1011",
-        "result-message": "Message will be used as a iterator with cursor [next]. No follower will be called.",
-        "user": "TestUser"
+        "result-message": "Message will be used as a iterator with cursor [next]. No follower will be called."
     },
     "data": []
 }
