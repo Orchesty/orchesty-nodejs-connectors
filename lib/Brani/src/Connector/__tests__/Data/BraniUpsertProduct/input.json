@@ -1,9 +1,10 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
-        "name": "Chytré Hodinky",
+        "name": "Chytr\u00e9 Hodinky",
         "guid": "a605ac02-d030-49a0-9965-e3a85f93d89c",
         "creationTime": "2024-02-15T12:00:00+00:00",
         "changeTime": "2024-02-15T12:00:00+00:00",
@@ -20,7 +21,7 @@
         "variants": [
             {
                 "code": "0001",
-                "name": "Chytré Hodinky 44mm",
+                "name": "Chytr\u00e9 Hodinky 44mm",
                 "weight": "0.459",
                 "minStockSupply": "1.000",
                 "visible": true,

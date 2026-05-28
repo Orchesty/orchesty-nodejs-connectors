@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": 23120701,
@@ -21,10 +22,10 @@
         "delivery_date": "2022-08-12",
         "address": {
             "customer_id": 1000929311,
-            "name": "Josef Novák",
+            "name": "Josef Nov\u00e1k",
             "phone": "+420701000001",
             "email": "info@mall.cz",
-            "street": "U garáží 1",
+            "street": "U gar\u00e1\u017e\u00ed 1",
             "city": "Praha",
             "zip": "17001",
             "country": "CZ"

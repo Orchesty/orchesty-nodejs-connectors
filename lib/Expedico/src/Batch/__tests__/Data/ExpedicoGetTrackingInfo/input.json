@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "defaultUser"
+        "user": "defaultUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "parcelIds": [

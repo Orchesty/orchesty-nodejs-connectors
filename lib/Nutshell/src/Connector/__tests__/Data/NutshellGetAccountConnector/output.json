@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": 116,
@@ -9,9 +10,9 @@
         "modifiedTime": "2022-08-10T15:49:23+0000",
         "createdTime": "2022-08-10T15:49:23+0000",
         "name": "New Account Name",
-        "htmlUrl": "https:\/\/app.nutshell.com\/company\/116-new-account-name",
-        "htmlUrlPath": "\/company\/116-new-account-name",
-        "avatarUrl": "https:\/\/app.nutshell.com\/avatar\/accounts\/116\/346392\/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2\/1660146563",
+        "htmlUrl": "https://app.nutshell.com/company/116-new-account-name",
+        "htmlUrlPath": "/company/116-new-account-name",
+        "avatarUrl": "https://app.nutshell.com/avatar/accounts/116/346392/K1K9OUzMRMiFaepwtAneseVXZs-THejW7xPt9zhTSDM.2/1660146563",
         "accountType": {
             "id": 1,
             "name": "Standard Account"
@@ -19,16 +20,12 @@
         "industry": null,
         "creator": null,
         "owner": null,
-        "tags": [
-        ],
+        "tags": [],
         "lastContactedDate": null,
-        "contacts": [
-        ],
+        "contacts": [],
         "description": null,
         "legacyId": null,
-        "notes": [
-        ],
-        "leads": [
-        ]
+        "notes": [],
+        "leads": []
     }
 }

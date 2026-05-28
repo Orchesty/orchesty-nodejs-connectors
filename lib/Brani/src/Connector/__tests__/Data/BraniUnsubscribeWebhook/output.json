@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "detail": "Webhook s webhook_id: 251 byl uspesne smazan"

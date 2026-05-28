@@ -1,13 +1,13 @@
 {
     "headers": {
-        "cursor": "/rest/api/3/worklog/updated?since=1673285060521",
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk",
+        "cursor": "/rest/api/3/worklog/updated?since=1673285060521"
     },
-    "data": [ 
+    "data": [
         {
             "body": "[20521,20522,20523]",
             "headers": {}
         }
     ]
 }
-

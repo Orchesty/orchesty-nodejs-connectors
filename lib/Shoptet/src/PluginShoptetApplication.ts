@@ -106,8 +106,8 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         try {
             const cacheKey = `${
                 this.getName()
-            }ApiKey_${applicationInstall.getUser()}`;
-            const lockKey = `${this.shoptetLocker}_${applicationInstall.getUser()}`;
+            }ApiKey_${applicationInstall.getSdk()}_${applicationInstall.getUser()}`;
+            const lockKey = `${this.shoptetLocker}_${applicationInstall.getSdk()}_${applicationInstall.getUser()}`;
             const settings = applicationInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM] ?? {};
             const accessToken = settings[TOKEN];
             const headers = {
@@ -151,13 +151,17 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
     }
 
     public async syncInstall(request: Request): Promise<unknown> {
-        const { code } = JSON.parse(String(request.body));
-        const newAppInstall = new ApplicationInstall().setName(this.getName()).setSettings({
-            [CoreFormsEnum.AUTHORIZATION_FORM]: {
-                [CLIENT_ID]: this.shoptetClientId,
-                [CLIENT_SECRET]: this.shoptetClientSecret,
-            },
-        });
+        const { code, sdk } = JSON.parse(String(request.body)) as { code: string; sdk: string };
+
+        const newAppInstall = new ApplicationInstall()
+            .setName(this.getName())
+            .setSdk(sdk)
+            .setSettings({
+                [CoreFormsEnum.AUTHORIZATION_FORM]: {
+                    [CLIENT_ID]: this.shoptetClientId,
+                    [CLIENT_SECRET]: this.shoptetClientSecret,
+                },
+            });
 
         const token = await this.getAccessToken(newAppInstall, code);
         const { eshopId } = token.others;
@@ -165,7 +169,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         const appInstallRepo = this.db.getApplicationRepository();
         let appInstall;
         try {
-            appInstall = await this.getApplicationInstall(eshopId);
+            appInstall = await this.getApplicationInstall(eshopId, sdk);
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
             // Ignore not installed applications
@@ -184,6 +188,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         };
 
         if (appInstall) {
+            appInstall.setSdk(sdk);
             appInstall.addSettings(settings);
             await appInstallRepo.update(appInstall);
         } else {
@@ -197,16 +202,20 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
     }
 
     public async syncWebhook(request: Request): Promise<unknown> {
-        const { event, eshopId } = JSON.parse(String(request.body));
+        const { event, eshopId, sdk } = JSON.parse(String(request.body)) as {
+            event: string;
+            eshopId: number;
+            sdk: string;
+        };
 
-        const appInstall = await this.getApplicationInstall(eshopId);
+        const appInstall = await this.getApplicationInstall(eshopId, sdk);
         const user = appInstall.getUser();
         const appInstallRepo = this.db.getApplicationRepository();
         const whRepo = this.db.getRepository(Webhook) as WebhookRepository;
         switch (event) {
             case 'addon:uninstall':
-                await this.sendInstallUninstallWebhook(APPLINTH_EVENT_UNINSTALL, user);
-                await whRepo.removeMany({ apps: [this.getName()], users: [user] });
+                await this.sendInstallUninstallWebhook(APPLINTH_EVENT_UNINSTALL, user, appInstall.getSdk());
+                await whRepo.removeMany({ apps: [this.getName()], users: [user], sdks: [appInstall.getSdk()] });
                 await appInstallRepo.remove(appInstall);
                 break;
             case 'addon:suspend':
@@ -225,29 +234,33 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
     }
 
     public async syncForm(request: Request): Promise<unknown> {
-        const { eshopId } = JSON.parse(String(request.body));
+        const { eshopId, sdk } = JSON.parse(String(request.body)) as { eshopId: number; sdk: string };
 
-        const appInstall = await this.getApplicationInstall(eshopId);
+        const appInstall = await this.getApplicationInstall(eshopId, sdk);
 
         return { [PIN]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PIN] ?? '' };
     }
 
     public async syncSaveForm(request: Request): Promise<unknown> {
-        const { eshopId, pin } = JSON.parse(String(request.body));
+        const { eshopId, pin, sdk } = JSON.parse(String(request.body)) as {
+            eshopId: number;
+            pin: string;
+            sdk: string;
+        };
 
         const appInstallRepo = this.db.getApplicationRepository();
         const defaultApp = await appInstallRepo.findOne(
-            { names: [this.defaultAppName], enabled: null, nonEncrypted: { [PIN]: pin } },
+            { names: [this.defaultAppName], enabled: null, sdks: [sdk], nonEncrypted: { [PIN]: pin } },
         );
 
         if (!defaultApp) {
             throw new Error(`${this.defaultAppName} application with this pin has not been found.`);
         }
 
-        const appInstall = await this.getApplicationInstall(eshopId);
+        const appInstall = await this.getApplicationInstall(eshopId, sdk);
 
         if (appInstall.getUser() !== defaultApp.getUser()) {
-            await this.sendInstallUninstallWebhook(APPLINTH_EVENT_INSTALL, defaultApp.getUser());
+            await this.sendInstallUninstallWebhook(APPLINTH_EVENT_INSTALL, defaultApp.getUser(), appInstall.getSdk());
         }
 
         appInstall.setUser(defaultApp.getUser());
@@ -258,7 +271,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         return { [PIN]: appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][PIN] ?? '' };
     }
 
-    protected async sendInstallUninstallWebhook(event: string, user: string): Promise<unknown> {
+    protected async sendInstallUninstallWebhook(event: string, user: string, sdk: string): Promise<unknown> {
         if (!user) {
             return Promise.resolve();
         }
@@ -266,7 +279,7 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         const requestDto = new RequestDto(
             `${orchestyOptions.backend}/api/usage-stats/emit-event`,
             HttpMethods.POST,
-            ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
+            ProcessDto.createForFormRequest(NAME, user, sdk, crypto.randomUUID()),
             JSON.stringify({
                 event,
                 aid: this.getName(),
@@ -277,11 +290,11 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         return this.sender.send(requestDto);
     }
 
-    protected async getApplicationInstall(eshopId: number): Promise<ApplicationInstall> {
+    protected async getApplicationInstall(eshopId: number, sdk: string): Promise<ApplicationInstall> {
         const appInstallRepo = this.db.getApplicationRepository();
 
         const appInstall = await appInstallRepo.findOne(
-            { names: [this.getName()], enabled: null, nonEncrypted: { [ESHOP_ID]: eshopId.toString() } },
+            { names: [this.getName()], enabled: null, sdks: [sdk], nonEncrypted: { [ESHOP_ID]: eshopId.toString() } },
         );
         if (appInstall) {
             return appInstall;
@@ -311,13 +324,14 @@ export default abstract class PluginShoptetApplication extends ABaseShoptet {
         topology: string,
         node: string,
         user: string,
+        sdk: string,
         data?: Record<string, unknown>,
     ): Promise<void> {
         await this.topologyRunner.runByName(
             data ?? {},
             topology,
             node,
-            ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
+            ProcessDto.createForFormRequest(NAME, user, sdk, crypto.randomUUID()),
             user,
         );
     }

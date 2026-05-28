@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "ticket": {
@@ -127,7 +128,7 @@
                         "client": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
                         "ip_address": "188.122.212.69",
                         "latitude": 50.1982,
-                        "location": "Hradec KrÃ¡lovÃ©, 52, Czechia",
+                        "location": "Hradec Kr\u00c3\u00a1lov\u00c3\u00a9, 52, Czechia",
                         "longitude": 15.8825
                     }
                 },

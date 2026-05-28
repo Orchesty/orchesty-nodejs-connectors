@@ -135,7 +135,12 @@ export default class XeroApplication extends AOAuth2Application {
                 ) as unknown as { authentication_event_id: string };
 
                 const requestDto = this.getRequestDto(
-                    ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+                    ProcessDto.createForFormRequest(
+                        NAME,
+                        applicationInstall.getUser(),
+                        applicationInstall.getSdk(),
+                        crypto.randomUUID(),
+                    ),
                     applicationInstall,
                     HttpMethods.GET,
                     `https://api.xero.com/connections?authEventId=${parsedJWT.authentication_event_id}`,
@@ -172,10 +177,10 @@ export default class XeroApplication extends AOAuth2Application {
 
     // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/strict-void-return
     public async syncAfterUninstallCallback(req: Request): Promise<void> {
-        const { user } = JSON.parse(String(req.body));
+        const { user, sdk } = JSON.parse(String(req.body));
         const appRepo = this.mongoService.getApplicationRepository();
         const xeroApps = (await appRepo.findMany(
-            { users: [user], names: [this.getName()], enabled: null, deleted: true },
+            { users: [user], names: [this.getName()], enabled: null, deleted: true, sdks: [sdk] },
         ))
             .sort((x, y) => x.getUpdated().getTime() - y.getUpdated().getTime());
 
@@ -187,7 +192,7 @@ export default class XeroApplication extends AOAuth2Application {
                 const requestDto = new RequestDto(
                     'https://identity.xero.com/connect/revocation',
                     HttpMethods.POST,
-                    ProcessDto.createForFormRequest(NAME, user, crypto.randomUUID()),
+                    ProcessDto.createForFormRequest(NAME, user, xeroApp.getSdk(), crypto.randomUUID()),
                 );
 
                 requestDto.setHeaders({

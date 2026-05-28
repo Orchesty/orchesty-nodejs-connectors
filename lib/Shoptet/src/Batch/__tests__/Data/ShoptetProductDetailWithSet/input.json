@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "code": "2017000092",
@@ -150,11 +151,11 @@
                     {
                         "parameterName": {
                             "code": "priplatek",
-                            "name": "Příplatek"
+                            "name": "P\u0159\u00edplatek"
                         },
                         "parameterValue": {
                             "valueIndex": "fotka-s-ni",
-                            "description": "Fotka s ní",
+                            "description": "Fotka s n\u00ed",
                             "price": "1000.00"
                         }
                     }
@@ -179,11 +180,11 @@
         },
         "shippingDetails": {
             "branchId": "4",
-            "name": "Hradec Králové, Square of 5th May 888",
+            "name": "Hradec Kr\u00e1lov\u00e9, Square of 5th May 888",
             "note": "The office is located in Square of 5th May 888, near to John Doe's Garages.",
             "place": "Creator",
             "street": "Square of 5th May 888",
-            "city": "Hradec Králové",
+            "city": "Hradec Kr\u00e1lov\u00e9",
             "zipCode": "50002",
             "countryCode": "cz",
             "link": "https://www.ulozenka.cz/pobocky/4/hradec-kralove-nam-5-kvetna-888",

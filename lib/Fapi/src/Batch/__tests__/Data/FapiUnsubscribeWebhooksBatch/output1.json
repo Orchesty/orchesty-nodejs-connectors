@@ -1,7 +1,8 @@
 {
-  "headers": {
-    "user": "TestUser",
-    "cursor": "1"
-  },
-  "data": []
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
+        "cursor": "1"
+    },
+    "data": []
 }

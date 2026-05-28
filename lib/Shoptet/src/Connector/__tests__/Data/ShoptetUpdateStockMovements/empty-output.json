@@ -1,8 +1,9 @@
 {
     "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
         "result-code": "1003",
-        "result-message": "Missing product in shoptet!",
-        "user": "TestUser"
+        "result-message": "Missing product in shoptet!"
     },
     "data": {
         "data": null,

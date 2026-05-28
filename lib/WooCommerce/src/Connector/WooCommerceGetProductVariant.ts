@@ -35,7 +35,7 @@ export default class WooCommerceGetProductVariant extends AConnector {
                     throw Error(`SKU in woocommerce is missing [ProductId=${productId}, Id=${id}]`);
                 }
 
-                return newProduct as IProduct;
+                return newProduct;
             })));
         } catch (e) {
             if (e instanceof Error) {

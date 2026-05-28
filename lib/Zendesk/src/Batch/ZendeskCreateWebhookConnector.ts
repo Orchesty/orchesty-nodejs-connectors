@@ -28,7 +28,11 @@ export default class ZendeskCreateWebhookConnector extends ABatchNode {
         const app = this.getApplication<ZendeskApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto);
 
-        const registered = await repo.findMany({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
+        const registered = await repo.findMany({
+            users: [appInstall.getUser()],
+            apps: [appInstall.getName()],
+            sdks: [appInstall.getSdk()],
+        });
         const all = app.getWebhookSubscriptions().map((sub) => ({
             event: sub.getName(),
             token: this.getRandomToken(),
@@ -63,6 +67,7 @@ export default class ZendeskCreateWebhookConnector extends ABatchNode {
                 new Webhook()
                     .setWebhookId(data.webhook.id)
                     .setUser(appInstall.getUser())
+                    .setSdk(appInstall.getSdk())
                     .setNode(toRegister.node)
                     .setToken(toRegister.token)
                     .setApplication(app.getName())

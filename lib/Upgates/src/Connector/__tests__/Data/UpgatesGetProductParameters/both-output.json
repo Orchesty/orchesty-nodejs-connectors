@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "current_page": 1,
@@ -17,16 +18,16 @@
                         },
                         "values": [
                             {
-                                "cs": "Žlutá"
+                                "cs": "\u017dlut\u00e1"
                             },
                             {
-                                "cs": "Purpurová"
+                                "cs": "Purpurov\u00e1"
                             },
                             {
-                                "cs": "Šedá"
+                                "cs": "\u0160ed\u00e1"
                             },
                             {
-                                "cs": "Bílá"
+                                "cs": "B\u00edl\u00e1"
                             }
                         ]
                     },
@@ -51,7 +52,7 @@
                                 },
                                 "values": [
                                     {
-                                        "cs": "Žlutá"
+                                        "cs": "\u017dlut\u00e1"
                                     }
                                 ]
                             }
@@ -66,7 +67,7 @@
                                 },
                                 "values": [
                                     {
-                                        "cs": "Purpurová"
+                                        "cs": "Purpurov\u00e1"
                                     }
                                 ]
                             }
@@ -81,7 +82,7 @@
                                 },
                                 "values": [
                                     {
-                                        "cs": "Šedá"
+                                        "cs": "\u0160ed\u00e1"
                                     }
                                 ]
                             }
@@ -96,7 +97,7 @@
                                 },
                                 "values": [
                                     {
-                                        "cs": "Bílá"
+                                        "cs": "B\u00edl\u00e1"
                                     }
                                 ]
                             }

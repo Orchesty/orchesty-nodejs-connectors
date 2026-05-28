@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "activeModules": [
@@ -12,7 +13,7 @@
         "billingInformation": {
             "address": {
                 "city": "Prague",
-                "streetAddress": "Roháčova 15",
+                "streetAddress": "Roh\u00e1\u010dova 15",
                 "zip": "130 00"
             },
             "billingEmail": "fakturace@domena-eshopu.cz",
@@ -143,7 +144,7 @@
             "dateFormat": "j.n.Y",
             "defaultPricelist": {
                 "id": 1,
-                "name": "Hlavní ceník"
+                "name": "Hlavn\u00ed cen\u00edk"
             },
             "eshopLanguage": "cs",
             "exchangeRateFlip": true,

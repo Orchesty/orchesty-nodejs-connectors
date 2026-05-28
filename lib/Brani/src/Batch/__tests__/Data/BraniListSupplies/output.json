@@ -1,6 +1,20 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
-    "data": [{"body": "{\"code\":\"PERSIL\",\"location_name\":\"A01-01-02\",\"amount\":6}", "headers": {}}, {"body": "{\"code\":\"NIVEA\",\"location_name\":\"A01-01-03\",\"amount\":0}", "headers": {}}, {"body": "{\"code\":\"NIVEA_CARE\",\"location_name\":\"A01-01-01\",\"amount\":4}", "headers": {}}]
+    "data": [
+        {
+            "body": "{\"code\":\"PERSIL\",\"location_name\":\"A01-01-02\",\"amount\":6}",
+            "headers": {}
+        },
+        {
+            "body": "{\"code\":\"NIVEA\",\"location_name\":\"A01-01-03\",\"amount\":0}",
+            "headers": {}
+        },
+        {
+            "body": "{\"code\":\"NIVEA_CARE\",\"location_name\":\"A01-01-01\",\"amount\":4}",
+            "headers": {}
+        }
+    ]
 }

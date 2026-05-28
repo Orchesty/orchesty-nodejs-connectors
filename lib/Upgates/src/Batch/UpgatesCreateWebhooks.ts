@@ -52,6 +52,7 @@ export default class UpgatesCreateWebhooks extends ABatchNode {
                 await repo.insert(new Webhook()
                     .setWebhookId(respBody.webhook.id.toString())
                     .setUser(appInstall.getUser())
+                    .setSdk(appInstall.getSdk())
                     .setNode(webhooks[webhookIndex].getNode())
                     .setToken(token)
                     .setApplication(app.getName())

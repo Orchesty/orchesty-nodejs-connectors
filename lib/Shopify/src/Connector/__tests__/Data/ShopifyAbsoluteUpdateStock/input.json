@@ -1,10 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "inventory_item_id": "Product1",
-    "location_id": "123abc",
-    "available": 5
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "inventory_item_id": "Product1",
+        "location_id": "123abc",
+        "available": 5
+    }
 }

@@ -1,8 +1,9 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "inventoryId": "307"
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "inventoryId": "307"
+    }
 }

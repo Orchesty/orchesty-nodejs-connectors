@@ -1,10 +1,11 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "id": 251,
-    "event_type": "balic_packed",
-    "webhook_url": "https://example.com"
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "id": 251,
+        "event_type": "balic_packed",
+        "webhook_url": "https://example.com"
+    }
 }

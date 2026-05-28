@@ -11,6 +11,7 @@ export const DEFAULT_CLIENT_ID = 'ClientId';
 export const DEFAULT_CLIENT_SECRET = 'ClientSecret';
 export const DEFAULT_ACCESS_TOKEN = 'AccessToken';
 export const DEFAULT_PASSWORD = 'Password';
+export const DEFAULT_SDK = 'TestSdk';
 
 export function appInstall(
     name: string,
@@ -21,6 +22,7 @@ export function appInstall(
     const app = new ApplicationInstall()
         .setEnabled(true)
         .setName(name)
+        .setSdk(DEFAULT_SDK)
         .setUser(user)
         .setSettings(settings)
         .setNonEncryptedSettings(nonEncryptedSettings);

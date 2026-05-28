@@ -58,7 +58,7 @@ export default class FlexiBeeGetZavazekConnector extends AConnector {
             dto.setNewJsonData(record);
         }
 
-        return dto as unknown as ProcessDto<FlexiBeeZavazek>;
+        return dto;
     }
 
 }

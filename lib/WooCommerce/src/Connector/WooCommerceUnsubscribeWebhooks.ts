@@ -28,7 +28,11 @@ export default class WooCommerceUnsubscribeWebhooks extends AConnector {
         }
 
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const webhooks = await repo.findMany({ users: [appInstall.getUser()], apps: [app.getName()] });
+        const webhooks = await repo.findMany({
+            users: [appInstall.getUser()],
+            apps: [app.getName()],
+            sdks: [appInstall.getSdk()],
+        });
 
         const webhooksIds: number[] = [];
 

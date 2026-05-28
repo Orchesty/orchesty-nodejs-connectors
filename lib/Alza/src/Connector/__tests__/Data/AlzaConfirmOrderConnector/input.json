@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "orderId": "order123",
@@ -28,13 +29,13 @@
         "deliveryAddress": {
             "companyName": "",
             "addressName": "Franta Veverka",
-            "streetWithNumber": "Horní 147/4",
+            "streetWithNumber": "Horn\u00ed 147/4",
             "city": "Praha 4",
             "country": "CZ",
             "zip": "14000",
             "phone": "+420777666555",
             "email": "franta@veverka.cz",
-            "note": "Pozor na Barbara (kocour), kouše"
+            "note": "Pozor na Barbara (kocour), kou\u0161e"
         }
     }
 }

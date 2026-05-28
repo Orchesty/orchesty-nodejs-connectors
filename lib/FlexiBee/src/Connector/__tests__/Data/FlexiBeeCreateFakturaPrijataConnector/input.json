@@ -1,72 +1,73 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "winstrom": {
-      "@version": "1.0",
-      "adresar": [
-        {
-          "dic": "CZ17864810",
-          "ic": "17864810",
-          "kod": "17864810",
-          "mesto": "Hradec Králové CZ",
-          "nazev": "1. Account s.r.o.",
-          "psc": "50012",
-          "ulice": "třída Edvarda Beneše 1415/29"
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "winstrom": {
+            "@version": "1.0",
+            "adresar": [
+                {
+                    "dic": "CZ17864810",
+                    "ic": "17864810",
+                    "kod": "17864810",
+                    "mesto": "Hradec Kr\u00e1lov\u00e9 CZ",
+                    "nazev": "1. Account s.r.o.",
+                    "psc": "50012",
+                    "ulice": "t\u0159\u00edda Edvarda Bene\u0161e 1415/29"
+                }
+            ],
+            "faktura-prijata": [
+                {
+                    "cisDosle": "20250212",
+                    "datSplat": "2025-12-26T00:00:00",
+                    "datVyst": "2025-12-19T00:00:00",
+                    "firma": "code:17864810",
+                    "id": "ext:40830940-fc60-4ffd-a143-37ed2022bd21",
+                    "kod": "WF-7m2h040h6gpb1",
+                    "mena": "code:CZK",
+                    "polozkyFaktury": [
+                        {
+                            "cenaMj": 2000,
+                            "mnozMj": 1,
+                            "nazev": "Veden\u00ed \u00fa\u010detnictv\u00ed 11_2025",
+                            "sumZkl": 2000,
+                            "szbDph": 21,
+                            "typPolozkyK": "typPolozky.obecny",
+                            "typSzbDphK": "typSzbDph.dphZakl"
+                        },
+                        {
+                            "cenaMj": 200,
+                            "mnozMj": 6,
+                            "nazev": "Zpracov\u00e1n\u00ed mezd 11_2025",
+                            "sumZkl": 1200,
+                            "szbDph": 21,
+                            "typPolozkyK": "typPolozky.obecny",
+                            "typSzbDphK": "typSzbDph.dphZakl"
+                        },
+                        {
+                            "cenaMj": 650,
+                            "mnozMj": 1,
+                            "nazev": "DPH + Kontroln\u00ed hl\u00e1\u0161en\u00ed 11_2025",
+                            "sumZkl": 650,
+                            "szbDph": 21,
+                            "typPolozkyK": "typPolozky.obecny",
+                            "typSzbDphK": "typSzbDph.dphZakl"
+                        },
+                        {
+                            "cenaMj": 350,
+                            "mnozMj": 1,
+                            "nazev": "Souhrnn\u00e9 hl\u00e1\u0161en\u00ed 11_2025",
+                            "sumZkl": 350,
+                            "szbDph": 21,
+                            "typPolozkyK": "typPolozky.obecny",
+                            "typSzbDphK": "typSzbDph.dphZakl"
+                        }
+                    ],
+                    "popis": "Fakturujeme V\u00e1m za dodan\u00e9 zbo\u017e\u00ed \u010di slu\u017eby:\r\nDovolujeme si V\u00e1s upozornit, \u017ee v p\u0159\u00edpad\u011b nedodr\u017een\u00ed data splatnosti uveden\u00e9ho na faktu\u0159e V\u00e1m m\u016f\u017eeme \u00fa\u010dtovat z\u00e1konn\u00fd \u00farok z prodlen\u00ed.",
+                    "typDokl": "code:FAKTURA"
+                }
+            ]
         }
-      ],
-      "faktura-prijata": [
-        {
-          "cisDosle": "20250212",
-          "datSplat": "2025-12-26T00:00:00",
-          "datVyst": "2025-12-19T00:00:00",
-          "firma": "code:17864810",
-          "id": "ext:40830940-fc60-4ffd-a143-37ed2022bd21",
-          "kod": "WF-7m2h040h6gpb1",
-          "mena": "code:CZK",
-          "polozkyFaktury": [
-            {
-              "cenaMj": 2000,
-              "mnozMj": 1,
-              "nazev": "Vedení účetnictví 11_2025",
-              "sumZkl": 2000,
-              "szbDph": 21,
-              "typPolozkyK": "typPolozky.obecny",
-              "typSzbDphK": "typSzbDph.dphZakl"
-            },
-            {
-              "cenaMj": 200,
-              "mnozMj": 6,
-              "nazev": "Zpracování mezd 11_2025",
-              "sumZkl": 1200,
-              "szbDph": 21,
-              "typPolozkyK": "typPolozky.obecny",
-              "typSzbDphK": "typSzbDph.dphZakl"
-            },
-            {
-              "cenaMj": 650,
-              "mnozMj": 1,
-              "nazev": "DPH + Kontrolní hlášení 11_2025",
-              "sumZkl": 650,
-              "szbDph": 21,
-              "typPolozkyK": "typPolozky.obecny",
-              "typSzbDphK": "typSzbDph.dphZakl"
-            },
-            {
-              "cenaMj": 350,
-              "mnozMj": 1,
-              "nazev": "Souhrnné hlášení 11_2025",
-              "sumZkl": 350,
-              "szbDph": 21,
-              "typPolozkyK": "typPolozky.obecny",
-              "typSzbDphK": "typSzbDph.dphZakl"
-            }
-          ],
-          "popis": "Fakturujeme Vám za dodané zboží či služby:\r\nDovolujeme si Vás upozornit, že v případě nedodržení data splatnosti uvedeného na faktuře Vám můžeme účtovat zákonný úrok z prodlení.",
-          "typDokl": "code:FAKTURA"
-        }
-      ]
     }
-  }
 }

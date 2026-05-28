@@ -18,7 +18,11 @@ export default class ZendeskDeleteWebhookConnector extends ABatchNode {
         const app = this.getApplication();
         const appInstall = await this.getApplicationInstallFromProcess(dto, null);
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const webhook = await repo.findOne({ users: [appInstall.getUser()], apps: [appInstall.getName()] });
+        const webhook = await repo.findOne({
+            users: [appInstall.getUser()],
+            apps: [appInstall.getName()],
+            sdks: [appInstall.getSdk()],
+        });
 
         if (webhook) {
             const url = `/webhooks/${webhook.getWebhookId()}`;

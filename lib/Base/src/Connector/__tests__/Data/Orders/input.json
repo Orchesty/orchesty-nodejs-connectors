@@ -1,8 +1,9 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "orderId": 1630473
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "orderId": 1630473
+    }
 }

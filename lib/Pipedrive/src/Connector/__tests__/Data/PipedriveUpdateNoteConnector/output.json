@@ -1,22 +1,31 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "id": 1,
         "active_flag": true,
         "add_time": "2019-12-09 13:59:21",
         "content": "<p>New note content</p>",
-        "deal": { "title": "Deal title" },
+        "deal": {
+            "title": "Deal title"
+        },
         "lead_id": "adf21080-0e10-11eb-879b-05d71fb426ec",
         "deal_id": 1,
         "last_update_user_id": 1,
         "org_id": 1,
-        "organization": { "name": "Organization name" },
-        "person": { "name": "Person name" },
+        "organization": {
+            "name": "Organization name"
+        },
+        "person": {
+            "name": "Person name"
+        },
         "person_id": 1,
         "project_id": 1,
-        "project": { "title": "Project name" },
+        "project": {
+            "title": "Project name"
+        },
         "pinned_to_lead_flag": false,
         "pinned_to_deal_flag": true,
         "pinned_to_organization_flag": false,

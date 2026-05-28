@@ -1,10 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
-            "body": "[{\"id\":\"18\",\"lastUpdate\":\"2008-01-04T00:00:00+01:00\",\"kod\":\"000P\",\"nazev\":\"Doklad bez vlivu na DPH\",\"nazevA\":\"\",\"nazevB\":\"\",\"nazevC\":\"\",\"poznam\":\"\",\"popis\":\"\",\"platiOd\":\"0\",\"platiDo\":\"9999\",\"typPlneniK\":\"typPlneni.prijata\",\"typPlneniK@showAs\":\"Přijatá\",\"typObchoduK\":\"\",\"kodPlneniK\":\"\",\"jeDph\":\"false\",\"poradi\":\"0\",\"kodPlneniSH\":\"\",\"typPlneniEetK\":\"\",\"stat\":\"code:CZ\",\"stat@ref\":\"/c/demo/stat/39.json\",\"stat@showAs\":\"Česká republika\"}]",
+            "body": "[{\"id\":\"18\",\"lastUpdate\":\"2008-01-04T00:00:00+01:00\",\"kod\":\"000P\",\"nazev\":\"Doklad bez vlivu na DPH\",\"nazevA\":\"\",\"nazevB\":\"\",\"nazevC\":\"\",\"poznam\":\"\",\"popis\":\"\",\"platiOd\":\"0\",\"platiDo\":\"9999\",\"typPlneniK\":\"typPlneni.prijata\",\"typPlneniK@showAs\":\"P\u0159ijat\u00e1\",\"typObchoduK\":\"\",\"kodPlneniK\":\"\",\"jeDph\":\"false\",\"poradi\":\"0\",\"kodPlneniSH\":\"\",\"typPlneniEetK\":\"\",\"stat\":\"code:CZ\",\"stat@ref\":\"/c/demo/stat/39.json\",\"stat@showAs\":\"\u010cesk\u00e1 republika\"}]",
             "headers": {}
         }
     ]

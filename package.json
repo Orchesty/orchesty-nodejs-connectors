@@ -7,26 +7,25 @@
         "oauth2": "ts-node test/oauth2AppTester.ts",
         "generate-app-metadata": "ts-node GenerateApplicationMetaToJson.ts",
         "release": "changeset add && changeset version && changeset publish",
-        "build": "pnpm -r --workspace-concurrency=$(($(nproc) / 4 > 0 ? $(nproc) / 4 : 1)) run build",
-        "lint": "pnpm -r --workspace-concurrency=$(($(nproc) / 4 > 0 ? $(nproc) / 4 : 1)) lint",
-        "lint-ci": "pnpm -r --workspace-concurrency=$(($(nproc) / 4 > 0 ? $(nproc) / 4 : 1)) lint-ci",
-        "test": "pnpm -r --workspace-concurrency=$(($(nproc) / 4 > 0 ? $(nproc) / 4 : 1)) test",
-        "update": "pnpm up -r --workspace-concurrency=$(($(nproc) / 4 > 0 ? $(nproc) / 4 : 1))"
+        "build": "pnpm -r --workspace-concurrency=$(($(nproc) / 2 > 0 ? $(nproc) / 2 : 1)) run build",
+        "lint": "pnpm -r --workspace-concurrency=$(($(nproc) / 2 > 0 ? $(nproc) / 2 : 1)) lint",
+        "lint-ci": "pnpm -r --workspace-concurrency=$(($(nproc) / 2 > 0 ? $(nproc) / 2 : 1)) lint-ci",
+        "test": "pnpm -r --workspace-concurrency=$(($(nproc) / 2 > 0 ? $(nproc) / 2 : 1)) test"
     },
     "author": "info@hanaboso.com",
     "packageManager": "pnpm@9.1.4",
     "devDependencies": {
-        "@changesets/cli": "^2.29.8",
+        "@changesets/cli": "^2.31.0",
         "@hanaboso/eslint-plugin": "^1.2.5",
-        "@orchesty/nodejs-sdk": "^4.3.6",
+        "@orchesty/nodejs-sdk": "^5.0.8",
         "@types/jest": "^30.0.0",
-        "@types/node": "^25.0.10",
+        "@types/node": "^25.6.0",
         "axios-mock-adapter": "^2.1.0",
-        "eslint": "^9.39.2",
-        "jest": "^30.2.0",
-        "ts-jest": "^29.4.6",
+        "eslint": "^10.2.1",
+        "jest": "^30.3.0",
+        "ts-jest": "^29.4.9",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.3"
     },
     "engines": {
         "node": ">=24"

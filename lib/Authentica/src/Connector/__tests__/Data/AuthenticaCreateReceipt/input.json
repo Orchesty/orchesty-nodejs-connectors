@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "externalId": "receipt-1",
@@ -11,7 +12,7 @@
             "firstName": null,
             "lastName": null,
             "companyName": "Webwings s.r.o.",
-            "addressLine1": "Marešova 305/14",
+            "addressLine1": "Mare\u0161ova 305/14",
             "addressLine2": "2nd floor",
             "addressLine3": null,
             "city": "Brno",

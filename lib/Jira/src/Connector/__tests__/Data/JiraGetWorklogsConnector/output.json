@@ -1,6 +1,7 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
@@ -134,6 +135,5 @@
       },
       "updated": "2023-01-09T16:47:20.445+0100"
     }
-  ] 
+  ]
 }
-

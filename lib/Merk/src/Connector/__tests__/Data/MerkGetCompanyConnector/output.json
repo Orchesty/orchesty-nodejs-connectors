@@ -1,12 +1,13 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
             "acting_manner": [
                 {
-                    "manner_text": "Za společnost jedná navenek ve všech záležitostech týkajících se společnosti a společnost ve všech záležitostech zavazuje představenstvo, a to vždy dva členové představenstva společně.",
+                    "manner_text": "Za spole\u010dnost jedn\u00e1 navenek ve v\u0161ech z\u00e1le\u017eitostech t\u00fdkaj\u00edc\u00edch se spole\u010dnosti a spole\u010dnost ve v\u0161ech z\u00e1le\u017eitostech zavazuje p\u0159edstavenstvo, a to v\u017edy dva \u010dlenov\u00e9 p\u0159edstavenstva spole\u010dn\u011b.",
                     "start_date": "2014-08-26T00:00:00"
                 }
             ],
@@ -18,23 +19,23 @@
                     "text": "Praha 8"
                 },
                 "lines": [
-                    "Koželužská 2450/4",
-                    "Libeň",
+                    "Ko\u017eelu\u017esk\u00e1 2450/4",
+                    "Libe\u0148",
                     "18000 Praha 8"
                 ],
                 "municipality": "Praha",
                 "municipality_first": "Praha",
-                "municipality_part": "Libeň",
+                "municipality_part": "Libe\u0148",
                 "number": "2450/4",
                 "number_descriptive": "2450",
                 "number_orientation": "4",
                 "postal_code": "18000",
                 "region": {
                     "id": "CZ010",
-                    "text": "Hlavní město Praha"
+                    "text": "Hlavn\u00ed m\u011bsto Praha"
                 },
-                "street": "Koželužská",
-                "street_fixed": "Koželužská",
+                "street": "Ko\u017eelu\u017esk\u00e1",
+                "street_fixed": "Ko\u017eelu\u017esk\u00e1",
                 "text": ""
             },
             "bank_accounts": [
@@ -357,8 +358,8 @@
                     {
                         "address": {
                             "country_code": "sk",
-                            "municipality": "Bratislava - Lamač",
-                            "municipality_first": "Bratislava - Lamač",
+                            "municipality": "Bratislava - Lama\u010d",
+                            "municipality_first": "Bratislava - Lama\u010d",
                             "municipality_part": "",
                             "number": "",
                             "number_descriptive": "",
@@ -369,94 +370,94 @@
                             "text": ""
                         },
                         "age": 78,
-                        "company_role": "Člen statutárního orgánu",
+                        "company_role": "\u010clen statut\u00e1rn\u00edho org\u00e1nu",
                         "company_role_id": 1,
                         "country_code": "sk",
                         "degree_after": "",
                         "degree_before": "Ing.",
                         "first_name": "Ivan",
-                        "gender": "muž",
-                        "last_name": "Šesták",
+                        "gender": "mu\u017e",
+                        "last_name": "\u0160est\u00e1k",
                         "link": "https://www.merk.cz/search/osoba/ivan-sestak-havelkova-2807-32-bratislava-lamac/FwAnTz7BO84/",
-                        "salutation": "Vážený pane Šestáku,"
+                        "salutation": "V\u00e1\u017een\u00fd pane \u0160est\u00e1ku,"
                     },
                     {
                         "address": {
                             "country_code": "cz",
                             "municipality": "Praha",
                             "municipality_first": "Praha",
-                            "municipality_part": "Libeň",
+                            "municipality_part": "Libe\u0148",
                             "number": "2351/4",
                             "number_descriptive": "2351",
                             "number_orientation": "4",
                             "postal_code": "18200",
-                            "street": "Nad Okrouhlíkem",
-                            "street_fixed": "Nad Okrouhlíkem",
+                            "street": "Nad Okrouhl\u00edkem",
+                            "street_fixed": "Nad Okrouhl\u00edkem",
                             "text": ""
                         },
                         "age": 74,
-                        "company_role": "Člen statutárního orgánu",
+                        "company_role": "\u010clen statut\u00e1rn\u00edho org\u00e1nu",
                         "company_role_id": 1,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
-                        "first_name": "Zdeněk",
-                        "gender": "muž",
-                        "last_name": "Šinovský",
+                        "first_name": "Zden\u011bk",
+                        "gender": "mu\u017e",
+                        "last_name": "\u0160inovsk\u00fd",
                         "link": "https://www.merk.cz/search/osoba/zdenek-sinovsky-nad-okrouhlikem-2351-4-praha/NMH1naamx8k/",
-                        "salutation": "Vážený pane Šinovský,"
+                        "salutation": "V\u00e1\u017een\u00fd pane \u0160inovsk\u00fd,"
                     },
                     {
                         "address": {
                             "country_code": "cz",
                             "municipality": "Praha",
                             "municipality_first": "Praha",
-                            "municipality_part": "Libeň",
+                            "municipality_part": "Libe\u0148",
                             "number": "2351/4",
                             "number_descriptive": "2351",
                             "number_orientation": "4",
                             "postal_code": "18200",
-                            "street": "Nad Okrouhlíkem",
-                            "street_fixed": "Nad Okrouhlíkem",
+                            "street": "Nad Okrouhl\u00edkem",
+                            "street_fixed": "Nad Okrouhl\u00edkem",
                             "text": ""
                         },
                         "age": 76,
-                        "company_role": "Člen statutárního orgánu",
+                        "company_role": "\u010clen statut\u00e1rn\u00edho org\u00e1nu",
                         "company_role_id": 1,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
                         "first_name": "Daniel",
-                        "gender": "muž",
+                        "gender": "mu\u017e",
                         "last_name": "Knotek",
                         "link": "https://www.merk.cz/search/osoba/daniel-knotek-nad-okrouhlikem-2351-4-praha/sQc56FQvB_k/",
-                        "salutation": "Vážený pane Knotku,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Knotku,"
                     },
                     {
                         "address": {
                             "country_code": "cz",
-                            "municipality": "Opočnice",
-                            "municipality_first": "Opočnice",
+                            "municipality": "Opo\u010dnice",
+                            "municipality_first": "Opo\u010dnice",
                             "municipality_part": "",
                             "number": "174",
                             "number_descriptive": "174",
                             "number_orientation": "",
                             "postal_code": "28904",
                             "street": "",
-                            "street_fixed": "Opočnice",
+                            "street_fixed": "Opo\u010dnice",
                             "text": ""
                         },
                         "age": 45,
-                        "company_role": "Člen dozorčí rady",
+                        "company_role": "\u010clen dozor\u010d\u00ed rady",
                         "company_role_id": 4,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
                         "first_name": "Petr",
-                        "gender": "muž",
-                        "last_name": "Půta",
+                        "gender": "mu\u017e",
+                        "last_name": "P\u016fta",
                         "link": "https://www.merk.cz/search/osoba/petr-puta-opocnice-174-opocnice/JbXq-4FKp6w/",
-                        "salutation": "Vážený pane Půto,"
+                        "salutation": "V\u00e1\u017een\u00fd pane P\u016fto,"
                     },
                     {
                         "address": {
@@ -468,21 +469,21 @@
                             "number_descriptive": "526",
                             "number_orientation": "26",
                             "postal_code": "14900",
-                            "street": "Dunovského",
-                            "street_fixed": "Dunovského",
+                            "street": "Dunovsk\u00e9ho",
+                            "street_fixed": "Dunovsk\u00e9ho",
                             "text": ""
                         },
                         "age": 82,
-                        "company_role": "Člen dozorčí rady",
+                        "company_role": "\u010clen dozor\u010d\u00ed rady",
                         "company_role_id": 4,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
-                        "first_name": "Jindřich",
-                        "gender": "muž",
+                        "first_name": "Jind\u0159ich",
+                        "gender": "mu\u017e",
                         "last_name": "Hess",
                         "link": "https://www.merk.cz/search/osoba/jindrich-hess-dunovskeho-526-26-praha/qhRyKfT25u0/",
-                        "salutation": "Vážený pane Hessi,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Hessi,"
                     },
                     {
                         "address": {
@@ -494,53 +495,53 @@
                             "number_descriptive": "557",
                             "number_orientation": "6",
                             "postal_code": "15800",
-                            "street": "K rovinám",
-                            "street_fixed": "K rovinám",
+                            "street": "K rovin\u00e1m",
+                            "street_fixed": "K rovin\u00e1m",
                             "text": ""
                         },
                         "age": 61,
-                        "company_role": "Člen statutárního orgánu",
+                        "company_role": "\u010clen statut\u00e1rn\u00edho org\u00e1nu",
                         "company_role_id": 1,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
-                        "first_name": "František",
-                        "gender": "muž",
-                        "last_name": "Kočí",
+                        "first_name": "Franti\u0161ek",
+                        "gender": "mu\u017e",
+                        "last_name": "Ko\u010d\u00ed",
                         "link": "https://www.merk.cz/search/osoba/frantisek-koci-k-rovinam-557-6-praha/TQ1vH_LPvts/",
-                        "salutation": "Vážený pane Kočí,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Ko\u010d\u00ed,"
                     },
                     {
                         "address": {
                             "country_code": "cz",
                             "municipality": "Kladno",
                             "municipality_first": "Kladno",
-                            "municipality_part": "Rozdělov",
+                            "municipality_part": "Rozd\u011blov",
                             "number": "944",
                             "number_descriptive": "944",
                             "number_orientation": "",
                             "postal_code": "27204",
-                            "street": "Ve Strnadovně",
-                            "street_fixed": "Ve Strnadovně",
+                            "street": "Ve Strnadovn\u011b",
+                            "street_fixed": "Ve Strnadovn\u011b",
                             "text": ""
                         },
                         "age": 49,
-                        "company_role": "Člen statutárního orgánu",
+                        "company_role": "\u010clen statut\u00e1rn\u00edho org\u00e1nu",
                         "company_role_id": 1,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
-                        "first_name": "Ondřej",
-                        "gender": "muž",
+                        "first_name": "Ond\u0159ej",
+                        "gender": "mu\u017e",
                         "last_name": "Fuchs",
                         "link": "https://www.merk.cz/search/osoba/ondrej-fuchs-ve-strnadovne-944-kladno/XZ9iaiVuRiw/",
-                        "salutation": "Vážený pane Fuchsi,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Fuchsi,"
                     },
                     {
                         "address": {
                             "country_code": "sk",
-                            "municipality": "Bratislava - Nové Město",
-                            "municipality_first": "Bratislava - Nové Město",
+                            "municipality": "Bratislava - Nov\u00e9 M\u011bsto",
+                            "municipality_first": "Bratislava - Nov\u00e9 M\u011bsto",
                             "municipality_part": "",
                             "number": "",
                             "number_descriptive": "",
@@ -551,16 +552,16 @@
                             "text": ""
                         },
                         "age": 78,
-                        "company_role": "Člen dozorčí rady",
+                        "company_role": "\u010clen dozor\u010d\u00ed rady",
                         "company_role_id": 4,
                         "country_code": "sk",
                         "degree_after": "",
                         "degree_before": "Ing.",
-                        "first_name": "František",
-                        "gender": "muž",
+                        "first_name": "Franti\u0161ek",
+                        "gender": "mu\u017e",
                         "last_name": "Potisk",
                         "link": "https://www.merk.cz/search/osoba/frantisek-potisk-guothova-3-bratislava-nove-mesto/0vdYxFVSGko/",
-                        "salutation": "Vážený pane Potisku,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Potisku,"
                     },
                     {
                         "address": {
@@ -572,47 +573,47 @@
                             "number_descriptive": "",
                             "number_orientation": "",
                             "postal_code": "81101",
-                            "street": "Radvanská 2125/5",
-                            "street_fixed": "Radvanská 2125/5",
+                            "street": "Radvansk\u00e1 2125/5",
+                            "street_fixed": "Radvansk\u00e1 2125/5",
                             "text": ""
                         },
                         "age": 80,
-                        "company_role": "Člen dozorčí rady",
+                        "company_role": "\u010clen dozor\u010d\u00ed rady",
                         "company_role_id": 4,
                         "country_code": "sk",
                         "degree_after": "",
                         "degree_before": "",
                         "first_name": "Viktor",
-                        "gender": "muž",
+                        "gender": "mu\u017e",
                         "last_name": "Karel",
                         "link": "https://www.merk.cz/search/osoba/viktor-karel-radvanska-2125-5-bratislava-1/DTMcfP5AKgw/",
-                        "salutation": "Vážený pane Karle,"
+                        "salutation": "V\u00e1\u017een\u00fd pane Karle,"
                     },
                     {
                         "address": {
                             "country_code": "cz",
                             "municipality": "Praha",
                             "municipality_first": "Praha",
-                            "municipality_part": "Stodůlky",
+                            "municipality_part": "Stod\u016flky",
                             "number": "2023/27",
                             "number_descriptive": "2023",
                             "number_orientation": "27",
                             "postal_code": "15500",
-                            "street": "Bronzová",
-                            "street_fixed": "Bronzová",
+                            "street": "Bronzov\u00e1",
+                            "street_fixed": "Bronzov\u00e1",
                             "text": ""
                         },
                         "age": 49,
-                        "company_role": "Člen dozorčí rady",
+                        "company_role": "\u010clen dozor\u010d\u00ed rady",
                         "company_role_id": 4,
                         "country_code": "cz",
                         "degree_after": "",
                         "degree_before": "Ing.",
                         "first_name": "Miroslav",
-                        "gender": "muž",
-                        "last_name": "Pánek",
+                        "gender": "mu\u017e",
+                        "last_name": "P\u00e1nek",
                         "link": "https://www.merk.cz/search/osoba/miroslav-panek-bronzova-2023-27-praha/OyOnvb6LPaE/",
-                        "salutation": "Vážený pane Pánku,"
+                        "salutation": "V\u00e1\u017een\u00fd pane P\u00e1nku,"
                     }
                 ]
             },
@@ -624,7 +625,7 @@
             },
             "court": {
                 "file_nr": "B 758",
-                "name": "Městský soud v Praze"
+                "name": "M\u011bstsk\u00fd soud v Praze"
             },
             "databox_ids": [
                 "bnpcf46"
@@ -699,7 +700,7 @@
                     "grant_id": "9BCD4E80A20D384126F008D1DE92DA202D6FDF29",
                     "project_code": "085BD872-AE3C-48BA-A578-C21FBA454218",
                     "project_id": "FV20472",
-                    "project_name": "Aplikace vysokohodnotných cementových kompozitů na rekonstrukce betonových staveb",
+                    "project_name": "Aplikace vysokohodnotn\u00fdch cementov\u00fdch kompozit\u016f na rekonstrukce betonov\u00fdch staveb",
                     "signed_date": "2017-08-16T02:00:00"
                 },
                 {
@@ -719,7 +720,7 @@
                     "grant_id": "1B1AE2B60A3A599DB74FE6D0D8C1E1FC6A6A6E91",
                     "project_code": "40000990431",
                     "project_id": "FR-TI3/531",
-                    "project_name": "Zvýšení trvanlivosti betonových konstrukcí vystavených extrémním zatížením",
+                    "project_name": "Zv\u00fd\u0161en\u00ed trvanlivosti betonov\u00fdch konstrukc\u00ed vystaven\u00fdch extr\u00e9mn\u00edm zat\u00ed\u017een\u00edm",
                     "signed_date": "2011-04-12T02:00:00"
                 }
             ],
@@ -729,7 +730,7 @@
             },
             "industry": {
                 "id": "4120",
-                "text": "Výstavba bytových a nebytových budov"
+                "text": "V\u00fdstavba bytov\u00fdch a nebytov\u00fdch budov"
             },
             "insolvency_cases": null,
             "is_active": true,
@@ -741,7 +742,7 @@
             },
             "legal_form": {
                 "id": 121,
-                "text": "Akciová společnost"
+                "text": "Akciov\u00e1 spole\u010dnost"
             },
             "link": "https://www.merk.cz/search/detail/cz-14915/",
             "linkedin": [
@@ -750,7 +751,7 @@
             "magnitude": {
                 "id": 440,
                 "lower_bound": "2 500 zam.",
-                "text": "2500 - 2999 zaměstnanců",
+                "text": "2500 - 2999 zam\u011bstnanc\u016f",
                 "trend": "falling",
                 "upper_bound": "2 999 zam."
             },
@@ -891,7 +892,7 @@
             "name": "Metrostav a.s.",
             "owning_type": {
                 "id": 8,
-                "text": "Mezinárodní (domácí + zahraniční)"
+                "text": "Mezin\u00e1rodn\u00ed (dom\u00e1c\u00ed + zahrani\u010dn\u00ed)"
             },
             "phones": [
                 {
@@ -955,209 +956,209 @@
             "secondary_industries": [
                 {
                     "id": "52100",
-                    "text": "Skladování"
+                    "text": "Skladov\u00e1n\u00ed"
                 },
                 {
                     "id": "82920",
-                    "text": "Balicí činnosti"
+                    "text": "Balic\u00ed \u010dinnosti"
                 },
                 {
                     "id": "70220",
-                    "text": "Ostatní poradenství v oblasti podnikání a řízení"
+                    "text": "Ostatn\u00ed poradenstv\u00ed v\u00a0oblasti podnik\u00e1n\u00ed a \u0159\u00edzen\u00ed"
                 },
                 {
                     "id": "25720",
-                    "text": "Výroba zámků a kování"
+                    "text": "V\u00fdroba z\u00e1mk\u016f a kov\u00e1n\u00ed"
                 },
                 {
                     "id": "36",
-                    "text": "Shromažďování, úprava a rozvod vody"
+                    "text": "Shroma\u017e\u010fov\u00e1n\u00ed, \u00faprava a rozvod vody"
                 },
                 {
                     "id": "43210",
-                    "text": "Elektrické instalace"
+                    "text": "Elektrick\u00e9 instalace"
                 },
                 {
                     "id": "620",
-                    "text": "Činnosti v oblasti informačních technologií"
+                    "text": "\u010cinnosti v oblasti informa\u010dn\u00edch technologi\u00ed"
                 },
                 {
                     "id": "234",
-                    "text": "Výroba ostatních porcelánových a keramických výrobků"
+                    "text": "V\u00fdroba ostatn\u00edch porcel\u00e1nov\u00fdch a keramick\u00fdch v\u00fdrobk\u016f"
                 },
                 {
                     "id": "46900",
-                    "text": "Nespecializovaný velkoobchod"
+                    "text": "Nespecializovan\u00fd velkoobchod"
                 },
                 {
                     "id": "256",
-                    "text": "Povrchová úprava a zušlechťování kovů; obrábění"
+                    "text": "Povrchov\u00e1 \u00faprava a zu\u0161lech\u0165ov\u00e1n\u00ed kov\u016f; obr\u00e1b\u011bn\u00ed"
                 },
                 {
                     "id": "38110",
-                    "text": "Shromažďování a sběr odpadů, kromě nebezpečných"
+                    "text": "Shroma\u017e\u010fov\u00e1n\u00ed a sb\u011br odpad\u016f, krom\u011b nebezpe\u010dn\u00fdch"
                 },
                 {
                     "id": "25",
-                    "text": "Výroba kovových konstrukcí a kovodělných výrobků, kromě strojů a zařízení"
+                    "text": "V\u00fdroba kovov\u00fdch konstrukc\u00ed a kovod\u011bln\u00fdch v\u00fdrobk\u016f, krom\u011b stroj\u016f a\u00a0za\u0159\u00edzen\u00ed"
                 },
                 {
                     "id": "01",
-                    "text": "Rostlinná a živočišná výroba, myslivost a související činnosti"
+                    "text": "Rostlinn\u00e1 a \u017eivo\u010di\u0161n\u00e1 v\u00fdroba, myslivost a souvisej\u00edc\u00ed \u010dinnosti"
                 },
                 {
                     "id": "68310",
-                    "text": "Zprostředkovatelské činnosti realitních agentur"
+                    "text": "Zprost\u0159edkovatelsk\u00e9 \u010dinnosti realitn\u00edch agentur"
                 },
                 {
                     "id": "772",
-                    "text": "Pronájem a leasing výrobků pro osobní potřebu a převážně pro domácnost"
+                    "text": "Pron\u00e1jem a leasing v\u00fdrobk\u016f pro osobn\u00ed pot\u0159ebu a\u00a0p\u0159ev\u00e1\u017en\u011b pro\u00a0dom\u00e1cnost"
                 },
                 {
                     "id": "43330",
-                    "text": "Obkládání stěn a pokládání podlahových krytin"
+                    "text": "Obkl\u00e1d\u00e1n\u00ed st\u011bn a pokl\u00e1d\u00e1n\u00ed podlahov\u00fdch krytin"
                 },
                 {
                     "id": "731",
-                    "text": "Reklamní činnosti"
+                    "text": "Reklamn\u00ed \u010dinnosti"
                 },
                 {
                     "id": "49393",
-                    "text": "Nepravidelná pozemní osobní doprava"
+                    "text": "Nepravideln\u00e1 pozemn\u00ed osobn\u00ed doprava"
                 },
                 {
                     "id": "43910",
-                    "text": "Pokrývačské práce"
+                    "text": "Pokr\u00fdva\u010dsk\u00e9 pr\u00e1ce"
                 },
                 {
                     "id": "26110",
-                    "text": "Výroba elektronických součástek"
+                    "text": "V\u00fdroba elektronick\u00fdch sou\u010d\u00e1stek"
                 },
                 {
                     "id": "45200",
-                    "text": "Opravy a údržba motorových vozidel, kromě motocyklů"
+                    "text": "Opravy a \u00fadr\u017eba motorov\u00fdch vozidel, krom\u011b motocykl\u016f"
                 },
                 {
                     "id": "4778",
-                    "text": "Ostatní maloobchod s novým zbožím ve specializovaných prodejnách"
+                    "text": "Ostatn\u00ed maloobchod s\u00a0nov\u00fdm zbo\u017e\u00edm ve\u00a0specializovan\u00fdch prodejn\u00e1ch"
                 },
                 {
                     "id": "43290",
-                    "text": "Ostatní stavební instalace"
+                    "text": "Ostatn\u00ed stavebn\u00ed instalace"
                 },
                 {
                     "id": "282",
-                    "text": "Výroba ostatních strojů a zařízení pro všeobecné účely"
+                    "text": "V\u00fdroba ostatn\u00edch stroj\u016f a za\u0159\u00edzen\u00ed pro v\u0161eobecn\u00e9 \u00fa\u010dely"
                 },
                 {
                     "id": "7219",
-                    "text": "Ostatní výzkum a vývoj v oblasti přírodních a technických věd"
+                    "text": "Ostatn\u00ed v\u00fdzkum a v\u00fdvoj v\u00a0oblasti p\u0159\u00edrodn\u00edch a\u00a0technick\u00fdch v\u011bd"
                 },
                 {
                     "id": "74902",
-                    "text": "Poradenství v oblasti požární ochrany"
+                    "text": "Poradenstv\u00ed v\u00a0oblasti po\u017e\u00e1rn\u00ed ochrany"
                 },
                 {
                     "id": "69200",
-                    "text": "Účetnické a auditorské činnosti; daňové poradenství"
+                    "text": "\u00da\u010detnick\u00e9 a auditorsk\u00e9 \u010dinnosti; da\u0148ov\u00e9 poradenstv\u00ed"
                 },
                 {
                     "id": "581",
-                    "text": "Vydávání knih, periodických publikací a ostatní vydavatelské činnosti"
+                    "text": "Vyd\u00e1v\u00e1n\u00ed knih, periodick\u00fdch publikac\u00ed a ostatn\u00ed vydavatelsk\u00e9 \u010dinnosti"
                 },
                 {
                     "id": "71122",
-                    "text": "Zeměměřické a kartografické činnosti"
+                    "text": "Zem\u011bm\u011b\u0159ick\u00e9 a kartografick\u00e9 \u010dinnosti"
                 },
                 {
                     "id": "71121",
-                    "text": "Geologický průzkum"
+                    "text": "Geologick\u00fd pr\u016fzkum"
                 },
                 {
                     "id": "952",
-                    "text": "Opravy výrobků pro osobní potřebu a převážně pro domácnost"
+                    "text": "Opravy v\u00fdrobk\u016f pro osobn\u00ed pot\u0159ebu a p\u0159ev\u00e1\u017en\u011b pro\u00a0dom\u00e1cnost"
                 },
                 {
                     "id": "25730",
-                    "text": "Výroba nástrojů a nářadí"
+                    "text": "V\u00fdroba n\u00e1stroj\u016f a n\u00e1\u0159ad\u00ed"
                 },
                 {
                     "id": "27900",
-                    "text": "Výroba ostatních elektrických zařízení"
+                    "text": "V\u00fdroba ostatn\u00edch elektrick\u00fdch za\u0159\u00edzen\u00ed"
                 },
                 {
                     "id": "49410",
-                    "text": "Silniční nákladní doprava"
+                    "text": "Silni\u010dn\u00ed n\u00e1kladn\u00ed doprava"
                 },
                 {
                     "id": "43220",
-                    "text": "Instalace vody, odpadu, plynu, topení a klimatizace"
+                    "text": "Instalace vody, odpadu, plynu, topen\u00ed a klimatizace"
                 },
                 {
                     "id": "8559",
-                    "text": "Ostatní vzdělávání j. n."
+                    "text": "Ostatn\u00ed vzd\u011bl\u00e1v\u00e1n\u00ed j. n."
                 },
                 {
                     "id": "3317",
-                    "text": "Opravy a údržba ostatních dopravních prostředků a zařízení j. n."
+                    "text": "Opravy a \u00fadr\u017eba ostatn\u00edch dopravn\u00edch prost\u0159edk\u016f a za\u0159\u00edzen\u00ed j. n."
                 },
                 {
                     "id": "5590",
-                    "text": "Ostatní ubytování"
+                    "text": "Ostatn\u00ed ubytov\u00e1n\u00ed"
                 },
                 {
                     "id": "900",
-                    "text": "Tvůrčí, umělecké a zábavní činnosti"
+                    "text": "Tv\u016fr\u010d\u00ed, um\u011bleck\u00e9 a z\u00e1bavn\u00ed \u010dinnosti"
                 },
                 {
                     "id": "33120",
-                    "text": "Opravy strojů"
+                    "text": "Opravy stroj\u016f"
                 },
                 {
                     "id": "711",
-                    "text": "Architektonické a inženýrské činnosti a související technické poradenství"
+                    "text": "Architektonick\u00e9 a in\u017een\u00fdrsk\u00e9 \u010dinnosti a souvisej\u00edc\u00ed technick\u00e9 poradenstv\u00ed"
                 },
                 {
                     "id": "43320",
-                    "text": "Truhlářské práce"
+                    "text": "Truhl\u00e1\u0159sk\u00e9 pr\u00e1ce"
                 },
                 {
                     "id": "26300",
-                    "text": "Výroba komunikačních zařízení"
+                    "text": "V\u00fdroba komunika\u010dn\u00edch za\u0159\u00edzen\u00ed"
                 },
                 {
                     "id": "471",
-                    "text": "Maloobchod v nespecializovaných prodejnách"
+                    "text": "Maloobchod v\u00a0nespecializovan\u00fdch prodejn\u00e1ch"
                 },
                 {
                     "id": "74901",
-                    "text": "Poradenství v oblasti bezpečnosti a ochrany zdraví při práci"
+                    "text": "Poradenstv\u00ed v\u00a0oblasti bezpe\u010dnosti a ochrany zdrav\u00ed p\u0159i pr\u00e1ci"
                 },
                 {
                     "id": "439",
-                    "text": "Ostatní specializované stavební činnosti"
+                    "text": "Ostatn\u00ed specializovan\u00e9 stavebn\u00ed \u010dinnosti"
                 },
                 {
                     "id": "38120",
-                    "text": "Shromažďování a sběr nebezpečných odpadů"
+                    "text": "Shroma\u017e\u010fov\u00e1n\u00ed a sb\u011br nebezpe\u010dn\u00fdch odpad\u016f"
                 },
                 {
                     "id": "433",
-                    "text": "Kompletační a dokončovací práce"
+                    "text": "Kompleta\u010dn\u00ed a dokon\u010dovac\u00ed pr\u00e1ce"
                 },
                 {
                     "id": "33140",
-                    "text": "Opravy elektrických zařízení"
+                    "text": "Opravy elektrick\u00fdch za\u0159\u00edzen\u00ed"
                 },
                 {
                     "id": "431",
-                    "text": "Demolice a příprava staveniště"
+                    "text": "Demolice a p\u0159\u00edprava staveni\u0161t\u011b"
                 }
             ],
             "sk_insolvency_cases": null,
             "status": {
                 "id": 1,
-                "text": "Subjekt bez omezení v činnosti"
+                "text": "Subjekt bez omezen\u00ed v \u010dinnosti"
             },
             "taxno": null,
             "trademarks": [
@@ -1167,10 +1168,10 @@
                     "nr_register": "",
                     "product_or_service_classes": "6, 7, 37, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/753/o5753240.jpg",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2021-10-21T00:00:00",
-                    "status": "Podaná",
-                    "tm_type": "Obrazová",
+                    "status": "Podan\u00e1",
+                    "tm_type": "Obrazov\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/575324",
                     "url_doc": "",
                     "wording": "metrostav Metrostav DIZ s.r.o."
@@ -1181,12 +1182,12 @@
                     "nr_register": "317907",
                     "product_or_service_classes": "6, 7, 37, 42",
                     "reproduction": "",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2010-11-15T00:00:00",
                     "stamp_registered": "2011-05-04T00:00:00",
                     "stamp_renewed": "2030-11-15T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Slovní",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Slovn\u00ed",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/481016",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/016/O-481016.pdf",
                     "wording": "METROSTAV"
@@ -1197,12 +1198,12 @@
                     "nr_register": "295793",
                     "product_or_service_classes": "6, 37, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/496/o4496150.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2007-06-27T00:00:00",
                     "stamp_registered": "2008-02-06T00:00:00",
                     "stamp_renewed": "2027-06-27T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/449615",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/615/O-449615.pdf",
                     "wording": "METROSTAV"
@@ -1213,12 +1214,12 @@
                     "nr_register": "265777",
                     "product_or_service_classes": "6, 37",
                     "reproduction": "https://isdv.upv.cz/obr/oz/445/o3445010.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2004-03-16T00:00:00",
                     "stamp_registered": "2004-08-25T00:00:00",
                     "stamp_renewed": "2024-03-16T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/344501",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/501/O-344501.pdf",
                     "wording": "metrostav"
@@ -1229,15 +1230,15 @@
                     "nr_register": "244132",
                     "product_or_service_classes": "6, 7, 9, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/625/o1625500.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2000-12-20T00:00:00",
                     "stamp_registered": "2002-05-23T00:00:00",
                     "stamp_renewed": "2030-12-20T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/162550",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/550/O-162550.pdf",
-                    "wording": "ZDE STAVÍ metrostav AKCIOVÁ SPOLEČNOST"
+                    "wording": "ZDE STAV\u00cd metrostav AKCIOV\u00c1 SPOLE\u010cNOST"
                 },
                 {
                     "image_classes": "26.4.24, 27.5.9, 27.5.8, 27.5.24",
@@ -1245,15 +1246,15 @@
                     "nr_register": "239632",
                     "product_or_service_classes": "6, 7, 9, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/624/o1624380.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2000-12-15T00:00:00",
                     "stamp_registered": "2001-12-19T00:00:00",
                     "stamp_renewed": "2030-12-15T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/162438",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/438/O-162438.pdf",
-                    "wording": "ZDE STAVÍ METROSTAV AKCIOVÁ SPOLEČNOST"
+                    "wording": "ZDE STAV\u00cd METROSTAV AKCIOV\u00c1 SPOLE\u010cNOST"
                 },
                 {
                     "image_classes": "26.4.10, 29.1.13, 27.5.4, 26.4.22",
@@ -1261,12 +1262,12 @@
                     "nr_register": "235573",
                     "product_or_service_classes": "6, 7, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/519/o1519450.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2000-02-15T00:00:00",
                     "stamp_registered": "2001-08-27T00:00:00",
                     "stamp_renewed": "2030-02-15T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/151945",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/945/O-151945.pdf",
                     "wording": "metrostav Quality"
@@ -1277,12 +1278,12 @@
                     "nr_register": "235574",
                     "product_or_service_classes": "6, 7, 11, 17, 19, 35, 36, 37, 38, 39, 41, 42",
                     "reproduction": "https://isdv.upv.cz/obr/oz/519/o1519460.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "2000-02-15T00:00:00",
                     "stamp_registered": "2001-08-27T00:00:00",
                     "stamp_renewed": "2030-02-15T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/151946",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/946/O-151946.pdf",
                     "wording": "metrostav Quality"
@@ -1293,12 +1294,12 @@
                     "nr_register": "217422",
                     "product_or_service_classes": "6, 19, 37",
                     "reproduction": "",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "1998-03-18T00:00:00",
                     "stamp_registered": "1999-04-23T00:00:00",
                     "stamp_renewed": "2018-03-18T00:00:00",
-                    "status": "Zaniklý dokument",
-                    "tm_type": "Slovní",
+                    "status": "Zanikl\u00fd dokument",
+                    "tm_type": "Slovn\u00ed",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/130963",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/963/O-130963.pdf",
                     "wording": "KUMUS"
@@ -1309,12 +1310,12 @@
                     "nr_register": "167515",
                     "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
                     "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562380.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "1989-04-18T00:00:00",
                     "stamp_registered": "1990-01-15T00:00:00",
                     "stamp_renewed": "2029-04-18T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56238",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/238/O-56238.pdf",
                     "wording": "METROSTAV"
@@ -1325,12 +1326,12 @@
                     "nr_register": "167514",
                     "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
                     "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562370.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "1989-04-18T00:00:00",
                     "stamp_registered": "1990-01-15T00:00:00",
                     "stamp_renewed": "2029-04-18T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Kombinovaná",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Kombinovan\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56237",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/237/O-56237.pdf",
                     "wording": "METROSTAV"
@@ -1341,12 +1342,12 @@
                     "nr_register": "167513",
                     "product_or_service_classes": "6, 7, 9, 11, 17, 19, 37",
                     "reproduction": "https://isdv.upv.cz/obr/oz/562/o0562360.gif",
-                    "source": "ÚPV-ČR",
+                    "source": "\u00daPV-\u010cR",
                     "stamp_application": "1989-04-18T00:00:00",
                     "stamp_registered": "1990-01-15T00:00:00",
                     "stamp_renewed": "2029-04-18T00:00:00",
-                    "status": "Platný dokument",
-                    "tm_type": "Obrazová",
+                    "status": "Platn\u00fd dokument",
+                    "tm_type": "Obrazov\u00e1",
                     "url": "https://isdv.upv.cz/webapp/resdb.print_detail.det?pspis=OZ/56236",
                     "url_doc": "https://isdv.upv.cz/obr/ozvyprej/236/O-56236.pdf",
                     "wording": ""
@@ -1354,8 +1355,8 @@
             ],
             "turnover": {
                 "id": 150,
-                "lower_bound": "1,5 mld. Kč",
-                "text": "1 500 000 000 Kč a více",
+                "lower_bound": "1,5 mld. K\u010d",
+                "text": "1 500 000 000 K\u010d a v\u00edce",
                 "trend": "stagnating",
                 "upper_bound": "neomezeno"
             },

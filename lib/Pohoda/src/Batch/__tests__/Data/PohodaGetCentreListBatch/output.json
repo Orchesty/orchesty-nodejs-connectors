@@ -1,6 +1,7 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
@@ -16,7 +17,7 @@
       "headers": {}
     },
     {
-      "body": "{\"id\":4,\"code\":\"DĂŤLNA\",\"name\":\"DĂ­lna Jihlava\"}",
+      "body": "{\"id\":4,\"code\":\"D\u0102\u0164LNA\",\"name\":\"D\u0102\u00adlna Jihlava\"}",
       "headers": {}
     }
   ]

@@ -1,6 +1,7 @@
 import ABatchNode from '@orchesty/nodejs-sdk/dist/lib/Batch/ABatchNode';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import DateTimeUtils from '@orchesty/nodejs-sdk/dist/lib/Utils/DateTimeUtils';
+import { SDK } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
 
 export const NAME = 'get-application-for-refresh';
 
@@ -18,7 +19,7 @@ export default class GetApplicationForRefreshBatchConnector extends ABatchNode {
 
         const applications = await repository.findMany({ expires: date, enabled: true });
         applications.forEach((app) => {
-            dto.addItem({ app: app.getName() }, app.getUser());
+            dto.addItem({ app: app.getName() }, app.getUser(), undefined, { [SDK]: app.getSdk() });
         });
 
         return dto as BatchProcessDto<IOutput>;

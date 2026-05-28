@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "data": {
@@ -9,7 +10,7 @@
             "sender": {
                 "firstname": "neco",
                 "lastname": "neco",
-                "city": "Hradec Králové",
+                "city": "Hradec Kr\u00e1lov\u00e9",
                 "zipCode": "50004",
                 "street": "neco",
                 "streetNumber": "21",

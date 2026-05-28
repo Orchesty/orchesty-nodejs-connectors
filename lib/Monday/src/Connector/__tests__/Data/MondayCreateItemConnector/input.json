@@ -1,9 +1,10 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "board_id": 3127713296,
-    "item_name": "example"
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "board_id": 3127713296,
+        "item_name": "example"
+    }
 }

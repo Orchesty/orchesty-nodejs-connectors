@@ -24,14 +24,14 @@ export default class BraniUnsubscribeWebhook extends AConnector {
         );
         const resp = await this.getSender().send<IOutput>(req, [200]);
 
-        await this.cleanWebhookFromDb(dto.getUser() ?? '', dto.getCurrentApp(), event_type);
+        await this.cleanWebhookFromDb(dto.getUser() ?? '', dto.getCurrentApp(), dto.getSdk() ?? '', event_type);
 
         return dto.setNewJsonData(resp.getJsonBody());
     }
 
-    private async cleanWebhookFromDb(user: string, app: string, event: string): Promise<void> {
+    private async cleanWebhookFromDb(user: string, app: string, sdk: string, event: string): Promise<void> {
         const repo = this.getDbClient().getRepository(Webhook) as WebhookRepository;
-        const registered = await repo.findMany({ users: [user], apps: [app] });
+        const registered = await repo.findMany({ users: [user], apps: [app], sdks: [sdk] });
         const deletedWebhook = registered.find((webhook) => webhook.getName() === event);
         if (deletedWebhook) {
             await repo.remove(deletedWebhook);

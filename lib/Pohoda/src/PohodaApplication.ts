@@ -15,7 +15,8 @@ import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods
 import AProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/AProcessDto';
 import { encode } from '@orchesty/nodejs-sdk/dist/lib/Utils/Base64';
 import { CommonHeaders } from '@orchesty/nodejs-sdk/dist/lib/Utils/Headers';
-import { XMLBuilder, XMLParser } from 'fast-xml-parser';
+import XMLBuilder from 'fast-xml-builder';
+import { XMLParser } from 'fast-xml-parser';
 
 export const NAME = 'pohoda';
 export const M_SERVER_URL = 'mServerUrl';

@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "Type": "ACCREC",
@@ -8,8 +9,8 @@
         "Contact": {
             "ContactID": "eaa28f49-6028-4b6e-bb12-d8f6278073fc"
         },
-        "Date": "\/Date(1518685950940+0000)\/",
-        "DueDate": "\/Date(1518685950940+0000)\/",
+        "Date": "/Date(1518685950940+0000)/",
+        "DueDate": "/Date(1518685950940+0000)/",
         "DateString": "2009-05-27T00:00:00",
         "DueDateString": "2009-06-06T00:00:00",
         "LineAmountTypes": "Exclusive",

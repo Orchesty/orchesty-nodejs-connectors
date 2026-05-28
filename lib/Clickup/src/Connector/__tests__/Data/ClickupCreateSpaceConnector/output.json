@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "admin_can_manage": null,
@@ -61,7 +62,7 @@
         },
         "id": "32121934",
         "multiple_assignees": true,
-        "name": "Karové",
+        "name": "Karov\u00e9",
         "private": false,
         "statuses": [
             {

@@ -1,35 +1,36 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-    "sender": {
-      "name": "Mary from MyShop",
-      "email": "no-reply@myshop.com"
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
-    "to": [
-      {
-        "email": "jimmy98@example.com",
-        "name": "Jimmy"
-      }
-    ],
-    "bcc": [
-      {
-        "email": "helen9766@example.com",
-        "name": "Helen"
-      }
-    ],
-    "cc": [
-      {
-        "email": "ann6533@example.com",
-        "name": "Ann"
-      },
-      {
-        "email": "ann6534@example.com",
-        "name": "Ann"
-      }
-    ],
-    "subject": "Login Email confirmation",
-    "textContent": "Please confirm your email address by clicking on the link https://text.domain.com"
-  }
+    "data": {
+        "sender": {
+            "name": "Mary from MyShop",
+            "email": "no-reply@myshop.com"
+        },
+        "to": [
+            {
+                "email": "jimmy98@example.com",
+                "name": "Jimmy"
+            }
+        ],
+        "bcc": [
+            {
+                "email": "helen9766@example.com",
+                "name": "Helen"
+            }
+        ],
+        "cc": [
+            {
+                "email": "ann6533@example.com",
+                "name": "Ann"
+            },
+            {
+                "email": "ann6534@example.com",
+                "name": "Ann"
+            }
+        ],
+        "subject": "Login Email confirmation",
+        "textContent": "Please confirm your email address by clicking on the link https://text.domain.com"
+    }
 }

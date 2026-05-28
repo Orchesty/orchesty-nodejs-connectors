@@ -1,8 +1,11 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
-        "connectedApplication": { "name" : "name10"}
+        "connectedApplication": {
+            "name": "name10"
+        }
     }
 }

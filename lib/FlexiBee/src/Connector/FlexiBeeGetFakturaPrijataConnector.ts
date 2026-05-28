@@ -58,7 +58,7 @@ export default class FlexiBeeGetFakturaPrijataConnector extends AConnector {
             dto.setNewJsonData(invoice);
         }
 
-        return dto as unknown as ProcessDto<FlexiBeeFakturaPrijata>;
+        return dto;
     }
 
 }

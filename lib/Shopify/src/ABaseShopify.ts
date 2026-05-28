@@ -110,7 +110,12 @@ export default abstract class ABaseShopify extends ABasicApplication {
 
     protected async checkShopPlan(applicationInstall: ApplicationInstall): Promise<void> {
         const requestDto = this.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
             applicationInstall,
             HttpMethods.GET,
             SHOP_INFO_URL,

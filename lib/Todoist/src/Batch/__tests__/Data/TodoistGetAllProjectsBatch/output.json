@@ -1,6 +1,7 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": [
         {
@@ -8,7 +9,7 @@
             "headers": {}
         },
         {
-            "body": "{\"id\":2296284655,\"order\":1,\"color\":48,\"name\":\"Osobní 🙂\",\"comment_count\":0,\"shared\":false,\"favorite\":false,\"sync_id\":0,\"url\":\"https://todoist.com/showProject?id=2296284655\"}",
+            "body": "{\"id\":2296284655,\"order\":1,\"color\":48,\"name\":\"Osobn\u00ed \ud83d\ude42\",\"comment_count\":0,\"shared\":false,\"favorite\":false,\"sync_id\":0,\"url\":\"https://todoist.com/showProject?id=2296284655\"}",
             "headers": {}
         },
         {

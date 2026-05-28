@@ -25,9 +25,15 @@ describe('Tests for AuthenticaApplication', () => {
     });
 
     it('should get requestDto', async () => {
+        const applicationInstall = mock();
         const requestDto = await app.getRequestDto(
-            ProcessDto.createForFormRequest(Authentica, Authentica, crypto.randomUUID()),
-            mock(),
+            ProcessDto.createForFormRequest(
+                Authentica,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
+            applicationInstall,
             HttpMethods.GET,
             'applinth/orders',
             { test: 'test' },

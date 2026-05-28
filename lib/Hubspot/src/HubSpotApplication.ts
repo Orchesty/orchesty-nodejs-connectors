@@ -118,7 +118,12 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
         });
 
         return this.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
             applicationInstall,
             HttpMethods.POST,
             hubspotUrl,
@@ -131,7 +136,12 @@ export default class HubSpotApplication extends AOAuth2Application implements IW
             .getSettings()[CoreFormsEnum.AUTHORIZATION_FORM][APP_ID]}/subscriptions/${webhook.getWebhookId()}`;
 
         return this.getRequestDto(
-            ProcessDto.createForFormRequest(NAME, applicationInstall.getUser(), crypto.randomUUID()),
+            ProcessDto.createForFormRequest(
+                NAME,
+                applicationInstall.getUser(),
+                applicationInstall.getSdk(),
+                crypto.randomUUID(),
+            ),
             applicationInstall,
             HttpMethods.DELETE,
             url,

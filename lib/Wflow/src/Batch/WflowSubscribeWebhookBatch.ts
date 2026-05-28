@@ -25,6 +25,7 @@ export default class WflowSubscribeWebhookBatch extends ABatchNode {
         const registeredEvents = (await repository.findMany({
             users: [appInstall.getUser()],
             apps: [appInstall.getName()],
+            sdks: [appInstall.getSdk()],
         })).map((webhook) => webhook.getName());
 
         const unsubscribed = subscriptions.find(
@@ -69,6 +70,7 @@ export default class WflowSubscribeWebhookBatch extends ABatchNode {
             new Webhook()
                 .setWebhookId(id)
                 .setUser(appInstall.getUser())
+                .setSdk(appInstall.getSdk())
                 .setNode(unsubscribed.getNode())
                 .setToken(token)
                 .setApplication(appInstall.getName())

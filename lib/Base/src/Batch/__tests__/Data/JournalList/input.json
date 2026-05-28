@@ -1,9 +1,12 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
     "data": {
         "lastLogId": 307,
-        "logsTypes": [1]
+        "logsTypes": [
+            1
+        ]
     }
 }

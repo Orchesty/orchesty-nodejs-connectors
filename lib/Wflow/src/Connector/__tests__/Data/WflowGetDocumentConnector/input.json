@@ -1,9 +1,10 @@
 {
-  "headers": {
-    "user": "TestUser"
-  },
-  "data": {
-      "organization": "test",
-      "documentId": "463b5265-2672-4191-9e3b-9d6fcfe6a452"
-  }
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "organization": "test",
+        "documentId": "463b5265-2672-4191-9e3b-9d6fcfe6a452"
+    }
 }

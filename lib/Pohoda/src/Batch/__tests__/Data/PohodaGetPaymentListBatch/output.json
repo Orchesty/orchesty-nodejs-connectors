@@ -1,14 +1,15 @@
 {
   "headers": {
-    "user": "TestUser"
+    "user": "TestUser",
+    "sdk": "TestSdk"
   },
   "data": [
     {
-      "body": "{\"paymentHeader\":{\"id\":1,\"name\":\"PĹ™Ă­kazem\",\"text\":\"PĹ™Ă­kazem k ĂşhradÄ›\",\"paymentType\":\"transfer\",\"useInSales\":false,\"useInOtherAgendas\":true},\"version\":2}",
+      "body": "{\"paymentHeader\":{\"id\":1,\"name\":\"P\u0139\u2122\u0102\u00adkazem\",\"text\":\"P\u0139\u2122\u0102\u00adkazem k \u0102\u015fhrad\u00c4\u203a\",\"paymentType\":\"transfer\",\"useInSales\":false,\"useInOtherAgendas\":true},\"version\":2}",
       "headers": {}
     },
     {
-      "body": "{\"paymentHeader\":{\"id\":2,\"name\":\"HotovÄ›\",\"text\":\"Platbou v hotovosti\",\"paymentType\":\"cash\",\"cash\":{\"default\":true},\"useInSales\":true,\"useInOtherAgendas\":true},\"version\":2}",
+      "body": "{\"paymentHeader\":{\"id\":2,\"name\":\"Hotov\u00c4\u203a\",\"text\":\"Platbou v hotovosti\",\"paymentType\":\"cash\",\"cash\":{\"default\":true},\"useInSales\":true,\"useInOtherAgendas\":true},\"version\":2}",
       "headers": {}
     }
   ]

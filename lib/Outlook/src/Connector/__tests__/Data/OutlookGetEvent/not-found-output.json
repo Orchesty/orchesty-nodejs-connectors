@@ -1,6 +1,7 @@
 {
     "headers": {
         "user": "TestUser",
+        "sdk": "TestSdk",
         "result-code": "1003",
         "result-message": "Event not found"
     },

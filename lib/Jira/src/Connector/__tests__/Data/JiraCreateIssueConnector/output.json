@@ -1,8 +1,9 @@
 {
     "headers": {
-        "user": "TestUser"
+        "user": "TestUser",
+        "sdk": "TestSdk"
     },
-    "data":{
+    "data": {
         "id": "10000",
         "key": "ED-24",
         "self": "https://your-domain.atlassian.net/rest/api/3/issue/10000",
@@ -13,6 +14,5 @@
                 "errors": {}
             }
         }
-    } 
+    }
 }
-
