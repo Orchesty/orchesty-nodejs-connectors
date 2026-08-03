@@ -1,5 +1,11 @@
 # @orchesty/connector-mailchimp
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated release
+
 ## 2.0.0
 
 ### Major Changes

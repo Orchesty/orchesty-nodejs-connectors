@@ -1,5 +1,13 @@
 # @orchesty/connector-google-big-query
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-google-common@2.0.1
+
 ## 2.0.0
 
 ### Major Changes

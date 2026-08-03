@@ -7,6 +7,7 @@ import OracleDB, { ExecuteOptions } from 'oracledb';
 import { ConnectionError, Sequelize } from 'sequelize';
 import SqlErrorEnum from '../Enums/SqlErrorEnum';
 import ASqlApplication from './ASqlApplication';
+import { getSqlErrorReason } from './SqlError.utils';
 
 export default abstract class ASqlNode extends ANode {
 
@@ -42,8 +43,9 @@ export default abstract class ASqlNode extends ANode {
                         break;
                 }
             } else {
-                logger.error(e?.message, dto, false, e);
-                dto.setStopProcess(ResultCode.STOP_AND_FAILED, e.message);
+                const reason = getSqlErrorReason(e);
+                logger.error(reason, dto, false, e);
+                dto.setStopProcess(ResultCode.STOP_AND_FAILED, reason);
             }
 
             return dto;
