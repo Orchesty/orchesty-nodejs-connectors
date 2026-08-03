@@ -1,5 +1,13 @@
 # @orchesty/connector-amazon-apps-redshift
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-amazon-apps-common@2.0.1
+
 ## 2.0.0
 
 ### Major Changes

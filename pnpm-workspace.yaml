@@ -2,3 +2,16 @@ packages:
   - "lib/*"
   - "lib/AmazonApps/*"
   - "lib/Google/*"
+
+catalog:
+  eslint: ^10.8.0
+
+overrides:
+  eslint: "catalog:"
+
+allowBuilds:
+  oracledb: false
+  protobufjs: false
+  unrs-resolver: true
+
+confirmModulesPurge: false
