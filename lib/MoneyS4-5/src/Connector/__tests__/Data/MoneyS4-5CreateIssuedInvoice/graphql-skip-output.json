@@ -1,0 +1,11 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk",
+        "result-code": "1003",
+        "result-message": "Hodnota pole Číslo dokladu je duplicitní s jiným záznamem."
+    },
+    "data": {
+        "body": "Hodnota pole Číslo dokladu je duplicitní s jiným záznamem."
+    }
+}

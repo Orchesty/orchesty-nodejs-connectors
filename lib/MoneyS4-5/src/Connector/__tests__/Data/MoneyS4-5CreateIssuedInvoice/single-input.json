@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "user": "TestUser",
+        "sdk": "TestSdk"
+    },
+    "data": {
+        "CisloDokladu": "FV-2023-0001",
+        "Nazev": "Test invoice",
+        "DatumVystaveni": "2023-04-03T10:42:46.967Z",
+        "DatumSplatnosti": "2023-04-17T10:42:46.967Z",
+        "Firma_ID": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "Polozky": [
+            {
+                "Nazev": "Test item",
+                "Mnozstvi": 1,
+                "JednCena": 100
+            }
+        ]
+    }
+}

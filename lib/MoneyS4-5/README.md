@@ -9,7 +9,7 @@ An [Orchesty](https://orchesty.io) connector for Money S4 and Money S5, Czech ER
 
 **Basic (client credentials)**
 
-This package provides two separate application classes — `MoneyS4Application` and `MoneyS5Application` — that share a common base. Both use an OAuth2 client credentials flow to obtain a Bearer token from the Money REST API (`POST /connect/token`). The token is cached automatically to minimize authentication overhead. Both applications require a `CacheService` instance to be injected via their constructor.
+This package provides two separate application classes — `MoneyS4Application` and `MoneyS5Application` — that share a common base. Both use an OAuth2 client credentials flow to obtain a Bearer token from the Money REST API (`POST /connect/token`), which is then used for the GraphQL endpoint (`POST /graphql`) and the remaining REST endpoints. The token is cached automatically to minimize authentication overhead. Both applications require a `CacheService` instance to be injected via their constructor.
 
 | Field | Description |
 |---|---|
@@ -23,10 +23,10 @@ The connectors in this package work with both Money S4 and Money S5.
 
 | Class | Type | Description |
 |---|---|---|
-| `MoneyS45CreateCompany` | Connector | Creates a new company record via `POST /v2.0/Company` |
-| `MoneyS45CreateIssuedInvoice` | Connector | Creates a new issued invoice via `POST /v2.0/IssuedInvoice` |
+| `MoneyS45CreateCompany` | Connector | Creates a new company record via the GraphQL `CreateCompany` mutation (`POST /graphql`) |
+| `MoneyS45CreateIssuedInvoice` | Connector |  Creates a new issued invoice via the GraphQL `CreateIssuedInvoice` mutation (`POST /graphql`) |
 | `MoneyS45CreateOrder` | Connector | Creates a received order via `GET /v2.0/ReceivedOrder` |
-| `MoneyS45GetCompanies` | Connector | Retrieves a list of companies with optional filtering via `GET /v2.0/Company` |
+| `MoneyS45GetCompanies` | Connector | Retrieves a list of companies with optional `filters` via the GraphQL `Companies` query (`POST /graphql`)` |
 
 ## Setup
 

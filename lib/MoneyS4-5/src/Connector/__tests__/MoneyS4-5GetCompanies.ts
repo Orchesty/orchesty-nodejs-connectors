@@ -1,4 +1,5 @@
 import { container } from '@orchesty/nodejs-connectors/test/TestAbstract';
+import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatException';
 import NodeTester from '@orchesty/nodejs-sdk/dist/test/Testers/NodeTester';
 import { init, moneyAppInstall } from '../../../test/dataProvider';
 import { NAME as MONEY_S4_5_GET_COMPANIES } from '../MoneyS4-5GetCompanies';
@@ -21,5 +22,9 @@ describe('Tests for MoneyS4GetCompanies', () => {
 
     it('process - with filter', async () => {
         await tester.testConnector(MONEY_S4_5_GET_COMPANIES, 'filter');
+    });
+
+    it('process - graphql error', async () => {
+        await tester.testConnector(MONEY_S4_5_GET_COMPANIES, 'graphql-error', OnRepeatException);
     });
 });

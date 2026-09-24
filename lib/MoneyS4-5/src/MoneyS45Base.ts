@@ -16,6 +16,8 @@ import { CommonHeaders, JSON_TYPE } from '@orchesty/nodejs-sdk/dist/lib/Utils/He
 
 export const MONEYS_URL = 'moneys5Url';
 
+export const MONEYS_GRAPHQL_URL = 'graphql';
+
 export default abstract class MoneyS45Base extends ABasicApplication {
 
     public constructor(
@@ -109,8 +111,30 @@ export default abstract class MoneyS45Base extends ABasicApplication {
 
 }
 
+export function getGraphqlErrors(body: IGraphqlResponse<unknown> | undefined): string[] {
+    return (body?.Errors ?? []).map((error) => {
+        if (typeof error === 'string') {
+            return error;
+        }
+
+        return error.Message ?? error.message ?? JSON.stringify(error);
+    });
+}
+
 interface IResponseJson {
     access_token: string;
     expires_in: string;
     token_type: string;
 }
+
+/* eslint-disable @typescript-eslint/naming-convention */
+export interface IGraphqlResponse<T> {
+    PageCount?: number;
+    RowCount?: number;
+    Data?: T;
+    Errors?: (string | { Message?: string; message?: string })[];
+    Status?: number;
+    Message?: string;
+    StackTrace?: string;
+}
+/* eslint-enable @typescript-eslint/naming-convention */
