@@ -4,14 +4,15 @@ packages:
   - "lib/Google/*"
 
 catalog:
-  eslint: ^10.8.0
+  eslint: ^10.11.0
 
 overrides:
   eslint: "catalog:"
 
 allowBuilds:
+  '@parcel/watcher': false
   oracledb: false
   protobufjs: false
   unrs-resolver: true
 
-confirmModulesPurge: false
+yes: true
