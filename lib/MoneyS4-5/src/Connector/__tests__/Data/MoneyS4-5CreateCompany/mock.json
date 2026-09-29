@@ -1,5 +1,16 @@
 {
-    "http": "POST https://example-money.com/v2.0/Company",
+    "http": "POST https://example-money.com/graphql",
     "code": 200,
-    "body": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+    "body": {
+        "PageCount": 1,
+        "RowCount": 1,
+        "Data": {
+            "c0": {
+                "ID": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+        },
+        "Status": 1,
+        "Message": "",
+        "StackTrace": ""
+    }
 }

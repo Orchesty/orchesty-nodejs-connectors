@@ -1,0 +1,12 @@
+{
+    "http": "POST https://example-money.com/graphql",
+    "code": 200,
+    "body": {
+        "Errors": [
+            "Hodnota pole Číslo dokladu je duplicitní s jiným záznamem."
+        ],
+        "Status": 1,
+        "Message": "",
+        "StackTrace": ""
+    }
+}

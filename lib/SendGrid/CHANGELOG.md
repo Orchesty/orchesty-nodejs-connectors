@@ -1,5 +1,11 @@
 # @orchesty/connector-send-grid
 
+## 2.0.2
+
+### Patch Changes
+
+- Updated release
+
 ## 2.0.1
 
 ### Patch Changes

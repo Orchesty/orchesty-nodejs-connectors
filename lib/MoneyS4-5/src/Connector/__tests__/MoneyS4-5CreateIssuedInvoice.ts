@@ -8,7 +8,7 @@ let tester: NodeTester;
 
 describe('Tests for MoneyS4CreateIssuedInvoice', () => {
     beforeAll(async () => {
-        tester = new NodeTester(container, __filename);
+        tester = new NodeTester(container, __filename, false, ['empty']);
         await init();
     });
 
@@ -20,11 +20,27 @@ describe('Tests for MoneyS4CreateIssuedInvoice', () => {
         await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE);
     });
 
+    it('process - empty input', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'empty');
+    });
+
+    it('process - single object input', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'single');
+    });
+
     it('process - 500 skip', async () => {
         await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'skip');
     });
 
     it('process - 500 repeat', async () => {
         await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'repeat', OnRepeatException);
+    });
+
+    it('process - graphql duplicit skip', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'graphql-skip');
+    });
+
+    it('process - graphql repeat', async () => {
+        await tester.testConnector(MONEY_S4_5_CREATE_ISSUED_INVOICE, 'graphql-repeat', OnRepeatException);
     });
 });
