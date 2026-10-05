@@ -7,9 +7,18 @@ An [Orchesty](https://orchesty.io) connector for wflow, a digital accounting pla
 
 ## Application Type
 
-**OAuth 2.0**
+**OAuth 2.0**, available in two variants:
 
-This connector uses the wflow OAuth 2.0 authorization flow via `https://account.wflow.com/connect/authorize`. After authorization, the selected organization is stored in a separate settings form that is populated dynamically.
+| Class | Grant type | Use when |
+|---|---|---|
+| `WflowApplication` | Authorization Code | A wflow user authorizes Orchesty interactively |
+| `WflowClientCredentialsApplication` | Client credentials | Server-to-server access via a wflow API client |
+
+Both classes use the same application name (`wflow`), so installs, nodes and webhook records stay valid when you switch between them. **A worker registers only one of the two classes.** All connectors and batches work with either class.
+
+### Authorization Code (`WflowApplication`)
+
+This variant uses the wflow OAuth 2.0 authorization flow via `https://account.wflow.com/connect/authorize`. After authorization, the selected organization is stored in a separate settings form that is populated dynamically.
 
 > **Note:** `WflowApplication` requires `OAuth2Provider` and `WflowGetOrganizationsConnector` in its constructor.
 
@@ -18,6 +27,18 @@ This connector uses the wflow OAuth 2.0 authorization flow via `https://account.
 | `client_id` | Your wflow app Client ID |
 | `client_secret` | Your wflow app Client Secret |
 | `organization` | Selected wflow organization ID (populated after authorization) |
+
+### Client credentials (`WflowClientCredentialsApplication`)
+
+This variant requests access tokens from `https://account.wflow.com/connect/token` using the `client_credentials` grant (scope `uccl_common_api`). Tokens are cached in Redis per user and per client ID/secret pair, so changing the credentials takes effect immediately.
+
+> **Note:** `WflowClientCredentialsApplication` requires `CacheService` in its constructor.
+
+| Field | Description |
+|---|---|
+| `client_id` | Client ID of the wflow API client |
+| `client_secret` | Client Secret of the wflow API client |
+| `organization` | wflow organization subdomain, e.g. `hanaboso` (entered manually) |
 
 ## Components
 
@@ -41,11 +62,17 @@ This connector uses the wflow OAuth 2.0 authorization flow via `https://account.
 
 ## Setup
 
-### Credentials
+### Credentials (Authorization Code)
 
 1. Contact [wflow](https://www.wflow.com/) to obtain API client credentials for your organization.
 2. In Orchesty, open the wflow application settings, enter the **Client ID** and **Client Secret**, and complete the OAuth authorization flow.
 3. After authorization, select your **organization** from the dropdown (populated automatically from your wflow account).
+
+### Credentials (Client credentials)
+
+1. A wflow administrator creates an API client with grant type **Client credentials** in **Organization management → API clients**.
+2. The administrator enables the API client in the organization in **Settings → Integrations → API accesses**.
+3. In Orchesty, open the wflow application settings and enter the **Client ID**, **Client Secret** and the **organization subdomain**.
 
 ### API Documentation
 
@@ -84,6 +111,20 @@ container.setNode(new WflowUpdateDocumentStateConnector(), app);
 container.setNode(new WflowSubscribeWebhookBatch(), app);
 container.setNode(new WflowUnsubscribeWebhookBatch(), app);
 // ... register remaining connectors similarly
+```
+
+For the client credentials variant, register `WflowClientCredentialsApplication` instead (not both):
+
+```typescript
+import { container } from '@orchesty/nodejs-sdk';
+import CacheService from '@orchesty/nodejs-sdk/dist/lib/Cache/CacheService';
+import WflowClientCredentialsApplication from '@orchesty/connector-wflow/dist/WflowClientCredentialsApplication';
+import WflowGetDocumentConnector from '@orchesty/connector-wflow/dist/Connector/WflowGetDocumentConnector';
+
+const app = new WflowClientCredentialsApplication(container.get(CacheService));
+container.setApplication(app);
+container.setNode(new WflowGetDocumentConnector(), app);
+// ... register remaining connectors similarly (WflowGetOrganizationsConnector is not needed)
 ```
 
 ## License
