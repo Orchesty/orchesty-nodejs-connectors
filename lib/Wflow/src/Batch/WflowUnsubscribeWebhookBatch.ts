@@ -5,7 +5,7 @@ import OnRepeatException from '@orchesty/nodejs-sdk/dist/lib/Exception/OnRepeatE
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import { StatusCodes } from 'http-status-codes';
-import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
+import { IWflowApplication, NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-unsubscribe-webhooks-batch`;
 
@@ -16,7 +16,7 @@ export default class WflowUnsubscribeWebhookBatch extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
-        const app = this.getApplication<WflowApplication>();
+        const app = this.getApplication<IWflowApplication>();
         const appInstall = await this.getApplicationInstallFromProcess(dto, null);
         const repository = this.getDbClient().getRepository(Webhook) as WebhookRepository;
 
@@ -38,7 +38,7 @@ export default class WflowUnsubscribeWebhookBatch extends ABatchNode {
             return dto;
         }
 
-        const request = app.getRequestDto(
+        const request = await app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.DELETE,

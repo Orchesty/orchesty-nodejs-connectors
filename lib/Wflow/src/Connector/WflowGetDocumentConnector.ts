@@ -1,7 +1,7 @@
 import AConnector from '@orchesty/nodejs-sdk/dist/lib/Connector/AConnector';
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
-import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
+import { IWflowApplication, NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-get-document-connector`;
 
@@ -12,11 +12,11 @@ export default class WflowGetDocumentConnector extends AConnector {
     }
 
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto<IOutput>> {
-        const app = this.getApplication<WflowApplication>();
+        const app = this.getApplication<IWflowApplication>();
         const applicationInstall = await this.getApplicationInstallFromProcess(dto);
         const { documentId } = dto.getJsonData();
 
-        const request = app.getRequestDto(
+        const request = await app.getRequestDto(
             dto,
             applicationInstall,
             HttpMethods.GET,

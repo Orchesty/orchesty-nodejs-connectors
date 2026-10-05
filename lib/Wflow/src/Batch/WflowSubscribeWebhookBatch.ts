@@ -5,7 +5,7 @@ import TopologyRunner from '@orchesty/nodejs-sdk/dist/lib/Topology/TopologyRunne
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import BatchProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/BatchProcessDto';
 import crypto from 'crypto';
-import WflowApplication, { NAME as WFLOW_APP_NAME } from '../WflowApplication';
+import { IWflowApplication, NAME as WFLOW_APP_NAME } from '../WflowApplication';
 
 export const NAME = `${WFLOW_APP_NAME}-subscribe-webhooks-batch`;
 
@@ -16,7 +16,7 @@ export default class WflowSubscribeWebhookBatch extends ABatchNode {
     }
 
     public async processAction(dto: BatchProcessDto): Promise<BatchProcessDto> {
-        const app = this.getApplication<WflowApplication>();
+        const app = this.getApplication<IWflowApplication>();
         const subscriptions = app.getWebhookSubscriptions();
 
         const appInstall = await this.getApplicationInstallFromProcess(dto);
@@ -47,7 +47,7 @@ export default class WflowSubscribeWebhookBatch extends ABatchNode {
         }
 
         const token = crypto.randomBytes(64).toString('hex');
-        const request = app.getRequestDto(
+        const request = await app.getRequestDto(
             dto,
             appInstall,
             HttpMethods.PUT,
