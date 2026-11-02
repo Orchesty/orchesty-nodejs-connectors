@@ -13,8 +13,7 @@ export default class RabbitMqSendMessageCustomNode extends ACommonNode {
     public async processAction(dto: ProcessDto<IInput>): Promise<ProcessDto> {
         const appInstall = await this.getApplicationInstallFromProcess(dto);
         const { queue, queueParams, ...res } = dto.getJsonData();
-        const q = await this.getApplication<RabbitMqApplication>().getQueue(appInstall, queue, queueParams);
-        await q.publish(JSON.stringify(res));
+        await this.getApplication<RabbitMqApplication>().publish(appInstall, queue, JSON.stringify(res), queueParams);
         return dto;
     }
 

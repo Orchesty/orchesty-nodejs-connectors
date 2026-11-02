@@ -1,4 +1,4 @@
-DCS=docker-compose exec -T connectors
+DCS=docker compose exec -T connectors
 
 .env:
 	sed -e "s/{DEV_UID}/$(shell if [ "$(shell uname)" = "Linux" ]; then echo $(shell id -u); else echo '1001'; fi)/g" \
@@ -16,14 +16,14 @@ docker-compose.ci.yml:
 	sed -r 's/^(\s+ports:)$$/#\1/g; s/^(\s+- \$$\{DEV_IP\}.*)$$/#\1/g' docker-compose.yaml > docker-compose.ci.yml
 
 docker-up-force: .env
-	docker-compose pull --ignore-pull-failures
-	docker-compose up -d --force-recreate --remove-orphans --build
+	docker compose pull --ignore-pull-failures
+	docker compose up -d --force-recreate --remove-orphans --build
 
 docker-down-clean: .env
-	docker-compose down -v
+	docker compose down -v
 
 oauth2:
-	docker-compose exec connectors pnpm oauth2
+	docker compose exec connectors pnpm oauth2
 
 install:
 	$(DCS) pnpm install -r

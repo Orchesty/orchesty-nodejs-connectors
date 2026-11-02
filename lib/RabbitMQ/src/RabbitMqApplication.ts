@@ -1,4 +1,4 @@
-import { AMQPClient, AMQPQueue, QueueParams } from '@cloudamqp/amqp-client';
+import { AMQPChannel, AMQPClient, QueueParams } from '@cloudamqp/amqp-client';
 import CoreFormsEnum, { getFormName } from '@orchesty/nodejs-sdk/dist/lib/Application/Base/CoreFormsEnum';
 import { ApplicationInstall } from '@orchesty/nodejs-sdk/dist/lib/Application/Database/ApplicationInstall';
 import Field from '@orchesty/nodejs-sdk/dist/lib/Application/Model/Form/Field';
@@ -22,7 +22,7 @@ enum QueueEnum {
 
 export default class RabbitMqApplication extends ABasicApplication {
 
-    protected cache: Record<string, AMQPQueue> = {};
+    protected cache: Record<string, Promise<ICachedChannel> | undefined> = {};
 
     public getName(): string {
         return NAME;
@@ -59,53 +59,116 @@ export default class RabbitMqApplication extends ABasicApplication {
         url?: string,
         data?: unknown,
     ): RequestDto {
-        throw new Error('Unsupported use getQueue method instead');
+        throw new Error('Unsupported, use publish or getChannel method instead');
     }
 
-    public async getQueue(
+    public async publish(
         appInstall: ApplicationInstall,
         queue: string,
+        body: string,
         queueParams: IQueueArguments = {},
-    ): Promise<AMQPQueue> {
-        const appId = appInstall.getId();
-        let cachedQueue = this.cache[appId];
-        if (cachedQueue === undefined) {
-            cachedQueue = await this.connect(appInstall, queue, queueParams);
-            this.cache[appId] = cachedQueue;
-        } else if (cachedQueue.channel.closed || cachedQueue.channel.connection.closed) {
-            try {
-                await cachedQueue.channel.connection.close();
-            } catch (e) {
-
-            }
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-            delete this.cache[appId];
-        }
-
-        return cachedQueue ?? await this.getQueue(appInstall, queue, queueParams);
-    }
-
-    private async connect(
-        appInstall: ApplicationInstall,
-        queue: string,
-        queueParams: IQueueArguments,
-    ): Promise<AMQPQueue> {
-        const dsn = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[DSN];
-        if (!dsn) {
-            throw Error(`RabbitMQ [user=${appInstall.getUser()}] dsn is not set`);
-        }
-        const amqp = new AMQPClient(dsn);
-        const conn = await amqp.connect();
-        const ch = await conn.channel();
-        const { params, args } = queueParams;
-        const queueType = args?.['x-queue-type'] ?? QueueEnum.CLASSIC;
+    ): Promise<void> {
+        const queueType = queueParams.args?.['x-queue-type'] ?? QueueEnum.CLASSIC;
         if (!Object.values(QueueEnum).includes(queueType)) {
             throw Error(`Queue type: [${queueType}] is not allowed`);
         }
 
-        return ch.queue(queue, params, args);
+        const cached = await this.getCachedChannel(appInstall);
+        if (!cached.queues.has(queue)) {
+            await this.declareQueue(cached.channel, queue, queueParams);
+            cached.queues.add(queue);
+        }
+
+        await cached.channel.basicPublish('', queue, body);
     }
 
+    public async getChannel(appInstall: ApplicationInstall): Promise<AMQPChannel> {
+        return (await this.getCachedChannel(appInstall)).channel;
+    }
+
+    private async getCachedChannel(appInstall: ApplicationInstall): Promise<ICachedChannel> {
+        const appId = appInstall.getId();
+        const pending = this.cache[appId];
+        if (pending === undefined) {
+            return this.cacheChannel(appId, appInstall);
+        }
+
+        const cached = await pending;
+        if (!cached.channel.closed && !cached.channel.connection.closed) {
+            return cached;
+        }
+
+        const current = this.cache[appId];
+        if (current === pending) {
+            return this.cacheChannel(appId, appInstall, cached);
+        }
+
+        return current ?? this.cacheChannel(appId, appInstall);
+    }
+
+    private async cacheChannel(
+        appId: string,
+        appInstall: ApplicationInstall,
+        stale?: ICachedChannel,
+    ): Promise<ICachedChannel> {
+        const pending = this.reconnect(appInstall, stale);
+        this.cache[appId] = pending;
+        try {
+            return await pending;
+        } catch (e) {
+            if (this.cache[appId] === pending) {
+                // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+                delete this.cache[appId];
+            }
+            throw e;
+        }
+    }
+
+    private async reconnect(appInstall: ApplicationInstall, stale?: ICachedChannel): Promise<ICachedChannel> {
+        if (stale) {
+            try {
+                await stale.channel.connection.close();
+            } catch (e) {
+
+            }
+        }
+
+        return { channel: await this.connect(appInstall), queues: new Set<string>() };
+    }
+
+    private async connect(appInstall: ApplicationInstall): Promise<AMQPChannel> {
+        const dsn = appInstall.getSettings()[CoreFormsEnum.AUTHORIZATION_FORM]?.[DSN];
+        if (!dsn) {
+            throw Error(`RabbitMQ [user=${appInstall.getUser()}] dsn is not set`);
+        }
+        const conn = await new AMQPClient(dsn).connect();
+        try {
+            const channel = await conn.channel();
+            await channel.confirmSelect();
+
+            return channel;
+        } catch (e) {
+            await conn.close();
+            throw e;
+        }
+    }
+
+    private async declareQueue(channel: AMQPChannel, queue: string, queueParams: IQueueArguments): Promise<void> {
+        const declareChannel = await channel.connection.channel();
+        try {
+            await declareChannel.queueDeclare(queue, queueParams.params, queueParams.args);
+        } finally {
+            if (!declareChannel.closed) {
+                await declareChannel.close();
+            }
+        }
+    }
+
+}
+
+interface ICachedChannel {
+    channel: AMQPChannel;
+    queues: Set<string>;
 }
 
 export interface IQueueArguments {

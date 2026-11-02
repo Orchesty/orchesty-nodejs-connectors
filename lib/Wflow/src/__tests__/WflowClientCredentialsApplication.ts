@@ -10,7 +10,7 @@ import { CLIENT_ID, CLIENT_SECRET } from '@orchesty/nodejs-sdk/dist/lib/Authoriz
 import { HttpMethods } from '@orchesty/nodejs-sdk/dist/lib/Transport/HttpMethods';
 import ProcessDto from '@orchesty/nodejs-sdk/dist/lib/Utils/ProcessDto';
 import { mockAdapter, mockOnce } from '@orchesty/nodejs-sdk/dist/test/MockServer';
-import WflowGetDocumentConnector from '../Connector/WflowGetDocumentConnector';
+import WflowGetDocumentConnector, { IInput } from '../Connector/WflowGetDocumentConnector';
 import { NAME, ORGANIZATION, ORGANIZATION_FORM } from '../WflowApplication';
 import WflowClientCredentialsApplication, { getTokenCacheKey } from '../WflowClientCredentialsApplication';
 
@@ -64,7 +64,7 @@ async function getDocument(clientSecret = DEFAULT_CLIENT_SECRET): Promise<void> 
     install(DEFAULT_CLIENT_ID, clientSecret);
     mockDocument();
 
-    const dto = new ProcessDto();
+    const dto = new ProcessDto<IInput>();
     dto.setJsonData({ documentId: DOCUMENT_ID });
     dto.setHeaders({ user: DEFAULT_USER, sdk: DEFAULT_SDK });
 

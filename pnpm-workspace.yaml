@@ -3,16 +3,14 @@ packages:
   - "lib/AmazonApps/*"
   - "lib/Google/*"
 
-catalog:
-  eslint: ^10.11.0
-
-overrides:
-  eslint: "catalog:"
-
 allowBuilds:
   '@parcel/watcher': false
   oracledb: false
   protobufjs: false
   unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - "@hanaboso/eslint-plugin@2.0.0"
+  - "@orchesty/nodejs-sdk@5.0.15"
 
 yes: true
