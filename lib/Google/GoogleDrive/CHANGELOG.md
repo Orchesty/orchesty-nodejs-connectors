@@ -1,5 +1,13 @@
 # @orchesty/connector-google-drive
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-google-common@2.0.3
+
 ## 2.0.2
 
 ### Patch Changes

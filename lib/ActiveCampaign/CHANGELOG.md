@@ -1,5 +1,11 @@
 # @orchesty/connector-active-campaign
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated release
+
 ## 2.0.2
 
 ### Patch Changes

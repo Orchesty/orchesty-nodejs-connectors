@@ -1,5 +1,13 @@
 # @orchesty/connector-amazon-apps-simple-email-service
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated release
+- Updated dependencies
+  - @orchesty/connector-amazon-apps-common@2.0.3
+
 ## 2.0.2
 
 ### Patch Changes
